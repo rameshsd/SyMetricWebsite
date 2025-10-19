@@ -73,25 +73,45 @@ export default {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(2rem)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'panel-reveal': {
+          '0%': { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
+          '100%': { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
+        },
+        'image-reveal': {
+          '0%': { clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' },
+          '100%': { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' },
+        },
+        'gradient-bg': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+        'panel-reveal': 'panel-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+        'image-reveal': 'image-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+        'gradient-bg': 'gradient-bg 15s ease infinite',
+      },
+      backgroundImage: {
+        'sap-gradient-light': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',
+        'sap-gradient-dark': 'linear-gradient(135deg, hsl(225, 29%, 10%) 0%, hsl(233, 62%, 29%) 100%)',
+      },
+      backgroundSize: {
+        '200%': '200% 200%',
       },
     },
   },

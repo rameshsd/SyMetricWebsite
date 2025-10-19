@@ -1,3 +1,154 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "solution-ctp",
+      "description": "Clinical trial platform dashboard",
+      "imageUrl": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXNoYm9hcmQlMjBkYXRhfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard data"
+    },
+    {
+      "id": "solution-etmf",
+      "description": "Electronic trial master file document management",
+      "imageUrl": "https://images.unsplash.com/photo-1691458594782-2cef9a152bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZG9jdW1lbnRzJTIwZmlsZXN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "documents files"
+    },
+    {
+      "id": "solution-cdm",
+      "description": "Clinical data management charts",
+      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "charts graphs"
+    },
+    {
+      "id": "solution-rc",
+      "description": "Regulatory compliance checkmarks",
+      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "compliance checklist"
+    },
+    {
+      "id": "solution-sm",
+      "description": "Site management collaboration",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "leadership-1",
+      "description": "Portrait of Dr. Evelyn Reed",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "leadership-2",
+      "description": "Portrait of Marcus Chen",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "leadership-3",
+      "description": "Portrait of Dr. Lena Petrova",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "leadership-4",
+      "description": "Portrait of Samuel Jones",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "leadership-5",
+      "description": "Portrait of Isabella Garcia",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "leadership-6",
+      "description": "Portrait of David Lee",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "logo-innovate-pharma",
+      "description": "Innovate Pharma Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract logo"
+    },
+    {
+      "id": "logo-biogenex",
+      "description": "BioGenex Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "geometric logo"
+    },
+    {
+      "id": "logo-apex-clinical",
+      "description": "Apex Clinical Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "letter logo"
+    },
+    {
+      "id": "logo-st-judes",
+      "description": "St. Jude's Research Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1655565637301-8485235271ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGglMjBsb2dvfGVufDB8fHx8MTc2MDg1MzA2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "health logo"
+    },
+    {
+      "id": "resource-1",
+      "description": "Decentralized clinical trials concept",
+      "imageUrl": "https://images.unsplash.com/photo-1533545587081-bbdccaab0c33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuZXR3b3JrJTIwcGVvcGxlfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "network people"
+    },
+    {
+      "id": "resource-2",
+      "description": "AI in drug discovery",
+      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI brain"
+    },
+    {
+      "id": "resource-3",
+      "description": "eTMF best practices",
+      "imageUrl": "https://images.unsplash.com/photo-1723014563370-fb62697ae0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbml6ZWQlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "organized documents"
+    },
+    {
+      "id": "resource-4",
+      "description": "Patient centricity",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDg1OTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "doctor patient"
+    },
+    {
+      "id": "about-hero",
+      "description": "Team collaborating in a modern office",
+      "imageUrl": "https://images.unsplash.com/photo-1709715357510-b687304cee3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwbWVldGluZ3xlbnwwfHx8fDE3NjA4NTk1NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team meeting"
+    },
+    {
+      "id": "solutions-hero",
+      "description": "Abstract technology plexus",
+      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODMzNDg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "technology abstract"
+    },
+    {
+      "id": "industries-hero",
+      "description": "Scientist in a lab",
+      "imageUrl": "https://images.unsplash.com/photo-1707944745860-4615eb585a41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2llbnRpc3QlMjBsYWJ8ZW58MHx8fHwxNzYwNzkxNTc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "scientist lab"
+    },
+    {
+      "id": "resources-hero",
+      "description": "Person reading on a tablet",
+      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "reading tablet"
+    },
+    {
+      "id": "contact-hero",
+      "description": "Global connections network",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "global network"
+    },
+    {
+      "id": "map-placeholder",
+      "description": "Map of a city for HQ location",
+      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MDg1OTQ0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city map"
+    }
+  ]
 }
