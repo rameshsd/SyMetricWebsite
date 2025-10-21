@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -7,13 +6,12 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { featureItems, whyChooseUsItems, homepageContent, latestNews } from '@/lib/data';
+import { whyChooseUsItems, homepageContent, latestNews } from '@/lib/data';
 import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
 import { WhySyMetricAI } from '@/components/layout/WhySyMetricAI';
-import { HeroCarousel } from '@/components/layout/HeroCarousel';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
-import { Skeleton } from '@/components/ui/skeleton';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
+import { FeatureGrid } from '@/components/layout/FeatureGrid';
 
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
@@ -27,7 +25,6 @@ export default function Home() {
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
          <SapTechedHero />
-         <HeroCarousel />
          <FutureOfTrials />
         
         <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
@@ -85,35 +82,7 @@ export default function Home() {
 
         <WhySyMetricAI />
 
-         <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    Support every team and strengthen every process
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                    Equip every team with the tools to adapt, scale, and deliver real results.
-                </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featureItems.map((item) => (
-                <Card key={item.title} className="text-center p-6 flex flex-col items-center transition-all duration-300 hover:shadow-xl hover:scale-105">
-                   <div className="p-4 bg-primary/10 rounded-full mb-4">
-                      <item.icon className="h-8 w-8 text-primary" />
-                    </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground mb-4 flex-grow">{item.description}</p>
-                  <Button variant="link" asChild className="px-0 mt-auto text-primary">
-                    <Link href={item.link}>
-                      {item.linkText}
-                      <ArrowRight className="ml-2" />
-                    </Link>
-                  </Button>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FeatureGrid />
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-sap-gradient text-primary-foreground">
             <div className="container mx-auto px-4 md:px-6">

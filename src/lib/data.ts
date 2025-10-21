@@ -1,4 +1,4 @@
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -16,6 +16,7 @@ import {
   Users,
   PieChart,
 } from 'lucide-react';
+import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
 export const navItems: NavItem[] = [
   { name: 'Products', href: '/solutions' },
@@ -242,27 +243,48 @@ export const customerSuccessStories = [
   { id: 3, customerName: 'Apex Clinical Research', logoId: 'logo-apex-clinical', quote: 'We achieved 99.9% data accuracy on our last pivotal trial thanks to SyMetric\'s robust Clinical Data Management suite.', link: '#' }
 ];
 
-export const featureItems = [
+export const featureGridItems: FeatureGridItem[] = [
   {
-    icon: Users,
-    title: 'For Sponsors & CROs',
-    description: 'Gain complete oversight of your portfolio. Manage trials, monitor performance, and collaborate with partners in a single, unified platform.',
-    link: '/solutions',
-    linkText: 'Explore Platform'
+    icon: CloudErpIcon,
+    title: 'Cloud ERP',
+    description: 'Stay flexible and future-ready using complete, modular solutions driven by built-in AI and analytics.',
+    link: '#',
+    linkText: 'Explore cloud ERP'
   },
   {
-    icon: Hospital,
-    title: 'For Research Sites',
-    description: 'Simplify trial execution with intuitive tools for patient management, data entry, and communication, reducing administrative burden.',
-    link: '/solutions/site-management',
-    linkText: 'Simplify Operations'
+    icon: FinancialManagementIcon,
+    title: 'Financial management',
+    description: 'See what\'s coming and act with precision using solutions that help you manage uncertainty, optimise processes, and enable compliance.',
+    link: '#',
+    linkText: 'Explore financial management software'
   },
   {
-    icon: PieChart,
-    title: 'For Data Managers',
-    description: 'Ensure data integrity with powerful, automated data validation, query management, and reporting tools designed for speed and accuracy.',
-    link: '/solutions/clinical-data-management',
-    linkText: 'Ensure Quality Data'
+    icon: SpendManagementIcon,
+    title: 'Spend management',
+    description: 'Implement AI-powered spend management processes from source to pay with an integrated suite of solutions to deliver spend visibility, control, and savings.',
+    link: '#',
+    linkText: 'Explore spend management solutions'
+  },
+  {
+    icon: SupplyChainIcon,
+    title: 'Supply chain management',
+    description: 'Run a risk-resilient and sustainable supply chain that can adapt to anything with our solutions for supply chain planning, manufacturing, and logistics.',
+    link: '#',
+    linkText: 'Explore supply chain solutions'
+  },
+  {
+    icon: HumanCapitalIcon,
+    title: 'Human capital management',
+    description: 'Align your workforce and business priorities with AI-enabled solutions for core HR and payroll, employee experience, talent management, and contingent workforce management functions.',
+    link: '#',
+    linkText: 'Explore HCM software'
+  },
+  {
+    icon: CustomerExperienceIcon,
+    title: 'Customer experience',
+    description: 'Connect e-commerce, marketing, sales, and service data with our customer experience solutions—and use AI to personalise the customer experience at every touchpoint.',
+    link: '#',
+    linkText: 'Explore CRM and CX solutions'
   }
 ];
 

@@ -52,3 +52,11 @@ export type TeamMember = {
   avatar: string;
   bio: string;
 };
+
+export type FeatureGridItem = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  link: string;
+  linkText: string;
+};
