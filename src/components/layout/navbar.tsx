@@ -29,8 +29,8 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-card/95 backdrop-blur-lg border-b' : 'bg-background'
+        'sticky top-0 z-50 w-full transition-all duration-300 border-b',
+        isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,15 +45,15 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
-                  pathname === item.href ? 'text-primary' : 'text-foreground'
+                  pathname === item.href ? 'text-primary' : 'text-foreground/60'
                 )}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
-          <div className="hidden md:flex flex-1 items-center justify-end space-x-4">
-             <Link href="#" className="text-sm font-medium text-foreground hover:text-primary">
+          <div className="hidden md:flex flex-1 items-center justify-end space-x-2">
+             <Link href="#" className="text-sm font-medium text-foreground/60 hover:text-primary pr-4">
                 Explore SyMetric
             </Link>
             <Button variant="ghost" size="icon">
