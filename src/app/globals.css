@@ -27,25 +27,25 @@
   }
 
   .dark {
-    --background: 225 29% 17%; /* #1a233a */
+    --background: 228 96% 15%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 228 80% 20%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 228 80% 20%;
     --popover-foreground: 210 40% 98%;
-    --primary: 213 68% 85%; /* #a7c4ec */
-    --primary-foreground: 233 62% 19%;
-    --secondary: 217.2 32.6% 17.5%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 228 80% 25%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 228 80% 25%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 233 62% 29%; /* #1a237e */
+    --accent: 217 91% 60%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 228 80% 30%;
+    --input: 228 80% 30%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -59,4 +59,17 @@
   .dark body {
     background-image: linear-gradient(to bottom, hsl(225, 29%, 17%), black);
   }
+}
+
+@layer utilities {
+    .animate-panel-reveal {
+        transform-origin: bottom;
+    }
+}
+
+@layer components {
+    .bg-sap-gradient {
+        background-color: #00073D;
+        background-image: linear-gradient(135deg, #00073D 0%, #000B5B 50%, #001783 100%);
+    }
 }
