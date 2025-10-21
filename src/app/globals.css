@@ -48,13 +48,15 @@
     --ring: 217 91% 60%;
   }
 }
-
+ 
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    @apply antialiased;
   }
   .dark body {
     background-image: linear-gradient(to bottom, hsl(225, 29%, 17%), black);
