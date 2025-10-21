@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Code, Layers, ShieldCheck, LifeBuoy } from 'lucide-react';
+import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Code, Layers, ShieldCheck, LifeBuoy, PlayCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
@@ -39,6 +39,12 @@ export default function ClinicalTrialPlatformPage() {
     const hostingImage = PlaceHolderImages.find(p => p.id === 'hosting-providers-image');
     const securityImage = PlaceHolderImages.find(p => p.id === 'security-compliance-image');
     const privacyImage = PlaceHolderImages.find(p => p.id === 'data-privacy-image');
+    const businessDataCloudImage = {
+        "id": "sap-business-data-cloud",
+        "description": "SAP Business Data Cloud diagram",
+        "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-business-data-cloud.png",
+        "imageHint": "data cloud diagram"
+    };
     
   return (
     <>
@@ -78,6 +84,54 @@ export default function ClinicalTrialPlatformPage() {
                   </p>
               </div>
             </div>
+        </section>
+
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">What is SAP Business Data Cloud?</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                SAP Business Data Cloud is a fully managed SaaS solution that unifies and governs all SAP data and seamlessly connects with third-party data—giving line-of-business leaders context to make even more impactful decisions.
+              </p>
+            </div>
+            <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <Image
+                  src={businessDataCloudImage.imageUrl}
+                  alt={businessDataCloudImage.description}
+                  data-ai-hint={businessDataCloudImage.imageHint}
+                  width={600}
+                  height={450}
+                  className="rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button className="bg-black/50 rounded-full p-3 text-white hover:bg-black/70 transition-colors">
+                    <PlayCircle className="h-16 w-16" />
+                  </button>
+                </div>
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold">Transform outcomes with intelligent applications</h3>
+                  <p className="mt-2 text-muted-foreground">Automate, adapt, and learn in real time with AI-powered applications that understand your business.</p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Connect all your data</h3>
+                  <p className="mt-2 text-muted-foreground">Harmonise all your mission-critical data with an open data ecosystem, leveraging a powerful semantic layer to give you an unmatched knowledge of your business.</p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Foster reliable AI</h3>
+                  <p className="mt-2 text-muted-foreground">Ensure data across applications and operations has a foundation for generative AI that is reliable, responsible, and relevant.</p>
+                </div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <Button size="lg">Take the product tour</Button>
+                    <Button variant="link" asChild className="text-primary">
+                        <Link href="#">Watch the demo <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="bg-secondary/30 py-16 md:py-24">

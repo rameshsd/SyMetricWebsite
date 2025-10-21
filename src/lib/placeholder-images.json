@@ -51,13 +51,13 @@
     {
       "id": "leadership-4",
       "description": "Portrait of Samuel Jones",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-5",
       "description": "Portrait of Isabella Garcia",
-      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
@@ -105,13 +105,13 @@
     {
       "id": "resource-3",
       "description": "eTMF best practices",
-      "imageUrl": "https://images.unsplash.com/photo-1723014563370-fb62697ae0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbml6ZWQlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1723014563370-fb62697ae0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbml6ZWQlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "organized documents"
     },
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -129,7 +129,7 @@
     {
       "id": "industries-hero",
       "description": "Scientist in a lab",
-      "imageUrl": "https://images.unsplash.com/photo-1707944745860-4615eb585a41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2llbnRpc3QlMjBsYWJ8ZW58MHx8fHwxNzYwNzkxNTc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1707944745860-4615eb585a41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2llbnRpc3QlMjBsYWJ8ZW58MHx8fHwxNzYwNzkxNTc4fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "scientist lab"
     },
     {
@@ -159,13 +159,13 @@
     {
       "id": "hero-carousel-2",
       "description": "Secure digital document archive",
-      "imageUrl": "https://images.unsplash.com/photo-1664575599736-c5197c684128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2N1bWVudCUyMHNlY3VyaXR5fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664575599736-c5197c684128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2N1bWVudCUyMHNlY3VyaXR5fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "document security"
     },
     {
       "id": "hero-carousel-3",
       "description": "Flowchart of data analysis",
-      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analysis"
     },
     {
@@ -207,7 +207,7 @@
     {
       "id": "clinical-trial-revolution",
       "description": "Image of a scientist working in a lab",
-      "imageUrl": "https://images.unsplash.com/photo-1581093581788-c447101c1f24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzY2llbnRpc3QlMjBsYWJ8ZW58MHx8fHwxNzYwNzkxNTc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581093581788-c447101c1f24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzY2llbnRpc3QlMjBsYWJ8ZW58MHx8fHwxNzYwNzkxNTc4fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "scientist lab"
     },
     {
@@ -231,7 +231,7 @@
     {
       "id": "ctp-hero-image",
       "description": "Abstract technology background",
-      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "technology background"
     },
     {
@@ -243,25 +243,25 @@
     {
       "id": "edc-image",
       "description": "Scientist entering data into a computer",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "scientist computer"
     },
     {
       "id": "ctm-image",
       "description": "Global network connections",
-      "imageUrl": "https://images.unsplash.com/photo-1555096538-344439c6536d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1555096538-344439c6536d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
       "id": "collaboration-image",
       "description": "Team collaborating in an office",
-      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
       "id": "hosting-providers-image",
       "description": "Cloud hosting servers",
-      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud servers"
     },
     {
@@ -275,6 +275,12 @@
       "description": "Shield protecting data",
       "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "data privacy"
+    },
+    {
+      "id": "sap-business-data-cloud",
+      "description": "SAP Business Data Cloud diagram",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-business-data-cloud.png",
+      "imageHint": "data cloud diagram"
     }
   ]
 }
