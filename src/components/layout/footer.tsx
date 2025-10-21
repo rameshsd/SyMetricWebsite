@@ -70,10 +70,6 @@ export function Footer() {
         <div className="flex justify-between items-start mb-8">
             <div></div>
             <div className="flex items-center gap-4">
-                 <Link href="#" className="text-muted-foreground hover:text-primary">
-                    <Facebook className="h-5 w-5" />
-                    <span className="sr-only">Facebook</span>
-                </Link>
                  <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
                     <ArrowUp className="h-5 w-5" />
                     <span className="sr-only">Back to top</span>
