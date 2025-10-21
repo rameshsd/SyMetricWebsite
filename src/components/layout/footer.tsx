@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Logo } from '@/components/shared/logo';
 import { Facebook, Youtube, Mail, MessageSquare, Globe, ArrowUp } from 'lucide-react';
 import { Button } from '../ui/button';
-import { ContactUsButton } from './ContactUsButton';
 import { useState, useEffect } from 'react';
 
 const quickLinks = [
@@ -164,7 +163,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <ContactUsButton />
     </footer>
   );
 }
