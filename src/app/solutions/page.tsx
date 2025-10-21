@@ -50,13 +50,13 @@ export default function SolutionsPage() {
                                 </CardContent>
                                 <div className="p-6 pt-0">
                                     <Button variant="link" asChild className="p-0 h-auto">
-                                        <Link href={`/solutions/${solution.slug}`}>
+                                        <Link href={solution.slug === 'clinical-trial-platform' ? '/solutions/clinical-trial-platform' : `/solutions/${solution.slug}`}>
                                             Learn More <ArrowRight className="ml-2 h-4 w-4" />
                                         </Link>
                                     </Button>
                                 </div>
                             </Card>
-                        )
+                        );
                     })}
                 </div>
             </Section>

@@ -32,10 +32,8 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
 
   return (
     <>
-      <ProductPageHeader productName="Artificial Intelligence" />
-      <SyMetricBusinessAI />
-      <TechEdBanner />
-
+      <ProductPageHeader productName={solution.name} />
+      
       <Section className="bg-secondary/50 dark:bg-card">
         <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -86,4 +84,3 @@ export async function generateStaticParams() {
     slug: solution.slug,
   }));
 }
-

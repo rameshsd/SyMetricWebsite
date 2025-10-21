@@ -19,13 +19,11 @@ import {
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
 export const navItems: NavItem[] = [
-  { name: 'Products', href: '/solutions' },
+  { name: 'Solutions', href: '/solutions' },
   { name: 'Industries', href: '/industries' },
-  { name: 'Transform and Support', href: '#' },
-  { name: 'Learning', href: '#' },
-  { name: 'Community', href: '#' },
-  { name: 'Partners', href: '#' },
+  { name: 'Resources', href: '/resources' },
   { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export const solutions: Solution[] = [

@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Code, Layers, ShieldCheck, LifeBuoy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -43,6 +44,7 @@ export default function ClinicalTrialPlatformPage() {
     
   return (
     <>
+        <ProductPageHeader productName="Clinical Trial Platform" />
         <Section className="pt-12 md:pt-16 lg:pt-20 bg-secondary/30">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
@@ -172,7 +174,7 @@ export default function ClinicalTrialPlatformPage() {
                         <p className="mb-4">Our Clinical Trial Platform is a SaaS Solution that is available with the most trusted and compliant Cloud-Hosting options.</p>
                         <div className="flex gap-4 items-center mb-6">
                             <p>Microsoft</p>
-                            <p>SAP</p>
+                            <p>SyMetric</p>
                             <p>Clouds</p>
                         </div>
                         <p className="mb-4">Get in touch with us to customize your solutions — whether for a dedicated single-tenant solution or a completely custom deployment model.</p>

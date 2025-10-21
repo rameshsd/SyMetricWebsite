@@ -12,15 +12,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { solutions } from "@/lib/data";
 
 const secondaryNav = [
     { label: "Overview", href: "#" },
-    { label: "Products", dropdown: true },
-    { label: "Solutions", dropdown: true },
+    { label: "Products", dropdown: true, items: solutions },
+    { label: "Solutions", dropdown: true, items: [] },
     { label: "Pricing", href: "#" },
     { label: "Use cases", href: "#" },
     { label: "Partners", href: "#" },
-    { label: "Resources", dropdown: true },
+    { label: "Resources", dropdown: true, items: [] },
 ]
 
 type ProductPageHeaderProps = {
@@ -49,8 +50,8 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-4">
             <div className="flex items-center text-sm text-muted-foreground mb-2">
-                <ChevronRight className="h-4 w-4 transform rotate-180" />
-                <Link href="/solutions" className="hover:text-primary">
+                <Link href="/solutions" className="hover:text-primary flex items-center">
+                  <ChevronRight className="h-4 w-4 transform rotate-180" />
                   All products
                 </Link>
             </div>
@@ -69,8 +70,18 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
                         </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem>Item 1</DropdownMenuItem>
-                        <DropdownMenuItem>Item 2</DropdownMenuItem>
+                      {tab.items && tab.items.length > 0 ? (
+                        tab.items.map(item => (
+                          <DropdownMenuItem key={item.id} asChild>
+                            <Link href={`/solutions/${item.slug}`}>{item.name}</Link>
+                          </DropdownMenuItem>
+                        ))
+                      ) : (
+                        <>
+                          <DropdownMenuItem>Item 1</DropdownMenuItem>
+                          <DropdownMenuItem>Item 2</DropdownMenuItem>
+                        </>
+                      )}
                     </DropdownMenuContent>
                 </DropdownMenu>
                 ) : (
@@ -78,7 +89,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
                     key={tab.label}
                     href={tab.href!}
                     className={cn(
-                        pathname === tab.href || (tab.label === 'Overview' && pathname.startsWith('/solutions'))
+                        pathname.endsWith('/solutions') && tab.label === 'Overview'
                         ? "border-primary text-primary"
                         : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                         "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
@@ -93,4 +104,3 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
     </div>
   );
 }
-
