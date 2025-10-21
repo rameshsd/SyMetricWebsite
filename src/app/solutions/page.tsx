@@ -8,39 +8,39 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
+import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 
 export const metadata: Metadata = {
   title: 'Solutions',
 };
 
 export default function SolutionsPage() {
+    const heroImage = PlaceHolderImages.find((p) => p.id === 'sap-business-applications-hero');
     return (
         <>
-            <section className="w-full py-12 md:py-16 lg:py-20 bg-violet-50">
+            <ProductPageHeader productName="SAP business applications" />
+            <section className="w-full py-12 md:py-16 lg:py-20 bg-secondary/30">
               <div className="container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                   <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                      SyMetric Business AI
+                      SAP business applications
                     </h1>
                     <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
-                      Create transformative impact with the most powerful AI and agents fuelled by the context of all your business data.
+                      Don't get held back by disconnected applications. Be ready to seize opportunities and secure your success with an integrated suite of solutions.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button size="lg" asChild>
                         <Link href="/contact">Request a demo</Link>
                       </Button>
-                      <Button size="lg" variant="outline" asChild>
-                        <Link href="#">Sign up for our newsletter</Link>
-                      </Button>
                     </div>
                   </div>
                   <div className="relative">
-                    {PlaceHolderImages.find(p => p.id === 'business-ai-hero') && (
+                    {heroImage && (
                       <Image
-                        src={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.imageUrl}
-                        alt={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.description}
-                        data-ai-hint={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.imageHint}
+                        src={heroImage.imageUrl}
+                        alt={heroImage.description}
+                        data-ai-hint={heroImage.imageHint}
                         width={600}
                         height={450}
                         className="rounded-lg object-contain"

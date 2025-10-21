@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -16,12 +17,8 @@ import { solutions } from "@/lib/data";
 
 const secondaryNav = [
     { label: "Overview", href: "#" },
-    { label: "Products", dropdown: true, items: solutions },
-    { label: "Solutions", dropdown: true, items: [] },
+    { label: "Applications", dropdown: true, items: [] },
     { label: "Pricing", href: "#" },
-    { label: "Use cases", href: "#" },
-    { label: "Partners", href: "#" },
-    { label: "Resources", dropdown: true, items: [] },
 ]
 
 type ProductPageHeaderProps = {
@@ -31,6 +28,7 @@ type ProductPageHeaderProps = {
 export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const isSolutionsPage = pathname === '/solutions';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,7 +87,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
                     key={tab.label}
                     href={tab.href!}
                     className={cn(
-                        pathname.endsWith('/solutions') && tab.label === 'Overview'
+                        (isSolutionsPage || pathname.endsWith(productName.toLowerCase().replace(/ /g, '-'))) && tab.label === 'Overview'
                         ? "border-primary text-primary"
                         : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                         "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
