@@ -17,10 +17,10 @@ export const metadata = {
   description: 'Learn about the history, mission, and team behind SyMetric.',
 };
 
-const sapBuildingImage = PlaceHolderImages.find((img) => img.id === 'sap-building');
-const whatIsSapImage = PlaceHolderImages.find((img) => img.id === 'what-is-sap');
-const sapLeadershipImage = PlaceHolderImages.find((img) => img.id === 'sap-leadership');
-const sapHistoryImage = PlaceHolderImages.find((img) => img.id === 'sap-history');
+const symetricBuildingImage = PlaceHolderImages.find((img) => img.id === 'sap-building');
+const whatIsSyMetricImage = PlaceHolderImages.find((img) => img.id === 'what-is-sap');
+const symetricLeadershipImage = PlaceHolderImages.find((img) => img.id === 'sap-leadership');
+const symetricHistoryImage = PlaceHolderImages.find((img) => img.id === 'sap-history');
 
 
 const secondaryNav = [
@@ -59,15 +59,15 @@ export default function AboutPage() {
                     </Button>
                 </div>
                 <div className="relative w-full h-[300px] lg:h-[400px]">
-                    {sapBuildingImage && (
+                    {symetricBuildingImage && (
                         <div 
                             className="absolute inset-0 bg-blue-600"
                             style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)' }}
                         >
                             <Image
-                                src={sapBuildingImage.imageUrl}
-                                alt={sapBuildingImage.description}
-                                data-ai-hint={sapBuildingImage.imageHint}
+                                src={symetricBuildingImage.imageUrl}
+                                alt={symetricBuildingImage.description}
+                                data-ai-hint={symetricBuildingImage.imageHint}
                                 fill
                                 className="object-cover"
                             />
@@ -88,7 +88,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-12">Our story</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <Card className="border-0 shadow-none">
-                    {whatIsSapImage && <Image src={whatIsSapImage.imageUrl} alt={whatIsSapImage.description} data-ai-hint={whatIsSapImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    {whatIsSyMetricImage && <Image src={whatIsSyMetricImage.imageUrl} alt={whatIsSyMetricImage.description} data-ai-hint={whatIsSyMetricImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
                     <CardContent className="p-0">
                         <h3 className="text-xl font-bold mb-2">What is SyMetric?</h3>
                         <p className="text-muted-foreground mb-4">Find out what "SyMetric" stands for, what we do, and how we help the world run better and improve people's lives.</p>
@@ -98,7 +98,7 @@ export default function AboutPage() {
                     </CardContent>
                 </Card>
                  <Card className="border-0 shadow-none">
-                    {sapLeadershipImage && <Image src={sapLeadershipImage.imageUrl} alt={sapLeadershipImage.description} data-ai-hint={sapLeadershipImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    {symetricLeadershipImage && <Image src={symetricLeadershipImage.imageUrl} alt={symetricLeadershipImage.description} data-ai-hint={symetricLeadershipImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
                     <CardContent className="p-0">
                         <h3 className="text-xl font-bold mb-2">SyMetric leadership</h3>
                         <p className="text-muted-foreground mb-4">Learn more about SyMetric SE executives by viewing their photos, bios, and roles.</p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
                     </CardContent>
                 </Card>
                  <Card className="border-0 shadow-none">
-                    {sapHistoryImage && <Image src={sapHistoryImage.imageUrl} alt={sapHistoryImage.description} data-ai-hint={sapHistoryImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    {symetricHistoryImage && <Image src={symetricHistoryImage.imageUrl} alt={symetricHistoryImage.description} data-ai-hint={symetricHistoryImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
                     <CardContent className="p-0">
                         <h3 className="text-xl font-bold mb-2">SyMetric history</h3>
                         <p className="text-muted-foreground mb-4">Explore our long history of business innovation, starting with five entrepreneurial programmers who foun...</p>

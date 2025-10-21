@@ -8,7 +8,7 @@ import { ContactUsButton } from './ContactUsButton';
 import { useState, useEffect } from 'react';
 
 const quickLinks = [
-  { name: 'SAP Trust Center', href: '#' },
+  { name: 'SyMetric Trust Center', href: '#' },
   { name: 'Find a solution', href: '/solutions' },
   { name: 'Industries', href: '/industries' },
   { name: 'Find a partner', href: '#' },
@@ -17,15 +17,15 @@ const quickLinks = [
 ];
 
 const trendingLinks = [
-  { name: 'SAP TechEd', href: '#' },
-  { name: 'SAP Business Suite', href: '#' },
-  { name: 'SAP Business Data Cloud', href: '#' },
-  { name: 'SAP Business AI', href: '#' },
+  { name: 'SyMetric TechEd', href: '#' },
+  { name: 'SyMetric Business Suite', href: '#' },
+  { name: 'SyMetric Business Data Cloud', href: '#' },
+  { name: 'SyMetric Business AI', href: '#' },
   { name: 'Sustainability', href: '#' },
   { name: 'Partner ecosystem', href: '#' },
 ];
 
-const aboutSAPLinks = [
+const aboutSyMetricLinks = [
   { name: 'Company information', href: '/about' },
   { name: 'Worldwide directory', href: '#' },
   { name: 'Investor Relations', href: '#' },
@@ -128,9 +128,9 @@ export function Footer() {
             </ul>
           </div>
            <div>
-            <h3 className="text-sm font-bold text-foreground tracking-wide">About SAP</h3>
+            <h3 className="text-sm font-bold text-foreground tracking-wide">About SyMetric</h3>
             <ul className="mt-4 space-y-2">
-              {aboutSAPLinks.map((link) => (
+              {aboutSyMetricLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
                     {link.name}
@@ -153,7 +153,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
-          <p className="text-xs text-muted-foreground">&copy; {year} SAP SE or an SAP affiliate company. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">&copy; {year} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
               <a key={link.name} href={link.href} className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">

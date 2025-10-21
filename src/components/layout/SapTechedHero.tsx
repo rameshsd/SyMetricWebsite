@@ -15,7 +15,7 @@ export function SapTechedHero() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-4">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                Experience SyMetric at SAP TechEd 2024
+                Experience SyMetric at TechEd 2024
               </h1>
               <p className="max-w-[600px] text-primary-foreground/80 md:text-xl">
                 Join us in Las Vegas to discover how our AI-powered digital
