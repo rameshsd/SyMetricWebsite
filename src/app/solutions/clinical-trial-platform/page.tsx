@@ -1,5 +1,4 @@
 
-import { solutions } from '@/lib/data';
 import { Metadata } from 'next';
 import { Section } from '@/components/shared/section';
 import Image from 'next/image';
@@ -70,7 +69,7 @@ export default function ClinicalTrialPlatformPage() {
         </Section>
         
         <Section>
-             <div className="text-center max-w-3xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold">Built With Purpose</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
                     Our platform is built for the cloud era with modular, integrated tools that are designed to provide flexibility. Whether you are a Pharmaceutical Company, Clinical Research Organization, or an Academic Institution, our Platform can be tailored to your Study requirements, including Adaptive Trials, Umbrella Trials, Basket Studies, and Virtual Clinical Trials.
