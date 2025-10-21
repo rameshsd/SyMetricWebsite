@@ -18,13 +18,13 @@ import {
 } from 'lucide-react';
 
 export const navItems: NavItem[] = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Solutions', href: '/solutions' },
+  { name: 'Products', href: '/solutions' },
   { name: 'Industries', href: '/industries' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Tools', href: '/tools/summarizer'}
+  { name: 'Transform and Support', href: '#' },
+  { name: 'Learning', href: '#' },
+  { name: 'Community', href: '#' },
+  { name: 'Partners', href: '#' },
+  { name: 'About', href: '/about' },
 ];
 
 export const solutions: Solution[] = [

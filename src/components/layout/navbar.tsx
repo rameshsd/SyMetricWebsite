@@ -3,12 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search, User, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/lib/data';
-import type { NavItem } from '@/lib/types';
 import { Logo } from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 
@@ -31,7 +30,7 @@ export function Navbar() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-card/80 backdrop-blur-lg border-b' : 'bg-transparent'
+        isScrolled ? 'bg-card/95 backdrop-blur-lg border-b' : 'bg-background'
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,25 +38,37 @@ export function Navbar() {
           <div className="flex items-center">
             <Logo />
           </div>
-          <nav className="hidden md:flex md:items-center md:space-x-6">
+          <nav className="hidden md:flex md:items-center md:space-x-8 ml-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-primary',
-                  pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                  pathname === item.href ? 'text-primary' : 'text-foreground'
                 )}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
-          <div className="hidden md:flex items-center space-x-2">
-            <ThemeToggle />
-            <Button asChild>
-              <Link href="/contact">Get in Touch</Link>
+          <div className="hidden md:flex flex-1 items-center justify-end space-x-4">
+             <Link href="#" className="text-sm font-medium text-foreground hover:text-primary">
+                Explore SyMetric
+            </Link>
+            <Button variant="ghost" size="icon">
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
             </Button>
+            <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+            </Button>
+             <Button variant="ghost" size="icon">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Language</span>
+            </Button>
+            <ThemeToggle />
           </div>
           <div className="flex items-center md:hidden">
             <ThemeToggle />
@@ -68,7 +79,7 @@ export function Navbar() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs bg-card">
+              <SheetContent side="right" className="w-full max-w-xs bg-card p-0">
                 <div className="flex h-full flex-col">
                   <div className="flex items-center justify-between p-4 border-b">
                     <Logo />
@@ -94,10 +105,24 @@ export function Navbar() {
                       </Link>
                     ))}
                   </nav>
-                  <div className="mt-auto p-4 border-t">
-                    <Button asChild className="w-full">
-                        <Link href="/contact" onClick={closeMobileMenu}>Get in Touch</Link>
-                    </Button>
+                   <div className="mt-auto p-4 border-t space-y-4">
+                     <Link href="#" className="block text-base font-medium text-foreground hover:text-primary">
+                        Explore SyMetric
+                    </Link>
+                     <div className="flex items-center gap-4">
+                        <Button variant="ghost" size="icon" className="w-auto h-auto p-0">
+                            <Search className="h-6 w-6" />
+                            <span className="sr-only">Search</span>
+                        </Button>
+                        <Button variant="ghost" size="icon" className="w-auto h-auto p-0">
+                            <User className="h-6 w-6" />
+                            <span className="sr-only">Account</span>
+                        </Button>
+                         <Button variant="ghost" size="icon" className="w-auto h-auto p-0">
+                            <Globe className="h-6 w-6" />
+                            <span className="sr-only">Language</span>
+                        </Button>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
