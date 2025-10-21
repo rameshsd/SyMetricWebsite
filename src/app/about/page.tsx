@@ -1,3 +1,4 @@
+
 import { companyInfo, teamMembers } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,6 +11,7 @@ import { GrowthStoryTimeline } from '@/components/layout/GrowthStoryTimeline';
 import { WhySyMetricAI } from '@/components/layout/WhySyMetricAI';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { CompanyFacts } from '@/components/layout/CompanyFacts';
+import { Section } from '@/components/shared/section';
 
 
 export const metadata = {
@@ -80,118 +82,113 @@ export default function AboutPage() {
 
       <CompanyFacts />
 
-      <section id="our-story" className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-            <div className="mb-12">
-                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">For more details, view the SyMetric Corporate Fact Sheet</div>
+      <Section id="our-story" className="py-12 md:py-24 lg:py-32">
+        <div className="mb-12">
+            <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">For more details, view the SyMetric Corporate Fact Sheet</div>
+        </div>
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-12">Our story</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-none">
+                {whatIsSyMetricImage && <Image src={whatIsSyMetricImage.imageUrl} alt={whatIsSyMetricImage.description} data-ai-hint={whatIsSyMetricImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                <CardContent className="p-0">
+                    <h3 className="text-xl font-bold mb-2">What is SyMetric?</h3>
+                    <p className="text-muted-foreground mb-4">Find out what "SyMetric" stands for, what we do, and how we help the world run better and improve people's lives.</p>
+                    <Button variant="link" asChild className="px-0 text-primary">
+                        <Link href="#">Learn more <ArrowRight className="ml-2"/></Link>
+                    </Button>
+                </CardContent>
+            </Card>
+             <Card className="border-0 shadow-none">
+                {symetricLeadershipImage && <Image src={symetricLeadershipImage.imageUrl} alt={symetricLeadershipImage.description} data-ai-hint={symetricLeadershipImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                <CardContent className="p-0">
+                    <h3 className="text-xl font-bold mb-2">SyMetric leadership</h3>
+                    <p className="text-muted-foreground mb-4">Learn more about SyMetric SE executives by viewing their photos, bios, and roles.</p>
+                    <Button variant="link" asChild className="px-0 text-primary">
+                        <Link href="#">View the SyMetric SE Executive Board <ArrowRight className="ml-2"/></Link>
+                    </Button>
+                </CardContent>
+            </Card>
+             <Card className="border-0 shadow-none">
+                {symetricHistoryImage && <Image src={symetricHistoryImage.imageUrl} alt={symetricHistoryImage.description} data-ai-hint={symetricHistoryImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                <CardContent className="p-0">
+                    <h3 className="text-xl font-bold mb-2">SyMetric history</h3>
+                    <p className="text-muted-foreground mb-4">Explore our long history of business innovation, starting with five entrepreneurial programmers who foun...</p>
+                     <Button variant="link" asChild className="px-0 text-primary">
+                        <Link href="#">Learn more about our history <ArrowRight className="ml-2"/></Link>
+                    </Button>
+                </CardContent>
+            </Card>
+        </div>
+      </Section>
+
+      <Section id="our-strategy" className="py-12 md:py-24 lg:py-32 bg-secondary">
+       <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+            Our Mission
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            To accelerate the delivery of new therapies to patients by providing innovative, user-friendly, and compliant digital solutions for clinical research.
+          </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+         <div className="space-y-6">
+            <div className="space-y-2">
+              <div className="flex items-start gap-4">
+                <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-bold">Grounded in Science</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Drive impact with a platform built on a deep understanding of clinical trial methodologies and regulatory requirements.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-12">Our story</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <Card className="border-0 shadow-none">
-                    {whatIsSyMetricImage && <Image src={whatIsSyMetricImage.imageUrl} alt={whatIsSyMetricImage.description} data-ai-hint={whatIsSyMetricImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
-                    <CardContent className="p-0">
-                        <h3 className="text-xl font-bold mb-2">What is SyMetric?</h3>
-                        <p className="text-muted-foreground mb-4">Find out what "SyMetric" stands for, what we do, and how we help the world run better and improve people's lives.</p>
-                        <Button variant="link" asChild className="px-0 text-primary">
-                            <Link href="#">Learn more <ArrowRight className="ml-2"/></Link>
-                        </Button>
-                    </CardContent>
-                </Card>
-                 <Card className="border-0 shadow-none">
-                    {symetricLeadershipImage && <Image src={symetricLeadershipImage.imageUrl} alt={symetricLeadershipImage.description} data-ai-hint={symetricLeadershipImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
-                    <CardContent className="p-0">
-                        <h3 className="text-xl font-bold mb-2">SyMetric leadership</h3>
-                        <p className="text-muted-foreground mb-4">Learn more about SyMetric SE executives by viewing their photos, bios, and roles.</p>
-                        <Button variant="link" asChild className="px-0 text-primary">
-                            <Link href="#">View the SyMetric SE Executive Board <ArrowRight className="ml-2"/></Link>
-                        </Button>
-                    </CardContent>
-                </Card>
-                 <Card className="border-0 shadow-none">
-                    {symetricHistoryImage && <Image src={symetricHistoryImage.imageUrl} alt={symetricHistoryImage.description} data-ai-hint={symetricHistoryImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
-                    <CardContent className="p-0">
-                        <h3 className="text-xl font-bold mb-2">SyMetric history</h3>
-                        <p className="text-muted-foreground mb-4">Explore our long history of business innovation, starting with five entrepreneurial programmers who foun...</p>
-                         <Button variant="link" asChild className="px-0 text-primary">
-                            <Link href="#">Learn more about our history <ArrowRight className="ml-2"/></Link>
-                        </Button>
-                    </CardContent>
-                </Card>
+             <div className="space-y-2">
+              <div className="flex items-start gap-4">
+                 <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-bold">Unified Experience</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Maximise the value of your research with a single, integrated platform that seamlessly connects data, sites, and stakeholders.
+                  </p>
+                </div>
+              </div>
+            </div>
+             <div className="space-y-2">
+              <div className="flex items-start gap-4">
+                <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                <div className="space-y-1">
+                  <h3 className="text-2xl font-bold">Unmatched Efficiency</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Solve complex challenges and reduce trial timelines with automated workflows and intelligent data management.
+                  </p>
+                </div>
+              </div>
             </div>
         </div>
-      </section>
 
-      <section id="our-strategy" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
-        <div className="container mx-auto px-4 md:px-6">
-           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Our Mission
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                To accelerate the delivery of new therapies to patients by providing innovative, user-friendly, and compliant digital solutions for clinical research.
-              </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-             <div className="space-y-6">
-                <div className="space-y-2">
-                  <div className="flex items-start gap-4">
-                    <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                    <div className="space-y-1">
-                      <h3 className="text-2xl font-bold">Grounded in Science</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Drive impact with a platform built on a deep understanding of clinical trial methodologies and regulatory requirements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                 <div className="space-y-2">
-                  <div className="flex items-start gap-4">
-                     <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                    <div className="space-y-1">
-                      <h3 className="text-2xl font-bold">Unified Experience</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Maximise the value of your research with a single, integrated platform that seamlessly connects data, sites, and stakeholders.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                 <div className="space-y-2">
-                  <div className="flex items-start gap-4">
-                    <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                    <div className="space-y-1">
-                      <h3 className="text-2xl font-bold">Unmatched Efficiency</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Solve complex challenges and reduce trial timelines with automated workflows and intelligent data management.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div className="flex justify-center order-first lg:order-last">
-              {PlaceHolderImages.find(i => i.id === 'whats-new-data') && (
-                <Image
-                  src={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageUrl}
-                  alt={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.description}
-                  data-ai-hint={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageHint}
-                  width={550}
-                  height={400}
-                  className="rounded-xl shadow-2xl object-cover"
-                />
-              )}
-            </div>
-          </div>
+        <div className="flex justify-center order-first lg:order-last">
+          {PlaceHolderImages.find(i => i.id === 'whats-new-data') && (
+            <Image
+              src={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageUrl}
+              alt={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.description}
+              data-ai-hint={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageHint}
+              width={550}
+              height={400}
+              className="rounded-xl shadow-2xl object-cover"
+            />
+          )}
         </div>
-      </section>
+      </div>
+      </Section>
 
        <WhySyMetricAI />
 
         <GrowthStoryTimeline />
 
-      <section id="our-team" className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+      <Section id="our-team" className="py-12 md:py-24 lg:py-32">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">Meet Our Team</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -218,8 +215,7 @@ export default function AboutPage() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
     </div>
   );
 }
