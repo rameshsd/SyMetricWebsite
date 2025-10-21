@@ -12,6 +12,7 @@ import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSecti
 import { WhySyMetricAI } from '@/components/layout/WhySyMetricAI';
 import { HeroCarousel } from '@/components/layout/HeroCarousel';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
+import { Skeleton } from '@/components/ui/skeleton';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
 
 
@@ -119,10 +120,10 @@ export default function Home() {
                 {content ? (
                    <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                      {content.whyChooseUsTitle}
+                      Why SyMetric?
                     </h2>
                     <p className="mt-4 text-lg text-primary-foreground/80">
-                      {content.whyChooseUsSubtitle}
+                      Our platform is built on four key pillars that ensure your success.
                     </p>
                   </div>
                 ) : (
