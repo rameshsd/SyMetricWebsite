@@ -8,8 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 export const metadata: Metadata = {
   title: 'Solutions',
@@ -18,9 +16,41 @@ export const metadata: Metadata = {
 export default function SolutionsPage() {
     return (
         <>
-            <SyMetricBusinessAI />
-            <TechEdBanner />
-
+            <section className="w-full py-12 md:py-16 lg:py-20 bg-violet-50">
+              <div className="container mx-auto px-4 md:px-6">
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+                  <div className="space-y-6">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                      SyMetric Business AI
+                    </h1>
+                    <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
+                      Create transformative impact with the most powerful AI and agents fuelled by the context of all your business data.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button size="lg" asChild>
+                        <Link href="/contact">Request a demo</Link>
+                      </Button>
+                      <Button size="lg" variant="outline" asChild>
+                        <Link href="#">Sign up for our newsletter</Link>
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    {PlaceHolderImages.find(p => p.id === 'business-ai-hero') && (
+                      <Image
+                        src={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.imageUrl}
+                        alt={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.description}
+                        data-ai-hint={PlaceHolderImages.find(p => p.id === 'business-ai-hero')!.imageHint}
+                        width={600}
+                        height={450}
+                        className="rounded-lg object-contain"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+            
             <section className="py-16 md:py-24">
                 <div className="container">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

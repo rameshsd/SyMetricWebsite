@@ -17,7 +17,7 @@ export default function ContactPage() {
 
     return (
         <>
-            <section className="pt-0 md:pt-0">
+            <section className="py-16 md:py-24 pt-0 md:pt-0">
                 <div className="container">
                     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
                         {heroImage && (
@@ -77,7 +77,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="py-0">
+            <section className="py-16 md:py-24 py-0">
                 <div className="container">
                     {mapImage && (
                         <div className="relative h-96 w-full rounded-lg overflow-hidden">

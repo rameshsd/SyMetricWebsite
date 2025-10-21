@@ -15,7 +15,7 @@ export default function ResourcesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'resources-hero');
     return (
         <>
-            <section className="pt-0 md:pt-0">
+            <section className="py-16 md:py-24 pt-0 md:pt-0">
                 <div className="container">
                     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
                         {heroImage && (
