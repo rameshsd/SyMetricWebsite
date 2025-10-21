@@ -1,11 +1,10 @@
 
 import { solutions } from '@/lib/data';
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Section } from '@/components/shared/section';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Code, Layers, ShieldCheck, LifeBuoy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
