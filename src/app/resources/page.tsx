@@ -15,8 +15,8 @@ export default function ResourcesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'resources-hero');
     return (
         <>
-            <section className="py-16 md:py-24 pt-0 md:pt-0">
-                <div className="container">
+            <section className="py-16 md:py-24">
+                <div className="container mx-auto px-4 md:px-6">
                     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
                         {heroImage && (
                         <Image
@@ -37,7 +37,7 @@ export default function ResourcesPage() {
             </section>
             
             <section className="py-16 md:py-24">
-                <div className="container">
+                <div className="container mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {resources.map((resource) => {
                         const placeholder = PlaceHolderImages.find((p) => p.id === resource.image);

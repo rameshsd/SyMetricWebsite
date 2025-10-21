@@ -18,7 +18,7 @@ export default function ContactPage() {
     return (
         <>
             <section className="py-16 md:py-24">
-                <div className="container">
+                <div className="container mx-auto px-4 md:px-6">
                     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
                         {heroImage && (
                         <Image
@@ -39,7 +39,7 @@ export default function ContactPage() {
             </section>
             
             <section className="py-16 md:py-24">
-                <div className="container">
+                <div className="container mx-auto px-4 md:px-6">
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
                             <h2 className="text-3xl font-bold tracking-tight">Contact Us</h2>
@@ -78,7 +78,7 @@ export default function ContactPage() {
             </section>
 
             <section className="pb-16 md:pb-24">
-                <div className="container">
+                <div className="container mx-auto px-4 md:px-6">
                     {mapImage && (
                         <div className="relative h-96 w-full rounded-lg overflow-hidden">
                             <Image

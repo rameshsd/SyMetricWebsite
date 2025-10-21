@@ -33,7 +33,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
       <ProductPageHeader productName={solution.name} />
       
       <section className="bg-secondary/50 dark:bg-card py-16 md:py-24">
-        <div className="container">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                   <solution.icon className="h-12 w-12 text-primary mb-4" />
@@ -62,7 +62,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
         </div>
       </section>
       <section className="py-16 md:py-24">
-        <div className="container">
+        <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
           <div className="grid md:grid-cols-3 gap-8">
               {Array.from({ length: 3 }).map((_, i) => (

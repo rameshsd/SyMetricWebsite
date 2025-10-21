@@ -57,8 +57,13 @@ export function Footer() {
 
   useEffect(() => {
     setIsClient(true);
-    setYear(new Date().getFullYear());
   }, []);
+
+  useEffect(() => {
+    if(isClient) {
+      setYear(new Date().getFullYear());
+    }
+  }, [isClient]);
 
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
@@ -69,14 +74,11 @@ export function Footer() {
   return (
     <footer className="bg-secondary/50 border-t">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex justify-between items-start mb-8">
-            <div></div>
-            <div className="flex items-center gap-4">
-                 <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
-                    <ArrowUp className="h-5 w-5" />
-                    <span className="sr-only">Back to top</span>
-                </Button>
-            </div>
+        <div className="flex justify-end items-center mb-8">
+            <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
+                <ArrowUp className="h-5 w-5" />
+                <span className="sr-only">Back to top</span>
+            </Button>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
           <div className="col-span-2">
