@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -9,7 +10,7 @@ export function SyMetricBusinessAI() {
   const businessAIImage = PlaceHolderImages.find(p => p.id === 'business-ai-hero');
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 bg-violet-50/50">
+    <section className="w-full py-12 md:py-16 lg:py-20 bg-violet-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
@@ -45,3 +46,4 @@ export function SyMetricBusinessAI() {
     </section>
   );
 }
+

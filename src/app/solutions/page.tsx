@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { solutions } from '@/lib/data';
@@ -8,16 +9,17 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
+import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 export const metadata: Metadata = {
   title: 'Solutions',
 };
 
 export default function SolutionsPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'solutions-hero');
     return (
         <>
             <SyMetricBusinessAI />
+            <TechEdBanner />
 
             <Section>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

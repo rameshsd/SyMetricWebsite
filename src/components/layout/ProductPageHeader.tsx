@@ -49,6 +49,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-4">
             <div className="flex items-center text-sm text-muted-foreground mb-2">
+                <ChevronRight className="h-4 w-4 transform rotate-180" />
                 <Link href="/solutions" className="hover:text-primary">
                   All products
                 </Link>
@@ -77,7 +78,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
                     key={tab.label}
                     href={tab.href!}
                     className={cn(
-                        pathname === tab.href
+                        pathname === tab.href || (tab.label === 'Overview' && pathname.startsWith('/solutions'))
                         ? "border-primary text-primary"
                         : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                         "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
@@ -92,3 +93,4 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+
 import { solutions } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -10,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
+import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 type Props = {
   params: { slug: string };
@@ -30,8 +32,9 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
 
   return (
     <>
-      <ProductPageHeader productName={solution.name} />
+      <ProductPageHeader productName="Artificial Intelligence" />
       <SyMetricBusinessAI />
+      <TechEdBanner />
 
       <Section className="bg-secondary/50 dark:bg-card">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -83,3 +86,4 @@ export async function generateStaticParams() {
     slug: solution.slug,
   }));
 }
+
