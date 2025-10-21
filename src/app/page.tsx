@@ -140,7 +140,7 @@ export default function Home() {
                     {whyChooseUsItems.map((item, index) => (
                         <div key={index} className="flex items-start gap-4">
                             <div className="flex-shrink-0 mt-1">
-                                <CheckCircle className="h-6 w-6 text-accent" />
+                                <CheckCircle className="h-6 w-6 text-primary" />
                             </div>
                             <span className="font-medium text-lg">{item}</span>
                         </div>
