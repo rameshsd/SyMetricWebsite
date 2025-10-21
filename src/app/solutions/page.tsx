@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Solutions',
@@ -16,24 +17,7 @@ export default function SolutionsPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'solutions-hero');
     return (
         <>
-            <Section className="pt-0 md:pt-0">
-                <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
-                    {heroImage && (
-                    <Image
-                        src={heroImage.imageUrl}
-                        alt={heroImage.description}
-                        fill
-                        className="object-cover"
-                        data-ai-hint={heroImage.imageHint}
-                    />
-                    )}
-                    <div className="absolute inset-0 bg-black/50" />
-                    <div className="relative z-10 text-center p-4">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Comprehensive Digital Solutions for Clinical Trials.</h1>
-                        <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">From startup to submission, our integrated suite of solutions empowers you to run faster, smarter clinical trials.</p>
-                    </div>
-                </div>
-            </Section>
+            <SyMetricBusinessAI />
 
             <Section>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
