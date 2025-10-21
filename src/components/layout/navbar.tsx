@@ -9,7 +9,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
-import { ThemeToggle } from '@/components/shared/theme-toggle';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,10 +67,8 @@ export function Navbar() {
                 <Globe className="h-5 w-5" />
                 <span className="sr-only">Language</span>
             </Button>
-            <ThemeToggle />
           </div>
           <div className="flex items-center md:hidden">
-            <ThemeToggle />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
