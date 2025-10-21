@@ -1,5 +1,5 @@
+
 import { ProductSummarizer } from '@/components/ai/product-summarizer';
-import { Section } from '@/components/shared/section';
 import { SectionTitle } from '@/components/shared/section-title';
 import type { Metadata } from 'next';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProductSummarizerPage() {
   return (
-    <Section>
+    <section className="py-16 md:py-24">
       <div className="container">
         <SectionTitle
           title="Product Information Summarizer"
@@ -19,6 +19,6 @@ export default function ProductSummarizerPage() {
           <ProductSummarizer />
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
