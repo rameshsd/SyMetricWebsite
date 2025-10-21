@@ -1,114 +1,225 @@
+import { companyInfo, teamMembers } from '@/lib/data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { Section } from '@/components/shared/section';
-import { SectionTitle } from '@/components/shared/section-title';
-import { leadership, timeline } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
-import { Metadata } from 'next';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Check, ArrowRight } from 'lucide-react';
+import { GrowthStoryTimeline } from '@/components/layout/GrowthStoryTimeline';
+import { WhySyMetricAI } from '@/components/layout/WhySyMetricAI';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { CompanyFacts } from '@/components/layout/CompanyFacts';
 
-export const metadata: Metadata = {
-  title: 'About Us',
+
+export const metadata = {
+  title: 'About Us - SyMetric',
+  description: 'Learn about the history, mission, and team behind SyMetric.',
 };
 
+const sapBuildingImage = PlaceHolderImages.find((img) => img.id === 'sap-building');
+const whatIsSapImage = PlaceHolderImages.find((img) => img.id === 'what-is-sap');
+const sapLeadershipImage = PlaceHolderImages.find((img) => img.id === 'sap-leadership');
+const sapHistoryImage = PlaceHolderImages.find((img) => img.id === 'sap-history');
 
-const WhoWeAre = () => {
-    const aboutHeroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
-    return (
-        <Section className="pt-0 md:pt-0">
-             <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
-                {aboutHeroImage && (
-                <Image
-                    src={aboutHeroImage.imageUrl}
-                    alt={aboutHeroImage.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={aboutHeroImage.imageHint}
-                />
-                )}
-                <div className="absolute inset-0 bg-black/50" />
-                <div className="relative z-10 text-center p-4">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight">About SyMetric Systems</h1>
-                    <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Our mission is to empower clinical researchers with technology that accelerates the delivery of life-changing therapies.</p>
-                </div>
-            </div>
 
-            <div className="mt-24 grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 className="text-3xl font-bold tracking-tight">Our Vision</h2>
-                    <p className="mt-4 text-muted-foreground">To create a world where clinical research is seamless, efficient, and entirely data-driven, enabling faster access to innovative treatments for patients everywhere.</p>
-                </div>
-                 <div>
-                    <h2 className="text-3xl font-bold tracking-tight">Our Story</h2>
-                    <p className="mt-4 text-muted-foreground">Founded by a team of clinical research veterans and technology experts, SyMetric Systems was born from a shared frustration with the outdated, paper-based processes that slowed down vital research. We set out to build the digital infrastructure for the future of clinical trials.</p>
-                </div>
-            </div>
-        </Section>
-    )
-}
+const secondaryNav = [
+    { label: 'Overview', href: '#overview' },
+    { label: 'Our story', href: '#our-story' },
+    { label: 'Our strategy', href: '#our-strategy' },
+    { label: 'Our Growth Story', href: '#growth-story' },
+    { label: 'Innovation', href: '#innovation' },
+    { label: 'Our Team', href: '#our-team' },
+]
 
-const LeadershipTeam = () => (
-    <Section className="bg-secondary/50 dark:bg-card">
-        <SectionTitle title="Our Leadership" description="Meet the experienced team guiding our mission." />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {leadership.map(member => {
-                const placeholder = PlaceHolderImages.find(p => p.id === member.image);
-                return (
-                    <Card key={member.name} className="text-center transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <CardHeader>
-                            {placeholder && (
-                                <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden">
-                                <Image 
-                                    src={placeholder.imageUrl}
-                                    alt={`Portrait of ${member.name}`}
-                                    fill
-                                    className="object-cover"
-                                    data-ai-hint={placeholder.imageHint}
-                                />
-                                </div>
-                            )}
-                        </CardHeader>
-                        <CardContent>
-                            <h3 className="text-lg font-semibold">{member.name}</h3>
-                            <p className="text-primary">{member.role}</p>
-                        </CardContent>
-                    </Card>
-                )
-            })}
-        </div>
-    </Section>
-)
-
-const JourneyTimeline = () => (
-    <Section>
-        <SectionTitle title="Our Journey" description="Key milestones in our mission to transform clinical research." />
-        <div className="mt-12 relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2" aria-hidden="true" />
-            {timeline.map((item, index) => (
-                <div key={item.year} className="relative mb-8">
-                    <div className={cn("flex items-center", index % 2 === 0 ? "justify-start" : "justify-end")}>
-                        <div className={cn("w-1/2 p-4", index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left")}>
-                             <Card className="transform transition-all duration-300 hover:shadow-xl hover:scale-105">
-                                 <CardContent className="p-6">
-                                    <p className="text-primary font-bold text-xl">{item.year}</p>
-                                    <p className="mt-2 text-muted-foreground">{item.event}</p>
-                                 </CardContent>
-                             </Card>
-                        </div>
-                    </div>
-                    <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-primary rounded-full -translate-y-1/2 -translate-x-1/2 border-4 border-card" />
-                </div>
-            ))}
-        </div>
-    </Section>
-)
 
 export default function AboutPage() {
-    return (
-        <>
-            <WhoWeAre />
-            <LeadershipTeam />
-            <JourneyTimeline />
-        </>
-    )
+  return (
+    <div className="bg-background">
+      <PageHeader
+        title="Company Information"
+        breadcrumb={{ href: '/about', label: 'About SyMetric' }}
+        secondaryNav={secondaryNav}
+        showTitle={true}
+      />
+      <section id="overview" className="w-full bg-blue-600 text-white">
+        <div className="container mx-auto px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[400px] py-12">
+                <div className="space-y-6 text-center lg:text-left">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                        Global Company Information
+                    </h1>
+                    <p className="max-w-[600px] text-lg md:text-xl/relaxed mx-auto lg:mx-0">
+                        With a global network of customers, partners, employees, and thought leaders, SyMetric helps the world run better and improves people's lives.
+                    </p>
+                    <Button asChild variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
+                        <Link href="#">
+                            About SyMetric India
+                        </Link>
+                    </Button>
+                </div>
+                <div className="relative w-full h-[300px] lg:h-[400px]">
+                    {sapBuildingImage && (
+                        <div 
+                            className="absolute inset-0 bg-blue-600"
+                            style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)' }}
+                        >
+                            <Image
+                                src={sapBuildingImage.imageUrl}
+                                alt={sapBuildingImage.description}
+                                data-ai-hint={sapBuildingImage.imageHint}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <CompanyFacts />
+
+      <section id="our-story" className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+            <div className="mb-12">
+                <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">For more details, view the SyMetric Corporate Fact Sheet</div>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-12">Our story</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <Card className="border-0 shadow-none">
+                    {whatIsSapImage && <Image src={whatIsSapImage.imageUrl} alt={whatIsSapImage.description} data-ai-hint={whatIsSapImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    <CardContent className="p-0">
+                        <h3 className="text-xl font-bold mb-2">What is SyMetric?</h3>
+                        <p className="text-muted-foreground mb-4">Find out what "SyMetric" stands for, what we do, and how we help the world run better and improve people's lives.</p>
+                        <Button variant="link" asChild className="px-0 text-primary">
+                            <Link href="#">Learn more <ArrowRight className="ml-2"/></Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+                 <Card className="border-0 shadow-none">
+                    {sapLeadershipImage && <Image src={sapLeadershipImage.imageUrl} alt={sapLeadershipImage.description} data-ai-hint={sapLeadershipImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    <CardContent className="p-0">
+                        <h3 className="text-xl font-bold mb-2">SyMetric leadership</h3>
+                        <p className="text-muted-foreground mb-4">Learn more about SyMetric SE executives by viewing their photos, bios, and roles.</p>
+                        <Button variant="link" asChild className="px-0 text-primary">
+                            <Link href="#">View the SyMetric SE Executive Board <ArrowRight className="ml-2"/></Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+                 <Card className="border-0 shadow-none">
+                    {sapHistoryImage && <Image src={sapHistoryImage.imageUrl} alt={sapHistoryImage.description} data-ai-hint={sapHistoryImage.imageHint} width={600} height={400} className="rounded-lg object-cover aspect-video mb-4" />}
+                    <CardContent className="p-0">
+                        <h3 className="text-xl font-bold mb-2">SyMetric history</h3>
+                        <p className="text-muted-foreground mb-4">Explore our long history of business innovation, starting with five entrepreneurial programmers who foun...</p>
+                         <Button variant="link" asChild className="px-0 text-primary">
+                            <Link href="#">Learn more about our history <ArrowRight className="ml-2"/></Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+      </section>
+
+      <section id="our-strategy" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+        <div className="container mx-auto px-4 md:px-6">
+           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                Our Mission
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                To accelerate the delivery of new therapies to patients by providing innovative, user-friendly, and compliant digital solutions for clinical research.
+              </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+             <div className="space-y-6">
+                <div className="space-y-2">
+                  <div className="flex items-start gap-4">
+                    <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                    <div className="space-y-1">
+                      <h3 className="text-2xl font-bold">Grounded in Science</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Drive impact with a platform built on a deep understanding of clinical trial methodologies and regulatory requirements.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                 <div className="space-y-2">
+                  <div className="flex items-start gap-4">
+                     <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                    <div className="space-y-1">
+                      <h3 className="text-2xl font-bold">Unified Experience</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Maximise the value of your research with a single, integrated platform that seamlessly connects data, sites, and stakeholders.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                 <div className="space-y-2">
+                  <div className="flex items-start gap-4">
+                    <Check className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                    <div className="space-y-1">
+                      <h3 className="text-2xl font-bold">Unmatched Efficiency</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Solve complex challenges and reduce trial timelines with automated workflows and intelligent data management.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div className="flex justify-center order-first lg:order-last">
+              {PlaceHolderImages.find(i => i.id === 'whats-new-data') && (
+                <Image
+                  src={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageUrl}
+                  alt={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.description}
+                  data-ai-hint={PlaceHolderImages.find(i => i.id === 'whats-new-data')!.imageHint}
+                  width={550}
+                  height={400}
+                  className="rounded-xl shadow-2xl object-cover"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <WhySyMetricAI />
+
+        <GrowthStoryTimeline />
+
+      <section id="our-team" className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">Meet Our Team</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                {companyInfo.history}
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 py-12">
+            {teamMembers.map((member) => (
+              <Card key={member.id} className="text-center bg-card shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="flex justify-center">
+                    <Avatar className="h-24 w-24 border-4 border-primary/20">
+                      <AvatarImage src={`https://i.pravatar.cc/150?u=${member.id}`} />
+                      <AvatarFallback>{member.avatar}</AvatarFallback>
+                    </Avatar>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardTitle className="text-xl font-headline">{member.name}</CardTitle>
+                  <p className="text-primary">{member.role}</p>
+                   <p className="text-muted-foreground text-sm mt-2">{member.bio}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }

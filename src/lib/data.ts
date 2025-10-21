@@ -1,4 +1,4 @@
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -15,8 +15,6 @@ import {
   TrendingUp,
   Users,
   PieChart,
-  GitBranch,
-  Cloud,
 } from 'lucide-react';
 
 export const navItems: NavItem[] = [
@@ -304,4 +302,25 @@ export const latestNews = [
         imageId: "resource-3",
         link: "#"
     }
+];
+
+export const companyInfo = {
+  name: 'SyMetric',
+  mission: 'To accelerate the delivery of new therapies to patients by providing innovative, user-friendly, and compliant digital solutions for clinical research.',
+  history: 'Founded in 2015 by a team of clinical research veterans and technology experts, SyMetric was born from a shared frustration with the outdated, paper-based processes that slowed down vital research. We set out to build the digital infrastructure for the future of clinical trials.',
+  facts: {
+    founded: '2015',
+    employees: '500+',
+    countries: '25+',
+    customers: '100+'
+  }
+};
+
+export const teamMembers: TeamMember[] = [
+  { id: 1, name: 'Dr. Evelyn Reed', role: 'Chief Executive Officer', avatar: 'ER', bio: 'Visionary leader with 20+ years in life sciences and a passion for technology-driven innovation.' },
+  { id: 2, name: 'Marcus Chen', role: 'Chief Technology Officer', avatar: 'MC', bio: 'Expert in building scalable, secure, and compliant cloud platforms for regulated industries.' },
+  { id: 3, name: 'Dr. Lena Petrova', role: 'Chief Scientific Officer', avatar: 'LP', bio: 'Renowned clinical researcher with deep experience in trial design and data analysis.' },
+  { id: 4, name: 'Samuel Jones', role: 'Chief Operating Officer', avatar: 'SJ', bio: 'Drives operational excellence and ensures our solutions meet the needs of our global customer base.' },
+  { id: 5, name: 'Isabella Garcia', role: 'VP, Regulatory Affairs', avatar: 'IG', bio: 'Navigates the complex global regulatory landscape to ensure our products and customers are always compliant.' },
+  { id: 6, name: 'David Lee', role: 'VP, Business Development', avatar: 'DL', bio: 'Forges strategic partnerships to expand our ecosystem and deliver more value to our customers.' },
 ];

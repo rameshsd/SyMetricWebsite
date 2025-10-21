@@ -8,7 +8,7 @@ export type NavItem = {
 
 export type Solution = {
   id: string;
-  name: string;
+  name:string;
   slug: string;
   description: string;
   longDescription: string;
@@ -43,4 +43,12 @@ export type Customer = {
   logo: string;
   story: string;
   link: string;
+};
+
+export type TeamMember = {
+  id: number;
+  name: string;
+  role: string;
+  avatar: string;
+  bio: string;
 };
