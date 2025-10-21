@@ -10,6 +10,13 @@ import {
   TestTube,
   Beaker,
   HeartPulse,
+  BrainCircuit,
+  Zap,
+  TrendingUp,
+  Users,
+  PieChart,
+  GitBranch,
+  Cloud,
 } from 'lucide-react';
 
 export const navItems: NavItem[] = [
@@ -159,4 +166,142 @@ export const timeline = [
   { year: '2019', event: 'Introduction of the compliant eTMF solution.' },
   { year: '2021', event: 'Expanded into international markets, serving clients in Europe and Asia.' },
   { year: '2023', event: 'Reached 100+ enterprise customers and launched AI-powered analytics.' },
+];
+
+export const heroCarouselItems = [
+  {
+    id: 1,
+    title: 'Unlock the Power of AI in Clinical Research',
+    subtitle: 'SyMetric\'s intelligent platform streamlines every phase of your trial, from design to submission.',
+    imageId: 'hero-carousel-1',
+    cta1: { text: 'Discover AI Solutions', link: '/solutions' },
+    cta2: { text: 'Request a Demo', link: '/contact' }
+  },
+  {
+    id: 2,
+    title: 'Seamless eTMF for Ultimate Compliance',
+    subtitle: 'Ensure your trial documentation is always complete, compliant, and inspection-ready.',
+    imageId: 'hero-carousel-2',
+    cta1: { text: 'Explore eTMF', link: '/solutions/electronic-trial-master-file' },
+    cta2: { text: 'Get Started', link: '/contact' }
+  },
+  {
+    id: 3,
+    title: 'Accelerate Trials with Real-World Data',
+    subtitle: 'Leverage our integrated data solutions to gain deeper insights and make faster decisions.',
+    imageId: 'hero-carousel-3',
+    cta1: { text: 'View Data Solutions', link: '/solutions/clinical-data-management' },
+    cta2: { text: 'Talk to an Expert', link: '/contact' }
+  }
+];
+
+export const homepageContent = {
+  revolutionTitle: 'Leading the Revolution in Clinical Trial Technology',
+  revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end, AI-enabled platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',
+  customerSuccessTitle: 'Trusted by Life Science Leaders',
+  customerSuccessSubtitle: 'From global pharmaceutical giants to innovative biotechs, organizations of all sizes rely on SyMetric to accelerate their research and development.',
+  whyChooseUsTitle: 'Why SyMetric?',
+  whyChooseUsSubtitle: 'Our platform is built on four key pillars that ensure your success.',
+  whySyMetricAI: {
+    tagline: 'The SyMetric Difference',
+    title: 'Why SyMetric AI is a game changer for your research',
+    subtitle: 'Our purpose-built AI for clinical research goes beyond simple automation. It provides predictive insights, identifies risks, and accelerates critical decision-making across the trial lifecycle.',
+    imageId: 'ai-infographic',
+    points: [
+      {
+        icon: BrainCircuit,
+        title: 'Intelligent Automation',
+        description: 'Automate repetitive tasks, from document classification in eTMF to data cleaning in EDC, freeing up your team for high-value work.'
+      },
+      {
+        icon: Zap,
+        title: 'Predictive Analytics',
+        description: 'Forecast enrollment rates, identify at-risk sites, and predict study timelines with a high degree of accuracy.'
+      },
+      {
+        icon: TrendingUp,
+        title: 'Actionable Insights',
+        description: 'Turn complex data into clear, actionable insights that drive better strategic decisions and improve trial outcomes.'
+      },
+    ]
+  },
+  futureOfTrials: {
+    title: 'Building the Future of Clinical Trials, Together',
+    subtitle: 'SyMetric is committed to pioneering the next generation of clinical research technology. Our roadmap is focused on three key areas:',
+    imageId: 'future-of-trials',
+    points: [
+      'Deepening AI integration for autonomous trial management.',
+      'Expanding our decentralized trial capabilities to make research more accessible to diverse patient populations.',
+      'Enhancing real-world data connectivity to bridge the gap between clinical research and clinical practice.'
+    ],
+    cta: { text: 'Explore Our Vision', link: '/about' }
+  }
+};
+
+export const customerSuccessStories = [
+  { id: 1, customerName: 'Innovate Pharma', logoId: 'logo-innovate-pharma', quote: 'SyMetric\'s eTMF solution reduced our audit preparation time by 60%, allowing us to focus on science, not paperwork.', link: '#' },
+  { id: 2, customerName: 'BioGenex Therapeutics', logoId: 'logo-biogenex', quote: 'The CTP platform enabled seamless collaboration across our global trial sites, dramatically improving efficiency.', link: '#' },
+  { id: 3, customerName: 'Apex Clinical Research', logoId: 'logo-apex-clinical', quote: 'We achieved 99.9% data accuracy on our last pivotal trial thanks to SyMetric\'s robust Clinical Data Management suite.', link: '#' }
+];
+
+export const featureItems = [
+  {
+    icon: Users,
+    title: 'For Sponsors & CROs',
+    description: 'Gain complete oversight of your portfolio. Manage trials, monitor performance, and collaborate with partners in a single, unified platform.',
+    link: '/solutions',
+    linkText: 'Explore Platform'
+  },
+  {
+    icon: Hospital,
+    title: 'For Research Sites',
+    description: 'Simplify trial execution with intuitive tools for patient management, data entry, and communication, reducing administrative burden.',
+    link: '/solutions/site-management',
+    linkText: 'Simplify Operations'
+  },
+  {
+    icon: PieChart,
+    title: 'For Data Managers',
+    description: 'Ensure data integrity with powerful, automated data validation, query management, and reporting tools designed for speed and accuracy.',
+    link: '/solutions/clinical-data-management',
+    linkText: 'Ensure Quality Data'
+  }
+];
+
+export const whyChooseUsItems = [
+  "End-to-End Unified Platform",
+  "AI-Powered Intelligence",
+  "Uncompromising Compliance",
+  "Dedicated Customer Partnership",
+  "Scalable and Flexible Architecture",
+  "User-Centric Design",
+  "Seamless Integration Capabilities",
+  "Actionable, Real-Time Analytics"
+];
+
+export const latestNews = [
+    { 
+        id: 1, 
+        title: "SyMetric Launches AI-Powered Predictive Analytics for Patient Recruitment", 
+        description: "New module helps sponsors and CROs forecast enrollment timelines with over 90% accuracy.",
+        category: "Product News",
+        imageId: "resource-1",
+        link: "#"
+    },
+    { 
+        id: 2, 
+        title: "Understanding the Impact of FDA's New Guidance on Digital Health Technologies", 
+        description: "Our experts break down what the latest regulatory updates mean for your trials.",
+        category: "Regulatory",
+        imageId: "resource-2",
+        link: "#"
+    },
+    { 
+        id: 3, 
+        title: "Case Study: How a Mid-Sized Biotech Accelerated Phase II with SyMetric's Platform", 
+        description: "Discover how BioGenex Therapeutics cut their trial database lock time by 4 weeks.",
+        category: "Case Study",
+        imageId: "resource-3",
+        link: "#"
+    }
 ];

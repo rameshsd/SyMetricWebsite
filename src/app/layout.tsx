@@ -5,11 +5,9 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: {
-    default: 'SyMetric Systems - Transforming Clinical Research',
-    template: '%s | SyMetric Systems',
-  },
-  description: 'SyMetric Systems enables end-to-end digital transformation in clinical trials and research management.',
+  title: 'SyMetric - Transforming Clinical Research with Technology',
+  description: 'SyMetric empowers researchers, CROs, and sponsors with end-to-end digital solutions for modern clinical research.',
+  keywords: 'Clinical Trials, eTMF, eCRF, Digital Research Platform, Clinical Research, Healthcare Technology, Life Sciences'
 };
 
 export default function RootLayout({
@@ -18,20 +16,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="!scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <Toaster />
+      <body className="font-sans antialiased">
+          <div className="relative flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
       </body>
     </html>
   );

@@ -111,7 +111,7 @@
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDg1OTUzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -149,6 +149,48 @@
       "description": "Map of a city for HQ location",
       "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2MDg1OTQ0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
+    },
+    {
+      "id": "hero-carousel-1",
+      "description": "Abstract AI brain visualization",
+      "imageUrl": "https://images.unsplash.com/photo-1688433406217-38ed442f654f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMEFJYnJhaW58ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI brain"
+    },
+    {
+      "id": "hero-carousel-2",
+      "description": "Secure digital document archive",
+      "imageUrl": "https://images.unsplash.com/photo-1664575599736-c5197c684128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2N1bWVudCUyMHNlY3VyaXR5fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "document security"
+    },
+    {
+      "id": "hero-carousel-3",
+      "description": "Flowchart of data analysis",
+      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analysis"
+    },
+    {
+      "id": "clinical-trial-revolution",
+      "description": "Scientist looking at data on a transparent screen",
+      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data visualization"
+    },
+    {
+      "id": "ai-infographic",
+      "description": "Infographic showing AI processing data",
+      "imageUrl": "https://images.unsplash.com/photo-1688433406217-38ed442f654f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMEFJYnJhaW58ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI infographic"
+    },
+    {
+      "id": "future-of-trials",
+      "description": "Futuristic laboratory with holographic displays",
+      "imageUrl": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwbGFifGVufDB8fHx8MTc2MDc5MTU3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic lab"
+    },
+    {
+      "id": "sap-teched-hero",
+      "description": "SAP TechEd conference",
+      "imageUrl": "https://images.unsplash.com/photo-1605152276813-5856980005a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "conference stage"
     }
   ]
 }
