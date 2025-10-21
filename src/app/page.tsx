@@ -8,7 +8,6 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { whyChooseUsItems, homepageContent, latestNews } from '@/lib/data';
 import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
-import { WhySyMetricAI } from '@/components/layout/WhySyMetricAI';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
@@ -79,8 +78,6 @@ export default function Home() {
         </section>
         
         <CustomerSuccessSection />
-
-        <WhySyMetricAI />
 
         <FeatureGrid />
 
