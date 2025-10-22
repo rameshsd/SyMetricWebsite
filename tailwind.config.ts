@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -109,6 +110,13 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        'pulse-slow': {
+          '50%': { opacity: '0.7' },
+        },
+        'flow': {
+          'from': { strokeDashoffset: '20' },
+          'to': { strokeDashoffset: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -120,6 +128,8 @@ export default {
         'panel-reveal': 'panel-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'image-reveal': 'image-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'gradient-bg': 'gradient-bg 15s ease infinite',
+        'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'flow': 'flow linear infinite',
       },
       backgroundImage: {
         'sap-gradient-light': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',

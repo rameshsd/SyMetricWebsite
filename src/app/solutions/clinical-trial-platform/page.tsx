@@ -7,6 +7,7 @@ import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Co
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
+import { ConnectivityAnimation } from '@/components/solutions/ConnectivityAnimation';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -31,7 +32,6 @@ const AdvantageItem = ({ children }: { children: React.ReactNode }) => (
 )
 
 export default function ClinicalTrialPlatformPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'ctp-hero-image');
     const irtImage = PlaceHolderImages.find(p => p.id === 'irt-iwrs-image');
     const edcImage = PlaceHolderImages.find(p => p.id === 'edc-image');
     const ctmImage = PlaceHolderImages.find(p => p.id === 'ctm-image');
@@ -56,21 +56,9 @@ export default function ClinicalTrialPlatformPage() {
                       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">SyMetric Clinical Trial Platform</h1>
                       <p className="text-xl text-muted-foreground">Designed and built to be an end-to-end platform for Clinical Trials, this Cloud-Based Solution features fully modular tools that allow you to pick and configure them according to your needs.</p>
                   </div>
-                  <div>
-                  {heroImage && (
-                      <Card className="overflow-hidden">
-                          <div className="relative w-full aspect-video">
-                              <Image 
-                                  src={heroImage.imageUrl}
-                                  alt={heroImage.description}
-                                  data-ai-hint={heroImage.imageHint}
-                                  fill
-                                  className="object-cover"
-                              />
-                          </div>
-                      </Card>
-                  )}
-              </div>
+                  <div className="flex items-center justify-center min-h-[300px]">
+                    <ConnectivityAnimation />
+                  </div>
               </div>
             </div>
         </section>
