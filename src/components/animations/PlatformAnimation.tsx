@@ -17,8 +17,10 @@ const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType,
             transition={{ duration: 0.5, delay }}
             className={cn("absolute text-center flex flex-col items-center", position)}
         >
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-2 border border-primary/20 shadow-lg">
-                <Icon className="w-8 h-8 text-primary" />
+            <div className="w-20 h-20 rounded-full bg-background border-2 border-primary/20 flex items-center justify-center mb-2 shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon className="w-8 h-8 text-primary" />
+                </div>
             </div>
             <span className="font-bold text-sm text-foreground">{label}</span>
         </motion.div>
@@ -47,8 +49,8 @@ const Line = ({ path, delay, duration = 2 }: { path: string, delay: number, dura
                         stroke="hsl(var(--primary))"
                         strokeWidth="1.5"
                         strokeDasharray="4 8"
-                        initial={{ strokeDashoffset: 24 }}
-                        animate={{ strokeDashoffset: 0 }}
+                        initial={{ pathLength: 1, pathOffset: 1 }}
+                        animate={{ pathOffset: 0 }}
                         transition={{ duration: duration, delay: delay + 0.5, repeat: Infinity, ease: "linear" }}
                     />
                 </>
