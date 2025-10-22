@@ -110,6 +110,10 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        'wave': {
+          '0%': { 'stroke-dashoffset': '0' },
+          '100%': { 'stroke-dashoffset': '1600' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -121,6 +125,8 @@ export default {
         'panel-reveal': 'panel-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'image-reveal': 'image-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'gradient-bg': 'gradient-bg 15s ease infinite',
+        'wave': 'wave 60s linear infinite',
+        'wave-reverse': 'wave 60s linear infinite reverse',
       },
       backgroundImage: {
         'sap-gradient-light': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',
@@ -133,3 +139,5 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+    
