@@ -27,19 +27,19 @@
     {
       "id": "solution-sm",
       "description": "Site management collaboration",
-      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -51,19 +51,19 @@
     {
       "id": "leadership-4",
       "description": "Portrait of Samuel Jones",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-5",
       "description": "Portrait of Isabella Garcia",
-      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-6",
       "description": "Portrait of David Lee",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -81,13 +81,13 @@
     {
       "id": "logo-apex-clinical",
       "description": "Apex Clinical Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "letter logo"
     },
     {
       "id": "logo-st-judes",
       "description": "St. Jude's Research Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1655565637301-8485235271ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGglMjBsb2dvfGVufDB8fHx8MTc2MDg1MzA2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1655565637301-8485235271ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGglMjBsb2dvfGVufDB8fHx8MTc2MDg1MzA2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "health logo"
     },
     {
@@ -99,7 +99,7 @@
     {
       "id": "resource-2",
       "description": "AI in drug discovery",
-      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "AI brain"
     },
     {
@@ -165,7 +165,7 @@
     {
       "id": "hero-carousel-3",
       "description": "Flowchart of data analysis",
-      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analysis"
     },
     {
@@ -219,7 +219,7 @@
     {
       "id": "sap-business-applications-hero",
       "description": "Woman looking at her phone with business app UIs floating",
-      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business woman phone"
     },
     {
@@ -267,7 +267,7 @@
     {
       "id": "data-privacy-image",
       "description": "Shield protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data privacy"
     },
     {
@@ -281,6 +281,12 @@
       "description": "Modern glass building of SyMetric headquarters",
       "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "modern building"
+    },
+    {
+      "id": "sap-cloud-portfolio",
+      "description": "SAP Cloud Portfolio diagram showing security, compliance, data protection, and sovereignty.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-cloud-portfolio-diagram.png",
+      "imageHint": "cloud portfolio diagram"
     }
   ]
 }

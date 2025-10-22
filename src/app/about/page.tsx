@@ -7,6 +7,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { CompanyFacts } from '@/components/layout/CompanyFacts';
 import Link from 'next/link';
+import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
+
 
 export const metadata = {
   title: 'About Us - SyMetric',
@@ -107,6 +109,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <SapCloudPortfolio />
 
       <LeadershipSection />
       <GrowthStoryTimeline />
