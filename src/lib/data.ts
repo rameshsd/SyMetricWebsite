@@ -271,6 +271,25 @@ export const growthTimeline = [
         'Partnered with SAP CDL'
     ],
   },
+  {
+    year: '2018',
+    events: ['Conducted multi-country studies in Europe and Americas'],
+  },
+  {
+    year: '2017',
+    events: [
+      'Became a member of SAP Startup Studio',
+      'Launched SyMetric Integrated Clinical Trial Platform (IRT/IWRS, EDC & CTM)',
+    ],
+  },
+  {
+    year: '2016',
+    events: ['Introduced exclusive tools for BA/BE studies', 'Launched EDC'],
+  },
+  {
+    year: '2015',
+    events: ['First successful FDA submission using data from our solution'],
+  },
 ];
 
 
