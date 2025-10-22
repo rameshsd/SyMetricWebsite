@@ -27,7 +27,6 @@ const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType,
 
 const Line = ({ path, delay, duration = 2 }: { path: string, delay: number, duration?: number }) => {
     const [ref, inView] = useInView({ triggerOnce: true });
-    const pathId = React.useId();
 
     return (
         <g ref={ref}>
