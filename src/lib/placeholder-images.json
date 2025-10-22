@@ -195,7 +195,7 @@
     {
       "id": "whats-new-data",
       "description": "Abstract visualization of data and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "data abstract"
     },
     {
@@ -207,7 +207,7 @@
     {
       "id": "ai-infographic",
       "description": "Infographic about AI in business",
-      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "financial data"
     },
     {

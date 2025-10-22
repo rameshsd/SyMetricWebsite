@@ -6,6 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { PlatformAnimation } from '@/components/animations/PlatformAnimation';
+import { PlatformToolsGrid } from '@/components/solutions/PlatformToolsGrid';
+import { CollaborationVision } from '@/components/solutions/CollaborationVision';
+import { HostingOptions } from '@/components/solutions/HostingOptions';
+import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
+import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
+import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -34,7 +40,11 @@ export default function ClinicalTrialPlatformPage() {
               </div>
             </div>
         </section>
+
+        <BuiltWithPurpose />
         
+        <PlatformToolsGrid />
+
         <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
               <div className="text-center max-w-3xl mx-auto mb-16">
@@ -80,6 +90,11 @@ export default function ClinicalTrialPlatformPage() {
               </div>
             </div>
         </section>
+
+        <CollaborationVision />
+        <HostingOptions />
+        <SyMetricAdvantage />
+        <SecurityCompliance />
 
         <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
