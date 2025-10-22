@@ -1,3 +1,4 @@
+
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -290,7 +291,7 @@ export const growthTimeline = [
     year: '2015',
     events: ['First successful FDA submission using data from our solution'],
   },
-];
+].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
 
 export const homepageContent = {
@@ -422,3 +423,5 @@ export const teamMembers: TeamMember[] = [
   { id: 5, name: 'Isabella Garcia', role: 'VP, Regulatory Affairs', avatar: 'IG', bio: 'Navigates the complex global regulatory landscape to ensure our products and customers are always compliant.' },
   { id: 6, name: 'David Lee', role: 'VP, Business Development', avatar: 'DL', bio: 'Forges strategic partnerships to expand our ecosystem and deliver more value to our customers.' },
 ];
+
+    

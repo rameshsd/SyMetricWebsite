@@ -1,15 +1,24 @@
 
 "use client";
 
+import { useState } from 'react';
 import { growthTimeline } from '@/lib/data';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks/use-in-view';
 import { Button } from '../ui/button';
 
+const INITIAL_VISIBLE_ITEMS = 4;
+
 export function GrowthStoryTimeline() {
     const [ref, isInView] = useInView({ triggerOnce: true });
+    const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_ITEMS);
+
+    const handleViewMore = () => {
+        setVisibleCount(growthTimeline.length);
+    };
+
+    const visibleItems = growthTimeline.slice(0, visibleCount);
 
     return (
         <section id="growth-story" className="py-16 md:py-24 bg-sap-gradient text-primary-foreground">
@@ -21,7 +30,7 @@ export function GrowthStoryTimeline() {
                 />
                 <div ref={ref} className="mt-12 relative max-w-4xl mx-auto">
                     <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2" aria-hidden="true" />
-                    {growthTimeline.map((item, index) => (
+                    {visibleItems.map((item, index) => (
                         <div key={item.year} className="relative mb-12">
                             <div className={cn("flex items-start", index % 2 === 0 ? "justify-start flex-row-reverse" : "justify-start")}>
                                 <div className={cn("w-1/2 p-4", index % 2 === 0 ? "pl-8 text-left" : "pr-8 text-right")}>
@@ -37,10 +46,14 @@ export function GrowthStoryTimeline() {
                         </div>
                     ))}
                 </div>
-                 <div className="text-center mt-8">
-                    <Button variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white">View More</Button>
-                </div>
+                {visibleCount < growthTimeline.length && (
+                     <div className="text-center mt-8">
+                        <Button variant="outline" onClick={handleViewMore} className="text-white border-white/50 hover:bg-white/10 hover:text-white">View More</Button>
+                    </div>
+                )}
             </div>
         </section>
     );
 }
+
+    
