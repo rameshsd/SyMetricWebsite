@@ -7,7 +7,6 @@ import { CheckCircle, Users, Briefcase, FileText, Settings, Database, Beaker, Co
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
-import { ConnectivityAnimation } from '@/components/solutions/ConnectivityAnimation';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -45,6 +44,7 @@ export default function ClinicalTrialPlatformPage() {
         "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-business-data-cloud.png",
         "imageHint": "data cloud diagram"
     };
+    const platformDiagramImage = PlaceHolderImages.find(p => p.id === 'platform-diagram');
     
   return (
     <>
@@ -57,7 +57,16 @@ export default function ClinicalTrialPlatformPage() {
                       <p className="text-xl text-muted-foreground">Designed and built to be an end-to-end platform for Clinical Trials, this Cloud-Based Solution features fully modular tools that allow you to pick and configure them according to your needs.</p>
                   </div>
                   <div className="flex items-center justify-center min-h-[300px]">
-                    <ConnectivityAnimation />
+                    {platformDiagramImage && (
+                        <Image 
+                            src={platformDiagramImage.imageUrl}
+                            alt={platformDiagramImage.description}
+                            data-ai-hint={platformDiagramImage.imageHint}
+                            width={800}
+                            height={600}
+                            className="rounded-lg shadow-lg"
+                        />
+                    )}
                   </div>
               </div>
             </div>
