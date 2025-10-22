@@ -114,7 +114,6 @@ export default {
           '50%': { opacity: '0.7' },
         },
         'flow': {
-          'from': { strokeDashoffset: '20' },
           'to': { strokeDashoffset: '0' },
         },
       },
