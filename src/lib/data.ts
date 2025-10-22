@@ -239,6 +239,41 @@ export const heroCarouselItems = [
   }
 ];
 
+export const growthTimeline = [
+  {
+    year: '2022',
+    events: [
+      'Integration with Healthcare Data Lake powered by SAP CP',
+      'Integration with SAP Clinical Trial Supplies Management',
+      'Integration with Radio imaging Company, LMK/IHK systems',
+      'Developed monitoring capabilities (pharmacovigilance)',
+    ],
+  },
+  {
+    year: '2021',
+    events: [
+      'Launched virtual clinical trials module',
+      'Partnered with Tenthpin Management Consultants',
+      'ISO 9001:2015 and ISO 27001:2013 Certified',
+    ],
+  },
+  {
+    year: '2020',
+    events: [
+      'Partnered with SAP PS',
+      'Enabled Trial Analytics on SAP BTP',
+      'Launched Public Health Platform for Plasma Donations for COVID patients/Donors in collaboration with Govt. of Karnataka and HCG Hospitals',
+    ],
+  },
+  {
+    year: '2019',
+    events: [
+        'Partnered with SAP CDL'
+    ],
+  },
+];
+
+
 export const homepageContent = {
   revolutionTitle: 'Leading the Revolution in Clinical Trial Technology',
   revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end, AI-enabled platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',

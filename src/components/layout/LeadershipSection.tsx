@@ -6,16 +6,16 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { SectionTitle } from '../shared/section-title';
 
 export function LeadershipSection() {
   return (
     <section id="leadership" className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            A Stellar Journey Led by…
-          </h2>
-        </div>
+        <SectionTitle 
+            title="A Stellar Journey Led by…" 
+            className="mb-12"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {leadership.map((member) => {
             const image = PlaceHolderImages.find((p) => p.id === member.imageId);

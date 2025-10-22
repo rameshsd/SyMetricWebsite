@@ -9,7 +9,7 @@ interface SectionTitleProps {
 }
 
 export function SectionTitle({ title, description, className }: SectionTitleProps) {
-  const [ref, isInView] = useInView();
+  const [ref, isInView] = useInView({ triggerOnce: true });
 
   return (
     <div
@@ -20,7 +20,7 @@ export function SectionTitle({ title, description, className }: SectionTitleProp
         className
       )}
     >
-      <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
       {description && <p className="mt-4 text-lg text-muted-foreground">{description}</p>}
     </div>
   );

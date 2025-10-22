@@ -1,6 +1,7 @@
 import { companyInfo, teamMembers } from '@/lib/data';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { LeadershipSection } from '@/components/layout/LeadershipSection';
+import { GrowthStoryTimeline } from '@/components/layout/GrowthStoryTimeline';
 
 export const metadata = {
   title: 'About Us - SyMetric',
@@ -56,6 +57,7 @@ export default function AboutPage() {
       </section>
 
       <LeadershipSection />
+      <GrowthStoryTimeline />
     </div>
   );
 }
