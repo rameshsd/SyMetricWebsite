@@ -23,9 +23,11 @@ export type Industry = {
 };
 
 export type LeadershipMember = {
+  id: string;
   name: string;
   role: string;
-  image: string;
+  bio: string[];
+  imageId: string;
 };
 
 export type Resource = {

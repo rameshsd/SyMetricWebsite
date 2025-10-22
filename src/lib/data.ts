@@ -103,13 +103,60 @@ export const industries: Industry[] = [
 ];
 
 export const leadership: LeadershipMember[] = [
-  { name: 'Dr. Evelyn Reed', role: 'Chief Executive Officer', image: 'leadership-1' },
-  { name: 'Marcus Chen', role: 'Chief Technology Officer', image: 'leadership-2' },
-  { name: 'Dr. Lena Petrova', role: 'Chief Scientific Officer', image: 'leadership-3' },
-  { name: 'Samuel Jones', role: 'Chief Operating Officer', image: 'leadership-4' },
-  { name: 'Isabella Garcia', role: 'VP, Regulatory Affairs', image: 'leadership-5' },
-  { name: 'David Lee', role: 'VP, Business Development', image: 'leadership-6' },
+  {
+    id: 'uma-janapareddy',
+    name: 'Uma Janapareddy',
+    role: 'Founder and Managing Director',
+    bio: [
+      'An entrepreneur with over 20 years experience in establishing and managing multiple business entities in various fields such as Life Sciences, Healthcare, and Social Enterprise, Uma started SyMetric in 2012. She plays a seminal role in all functions — from strategic decision-making to business operations. Under her leadership, SyMetric has expanded to US, Europe, and Latin America besides forging strong partnerships with Pharma Companies, CROs, and Technology Companies such as Microsoft, SAP, Tenthpin Management Consultants, and MINT Medical. She has been at the helm of Ladies Circle India (LCI) and is a member of several reputed organizations — Anthroposophical Medical Society of India, HIMSS India Chapter, 5HT Germany, NASSCOM, and SAP Industry Consortium for Life sciences.'
+    ],
+    imageId: 'leadership-1'
+  },
+  {
+    id: 'raghuram-janapareddy',
+    name: 'Raghuram Janapareddy',
+    role: 'Technical Advisor',
+    bio: [
+      'A seasoned professional with over 34 years of experience in information technology and multiple industry domains, Raghuram is currently the Managing Director, India of Tenthpin Management Consultants. As part of Tenthpin’s global initiative, he is leading the efforts towards establishing a Life Sciences Innovation Centre in India. Enrolled in the Roster of Experts of WHO Digital Health Technical Advisory Group (DHTAG), he works very closely with the healthcare ecosystem in India. He has worked at SAP for nearly 17 years in multiple areas — Supply Chain-, Project-, Global Delivery-, Strategic Vendor-, Practice-, Product-, and Process Management. His guidance is integral to designing products, processes, and delivery models for enterprises in the Life Sciences and healthcare sector.'
+    ],
+    imageId: 'leadership-2'
+  },
+  {
+    id: 'ramesh-kumar-t',
+    name: 'Ramesh Kumar T',
+    role: 'Business Strategist and Mentor',
+    bio: [
+      'A strategist known for digital dexterity and business acumen, Ramesh fits squarely into SyMetric’s vision. His entrepreneurial experience in the Software Industry extends to over 35 years. He has also made significant contribution to a large-scale Technology company. Business mentorship comes naturally to him, given his background as an entrepreneur, and he helps associates achieve success and growth.'
+    ],
+    imageId: 'leadership-4'
+  },
+  {
+    id: 'sai-siddharth',
+    name: 'Sai Siddharth',
+    role: 'Director',
+    bio: [
+      'Sai Siddharth is a leading policy strategist in the field of energy, environment, and climate change. He brings to the table innovative perspectives.',
+      'He is a Programme Associate at SED Fund, responsible for implementing and refining the grantmaking and program strategy and managing relationships with partners.',
+      'Sai previously was at J-PAL South Asia, where he led the Environment, Energy, and Climate Change sector. He was also interim lead for the financial inclusion sector and worked on the Cash Transfers for Child Health Initiative at J-PAL South Asia. He also worked at the National Health Authority in India, where he helped set up its Innovation Unit, and at the Government of Maharashtra (through a fellowship at the University of Chicago) on a water conservation program in the state.',
+      'Sai holds a Master’s degree in Public Administration from Columbia University and a Bachelor’s degree in Mechanical Engineering from RVCE in Bangalore.'
+    ],
+    imageId: 'leadership-6'
+  },
+  {
+    id: 'pranav-aditya',
+    name: 'Pranav Aditya',
+    role: 'Director',
+    bio: [
+      'Pranav brings SyMetric his deep expertise in the user interface. He ensures the technical feasibility of designs for superior product development and is responsible for UI across product suites. He is responsible for expanding and diversifying workflows across systems to enhance quality and efficiency.',
+      'Pranav is also an Audio Engineer with the experience of having engineered multiple covers and client compositions with a Recording time limit of 6 hours per song. Well-versed with client requests and their sheer energy ensuring their performance is not hindered.',
+      'Well-versed with – DAWs: Protools, Logic Pro X, Audio Cleaning software: RX 9, Avid S3, Analog boards, routing, and signal flow.',
+      'He is accomplished with tone matching, tonal balance, understanding compression + ADSR and Depth, process, and need for mastering, and Ear Training.',
+      'He is continuously developing more efficient workflows with every recording and improving client interactions and interactions with his/her Environment.'
+    ],
+    imageId: 'leadership-5'
+  }
 ];
+
 
 export const customers: Customer[] = [
     { name: 'Innovate Pharma', logo: 'logo-innovate-pharma', story: 'SyMetric\'s eTMF solution reduced our audit preparation time by 60%.', link: '#' },
@@ -199,29 +246,6 @@ export const homepageContent = {
   customerSuccessSubtitle: 'From global pharmaceutical giants to innovative biotechs, organizations of all sizes rely on SyMetric to accelerate their research and development.',
   whyChooseUsTitle: 'Why SyMetric?',
   whyChooseUsSubtitle: 'Our platform is built on four key pillars that ensure your success.',
-  whySyMetricAI: {
-    tagline: 'The SyMetric Difference',
-    title: 'Why SyMetric AI is a game changer for your research',
-    subtitle: 'Our purpose-built AI for clinical research goes beyond simple automation. It provides predictive insights, identifies risks, and accelerates critical decision-making across the trial lifecycle.',
-    imageId: 'ai-infographic',
-    points: [
-      {
-        icon: BrainCircuit,
-        title: 'Intelligent Automation',
-        description: 'Automate repetitive tasks, from document classification in eTMF to data cleaning in EDC, freeing up your team for high-value work.'
-      },
-      {
-        icon: Zap,
-        title: 'Predictive Analytics',
-        description: 'Forecast enrollment rates, identify at-risk sites, and predict study timelines with a high degree of accuracy.'
-      },
-      {
-        icon: TrendingUp,
-        title: 'Actionable Insights',
-        description: 'Turn complex data into clear, actionable insights that drive better strategic decisions and improve trial outcomes.'
-      },
-    ]
-  },
   futureOfTrials: {
     title: 'Building the Future of Clinical Trials, Together',
     subtitle: 'SyMetric is committed to pioneering the next generation of clinical research technology. Our roadmap is focused on three key areas:',
