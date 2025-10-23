@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -62,12 +61,12 @@ const pathVariants = (delay = 0) => ({
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div
     variants={itemVariants}
-    className="flex flex-col items-center gap-2 z-10 w-32"
+    className="flex flex-col items-center gap-2 z-10 w-24 sm:w-28"
   >
-    <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
-      <Icon className="w-10 h-10 text-primary" />
+    <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-20 sm:h-24">
+      <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
     </div>
-    <div className="font-semibold text-base text-foreground text-center">{label}</div>
+    <div className="font-semibold text-xs sm:text-sm text-foreground text-center">{label}</div>
   </motion.div>
 );
 
@@ -104,8 +103,8 @@ export const PlatformAnimation = () => {
   const bottomNodeY = 340;
 
   const centerX = viewBoxWidth / 2;
-  const leftX = viewBoxWidth * 0.15; // Adjusted for flex layout
-  const rightX = viewBoxWidth * 0.85; // Adjusted for flex layout
+  const leftX = viewBoxWidth * 0.15;
+  const rightX = viewBoxWidth * 0.85;
 
   return (
     <div ref={ref} className="w-full h-full">
@@ -113,10 +112,21 @@ export const PlatformAnimation = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="relative w-full h-[520px] flex flex-col items-center justify-start pt-4"
+        className="relative w-full h-[450px] sm:h-[520px] flex flex-col items-center justify-start pt-4"
       >
-        {/* SVG canvas for desktop */}
-        <div className="absolute top-0 left-0 w-full h-full hidden md:block">
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center pointer-events-none">
+            <div className="pt-5" style={{ transform: 'scale(0.8) sm:scale(1)'}}>
+                <Node icon={Gem} label="SyMetric Platform" />
+            </div>
+            <div className="absolute w-full max-w-xl" style={{top: '300px', transform: 'scale(0.8) sm:scale(1)'}}>
+                <div className="flex justify-between w-full">
+                    <Node icon={Repeat} label="IRT / IWRS" />
+                    <Node icon={ClipboardList} label="CTM" />
+                    <Node icon={Database} label="EDC" />
+                </div>
+            </div>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full">
           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="overflow-visible">
             <defs>
               <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -136,63 +146,16 @@ export const PlatformAnimation = () => {
               <path id="path-right" d={`M ${centerX} ${topNodeY + 48} V ${busY} H ${rightX} V ${bottomNodeY - 48}`} fill="none" />
             </defs>
 
-            {/* Visible Lines */}
             <FlowArrow d={`M ${centerX} ${topNodeY + 48} V ${busY}`} delay={0.2} />
             <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.4} />
             <FlowArrow d={`M ${leftX} ${busY} V ${bottomNodeY - 48}`} delay={0.6} />
             <FlowArrow d={`M ${centerX} ${busY} V ${bottomNodeY - 48}`} delay={0.7} />
             <FlowArrow d={`M ${rightX} ${busY} V ${bottomNodeY - 48}`} delay={0.8} />
 
-            {/* Particles */}
             <FlowParticle pathId="path-left" delay={0.8} />
             <FlowParticle pathId="path-center" delay={1.1} />
             <FlowParticle pathId="path-right" delay={1.4} />
           </svg>
-        </div>
-
-        {/* Node Layout for Desktop */}
-        <div className="absolute top-0 left-0 w-full h-full hidden md:flex flex-col items-center pointer-events-none">
-            <div className="pt-5">
-                <Node icon={Gem} label="SyMetric Platform" />
-            </div>
-            <div className="absolute w-full max-w-xl" style={{top: '300px'}}>
-                <div className="flex justify-between w-full">
-                    <Node icon={Repeat} label="IRT / IWRS" />
-                    <Node icon={ClipboardList} label="CTM" />
-                    <Node icon={Database} label="EDC" />
-                </div>
-            </div>
-        </div>
-
-        {/* Mobile stacked layout */}
-        <div className="flex flex-col items-center gap-8 md:hidden mt-6 px-6">
-          <div className="flex flex-col items-center gap-2 z-10 w-32">
-            <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
-              <Gem className="w-10 h-10 text-primary" />
-            </div>
-            <div className="font-semibold text-base text-foreground text-center">SyMetric Platform</div>
-          </div>
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-          <div className="flex flex-col items-center gap-2 z-10 w-32">
-            <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
-              <Repeat className="w-10 h-10 text-primary" />
-            </div>
-            <div className="font-semibold text-base text-foreground text-center">IRT / IWRS</div>
-          </div>
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-           <div className="flex flex-col items-center gap-2 z-10 w-32">
-            <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
-              <ClipboardList className="w-10 h-10 text-primary" />
-            </div>
-            <div className="font-semibold text-base text-foreground text-center">CTM</div>
-          </div>
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-          <div className="flex flex-col items-center gap-2 z-10 w-32">
-            <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
-              <Database className="w-10 h-10 text-primary" />
-            </div>
-            <div className="font-semibold text-base text-foreground text-center">EDC</div>
-          </div>
         </div>
       </motion.div>
     </div>
