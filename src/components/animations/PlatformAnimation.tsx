@@ -3,8 +3,40 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Repeat, Database, ClipboardList, Gem } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
-import { cn } from "@/lib/utils";
+
+// Tiny className helper (avoids external imports in sandbox)
+const cn = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
+
+// Self-contained useInView hook that returns a RefObject<HTMLDivElement>
+function useInView(options?: { root?: Element | Document | null; rootMargin?: string; threshold?: number | number[]; triggerOnce?: boolean }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            if (options?.triggerOnce) observer.disconnect();
+          } else if (!options?.triggerOnce) {
+            setInView(false);
+          }
+        });
+      },
+      { root: options?.root ?? null, rootMargin: options?.rootMargin ?? "0px", threshold: options?.threshold ?? 0.5 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options?.root, options?.rootMargin, JSON.stringify(options?.threshold), options?.triggerOnce]);
+
+  return [ref, inView] as const;
+}
 
 // Motion variants
 const containerVariants = {
@@ -69,6 +101,7 @@ const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number })
 );
 
 export const PlatformAnimation = () => {
+  // Use a plain div ref (RefObject<HTMLDivElement>) and avoid passing it directly to motion.div
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
 
   const viewBoxWidth = 700;
@@ -83,6 +116,7 @@ export const PlatformAnimation = () => {
   const rightX = viewBoxWidth * 0.75;
 
   return (
+    // Attach ref to a plain div to avoid type-mismatch with framer-motion's ref typing
     <div ref={ref} className="w-full">
       <motion.div
         variants={containerVariants}
@@ -96,12 +130,14 @@ export const PlatformAnimation = () => {
         </div>
 
         {/* Bottom nodes (desktop) */}
-        <div className="absolute hidden md:flex justify-center w-full" style={{ top: bottomY - 80 }}>
-          <div className="flex justify-between w-full max-w-3xl px-8">
+        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: leftX, transform: "translateX(-50%)" }}>
             <Node icon={Repeat} label="IRT / IWRS" />
+        </div>
+        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: centerX, transform: "translateX(-50%)" }}>
             <Node icon={ClipboardList} label="CTM" />
+        </div>
+        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: rightX, transform: "translateX(-50%)" }}>
             <Node icon={Database} label="EDC" />
-          </div>
         </div>
 
         {/* SVG canvas */}
@@ -130,7 +166,7 @@ export const PlatformAnimation = () => {
           </defs>
 
           <FlowArrow d={`M ${centerX} ${topY + 30} V ${busY}`} delay={0.25} />
-          <FlowArrow d={`M ${leftX - 40} ${busY} H ${rightX + 40}`} delay={0.45} />
+          <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.45} />
           <FlowArrow d={`M ${leftX} ${busY} V ${bottomY}`} delay={0.65} />
           <FlowArrow d={`M ${centerX} ${busY} V ${bottomY}`} delay={0.85} />
           <FlowArrow d={`M ${rightX} ${busY} V ${bottomY}`} delay={1.05} />
