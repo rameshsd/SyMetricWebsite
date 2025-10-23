@@ -27,6 +27,7 @@ export type Solution = {
   icon: LucideIcon;
   image: string;
   capabilities?: SolutionCapability[];
+  backgroundColor?: string;
 };
 
 export type Industry = {

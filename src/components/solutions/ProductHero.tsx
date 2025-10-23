@@ -3,12 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 type ProductHeroProps = {
     title: string;
     subtitle: string;
     imageSrc: string;
     imageHint: string;
+    backgroundColor?: string;
 };
 
 const accentColors = [
@@ -22,12 +24,12 @@ const accentColors = [
 
 let colorIndex = 0;
 
-export function ProductHero({ title, subtitle, imageSrc, imageHint }: ProductHeroProps) {
+export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor = 'bg-[#f5f3ff]' }: ProductHeroProps) {
     const accentColor = accentColors[colorIndex % accentColors.length];
     colorIndex++;
 
   return (
-    <section className="w-full min-h-[450px] flex items-center py-12 bg-[#f5f3ff] dark:bg-card">
+    <section className={cn("w-full min-h-[450px] flex items-center py-12 dark:bg-card", backgroundColor)}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">

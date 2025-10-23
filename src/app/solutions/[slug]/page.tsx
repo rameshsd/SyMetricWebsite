@@ -44,6 +44,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
             subtitle={solution.hero.subtitle}
             imageSrc={heroImage.imageUrl}
             imageHint={heroImage.imageHint}
+            backgroundColor={solution.backgroundColor}
          />
       )}
       <TechEdBanner />
