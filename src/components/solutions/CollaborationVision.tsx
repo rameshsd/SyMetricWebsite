@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -13,7 +14,7 @@ export function CollaborationVision() {
             title="Our Collaboration Vision"
             description="The SyMetric Platform provides a virtual collaborative environment that is secure, user-friendly, and intuitive. It streamlines communication and provides the necessary tools for effective data capture and decision-making."
         />
-        <div className="mt-12 relative h-[700px]">
+        <div className="mt-12 relative aspect-[1.6] max-w-6xl mx-auto">
           {image && (
             <Image
               src={image.imageUrl}
