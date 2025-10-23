@@ -7,7 +7,7 @@ import { useInView } from '@/hooks/use-in-view';
 import { Repeat, Database, ClipboardList, Gem } from 'lucide-react';
 
 const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType, label: string, position: string, delay: number }) => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
 
     return (
         <motion.div
@@ -20,13 +20,13 @@ const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType,
             <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center shadow-lg border border-primary/20">
                 <Icon className="w-8 h-8 text-primary" />
             </div>
-            <span className="font-semibold text-xs text-foreground mt-2">{label}</span>
+            <span className="font-semibold text-xs text-foreground mt-2 text-center">{label}</span>
         </motion.div>
     );
 };
 
 const Line = ({ path, delay, duration = 1 }: { path: string, delay: number, duration?: number }) => {
-    const [ref, inView] = useInView({ triggerOnce: true });
+    const { ref, inView } = useInView({ triggerOnce: true });
     return (
         <motion.path
             ref={ref}
@@ -44,7 +44,7 @@ const Line = ({ path, delay, duration = 1 }: { path: string, delay: number, dura
 };
 
 const Diamond = ({ cx, cy, delay }: { cx: number, cy: number, delay: number }) => {
-    const [ref, inView] = useInView({ triggerOnce: true });
+    const { ref, inView } = useInView({ triggerOnce: true });
     return (
         <motion.g
             ref={ref}
@@ -56,10 +56,10 @@ const Diamond = ({ cx, cy, delay }: { cx: number, cy: number, delay: number }) =
             <motion.path
                 d="M -5,0 L 0,-5 L 5,0 L 0,5 Z"
                 fill="hsl(var(--primary))"
-                animate={inView ? {
+                animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 180, 360],
-                }: {}}
+                }}
                 transition={{
                     duration: 15,
                     repeat: Infinity,
@@ -73,7 +73,7 @@ const Diamond = ({ cx, cy, delay }: { cx: number, cy: number, delay: number }) =
 
 
 export const PlatformAnimation = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
     return (
         <div ref={ref} className="w-full h-[400px] flex items-center justify-center relative scale-90 md:scale-100">
@@ -94,24 +94,24 @@ export const PlatformAnimation = () => {
                     </motion.div>
 
                     {/* Nodes */}
-                    <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-[20%]" delay={1.4} />
+                    <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-[15%] transform -translate-x-1/2" delay={1.4} />
                     <Node icon={Database} label="EDC" position="bottom-0 left-1/2 -translate-x-1/2" delay={1.5} />
-                    <Node icon={ClipboardList} label="CTM" position="top-0 right-[20%]" delay={1.6} />
+                    <Node icon={ClipboardList} label="CTM" position="top-0 right-[15%] transform translate-x-1/2" delay={1.6} />
                     
 
                     {/* SVG Lines & Diamonds */}
                     <svg width="100%" height="100%" viewBox="0 0 500 400" className="absolute inset-0 z-0">
                         {/* Line to IRT/IWRS */}
-                        <Line path="M 205,180 L 150,80" delay={0.8} />
-                        <Diamond cx={177.5} cy={130} delay={1.1} />
+                        <Line path="M 215,180 L 125,80" delay={0.8} />
+                        <Diamond cx={170} cy={130} delay={1.1} />
 
                         {/* Line to EDC */}
                         <Line path="M 250,235 V 310" delay={0.9} />
                         <Diamond cx={250} cy={272.5} delay={1.2} />
 
                         {/* Line to CTM */}
-                        <Line path="M 295,180 L 350,80" delay={1.0} />
-                        <Diamond cx={322.5} cy={130} delay={1.3} />
+                        <Line path="M 285,180 L 375,80" delay={1.0} />
+                        <Diamond cx={330} cy={130} delay={1.3} />
                     </svg>
                 </>
             )}
