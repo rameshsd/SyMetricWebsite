@@ -1,11 +1,10 @@
-
 "use client";
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks/use-in-view';
-import { Repeat, ClipboardList, Gem } from 'lucide-react';
+import { Repeat, Database, ClipboardList, Gem } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -46,17 +45,17 @@ const Node = ({
   return (
     <motion.div
       variants={itemVariants}
-      className="flex flex-col items-center gap-2 z-10"
+      className="flex flex-col items-center gap-2 z-10 w-36"
     >
       <div
         className={cn(
           'flex items-center justify-center rounded-lg border bg-background shadow-lg',
-          'w-36 h-24' 
+          'w-full h-24' 
         )}
       >
         <Icon className={cn('text-primary', 'w-10 h-10')} />
       </div>
-      <div className="font-semibold text-sm text-foreground text-center max-w-32">
+      <div className="font-semibold text-sm text-foreground text-center">
         {label}
       </div>
     </motion.div>
@@ -64,12 +63,10 @@ const Node = ({
 };
 
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
-    // Centered star shape
-    const starPath = "M0 -5.5L1.65 -1.65L5.5 0L1.65 1.65L0 5.5L-1.65 1.65L-5.5 0L-1.65 -1.65Z";
     return (
         <g>
             <motion.path
-                d={starPath}
+                d="M-5.5 0L-1.65 1.65L0 5.5L1.65 1.65L5.5 0L1.65 -1.65L0 -5.5L-1.65 -1.65Z"
                 fill="hsl(var(--primary))"
                 className="opacity-0"
                 style={{ transform: 'scale(0.7)' }}
@@ -95,17 +92,16 @@ const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }
 export const PlatformAnimation = () => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
     
-    const viewBoxWidth = 600;
+    const viewBoxWidth = 700;
     const viewBoxHeight = 450;
 
-    const topNodeX = viewBoxWidth / 2;
     const topNodeY = 60;
-    
     const busLineY = 200;
     const bottomNodeY = 320;
-
-    const irtNodeX = viewBoxWidth * 0.25;
-    const ctmNodeX = viewBoxWidth * 0.75;
+    
+    constcenterX = viewBoxWidth / 2;
+    const leftNodeX = viewBoxWidth * 0.25;
+    const rightNodeX = viewBoxWidth * 0.75;
 
 
     return (
@@ -114,64 +110,74 @@ export const PlatformAnimation = () => {
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="w-full h-full relative"
+            className="w-full h-full relative flex flex-col items-center"
         >
-            <div className="absolute" style={{ top: `${topNodeY}px`, left: `${topNodeX}px`, transform: 'translate(-50%, -50%)' }}>
+            {/* Top Node */}
+            <div className="absolute" style={{ top: `10px`, left: `50%`, transform: 'translateX(-50%)' }}>
                 <Node icon={Gem} label="SyMetric Platform" />
             </div>
 
-            <div className="absolute" style={{ top: `${bottomNodeY}px`, left: `${irtNodeX}px`, transform: 'translate(-50%, -50%)' }}>
-                <Node icon={Repeat} label="IRT/IWRS" />
-            </div>
-            <div className="absolute" style={{ top: `${bottomNodeY}px`, left: `${ctmNodeX}px`, transform: 'translate(-50%, -50%)' }}>
-                <Node icon={ClipboardList} label="CTM" />
+            {/* Bottom Nodes Container */}
+            <div className="absolute w-full" style={{ top: `${bottomNodeY - 60}px` }}>
+                <div className="flex justify-between max-w-xl mx-auto">
+                    <Node icon={Repeat} label="IRT/IWRS" />
+                    <Node icon={ClipboardList} label="CTM" />
+                    <Node icon={Database} label="EDC" />
+                </div>
             </div>
 
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
-                    <path id="path-to-irt" d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY} H ${irtNodeX} V ${bottomNodeY - 48}`} fill="none" />
-                    <path id="path-to-ctm" d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY} H ${ctmNodeX} V ${bottomNodeY - 48}`} fill="none" />
+                    <path id="path-to-left" d={`M ${centerX} ${topNodeY} V ${busLineY} H ${leftNodeX} V ${bottomNodeY}`} fill="none" />
+                    <path id="path-to-center" d={`M ${centerX} ${topNodeY} V ${busLineY} H ${centerX} V ${bottomNodeY}`} fill="none" />
+                    <path id="path-to-right" d={`M ${centerX} ${topNodeY} V ${busLineY} H ${rightNodeX} V ${bottomNodeY}`} fill="none" />
                 </defs>
 
+                {/* Visible Lines */}
                 <motion.path
-                    d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY}`}
+                    d={`M ${centerX} ${topNodeY} V ${busLineY}`} // Vertical from top
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    strokeLinejoin="round"
                     variants={pathVariants(0.4)}
                 />
                  <motion.path
-                    d={`M ${irtNodeX} ${busLineY} H ${ctmNodeX}`}
+                    d={`M ${leftNodeX} ${busLineY} H ${rightNodeX}`} // Horizontal Bus
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    strokeLinejoin="round"
                     variants={pathVariants(0.6)}
                 />
                 <motion.path
-                    d={`M ${irtNodeX} ${busLineY} V ${bottomNodeY - 48}`}
+                    d={`M ${leftNodeX} ${busLineY} V ${bottomNodeY}`} // Vertical to left
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    strokeLinejoin="round"
                     variants={pathVariants(0.8)}
                 />
                  <motion.path
-                    d={`M ${ctmNodeX} ${busLineY} V ${bottomNodeY - 48}`}
+                    d={`M ${centerX} ${busLineY} V ${bottomNodeY}`} // Vertical to center
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    strokeLinejoin="round"
                     variants={pathVariants(1.0)}
                 />
+                <motion.path
+                    d={`M ${rightNodeX} ${busLineY} V ${bottomNodeY}`} // Vertical to right
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    variants={pathVariants(1.2)}
+                />
 
-                <TravelingStar pathId="path-to-irt" delay={0.8} />
-                <TravelingStar pathId="path-to-ctm" delay={1.0} />
+                <TravelingStar pathId="path-to-left" delay={0.8} />
+                <TravelingStar pathId="path-to-center" delay={1.0} />
+                <TravelingStar pathId="path-to-right" delay={1.2} />
             </svg>
         </motion.div>
     );
