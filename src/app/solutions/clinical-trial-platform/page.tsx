@@ -1,9 +1,8 @@
 
 
 import { Metadata } from 'next';
-import Image from 'next/image';
+import { solutions } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { PlatformAnimation } from '@/components/animations/PlatformAnimation';
@@ -15,6 +14,8 @@ import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
+import { ProductHero } from '@/components/solutions/ProductHero';
+
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -23,23 +24,20 @@ export const metadata: Metadata = {
 
 
 export default function ClinicalTrialPlatformPage() {
-    
+    const solution = solutions.find((s) => s.slug === 'clinical-trial-platform');
+    const heroImage = PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
+
   return (
     <>
         <ProductPageHeader productName="Clinical Trial Platform" />
-        <section className="py-12 md:py-16 lg:py-20 bg-secondary/30">
-            <div className="container mx-auto px-4 md:px-6">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                  <div className="space-y-6">
-                      <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">SyMetric Clinical Trial Platform</h1>
-                      <p className="text-xl text-muted-foreground">Designed and built to be an end-to-end platform for Clinical Trials, this Cloud-Based Solution features fully modular tools that allow you to pick and configure them according to your needs.</p>
-                  </div>
-                  <div className="flex items-center justify-center min-h-[300px] md:min-h-[400px]">
-                    <PlatformAnimation />
-                  </div>
-              </div>
-            </div>
-        </section>
+        {solution && heroImage && (
+            <ProductHero 
+                title={solution.hero.title}
+                subtitle={solution.hero.subtitle}
+                imageSrc={heroImage.imageUrl}
+                imageHint={heroImage.imageHint}
+            />
+        )}
 
         <BuiltWithPurpose />
         

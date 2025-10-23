@@ -27,7 +27,7 @@
     {
       "id": "solution-sm",
       "description": "Site management collaboration",
-      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
@@ -63,7 +63,7 @@
     {
       "id": "leadership-6",
       "description": "Portrait of David Lee",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -105,13 +105,13 @@
     {
       "id": "resource-3",
       "description": "eTMF best practices",
-      "imageUrl": "https://images.unsplash.com/photo-1723014563370-fb62697ae0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbml6ZWQlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1723014563370-fb62697ae0e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbml6ZWQlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "organized documents"
     },
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -135,13 +135,13 @@
     {
       "id": "resources-hero",
       "description": "Person reading on a tablet",
-      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "reading tablet"
     },
     {
       "id": "contact-hero",
       "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
@@ -153,7 +153,7 @@
     {
       "id": "hero-carousel-1",
       "description": "Abstract AI brain visualization",
-      "imageUrl": "https://images.unsplash.com/photo-1688433406217-38ed442f654f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMEFJYnJhaW58ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1688433406217-38ed442f654f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMEFJYnJhaW58ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "AI brain"
     },
     {
@@ -177,7 +177,7 @@
     {
       "id": "what-is-sap",
       "description": "Collage of business processes and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDg2NDA0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDgzNDA0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business team"
     },
     {
@@ -195,7 +195,7 @@
     {
       "id": "whats-new-data",
       "description": "Abstract visualization of data and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data abstract"
     },
     {
@@ -267,7 +267,7 @@
     {
       "id": "security-compliance-image",
       "description": "Padlock symbolizing data security",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "data security"
     },
     {
@@ -285,7 +285,7 @@
     {
       "id": "sap-building",
       "description": "Modern glass building of SyMetric headquarters",
-      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "modern building"
     },
     {
@@ -311,6 +311,12 @@
       "description": "A financial dashboard showing charts and figures.",
       "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dashboard charts"
+    },
+    {
+      "id": "product-hero-business-people",
+      "description": "Two business professionals looking at a tablet.",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2148&q=80",
+      "imageHint": "business people"
     }
   ]
 }

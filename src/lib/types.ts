@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 
 export type NavItem = {
@@ -10,6 +11,10 @@ export type Solution = {
   id: string;
   name:string;
   slug: string;
+  hero: {
+    title: string;
+    subtitle: string;
+  };
   description: string;
   longDescription: string;
   icon: LucideIcon;

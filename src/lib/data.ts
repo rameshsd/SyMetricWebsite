@@ -34,6 +34,10 @@ export const solutions: Solution[] = [
     id: 'ctp',
     name: 'CTP (Clinical Trial Platform)',
     slug: 'clinical-trial-platform',
+    hero: {
+      title: 'SyMetric Clinical Trial Platform',
+      subtitle: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools that allow you to pick and configure them according to your needs.'
+    },
     description: 'An integrated platform for seamless clinical trial management from start to finish.',
     longDescription: 'Our Clinical Trial Platform (CTP) provides a unified environment for managing all aspects of your clinical trials. From protocol development to final reporting, CTP streamlines workflows, enhances collaboration, and ensures data integrity.',
     icon: FlaskConical,
@@ -43,6 +47,10 @@ export const solutions: Solution[] = [
     id: 'irt-iwrs',
     name: 'IRT/IWRS',
     slug: 'irt-iwrs',
+    hero: {
+      title: 'IRT/IWRS',
+      subtitle: 'Comprehensive solution for randomization and trial supply management. Developed with years of strong industry expertise to deliver against the most complex Clinical Trial designs.'
+    },
     description: 'Comprehensive solution for randomization and trial supply management.',
     longDescription: 'Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.',
     icon: Repeat,
@@ -52,6 +60,10 @@ export const solutions: Solution[] = [
     id: 'edc',
     name: 'EDC',
     slug: 'edc',
+    hero: {
+        title: 'Electronic Data Capture (EDC)',
+        subtitle: 'Simplify and automate data flow and validation in clinical trials with our well-designed tools that transform data management processes.'
+    },
     description: 'Tools to simplify and automate data flow and validation in clinical trials.',
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: Database,
@@ -61,6 +73,10 @@ export const solutions: Solution[] = [
     id: 'ctm',
     name: 'CTM',
     slug: 'ctm',
+    hero: {
+        title: 'Clinical Trial Management (CTM)',
+        subtitle: 'Maintain global objects including repositories of Trial Sites, Labs, Organizations, Global Data Libraries, and more.'
+    },
     description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.',
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
@@ -70,6 +86,10 @@ export const solutions: Solution[] = [
     id: 'trial-analytics',
     name: 'Trial Analytics',
     slug: 'trial-analytics',
+    hero: {
+        title: 'Advanced Trial Analytics',
+        subtitle: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.'
+    },
     description: 'Unlock insights with advanced analytics, visualizations, and predictive modeling.',
     longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
     icon: PieChart,
@@ -79,6 +99,10 @@ export const solutions: Solution[] = [
     id: 'etmf',
     name: 'eTMF (Electronic Trial Master File)',
     slug: 'electronic-trial-master-file',
+    hero: {
+      title: 'Electronic Trial Master File (eTMF)',
+      subtitle: 'Digitize and manage your trial master file with compliance and ease. Our solution offers a secure, compliant, and intuitive way to manage your trial documentation.'
+    },
     description: 'Digitize and manage your trial master file with compliance and ease.',
     longDescription: 'SyMetric’s eTMF solution offers a secure, compliant, and intuitive way to manage your trial documentation. With features like automated indexing, quality checks, and real-time collaboration, it ensures your TMF is always audit-ready.',
     icon: FileText,
@@ -88,6 +112,10 @@ export const solutions: Solution[] = [
     id: 'rc',
     name: 'Regulatory Compliance',
     slug: 'regulatory-compliance',
+    hero: {
+        title: 'Regulatory Compliance Suite',
+        subtitle: 'Navigate complex regulatory landscapes with our expert solutions. Stay ahead of changes and ensure compliance with global standards.'
+    },
     description: 'Navigate complex regulatory landscapes with our expert solutions.',
     longDescription: 'Stay ahead of regulatory changes and ensure compliance with global standards. Our solutions help you manage submissions, track commitments, and maintain a state of continuous compliance throughout the product lifecycle.',
     icon: ShieldCheck,
@@ -97,6 +125,10 @@ export const solutions: Solution[] = [
     id: 'sm',
     name: 'Site Management',
     slug: 'site-management',
+    hero: {
+        title: 'Clinical Site Management',
+        subtitle: 'Empower clinical sites with tools for efficient trial execution, from patient recruitment to financial management and remote monitoring.'
+    },
     description: 'Empower clinical sites with tools for efficient trial execution and monitoring.',
     longDescription: 'Our Site Management solutions provide clinical research sites with the tools they need to operate efficiently. From patient recruitment and scheduling to financial management and remote monitoring, we help sites focus on what matters most: patient care.',
     icon: Briefcase,
