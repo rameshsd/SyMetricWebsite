@@ -1,4 +1,5 @@
 
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -13,6 +14,7 @@ import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
+import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -96,6 +98,7 @@ export default function ClinicalTrialPlatformPage() {
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
+        <CapabilitiesSection />
         <RelatedProductsSection />
 
         <section className="py-16 md:py-24">

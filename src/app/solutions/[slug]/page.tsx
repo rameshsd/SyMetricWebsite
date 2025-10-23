@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
+import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 
 type Props = {
   params: { slug: string };
@@ -78,6 +79,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
           </div>
         </div>
       </section>
+      <CapabilitiesSection />
       <RelatedProductsSection />
     </>
   );
