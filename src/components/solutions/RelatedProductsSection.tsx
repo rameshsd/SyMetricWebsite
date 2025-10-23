@@ -10,37 +10,37 @@ import { SectionTitle } from '../shared/section-title';
 
 const featurePoints = [
     {
-        title: "Optimised finance operations",
-        description: "Go live fast with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
+        title: "Optimised trial operations",
+        description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
     },
     {
         title: "Action-ready insights",
-        description: "Make board-ready decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
+        description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
     },
     {
         title: "Transformative, scalable impact",
-        description: "Expand confidently by creating new business models that drive growth while keeping finance secure and compliant."
+        description: "Expand confidently by adopting new trial models that drive research forward while keeping operations secure and compliant."
     }
 ]
 
 const relatedProducts = [
     {
-        title: "SAP Business AI",
-        description: "Guide, automate, and execute routine tasks in the flow of work with embedded AI and Joule—freeing teams to focus on strategy, not spreadsheets.",
+        title: "SyMetric Business AI",
+        description: "Guide, automate, and execute routine tasks in the flow of work with embedded AI, freeing teams to focus on strategy, not manual data entry.",
         link: "#",
         linkText: "Learn about Business AI"
     },
     {
-        title: "SAP Business Data Cloud",
-        description: "Get one trusted, governed view of your business—harmonising SAP and non-SAP data from transactions to boardroom.",
+        title: "SyMetric Business Data Cloud",
+        description: "Get one trusted, governed view of your trial data—harmonising information from all sources, from site to submission.",
         link: "#",
         linkText: "Learn about Business Data Cloud"
     },
     {
-        title: "SAP Business Technology Platform",
-        description: "Integrate, automate, and extend finance processes to move fast with low-code tools while staying secure and compliant.",
+        title: "SyMetric Technology Platform",
+        description: "Integrate, automate, and extend clinical processes to move fast with low-code tools while staying secure and compliant.",
         link: "#",
-        linkText: "Learn about SAP BTP"
+        linkText: "Learn about SyMetric BTP"
     }
 ]
 
@@ -48,11 +48,11 @@ export function RelatedProductsSection() {
     const videoThumbnail = PlaceHolderImages.find(p => p.id === 'finance-driver-video');
 
     return (
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-16 md:py-24 bg-secondary/50">
             <div className="container">
                 <SectionTitle 
-                    title="Turn finance into a strategic driver of business performance"
-                    description="You're under pressure to do more with less. Equip your finance team to operate more efficiently, anticipate change, and lead with confidence—with AI-enabled SAP Business Suite."
+                    title="Turn your clinical data into a strategic driver of performance"
+                    description="You're under pressure to do more with less. Equip your research team to operate more efficiently, anticipate change, and lead with confidence—with the AI-enabled SyMetric Platform."
                     className='text-left max-w-none'
                 />
 
@@ -83,7 +83,7 @@ export function RelatedProductsSection() {
 
                 <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {relatedProducts.map(product => (
-                        <Card key={product.title} className="bg-secondary/30 border-none shadow-none">
+                        <Card key={product.title} className="bg-background border-none shadow-none">
                             <CardContent className="p-6">
                                 <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
                                 <p className="text-muted-foreground mt-2 min-h-[100px]">{product.description}</p>
