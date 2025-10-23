@@ -69,7 +69,7 @@ const Node = ({
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
         <motion.path
-            d="M-5 0 L-2 2 L0 5 L2 2 L5 0 L2 -2 L0 -5 L-2 -2 Z"
+            d="M-5 0L-2 2L0 5L2 2L5 0L2 -2L0 -5L-2 -2Z"
             fill="hsl(var(--primary))"
             className="opacity-0"
             style={{ transform: 'scale(0.7)' }}
@@ -98,15 +98,14 @@ export const PlatformAnimation = () => {
     const viewBoxWidth = 800;
     const viewBoxHeight = 400;
 
-    const topNodeX = viewBoxWidth / 2;
     const topNodeY = 60;
-    
     const busLineY = 180;
     const bottomNodeY = 300;
 
+    const centerNodeX = viewBoxWidth / 2;
     const sideOffset = 220;
-    const leftNodeX = topNodeX - sideOffset;
-    const rightNodeX = topNodeX + sideOffset;
+    const leftNodeX = centerNodeX - sideOffset;
+    const rightNodeX = centerNodeX + sideOffset;
 
     return (
         <motion.div
@@ -121,29 +120,27 @@ export const PlatformAnimation = () => {
                  <Node icon={Gem} label="SyMetric Platform" isCentral />
             </div>
             
-            {/* Bottom Row Nodes */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ transform: `translateX(-${sideOffset}px)` }}>
-                 <Node icon={Repeat} label="IRT/IWRS" />
-            </div>
-             <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-                 <Node icon={ClipboardList} label="CTM" />
-            </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ transform: `translateX(${sideOffset}px)` }}>
-                 <Node icon={Database} label="EDC" />
+            {/* Bottom Row Nodes Container */}
+            <div className="absolute bottom-0 w-full px-[70px]">
+                <div className="flex justify-between w-full">
+                    <Node icon={Repeat} label="IRT/IWRS" />
+                    <Node icon={ClipboardList} label="CTM" />
+                    <Node icon={Database} label="EDC" />
+                </div>
             </div>
 
 
             {/* SVG container for lines and stars */}
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
-                    <path id="path-irt" d={`M ${topNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} V ${bottomNodeY - 48}`} fill="none" />
-                    <path id="path-ctm" d={`M ${topNodeX} ${topNodeY} V ${busLineY} H ${topNodeX} V ${bottomNodeY - 48}`} fill="none" />
-                    <path id="path-edc" d={`M ${topNodeX} ${topNodeY} V ${busLineY} H ${rightNodeX} V ${bottomNodeY - 48}`} fill="none" />
+                    <path id="path-irt" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${leftNodeX}`} fill="none" />
+                    <path id="path-ctm" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${centerNodeX}`} fill="none" />
+                    <path id="path-edc" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${rightNodeX}`} fill="none" />
                 </defs>
 
                 {/* Visible Lines */}
                 <motion.path
-                    d={`M ${topNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} M ${topNodeX} ${busLineY} H ${rightNodeX} M ${leftNodeX} ${busLineY} V ${bottomNodeY-48} M ${topNodeX} ${busLineY} V ${bottomNodeY-48} M ${rightNodeX} ${busLineY} V ${bottomNodeY-48}`}
+                    d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} M ${centerNodeX} ${busLineY} H ${rightNodeX} M ${leftNodeX} ${busLineY} V ${bottomNodeY-48} M ${centerNodeX} ${busLineY} V ${bottomNodeY-48} M ${rightNodeX} ${busLineY} V ${bottomNodeY-48}`}
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
