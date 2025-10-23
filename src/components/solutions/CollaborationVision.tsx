@@ -1,11 +1,10 @@
-
 "use client";
 
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function CollaborationVision() {
-  const image = PlaceHolderImages.find((p) => p.id === "collaboration-image");
+  const image = PlaceHolderImages.find((p) => p.id === "collaboration-diagram");
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -36,14 +35,14 @@ export function CollaborationVision() {
               </p>
             </div>
           </div>
-          <div className="relative h-96">
+          <div className="relative h-[450px]">
             {image && (
               <Image
                 src={image.imageUrl}
                 alt={image.description}
                 data-ai-hint={image.imageHint}
                 fill
-                className="object-cover rounded-lg"
+                className="object-contain rounded-lg"
               />
             )}
           </div>

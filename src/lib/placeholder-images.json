@@ -21,7 +21,7 @@
     {
       "id": "solution-rc",
       "description": "Regulatory compliance checkmarks",
-      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "compliance checklist"
     },
     {
@@ -33,31 +33,31 @@
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-3",
       "description": "Portrait of Dr. Lena Petrova",
-      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-4",
       "description": "Portrait of Samuel Jones",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-5",
       "description": "Portrait of Isabella Garcia",
-      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -75,19 +75,19 @@
     {
       "id": "logo-biogenex",
       "description": "BioGenex Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "geometric logo"
     },
     {
       "id": "logo-apex-clinical",
       "description": "Apex Clinical Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "letter logo"
     },
     {
       "id": "logo-st-judes",
       "description": "St. Jude's Research Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1655565637301-8485235271ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGglMjBsb2dvfGVufDB8fHx8MTc2MDg1MzA2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1655565637301-8485235271ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxoZWFsdGglMjBsb2dvfGVufDB8fHx8MTc2MDg1MzA2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "health logo"
     },
     {
@@ -147,7 +147,7 @@
     {
       "id": "map-placeholder",
       "description": "Map of a city for HQ location",
-      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
@@ -177,13 +177,13 @@
     {
       "id": "what-is-sap",
       "description": "Collage of business processes and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDgzNDA0Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDgzNDA0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business team"
     },
     {
       "id": "sap-leadership",
       "description": "Diverse group of professional business leaders",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGxlYWRlcnNoaXB8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGxlYWRlcnNoaXB8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business leadership"
     },
     {
@@ -207,7 +207,7 @@
     {
       "id": "ai-infographic",
       "description": "Infographic about AI in business",
-      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "financial data"
     },
     {
@@ -225,7 +225,7 @@
     {
       "id": "ctp-hero-image",
       "description": "Abstract technology background",
-      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "technology background"
     },
     {
@@ -253,10 +253,10 @@
       "imageHint": "data analytics"
     },
     {
-      "id": "collaboration-image",
-      "description": "Team collaborating in an office",
-      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "team collaboration"
+      "id": "collaboration-diagram",
+      "description": "Diagram of the SyMetric collaboration platform.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/collaboration-diagram-full.png",
+      "imageHint": "collaboration diagram"
     },
     {
       "id": "hosting-providers-image",
@@ -285,7 +285,7 @@
     {
       "id": "sap-building",
       "description": "Modern glass building of SyMetric headquarters",
-      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "modern building"
     },
     {
