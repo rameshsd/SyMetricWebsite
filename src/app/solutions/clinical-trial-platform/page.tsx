@@ -18,6 +18,7 @@ import { Database, Repeat, ClipboardList } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
+import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 
 
 export const metadata: Metadata = {
@@ -67,6 +68,7 @@ export default function ClinicalTrialPlatformPage() {
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
+        <GlobalPresence />
         <CapabilitiesSection />
         <ExploreSolutions />
         <RelatedProductsSection />
