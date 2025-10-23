@@ -29,10 +29,11 @@ export const metadata: Metadata = {
 
 export default function ClinicalTrialPlatformPage() {
     const solution = solutions.find((s) => s.slug === 'clinical-trial-platform');
+    const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
 
   return (
     <>
-        <ProductPageHeader productName="Clinical Trial Platform" solutions={solutions} />
+        <ProductPageHeader productName="Clinical Trial Platform" solutions={headerSolutions} />
         
         {solution && (
              <section className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card">

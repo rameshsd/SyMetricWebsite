@@ -13,17 +13,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { Solution } from "@/lib/types";
 
 const secondaryNav = [
     { label: "Overview", href: "#" },
-    { label: "Applications", dropdown: true, items: [] },
+    { label: "Applications", dropdown: true, items: [] as { id: string; name: string; slug: string }[] },
     { label: "Pricing", href: "#" },
 ]
 
 type ProductPageHeaderProps = {
   productName: string;
-  solutions: Solution[];
+  solutions: {
+    id: string;
+    name: string;
+    slug: string;
+  }[];
 };
 
 export function ProductPageHeader({ productName, solutions }: ProductPageHeaderProps) {

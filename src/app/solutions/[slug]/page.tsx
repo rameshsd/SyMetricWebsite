@@ -33,10 +33,11 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
   }
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
+  const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
 
   return (
     <>
-      <ProductPageHeader productName={solution.name} solutions={solutions} />
+      <ProductPageHeader productName={solution.name} solutions={headerSolutions} />
       {heroImage && (
          <ProductHero 
             title={solution.hero.title}
