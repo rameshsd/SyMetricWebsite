@@ -53,7 +53,6 @@ export function RelatedProductsSection() {
                 <SectionTitle 
                     title="Turn your clinical data into a strategic driver of performance"
                     description="You're under pressure to do more with less. Equip your research team to operate more efficiently, anticipate change, and lead with confidence—with the AI-enabled SyMetric Platform."
-                    className='text-left max-w-none'
                 />
 
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
