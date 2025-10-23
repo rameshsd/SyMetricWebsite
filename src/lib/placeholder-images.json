@@ -15,19 +15,19 @@
     {
       "id": "solution-cdm",
       "description": "Clinical data management charts",
-      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "charts graphs"
     },
     {
       "id": "solution-rc",
       "description": "Regulatory compliance checkmarks",
-      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "compliance checklist"
     },
     {
       "id": "solution-sm",
       "description": "Site management collaboration",
-      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": "leadership-5",
       "description": "Portrait of Isabella Garcia",
-      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": "logo-innovate-pharma",
       "description": "Innovate Pharma Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract logo"
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "logo-apex-clinical",
       "description": "Apex Clinical Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "letter logo"
     },
     {
@@ -339,32 +339,134 @@
     {
       "id": "tool-org-1",
       "description": "Screenshot of organization management.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/org-1.png",
       "imageHint": "organization settings"
+    },
+    {
+      "id": "tool-org-2",
+      "description": "Screenshot of organization details page.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/org-2.png",
+      "imageHint": "organization details"
     },
     {
       "id": "tool-study-1",
       "description": "Screenshot of study management dashboard.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/study-1.png",
       "imageHint": "study dashboard"
+    },
+    {
+      "id": "tool-study-2",
+      "description": "Screenshot of study protocol viewer.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/study-2.png",
+      "imageHint": "protocol viewer"
     },
     {
       "id": "tool-site-1",
       "description": "Screenshot of clinical site management.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/site-1.png",
       "imageHint": "site management"
+    },
+    {
+      "id": "tool-site-2",
+      "description": "Screenshot of site performance analytics.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/site-2.png",
+      "imageHint": "site analytics"
     },
     {
       "id": "tool-supplies-1",
       "description": "Screenshot of clinical supplies inventory.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/supplies-1.png",
       "imageHint": "inventory management"
+    },
+    {
+      "id": "tool-supplies-2",
+      "description": "Screenshot of supply chain tracking.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/supplies-2.png",
+      "imageHint": "supply tracking"
     },
     {
       "id": "tool-subject-1",
       "description": "Screenshot of subject management list.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/subject-1.png",
       "imageHint": "patient list"
+    },
+    {
+      "id": "tool-subject-2",
+      "description": "Screenshot of subject eCRF view.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/subject-2.png",
+      "imageHint": "subject eCRF"
+    },
+    {
+      "id": "tool-data-1",
+      "description": "Screenshot of data validation rules.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-1.png",
+      "imageHint": "data validation"
+    },
+    {
+      "id": "tool-data-2",
+      "description": "Screenshot of data export configuration.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-2.png",
+      "imageHint": "data export"
+    },
+    {
+      "id": "tool-lab-1",
+      "description": "Screenshot of lab data import.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/lab-1.png",
+      "imageHint": "lab data"
+    },
+    {
+      "id": "tool-lab-2",
+      "description": "Screenshot of normal range configuration.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/lab-2.png",
+      "imageHint": "lab configuration"
+    },
+    {
+      "id": "tool-coding-1",
+      "description": "Screenshot of medical coding interface.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/coding-1.png",
+      "imageHint": "medical coding"
+    },
+    {
+      "id": "tool-coding-2",
+      "description": "Screenshot of dictionary browser.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/coding-2.png",
+      "imageHint": "dictionary browser"
+    },
+    {
+      "id": "tool-data-svc-1",
+      "description": "Screenshot of data services reporting.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-svc-1.png",
+      "imageHint": "reporting dashboard"
+    },
+    {
+      "id": "tool-data-svc-2",
+      "description": "Screenshot of integration settings.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-svc-2.png",
+      "imageHint": "integration settings"
+    },
+    {
+      "id": "tool-learning-1",
+      "description": "Screenshot of digital learning module.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/learning-1.png",
+      "imageHint": "e-learning course"
+    },
+    {
+      "id": "tool-learning-2",
+      "description": "Screenshot of certification tracking.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/learning-2.png",
+      "imageHint": "certification tracking"
+    },
+    {
+      "id": "tool-support-1",
+      "description": "Screenshot of help and support center.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/support-1.png",
+      "imageHint": "support center"
+    },
+    {
+      "id": "tool-support-2",
+      "description": "Screenshot of live chat support.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/support-2.png",
+      "imageHint": "live chat"
     }
   ]
 }

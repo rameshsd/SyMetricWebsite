@@ -42,77 +42,77 @@ const toolsData = [
     icon: Building, 
     label: "Organization Management",
     description: "Manage all organizations participating in your trials from a central location.",
-    images: ["tool-org-1"],
+    images: ["tool-org-1", "tool-org-2"],
   },
   { 
     id: "study-management",
     icon: Book, 
     label: "Study Management",
     description: "Define, configure, and oversee all aspects of your clinical studies.",
-    images: ["tool-study-1"],
+    images: ["tool-study-1", "tool-study-2"],
   },
   { 
     id: "site-management",
     icon: Hospital, 
     label: "Site Management",
     description: "Streamline site activation, monitoring, and communication.",
-    images: ["tool-site-1"],
+    images: ["tool-site-1", "tool-site-2"],
   },
   { 
     id: "supplies-management",
     icon: Beaker, 
     label: "Clinical Supplies Management",
     description: "Track and manage investigational products and trial supplies in real-time.",
-    images: ["tool-supplies-1"],
+    images: ["tool-supplies-1", "tool-supplies-2"],
   },
   { 
     id: "subject-management",
     icon: Users, 
     label: "Subject Management",
     description: "Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.",
-    images: ["tool-subject-1"],
+    images: ["tool-subject-1", "tool-subject-2"],
   },
   { 
     id: "data-management",
     icon: Database, 
     label: "Data Management",
     description: "Global Library, Data Designer, Data Validation Manager, Data Collection, Discrepancy Management, Source Data Verification, and Data Exports",
-    images: ["tool-iam-1"],
+    images: ["tool-data-1", "tool-data-2"],
   },
   { 
     id: "lab-management",
     icon: FlaskConical, 
     label: "Lab Management",
     description: "Manage lab data, normal ranges, and sample tracking with ease.",
-    images: ["tool-iam-1"],
+    images: ["tool-lab-1", "tool-lab-2"],
   },
   { 
     id: "medical-coding",
     icon: ClipboardList, 
     label: "Medical Coding",
     description: "Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.",
-    images: ["tool-iam-1"],
+    images: ["tool-coding-1", "tool-coding-2"],
   },
   { 
     id: "data-services",
     icon: LayoutGrid, 
     label: "Data Services",
     description: "Custom data exports, integrations, and reporting services.",
-    images: ["tool-iam-1"],
+    images: ["tool-data-svc-1", "tool-data-svc-2"],
   },
   { 
     id: "learning",
     icon: GraduationCap, 
     label: "Digital Learning",
     description: "Provide training and certification for trial personnel directly on the platform.",
-    images: ["tool-iam-1"],
+    images: ["tool-learning-1", "tool-learning-2"],
   },
   { 
     id: "support",
     icon: LifeBuoy, 
     label: "Help and Support",
     description: "Access our dedicated support team and comprehensive knowledge base.",
-    images: ["tool-iam-1"],
+    images: ["tool-support-1", "tool-support-2"],
   },
 ];
 
@@ -144,15 +144,15 @@ export function PlatformToolsGrid() {
                               className={cn(
                                   "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all duration-200",
                                   selectedTool.id === tool.id 
-                                      ? "bg-primary/10 text-primary font-semibold shadow-sm" 
-                                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                                      ? "bg-primary text-primary-foreground font-semibold shadow-md" 
+                                      : "text-foreground hover:bg-background/50"
                               )}
                           >
                               <div className={cn(
                                   "flex items-center justify-center h-8 w-8 rounded-lg shrink-0",
-                                  selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
+                                  selectedTool.id === tool.id ? "bg-primary-foreground/20" : "bg-primary/10"
                               )}>
-                                  <tool.icon className="h-5 w-5" />
+                                  <tool.icon className={cn("h-5 w-5", selectedTool.id === tool.id ? "text-primary-foreground" : "text-primary")} />
                               </div>
                               <span className="text-sm font-medium">{tool.label}</span>
                           </button>
