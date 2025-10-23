@@ -93,21 +93,7 @@ export const PlatformAnimation = () => {
             {/* SVG Layer for Lines and Sparkles */}
             <div className="absolute inset-0 z-0">
                 <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="none">
-                    <defs>
-                        <motion.path 
-                            id="line-1" 
-                            d="M 250 180 Q 200 180, 150 130 T 100 80" 
-                        />
-                         <motion.path 
-                            id="line-2" 
-                            d="M 250 220 V 300"
-                        />
-                         <motion.path 
-                            id="line-3" 
-                            d="M 250 180 Q 300 180, 350 130 T 400 80" 
-                        />
-                    </defs>
-
+                    
                     <Line d="M 250 180 Q 200 180, 150 130 T 100 80" delay={0.5} inView={inView} />
                     <Line d="M 250 220 V 300" delay={0.7} inView={inView} />
                     <Line d="M 250 180 Q 300 180, 350 130 T 400 80" delay={0.9} inView={inView} />
