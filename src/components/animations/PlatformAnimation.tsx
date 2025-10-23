@@ -33,12 +33,10 @@ const Node = ({ icon: Icon, label, position, delay, inView }: { icon: React.Elem
     );
 };
 
-const Line = ({ d, delay, inView, markerPosition }: { d: string; delay: number; inView: boolean; markerPosition: {x: number; y: number} }) => {
-    const pathRef = React.useRef<SVGPathElement>(null);
+const Line = ({ d, delay, inView, markerPosition, markerDelay }: { d: string; delay: number; inView: boolean; markerPosition: {x: number; y: number}, markerDelay: number }) => {
     return (
         <>
             <motion.path
-                ref={pathRef}
                 d={d}
                 fill="none"
                 stroke="hsl(var(--primary))"
@@ -53,12 +51,12 @@ const Line = ({ d, delay, inView, markerPosition }: { d: string; delay: number; 
             <motion.g
                 initial={{ opacity: 0, scale: 0 }}
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                transition={{ duration: 0.4, delay: delay + 0.6 }}
+                transition={{ duration: 0.4, delay: markerDelay }}
             >
                 <motion.g 
                     transform={`translate(${markerPosition.x}, ${markerPosition.y})`}
-                    animate={{ scale: [1, 1.2, 1], opacity: [1, 0.8, 1], rotate: [0, 180, 360] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay }}
+                    animate={{ scale: [1, 1.2, 1], opacity: [1, 0.8, 1] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: markerDelay }}
                 >
                     <Sparkle className="w-4 h-4 -translate-x-2 -translate-y-2" />
                 </motion.g>
@@ -87,20 +85,20 @@ export const PlatformAnimation = () => {
                 </div>
             </motion.div>
 
-            <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-0" delay={1.4} inView={inView} />
+            <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-[15%]" delay={1.4} inView={inView} />
             <Node icon={Database} label="EDC" position="bottom-0 left-1/2 -translate-x-1/2" delay={1.5} inView={inView} />
-            <Node icon={ClipboardList} label="CTM" position="top-0 right-0" delay={1.6} inView={inView} />
+            <Node icon={ClipboardList} label="CTM" position="top-0 right-[15%]" delay={1.6} inView={inView} />
 
             <div className="absolute inset-0 z-0">
                 <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet">
                     {/* Line to top left node */}
-                    <Line d="M 235 150 Q 150 150 150 80 L 150 80 Q 150 60 120 60 L 80 60" delay={0.5} inView={inView} markerPosition={{x: 135, y: 115}} />
+                    <Line d="M 230 168 C 180 150, 160 100, 140 80" delay={0.5} inView={inView} markerDelay={1.1} markerPosition={{x: 175, y: 115}} />
                     
                     {/* Line to bottom node */}
-                    <Line d="M 250 250 L 250 300" delay={0.7} inView={inView} markerPosition={{x: 250, y: 275}} />
+                    <Line d="M 250 232 V 300" delay={0.7} inView={inView} markerDelay={1.3} markerPosition={{x: 250, y: 275}} />
                     
                     {/* Line to top right node */}
-                    <Line d="M 265 150 Q 350 150 350 80 L 350 80 Q 350 60 380 60 L 420 60" delay={0.9} inView={inView} markerPosition={{x: 365, y: 115}}/>
+                    <Line d="M 270 168 C 320 150, 340 100, 360 80" delay={0.9} inView={inView} markerDelay={1.5} markerPosition={{x: 325, y: 115}}/>
                 </svg>
             </div>
         </div>
