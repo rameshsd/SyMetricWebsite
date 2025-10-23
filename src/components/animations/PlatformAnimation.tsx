@@ -5,8 +5,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Repeat, Database, ClipboardList, Gem } from "lucide-react";
 
+// Tiny className helper (avoids external imports in sandbox)
 const cn = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
 
+// Self-contained useInView hook that returns a RefObject<HTMLDivElement>
 function useInView(options?: { root?: Element | Document | null; rootMargin?: string; threshold?: number | number[]; triggerOnce?: boolean }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
@@ -37,11 +39,12 @@ function useInView(options?: { root?: Element | Document | null; rootMargin?: st
   return [ref, inView] as const;
 }
 
+// Motion variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.18, delayChildren: 0.2 },
   },
 };
 
@@ -59,8 +62,9 @@ const pathVariants = (delay = 0) => ({
   },
 });
 
-const Node = ({ icon: Icon, label, className }: { icon: React.ElementType; label: string, className?: string }) => (
-  <motion.div variants={itemVariants} className={cn("flex flex-col items-center gap-2 z-10", className)}>
+// Node component
+const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
+  <motion.div variants={itemVariants} className="flex flex-col items-center gap-2 z-10 w-28 sm:w-32">
     <div className={cn("flex items-center justify-center rounded-2xl border bg-background shadow-md transition-all", "w-full h-20 sm:h-24")}>
       <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
     </div>
@@ -68,6 +72,7 @@ const Node = ({ icon: Icon, label, className }: { icon: React.ElementType; label
   </motion.div>
 );
 
+// Animated stroke path using framer-motion's pathLength
 const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
   <motion.path
     d={d}
@@ -80,30 +85,30 @@ const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
   />
 );
 
-const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
+// Particle that travels along a path id using SVG animateMotion
+const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
   <g>
-    <polygon points="-4 -4, 0 4, 4 -4, -4 -4" fill="hsl(var(--primary))" filter="url(#glow)">
-       <animateMotion dur="5s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
+    <circle r={4} fill="hsl(var(--primary))" filter="url(#glow)">
+      <animateMotion dur="4s" begin={`${delay + 0.8}s`} repeatCount="indefinite">
         <mpath href={`#${pathId}`} />
       </animateMotion>
-    </polygon>
+    </circle>
   </g>
 );
-
 
 export const PlatformAnimation = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
 
-  const viewBoxWidth = 500;
-  const viewBoxHeight = 500;
+  const viewBoxWidth = 600;
+  const viewBoxHeight = 400;
 
-  const topNodeY = 60;
-  const busLineY = 220;
-  const bottomNodeY = 380;
+  const topY = 60;
+  const busY = 200;
+  const bottomY = 320;
   
   const centerX = viewBoxWidth / 2;
-  const leftNodeX = viewBoxWidth * 0.2; 
-  const rightNodeX = viewBoxWidth * 0.8;
+  const leftX = viewBoxWidth * 0.20; // Adjusted for symmetrical spacing
+  const rightX = viewBoxWidth * 0.80; // Adjusted for symmetrical spacing
 
   return (
     <div ref={ref} className="w-full h-full">
@@ -111,56 +116,69 @@ export const PlatformAnimation = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="relative w-full h-full flex-col items-center justify-start hidden md:flex pt-4"
+        className="relative w-full h-[520px] flex flex-col items-center justify-start pt-4 overflow-visible"
       >
-        <Node icon={Gem} label="SyMetric Platform" className="w-40" />
+        {/* Top node (desktop) */}
+        <div className="absolute" style={{ top: 0, left: "50%", transform: "translateX(-50%)" }}>
+          <Node icon={Gem} label="SyMetric Platform" />
+        </div>
 
-        <div className="absolute w-full h-full top-0 left-0">
-           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0 pointer-events-none overflow-visible">
+        {/* Bottom nodes (desktop) */}
+        <div className="absolute hidden md:flex justify-center w-full" style={{ bottom: 0, left: '50%', transform: 'translateX(-50%)' }}>
+          <div className="flex justify-between w-[550px]">
+            <Node icon={Repeat} label="IRT / IWRS" />
+            <Node icon={ClipboardList} label="CTM" />
+            <Node icon={Database} label="EDC" />
+          </div>
+        </div>
+        
+        {/* SVG canvas */}
+        <div className="absolute top-0 left-0 w-full h-full hidden md:block">
+          <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0 pointer-events-none overflow-visible">
             <defs>
-              <marker id="arrowhead" viewBox="-5 -5 10 10" refX="0" refY="0" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-                <path d="M 0 0 L -5 -5 L -5 5 Z" fill="hsl(var(--primary))" />
+              <marker id="arrowhead" viewBox="-2 -5 10 10" refX="5" refY="0" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                <path d="M 0 0 L 5 2.5 L 0 5 z" fill="hsl(var(--primary))" />
               </marker>
+
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
                 <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
-              <path id="path-left" d={`M ${centerX} ${topNodeY + 50} V ${busLineY} H ${leftNodeX} V ${bottomNodeY}`} fill="none"/>
-              <path id="path-right" d={`M ${centerX} ${topNodeY + 50} V ${busLineY} H ${rightNodeX} V ${bottomNodeY}`} fill="none"/>
+
+              <path id="p-left" d={`M ${centerX} ${topY + 50} V ${busY} H ${leftX} V ${bottomY - 10}`} fill="none" />
+              <path id="p-center" d={`M ${centerX} ${topY + 50} V ${busY} H ${centerX} V ${bottomY - 10}`} fill="none" />
+              <path id="p-right" d={`M ${centerX} ${topY + 50} V ${busY} H ${rightX} V ${bottomY - 10}`} fill="none" />
             </defs>
 
             {/* Visible Lines */}
-            <FlowArrow d={`M ${centerX} ${topNodeY + 50} V ${busLineY}`} delay={0.2} />
-            <FlowArrow d={`M ${leftNodeX-20} ${busLineY} H ${rightNodeX+20}`} delay={0.4} />
-            <FlowArrow d={`M ${leftNodeX} ${busLineY} V ${bottomNodeY}`} delay={0.6} />
-            <FlowArrow d={`M ${rightNodeX} ${busLineY} V ${bottomNodeY}`} delay={0.6} />
-            
+            <FlowArrow d={`M ${centerX} ${topY + 50} V ${busY}`} delay={0.25} />
+            <FlowArrow d={`M ${leftX - 20} ${busY} H ${rightX + 20}`} delay={0.45} />
+            <FlowArrow d={`M ${leftX} ${busY} V ${bottomY - 10}`} delay={0.65} />
+            <FlowArrow d={`M ${centerX} ${busY} V ${bottomY - 10}`} delay={0.85} />
+            <FlowArrow d={`M ${rightX} ${busY} V ${bottomY - 10}`} delay={1.05} />
+
             {/* Animated Particles */}
-            <TravelingStar pathId="#path-left" delay={0.8} />
-            <TravelingStar pathId="#path-right" delay={1.2} />
+            <FlowParticle pathId="p-left" delay={0.6} />
+            <FlowParticle pathId="p-center" delay={0.9} />
+            <FlowParticle pathId="p-right" delay={1.1} />
           </svg>
         </div>
 
-        <div className="absolute flex justify-between w-full" style={{ top: bottomNodeY - 40, paddingLeft: '10%', paddingRight: '10%' }}>
-            <Node icon={Repeat} label="IRT / IWRS" className="w-32"/>
-            <Node icon={ClipboardList} label="CTM" className="w-32"/>
+
+        {/* Mobile stacked layout */}
+        <div className="flex flex-col items-center gap-8 md:hidden mt-6 px-6">
+          <Node icon={Gem} label="SyMetric Platform" />
+          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
+          <Node icon={Repeat} label="IRT / IWRS" />
+          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
+          <Node icon={ClipboardList} label="CTM" />
+          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
+          <Node icon={Database} label="EDC" />
         </div>
       </motion.div>
-
-      {/* Mobile stacked layout */}
-      <div className="flex flex-col items-center gap-8 md:hidden mt-6 px-6">
-          <Node icon={Gem} label="SyMetric Platform" className="w-40" />
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-          <Node icon={Repeat} label="IRT / IWRS" className="w-32" />
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-          <Node icon={ClipboardList} label="CTM" className="w-32" />
-          <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
-          <Node icon={Database} label="EDC" className="w-32"/>
-      </div>
-
     </div>
   );
 };
