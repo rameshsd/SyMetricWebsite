@@ -12,6 +12,7 @@ import { HostingOptions } from '@/components/solutions/HostingOptions';
 import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
+import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -95,6 +96,7 @@ export default function ClinicalTrialPlatformPage() {
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
+        <RelatedProductsSection />
 
         <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
