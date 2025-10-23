@@ -49,7 +49,7 @@ export function RelatedProductsSection() {
 
     return (
         <section className="py-16 md:py-24 bg-secondary/50">
-            <div className="container">
+            <div className="container mx-auto px-4 md:px-6">
                 <SectionTitle 
                     title="Turn your clinical data into a strategic driver of performance"
                     description="You're under pressure to do more with less. Equip your research team to operate more efficiently, anticipate change, and lead with confidence—with the AI-enabled SyMetric Platform."

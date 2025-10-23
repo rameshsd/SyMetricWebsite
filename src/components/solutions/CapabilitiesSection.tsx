@@ -49,7 +49,7 @@ export function CapabilitiesSection() {
 
   return (
     <section className="py-16 md:py-24 bg-background">
-      <div className="container">
+      <div className="container mx-auto px-4 md:px-6">
         <SectionTitle
             title="Explore Clinical Trial Management Capabilities"
             description="Streamline clinical trial processes and improve accuracy with automation."
