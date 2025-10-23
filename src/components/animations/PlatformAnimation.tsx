@@ -69,7 +69,8 @@ const Node = ({
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
         <motion.path
-            d="M-4 0L-1.5 1.5L0 4L1.5 1.5L4 0L1.5 -1.5L0 -4L-1.5 -1.5Z"
+            // Centered star path data
+            d="M0 -5.5L1.65 -1.65L5.5 0L1.65 1.65L0 5.5L-1.65 1.65L-5.5 0L-1.65 -1.65Z"
             fill="hsl(var(--primary))"
             className="opacity-0"
             style={{ transform: 'scale(0.7)' }}
@@ -129,14 +130,23 @@ export const PlatformAnimation = () => {
             {/* SVG container for lines and stars */}
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
-                    <path id="path-irt" d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} V ${bottomNodeY-48}`} fill="none" />
-                    <path id="path-ctm" d={`M ${centerNodeX} ${topNodeY} V ${bottomNodeY-48}`} fill="none" />
-                    <path id="path-edc" d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${rightNodeX} V ${bottomNodeY-48}`} fill="none" />
+                    <path id="path-irt" d={`M ${centerNodeX} ${topNodeY + 40} V ${busLineY} H ${leftNodeX}`} fill="none" />
+                    <path id="path-ctm" d={`M ${centerNodeX} ${topNodeY + 40} V ${bottomNodeY - 60}`} fill="none" />
+                    <path id="path-edc" d={`M ${centerNodeX} ${topNodeY + 40} V ${busLineY} H ${rightNodeX}`} fill="none" />
                 </defs>
 
                 {/* Visible Lines */}
-                <motion.path
-                    d={`M ${centerNodeX} ${topNodeY} V ${busLineY} M ${leftNodeX} ${busLineY} H ${rightNodeX} M ${leftNodeX} ${busLineY} V ${bottomNodeY-48} M ${centerNodeX} ${busLineY} V ${bottomNodeY-48} M ${rightNodeX} ${busLineY} V ${bottomNodeY-48}`}
+                 <motion.path
+                    d={`M ${leftNodeX} ${bottomNodeY-48} V ${busLineY} H ${rightNodeX}`}
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    variants={pathVariants(0.4)}
+                />
+                 <motion.path
+                    d={`M ${centerNodeX} ${topNodeY + 40} V ${bottomNodeY-48}`}
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
