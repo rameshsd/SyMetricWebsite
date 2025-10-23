@@ -11,34 +11,29 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.2,
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.95 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
-const pathVariants = (delay: number) => ({
-  hidden: { pathLength: 0 },
-  visible: { 
+const pathVariants = (delay: number = 0) => ({
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
     pathLength: 1,
-    transition: { duration: 0.8, ease: 'easeInOut', delay }
+    opacity: 1,
+    transition: {
+      duration: 1,
+      ease: 'easeInOut',
+      delay,
+    },
   },
 });
-
-const sparkleVariants = (delay: number) => ({
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-        opacity: [0, 1, 0],
-        scale: [0, 1.2, 0],
-        transition: { delay: delay + 0.6, duration: 0.6, repeat: Infinity, repeatDelay: 2 }
-    }
-});
-
 
 const Node = ({
   icon: Icon,
@@ -81,21 +76,25 @@ const Node = ({
   );
 };
 
-
-const Sparkle = ({ className, delay }: { className?: string, delay: number }) => (
-    <motion.svg
-      variants={sparkleVariants(delay)}
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
+const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
+  return (
+    <motion.path
+      d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"
+      className="text-yellow-400"
       fill="currentColor"
-      stroke="none"
-      className={cn("text-primary absolute z-20", className)}
+      style={{ scale: 0.8 }}
     >
-        <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z" />
-    </motion.svg>
-);
+      <animateMotion
+        dur="5s"
+        begin={`${delay}s`}
+        repeatCount="indefinite"
+        rotate="auto"
+      >
+        <mpath href={`#${pathId}`} />
+      </animateMotion>
+    </motion.path>
+  );
+};
 
 
 export const PlatformAnimation = () => {
@@ -111,35 +110,93 @@ export const PlatformAnimation = () => {
         >
             {/* SVG container for lines and shapes */}
             <svg width="100%" height="100%" viewBox="0 0 600 450" className="absolute inset-0 z-0">
-                {/* Line to IRT/IWRS */}
+                 {/* Define paths for animation */}
+                <defs>
+                    {/* Main bus line */}
+                    <path
+                        id="main-bus"
+                        d="M 300 130 V 220 H 124 H 476"
+                        fill="none"
+                    />
+                    {/* Path to IRT */}
+                    <path
+                        id="path-irt"
+                        d="M 124 220 V 310"
+                        fill="none"
+                    />
+                     {/* Path to CTM */}
+                    <path
+                        id="path-ctm"
+                        d="M 300 130 V 310"
+                        fill="none"
+                    />
+                     {/* Path to EDC */}
+                    <path
+                        id="path-edc"
+                        d="M 476 220 V 310"
+                        fill="none"
+                    />
+                </defs>
+
+                {/* Draw visible paths */}
                 <motion.path
-                    d="M 300 110 V 180 H 110"
+                    d="M 300 130 V 220 H 124"
                     fill="none"
                     stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     variants={pathVariants(0.2)}
                 />
-                
-                {/* Line to CTM */}
-                <motion.path
-                    d="M 300 110 V 220 H 300"
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    variants={pathVariants(0.4)}
-                />
-
-                {/* Line to EDC */}
                  <motion.path
-                    d="M 300 110 V 180 H 490"
+                    d="M 230 220 H 370"
                     fill="none"
                     stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    variants={pathVariants(0.6)}
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    variants={pathVariants(0.2)}
                 />
+                <motion.path
+                    d="M 476 220 H 370"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    variants={pathVariants(0.2)}
+                />
+                <motion.path
+                    d="M 124 220 V 310"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    variants={pathVariants(0.7)}
+                />
+                <motion.path
+                    d="M 300 220 V 310"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    variants={pathVariants(0.5)}
+                />
+                 <motion.path
+                    d="M 476 220 V 310"
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    variants={pathVariants(0.9)}
+                />
+                
+                {/* Traveling Stars */}
+                <g visibility={inView ? 'visible' : 'hidden'}>
+                    <TravelingStar pathId="path-irt" delay={1} />
+                    <TravelingStar pathId="path-ctm" delay={1.2} />
+                    <TravelingStar pathId="path-edc" delay={1.4} />
+                </g>
             </svg>
 
             {/* Central Hub */}
@@ -152,20 +209,15 @@ export const PlatformAnimation = () => {
             </div>
             
             {/* Bottom Nodes */}
-            <div className="absolute bottom-[80px] left-[62px]">
+            <div className="absolute bottom-[20px] left-[76px]">
                 <Node icon={Repeat} label="IRT/IWRS" />
             </div>
-            <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-[20px] left-1/2 -translate-x-1/2">
                 <Node icon={ClipboardList} label="CTM" />
             </div>
-             <div className="absolute bottom-[80px] right-[62px]">
+             <div className="absolute bottom-[20px] right-[76px]">
                 <Node icon={Database} label="EDC" />
             </div>
-            
-            {/* Sparkles */}
-            <Sparkle delay={0.2} style={{ top: '298px', left: '101px' }} />
-            <Sparkle delay={0.4} style={{ top: '298px', left: '291px' }} />
-            <Sparkle delay={0.6} style={{ top: '298px', right: '101px' }} />
 
         </motion.div>
     );
