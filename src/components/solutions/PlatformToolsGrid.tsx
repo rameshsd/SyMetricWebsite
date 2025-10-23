@@ -27,6 +27,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const toolsData = [
   { 
@@ -120,7 +121,7 @@ export function PlatformToolsGrid() {
   const [selectedTool, setSelectedTool] = useState(toolsData[0]);
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/50 min-h-screen">
+    <section className="py-16 md:py-24 bg-secondary/50 min-h-screen flex flex-col">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -130,83 +131,85 @@ export function PlatformToolsGrid() {
             A comprehensive, modular suite to power every aspect of your clinical trial.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-5 lg:col-span-4 sticky top-24">
-                <div className="grid grid-cols-2 gap-2">
-                    {toolsData.map((tool) => (
-                        <button 
-                            key={tool.id} 
-                            onClick={() => setSelectedTool(tool)}
-                            className={cn(
-                                "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all duration-200",
-                                selectedTool.id === tool.id 
-                                    ? "bg-primary/10 text-primary font-semibold shadow-sm" 
-                                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                            )}
-                        >
-                            <div className={cn(
-                                "flex items-center justify-center h-8 w-8 rounded-lg shrink-0",
-                                selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
-                            )}>
-                                <tool.icon className="h-5 w-5" />
-                            </div>
-                            <span className="text-xs font-medium">{tool.label}</span>
-                        </button>
-                    ))}
-                </div>
-            </div>
-            
-            <div className="md:col-span-7 lg:col-span-8 sticky top-24">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={selectedTool.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-8"
-                    >
-                        <div>
-                            <h3 className="text-2xl font-bold text-primary">{selectedTool.label}</h3>
-                            <p className="mt-2 text-lg text-muted-foreground">{selectedTool.description}</p>
-                        </div>
-                        
-                        <div className="relative">
-                            <Carousel className="w-full rounded-lg overflow-hidden border shadow-lg bg-background">
-                                <CarouselContent>
-                                {selectedTool.images.map((imageId, index) => {
-                                    const image = PlaceHolderImages.find(p => p.id === imageId);
-                                    return (
-                                        <CarouselItem key={index}>
-                                            <div className="p-1">
-                                                {image && (
-                                                <Image
-                                                    src={image.imageUrl}
-                                                    alt={image.description}
-                                                    width={800}
-                                                    height={500}
-                                                    data-ai-hint={image.imageHint}
-                                                    className="object-contain w-full"
-                                                />
-                                                )}
-                                            </div>
-                                        </CarouselItem>
-                                    )
-                                })}
-                                </CarouselContent>
-                                {selectedTool.images.length > 1 && (
-                                <>
-                                    <CarouselPrevious className="left-4" />
-                                    <CarouselNext className="right-4" />
-                                </>
-                                )}
-                            </Carousel>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 flex-grow grid md:grid-cols-12 gap-8 items-start">
+          <div className="md:col-span-5 lg:col-span-4 sticky top-24 h-[calc(100vh-20rem)]">
+              <ScrollArea className="h-full pr-4">
+                  <div className="space-y-2">
+                      {toolsData.map((tool) => (
+                          <button 
+                              key={tool.id} 
+                              onClick={() => setSelectedTool(tool)}
+                              className={cn(
+                                  "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all duration-200",
+                                  selectedTool.id === tool.id 
+                                      ? "bg-primary/10 text-primary font-semibold shadow-sm" 
+                                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                              )}
+                          >
+                              <div className={cn(
+                                  "flex items-center justify-center h-8 w-8 rounded-lg shrink-0",
+                                  selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
+                              )}>
+                                  <tool.icon className="h-5 w-5" />
+                              </div>
+                              <span className="text-sm font-medium">{tool.label}</span>
+                          </button>
+                      ))}
+                  </div>
+              </ScrollArea>
+          </div>
+          
+          <div className="md:col-span-7 lg:col-span-8 sticky top-24">
+              <AnimatePresence mode="wait">
+                  <motion.div
+                      key={selectedTool.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="space-y-8"
+                  >
+                      <div>
+                          <h3 className="text-2xl font-bold text-primary">{selectedTool.label}</h3>
+                          <p className="mt-2 text-lg text-muted-foreground">{selectedTool.description}</p>
+                      </div>
+                      
+                      <div className="relative">
+                          <Carousel className="w-full rounded-lg overflow-hidden border shadow-lg bg-background">
+                              <CarouselContent>
+                              {selectedTool.images.map((imageId, index) => {
+                                  const image = PlaceHolderImages.find(p => p.id === imageId);
+                                  return (
+                                      <CarouselItem key={index}>
+                                          <div className="p-1">
+                                              {image && (
+                                              <Image
+                                                  src={image.imageUrl}
+                                                  alt={image.description}
+                                                  width={800}
+                                                  height={500}
+                                                  data-ai-hint={image.imageHint}
+                                                  className="object-contain w-full"
+                                              />
+                                              )}
+                                          </div>
+                                      </CarouselItem>
+                                  )
+                              })}
+                              </CarouselContent>
+                              {selectedTool.images.length > 1 && (
+                              <>
+                                  <CarouselPrevious className="left-4" />
+                                  <CarouselNext className="right-4" />
+                              </>
+                              )}
+                          </Carousel>
+                      </div>
+                  </motion.div>
+              </AnimatePresence>
+          </div>
       </div>
     </section>
   );
