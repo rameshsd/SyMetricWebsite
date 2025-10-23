@@ -15,7 +15,6 @@ import {
   LayoutGrid,
   ShieldCheck,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import {
   Carousel,
