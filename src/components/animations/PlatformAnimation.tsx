@@ -25,15 +25,15 @@ const Node = ({ icon: Icon, label, position, delay, inView }: { icon: React.Elem
             transition={{ duration: 0.5, delay }}
             className={cn("absolute flex flex-col items-center", position)}
         >
-            <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center shadow-lg border border-primary/20">
-                <Icon className="w-8 h-8 text-primary" />
+            <div className="w-24 h-24 bg-primary/10 rounded-lg flex items-center justify-center shadow-lg border border-primary/20">
+                <Icon className="w-10 h-10 text-primary" />
             </div>
-            <span className="font-semibold text-xs text-foreground mt-2 text-center">{label}</span>
+            <span className="font-semibold text-sm text-foreground mt-2 text-center">{label}</span>
         </motion.div>
     );
 };
 
-const Line = ({ d, delay, inView, markerPosition, markerDelay }: { d: string; delay: number; inView: boolean; markerPosition: {x: number; y: number}, markerDelay: number }) => {
+const Line = ({ d, delay, inView, markerPosition, markerDelay, markerRotation = 0 }: { d: string; delay: number; inView: boolean; markerPosition: {x: number; y: number}, markerDelay: number, markerRotation?: number }) => {
     return (
         <>
             <motion.path
@@ -53,8 +53,8 @@ const Line = ({ d, delay, inView, markerPosition, markerDelay }: { d: string; de
                 transition={{ duration: 0.4, delay: markerDelay }}
             >
                 <motion.g 
-                    transform={`translate(${markerPosition.x}, ${markerPosition.y})`}
-                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.8, 1], rotate: [0, 45, 90] }}
+                    transform={`translate(${markerPosition.x}, ${markerPosition.y}) rotate(${markerRotation})`}
+                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.8, 1] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: markerDelay }}
                 >
                     <Sparkle className="w-4 h-4 -translate-x-2 -translate-y-2" />
@@ -76,10 +76,10 @@ export const PlatformAnimation = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative flex flex-col items-center z-10"
             >
-                <div className="relative w-32 h-32 rounded-lg border bg-background flex flex-col items-center justify-center p-4 shadow-xl">
-                    <Gem className="w-6 h-6 text-primary mb-1" />
-                    <p className="font-bold text-sm text-foreground">SyMetric</p>
-                    <p className="text-xs text-muted-foreground">Platform</p>
+                <div className="relative w-36 h-36 rounded-lg border bg-background flex flex-col items-center justify-center p-4 shadow-xl">
+                    <Gem className="w-8 h-8 text-primary mb-2" />
+                    <p className="font-bold text-md text-foreground">SyMetric</p>
+                    <p className="text-sm text-muted-foreground">Platform</p>
                 </div>
             </motion.div>
 
@@ -91,29 +91,29 @@ export const PlatformAnimation = () => {
                 <svg width="100%" height="100%" viewBox="0 0 500 450" preserveAspectRatio="xMidYMid meet">
                     {/* Line to top-left (IRT/IWRS) */}
                     <Line 
-                        d="M 220 200 H 135 V 105 H 125" 
+                        d="M 120 100 V 170 H 180" 
                         delay={0.5} 
                         inView={inView} 
                         markerDelay={1.3} 
-                        markerPosition={{x: 125, y: 105}} 
+                        markerPosition={{x: 180, y: 225}} 
                     />
                     
                     {/* Line to top-right (CTM) */}
                     <Line 
-                        d="M 280 200 H 365 V 105 H 375" 
+                        d="M 380 100 V 170 H 320" 
                         delay={0.7} 
                         inView={inView} 
                         markerDelay={1.5} 
-                        markerPosition={{x: 375, y: 105}}
+                        markerPosition={{x: 320, y: 225}}
                     />
                     
                     {/* Line to bottom-right (EDC) */}
                     <Line 
-                        d="M 280 250 H 410 V 350 H 390" 
+                        d="M 380 350 V 280 H 280" 
                         delay={0.9} 
                         inView={inView} 
                         markerDelay={1.7} 
-                        markerPosition={{x: 390, y: 350}}
+                        markerPosition={{x: 250, y: 295}}
                     />
                 </svg>
             </div>
