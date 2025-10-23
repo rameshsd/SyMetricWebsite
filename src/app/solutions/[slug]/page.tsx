@@ -32,7 +32,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
     notFound();
   }
 
-  const heroImage = PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
+  const heroImage = PlaceHolderImages.find(p => p.id === solution.image) || PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
   const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
 
   return (
@@ -47,7 +47,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
          />
       )}
       <TechEdBanner />
-      <CapabilitiesSection />
+      <CapabilitiesSection capabilities={solution.capabilities} />
       <RelatedProductsSection />
     </>
   );

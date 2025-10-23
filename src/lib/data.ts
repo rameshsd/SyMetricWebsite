@@ -62,12 +62,44 @@ export const solutions: Solution[] = [
     slug: 'edc',
     hero: {
         title: 'Electronic Data Capture (EDC)',
-        subtitle: 'Simplify and automate data flow and validation in clinical trials with our well-designed tools that transform data management processes.'
+        subtitle: 'Our innovative Electronic Data Capture (EDC) tool with its agile methodologies allows users to set up and configure study databases in no time. Users can also design Case Report Forms (CRFs) with programmed edit checks and collect high-quality, accurate clinical data along with extracting submission-ready standardized datasets from an easy-to-use web-based graphical user interface.'
     },
     description: 'Tools to simplify and automate data flow and validation in clinical trials.',
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: Database,
     image: 'edc-image',
+    capabilities: [
+      {
+        id: 'ecrf-management',
+        title: 'eCRF Management',
+        description: 'Success of a clinical trial depends largely on well-designed Case Report Forms. Here’s where our eCRF Management module comes in handy by helping design CRFs. It can also program real-time validation checks to operate them efficiently, enabling collection of complete, reliable, and accurate data in line with regulatory standards.',
+        imageId: 'edc-ecrf'
+      },
+      {
+        id: 'sdv',
+        title: 'Source Data Verification',
+        description: 'A key aspect of clinical data management is the Source Data Verification (SDV) process which ensures data quality and conformance to source data. This selective feature focuses on verifying critical study data points instead of 100% SDV for all patients — saving time, effort, and costs while maintaining scientific and ethical integrity of the trial.',
+        imageId: 'edc-sdv'
+      },
+      {
+        id: 'query-management',
+        title: 'Query Management',
+        description: 'Our Discrepancy Management tool helps investigation sites identify and manage data aberrations to ensure that the system captures clean and consistent data. For interim and final comprehensive analysis, the data export feature of our tool enables standard and customizable dataset exports in .CSV and .XLS formats at any time even during the study run.',
+        imageId: 'edc-query'
+      },
+      {
+        id: 'ae-sae-reporting',
+        title: 'AE/SAE Reporting',
+        description: 'As patient safety is the fundamental principle that lies at the core of every clinical trial, it is important that the AE/SAEs are timely reported to stakeholders and regulatory bodies and handled appropriately. Our feature that comes with automatic notifications triggered via email keeps users informed on AE/SAE reporting actions.',
+        imageId: 'edc-reporting'
+      },
+      {
+        id: 'medical-coding',
+        title: 'Medical Coding',
+        description: 'Our built-in coding interface along with real-time data available from our EDC system will help you streamline your coding process. Also, our integrated coding mechanism uses standard medical dictionaries like MedDRA and WHO-Drug Global and can guarantee precise and consistent coding of verbatim terms to harmonized and standard codes.',
+        imageId: 'edc-coding'
+      }
+    ]
   },
   {
     id: 'ctm',
@@ -401,7 +433,7 @@ export const featureGridItems: FeatureGridItem[] = [
     title: 'Spend management',
     description: 'Implement AI-powered spend management processes from source to pay with an integrated suite of solutions to deliver spend visibility, control, and savings.',
     link: '#',
-    linkText: 'Explore spend management solutions'
+linkText: 'Explore spend management solutions'
   },
   {
     icon: SupplyChainIcon,
@@ -484,5 +516,3 @@ export const teamMembers: TeamMember[] = [
   { id: 5, name: 'Isabella Garcia', role: 'VP, Regulatory Affairs', avatar: 'IG', bio: 'Navigates the complex global regulatory landscape to ensure our products and customers are always compliant.' },
   { id: 6, name: 'David Lee', role: 'VP, Business Development', avatar: 'DL', bio: 'Forges strategic partnerships to expand our ecosystem and deliver more value to our customers.' },
 ];
-
-    

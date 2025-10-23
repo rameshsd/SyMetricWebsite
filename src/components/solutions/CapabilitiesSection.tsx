@@ -9,8 +9,13 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import { SectionTitle } from '../shared/section-title';
+import type { SolutionCapability } from '@/lib/types';
 
-const tabs = [
+type CapabilitiesSectionProps = {
+  capabilities?: SolutionCapability[];
+};
+
+const defaultTabs = [
   { id: 'financials', label: 'Study Financials' },
   { id: 'site-management', label: 'Site & Patient Management' },
   { id: 'data-automation', label: 'Data Automation' },
@@ -19,7 +24,7 @@ const tabs = [
   { id: 'central-finance', label: 'Central Finance' },
 ];
 
-const content = {
+const defaultContent: { [key: string]: any } = {
   financials: {
     image: PlaceHolderImages.find(p => p.id === 'financial-dashboard'),
     features: [
@@ -43,16 +48,33 @@ const content = {
   },
 };
 
-export function CapabilitiesSection() {
-  const [activeTab, setActiveTab] = useState('financials');
-  const activeContent = content[activeTab as keyof typeof content];
+export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {
+  const tabs = capabilities && capabilities.length > 0
+    ? capabilities.map(c => ({ id: c.id, label: c.title }))
+    : defaultTabs;
+  
+  const content = capabilities && capabilities.length > 0
+    ? capabilities.reduce((acc, cap) => {
+        acc[cap.id] = {
+          image: PlaceHolderImages.find(p => p.id === cap.imageId),
+          features: [{ title: cap.title, description: cap.description }],
+        };
+        return acc;
+      }, {} as { [key: string]: any })
+    : defaultContent;
+
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const activeContent = content[activeTab];
+  const mainTitle = capabilities ? "Solution Offerings" : "Explore Clinical Trial Management Capabilities";
+  const mainDescription = capabilities ? "" : "Streamline clinical trial processes and improve accuracy with automation.";
+
 
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <SectionTitle
-            title="Explore Clinical Trial Management Capabilities"
-            description="Streamline clinical trial processes and improve accuracy with automation."
+            title={mainTitle}
+            description={mainDescription}
         />
 
         <div className="border-b mt-12">
@@ -89,17 +111,19 @@ export function CapabilitiesSection() {
                 )}
               </div>
               <div className="space-y-8">
-                {activeContent.features.map(feature => (
+                {activeContent.features.map((feature: {title: string; description: string}) => (
                   <div key={feature.title}>
                     <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
                     <p className="text-muted-foreground mt-1">{feature.description}</p>
                   </div>
                 ))}
-                <Button variant="link" asChild className="p-0 h-auto text-base">
-                  <Link href="#">
-                    Explore SyMetric Cloud Public Edition <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                 { !capabilities && (
+                    <Button variant="link" asChild className="p-0 h-auto text-base">
+                      <Link href="#">
+                        Explore SyMetric Cloud Public Edition <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                )}
               </div>
             </div>
           )}

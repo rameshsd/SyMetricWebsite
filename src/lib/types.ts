@@ -7,6 +7,13 @@ export type NavItem = {
   subItems?: NavItem[];
 };
 
+export type SolutionCapability = {
+  id: string;
+  title: string;
+  description: string;
+  imageId: string;
+}
+
 export type Solution = {
   id: string;
   name:string;
@@ -19,6 +26,7 @@ export type Solution = {
   longDescription: string;
   icon: LucideIcon;
   image: string;
+  capabilities?: SolutionCapability[];
 };
 
 export type Industry = {
