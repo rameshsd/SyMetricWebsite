@@ -12,13 +12,14 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const pathVariants = (delay: number = 0) => ({
@@ -27,7 +28,7 @@ const pathVariants = (delay: number = 0) => ({
     pathLength: 1,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 1.5,
       ease: 'easeInOut',
       delay,
     },
@@ -38,15 +39,17 @@ const Node = ({
   icon: Icon,
   label,
   isCentral = false,
+  className,
 }: {
   icon: React.ElementType;
   label: string;
   isCentral?: boolean;
+  className?: string;
 }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="flex flex-col items-center gap-2 z-10"
+      className={cn("flex flex-col items-center gap-2 z-10", className)}
     >
       <div
         className={cn(
@@ -66,18 +69,19 @@ const Node = ({
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
         <motion.path
+            // Centered star shape
             d="M-5.5 -5.5 L -3.85 -1.65 L 0 0 L -3.85 1.65 L -5.5 5.5 L -7.15 1.65 L -11 0 L -7.15 -1.65 Z"
             fill="hsl(var(--primary))"
             className="opacity-0"
             style={{ transform: 'scale(0.8)' }}
             variants={{
                 hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { delay: delay + 1 } }
+                visible: { opacity: 1, transition: { delay: delay + 1.5 } }
             }}
         >
             <animateMotion
                 dur="4s"
-                begin={`${delay + 1}s`}
+                begin={`${delay + 1.5}s`}
                 repeatCount="indefinite"
                 rotate="auto"
                 keyPoints="0;1"
@@ -99,49 +103,41 @@ export const PlatformAnimation = () => {
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="w-full max-w-3xl h-[450px] flex items-center justify-center relative scale-90 md:scale-100 mx-auto"
+            className="w-full max-w-4xl h-[450px] relative scale-90 md:scale-100 mx-auto"
         >
             {/* Top Central Node */}
-            <div className="absolute top-[20px] left-1/2 -translate-x-1/2">
-                <Node icon={Gem} label="SyMetric Platform" isCentral />
+            <Node 
+                icon={Gem} 
+                label="SyMetric Platform" 
+                isCentral 
+                className="absolute top-[20px] left-1/2 -translate-x-1/2"
+            />
+            
+            {/* Bottom Row Nodes */}
+            <div className="absolute bottom-[40px] w-full flex justify-between px-8">
+                 <Node icon={Repeat} label="IRT/IWRS" />
+                 <Node icon={ClipboardList} label="CTM" />
+                 <Node icon={Database} label="EDC" />
             </div>
 
             {/* SVG container for lines and stars */}
-            <svg width="100%" height="100%" viewBox="0 0 700 450" className="absolute inset-0 z-0">
+            <svg width="100%" height="100%" viewBox="0 0 800 450" className="absolute inset-0 z-0">
                 <defs>
                     {/* Motion Paths for Stars */}
-                    <path id="path-irt" d="M350 116 V 190 H 155" fill="none" />
-                    <path id="path-ctm" d="M350 116 V 190 H 350" fill="none" />
-                    <path id="path-edc" d="M350 116 V 190 H 545" fill="none" />
+                    <path id="path-irt" d="M400 110 V 200 H 158 V 280" fill="none" />
+                    <path id="path-ctm" d="M400 110 V 200 H 400 V 280" fill="none" />
+                    <path id="path-edc" d="M400 110 V 200 H 642 V 280" fill="none" />
                 </defs>
 
                 {/* Visible Lines */}
                 <motion.path
-                    d="M350 116 V 190 H 155"
+                    d="M400 110 V 200 M158 200 H 642 M158 200 V 280 M400 200 V 280 M642 200 V 280"
                     fill="none"
                     stroke="hsl(var(--primary))"
-                    strokeWidth="2.5"
+                    strokeWidth="3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     variants={pathVariants(0.4)}
-                />
-                <motion.path
-                    d="M350 116 V 190 H 350" // to CTM
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    variants={pathVariants(0.6)}
-                />
-                <motion.path
-                    d="M350 116 V 190 H 545" // to EDC
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    variants={pathVariants(0.8)}
                 />
 
                 {/* Traveling Stars - must be rendered after paths */}
@@ -149,17 +145,6 @@ export const PlatformAnimation = () => {
                 <TravelingStar pathId="#path-ctm" delay={0.6} />
                 <TravelingStar pathId="#path-edc" delay={0.8} />
             </svg>
-
-            {/* Bottom Nodes */}
-            <div className="absolute bottom-[80px] left-[85px]">
-                <Node icon={Repeat} label="IRT/IWRS" />
-            </div>
-            <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2">
-                <Node icon={ClipboardList} label="CTM" />
-            </div>
-            <div className="absolute bottom-[80px] right-[85px]">
-                <Node icon={Database} label="EDC" />
-            </div>
         </motion.div>
     );
 };
