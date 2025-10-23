@@ -56,6 +56,9 @@ export default function SolutionsPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {solutions.map((solution) => {
                             const placeholder = PlaceHolderImages.find(p => p.id === solution.image);
+                            const solutionUrl = solution.slug === 'clinical-trial-platform' 
+                              ? '/solutions/clinical-trial-platform' 
+                              : `/solutions/${solution.slug}`;
                             return (
                                 <Card key={solution.id} className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                                     <div className="relative w-full h-48 overflow-hidden">
@@ -81,7 +84,7 @@ export default function SolutionsPage() {
                                     </CardContent>
                                     <div className="p-6 pt-0">
                                         <Button variant="link" asChild className="p-0 h-auto">
-                                            <Link href={`/solutions/${solution.slug}`}>
+                                            <Link href={solutionUrl}>
                                                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
                                             </Link>
                                         </Button>
