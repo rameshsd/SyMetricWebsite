@@ -45,12 +45,12 @@ const Node = ({
   return (
     <motion.div
       variants={itemVariants}
-      className="flex flex-col items-center gap-2 z-10 w-36"
+      className="flex flex-col items-center gap-2 z-10 w-28"
     >
       <div
         className={cn(
           'flex items-center justify-center rounded-lg border bg-background shadow-lg',
-          'w-full h-24' 
+          'w-full h-20' 
         )}
       >
         <Icon className={cn('text-primary', 'w-10 h-10')} />
@@ -99,7 +99,7 @@ export const PlatformAnimation = () => {
     const busLineY = 200;
     const bottomNodeY = 320;
     
-    constcenterX = viewBoxWidth / 2;
+    const centerX = viewBoxWidth / 2;
     const leftNodeX = viewBoxWidth * 0.25;
     const rightNodeX = viewBoxWidth * 0.75;
 
@@ -119,7 +119,7 @@ export const PlatformAnimation = () => {
 
             {/* Bottom Nodes Container */}
             <div className="absolute w-full" style={{ top: `${bottomNodeY - 60}px` }}>
-                <div className="flex justify-between max-w-xl mx-auto">
+                <div className="flex justify-around max-w-2xl mx-auto">
                     <Node icon={Repeat} label="IRT/IWRS" />
                     <Node icon={ClipboardList} label="CTM" />
                     <Node icon={Database} label="EDC" />
@@ -143,7 +143,7 @@ export const PlatformAnimation = () => {
                     variants={pathVariants(0.4)}
                 />
                  <motion.path
-                    d={`M ${leftNodeX} ${busLineY} H ${rightNodeX}`} // Horizontal Bus
+                    d={`M ${leftNodeX - 40} ${busLineY} H ${rightNodeX + 40}`} // Horizontal Bus
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
