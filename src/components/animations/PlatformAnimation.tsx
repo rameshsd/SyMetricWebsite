@@ -69,7 +69,7 @@ const Node = ({
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
         <motion.path
-            d="M-5 0L-2 2L0 5L2 2L5 0L2 -2L0 -5L-2 -2Z"
+            d="M-4 0L-1.5 1.5L0 4L1.5 1.5L4 0L1.5 -1.5L0 -4L-1.5 -1.5Z"
             fill="hsl(var(--primary))"
             className="opacity-0"
             style={{ transform: 'scale(0.7)' }}
@@ -115,32 +115,28 @@ export const PlatformAnimation = () => {
             animate={inView ? 'visible' : 'hidden'}
             className="w-full max-w-4xl h-[400px] relative scale-90 md:scale-100 mx-auto"
         >
-            {/* Top Central Node */}
+            {/* Nodes Container */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2">
-                 <Node icon={Gem} label="SyMetric Platform" isCentral />
+                <Node icon={Gem} label="SyMetric Platform" isCentral />
             </div>
             
-            {/* Bottom Row Nodes Container */}
-            <div className="absolute bottom-0 w-full px-[70px]">
-                <div className="flex justify-between w-full">
-                    <Node icon={Repeat} label="IRT/IWRS" />
-                    <Node icon={ClipboardList} label="CTM" />
-                    <Node icon={Database} label="EDC" />
-                </div>
+            <div className="absolute w-full bottom-0 flex justify-between px-4 sm:px-8 md:px-12">
+                <Node icon={Repeat} label="IRT/IWRS" />
+                <Node icon={ClipboardList} label="CTM" />
+                <Node icon={Database} label="EDC" />
             </div>
-
 
             {/* SVG container for lines and stars */}
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
-                    <path id="path-irt" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${leftNodeX}`} fill="none" />
-                    <path id="path-ctm" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${centerNodeX}`} fill="none" />
-                    <path id="path-edc" d={`M ${centerNodeX} ${topNodeY + 4} V ${busLineY} H ${rightNodeX}`} fill="none" />
+                    <path id="path-irt" d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} V ${bottomNodeY-48}`} fill="none" />
+                    <path id="path-ctm" d={`M ${centerNodeX} ${topNodeY} V ${bottomNodeY-48}`} fill="none" />
+                    <path id="path-edc" d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${rightNodeX} V ${bottomNodeY-48}`} fill="none" />
                 </defs>
 
                 {/* Visible Lines */}
                 <motion.path
-                    d={`M ${centerNodeX} ${topNodeY} V ${busLineY} H ${leftNodeX} M ${centerNodeX} ${busLineY} H ${rightNodeX} M ${leftNodeX} ${busLineY} V ${bottomNodeY-48} M ${centerNodeX} ${busLineY} V ${bottomNodeY-48} M ${rightNodeX} ${busLineY} V ${bottomNodeY-48}`}
+                    d={`M ${centerNodeX} ${topNodeY} V ${busLineY} M ${leftNodeX} ${busLineY} H ${rightNodeX} M ${leftNodeX} ${busLineY} V ${bottomNodeY-48} M ${centerNodeX} ${busLineY} V ${bottomNodeY-48} M ${rightNodeX} ${busLineY} V ${bottomNodeY-48}`}
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
