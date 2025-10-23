@@ -27,6 +27,8 @@ import {
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { AnimatePresence, motion } from "framer-motion";
 
 const toolsData = [
   { 
@@ -120,72 +122,94 @@ export function PlatformToolsGrid() {
   const [selectedTool, setSelectedTool] = useState(toolsData[0]);
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a0029] text-white">
+    <section className="py-16 md:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Overview of Tools on Our Platform
           </h2>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {toolsData.map((tool) => (
-            <button key={tool.id} onClick={() => setSelectedTool(tool)}>
-              <Card 
-                className={cn(
-                    "text-center bg-transparent border-none shadow-none transition-all duration-300",
-                    selectedTool.id === tool.id ? "text-primary" : "text-white/70 hover:text-white"
-                )}
-              >
-                <CardContent className="p-4">
-                  <tool.icon className="h-12 w-12 mx-auto mb-4" />
-                  <h3 className="font-semibold text-sm">{tool.label}</h3>
-                </CardContent>
-              </Card>
-            </button>
-          ))}
+          <p className="mt-4 text-lg text-muted-foreground">
+            A comprehensive, modular suite to power every aspect of your clinical trial.
+          </p>
         </div>
         
-        {selectedTool && (
-          <div className="mt-20 pt-10 border-t border-white/10">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-green-300">{selectedTool.label}</h3>
-                <p className="mt-2 text-lg text-white/80">{selectedTool.description}</p>
-              </div>
-              <div className="relative">
-                 <Carousel className="w-full max-w-xl mx-auto">
-                  <CarouselContent>
-                    {selectedTool.images.map((imageId, index) => {
-                       const image = PlaceHolderImages.find(p => p.id === imageId);
-                       return (
-                          <CarouselItem key={index}>
-                              {image && (
-                                <Image
-                                    src={image.imageUrl}
-                                    alt={image.description}
-                                    width={800}
-                                    height={500}
-                                    data-ai-hint={image.imageHint}
-                                    className="rounded-lg shadow-2xl object-contain"
-                                />
-                              )}
-                          </CarouselItem>
-                       )
-                    })}
-                  </CarouselContent>
-                  {selectedTool.images.length > 1 && (
-                    <>
-                      <CarouselPrevious className="left-[-50px] text-white" />
-                      <CarouselNext className="right-[-50px] text-white" />
-                    </>
-                  )}
-                </Carousel>
-              </div>
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+            <div className="md:col-span-1 sticky top-24">
+                <ScrollArea className="h-full max-h-[600px] pr-4">
+                    <div className="space-y-2">
+                        {toolsData.map((tool) => (
+                            <button 
+                                key={tool.id} 
+                                onClick={() => setSelectedTool(tool)}
+                                className={cn(
+                                    "w-full flex items-center gap-4 p-3 rounded-lg text-left transition-all duration-200",
+                                    selectedTool.id === tool.id 
+                                        ? "bg-primary/10 text-primary font-semibold shadow-sm" 
+                                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                                )}
+                            >
+                                <div className={cn(
+                                    "flex items-center justify-center h-10 w-10 rounded-lg shrink-0",
+                                    selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
+                                )}>
+                                    <tool.icon className="h-6 w-6" />
+                                </div>
+                                <span className="text-sm">{tool.label}</span>
+                            </button>
+                        ))}
+                    </div>
+                </ScrollArea>
             </div>
-          </div>
-        )}
+            
+            <div className="md:col-span-2">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={selectedTool.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-8"
+                    >
+                        <div>
+                            <h3 className="text-2xl font-bold text-primary">{selectedTool.label}</h3>
+                            <p className="mt-2 text-lg text-muted-foreground">{selectedTool.description}</p>
+                        </div>
+                        
+                        <div className="relative">
+                            <Carousel className="w-full rounded-lg overflow-hidden border shadow-lg">
+                                <CarouselContent>
+                                {selectedTool.images.map((imageId, index) => {
+                                    const image = PlaceHolderImages.find(p => p.id === imageId);
+                                    return (
+                                        <CarouselItem key={index}>
+                                            {image && (
+                                            <Image
+                                                src={image.imageUrl}
+                                                alt={image.description}
+                                                width={800}
+                                                height={500}
+                                                data-ai-hint={image.imageHint}
+                                                className="object-contain w-full"
+                                            />
+                                            )}
+                                        </CarouselItem>
+                                    )
+                                })}
+                                </CarouselContent>
+                                {selectedTool.images.length > 1 && (
+                                <>
+                                    <CarouselPrevious className="left-4" />
+                                    <CarouselNext className="right-4" />
+                                </>
+                                )}
+                            </Carousel>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+        </div>
       </div>
     </section>
   );
 }
-
