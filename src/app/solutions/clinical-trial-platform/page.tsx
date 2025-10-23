@@ -17,6 +17,7 @@ import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection'
 import { Database, Repeat, ClipboardList } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
+import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
 
 
 export const metadata: Metadata = {
@@ -67,6 +68,7 @@ export default function ClinicalTrialPlatformPage() {
         <SyMetricAdvantage />
         <SecurityCompliance />
         <CapabilitiesSection />
+        <ExploreSolutions />
         <RelatedProductsSection />
 
         <section className="py-16 md:py-24">
