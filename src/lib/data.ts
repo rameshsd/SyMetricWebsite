@@ -16,6 +16,8 @@ import {
   TrendingUp,
   Users,
   PieChart,
+  Repeat,
+  ClipboardList,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -38,6 +40,42 @@ export const solutions: Solution[] = [
     image: 'solution-ctp',
   },
   {
+    id: 'irt-iwrs',
+    name: 'IRT/IWRS',
+    slug: 'irt-iwrs',
+    description: 'Comprehensive solution for randomization and trial supply management.',
+    longDescription: 'Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.',
+    icon: Repeat,
+    image: 'irt-iwrs-image',
+  },
+  {
+    id: 'edc',
+    name: 'EDC',
+    slug: 'edc',
+    description: 'Tools to simplify and automate data flow and validation in clinical trials.',
+    longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
+    icon: Database,
+    image: 'edc-image',
+  },
+  {
+    id: 'ctm',
+    name: 'CTM',
+    slug: 'ctm',
+    description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.',
+    longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
+    icon: ClipboardList,
+    image: 'ctm-image',
+  },
+  {
+    id: 'trial-analytics',
+    name: 'Trial Analytics',
+    slug: 'trial-analytics',
+    description: 'Unlock insights with advanced analytics, visualizations, and predictive modeling.',
+    longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
+    icon: PieChart,
+    image: 'trial-analytics-image',
+  },
+  {
     id: 'etmf',
     name: 'eTMF (Electronic Trial Master File)',
     slug: 'electronic-trial-master-file',
@@ -45,15 +83,6 @@ export const solutions: Solution[] = [
     longDescription: 'SyMetric’s eTMF solution offers a secure, compliant, and intuitive way to manage your trial documentation. With features like automated indexing, quality checks, and real-time collaboration, it ensures your TMF is always audit-ready.',
     icon: FileText,
     image: 'solution-etmf',
-  },
-  {
-    id: 'cdm',
-    name: 'Clinical Data Management',
-    slug: 'clinical-data-management',
-    description: 'Comprehensive tools for high-quality clinical data collection and analysis.',
-    longDescription: 'Our Clinical Data Management Suite provides robust tools for electronic data capture (EDC), data validation, and analysis. Ensure the highest quality data for your trials with our user-friendly and powerful CDM solutions.',
-    icon: Database,
-    image: 'solution-cdm',
   },
   {
     id: 'rc',

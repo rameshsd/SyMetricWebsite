@@ -24,7 +24,7 @@ export default function SolutionsPage() {
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                   <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                      SAP business applications
+                      SyMetric Solutions
                     </h1>
                     <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
                       Don't get held back by disconnected applications. Be ready to seize opportunities and secure your success with an integrated suite of solutions.
@@ -53,7 +53,7 @@ export default function SolutionsPage() {
             
             <section className="py-16 md:py-24">
                 <div className="container">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {solutions.map((solution) => {
                             const placeholder = PlaceHolderImages.find(p => p.id === solution.image);
                             return (
@@ -81,7 +81,7 @@ export default function SolutionsPage() {
                                     </CardContent>
                                     <div className="p-6 pt-0">
                                         <Button variant="link" asChild className="p-0 h-auto">
-                                            <Link href={solution.slug === 'clinical-trial-platform' ? '/solutions/clinical-trial-platform' : `/solutions/${solution.slug}`}>
+                                            <Link href={`/solutions/${solution.slug}`}>
                                                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
                                             </Link>
                                         </Button>
