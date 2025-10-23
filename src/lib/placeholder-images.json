@@ -15,37 +15,37 @@
     {
       "id": "solution-cdm",
       "description": "Clinical data management charts",
-      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "charts graphs"
     },
     {
       "id": "solution-rc",
       "description": "Regulatory compliance checkmarks",
-      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "compliance checklist"
     },
     {
       "id": "solution-sm",
       "description": "Site management collaboration",
-      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "leadership-3",
       "description": "Portrait of Dr. Lena Petrova",
-      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
@@ -63,7 +63,7 @@
     {
       "id": "leadership-6",
       "description": "Portrait of David Lee",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -327,7 +327,7 @@
     {
       "id": "tool-iam-1",
       "description": "Screenshot of user management in SyMetric platform.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/iam-1.png",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/06/Identity-and-Access-Management1.jpg",
       "imageHint": "user management interface"
     },
     {
@@ -339,7 +339,7 @@
     {
       "id": "tool-org-1",
       "description": "Screenshot of organization management.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/org-1.png",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/06/Organization-Management1.jpg",
       "imageHint": "organization settings"
     },
     {
