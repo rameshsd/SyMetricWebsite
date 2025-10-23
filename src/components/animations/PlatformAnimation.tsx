@@ -97,14 +97,14 @@ export const PlatformAnimation = () => {
     const viewBoxHeight = 450;
 
     // Node positions
-    const topNodeX = viewBoxWidth / 2;
+    const topNodeX = viewBoxWidth / 2 - 100;
     const topNodeY = 40;
     
     const busLineY = 180;
     const bottomNodeY = 320;
 
     const irtNodeX = viewBoxWidth * 0.25;
-    const ctmNodeX = viewBoxWidth * 0.5;
+    const ctmNodeX = viewBoxWidth * 0.5 - 50;
     const edcNodeX = viewBoxWidth * 0.85;
 
 
@@ -137,7 +137,7 @@ export const PlatformAnimation = () => {
             {/* SVG container for lines and stars */}
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
-                    <path id="path-to-irt" d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY} H ${irtNodeX}`} fill="none" />
+                    <path id="path-to-irt" d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY} H ${irtNodeX} V ${bottomNodeY - 48}`} fill="none" />
                     <path id="path-to-ctm" d={`M ${topNodeX} ${topNodeY + 48} V ${busLineY} H ${ctmNodeX} V ${bottomNodeY - 48}`} fill="none" />
                 </defs>
 
