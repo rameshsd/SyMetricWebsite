@@ -11,15 +11,6 @@ type ProductHeroProps = {
     imageHint: string;
 };
 
-const backgroundColors = [
-    'bg-yellow-100/50',
-    'bg-blue-100/50',
-    'bg-green-100/50',
-    'bg-purple-100/50',
-    'bg-pink-100/50',
-    'bg-indigo-100/50',
-];
-
 const accentColors = [
     'bg-yellow-400',
     'bg-blue-400',
@@ -32,13 +23,11 @@ const accentColors = [
 let colorIndex = 0;
 
 export function ProductHero({ title, subtitle, imageSrc, imageHint }: ProductHeroProps) {
-    // Cycle through colors for different product pages
-    const bgColor = backgroundColors[colorIndex % backgroundColors.length];
     const accentColor = accentColors[colorIndex % accentColors.length];
     colorIndex++;
 
   return (
-    <section className={`w-full py-12 md:py-20 lg:py-28 ${bgColor}`}>
+    <section className="w-full py-12 md:py-20 lg:py-28 bg-[#f5f3ff] dark:bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
