@@ -11,77 +11,95 @@ const Node = ({
     label, 
     className,
     inView,
-    delay
+    delay,
+    isCentral = false
 }: { 
     icon: React.ElementType, 
-    label: string, 
+    label: string | React.ReactNode, 
     className?: string,
     inView: boolean,
-    delay: number
+    delay: number,
+    isCentral?: boolean
 }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay }}
-            className={cn("absolute flex flex-col items-center gap-2", className)}
+            className={cn(
+                "absolute flex flex-col items-center gap-2",
+                className
+            )}
         >
-            <div className="w-24 h-24 bg-primary/10 rounded-lg flex items-center justify-center shadow-lg border border-primary/20">
-                <Icon className="w-10 h-10 text-primary" />
+            <div className={cn(
+                "flex items-center justify-center rounded-lg border",
+                isCentral 
+                    ? "w-36 h-36 bg-background flex-col p-4 shadow-xl" 
+                    : "w-24 h-24 bg-primary/10 border-primary/20 shadow-lg"
+            )}>
+                <Icon className={cn("text-primary", isCentral ? "w-8 h-8 mb-2" : "w-10 h-10")} />
             </div>
-            <span className="font-semibold text-sm text-foreground">{label}</span>
+            <div className={cn("font-semibold text-sm text-foreground", isCentral ? 'text-center' : '')}>
+                {label}
+            </div>
         </motion.div>
     );
 };
 
-const Line = ({ 
-    d, 
-    delay, 
-    inView
-}: { 
-    d: string; 
-    delay: number; 
-    inView: boolean;
-}) => {
+const Line = ({ d, delay, inView }: { d: string; delay: number; inView: boolean; }) => {
     return (
         <motion.path
             d={d}
             fill="none"
             stroke="hsl(var(--primary))"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeOpacity="0.8"
-            strokeLinecap="round"
             initial={{ pathLength: 0 }}
             animate={inView ? { pathLength: 1 } : {}}
-            transition={{ duration: 1, delay, ease: "easeInOut" }}
+            transition={{ duration: 0.8, delay, ease: "easeInOut" }}
         />
     );
 };
 
+
 export const PlatformAnimation = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
     return (
         <div ref={ref} className="w-full max-w-lg h-[450px] flex items-center justify-center relative scale-90 md:scale-100 mx-auto">
             
-            {/* Central Hub */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative flex flex-col items-center z-20"
-            >
-                <div className="relative w-36 h-36 rounded-lg border bg-background flex flex-col items-center justify-center p-4 shadow-xl">
-                    <Gem className="w-8 h-8 text-primary mb-2" />
-                    <p className="font-bold text-md text-foreground">SyMetric</p>
-                    <p className="text-sm text-muted-foreground">Platform</p>
-                </div>
-            </motion.div>
-
             {/* Component Nodes */}
-            <Node icon={Repeat} label="IRT/IWRS" className="top-0 left-10" delay={1.2} inView={inView} />
-            <Node icon={ClipboardList} label="CTM" className="top-0 right-10" delay={1.3} inView={inView} />
-            <Node icon={Database} label="EDC" className="bottom-12 right-0 z-10" delay={1.4} inView={inView} />
+            <Node 
+                icon={Repeat} 
+                label="IRT/IWRS" 
+                className="top-[10%] left-[5%]" 
+                delay={0.8} 
+                inView={inView} 
+            />
+            <Node 
+                icon={ClipboardList} 
+                label="CTM" 
+                className="top-[10%] right-[5%]" 
+                delay={0.9} 
+                inView={inView} 
+            />
+            <Node 
+                icon={Database} 
+                label="EDC" 
+                className="bottom-[5%] right-0 z-10" 
+                delay={1.0} 
+                inView={inView} 
+            />
+            
+            {/* Central Hub */}
+            <Node 
+                icon={Gem}
+                label={<><p className="font-bold text-md text-foreground -mt-1">SyMetric</p><p className="text-sm text-muted-foreground">Platform</p></>}
+                className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+                delay={0.1}
+                inView={inView}
+                isCentral={true}
+            />
 
             {/* SVG container for lines and shapes */}
             <div className="absolute inset-0 z-0">
@@ -93,20 +111,20 @@ export const PlatformAnimation = () => {
                         fill="hsl(var(--primary))"
                         fillOpacity="0.7"
                         stroke="none"
-                        initial={{ opacity: 0, pathLength: 0 }}
-                        animate={inView ? { opacity: 1, pathLength: 1 } : {}}
-                        transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ duration: 1, delay: 0.7, ease: "easeInOut" }}
                     />
                     
                     {/* Connecting Lines */}
                     {/* Line to IRT/IWRS */}
-                    <Line d="M190 225 H 100 V 135" delay={0.5} inView={inView} />
+                    <Line d="M152 225 H 98 V 132" delay={0.3} inView={inView} />
                     
                     {/* Line to CTM */}
-                    <Line d="M250 225 H 340 V 135" delay={0.6} inView={inView} />
+                    <Line d="M288 225 H 342 V 132" delay={0.4} inView={inView} />
 
                     {/* Line to EDC */}
-                    <Line d="M220 295 V 360 H 300" delay={0.7} inView={inView} />
+                    <Line d="M220 293 V 360 H 300" delay={0.5} inView={inView} />
                 </svg>
             </div>
         </div>
