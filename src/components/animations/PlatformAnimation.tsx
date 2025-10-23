@@ -52,12 +52,12 @@ const Node = ({
       <div
         className={cn(
           'flex items-center justify-center rounded-lg border bg-background shadow-lg',
-          isCentral ? 'w-48 h-20' : 'w-36 h-24'
+          isCentral ? 'w-40 h-20' : 'w-32 h-24' // Reduced width
         )}
       >
         <Icon className={cn('text-primary', isCentral ? 'w-8 h-8' : 'w-10 h-10')} />
       </div>
-      <div className="font-semibold text-sm text-foreground text-center max-w-36">
+      <div className="font-semibold text-sm text-foreground text-center max-w-32">
         {label}
       </div>
     </motion.div>
@@ -97,11 +97,11 @@ export const PlatformAnimation = () => {
     const viewBoxHeight = 450;
 
     const topNodeY = 40;
-    const horizontalLineY = 200;
+    const busLineY = 200;
     const bottomNodeY = 320;
     
     const centerNodeX = viewBoxWidth / 2;
-    const sideNodeOffset = 230;
+    const sideNodeOffset = 250; // Adjusted for new width
 
     const leftNodeX = centerNodeX - sideNodeOffset;
     const rightNodeX = centerNodeX + sideNodeOffset;
@@ -120,24 +120,30 @@ export const PlatformAnimation = () => {
             </div>
 
             {/* Bottom Nodes Container */}
-            <div className="absolute bottom-0 w-full flex justify-between px-8">
-                <Node icon={Repeat} label="IRT/IWRS" />
-                <Node icon={ClipboardList} label="CTM" />
-                <Node icon={Database} label="EDC" />
+             <div className="absolute bottom-0 w-full flex justify-between px-8">
+                <div style={{ transform: `translateX(${leftNodeX - 64}px)` }}>
+                    <Node icon={Repeat} label="IRT/IWRS" />
+                </div>
+                 <div style={{ transform: `translateX(${centerNodeX - 64}px)` }}>
+                    <Node icon={ClipboardList} label="CTM" />
+                </div>
+                 <div style={{ transform: `translateX(${rightNodeX - 64}px)` }}>
+                    <Node icon={Database} label="EDC" />
+                </div>
             </div>
 
             {/* SVG container for lines and stars */}
             <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0">
                 <defs>
                     {/* Motion Paths for Stars */}
-                    <path id="path-irt" d={`M ${centerNodeX},${topNodeY + 80} V ${horizontalLineY} H ${leftNodeX} V ${bottomNodeY}`} fill="none" />
+                    <path id="path-irt" d={`M ${centerNodeX},${topNodeY + 80} V ${busLineY} H ${leftNodeX}`} fill="none" />
                     <path id="path-ctm" d={`M ${centerNodeX},${topNodeY + 80} V ${bottomNodeY}`} fill="none" />
-                    <path id="path-edc" d={`M ${centerNodeX},${topNodeY + 80} V ${horizontalLineY} H ${rightNodeX} V ${bottomNodeY}`} fill="none" />
+                    <path id="path-edc" d={`M ${centerNodeX},${topNodeY + 80} V ${busLineY} H ${rightNodeX}`} fill="none" />
                 </defs>
 
                 {/* Visible Lines */}
                 <motion.path
-                    d={`M ${centerNodeX},${topNodeY + 80} V ${horizontalLineY} H ${leftNodeX} V ${bottomNodeY}`}
+                    d={`M ${leftNodeX},${busLineY} H ${rightNodeX}`} // Horizontal Bus Line
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
@@ -146,7 +152,7 @@ export const PlatformAnimation = () => {
                     variants={pathVariants(0.4)}
                 />
                  <motion.path
-                    d={`M ${leftNodeX},${horizontalLineY} H ${rightNodeX}`}
+                    d={`M ${centerNodeX},${topNodeY + 80} V ${busLineY}`} // Dropdown from main
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
@@ -155,7 +161,7 @@ export const PlatformAnimation = () => {
                     variants={pathVariants(0.4)}
                 />
                  <motion.path
-                    d={`M ${centerNodeX},${horizontalLineY} V ${bottomNodeY}`}
+                    d={`M ${leftNodeX},${busLineY} V ${bottomNodeY}`} // Dropdown to IRT
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
@@ -164,7 +170,7 @@ export const PlatformAnimation = () => {
                     variants={pathVariants(0.6)}
                 />
                 <motion.path
-                    d={`M ${rightNodeX},${horizontalLineY} V ${bottomNodeY}`}
+                    d={`M ${centerNodeX},${busLineY} V ${bottomNodeY}`} // Dropdown to CTM
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
@@ -172,11 +178,20 @@ export const PlatformAnimation = () => {
                     strokeLinejoin="round"
                     variants={pathVariants(0.8)}
                 />
+                 <motion.path
+                    d={`M ${rightNodeX},${busLineY} V ${bottomNodeY}`} // Dropdown to EDC
+                    fill="none"
+                    stroke="hsl(var(--primary))"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    variants={pathVariants(1.0)}
+                />
 
                 {/* Traveling Stars - must be rendered after paths */}
-                <TravelingStar pathId="path-irt" delay={0.4} />
-                <TravelingStar pathId="path-ctm" delay={0.6} />
-                <TravelingStar pathId="path-edc" delay={0.8} />
+                <TravelingStar pathId="path-irt" delay={0.6} />
+                <TravelingStar pathId="path-ctm" delay={0.8} />
+                <TravelingStar pathId="path-edc" delay={1.0} />
             </svg>
         </motion.div>
     );
