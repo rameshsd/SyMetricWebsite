@@ -66,28 +66,30 @@ const Node = ({
 
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
-        <motion.path
-            d="M5.5 0L7.15 3.85L11 5.5L7.15 7.15L5.5 11L3.85 7.15L0 5.5L3.85 3.85Z"
-            fill="hsl(var(--primary))"
-            className="opacity-0"
-            style={{ transform: 'scale(0.8)' }}
-            variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1, transition: { delay: delay + 1 } }
-            }}
-        >
-            <animateMotion
-                dur="4s"
-                begin={`${delay + 1}s`}
-                repeatCount="indefinite"
-                rotate="auto"
-                keyPoints="0;1"
-                keyTimes="0;1"
-                calcMode="linear"
+        <g>
+            <motion.path
+                d="M-5.5 -5.5 L -3.85 -1.65 L 0 0 L -3.85 1.65 L -5.5 5.5 L -7.15 1.65 L -11 0 L -7.15 -1.65 Z"
+                fill="hsl(var(--primary))"
+                className="opacity-0"
+                style={{ transform: 'scale(0.8)' }}
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { delay: delay + 1 } }
+                }}
             >
-                <mpath href={`#${pathId}`} />
-            </animateMotion>
-        </motion.path>
+                <animateMotion
+                    dur="4s"
+                    begin={`${delay + 1}s`}
+                    repeatCount="indefinite"
+                    rotate="auto"
+                    keyPoints="0;1"
+                    keyTimes="0;1"
+                    calcMode="linear"
+                >
+                    <mpath href={`#${pathId}`} />
+                </animateMotion>
+            </motion.path>
+        </g>
     );
 };
 
