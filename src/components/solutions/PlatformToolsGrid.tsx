@@ -26,7 +26,6 @@ import {
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { AnimatePresence, motion } from "framer-motion";
 
 const toolsData = [
@@ -121,7 +120,7 @@ export function PlatformToolsGrid() {
   const [selectedTool, setSelectedTool] = useState(toolsData[0]);
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/50">
+    <section className="py-16 md:py-24 bg-secondary/50 min-h-screen">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -132,35 +131,33 @@ export function PlatformToolsGrid() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 items-start">
-            <div className="md:col-span-1 sticky top-24">
-                <ScrollArea className="h-full max-h-[600px] pr-4">
-                    <div className="space-y-2">
-                        {toolsData.map((tool) => (
-                            <button 
-                                key={tool.id} 
-                                onClick={() => setSelectedTool(tool)}
-                                className={cn(
-                                    "w-full flex items-center gap-4 p-3 rounded-lg text-left transition-all duration-200",
-                                    selectedTool.id === tool.id 
-                                        ? "bg-primary/10 text-primary font-semibold shadow-sm" 
-                                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                                )}
-                            >
-                                <div className={cn(
-                                    "flex items-center justify-center h-10 w-10 rounded-lg shrink-0",
-                                    selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
-                                )}>
-                                    <tool.icon className="h-6 w-6" />
-                                </div>
-                                <span className="text-sm">{tool.label}</span>
-                            </button>
-                        ))}
-                    </div>
-                </ScrollArea>
+        <div className="grid md:grid-cols-12 gap-8 items-start">
+            <div className="md:col-span-5 lg:col-span-4 sticky top-24">
+                <div className="grid grid-cols-2 gap-2">
+                    {toolsData.map((tool) => (
+                        <button 
+                            key={tool.id} 
+                            onClick={() => setSelectedTool(tool)}
+                            className={cn(
+                                "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all duration-200",
+                                selectedTool.id === tool.id 
+                                    ? "bg-primary/10 text-primary font-semibold shadow-sm" 
+                                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                            )}
+                        >
+                            <div className={cn(
+                                "flex items-center justify-center h-8 w-8 rounded-lg shrink-0",
+                                selectedTool.id === tool.id ? "bg-primary/20" : "bg-muted"
+                            )}>
+                                <tool.icon className="h-5 w-5" />
+                            </div>
+                            <span className="text-xs font-medium">{tool.label}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
             
-            <div className="md:col-span-2">
+            <div className="md:col-span-7 lg:col-span-8 sticky top-24">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={selectedTool.id}
@@ -176,22 +173,24 @@ export function PlatformToolsGrid() {
                         </div>
                         
                         <div className="relative">
-                            <Carousel className="w-full rounded-lg overflow-hidden border shadow-lg">
+                            <Carousel className="w-full rounded-lg overflow-hidden border shadow-lg bg-background">
                                 <CarouselContent>
                                 {selectedTool.images.map((imageId, index) => {
                                     const image = PlaceHolderImages.find(p => p.id === imageId);
                                     return (
                                         <CarouselItem key={index}>
-                                            {image && (
-                                            <Image
-                                                src={image.imageUrl}
-                                                alt={image.description}
-                                                width={800}
-                                                height={500}
-                                                data-ai-hint={image.imageHint}
-                                                className="object-contain w-full"
-                                            />
-                                            )}
+                                            <div className="p-1">
+                                                {image && (
+                                                <Image
+                                                    src={image.imageUrl}
+                                                    alt={image.description}
+                                                    width={800}
+                                                    height={500}
+                                                    data-ai-hint={image.imageHint}
+                                                    className="object-contain w-full"
+                                                />
+                                                )}
+                                            </div>
                                         </CarouselItem>
                                     )
                                 })}
