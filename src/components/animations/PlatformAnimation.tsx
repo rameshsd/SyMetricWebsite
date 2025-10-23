@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -66,30 +65,28 @@ const Node = ({
 
 const TravelingStar = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => {
     return (
-        <g>
-            <motion.path
-                d="M-5.5 -5.5 L -3.85 -1.65 L 0 0 L -3.85 1.65 L -5.5 5.5 L -7.15 1.65 L -11 0 L -7.15 -1.65 Z"
-                fill="hsl(var(--primary))"
-                className="opacity-0"
-                style={{ transform: 'scale(0.8)' }}
-                variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1, transition: { delay: delay + 1 } }
-                }}
+        <motion.path
+            d="M-5.5 -5.5 L -3.85 -1.65 L 0 0 L -3.85 1.65 L -5.5 5.5 L -7.15 1.65 L -11 0 L -7.15 -1.65 Z"
+            fill="hsl(var(--primary))"
+            className="opacity-0"
+            style={{ transform: 'scale(0.8)' }}
+            variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { delay: delay + 1 } }
+            }}
+        >
+            <animateMotion
+                dur="4s"
+                begin={`${delay + 1}s`}
+                repeatCount="indefinite"
+                rotate="auto"
+                keyPoints="0;1"
+                keyTimes="0;1"
+                calcMode="linear"
             >
-                <animateMotion
-                    dur="4s"
-                    begin={`${delay + 1}s`}
-                    repeatCount="indefinite"
-                    rotate="auto"
-                    keyPoints="0;1"
-                    keyTimes="0;1"
-                    calcMode="linear"
-                >
-                    <mpath href={`#${pathId}`} />
-                </animateMotion>
-            </motion.path>
-        </g>
+                <mpath href={`#${pathId}`} />
+            </animateMotion>
+        </motion.path>
     );
 };
 
@@ -148,9 +145,9 @@ export const PlatformAnimation = () => {
                 />
 
                 {/* Traveling Stars - must be rendered after paths */}
-                <TravelingStar pathId="path-irt" delay={0.4} />
-                <TravelingStar pathId="path-ctm" delay={0.6} />
-                <TravelingStar pathId="path-edc" delay={0.8} />
+                <TravelingStar pathId="#path-irt" delay={0.4} />
+                <TravelingStar pathId="#path-ctm" delay={0.6} />
+                <TravelingStar pathId="#path-edc" delay={0.8} />
             </svg>
 
             {/* Bottom Nodes */}
