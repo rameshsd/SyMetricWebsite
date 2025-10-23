@@ -16,6 +16,7 @@ import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSe
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { Database, Repeat, ClipboardList } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ export default function ClinicalTrialPlatformPage() {
         <ProductPageHeader productName="Clinical Trial Platform" />
         
         {solution && (
-             <section className="w-full min-h-[450px] flex items-center py-12 bg-[#f5f3ff] dark:bg-card">
+             <section className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid lg:grid-cols-2 gap-10 items-center">
                     <div className="space-y-6">
@@ -55,6 +56,7 @@ export default function ClinicalTrialPlatformPage() {
                 </div>
             </section>
         )}
+        <TechEdBanner />
 
         <BuiltWithPurpose />
         
