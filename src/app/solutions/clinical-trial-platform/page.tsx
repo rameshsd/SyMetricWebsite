@@ -1,8 +1,8 @@
 
 
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { solutions } from '@/lib/data';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { PlatformAnimation } from '@/components/animations/PlatformAnimation';
@@ -14,7 +14,6 @@ import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
-import { ProductHero } from '@/components/solutions/ProductHero';
 
 
 export const metadata: Metadata = {
@@ -25,27 +24,37 @@ export const metadata: Metadata = {
 
 export default function ClinicalTrialPlatformPage() {
     const solution = solutions.find((s) => s.slug === 'clinical-trial-platform');
-    const heroImage = PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
 
   return (
     <>
         <ProductPageHeader productName="Clinical Trial Platform" />
-        {solution && heroImage && (
-            <ProductHero 
-                title={solution.hero.title}
-                subtitle={solution.hero.subtitle}
-                imageSrc={heroImage.imageUrl}
-                imageHint={heroImage.imageHint}
-            />
+        
+        {solution && (
+             <section className="w-full py-12 md:py-20 lg:py-28 bg-blue-100/50">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="grid lg:grid-cols-2 gap-10 items-center">
+                    <div className="space-y-6">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                            {solution.hero.title}
+                        </h1>
+                        <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
+                            {solution.hero.subtitle}
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                        <Button size="lg" asChild>
+                            <Link href="/contact">Request a demo</Link>
+                        </Button>
+                        </div>
+                    </div>
+                    <div className="relative flex justify-center items-center h-full min-h-[400px]">
+                        <PlatformAnimation />
+                    </div>
+                    </div>
+                </div>
+            </section>
         )}
 
         <BuiltWithPurpose />
-
-        <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6">
-                <PlatformAnimation />
-            </div>
-        </section>
         
         <PlatformToolsGrid />
 
