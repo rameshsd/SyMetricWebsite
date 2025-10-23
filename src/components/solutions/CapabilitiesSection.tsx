@@ -8,6 +8,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import { SectionTitle } from '../shared/section-title';
 
 const tabs = [
   { id: 'financials', label: 'Study Financials' },
@@ -49,16 +50,12 @@ export function CapabilitiesSection() {
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-            Explore Clinical Trial Management Capabilities
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Streamline clinical trial processes and improve accuracy with automation.
-          </p>
-        </div>
+        <SectionTitle
+            title="Explore Clinical Trial Management Capabilities"
+            description="Streamline clinical trial processes and improve accuracy with automation."
+        />
 
-        <div className="border-b">
+        <div className="border-b mt-12">
           <div className="flex space-x-8 overflow-x-auto -mb-px px-4">
             {tabs.map(tab => (
               <button
