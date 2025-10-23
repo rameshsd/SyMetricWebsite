@@ -22,7 +22,7 @@ const Node = ({ icon: Icon, label, position, delay, inView }: { icon: React.Elem
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.5, delay }}
             className={cn("absolute flex flex-col items-center", position)}
         >
@@ -41,9 +41,10 @@ const Line = ({ d, delay, inView }: { d: string, delay: number, inView: boolean 
         stroke="hsl(var(--primary))"
         strokeWidth="1.5"
         strokeOpacity="0.5"
+        strokeDasharray="4 4"
         strokeLinecap="round"
         initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : {}}
+        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
         transition={{ duration: 0.8, delay, ease: "easeInOut" }}
     />
 );
@@ -52,7 +53,7 @@ const AnimatedSparkle = ({ position, delay, inView }: { position: string, delay:
     <motion.div
         className={cn("absolute w-5 h-5", position)}
         initial={{ opacity: 0, scale: 0 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
         transition={{ duration: 0.4, delay }}
     >
         <motion.div
@@ -71,10 +72,9 @@ export const PlatformAnimation = () => {
     return (
         <div ref={ref} className="w-full max-w-lg h-[400px] flex items-center justify-center relative scale-90 md:scale-100 mx-auto">
             
-            {/* Central Hub */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative flex flex-col items-center z-10"
             >
@@ -85,24 +85,20 @@ export const PlatformAnimation = () => {
                 </div>
             </motion.div>
 
-            {/* Nodes */}
             <Node icon={Repeat} label="IRT/IWRS" position="top-[10%] left-[5%]" delay={1.4} inView={inView} />
             <Node icon={Database} label="EDC" position="bottom-[10%] left-1/2 -translate-x-1/2" delay={1.5} inView={inView} />
             <Node icon={ClipboardList} label="CTM" position="top-[10%] right-[5%]" delay={1.6} inView={inView} />
 
-            {/* SVG Layer for Lines and Sparkles */}
             <div className="absolute inset-0 z-0">
                 <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="none">
-                    
-                    <Line d="M 250 180 Q 200 180, 150 130 T 100 80" delay={0.5} inView={inView} />
-                    <Line d="M 250 220 V 300" delay={0.7} inView={inView} />
-                    <Line d="M 250 180 Q 300 180, 350 130 T 400 80" delay={0.9} inView={inView} />
+                    <Line d="M250 180 H 150 Q 100 180 100 130 V 80" delay={0.5} inView={inView} />
+                    <Line d="M250 220 V 300" delay={0.7} inView={inView} />
+                    <Line d="M250 180 H 350 Q 400 180 400 130 V 80" delay={0.9} inView={inView} />
                 </svg>
-
-                {/* Animated Sparkles */}
-                <AnimatedSparkle position="top-[32.5%] left-[30%] -translate-x-1/2 -translate-y-1/2" delay={1.0} inView={inView} />
-                <AnimatedSparkle position="bottom-[25%] left-1/2 -translate-x-1/2 -translate-y-1/2" delay={1.2} inView={inView} />
-                <AnimatedSparkle position="top-[32.5%] right-[30%] translate-x-1/2 -translate-y-1/2" delay={1.4} inView={inView} />
+                
+                <AnimatedSparkle position="top-[20%] left-[20%]" delay={1.0} inView={inView} />
+                <AnimatedSparkle position="bottom-[25%] left-1/2 -translate-x-1/2" delay={1.2} inView={inView} />
+                <AnimatedSparkle position="top-[20%] right-[20%]" delay={1.4} inView={inView} />
             </div>
         </div>
     );
