@@ -59,11 +59,10 @@ const pathVariants = (delay = 0) => ({
   },
 });
 
-const Node = ({ icon: Icon, label, x, y }: { icon: React.ElementType; label: string; x: number; y: number }) => (
+const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div
     variants={itemVariants}
-    className="absolute flex flex-col items-center gap-2 z-10 w-32"
-    style={{ top: y, left: x, transform: "translate(-50%, -50%)" }}
+    className="flex flex-col items-center gap-2 z-10 w-32"
   >
     <div className="flex items-center justify-center rounded-2xl border bg-background shadow-md w-full h-24">
       <Icon className="w-10 h-10 text-primary" />
@@ -98,15 +97,15 @@ export const PlatformAnimation = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
 
   const viewBoxWidth = 600;
-  const viewBoxHeight = 420;
+  const viewBoxHeight = 400;
 
   const topNodeY = 60;
   const busY = 200;
   const bottomNodeY = 340;
 
   const centerX = viewBoxWidth / 2;
-  const leftX = viewBoxWidth * 0.20;
-  const rightX = viewBoxWidth * 0.80;
+  const leftX = viewBoxWidth * 0.15; // Adjusted for flex layout
+  const rightX = viewBoxWidth * 0.85; // Adjusted for flex layout
 
   return (
     <div ref={ref} className="w-full h-full">
@@ -120,8 +119,8 @@ export const PlatformAnimation = () => {
         <div className="absolute top-0 left-0 w-full h-full hidden md:block">
           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="overflow-visible">
             <defs>
-              <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+              <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 9 3 L 0 6 z" fill="hsl(var(--primary))" />
               </marker>
 
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -151,14 +150,18 @@ export const PlatformAnimation = () => {
           </svg>
         </div>
 
-        {/* Nodes for desktop */}
-        <div className="absolute top-0 left-0 w-full h-full hidden md:block pointer-events-none">
-          <div className="relative w-full h-full" style={{ width: viewBoxWidth, height: viewBoxHeight, margin: 'auto' }}>
-            <Node icon={Gem} label="SyMetric Platform" x={centerX} y={topNodeY} />
-            <Node icon={Repeat} label="IRT / IWRS" x={leftX} y={bottomNodeY} />
-            <Node icon={ClipboardList} label="CTM" x={centerX} y={bottomNodeY} />
-            <Node icon={Database} label="EDC" x={rightX} y={bottomNodeY} />
-          </div>
+        {/* Node Layout for Desktop */}
+        <div className="absolute top-0 left-0 w-full h-full hidden md:flex flex-col items-center pointer-events-none">
+            <div className="pt-5">
+                <Node icon={Gem} label="SyMetric Platform" />
+            </div>
+            <div className="absolute w-full max-w-xl" style={{top: '300px'}}>
+                <div className="flex justify-between w-full">
+                    <Node icon={Repeat} label="IRT / IWRS" />
+                    <Node icon={ClipboardList} label="CTM" />
+                    <Node icon={Database} label="EDC" />
+                </div>
+            </div>
         </div>
 
         {/* Mobile stacked layout */}
