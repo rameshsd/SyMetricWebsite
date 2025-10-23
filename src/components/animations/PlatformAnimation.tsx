@@ -12,6 +12,7 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
+      delayChildren: 0.2,
     },
   },
 };
@@ -32,9 +33,9 @@ const pathVariants = (delay: number) => ({
 const sparkleVariants = (delay: number) => ({
     hidden: { opacity: 0, scale: 0 },
     visible: { 
-        opacity: 1,
-        scale: [1, 1.2, 1],
-        transition: { delay: delay + 0.6, duration: 0.4 }
+        opacity: [0, 1, 0],
+        scale: [0, 1.2, 0],
+        transition: { delay: delay + 0.6, duration: 0.6, repeat: Infinity, repeatDelay: 2 }
     }
 });
 
@@ -53,12 +54,12 @@ const Node = ({
   return (
     <motion.div
       variants={itemVariants}
-      className={cn('flex flex-col items-center gap-2', className)}
+      className={cn('flex flex-col items-center gap-2 z-10', className)}
     >
       <div
         className={cn(
           'flex items-center justify-center rounded-lg border bg-background shadow-lg',
-          isCentral ? 'w-36 h-36 flex-col p-4' : 'w-24 h-24'
+          isCentral ? 'w-36 h-24 flex-col p-4' : 'w-24 h-24'
         )}
       >
         <Icon
@@ -90,7 +91,7 @@ const Sparkle = ({ className, delay }: { className?: string, delay: number }) =>
       viewBox="0 0 24 24"
       fill="currentColor"
       stroke="none"
-      className={cn("text-primary absolute", className)}
+      className={cn("text-primary absolute z-20", className)}
     >
         <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z" />
     </motion.svg>
@@ -106,22 +107,13 @@ export const PlatformAnimation = () => {
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="w-full max-w-lg h-[450px] flex items-center justify-center relative scale-90 md:scale-100 mx-auto"
+            className="w-full max-w-2xl h-[450px] flex items-center justify-center relative scale-90 md:scale-100 mx-auto"
         >
             {/* SVG container for lines and shapes */}
-            <svg width="100%" height="100%" viewBox="0 0 440 450" className="absolute inset-0 z-0">
-                {/* Background Shape behind EDC */}
-                 <motion.path
-                    variants={pathVariants(0.6)}
-                    d="M280 300 L440 280 L440 450 L320 450 Z"
-                    fill="hsl(var(--primary))"
-                    fillOpacity="0.1"
-                    stroke="none"
-                />
-
+            <svg width="100%" height="100%" viewBox="0 0 600 450" className="absolute inset-0 z-0">
                 {/* Line to IRT/IWRS */}
                 <motion.path
-                    d="M 152 243 V 132 H 98"
+                    d="M 300 110 V 180 H 110"
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="1.5"
@@ -131,7 +123,7 @@ export const PlatformAnimation = () => {
                 
                 {/* Line to CTM */}
                 <motion.path
-                    d="M 288 243 V 132 H 342"
+                    d="M 300 110 V 220 H 300"
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="1.5"
@@ -141,7 +133,7 @@ export const PlatformAnimation = () => {
 
                 {/* Line to EDC */}
                  <motion.path
-                    d="M 288 293 H 340 V 360"
+                    d="M 300 110 V 180 H 490"
                     fill="none"
                     stroke="hsl(var(--primary))"
                     strokeWidth="1.5"
@@ -150,19 +142,8 @@ export const PlatformAnimation = () => {
                 />
             </svg>
 
-             {/* Nodes */}
-            <div className="absolute top-[20px] left-[40px]">
-                <Node icon={Repeat} label="IRT/IWRS" />
-            </div>
-            <div className="absolute top-[20px] right-[40px]">
-                <Node icon={ClipboardList} label="CTM" />
-            </div>
-             <div className="absolute bottom-[20px] right-[40px]">
-                <Node icon={Database} label="EDC" />
-            </div>
-            
             {/* Central Hub */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+             <div className="absolute top-[20px] left-1/2 -translate-x-1/2">
                 <Node 
                     icon={Gem}
                     label={<><p className="font-bold text-md text-foreground -mt-1">SyMetric</p><p className="text-sm text-muted-foreground">Platform</p></>}
@@ -170,10 +151,21 @@ export const PlatformAnimation = () => {
                 />
             </div>
             
-             {/* Sparkles */}
-            <Sparkle delay={0.2} className="top-[122px] left-[142px]" />
-            <Sparkle delay={0.4} className="top-[122px] right-[142px]" />
-            <Sparkle delay={0.6} className="bottom-[122px] right-[142px]" />
+            {/* Bottom Nodes */}
+            <div className="absolute bottom-[80px] left-[62px]">
+                <Node icon={Repeat} label="IRT/IWRS" />
+            </div>
+            <div className="absolute bottom-[80px] left-1/2 -translate-x-1/2">
+                <Node icon={ClipboardList} label="CTM" />
+            </div>
+             <div className="absolute bottom-[80px] right-[62px]">
+                <Node icon={Database} label="EDC" />
+            </div>
+            
+            {/* Sparkles */}
+            <Sparkle delay={0.2} style={{ top: '298px', left: '101px' }} />
+            <Sparkle delay={0.4} style={{ top: '298px', left: '291px' }} />
+            <Sparkle delay={0.6} style={{ top: '298px', right: '101px' }} />
 
         </motion.div>
     );
