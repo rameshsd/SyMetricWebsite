@@ -18,7 +18,7 @@ export default function SolutionsPage() {
     const heroImage = PlaceHolderImages.find((p) => p.id === 'sap-business-applications-hero');
     return (
         <>
-            <ProductPageHeader productName="SAP business applications" />
+            <ProductPageHeader productName="SAP business applications" solutions={solutions} />
             <section className="w-full py-12 md:py-20 lg:py-28 bg-[#f5f3ff] dark:bg-card">
               <div className="container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">

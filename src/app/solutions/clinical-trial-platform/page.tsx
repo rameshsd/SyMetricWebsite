@@ -32,7 +32,7 @@ export default function ClinicalTrialPlatformPage() {
 
   return (
     <>
-        <ProductPageHeader productName="Clinical Trial Platform" />
+        <ProductPageHeader productName="Clinical Trial Platform" solutions={solutions} />
         
         {solution && (
              <section className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card">

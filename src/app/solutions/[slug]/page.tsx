@@ -36,7 +36,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
 
   return (
     <>
-      <ProductPageHeader productName={solution.name} />
+      <ProductPageHeader productName={solution.name} solutions={solutions} />
       {heroImage && (
          <ProductHero 
             title={solution.hero.title}

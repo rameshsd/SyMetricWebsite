@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { solutions } from "@/lib/data";
+import type { Solution } from "@/lib/types";
 
 const secondaryNav = [
     { label: "Overview", href: "#" },
@@ -23,12 +23,24 @@ const secondaryNav = [
 
 type ProductPageHeaderProps = {
   productName: string;
+  solutions: Solution[];
 };
 
-export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
+export function ProductPageHeader({ productName, solutions }: ProductPageHeaderProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const isSolutionsPage = pathname === '/solutions';
+
+  const applicationsNav = secondaryNav.map(item => {
+    if (item.dropdown && item.label === "Applications") {
+      return {
+        ...item,
+        items: solutions.map(s => ({id: s.id, name: s.name, slug: s.slug}))
+      };
+    }
+    return item;
+  });
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +71,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
         </div>
         
         <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-            {secondaryNav.map((tab) =>
+            {applicationsNav.map((tab) =>
                 tab.dropdown ? (
                 <DropdownMenu key={tab.label}>
                     <DropdownMenuTrigger asChild>
@@ -71,7 +83,7 @@ export function ProductPageHeader({ productName }: ProductPageHeaderProps) {
                       {tab.items && tab.items.length > 0 ? (
                         tab.items.map(item => (
                           <DropdownMenuItem key={item.id} asChild>
-                            <Link href={`/solutions/${item.slug}`}>{item.name}</Link>
+                            <Link href={item.slug === 'clinical-trial-platform' ? '/solutions/clinical-trial-platform' : `/solutions/${item.slug}`}>{item.name}</Link>
                           </DropdownMenuItem>
                         ))
                       ) : (
