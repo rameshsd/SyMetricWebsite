@@ -48,18 +48,8 @@ export default function ClinicalTrialPlatformPage() {
                         </Button>
                         </div>
                     </div>
-                    <div className="relative w-full h-[450px] grid grid-cols-4">
-                      <div className="col-span-3 bg-blue-100/50 rounded-l-lg relative p-4">
-                        <PlatformAnimation />
-                      </div>
-                      <div className="col-span-1 bg-background rounded-r-lg flex items-center justify-center p-4 border-t border-b border-r">
-                         <div className="flex flex-col items-center gap-2">
-                           <Card className="w-36 h-24 flex items-center justify-center shadow-lg">
-                              <Database className="w-10 h-10 text-primary" />
-                           </Card>
-                           <p className="font-semibold text-sm text-foreground text-center">EDC</p>
-                         </div>
-                      </div>
+                    <div className="relative w-full min-h-[500px] flex items-center justify-center">
+                      <PlatformAnimation />
                     </div>
                     </div>
                 </div>
