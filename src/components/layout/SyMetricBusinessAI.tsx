@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -10,11 +9,11 @@ export function SyMetricBusinessAI() {
   const businessAIImage = PlaceHolderImages.find(p => p.id === 'business-ai-hero');
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 bg-violet-50">
+    <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff]">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[400px]">
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-black">
               SyMetric Business AI
             </h1>
             <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
@@ -29,14 +28,13 @@ export function SyMetricBusinessAI() {
               </Button>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative h-[300px] lg:h-full w-full">
             {businessAIImage && (
               <Image
                 src={businessAIImage.imageUrl}
                 alt={businessAIImage.description}
                 data-ai-hint={businessAIImage.imageHint}
-                width={600}
-                height={450}
+                fill
                 className="rounded-lg object-contain"
               />
             )}
@@ -46,4 +44,3 @@ export function SyMetricBusinessAI() {
     </section>
   );
 }
-
