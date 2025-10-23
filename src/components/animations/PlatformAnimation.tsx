@@ -17,7 +17,6 @@ const Sparkle = ({ className }: { className?: string }) => (
     </svg>
 );
 
-
 const Node = ({ icon: Icon, label, position, delay, inView }: { icon: React.ElementType, label: string, position: string, delay: number, inView: boolean }) => {
     return (
         <motion.div
@@ -34,36 +33,39 @@ const Node = ({ icon: Icon, label, position, delay, inView }: { icon: React.Elem
     );
 };
 
-const Line = ({ d, delay, inView }: { d: string, delay: number, inView: boolean }) => (
-    <motion.path
-        d={d}
-        fill="none"
-        stroke="hsl(var(--primary))"
-        strokeWidth="1.5"
-        strokeOpacity="0.5"
-        strokeDasharray="4 4"
-        strokeLinecap="round"
-        initial={{ pathLength: 0 }}
-        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-        transition={{ duration: 0.8, delay, ease: "easeInOut" }}
-    />
-);
-
-const AnimatedSparkle = ({ position, delay, inView }: { position: string, delay: number, inView: boolean }) => (
-    <motion.div
-        className={cn("absolute w-5 h-5", position)}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-        transition={{ duration: 0.4, delay }}
-    >
-        <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [1, 0.8, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay }}
-        >
-            <Sparkle className="w-full h-full" />
-        </motion.div>
-    </motion.div>
-);
+const Line = ({ d, delay, inView, markerPosition }: { d: string; delay: number; inView: boolean; markerPosition: {x: number; y: number} }) => {
+    const pathRef = React.useRef<SVGPathElement>(null);
+    return (
+        <>
+            <motion.path
+                ref={pathRef}
+                d={d}
+                fill="none"
+                stroke="hsl(var(--primary))"
+                strokeWidth="1.5"
+                strokeOpacity="0.5"
+                strokeDasharray="4 4"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
+                transition={{ duration: 0.8, delay, ease: "easeInOut" }}
+            />
+            <motion.g
+                initial={{ opacity: 0, scale: 0 }}
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                transition={{ duration: 0.4, delay: delay + 0.6 }}
+            >
+                <motion.g 
+                    transform={`translate(${markerPosition.x}, ${markerPosition.y})`}
+                    animate={{ scale: [1, 1.2, 1], opacity: [1, 0.8, 1], rotate: [0, 180, 360] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear", delay }}
+                >
+                    <Sparkle className="w-4 h-4 -translate-x-2 -translate-y-2" />
+                </motion.g>
+            </motion.g>
+        </>
+    );
+};
 
 
 export const PlatformAnimation = () => {
@@ -85,20 +87,21 @@ export const PlatformAnimation = () => {
                 </div>
             </motion.div>
 
-            <Node icon={Repeat} label="IRT/IWRS" position="top-[10%] left-[5%]" delay={1.4} inView={inView} />
-            <Node icon={Database} label="EDC" position="bottom-[10%] left-1/2 -translate-x-1/2" delay={1.5} inView={inView} />
-            <Node icon={ClipboardList} label="CTM" position="top-[10%] right-[5%]" delay={1.6} inView={inView} />
+            <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-0" delay={1.4} inView={inView} />
+            <Node icon={Database} label="EDC" position="bottom-0 left-1/2 -translate-x-1/2" delay={1.5} inView={inView} />
+            <Node icon={ClipboardList} label="CTM" position="top-0 right-0" delay={1.6} inView={inView} />
 
             <div className="absolute inset-0 z-0">
-                <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="none">
-                    <Line d="M250 180 H 150 Q 100 180 100 130 V 80" delay={0.5} inView={inView} />
-                    <Line d="M250 220 V 300" delay={0.7} inView={inView} />
-                    <Line d="M250 180 H 350 Q 400 180 400 130 V 80" delay={0.9} inView={inView} />
+                <svg width="100%" height="100%" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet">
+                    {/* Line to top left node */}
+                    <Line d="M 235 150 Q 150 150 150 80 L 150 80 Q 150 60 120 60 L 80 60" delay={0.5} inView={inView} markerPosition={{x: 135, y: 115}} />
+                    
+                    {/* Line to bottom node */}
+                    <Line d="M 250 250 L 250 300" delay={0.7} inView={inView} markerPosition={{x: 250, y: 275}} />
+                    
+                    {/* Line to top right node */}
+                    <Line d="M 265 150 Q 350 150 350 80 L 350 80 Q 350 60 380 60 L 420 60" delay={0.9} inView={inView} markerPosition={{x: 365, y: 115}}/>
                 </svg>
-                
-                <AnimatedSparkle position="top-[20%] left-[20%]" delay={1.0} inView={inView} />
-                <AnimatedSparkle position="bottom-[25%] left-1/2 -translate-x-1/2" delay={1.2} inView={inView} />
-                <AnimatedSparkle position="top-[20%] right-[20%]" delay={1.4} inView={inView} />
             </div>
         </div>
     );
