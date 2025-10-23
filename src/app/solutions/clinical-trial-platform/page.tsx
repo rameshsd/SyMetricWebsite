@@ -14,6 +14,8 @@ import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
+import { Database } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 
 export const metadata: Metadata = {
@@ -30,7 +32,7 @@ export default function ClinicalTrialPlatformPage() {
         <ProductPageHeader productName="Clinical Trial Platform" />
         
         {solution && (
-             <section className="w-full py-12 md:py-20 lg:py-28 bg-blue-100/50">
+             <section className="w-full py-12 md:py-20 lg:py-28 bg-secondary/30">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid lg:grid-cols-2 gap-10 items-center">
                     <div className="space-y-6">
@@ -46,8 +48,18 @@ export default function ClinicalTrialPlatformPage() {
                         </Button>
                         </div>
                     </div>
-                    <div className="relative flex justify-center items-center h-full min-h-[400px]">
+                    <div className="relative w-full h-[450px] grid grid-cols-4">
+                      <div className="col-span-3 bg-blue-100/50 rounded-l-lg relative p-4">
                         <PlatformAnimation />
+                      </div>
+                      <div className="col-span-1 bg-background rounded-r-lg flex items-center justify-center p-4 border-t border-b border-r">
+                         <div className="flex flex-col items-center gap-2">
+                           <Card className="w-36 h-24 flex items-center justify-center shadow-lg">
+                              <Database className="w-10 h-10 text-primary" />
+                           </Card>
+                           <p className="font-semibold text-sm text-foreground text-center">EDC</p>
+                         </div>
+                      </div>
                     </div>
                     </div>
                 </div>
