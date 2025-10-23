@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks/use-in-view';
-import { Repeat, Database, ClipboardList } from 'lucide-react';
+import { Repeat, Database, ClipboardList, Gem } from 'lucide-react';
 
 const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType, label: string, position: string, delay: number }) => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
@@ -17,33 +17,60 @@ const Node = ({ icon: Icon, label, position, delay }: { icon: React.ElementType,
             transition={{ duration: 0.5, delay }}
             className={cn("absolute flex flex-col items-center", position)}
         >
-            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-lg border">
-                <Icon className="w-10 h-10 text-primary" />
+            <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center shadow-lg border border-primary/20">
+                <Icon className="w-8 h-8 text-primary" />
             </div>
-            <span className="font-semibold text-sm text-foreground mt-2">{label}</span>
+            <span className="font-semibold text-xs text-foreground mt-2">{label}</span>
         </motion.div>
     );
 };
 
-const Line = ({ path, delay, duration = 1.5 }: { path: string, delay: number, duration?: number }) => {
+const Line = ({ path, delay, duration = 1 }: { path: string, delay: number, duration?: number }) => {
     const [ref, inView] = useInView({ triggerOnce: true });
     return (
-        <g ref={ref}>
-            {inView && (
-                <motion.path
-                    d={path}
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="1.5"
-                    strokeOpacity="0.5"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration, delay, ease: "easeInOut" }}
-                />
-            )}
-        </g>
+        <motion.path
+            ref={ref}
+            d={path}
+            fill="none"
+            stroke="hsl(var(--primary))"
+            strokeWidth="1"
+            strokeOpacity="0.3"
+            strokeDasharray="4 4"
+            initial={{ pathLength: 0 }}
+            animate={inView ? { pathLength: 1 } : {}}
+            transition={{ duration, delay, ease: "easeInOut" }}
+        />
     );
-}
+};
+
+const Diamond = ({ cx, cy, delay }: { cx: number, cy: number, delay: number }) => {
+    const [ref, inView] = useInView({ triggerOnce: true });
+    return (
+        <motion.g
+            ref={ref}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.4, delay }}
+            transform={`translate(${cx} ${cy})`}
+        >
+            <motion.path
+                d="M -5,0 L 0,-5 L 5,0 L 0,5 Z"
+                fill="hsl(var(--primary))"
+                animate={inView ? {
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360],
+                }: {}}
+                transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: delay + 0.5,
+                }}
+            />
+        </motion.g>
+    );
+};
+
 
 export const PlatformAnimation = () => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -59,33 +86,32 @@ export const PlatformAnimation = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="relative flex flex-col items-center z-10"
                     >
-                        <div className="relative w-40 h-40 rounded-full border-2 border-dashed border-primary/50 flex flex-col items-center justify-center p-4">
-                             <motion.div
-                                className="absolute inset-0 rounded-full border-2 border-dashed border-primary/50"
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 30, repeat: Infinity, ease: 'linear', delay: 0.5 }}
-                             />
-                             <div className="text-center">
-                                <p className="font-bold text-primary">SyMetric</p>
-                                <p className="text-sm text-muted-foreground">Platform</p>
-                             </div>
+                        <div className="relative w-32 h-32 rounded-lg border bg-background flex flex-col items-center justify-center p-4 shadow-xl">
+                            <Gem className="w-6 h-6 text-primary mb-1" />
+                            <p className="font-bold text-sm text-foreground">SyMetric</p>
+                            <p className="text-xs text-muted-foreground">Platform</p>
                         </div>
                     </motion.div>
 
                     {/* Nodes */}
-                    <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-1/2 -translate-x-1/2" delay={0.6} />
-                    <Node icon={Database} label="EDC" position="bottom-0 left-[10%]" delay={0.8} />
-                    <Node icon={ClipboardList} label="CTM" position="bottom-0 right-[10%]" delay={1.0} />
+                    <Node icon={Repeat} label="IRT/IWRS" position="top-0 left-[20%]" delay={1.4} />
+                    <Node icon={Database} label="EDC" position="bottom-0 left-1/2 -translate-x-1/2" delay={1.5} />
+                    <Node icon={ClipboardList} label="CTM" position="top-0 right-[20%]" delay={1.6} />
                     
 
-                    {/* SVG Lines */}
+                    {/* SVG Lines & Diamonds */}
                     <svg width="100%" height="100%" viewBox="0 0 500 400" className="absolute inset-0 z-0">
                         {/* Line to IRT/IWRS */}
-                        <Line path="M 250,120 V 60" delay={1.2} />
+                        <Line path="M 205,180 L 150,80" delay={0.8} />
+                        <Diamond cx={177.5} cy={130} delay={1.1} />
+
                         {/* Line to EDC */}
-                        <Line path="M 210,240 L 135,310" delay={1.4} />
+                        <Line path="M 250,235 V 310" delay={0.9} />
+                        <Diamond cx={250} cy={272.5} delay={1.2} />
+
                         {/* Line to CTM */}
-                        <Line path="M 290,240 L 365,310" delay={1.6} />
+                        <Line path="M 295,180 L 350,80" delay={1.0} />
+                        <Diamond cx={322.5} cy={130} delay={1.3} />
                     </svg>
                 </>
             )}
