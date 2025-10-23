@@ -92,8 +92,8 @@ const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number })
         <mpath href={`#${pathId}`} />
       </animateMotion>
     </circle>
-    <polygon points="-6,-3 6,0 -6,3" fill="hsl(var(--primary))">
-      <animateMotion dur="4s" begin={`${delay + 1.05}s`} repeatCount="indefinite">
+    <polygon points="-3,-2 3,0 -3,2" fill="hsl(var(--primary))" transform="rotate(90)">
+      <animateMotion dur="4s" begin={`${delay + 0.8}s`} repeatCount="indefinite" rotate="auto">
         <mpath href={`#${pathId}`} />
       </animateMotion>
     </polygon>
@@ -101,52 +101,48 @@ const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number })
 );
 
 export const PlatformAnimation = () => {
-  // Use a plain div ref (RefObject<HTMLDivElement>) and avoid passing it directly to motion.div
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
 
-  const viewBoxWidth = 700;
+  const viewBoxWidth = 800;
   const viewBoxHeight = 450;
 
-  const topY = 60;
-  const busY = 200;
-  const bottomY = 340;
+  const topNodeY = 40;
+  const busLineY = 180;
+  const bottomNodeY = 320;
 
   const centerX = viewBoxWidth / 2;
-  const leftX = viewBoxWidth * 0.25;
-  const rightX = viewBoxWidth * 0.75;
+  const nodeHorizontalOffset = 220;
+  const leftNodeX = centerX - nodeHorizontalOffset;
+  const rightNodeX = centerX + nodeHorizontalOffset;
 
   return (
-    // Attach ref to a plain div to avoid type-mismatch with framer-motion's ref typing
     <div ref={ref} className="w-full">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="relative w-full h-auto min-h-[520px] flex flex-col items-center justify-center overflow-hidden"
+        className="relative w-full h-[450px] flex-col items-center justify-center overflow-hidden hidden md:flex"
       >
-        {/* Top node (desktop) */}
-        <div className="absolute hidden md:block" style={{ top: topY - 20, left: "50%", transform: "translateX(-50%)" }}>
+        {/* Nodes using absolute positioning for precise control */}
+        <div style={{ position: 'absolute', top: topNodeY, left: '50%', transform: 'translateX(-50%)' }}>
           <Node icon={Gem} label="SyMetric Platform" />
         </div>
-
-        {/* Bottom nodes (desktop) */}
-        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: leftX, transform: "translateX(-50%)" }}>
-            <Node icon={Repeat} label="IRT / IWRS" />
+        <div style={{ position: 'absolute', top: bottomNodeY, left: leftNodeX, transform: 'translateX(-50%)' }}>
+          <Node icon={Repeat} label="IRT / IWRS" />
         </div>
-        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: centerX, transform: "translateX(-50%)" }}>
-            <Node icon={ClipboardList} label="CTM" />
+        <div style={{ position: 'absolute', top: bottomNodeY, left: '50%', transform: 'translateX(-50%)' }}>
+          <Node icon={ClipboardList} label="CTM" />
         </div>
-        <div className="absolute hidden md:block" style={{ top: bottomY - 80, left: rightX, transform: "translateX(-50%)" }}>
-            <Node icon={Database} label="EDC" />
+        <div style={{ position: 'absolute', top: bottomNodeY, left: rightNodeX, transform: 'translateX(-50%)' }}>
+          <Node icon={Database} label="EDC" />
         </div>
 
-        {/* SVG canvas */}
-        <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0 pointer-events-none hidden md:block">
+        {/* SVG for lines and animations */}
+        <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="absolute inset-0 z-0 pointer-events-none">
           <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--primary))" />
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
             </marker>
-
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
               <feMerge>
@@ -154,27 +150,26 @@ export const PlatformAnimation = () => {
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-
-            <path id="p-left" d={`M ${centerX} ${topY + 30} V ${busY} H ${leftX} V ${bottomY}`} fill="none" />
-            <path id="p-center" d={`M ${centerX} ${topY + 30} V ${busY} H ${centerX} V ${bottomY}`} fill="none" />
-            <path id="p-right" d={`M ${centerX} ${topY + 30} V ${busY} H ${rightX} V ${bottomY}`} fill="none" />
-
-            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="1" />
-              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.35" />
-            </linearGradient>
+            
+            {/* Motion paths for particles */}
+            <path id="p-left" d={`M ${centerX} ${topNodeY + 60} V ${busLineY} H ${leftNodeX} V ${bottomNodeY}`} fill="none" />
+            <path id="p-center" d={`M ${centerX} ${topNodeY + 60} V ${bottomNodeY}`} fill="none" />
+            <path id="p-right" d={`M ${centerX} ${topNodeY + 60} V ${busLineY} H ${rightNodeX} V ${bottomNodeY}`} fill="none" />
           </defs>
 
-          <FlowArrow d={`M ${centerX} ${topY + 30} V ${busY}`} delay={0.25} />
-          <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.45} />
-          <FlowArrow d={`M ${leftX} ${busY} V ${bottomY}`} delay={0.65} />
-          <FlowArrow d={`M ${centerX} ${busY} V ${bottomY}`} delay={0.85} />
-          <FlowArrow d={`M ${rightX} ${busY} V ${bottomY}`} delay={1.05} />
+          {/* Visible lines */}
+          <FlowArrow d={`M ${centerX} ${topNodeY + 60} V ${busLineY}`} delay={0.2} />
+          <FlowArrow d={`M ${leftNodeX} ${busLineY} H ${rightNodeX}`} delay={0.4} />
+          <FlowArrow d={`M ${leftNodeX} ${busLineY} V ${bottomNodeY}`} delay={0.6} />
+          <FlowArrow d={`M ${centerX} ${busLineY} V ${bottomNodeY}`} delay={0.6} />
+          <FlowArrow d={`M ${rightNodeX} ${busLineY} V ${bottomNodeY}`} delay={0.6} />
 
-          <FlowParticle pathId="p-left" delay={0.6} />
-          <FlowParticle pathId="p-center" delay={0.9} />
-          <FlowParticle pathId="p-right" delay={1.1} />
+          {/* Animated particles */}
+          <FlowParticle pathId="p-left" delay={0.8} />
+          <FlowParticle pathId="p-center" delay={1.0} />
+          <FlowParticle pathId="p-right" delay={1.2} />
         </svg>
+      </motion.div>
 
         {/* Mobile stacked layout */}
         <div className="flex flex-col items-center gap-8 md:hidden mt-6 px-6">
@@ -186,7 +181,6 @@ export const PlatformAnimation = () => {
           <div className="h-12 w-1 bg-gradient-to-b from-primary/90 to-primary/30 rounded-full" />
           <Node icon={Database} label="EDC" />
         </div>
-      </motion.div>
     </div>
   );
 };
