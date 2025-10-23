@@ -26,6 +26,7 @@ export default function ClinicalTrialPlatformPage() {
     const irtImage = PlaceHolderImages.find(p => p.id === 'irt-iwrs-image');
     const edcImage = PlaceHolderImages.find(p => p.id === 'edc-image');
     const ctmImage = PlaceHolderImages.find(p => p.id === 'ctm-image');
+    const analyticsImage = PlaceHolderImages.find(p => p.id === 'trial-analytics-image');
     
   return (
     <>
@@ -53,7 +54,7 @@ export default function ClinicalTrialPlatformPage() {
               <div className="text-center max-w-3xl mx-auto mb-16">
                   <h2 className="text-3xl font-bold">Explore Our Core Solutions</h2>
               </div>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                   <Card>
                       {irtImage && <Image src={irtImage.imageUrl} alt={irtImage.description} data-ai-hint={irtImage.imageHint} width={600} height={400} className="rounded-t-lg object-cover aspect-video" />}
                       <CardHeader>
@@ -85,6 +86,18 @@ export default function ClinicalTrialPlatformPage() {
                       </CardHeader>
                       <CardContent>
                           <p className="text-muted-foreground">The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.</p>
+                      </CardContent>
+                      <div className="p-6 pt-0">
+                          <Button variant="link" className="p-0">Find out more</Button>
+                      </div>
+                  </Card>
+                  <Card>
+                      {analyticsImage && <Image src={analyticsImage.imageUrl} alt={analyticsImage.description} data-ai-hint={analyticsImage.imageHint} width={600} height={400} className="rounded-t-lg object-cover aspect-video" />}
+                      <CardHeader>
+                          <CardTitle>Trial Analytics</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                          <p className="text-muted-foreground">Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.</p>
                       </CardContent>
                       <div className="p-6 pt-0">
                           <Button variant="link" className="p-0">Find out more</Button>
