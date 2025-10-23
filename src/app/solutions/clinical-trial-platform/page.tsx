@@ -49,7 +49,7 @@ export default function ClinicalTrialPlatformPage() {
                         </Button>
                         </div>
                     </div>
-                    <div className="relative w-full min-h-[500px] flex items-center justify-center">
+                    <div className="relative w-full min-h-[520px] flex items-center justify-center">
                         <PlatformAnimation />
                     </div>
                     </div>
