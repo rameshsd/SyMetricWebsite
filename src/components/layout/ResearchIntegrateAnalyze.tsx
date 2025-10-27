@@ -39,11 +39,11 @@ export function ResearchIntegrateAnalyze() {
                     ))}
                 </div>
 
-                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                          <div 
                             key={item.title} 
-                            className={cn("flex flex-col items-center text-center gap-4 opacity-0", isInView && "animate-fade-in-up")}
+                            className={cn("flex flex-col items-center text-center gap-2 opacity-0", isInView && "animate-fade-in-up")}
                             style={{animationDelay: `${500 + index * 150}ms`}}
                         >
                             <div className="flex-shrink-0 mt-1">
