@@ -12,7 +12,7 @@ import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 const SolutionsAnimation = dynamic(
-  () => import('@/components/animations/SolutionsAnimation'),
+  () => import('@/components/animations/SolutionsAnimation').then(mod => mod.SolutionsAnimation),
   { ssr: false } // ensures animation loads only on client
 );
 
