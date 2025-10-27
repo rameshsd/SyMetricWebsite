@@ -37,8 +37,10 @@ export default function SolutionsPage() {
                       </Button>
                     </div>
                   </div>
-                  <div className="min-h-[450px]">
-                    <SolutionsAnimation />
+                  <div className="min-h-[450px] flex items-center justify-center">
+                    <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm">
+                      <SolutionsAnimation />
+                    </div>
                   </div>
                 </div>
               </div>
