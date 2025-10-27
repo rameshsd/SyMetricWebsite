@@ -135,7 +135,7 @@ export const SolutionsAnimation = () => {
   return (
     <div ref={ref} className="relative w-full h-[450px] flex items-center justify-center">
       {/* background enhancement */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50/40 via-white to-blue-50/30 rounded-3xl dark:from-blue-900/10 dark:via-background dark:to-blue-900/5" />
+      <div className="absolute inset-0 bg-white/10 blur-xl rounded-full" />
 
       <motion.div
         variants={containerVariants}
