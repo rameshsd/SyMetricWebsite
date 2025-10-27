@@ -13,7 +13,7 @@ import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 const SolutionsAnimation = dynamic(
   () => import('@/components/animations/SolutionsAnimation').then(mod => mod.SolutionsAnimation),
-  { ssr: false } // ensures animation loads only on client
+  { ssr: false, loading: () => <div className="h-[400px] w-[400px]" /> } 
 );
 
 export default function SolutionsPage() {
