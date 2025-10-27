@@ -441,7 +441,7 @@ export const featureGridItems: FeatureGridItem[] = [
     title: 'Spend management',
     description: 'Implement AI-powered spend management processes from source to pay with an integrated suite of solutions to deliver spend visibility, control, and savings.',
     link: '#',
-linkText: 'Explore spend management solutions'
+    linkText: 'Explore spend management solutions'
   },
   {
     icon: SupplyChainIcon,
