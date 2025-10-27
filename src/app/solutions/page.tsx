@@ -10,6 +10,7 @@ import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { SolutionsAnimation } from '@/components/animations/SolutionsAnimation';
+import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 export const metadata: Metadata = {
   title: 'Solutions',
@@ -43,6 +44,8 @@ export default function SolutionsPage() {
               </div>
             </section>
             
+            <TechEdBanner />
+
             <section className="py-16 md:py-24">
                 <div className="container">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
