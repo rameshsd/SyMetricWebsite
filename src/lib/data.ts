@@ -525,6 +525,30 @@ export const latestNews = [
       category: "Partnership",
       imageId: "news-industries-live",
       link: "#"
+    },
+    {
+        id: 7,
+        title: 'SyMetric Celebrates 10 Years in the Industry',
+        description: '22 April 2022',
+        category: 'Milestone',
+        imageId: 'news-10-years',
+        link: '#',
+    },
+    {
+        id: 8,
+        title: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN',
+        description: '21 February 2022',
+        category: 'Partnership',
+        imageId: 'news-icsm-partner',
+        link: '#',
+    },
+    {
+        id: 9,
+        title: 'Christmas Celebrations 2021',
+        description: '24 December 2021',
+        category: 'Office Event',
+        imageId: 'news-christmas-2021',
+        link: '#',
     }
 ];
 

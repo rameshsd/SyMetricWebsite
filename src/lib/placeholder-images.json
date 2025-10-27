@@ -15,7 +15,7 @@
     {
       "id": "solution-cdm",
       "description": "Clinical data management charts",
-      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1543286386-2e659306cd6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaGFydHMlMjBncmFwaHN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "charts graphs"
     },
     {
@@ -33,13 +33,13 @@
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -489,13 +489,13 @@
     {
       "id": "edc-query",
       "description": "A dashboard showing data discrepancies and queries that need to be resolved.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "query dashboard"
     },
     {
       "id": "edc-reporting",
       "description": "An automated email notification about an Adverse Event (AE) that has been reported.",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "alert notification"
     },
     {
@@ -539,6 +539,24 @@
       "description": "SAP Industries Live 2021 event banner featuring SyMetric",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/05/SyMetric-at-SAP-Industries-Live-2021-768x432.jpg",
       "imageHint": "conference banner"
+    },
+    {
+      "id": "news-10-years",
+      "description": "SyMetric celebrating 10 years in the industry",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/04/SyMetric-Celebrates-10-Years-in-the-Industry-1.png",
+      "imageHint": "anniversary celebration"
+    },
+    {
+      "id": "news-icsm-partner",
+      "description": "SyMetric partnership announcement for ICSM with SAP and TENTHPIN",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/02/SyMetric-is-excited-to-be-a-strategic-partner-for-ICSM-with-SAP-and-TENTHPIN-1-768x432.jpg",
+      "imageHint": "partnership announcement"
+    },
+    {
+      "id": "news-christmas-2021",
+      "description": "Christmas celebrations at the SyMetric office in 2021",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/12/Christmas-Celebrations-2021-768x512.jpg",
+      "imageHint": "office party"
     }
   ]
 }
