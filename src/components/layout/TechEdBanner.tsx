@@ -12,7 +12,7 @@ export function TechEdBanner() {
         <div className="bg-blue-900 text-white rounded-lg p-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="flex items-center gap-4 text-center md:text-left">
-                <h2 className="text-lg font-bold flex-shrink-0">SAP TechEd</h2>
+                <h2 className="text-lg font-bold flex-shrink-0">SyMetric TechEd</h2>
                 <p className="text-sm text-white/80">
                   Transform your business with Joule, agents, and SyMetric's AI
                   operating system, November 4-6, 2025.
