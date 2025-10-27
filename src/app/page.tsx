@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -19,6 +20,8 @@ export default function Home() {
   
   const content = homepageContent;
   const newsItems = latestNews;
+  const mainNews = newsItems[0];
+  const otherNews = newsItems.slice(1);
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -119,44 +122,66 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tight mb-12 text-center sm:text-4xl md:text-5xl">Latest From SyMetric</h2>
             
-              {newsItems && newsItems.length > 0 ? (
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {newsItems.map((item: any) => {
-                      const image = PlaceHolderImages.find(p => p.id === item.imageId);
-                      return (
-                        <Card key={item.id} className="overflow-hidden group">
-                           <Link href={item.link} className="block">
-                            <div className="relative aspect-video overflow-hidden">
-                                {image && (
-                                    <Image
-                                        src={image.imageUrl}
-                                        alt={image.description}
-                                        data-ai-hint={image.imageHint}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                )}
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <div className="py-1 px-3 bg-primary/80 text-primary-foreground text-sm font-semibold rounded-full">
-                                      {item.category}
-                                    </div>
+            <div className="space-y-8">
+              {mainNews && (
+                <Card className="overflow-hidden group">
+                  <Link href={mainNews.link} className="block md:flex">
+                    <div className="md:w-1/2 relative min-h-[250px] md:min-h-full">
+                       {PlaceHolderImages.find(p => p.id === mainNews.imageId) && (
+                        <Image
+                          src={PlaceHolderImages.find(p => p.id === mainNews.imageId)!.imageUrl}
+                          alt={mainNews.title}
+                          data-ai-hint={PlaceHolderImages.find(p => p.id === mainNews.imageId)!.imageHint}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      )}
+                    </div>
+                    <div className="md:w-1/2 p-8 flex flex-col justify-center">
+                      <p className="text-sm text-primary font-semibold mb-2">{mainNews.category}</p>
+                      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{mainNews.title}</h3>
+                      <p className="text-muted-foreground mb-6">{mainNews.description}</p>
+                      <Button variant="link" className="p-0 self-start">
+                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </Link>
+                </Card>
+              )}
 
-                                </div>
-                            </div>
-                            <CardContent className="p-6">
-                                <h3 className="text-xl font-bold mt-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                                <p className="text-muted-foreground mt-2">{item.description}</p>
-                            </CardContent>
-                          </Link>
-                        </Card>
-                      )
+              {otherNews.length > 0 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {otherNews.map((item) => {
+                    const image = PlaceHolderImages.find(p => p.id === item.imageId);
+                    return (
+                      <Card key={item.id} className="overflow-hidden group">
+                        <Link href={item.link} className="block h-full flex flex-col">
+                          <div className="relative aspect-video overflow-hidden">
+                            {image && (
+                              <Image
+                                src={image.imageUrl}
+                                alt={item.title}
+                                data-ai-hint={image.imageHint}
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                              />
+                            )}
+                          </div>
+                          <CardContent className="p-6 flex-grow flex flex-col">
+                            <p className="text-sm text-primary font-semibold mb-2">{item.category}</p>
+                            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                            <p className="text-muted-foreground text-sm flex-grow">{item.description}</p>
+                            <Button variant="link" className="p-0 self-start mt-4">
+                              Read More <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </CardContent>
+                        </Link>
+                      </Card>
+                    )
                   })}
-                 </div>
-              ) : (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">No news items available at the moment. Please check back later.</p>
                 </div>
               )}
+            </div>
           </div>
         </section>
       </main>
