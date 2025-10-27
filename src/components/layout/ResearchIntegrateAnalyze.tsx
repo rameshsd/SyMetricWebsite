@@ -9,24 +9,43 @@ import { ArrowRight } from 'lucide-react';
 
 export function ResearchIntegrateAnalyze() {
     const [ref, isInView] = useInView({ triggerOnce: true });
-    
+
     return (
-        <section ref={ref} className="py-24 md:py-32 bg-secondary/50">
-            <div className="container">
-                <div className="text-center max-w-3xl mx-auto">
-                    <h2 className={cn("text-4xl md:text-5xl font-bold tracking-tighter text-foreground opacity-0", isInView && "animate-fade-in-up")}>
+        <section
+            ref={ref}
+            className="py-24 md:py-32 flex items-center justify-center bg-secondary/50 px-4"
+        >
+            <div className="container text-center">
+                {/* Title & Subtitle */}
+                <div className="max-w-3xl mx-auto">
+                    <h2
+                        className={cn(
+                            "text-4xl md:text-5xl font-bold tracking-tighter text-foreground opacity-0",
+                            isInView && "animate-fade-in-up"
+                        )}
+                    >
                         Research. Integrate. Analyze.
                     </h2>
-                    <p className={cn("text-lg text-muted-foreground mt-4 opacity-0", isInView && "animate-fade-in-up")} style={{ animationDelay: '200ms' }}>
+                    <p
+                        className={cn(
+                            "text-lg text-muted-foreground mt-4 opacity-0",
+                            isInView && "animate-fade-in-up"
+                        )}
+                        style={{ animationDelay: '200ms' }}
+                    >
                         Our platform is designed to streamline every phase of the clinical trial lifecycle.
                     </p>
                 </div>
 
+                {/* Main Concepts */}
                 <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-12 text-center max-w-4xl mx-auto">
                     {researchIntegrateAnalyzeContent.mainConcepts.map((item, index) => (
-                        <div 
+                        <div
                             key={item.title}
-                            className={cn("flex flex-col items-center opacity-0", isInView && "animate-fade-in-up")}
+                            className={cn(
+                                "flex flex-col items-center opacity-0",
+                                isInView && "animate-fade-in-up"
+                            )}
                             style={{ animationDelay: `${200 + index * 150}ms` }}
                         >
                             <div className="flex justify-center items-center mb-4">
@@ -39,12 +58,16 @@ export function ResearchIntegrateAnalyze() {
                     ))}
                 </div>
 
+                {/* Platform Features */}
                 <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
-                         <div 
-                            key={item.title} 
-                            className={cn("flex flex-col items-center text-center gap-2 opacity-0", isInView && "animate-fade-in-up")}
-                            style={{animationDelay: `${500 + index * 150}ms`}}
+                        <div
+                            key={item.title}
+                            className={cn(
+                                "flex flex-col items-center text-center gap-2 opacity-0",
+                                isInView && "animate-fade-in-up"
+                            )}
+                            style={{ animationDelay: `${500 + index * 150}ms` }}
                         >
                             <div className="flex-shrink-0 mt-1">
                                 <item.icon className="h-6 w-6 text-primary" />
@@ -60,7 +83,7 @@ export function ResearchIntegrateAnalyze() {
                                     </Link>
                                 </Button>
                             )}
-                         </div>
+                        </div>
                     ))}
                 </div>
             </div>
