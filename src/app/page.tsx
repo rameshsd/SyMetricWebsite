@@ -136,26 +136,28 @@ export default function Home() {
                     <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
                       <div className="p-1 h-full">
                         <Card className="overflow-hidden group h-full flex flex-col">
-                          <Link href={item.link} className="block h-full flex flex-col">
-                            <div className="relative aspect-video overflow-hidden">
-                              {image && (
-                                <Image
-                                  src={image.imageUrl}
-                                  alt={item.title}
-                                  data-ai-hint={image.imageHint}
-                                  fill
-                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                              )}
-                            </div>
+                            <Link href={item.link} className="block">
+                                <div className="relative aspect-video overflow-hidden">
+                                {image && (
+                                    <Image
+                                    src={image.imageUrl}
+                                    alt={item.title}
+                                    data-ai-hint={image.imageHint}
+                                    fill
+                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                )}
+                                </div>
+                            </Link>
                             <CardContent className="p-6 flex-grow flex flex-col">
                               <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
-                              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors flex-grow">{item.title}</h3>
+                              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors flex-grow">
+                                <Link href={item.link}>{item.title}</Link>
+                              </h3>
                               <Button asChild>
                                 <Link href={item.link}>Read More</Link>
                               </Button>
                             </CardContent>
-                          </Link>
                         </Card>
                       </div>
                     </CarouselItem>
