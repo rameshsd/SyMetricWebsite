@@ -18,38 +18,43 @@ const IconWrapper = ({ children, className }: { children: React.ReactNode, class
 
 export const TimelineIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="3" />
-    <polyline points="32,18 32,32 44,38" stroke="currentColor" strokeWidth="3" />
-    <path d="M22,12 L12,22" />
-    <path d="M12,22 L18,22" />
-    <path d="M12,22 L12,28" />
+    <circle cx="32" cy="32" r="28" strokeWidth="3" />
+    <path d="M32 18V32l10 6" strokeWidth="3" />
+    <path d="M22 12 l-8 8" strokeWidth="3" />
+    <path d="M14 20 h6 v-6" strokeWidth="3" />
   </IconWrapper>
 );
 
 export const FdaSubmissionIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M40 56V8a4 4 0 0 0-4-4H16a4 4 0 0 0-4 4v48l8-6 8 6 8-6 8 6z" stroke="currentColor" strokeWidth="3" />
-    <line x1="22" y1="22" x2="38" y2="22" stroke="currentColor" strokeWidth="3" />
-    <line x1="22" y1="30" x2="38" y2="30" stroke="currentColor" strokeWidth="3" />
-    <line x1="22" y1="38" x2="30" y2="38" stroke="currentColor" strokeWidth="3" />
+    <path d="M44 56V8a4 4 0 0 0-4-4H20a4 4 0 0 0-4 4v48l12-8z" strokeWidth="3" />
+    <path d="M24 22h12" strokeWidth="3" />
+    <path d="M24 30h12" strokeWidth="3" />
+    <path d="M24 38h8" strokeWidth="3" />
   </IconWrapper>
 );
 
 export const LightbulbIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M32 54C22.059 54 14 45.941 14 36c0-7.25 4.439-13.518 10.875-16.125" stroke="currentColor" strokeWidth="3" />
-    <path d="M32 10c9.941 0 18 8.059 18 18 0 7.25-4.439 13.518-10.875 16.125" stroke="currentColor" strokeWidth="3" />
-    <path d="M32 54V44h-4v-4h8v4h-4" stroke="currentColor" strokeWidth="3" />
-    <path d="M24 58h16" stroke="currentColor" strokeWidth="3" />
-    <path d="M32 20a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" stroke="currentColor" strokeWidth="3" fill="currentColor" />
+    <path d="M32 46C23.163 46 16 38.837 16 30c0-8.837 7.163-16 16-16s16 7.163 16 16c0 8.837-7.163 16-16 16z" strokeWidth="3" />
+    <path d="M32 14V6" strokeWidth="3" />
+    <path d="M32 58v-8" strokeWidth="3" />
+    <path d="M26 54h12" strokeWidth="3" />
+    <path d="M23 23l-5-5" strokeWidth="3" />
+    <path d="M45 45l-4-4" strokeWidth="3" />
+    <path d="M41 23l4-5" strokeWidth="3" />
+    <path d="M19 45l-4 4" strokeWidth="3" />
   </IconWrapper>
 );
 
 export const EfficiencyIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M24 44a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" stroke="currentColor" strokeWidth="3" />
-    <path d="M44 36a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" stroke="currentColor" strokeWidth="3" />
-    <path d="M30 36l-3-3m-3 3l3-3m11 3l-3-3m-3 3l3-3" stroke="currentColor" strokeWidth="3" />
-    <path d="M4 32h12M48 32h12" stroke="currentColor" strokeWidth="3" />
+    <circle cx="32" cy="32" r="28" strokeWidth="3" />
+    <circle cx="24" cy="28" r="6" strokeWidth="3" />
+    <circle cx="40" cy="36" r="6" strokeWidth="3" />
+    <path d="M24 34v10" strokeWidth="3" />
+    <path d="M40 20v10" strokeWidth="3" />
+    <path d="M20 44h8" strokeWidth="3" />
+    <path d="M36 20h8" strokeWidth="3" />
   </IconWrapper>
 );
