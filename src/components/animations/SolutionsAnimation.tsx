@@ -83,19 +83,19 @@ const pathVariants = (delay = 0) => ({
 
 const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
   <g filter="url(#glow)">
-    <circle r={3} fill="white" opacity="0.9">
+    <circle r={0.7} fill="white" opacity="0.9">
       <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
         <mpath href={`#${pathId}`} />
       </animateMotion>
     </circle>
-    {/* trailing glow effect */}
-    <circle r={6} fill="white" opacity="0.2">
+    <circle r={1.5} fill="white" opacity="0.2">
       <animateMotion dur="4s" begin={`${delay + 0.2}s`} repeatCount="indefinite" rotate="auto">
         <mpath href={`#${pathId}`} />
       </animateMotion>
     </circle>
   </g>
 );
+
 
 const Node = ({
   icon: Icon,
@@ -111,23 +111,22 @@ const Node = ({
   y: number;
 }) => (
     <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
-        <foreignObject x={-48} y={-48} width={96} height={96} className="z-10">
+        <foreignObject x={size === 'md' ? -12 : -10} y={size === 'md' ? -12 : -10} width={size === 'md' ? 24 : 20} height={size === 'md' ? 24 : 20}>
              <div
                 className={cn(
-                    "flex flex-col items-center justify-center gap-2",
-                    
+                    "flex flex-col items-center justify-center gap-1.5 w-full h-full"
                 )}
             >
                 <div
-                className={cn(
-                    "flex items-center justify-center rounded-2xl bg-white shadow-md",
-                    "transition-all duration-300 hover:shadow-lg hover:scale-105",
-                    size === "md" ? "w-24 h-24" : "w-20 h-20"
-                )}
+                    className={cn(
+                        "flex items-center justify-center rounded-lg bg-white shadow-md",
+                        "transition-all duration-300 hover:shadow-lg hover:scale-105",
+                         size === "md" ? "w-16 h-16" : "w-12 h-12"
+                    )}
                 >
-                <Icon className={cn("text-primary", size === "md" ? "w-10 h-10" : "w-8 h-8")} />
+                    <Icon className={cn("text-primary", size === "md" ? "w-8 h-8" : "w-6 h-6")} />
                 </div>
-                {label && <div className="font-semibold text-xs text-foreground text-center">{label}</div>}
+                {label && <div className="font-semibold text-xs text-foreground text-center whitespace-nowrap">{label}</div>}
             </div>
         </foreignObject>
     </motion.g>
@@ -136,27 +135,31 @@ const Node = ({
 export function SolutionsAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
-  const centerX = 250;
-  const centerY = 200;
-
   const paths = [
-      { id: "path-1", d: "M250 200 C 180 160, 120 140, 90 120" },
-      { id: "path-2", d: "M250 200 C 320 160, 380 140, 410 120" },
-      { id: "path-3", d: "M250 200 C 180 240, 120 260, 90 280" },
-      { id: "path-4", d: "M250 200 C 320 240, 380 260, 410 280" },
-      { id: "path-5", d: `M250 ${centerY-48} V 50` },
-      { id: "path-6", d: `M250 ${centerY+48} V 350` }
+    { id: "path-1", d: "M50 50 C 35 35, 20 30, 10 20" },
+    { id: "path-2", d: "M50 50 C 65 35, 80 30, 90 20" },
+    { id: "path-3", d: "M50 50 C 35 65, 20 70, 10 80" },
+    { id: "path-4", d: "M50 50 C 65 65, 80 70, 90 80" },
+    { id: "path-5", d: "M50 40 V 10" },
+    { id: "path-6", d: "M50 60 V 90" },
   ];
 
   return (
-    <div ref={ref} className="relative w-full h-[450px] flex items-center justify-center">
+    <div
+      ref={ref}
+      className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] lg:h-[550px] flex items-center justify-center"
+    >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="relative w-full h-full scale-90 sm:scale-100"
+        className="relative w-full h-full"
       >
-        <svg width="100%" height="100%" viewBox="0 0 500 400" className="absolute inset-0 overflow-visible">
+        <svg
+          className="absolute inset-0 w-full h-full overflow-visible"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid meet"
+        >
           <defs>
             <linearGradient id="clinicalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="white" stopOpacity="0.2" />
@@ -179,8 +182,8 @@ export function SolutionsAnimation() {
               viewBox="0 0 10 10"
               refX="9"
               refY="5"
-              markerWidth="6"
-              markerHeight="6"
+              markerWidth="5"
+              markerHeight="5"
               orient="auto-start-reverse"
             >
               <path
@@ -196,36 +199,41 @@ export function SolutionsAnimation() {
                 />
               </path>
             </marker>
-            {paths.map(p => <path key={p.id} id={p.id} d={p.d} fill="none" />)}
+
+            {paths.map(p => (
+              <path key={p.id} id={p.id} d={p.d} fill="none" />
+            ))}
           </defs>
 
+          {/* Lines */}
           {paths.map((p, i) => (
             <motion.path
               key={p.id}
               d={p.d}
               variants={pathVariants(0.2 + i * 0.1)}
               stroke="url(#clinicalGradient)"
-              strokeWidth="1.8"
+              strokeWidth="0.8"
               fill="none"
               markerEnd="url(#arrowhead)"
             />
           ))}
 
-          {inView && (
-            <>
-              {paths.map((p, i) => <FlowParticle key={p.id} pathId={p.id} delay={0.6 + i * 0.2} />)}
-            </>
-          )}
+          {/* Flowing particles */}
+          {inView &&
+            paths.map((p, i) => (
+              <FlowParticle key={p.id} pathId={p.id} delay={0.6 + i * 0.2} />
+            ))}
 
-           <Node icon={FlaskConical} label="CTP" size="md" x={centerX} y={centerY} />
-           <Node icon={Repeat} label="IRT/IWRS" size="sm" x={90} y={100} />
-           <Node icon={Database} label="EDC" size="sm" x={410} y={100} />
-           <Node icon={ClipboardList} label="CTM" size="sm" x={90} y={300} />
-           <Node icon={PieChart} label="Analytics" size="sm" x={410} y={300} />
-           <Node icon={ShieldCheck} label="Compliance" size="sm" x={250} y={50} />
-           <Node icon={FileText} label="eTMF" size="sm" x={250} y={350} />
+          {/* Nodes */}
+          <Node icon={FlaskConical} label="CTP" size="md" x={50} y={50} />
+          <Node icon={Repeat} label="IRT/IWRS" size="sm" x={10} y={20} />
+          <Node icon={Database} label="EDC" size="sm" x={90} y={20} />
+          <Node icon={ClipboardList} label="CTM" size="sm" x={10} y={80} />
+          <Node icon={PieChart} label="Analytics" size="sm" x={90} y={80} />
+          <Node icon={ShieldCheck} label="Compliance" size="sm" x={50} y={10} />
+          <Node icon={FileText} label="eTMF" size="sm" x={50} y={90} />
         </svg>
       </motion.div>
     </div>
   );
-};
+}
