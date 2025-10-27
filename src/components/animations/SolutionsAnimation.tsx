@@ -1,8 +1,9 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Repeat, Database, ClipboardList, FlaskConical, ShieldCheck, PieChart } from "lucide-react";
+import { Repeat, Database, ClipboardList, FlaskConical, ShieldCheck, PieChart, FileText } from "lucide-react";
 
 const cn = (...parts: Array<string | false | null | undefined>) => parts.filter(Boolean).join(" ");
 
