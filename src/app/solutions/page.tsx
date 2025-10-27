@@ -22,7 +22,7 @@ export default function SolutionsPage() {
         <>
             <ProductPageHeader productName="SyMetric business applications" solutions={headerSolutions} />
             <section className="relative w-full py-12 md:py-20 lg:py-28 text-white overflow-hidden bg-solutions-hero-gradient bg-cover bg-center">
-              <div className="relative container mx-auto px-4 md:px-6">
+              <div className="container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                   <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
