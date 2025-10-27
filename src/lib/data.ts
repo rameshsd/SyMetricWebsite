@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -462,113 +462,97 @@ export const featureGridItems: FeatureGridItem[] = [
     title: 'Customer experience',
     description: 'Connect e-commerce, marketing, sales, and service data with our customer experience solutions—and use AI to personalise the customer experience at every touchpoint.',
     link: '#',
-    linkText: 'Explore CRM and CX solutions'
+    linkText: 'Explore CX software'
   }
 ];
 
 export const whyChooseUsItems = [
-  "End-to-End Unified Platform",
-  "AI-Powered Intelligence",
-  "Uncompromising Compliance",
-  "Dedicated Customer Partnership",
-  "Scalable and Flexible Architecture",
-  "User-Centric Design",
-  "Seamless Integration Capabilities",
-  "Actionable, Real-Time Analytics"
+    'Unified Platform',
+    'Data-driven Insights',
+    'Regulatory Compliance',
+    'Scalable & Secure'
 ];
 
-export const latestNews = [
-    { 
-        id: 1, 
-        title: "SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit", 
-        description: "21 December 2022",
-        category: "Event",
-        imageId: "news-summit",
-        link: "#"
-    },
-    { 
-        id: 2, 
-        title: "Navratri Celebrations at office", 
-        description: "4 October 2022",
-        category: "Office Event",
-        imageId: "news-navratri",
-        link: "#"
-    },
-    { 
-        id: 3, 
-        title: "Independence Day Celebrations 2022", 
-        description: "16 August 2022",
-        category: "Office Event",
-        imageId: "news-independence",
-        link: "#"
-    },
-    {
-      id: 4,
-      title: "SAP Batch Release Hub for Life Sciences",
-      description: "29 July 2022",
-      category: "Product",
-      imageId: "news-batch-release",
-      link: "#"
-    },
-    {
-      id: 5,
-      title: "Fun Activity at Office",
-      description: "10 June 2022",
-      category: "Office Event",
-      imageId: "news-fun-activity",
-      link: "#"
-    },
-    {
-      id: 6,
-      title: "SyMetric and SAP revolutionizing the Clinical Trial process to improve Patient Care",
-      description: "5 May 2022",
-      category: "Partnership",
-      imageId: "news-industries-live",
-      link: "#"
-    },
-    {
-        id: 7,
-        title: 'SyMetric Celebrates 10 Years in the Industry',
-        description: '22 April 2022',
-        category: 'Milestone',
-        imageId: 'news-10-years',
-        link: '#',
-    },
-    {
-        id: 8,
-        title: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN',
-        description: '21 February 2022',
-        category: 'Partnership',
-        imageId: 'news-icsm-partner',
-        link: '#',
-    },
-    {
-        id: 9,
-        title: 'Christmas Celebrations 2021',
-        description: '24 December 2021',
-        category: 'Office Event',
-        imageId: 'news-christmas-2021',
-        link: '#',
-    }
-];
 
 export const companyInfo = {
-  name: 'SyMetric',
-  mission: 'To accelerate the delivery of new therapies to patients by providing innovative, user-friendly, and compliant digital solutions for clinical research.',
-  history: 'Founded in 2015 by a team of clinical research veterans and technology experts, SyMetric was born from a shared frustration with the outdated, paper-based processes that slowed down vital research. We set out to build the digital infrastructure for the future of clinical trials.',
   facts: {
-    founded: '2015',
-    employees: '500+',
-    countries: '25+',
-    customers: '100+'
+    founded: '2012',
+    employees: '50+',
+    countries: '15+',
+    customers: '100+',
   }
 };
 
-export const teamMembers: TeamMember[] = [
-  { id: 1, name: 'Dr. Evelyn Reed', role: 'Chief Executive Officer', avatar: 'ER', bio: 'Visionary leader with 20+ years in life sciences and a passion for technology-driven innovation.' },
-  { id: 2, name: 'Marcus Chen', role: 'Chief Technology Officer', avatar: 'MC', bio: 'Expert in building scalable, secure, and compliant cloud platforms for regulated industries.' },
-  { id: 3, name: 'Dr. Lena Petrova', role: 'Chief Scientific Officer', avatar: 'LP', bio: 'Renowned clinical researcher with deep experience in trial design and data analysis.' },
-  { id: 4, name: 'Samuel Jones', role: 'Chief Operating Officer', avatar: 'SJ', bio: 'Drives operational excellence and ensures our solutions meet the needs of our global customer base.' },
-  { id: 5, name: 'Isabella Garcia', role: 'VP, Regulatory Affairs', avatar: 'IG', bio: 'Navigates the complex global regulatory landscape to ensure our products and customers are always compliant.' },
-  { id: 6, name: 'David Lee', role: 'VP, Business Development', avatar: 'DL', bio: 'Forges strategic partnerships to expand our ecosystem and deliver more value to our customers.' },
+export const latestNews: LatestNewsItem[] = [
+  {
+    id: 1,
+    title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
+    description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
+    link: '#',
+    imageId: 'news-summit',
+    main: true
+  },
+  {
+    id: 2,
+    title: 'Navaratri Celebrations at office',
+    description: 'The SyMetric team celebrated Navaratri at the office with festive decorations and activities.',
+    link: '#',
+    imageId: 'news-navratri'
+  },
+  {
+    id: 3,
+    title: 'Independence Day Celebrations 2022',
+    description: 'The team celebrated India\'s Independence Day with a flag hoisting ceremony and patriotic events.',
+    link: '#',
+    imageId: 'news-independence'
+  },
+  {
+    id: 4,
+    title: 'SAP Batch Release Hub for Life Sciences',
+    description: 'Our partner SAP has launched Batch Release Hub for Life Sciences, an innovation for the industry.',
+    link: '#',
+    imageId: 'news-batch-release'
+  },
+  {
+    id: 5,
+    title: 'Fun Activity at Office',
+    description: 'The SyMetric team participated in a fun team-building activity at the office to boost morale.',
+    link: '#',
+    imageId: 'news-fun-activity'
+  },
+  {
+    id: 6,
+    title: 'SyMetric at SAP Industries Live 2021',
+    description: 'SyMetric showcased its solutions at the SAP Industries Live virtual event.',
+    link: '#',
+    imageId: 'news-industries-live'
+  },
+  {
+    id: 7,
+    title: 'SyMetric Celebrates 10 Years in the Industry',
+    description: 'We are proud to celebrate a decade of innovation and customer success in the life sciences industry.',
+    link: '#',
+    imageId: 'news-10-years'
+  },
+  {
+    id: 8,
+    title: 'Strategic Partner for ICSM',
+    description: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.',
+    link: '#',
+    imageId: 'news-icsm-partner'
+  },
+  {
+    id: 9,
+    title: 'Christmas Celebrations 2021',
+    description: 'The team celebrated Christmas with a secret Santa gift exchange and festive lunch.',
+    link: '#',
+    imageId: 'news-christmas-2021'
+  },
+  {
+    id: 10,
+    title: 'SyMetric at GINSEP Demo Day',
+    description: 'SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.',
+    link: '#',
+    imageId: 'news-ginsep-demo'
+  }
 ];

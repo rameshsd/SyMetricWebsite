@@ -76,3 +76,12 @@ export type FeatureGridItem = {
   link: string;
   linkText: string;
 };
+
+export type LatestNewsItem = {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  imageId: string;
+  main?: boolean;
+};

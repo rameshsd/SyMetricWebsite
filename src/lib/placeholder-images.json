@@ -33,13 +33,13 @@
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": "logo-innovate-pharma",
       "description": "Innovate Pharma Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract logo"
     },
     {
@@ -477,7 +477,7 @@
     {
       "id": "edc-ecrf",
       "description": "An interface for designing and managing electronic Case Report Forms (eCRFs) in a clinical trial.",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "eCRF design"
     },
     {
@@ -489,7 +489,7 @@
     {
       "id": "edc-query",
       "description": "A dashboard showing data discrepancies and queries that need to be resolved.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "query dashboard"
     },
     {
@@ -501,7 +501,7 @@
     {
       "id": "edc-coding",
       "description": "An interface for medical coding, showing verbatim terms being mapped to MedDRA dictionary codes.",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "medical coding"
     },
     {
@@ -536,7 +536,7 @@
     },
     {
       "id": "news-industries-live",
-      "description": "SAP Industries Live 2021 event banner featuring SyMetric",
+      "description": "SyMetric at SAP Industries Live 2021 event banner",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/05/SyMetric-at-SAP-Industries-Live-2021-768x432.jpg",
       "imageHint": "conference banner"
     },
@@ -557,6 +557,12 @@
       "description": "Christmas celebrations at the SyMetric office in 2021",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/12/Christmas-Celebrations-2021-768x512.jpg",
       "imageHint": "office party"
+    },
+    {
+      "id": "news-ginsep-demo",
+      "description": "SyMetric participating in GINSEP Demo Day",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/12/SyMetric-at-GINSEP-Demo-Day-Indian-Startup-Pitches-768x432.jpg",
+      "imageHint": "demo day"
     }
   ]
 }
