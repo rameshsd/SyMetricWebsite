@@ -501,6 +501,30 @@ export const latestNews = [
         category: "Office Event",
         imageId: "news-independence",
         link: "#"
+    },
+    {
+      id: 4,
+      title: "SAP Batch Release Hub for Life Sciences",
+      description: "29 July 2022",
+      category: "Product",
+      imageId: "news-batch-release",
+      link: "#"
+    },
+    {
+      id: 5,
+      title: "Fun Activity at Office",
+      description: "10 June 2022",
+      category: "Office Event",
+      imageId: "news-fun-activity",
+      link: "#"
+    },
+    {
+      id: 6,
+      title: "SyMetric and SAP revolutionizing the Clinical Trial process to improve Patient Care",
+      description: "5 May 2022",
+      category: "Partnership",
+      imageId: "news-industries-live",
+      link: "#"
     }
 ];
 
