@@ -128,6 +128,15 @@ const Node = ({
 
 export function SolutionsAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  
+  const paths = [
+      { id: "path-1", d: "M 250 200 C 180 160, 120 140, 100 100" },
+      { id: "path-2", d: "M 250 200 C 320 160, 380 140, 400 100" },
+      { id: "path-3", d: "M 250 200 C 180 240, 120 260, 100 300" },
+      { id: "path-4", d: "M 250 200 C 320 240, 380 260, 400 300" },
+      { id: "path-5", d: "M 250 168 V 68" },
+      { id: "path-6", d: "M 250 232 V 332" }
+  ];
 
   return (
     <div
@@ -142,6 +151,7 @@ export function SolutionsAnimation() {
       >
         <svg
           className="absolute inset-0 w-full h-full overflow-visible"
+          viewBox="0 0 500 400"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
@@ -184,31 +194,30 @@ export function SolutionsAnimation() {
               </path>
             </marker>
 
-            <path id="path-1" d="M50% 50% C 40% 40%, 25% 35%, 20% 25%" fill="none" />
-            <path id="path-2" d="M50% 50% C 60% 40%, 75% 35%, 80% 25%" fill="none" />
-            <path id="path-3" d="M50% 50% C 40% 60%, 25% 65%, 20% 75%" fill="none" />
-            <path id="path-4" d="M50% 50% C 60% 60%, 75% 65%, 80% 75%" fill="none" />
-            <path id="path-5" d="M50% 50% V 12.5%" fill="none" />
-            <path id="path-6" d="M50% 50% V 87.5%" fill="none" />
+             {paths.map(p => (
+              <path key={p.id} id={p.id} d={p.d} fill="none" />
+            ))}
           </defs>
 
           {/* Lines */}
-          <motion.path d="M50% 50% C 40% 40%, 25% 35%, 20% 25%" variants={pathVariants(0.2)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
-          <motion.path d="M50% 50% C 60% 40%, 75% 35%, 80% 25%" variants={pathVariants(0.3)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
-          <motion.path d="M50% 50% C 40% 60%, 25% 65%, 20% 75%" variants={pathVariants(0.4)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
-          <motion.path d="M50% 50% C 60% 60%, 75% 65%, 80% 75%" variants={pathVariants(0.5)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
-          <motion.path d="M50% 50% V 12.5%" variants={pathVariants(0.6)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
-          <motion.path d="M50% 50% V 87.5%" variants={pathVariants(0.7)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+           {paths.map((p, i) => (
+            <motion.path
+              key={p.id}
+              d={p.d}
+              variants={pathVariants(0.2 + i * 0.1)}
+              stroke="url(#clinicalGradient)"
+              strokeWidth="0.8"
+              fill="none"
+              markerEnd="url(#arrowhead)"
+            />
+          ))}
 
           {/* Flowing particles */}
           {inView && (
             <>
-              <FlowParticle pathId="path-1" delay={0.6} />
-              <FlowParticle pathId="path-2" delay={0.8} />
-              <FlowParticle pathId="path-3" delay={1.0} />
-              <FlowParticle pathId="path-4" delay={1.2} />
-              <FlowParticle pathId="path-5" delay={1.4} />
-              <FlowParticle pathId="path-6" delay={1.6} />
+              {paths.map((p, i) => (
+              <FlowParticle key={p.id} pathId={p.id} delay={0.6 + i * 0.2} />
+            ))}
             </>
           )}
         </svg>
@@ -241,5 +250,3 @@ export function SolutionsAnimation() {
     </div>
   );
 }
-
-    
