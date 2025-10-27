@@ -43,7 +43,7 @@ export function ResearchIntegrateAnalyze() {
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                          <div 
                             key={item.title} 
-                            className={cn("flex flex-col items-start text-left gap-4 opacity-0", isInView && "animate-fade-in-up")}
+                            className={cn("flex flex-col items-center text-center gap-4 opacity-0", isInView && "animate-fade-in-up")}
                             style={{animationDelay: `${500 + index * 150}ms`}}
                         >
                             <div className="flex-shrink-0 mt-1">
