@@ -25,7 +25,7 @@ export function WhyChooseUs() {
         />
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-square rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl bg-background">
             <AnimatePresence mode="wait">
               {activeImage && (
                 <motion.div
@@ -34,7 +34,7 @@ export function WhyChooseUs() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
                   <Image
                     src={activeImage.imageUrl}
@@ -54,17 +54,19 @@ export function WhyChooseUs() {
                 key={feature.id}
                 onClick={() => setActiveFeature(feature)}
                 className={cn(
-                  "w-full text-left p-4 rounded-lg transition-all duration-200 border-2",
+                  "w-full text-left p-4 rounded-lg transition-all duration-300 border-2",
                   activeFeature.id === feature.id
-                    ? 'bg-primary/10 border-primary shadow-lg'
-                    : 'bg-background/50 border-transparent hover:bg-background'
+                    ? 'bg-background border-primary shadow-lg scale-105'
+                    : 'bg-background/50 border-transparent hover:bg-background hover:shadow-md'
                 )}
               >
                 <div className="flex items-center gap-4">
-                  <CheckCircle className={cn(
-                    "h-6 w-6 shrink-0 transition-colors",
-                    activeFeature.id === feature.id ? "text-primary" : "text-muted-foreground"
-                  )} />
+                  <div className={cn("flex items-center justify-center h-10 w-10 rounded-lg shrink-0 transition-colors", activeFeature.id === feature.id ? 'bg-primary/10' : 'bg-secondary')}>
+                    <CheckCircle className={cn(
+                      "h-6 w-6 shrink-0 transition-colors",
+                      activeFeature.id === feature.id ? "text-primary" : "text-muted-foreground"
+                    )} />
+                  </div>
                   <span className="text-lg font-medium text-foreground">{feature.title}</span>
                 </div>
               </button>
