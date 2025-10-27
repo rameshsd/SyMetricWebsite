@@ -116,11 +116,11 @@ const Node = ({
     >
       <Icon className={cn("text-primary", size === "md" ? "w-10 h-10" : "w-8 h-8")} />
     </div>
-    {label && <div className="font-semibold text-xs text-white text-center">{label}</div>}
+    {label && <div className="font-semibold text-xs text-foreground text-center">{label}</div>}
   </motion.div>
 );
 
-export const SolutionsAnimation = () => {
+export function SolutionsAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
   const paths = [
