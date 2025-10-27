@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -83,13 +82,13 @@ const pathVariants = (delay = 0) => ({
 
 const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
   <g filter="url(#glow)">
-    <circle r={3} fill="hsl(var(--primary))" opacity="0.9">
+    <circle r={3} fill="white" opacity="0.9">
       <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
         <mpath href={`#${pathId}`} />
       </animateMotion>
     </circle>
     {/* trailing glow effect */}
-    <circle r={6} fill="hsl(var(--primary))" opacity="0.2">
+    <circle r={6} fill="white" opacity="0.2">
       <animateMotion dur="4s" begin={`${delay + 0.2}s`} repeatCount="indefinite" rotate="auto">
         <mpath href={`#${pathId}`} />
       </animateMotion>
@@ -109,14 +108,14 @@ const Node = ({
   <motion.div variants={itemVariants} className="flex flex-col items-center gap-2 z-10">
     <div
       className={cn(
-        "flex items-center justify-center rounded-2xl border border-white/20 bg-white shadow-md backdrop-blur-sm",
+        "flex items-center justify-center rounded-2xl bg-white shadow-md",
         "transition-all duration-300 hover:shadow-lg hover:scale-105",
-        size === "md" ? "w-24 h-24" : "w-16 h-16"
+        size === "md" ? "w-24 h-24" : "w-20 h-20"
       )}
     >
       <Icon className={cn("text-primary", size === "md" ? "w-10 h-10" : "w-8 h-8")} />
     </div>
-    {label && <div className="font-semibold text-xs text-primary-foreground text-center">{label}</div>}
+    {label && <div className="font-semibold text-xs text-white text-center">{label}</div>}
   </motion.div>
 );
 
@@ -134,9 +133,6 @@ export const SolutionsAnimation = () => {
 
   return (
     <div ref={ref} className="relative w-full h-[450px] flex items-center justify-center">
-      {/* background enhancement */}
-      <div className="absolute inset-0 bg-white/10 blur-xl rounded-full" />
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
