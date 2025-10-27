@@ -12,7 +12,7 @@ import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 const SolutionsAnimation = dynamic(
-  () => import('@/components/animations/SolutionsAnimation').then(mod => mod.SolutionsAnimation),
+  () => import('@/components/animations/SolutionsAnimation'),
   { ssr: false } // ensures animation loads only on client
 );
 
@@ -44,7 +44,7 @@ export default function SolutionsPage() {
             </div>
 
             {/* ✅ Animated Diagram (Right Side) */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center min-h-[450px]">
               <div className="relative bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm shadow-lg w-full max-w-[500px] flex items-center justify-center">
                 <SolutionsAnimation />
               </div>

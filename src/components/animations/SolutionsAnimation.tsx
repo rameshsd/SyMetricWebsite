@@ -144,8 +144,8 @@ export function SolutionsAnimation() {
       { id: "path-2", d: "M250 200 C 320 160, 380 140, 410 120" },
       { id: "path-3", d: "M250 200 C 180 240, 120 260, 90 280" },
       { id: "path-4", d: "M250 200 C 320 240, 380 260, 410 280" },
-      { id: "path-5", d: "M250 150 V 50" },
-      { id: "path-6", d: "M250 250 V 350" }
+      { id: "path-5", d: `M250 ${centerY-48} V 50` },
+      { id: "path-6", d: `M250 ${centerY+48} V 350` }
   ];
 
   return (
