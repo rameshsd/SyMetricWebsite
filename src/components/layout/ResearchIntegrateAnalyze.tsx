@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useInView } from '@/hooks/use-in-view';
@@ -27,7 +26,7 @@ export function ResearchIntegrateAnalyze() {
                     {researchIntegrateAnalyzeContent.mainConcepts.map((item, index) => (
                         <div 
                             key={item.title}
-                            className={cn("opacity-0", isInView && "animate-fade-in-up")}
+                            className={cn("flex flex-col items-center opacity-0", isInView && "animate-fade-in-up")}
                             style={{ animationDelay: `${200 + index * 150}ms` }}
                         >
                             <div className="flex justify-center items-center mb-4">
