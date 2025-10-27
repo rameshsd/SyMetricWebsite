@@ -18,17 +18,27 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
     const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
+    const heroBgImage = PlaceHolderImages.find(p => p.id === 'solutions-hero-bg');
     return (
         <>
             <ProductPageHeader productName="SyMetric business applications" solutions={headerSolutions} />
-            <section className="w-full py-12 md:py-20 lg:py-28 bg-[#f5f3ff] dark:bg-card">
-              <div className="container mx-auto px-4 md:px-6">
+            <section className="relative w-full py-12 md:py-20 lg:py-28 text-white">
+              {heroBgImage && (
+                <Image 
+                    src={heroBgImage.imageUrl}
+                    alt={heroBgImage.description}
+                    data-ai-hint={heroBgImage.imageHint}
+                    fill
+                    className="object-cover"
+                />
+              )}
+              <div className="relative container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                   <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                       SyMetric Solutions
                     </h1>
-                    <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
+                    <p className="max-w-[600px] text-lg text-white/80 md:text-xl/relaxed">
                       Don't get held back by disconnected applications. Be ready to seize opportunities and secure your success with an integrated suite of solutions.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
