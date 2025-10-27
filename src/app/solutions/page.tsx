@@ -9,17 +9,17 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
+import { SolutionsAnimation } from '@/components/animations/SolutionsAnimation';
 
 export const metadata: Metadata = {
   title: 'Solutions',
 };
 
 export default function SolutionsPage() {
-    const heroImage = PlaceHolderImages.find((p) => p.id === 'sap-business-applications-hero');
     const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
     return (
         <>
-            <ProductPageHeader productName="SAP business applications" solutions={headerSolutions} />
+            <ProductPageHeader productName="SyMetric business applications" solutions={headerSolutions} />
             <section className="w-full py-12 md:py-20 lg:py-28 bg-[#f5f3ff] dark:bg-card">
               <div className="container mx-auto px-4 md:px-6">
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -36,17 +36,8 @@ export default function SolutionsPage() {
                       </Button>
                     </div>
                   </div>
-                  <div className="relative">
-                    {heroImage && (
-                      <Image
-                        src={heroImage.imageUrl}
-                        alt={heroImage.description}
-                        data-ai-hint={heroImage.imageHint}
-                        width={600}
-                        height={450}
-                        className="rounded-lg object-contain"
-                      />
-                    )}
+                  <div className="relative min-h-[450px]">
+                    <SolutionsAnimation />
                   </div>
                 </div>
               </div>
