@@ -101,53 +101,38 @@ const Node = ({
   icon: Icon,
   label,
   size = "md",
-  x,
-  y
 }: {
   icon: React.ElementType;
   label?: string;
   size?: "sm" | "md";
-  x: number;
-  y: number;
 }) => (
-    <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
-        <foreignObject x={size === 'md' ? -12 : -10} y={size === 'md' ? -12 : -10} width={size === 'md' ? 24 : 20} height={size === 'md' ? 24 : 20}>
-             <div
-                className={cn(
-                    "flex flex-col items-center justify-center gap-1.5 w-full h-full"
-                )}
-            >
-                <div
-                    className={cn(
-                        "flex items-center justify-center rounded-lg bg-white shadow-md",
-                        "transition-all duration-300 hover:shadow-lg hover:scale-105",
-                         size === "md" ? "w-16 h-16" : "w-12 h-12"
-                    )}
-                >
-                    <Icon className={cn("text-primary", size === "md" ? "w-8 h-8" : "w-6 h-6")} />
-                </div>
-                {label && <div className="font-semibold text-xs text-foreground text-center whitespace-nowrap">{label}</div>}
-            </div>
-        </foreignObject>
-    </motion.g>
+    <motion.div
+        variants={itemVariants}
+        className={cn(
+            "flex flex-col items-center justify-center gap-1.5",
+             size === "md" ? "w-24 h-24" : "w-20 h-20"
+        )}
+    >
+        <div
+            className={cn(
+                "flex items-center justify-center rounded-lg bg-white shadow-md",
+                "transition-all duration-300 hover:shadow-lg hover:scale-105",
+                 size === "md" ? "w-16 h-16" : "w-12 h-12"
+            )}
+        >
+            <Icon className={cn("text-primary", size === "md" ? "w-8 h-8" : "w-6 h-6")} />
+        </div>
+        {label && <div className="font-semibold text-xs text-white text-center whitespace-nowrap">{label}</div>}
+    </motion.div>
 );
 
 export function SolutionsAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
-  const paths = [
-    { id: "path-1", d: "M50 50 C 35 35, 20 30, 10 20" },
-    { id: "path-2", d: "M50 50 C 65 35, 80 30, 90 20" },
-    { id: "path-3", d: "M50 50 C 35 65, 20 70, 10 80" },
-    { id: "path-4", d: "M50 50 C 65 65, 80 70, 90 80" },
-    { id: "path-5", d: "M50 40 V 10" },
-    { id: "path-6", d: "M50 60 V 90" },
-  ];
-
   return (
     <div
       ref={ref}
-      className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] lg:h-[550px] flex items-center justify-center"
+      className="relative w-full h-[320px] sm:h-[400px]"
     >
       <motion.div
         variants={containerVariants}
@@ -157,7 +142,6 @@ export function SolutionsAnimation() {
       >
         <svg
           className="absolute inset-0 w-full h-full overflow-visible"
-          viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
@@ -200,40 +184,62 @@ export function SolutionsAnimation() {
               </path>
             </marker>
 
-            {paths.map(p => (
-              <path key={p.id} id={p.id} d={p.d} fill="none" />
-            ))}
+            <path id="path-1" d="M50% 50% C 40% 40%, 25% 35%, 20% 25%" fill="none" />
+            <path id="path-2" d="M50% 50% C 60% 40%, 75% 35%, 80% 25%" fill="none" />
+            <path id="path-3" d="M50% 50% C 40% 60%, 25% 65%, 20% 75%" fill="none" />
+            <path id="path-4" d="M50% 50% C 60% 60%, 75% 65%, 80% 75%" fill="none" />
+            <path id="path-5" d="M50% 50% V 12.5%" fill="none" />
+            <path id="path-6" d="M50% 50% V 87.5%" fill="none" />
           </defs>
 
           {/* Lines */}
-          {paths.map((p, i) => (
-            <motion.path
-              key={p.id}
-              d={p.d}
-              variants={pathVariants(0.2 + i * 0.1)}
-              stroke="url(#clinicalGradient)"
-              strokeWidth="0.8"
-              fill="none"
-              markerEnd="url(#arrowhead)"
-            />
-          ))}
+          <motion.path d="M50% 50% C 40% 40%, 25% 35%, 20% 25%" variants={pathVariants(0.2)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M50% 50% C 60% 40%, 75% 35%, 80% 25%" variants={pathVariants(0.3)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M50% 50% C 40% 60%, 25% 65%, 20% 75%" variants={pathVariants(0.4)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M50% 50% C 60% 60%, 75% 65%, 80% 75%" variants={pathVariants(0.5)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M50% 50% V 12.5%" variants={pathVariants(0.6)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M50% 50% V 87.5%" variants={pathVariants(0.7)} stroke="url(#clinicalGradient)" strokeWidth="0.8" fill="none" markerEnd="url(#arrowhead)" />
 
           {/* Flowing particles */}
-          {inView &&
-            paths.map((p, i) => (
-              <FlowParticle key={p.id} pathId={p.id} delay={0.6 + i * 0.2} />
-            ))}
-
-          {/* Nodes */}
-          <Node icon={FlaskConical} label="CTP" size="md" x={50} y={50} />
-          <Node icon={Repeat} label="IRT/IWRS" size="sm" x={10} y={20} />
-          <Node icon={Database} label="EDC" size="sm" x={90} y={20} />
-          <Node icon={ClipboardList} label="CTM" size="sm" x={10} y={80} />
-          <Node icon={PieChart} label="Analytics" size="sm" x={90} y={80} />
-          <Node icon={ShieldCheck} label="Compliance" size="sm" x={50} y={10} />
-          <Node icon={FileText} label="eTMF" size="sm" x={50} y={90} />
+          {inView && (
+            <>
+              <FlowParticle pathId="path-1" delay={0.6} />
+              <FlowParticle pathId="path-2" delay={0.8} />
+              <FlowParticle pathId="path-3" delay={1.0} />
+              <FlowParticle pathId="path-4" delay={1.2} />
+              <FlowParticle pathId="path-5" delay={1.4} />
+              <FlowParticle pathId="path-6" delay={1.6} />
+            </>
+          )}
         </svg>
+
+        {/* Nodes */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Node icon={FlaskConical} label="CTP" size="md" />
+        </div>
+
+        <div className="absolute" style={{ top: "calc(25% - 32px)", left: "calc(20% - 32px)" }}>
+          <Node icon={Repeat} label="IRT/IWRS" size="sm" />
+        </div>
+        <div className="absolute" style={{ top: "calc(25% - 32px)", left: "calc(80% - 32px)" }}>
+          <Node icon={Database} label="EDC" size="sm" />
+        </div>
+        <div className="absolute" style={{ top: "calc(75% - 32px)", left: "calc(20% - 32px)" }}>
+          <Node icon={ClipboardList} label="CTM" size="sm" />
+        </div>
+        <div className="absolute" style={{ top: "calc(75% - 32px)", left: "calc(80% - 32px)" }}>
+          <Node icon={PieChart} label="Analytics" size="sm" />
+        </div>
+        <div className="absolute" style={{ top: "calc(12.5% - 32px)", left: "calc(50% - 32px)" }}>
+          <Node icon={ShieldCheck} label="Compliance" size="sm" />
+        </div>
+        <div className="absolute" style={{ top: "calc(87.5% - 32px)", left: "calc(50% - 32px)" }}>
+          <Node icon={FileText} label="eTMF" size="sm" />
+        </div>
+
       </motion.div>
     </div>
   );
 }
+
+    
