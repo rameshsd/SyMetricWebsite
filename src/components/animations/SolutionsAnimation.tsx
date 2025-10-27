@@ -55,14 +55,14 @@ const pathVariants = (delay = 0) => ({
   visible: {
     pathLength: 1,
     opacity: 1,
-    transition: { duration: 1, ease: "easeInOut", delay },
+    transition: { duration: 1.2, ease: "easeInOut", delay },
   },
 });
 
 const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
     <g>
-      <circle r={2.5} fill="hsl(var(--primary))" filter="url(#glow)">
-        <animateMotion dur="3s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
+      <circle r={3} fill="hsl(var(--primary))" filter="url(#glow)">
+        <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
           <mpath href={`#${pathId}`} />
         </animateMotion>
       </circle>
@@ -102,6 +102,10 @@ export const SolutionsAnimation = () => {
           className="absolute inset-0"
         >
           <defs>
+             <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 9 3 L 0 6 z" fill="hsl(var(--primary))" />
+              </marker>
+
              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
                 <feMerge>
@@ -110,29 +114,29 @@ export const SolutionsAnimation = () => {
                 </feMerge>
             </filter>
 
-            <path id="path-1" d="M250 200 L 100 100" />
-            <path id="path-2" d="M250 200 L 400 100" />
-            <path id="path-3" d="M250 200 L 100 300" />
-            <path id="path-4" d="M250 200 L 400 300" />
-            <path id="path-5" d="M250 200 L 250 50" />
-            <path id="path-6" d="M250 200 L 250 350" />
+            <path id="path-1" d="M250 170 Q 150 150, 100 100" stroke="hsl(var(--border))" fill="none" />
+            <path id="path-2" d="M250 170 Q 350 150, 400 100" stroke="hsl(var(--border))" fill="none" />
+            <path id="path-3" d="M250 230 Q 150 250, 100 300" stroke="hsl(var(--border))" fill="none" />
+            <path id="path-4" d="M250 230 Q 350 250, 400 300" stroke="hsl(var(--border))" fill="none" />
+            <path id="path-5" d="M250 150 V 50" stroke="hsl(var(--border))" fill="none" />
+            <path id="path-6" d="M250 250 V 350" stroke="hsl(var(--border))" fill="none" />
           </defs>
 
-          <motion.line x1="250" y1="200" x2="100" y2="100" stroke="hsl(var(--border))" variants={pathVariants(0.2)} />
-          <motion.line x1="250" y1="200" x2="400" y2="100" stroke="hsl(var(--border))" variants={pathVariants(0.3)} />
-          <motion.line x1="250" y1="200" x2="100" y2="300" stroke="hsl(var(--border))" variants={pathVariants(0.4)} />
-          <motion.line x1="250" y1="200" x2="400" y2="300" stroke="hsl(var(--border))" variants={pathVariants(0.5)} />
-          <motion.line x1="250" y1="200" x2="250" y2="50" stroke="hsl(var(--border))" variants={pathVariants(0.6)} />
-          <motion.line x1="250" y1="200" x2="250" y2="350" stroke="hsl(var(--border))" variants={pathVariants(0.7)} />
-        
+          <motion.path d="M250 170 Q 150 150, 100 100" variants={pathVariants(0.2)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M250 170 Q 350 150, 400 100" variants={pathVariants(0.3)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M250 230 Q 150 250, 100 300" variants={pathVariants(0.4)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M250 230 Q 350 250, 400 300" variants={pathVariants(0.5)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M250 150 V 50" variants={pathVariants(0.6)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+          <motion.path d="M250 250 V 350" variants={pathVariants(0.7)} stroke="hsl(var(--border))" fill="none" markerEnd="url(#arrowhead)" />
+
           {inView && (
             <>
-              <FlowParticle pathId="path-1" delay={0.5} />
-              <FlowParticle pathId="path-2" delay={0.7} />
-              <FlowParticle pathId="path-3" delay={0.9} />
-              <FlowParticle pathId="path-4" delay={1.1} />
-              <FlowParticle pathId="path-5" delay={1.3} />
-              <FlowParticle pathId="path-6" delay={1.5} />
+              <FlowParticle pathId="path-1" delay={0.6} />
+              <FlowParticle pathId="path-2" delay={0.8} />
+              <FlowParticle pathId="path-3" delay={1.0} />
+              <FlowParticle pathId="path-4" delay={1.2} />
+              <FlowParticle pathId="path-5" delay={1.4} />
+              <FlowParticle pathId="path-6" delay={1.6} />
             </>
           )}
         </svg>
