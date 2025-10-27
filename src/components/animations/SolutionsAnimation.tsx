@@ -129,14 +129,21 @@ const Node = ({
 export function SolutionsAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
   
-  const paths = [
-      { id: "path-1", d: "M 250 200 C 180 160, 120 140, 100 100" },
-      { id: "path-2", d: "M 250 200 C 320 160, 380 140, 400 100" },
-      { id: "path-3", d: "M 250 200 C 180 240, 120 260, 100 300" },
-      { id: "path-4", d: "M 250 200 C 320 240, 380 260, 400 300" },
-      { id: "path-5", d: "M 250 168 V 68" },
-      { id: "path-6", d: "M 250 232 V 332" }
-  ];
+const paths = [
+  // Top Left
+  { id: "path-1", d: "M 50% 50% C 35% 35%, 20% 25%, 20% 20%" },
+  // Top Right
+  { id: "path-2", d: "M 50% 50% C 65% 35%, 80% 25%, 80% 20%" },
+  // Bottom Left
+  { id: "path-3", d: "M 50% 50% C 35% 65%, 20% 75%, 20% 80%" },
+  // Bottom Right
+  { id: "path-4", d: "M 50% 50% C 65% 65%, 80% 75%, 80% 80%" },
+  // Top Center
+  { id: "path-5", d: "M 50% 45% C 50% 30%, 50% 20%, 50% 15%" },
+  // Bottom Center
+  { id: "path-6", d: "M 50% 55% C 50% 70%, 50% 80%, 50% 85%" },
+];
+
 
   return (
     <div
@@ -151,24 +158,24 @@ export function SolutionsAnimation() {
       >
         <svg
           className="absolute inset-0 w-full h-full overflow-visible"
-          viewBox="0 0 500 400"
+          viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
             <linearGradient id="clinicalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="white" stopOpacity="0.2" />
-              <stop offset="50%" stopColor="white" stopOpacity="0.8">
-                <animate attributeName="offset" values="0;1;0" dur="3s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="100%" stopColor="white" stopOpacity="0.2" />
+                <stop offset="0%" stopColor="white" stopOpacity="0.1" />
+                <stop offset="50%" stopColor="white" stopOpacity="0.9">
+                    <animate attributeName="offset" values="0;1;0" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="white" stopOpacity="0.1" />
             </linearGradient>
 
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
             </filter>
 
             <marker
@@ -206,7 +213,7 @@ export function SolutionsAnimation() {
               d={p.d}
               variants={pathVariants(0.2 + i * 0.1)}
               stroke="url(#clinicalGradient)"
-              strokeWidth="0.8"
+              strokeWidth="1.2"
               fill="none"
               markerEnd="url(#arrowhead)"
             />
@@ -222,31 +229,34 @@ export function SolutionsAnimation() {
           )}
         </svg>
 
-        {/* Nodes */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Node icon={FlaskConical} label="CTP" size="md" />
+        {/* Center Node */}
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+        <Node icon={FlaskConical} label="CTP" size="md" />
         </div>
 
-        <div className="absolute" style={{ top: "calc(25% - 32px)", left: "calc(20% - 32px)" }}>
-          <Node icon={Repeat} label="IRT/IWRS" size="sm" />
+        {/* Outer Nodes */}
+        <div className="absolute top-[20%] left-[20%]">
+        <Node icon={Repeat} label="IRT/IWRS" size="sm" />
         </div>
-        <div className="absolute" style={{ top: "calc(25% - 32px)", left: "calc(80% - 32px)" }}>
-          <Node icon={Database} label="EDC" size="sm" />
+        <div className="absolute top-[20%] left-[80%] -translate-x-1/2">
+        <Node icon={Database} label="EDC" size="sm" />
         </div>
-        <div className="absolute" style={{ top: "calc(75% - 32px)", left: "calc(20% - 32px)" }}>
-          <Node icon={ClipboardList} label="CTM" size="sm" />
+        <div className="absolute top-[80%] left-[20%] -translate-y-1/2">
+        <Node icon={ClipboardList} label="CTM" size="sm" />
         </div>
-        <div className="absolute" style={{ top: "calc(75% - 32px)", left: "calc(80% - 32px)" }}>
-          <Node icon={PieChart} label="Analytics" size="sm" />
+        <div className="absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2">
+        <Node icon={PieChart} label="Analytics" size="sm" />
         </div>
-        <div className="absolute" style={{ top: "calc(12.5% - 32px)", left: "calc(50% - 32px)" }}>
-          <Node icon={ShieldCheck} label="Compliance" size="sm" />
+        <div className="absolute top-[12%] left-[50%] -translate-x-1/2">
+        <Node icon={ShieldCheck} label="Compliance" size="sm" />
         </div>
-        <div className="absolute" style={{ top: "calc(87.5% - 32px)", left: "calc(50% - 32px)" }}>
-          <Node icon={FileText} label="eTMF" size="sm" />
+        <div className="absolute top-[87%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+        <Node icon={FileText} label="eTMF" size="sm" />
         </div>
 
       </motion.div>
     </div>
   );
 }
+
+    
