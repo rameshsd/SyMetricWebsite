@@ -90,4 +90,8 @@
         background-color: #00073D;
         background-image: linear-gradient(135deg, #00073D 0%, #000B5B 50%, #001783 100%);
     }
+    .bg-solutions-hero-gradient {
+        background-color: #0070F2;
+        background-image: linear-gradient(135deg, #0070F2 0%, #0C44FD 100%);
+    }
 }
