@@ -131,6 +131,7 @@ export default {
       backgroundImage: {
         'sap-gradient-light': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',
         'sap-gradient-dark': 'linear-gradient(135deg, hsl(225, 29%, 10%) 0%, hsl(233, 62%, 29%) 100%)',
+        'solutions-hero-pattern': "url('https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-trust-center-bg.png')",
       },
       backgroundSize: {
         '200%': '200% 200%',
