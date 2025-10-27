@@ -109,14 +109,14 @@ const Node = ({
   <motion.div variants={itemVariants} className="flex flex-col items-center gap-2 z-10">
     <div
       className={cn(
-        "flex items-center justify-center rounded-2xl border bg-background shadow-md backdrop-blur-sm",
+        "flex items-center justify-center rounded-2xl border border-white/20 bg-white shadow-md backdrop-blur-sm",
         "transition-all duration-300 hover:shadow-lg hover:scale-105",
         size === "md" ? "w-24 h-24" : "w-16 h-16"
       )}
     >
       <Icon className={cn("text-primary", size === "md" ? "w-10 h-10" : "w-8 h-8")} />
     </div>
-    {label && <div className="font-semibold text-xs text-foreground text-center">{label}</div>}
+    {label && <div className="font-semibold text-xs text-primary-foreground text-center">{label}</div>}
   </motion.div>
 );
 
@@ -147,11 +147,11 @@ export const SolutionsAnimation = () => {
           <defs>
             {/* gradient flow */}
             <linearGradient id="clinicalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
-              <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.8">
+              <stop offset="0%" stopColor="white" stopOpacity="0.2" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.8">
                 <animate attributeName="offset" values="0;1;0" dur="3s" repeatCount="indefinite" />
               </stop>
-              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="white" stopOpacity="0.2" />
             </linearGradient>
 
             {/* glow filter */}
@@ -175,7 +175,7 @@ export const SolutionsAnimation = () => {
             >
               <path
                 d="M 0 0 L 10 5 L 0 10 z"
-                fill="hsl(var(--primary))"
+                fill="white"
                 opacity="0.9"
               >
                 <animate
