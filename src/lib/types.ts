@@ -99,3 +99,9 @@ export type ResearchIntegrateAnalyzeFeature = {
     icon: LucideIcon;
     link?: string;
 }
+
+export type WhyChooseUsFeature = {
+  id: string;
+  title: string;
+  imageId: string;
+};

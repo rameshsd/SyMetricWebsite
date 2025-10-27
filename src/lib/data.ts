@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -404,8 +404,6 @@ export const growthTimeline = [
 export const homepageContent = {
   revolutionTitle: 'Leading the Revolution in Clinical Trial Technology',
   revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end, AI-enabled platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',
-  whyChooseUsTitle: 'Why SyMetric?',
-  whyChooseUsSubtitle: 'Our platform is built on four key pillars that ensure your success.',
   futureOfTrials: {
     title: 'Building the Future of Clinical Trials, Together',
     subtitle: 'SyMetric is committed to pioneering the next generation of clinical research technology. Our roadmap is focused on three key areas:',
@@ -478,23 +476,6 @@ export const featureGridItems: FeatureGridItem[] = [
     linkText: 'Explore CX software'
   }
 ];
-
-export const whyChooseUsItems = [
-    'Unified Platform',
-    'Data-driven Insights',
-    'Regulatory Compliance',
-    'Scalable & Secure'
-];
-
-
-export const companyInfo = {
-  facts: {
-    founded: '2012',
-    employees: '50+',
-    countries: '15+',
-    customers: '100+',
-  }
-};
 
 export const latestNews: LatestNewsItem[] = [
   {
@@ -596,5 +577,17 @@ export const researchIntegrateAnalyzeContent = {
     },
   ]
 };
+
+export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
+  { id: 'flexible', title: 'Flexible and Customizable', imageId: 'why-us-flexible' },
+  { id: 'modular', title: 'Modularized and Integrated', imageId: 'why-us-modular' },
+  { id: 'intuitive', title: 'Simple and Intuitive User Interface', imageId: 'why-us-intuitive' },
+  { id: 'sso', title: 'Single Sign-In Feature', imageId: 'why-us-sso' },
+  { id: 'reusable', title: 'Reusable Forms', imageId: 'why-us-reusable' },
+  { id: 'compliant', title: 'Security Compliant', imageId: 'why-us-compliant' },
+  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', imageId: 'why-us-tracking' },
+  { id: 'support', title: '24x7 Dedicated Technical Support', imageId: 'why-us-support' },
+];
+
 
 

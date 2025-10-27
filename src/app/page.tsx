@@ -6,9 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { whyChooseUsItems, homepageContent, latestNews } from '@/lib/data';
+import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
@@ -17,6 +17,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
+import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
 
@@ -84,39 +85,7 @@ export default function Home() {
         
         <FeatureGrid />
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-sap-gradient text-primary-foreground">
-            <div className="container mx-auto px-4 md:px-6">
-                {content ? (
-                   <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                      Why SyMetric?
-                    </h2>
-                    <p className="mt-4 text-lg text-primary-foreground/80">
-                      Our platform is built on four key pillars that ensure your success.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                      Loading...
-                    </h2>
-                    <p className="mt-4 text-lg text-primary-foreground/80">
-                      Loading content...
-                    </p>
-                  </div>
-                )}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
-                    {whyChooseUsItems.map((item, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                            <div className="flex-shrink-0 mt-1">
-                                <CheckCircle className="h-6 w-6 text-primary" />
-                            </div>
-                            <span className="font-medium text-lg">{item}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <WhyChooseUs />
         
         <DigitalPlatformSection />
         <ResearchIntegrateAnalyze />
