@@ -8,7 +8,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 export function SapTechedHero() {
   const heroImage = PlaceHolderImages.find((p) => p.id === "sy-teched-hero");
   return (
-    <section className="w-full bg-sap-gradient text-white">
+    <section className="w-full bg-sap-gradient text-white overflow-x-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[500px] py-12">
           <div className="flex flex-col justify-center space-y-4">
