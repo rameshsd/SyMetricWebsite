@@ -59,6 +59,16 @@ const pathVariants = (delay = 0) => ({
   },
 });
 
+const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
+    <g>
+      <circle r={2.5} fill="hsl(var(--primary))" filter="url(#glow)">
+        <animateMotion dur="3s" begin={`${delay}s`} repeatCount="indefinite" rotate="auto">
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </circle>
+    </g>
+  );
+
 const Node = ({ icon: Icon, label, size = 'md' }: { icon: React.ElementType; label?: string, size?: 'sm' | 'md' }) => (
   <motion.div
     variants={itemVariants}
@@ -91,12 +101,40 @@ export const SolutionsAnimation = () => {
           viewBox="0 0 500 400"
           className="absolute inset-0"
         >
+          <defs>
+             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+
+            <path id="path-1" d="M250 200 L 100 100" />
+            <path id="path-2" d="M250 200 L 400 100" />
+            <path id="path-3" d="M250 200 L 100 300" />
+            <path id="path-4" d="M250 200 L 400 300" />
+            <path id="path-5" d="M250 200 L 250 50" />
+            <path id="path-6" d="M250 200 L 250 350" />
+          </defs>
+
           <motion.line x1="250" y1="200" x2="100" y2="100" stroke="hsl(var(--border))" variants={pathVariants(0.2)} />
           <motion.line x1="250" y1="200" x2="400" y2="100" stroke="hsl(var(--border))" variants={pathVariants(0.3)} />
           <motion.line x1="250" y1="200" x2="100" y2="300" stroke="hsl(var(--border))" variants={pathVariants(0.4)} />
           <motion.line x1="250" y1="200" x2="400" y2="300" stroke="hsl(var(--border))" variants={pathVariants(0.5)} />
           <motion.line x1="250" y1="200" x2="250" y2="50" stroke="hsl(var(--border))" variants={pathVariants(0.6)} />
           <motion.line x1="250" y1="200" x2="250" y2="350" stroke="hsl(var(--border))" variants={pathVariants(0.7)} />
+        
+          {inView && (
+            <>
+              <FlowParticle pathId="path-1" delay={0.5} />
+              <FlowParticle pathId="path-2" delay={0.7} />
+              <FlowParticle pathId="path-3" delay={0.9} />
+              <FlowParticle pathId="path-4" delay={1.1} />
+              <FlowParticle pathId="path-5" delay={1.3} />
+              <FlowParticle pathId="path-6" delay={1.5} />
+            </>
+          )}
         </svg>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
