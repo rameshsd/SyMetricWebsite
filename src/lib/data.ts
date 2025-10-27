@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, FeaturedStory } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -398,8 +398,6 @@ export const growthTimeline = [
 export const homepageContent = {
   revolutionTitle: 'Leading the Revolution in Clinical Trial Technology',
   revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end, AI-enabled platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',
-  customerSuccessTitle: 'Trusted by Life Science Leaders',
-  customerSuccessSubtitle: 'From global pharmaceutical giants to innovative biotechs, organizations of all sizes rely on SyMetric to accelerate their research and development.',
   whyChooseUsTitle: 'Why SyMetric?',
   whyChooseUsSubtitle: 'Our platform is built on four key pillars that ensure your success.',
   futureOfTrials: {
@@ -415,10 +413,19 @@ export const homepageContent = {
   }
 };
 
-export const customerSuccessStories = [
-  { id: 1, customerName: 'Innovate Pharma', logoId: 'logo-innovate-pharma', quote: 'SyMetric\'s eTMF solution reduced our audit preparation time by 60%, allowing us to focus on science, not paperwork.', link: '#' },
-  { id: 2, customerName: 'BioGenex Therapeutics', logoId: 'logo-biogenex', quote: 'The CTP platform enabled seamless collaboration across our global trial sites, dramatically improving efficiency.', link: '#' },
-  { id: 3, customerName: 'Apex Clinical Research', logoId: 'logo-apex-clinical', quote: 'We achieved 99.9% data accuracy on our last pivotal trial thanks to SyMetric\'s robust Clinical Data Management suite.', link: '#' }
+export const customerSuccessStories: CustomerSuccessStory[] = [
+  {
+    id: 1,
+    quote: "SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.",
+    author: "Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management",
+    company: "Sun Pharma Advanced Research Company",
+  },
+  {
+    id: 2,
+    quote: "Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.",
+    author: "Director, Research and Development",
+    company: "Global Pharmaceutical Company",
+  }
 ];
 
 export const featureGridItems: FeatureGridItem[] = [
@@ -555,49 +562,3 @@ export const latestNews: LatestNewsItem[] = [
     imageId: 'news-ginsep-demo'
   }
 ];
-
-export const featuredStories: FeaturedStory[] = [
-  {
-    id: 'embraer',
-    logoId: 'logo-embraer',
-    title: 'Drive efficiency with a customer-centric, tech-based portfolio',
-    description: 'Embraer improved its budget control and financial management using SyMetric Analytics Cloud for planning and SyMetric Tax Declaration Framework for Brazil.',
-    link: {
-      text: 'Watch the video',
-      href: '#',
-    },
-  },
-  {
-    id: 'chiesi',
-    logoId: 'logo-chiesi',
-    title: 'Future-fit business with digital transformation',
-    description: 'Chiesi drives patient-centric innovation and fuels large-scale transformation by migrating to SyMetric S/4HANA Cloud Private Edition with the RISE with SyMetric journey.',
-    link: {
-      text: 'Read the customer story',
-      href: '#',
-    },
-  },
-  {
-    id: 'sa-power-networks',
-    logoId: 'logo-sa-power',
-    title: 'Power progress with intelligent technology',
-    description: 'SA Power Networks manages assets, improves safety and efficiency, and streamlines HR processes with SyMetric Business AI, Business Technology Platform, and SuccessFactors HCM.',
-    link: {
-      text: 'Read the customer story',
-      href: '#',
-
-    },
-  },
-  {
-    id: 'christ',
-    logoId: 'logo-christ',
-    title: 'Create a world-class omnichannel experience',
-    description: 'CHRIST Juweliere delivers seamless omnichannel experiences for gift-givers and self-givers alike using the SyMetric Commerce Cloud solution and SyMetric Emarsys.',
-    link: {
-      text: 'Watch the video',
-      href: '#',
-    },
-  },
-];
-
-    

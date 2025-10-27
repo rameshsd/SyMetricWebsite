@@ -21,7 +21,7 @@
     {
       "id": "solution-rc",
       "description": "Regulatory compliance checkmarks",
-      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1578016981482-d4dd3db297b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21wbGlhbmNlJTIwY2hlY2tsaXN0fGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "compliance checklist"
     },
     {
@@ -69,13 +69,13 @@
     {
       "id": "logo-innovate-pharma",
       "description": "Innovate Pharma Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1754751239256-98037d9dca34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYwODMzNDMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract logo"
     },
     {
       "id": "logo-biogenex",
       "description": "BioGenex Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "geometric logo"
     },
     {
@@ -587,6 +587,12 @@
       "description": "Christ Juweliere Logo",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/Christ.png",
       "imageHint": "Christ logo"
+    },
+    {
+      "id": "quote-icon",
+      "description": "A decorative quotation mark icon",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/quote.png",
+      "imageHint": "quote icon"
     }
   ]
 }
