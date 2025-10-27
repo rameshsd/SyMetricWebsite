@@ -14,6 +14,7 @@ import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { AchievementsSection } from '@/components/layout/AchievementsSection';
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
 
@@ -115,6 +116,8 @@ export default function Home() {
             </div>
         </section>
         
+        <AchievementsSection />
+
         <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tight mb-12 text-center sm:text-4xl md:text-5xl">Latest From SyMetric</h2>
@@ -131,19 +134,21 @@ export default function Home() {
                     <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
                       <div className="p-1 h-full">
                         <Card className="overflow-hidden group h-full flex flex-col">
-                            <Link href={item.link} className="block">
+                            <div className="block">
                                 <div className="relative aspect-video overflow-hidden">
                                 {image && (
-                                    <Image
-                                    src={image.imageUrl}
-                                    alt={item.title}
-                                    data-ai-hint={image.imageHint}
-                                    fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
+                                    <Link href={item.link}>
+                                        <Image
+                                        src={image.imageUrl}
+                                        alt={item.title}
+                                        data-ai-hint={image.imageHint}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                        />
+                                    </Link>
                                 )}
                                 </div>
-                            </Link>
+                            </div>
                             <CardContent className="p-6 flex-grow flex flex-col">
                               <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
                               <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors flex-grow">
