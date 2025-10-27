@@ -18,6 +18,11 @@ import {
   PieChart,
   Repeat,
   ClipboardList,
+  Search,
+  Combine,
+  BarChart,
+  Rocket,
+  Compass,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -261,10 +266,10 @@ export const leadership: LeadershipMember[] = [
 
 
 export const customers: Customer[] = [
-    { name: 'Innovate Pharma', logo: 'logo-innovate-pharma', story: 'SyMetric\'s eTMF solution reduced our audit preparation time by 60%.', link: '#' },
-    { name: 'BioGenex', logo: 'logo-biogenex', story: 'The CTP platform enabled seamless collaboration across our global trial sites.', link: '#' },
-    { name: 'Apex Clinical', logo: 'logo-apex-clinical', story: 'We achieved 99.9% data accuracy with SyMetric\'s Clinical Data Management suite.', link: '#' },
-    { name: 'St. Jude\'s Research', logo: 'logo-st-judes', story: 'A powerful and intuitive platform for our academic research needs.', link: '#' },
+    { name: 'Embraer', logo: 'logo-embraer', story: '"The SyMetric Platform is the backbone of our digital transformation."', link: '#' },
+    { name: 'Chiesi', logo: 'logo-chiesi', story: '"We achieved unprecedented efficiency gains with SyMetric."', link: '#' },
+    { name: 'SA Power Networks', logo: 'logo-sa-power', story: '"A powerful and intuitive platform for our complex needs."', link: '#' },
+    { name: 'Christ Juweliere', logo: 'logo-christ', story: '"SyMetric helped us unify our data and unlock new insights."', link: '#' },
 ];
 
 export const resources: Resource[] = [
@@ -510,7 +515,7 @@ export const latestNews: LatestNewsItem[] = [
     title: 'Independence Day Celebrations 2022',
     description: 'The team celebrated India\'s Independence Day with a flag hoisting ceremony and patriotic events.',
     link: '#',
-    imageId: 'news-independence'
+imageId: 'news-independence'
   },
   {
     id: 4,
@@ -562,3 +567,29 @@ export const latestNews: LatestNewsItem[] = [
     imageId: 'news-ginsep-demo'
   }
 ];
+
+export const researchIntegrateAnalyzeContent = {
+  mainConcepts: [
+    { title: "Research", icon: Search },
+    { title: "Integrate", icon: Combine },
+    { title: "Analyze", icon: BarChart },
+  ],
+  platformFeatures: [
+    { 
+      title: "Clinical Trial Platform",
+      description: "A unified, end-to-end solution for managing your trials with maximum efficiency.",
+      icon: Rocket,
+    },
+    { 
+      title: "Trial Analytics",
+      description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
+      icon: TrendingUp,
+    },
+    { 
+      title: "Aiding You in Your Journey",
+      description: "Our dedicated team provides expert support to ensure your success at every step.",
+      icon: Compass,
+    },
+  ]
+};
+
