@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -121,66 +122,34 @@ export default function Home() {
         <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tight mb-12 text-center sm:text-4xl md:text-5xl">Latest From SyMetric</h2>
-            
-            <div className="space-y-8">
-              {mainNews && (
-                <Card className="overflow-hidden group">
-                  <Link href={mainNews.link} className="block md:flex">
-                    <div className="md:w-1/2 relative min-h-[250px] md:min-h-full">
-                       {PlaceHolderImages.find(p => p.id === mainNews.imageId) && (
-                        <Image
-                          src={PlaceHolderImages.find(p => p.id === mainNews.imageId)!.imageUrl}
-                          alt={mainNews.title}
-                          data-ai-hint={PlaceHolderImages.find(p => p.id === mainNews.imageId)!.imageHint}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <div className="md:w-1/2 p-8 flex flex-col justify-center">
-                      <p className="text-sm text-primary font-semibold mb-2">{mainNews.category}</p>
-                      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{mainNews.title}</h3>
-                      <p className="text-muted-foreground mb-6">{mainNews.description}</p>
-                      <Button variant="link" className="p-0 self-start">
-                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </div>
-                  </Link>
-                </Card>
-              )}
-
-              {otherNews.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {otherNews.map((item) => {
-                    const image = PlaceHolderImages.find(p => p.id === item.imageId);
-                    return (
-                      <Card key={item.id} className="overflow-hidden group">
-                        <Link href={item.link} className="block h-full flex flex-col">
-                          <div className="relative aspect-video overflow-hidden">
-                            {image && (
-                              <Image
-                                src={image.imageUrl}
-                                alt={item.title}
-                                data-ai-hint={image.imageHint}
-                                fill
-                                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                              />
-                            )}
-                          </div>
-                          <CardContent className="p-6 flex-grow flex flex-col">
-                            <p className="text-sm text-primary font-semibold mb-2">{item.category}</p>
-                            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                            <p className="text-muted-foreground text-sm flex-grow">{item.description}</p>
-                            <Button variant="link" className="p-0 self-start mt-4">
-                              Read More <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                          </CardContent>
-                        </Link>
-                      </Card>
-                    )
-                  })}
-                </div>
-              )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {newsItems.map((item) => {
+                const image = PlaceHolderImages.find(p => p.id === item.imageId);
+                return (
+                  <Card key={item.id} className="overflow-hidden group">
+                    <Link href={item.link} className="block h-full flex flex-col">
+                      <div className="relative aspect-video overflow-hidden">
+                        {image && (
+                          <Image
+                            src={image.imageUrl}
+                            alt={item.title}
+                            data-ai-hint={image.imageHint}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        )}
+                      </div>
+                      <CardContent className="p-6 flex-grow flex flex-col">
+                        <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors flex-grow">{item.title}</h3>
+                        <Button variant="link" className="p-0 self-start mt-4 text-green-600 hover:text-green-700">
+                          Read More
+                        </Button>
+                      </CardContent>
+                    </Link>
+                  </Card>
+                )
+              })}
             </div>
           </div>
         </section>

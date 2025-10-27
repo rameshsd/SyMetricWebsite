@@ -480,26 +480,26 @@ export const whyChooseUsItems = [
 export const latestNews = [
     { 
         id: 1, 
-        title: "SyMetric Launches AI-Powered Predictive Analytics for Patient Recruitment", 
-        description: "New module helps sponsors and CROs forecast enrollment timelines with over 90% accuracy.",
-        category: "Product News",
-        imageId: "resource-1",
+        title: "SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit", 
+        description: "21 December 2022",
+        category: "Event",
+        imageId: "news-summit",
         link: "#"
     },
     { 
         id: 2, 
-        title: "Understanding the Impact of FDA's New Guidance on Digital Health Technologies", 
-        description: "Our experts break down what the latest regulatory updates mean for your trials.",
-        category: "Regulatory",
-        imageId: "resource-2",
+        title: "Navratri Celebrations at office", 
+        description: "4 October 2022",
+        category: "Office Event",
+        imageId: "news-navratri",
         link: "#"
     },
     { 
         id: 3, 
-        title: "Case Study: How a Mid-Sized Biotech Accelerated Phase II with SyMetric's Platform", 
-        description: "Discover how BioGenex Therapeutics cut their trial database lock time by 4 weeks.",
-        category: "Case Study",
-        imageId: "resource-3",
+        title: "Independence Day Celebrations 2022", 
+        description: "16 August 2022",
+        category: "Office Event",
+        imageId: "news-independence",
         link: "#"
     }
 ];
