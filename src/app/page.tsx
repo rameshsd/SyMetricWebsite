@@ -16,6 +16,7 @@ import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSection';
+import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
 
@@ -118,6 +119,7 @@ export default function Home() {
         </section>
         
         <DigitalPlatformSection />
+        <ResearchIntegrateAnalyze />
         <AchievementsSection />
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
