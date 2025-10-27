@@ -4,6 +4,9 @@
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
 import { researchIntegrateAnalyzeContent } from '@/lib/data';
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export function ResearchIntegrateAnalyze() {
     const [ref, isInView] = useInView({ triggerOnce: true });
@@ -41,7 +44,7 @@ export function ResearchIntegrateAnalyze() {
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                          <div 
                             key={item.title} 
-                            className={cn("flex items-start gap-4 opacity-0", isInView && "animate-fade-in-up")}
+                            className={cn("flex flex-col items-start gap-4 opacity-0", isInView && "animate-fade-in-up")}
                             style={{animationDelay: `${500 + index * 150}ms`}}
                         >
                             <div className="flex-shrink-0 mt-1">
@@ -51,6 +54,13 @@ export function ResearchIntegrateAnalyze() {
                                 <h4 className="font-bold text-lg">{item.title}</h4>
                                 <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
                             </div>
+                            {item.link && (
+                                <Button variant="link" asChild className="p-0 h-auto mt-2">
+                                    <Link href={item.link}>
+                                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            )}
                          </div>
                     ))}
                 </div>
@@ -58,4 +68,5 @@ export function ResearchIntegrateAnalyze() {
         </section>
     );
 }
+
 

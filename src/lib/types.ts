@@ -92,3 +92,10 @@ export type CustomerSuccessStory = {
   author: string;
   company: string;
 };
+
+export type ResearchIntegrateAnalyzeFeature = {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+    link?: string;
+}

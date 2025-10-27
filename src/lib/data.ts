@@ -1,4 +1,5 @@
 
+
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory } from '@/lib/types';
 import {
   FlaskConical,
@@ -579,17 +580,21 @@ export const researchIntegrateAnalyzeContent = {
       title: "Clinical Trial Platform",
       description: "A unified, end-to-end solution for managing your trials with maximum efficiency.",
       icon: Rocket,
+      link: "/solutions/clinical-trial-platform",
     },
     { 
       title: "Trial Analytics",
       description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
       icon: TrendingUp,
+      link: "/solutions/trial-analytics",
     },
     { 
       title: "Aiding You in Your Journey",
       description: "Our dedicated team provides expert support to ensure your success at every step.",
       icon: Compass,
+      link: "/contact",
     },
   ]
 };
+
 
