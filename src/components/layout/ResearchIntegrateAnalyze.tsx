@@ -39,7 +39,7 @@ export function ResearchIntegrateAnalyze() {
                     ))}
                 </div>
 
-                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                          <div 
                             key={item.title} 
