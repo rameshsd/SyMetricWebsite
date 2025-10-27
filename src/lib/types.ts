@@ -85,3 +85,14 @@ export type LatestNewsItem = {
   imageId: string;
   main?: boolean;
 };
+
+export type FeaturedStory = {
+  id: string;
+  logoId: string;
+  title: string;
+  description: string;
+  link: {
+    text: string;
+    href: string;
+  };
+};

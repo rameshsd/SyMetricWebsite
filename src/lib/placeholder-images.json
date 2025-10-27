@@ -27,13 +27,13 @@
     {
       "id": "solution-sm",
       "description": "Site management collaboration",
-      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjA4NjA5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
       "id": "leadership-1",
       "description": "Portrait of Dr. Evelyn Reed",
-      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
@@ -75,7 +75,7 @@
     {
       "id": "logo-biogenex",
       "description": "BioGenex Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1741335661519-316ae1e31b03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxnZW9tZXRyaWMlMjBsb2dvfGVufDB8fHx8MTc2MDg0MTg2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "geometric logo"
     },
     {
@@ -563,6 +563,30 @@
       "description": "SyMetric participating in GINSEP Demo Day",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/12/SyMetric-at-GINSEP-Demo-Day-Indian-Startup-Pitches-768x432.jpg",
       "imageHint": "demo day"
+    },
+    {
+      "id": "logo-embraer",
+      "description": "Embraer Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/Embraer.png",
+      "imageHint": "Embraer logo"
+    },
+    {
+      "id": "logo-chiesi",
+      "description": "Chiesi Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/Chiesi.png",
+      "imageHint": "Chiesi logo"
+    },
+    {
+      "id": "logo-sa-power",
+      "description": "SA Power Networks Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/SA-Power-Networks.png",
+      "imageHint": "SA Power logo"
+    },
+    {
+      "id": "logo-christ",
+      "description": "Christ Juweliere Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/Christ.png",
+      "imageHint": "Christ logo"
     }
   ]
 }

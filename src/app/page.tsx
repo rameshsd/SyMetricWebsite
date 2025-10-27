@@ -14,6 +14,7 @@ import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { FeaturedStories } from '@/components/layout/FeaturedStories';
 
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
@@ -22,8 +23,6 @@ export default function Home() {
   
   const content = homepageContent;
   const newsItems = latestNews;
-  const mainNews = newsItems[0];
-  const otherNews = newsItems.slice(1);
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -169,6 +168,8 @@ export default function Home() {
             </Carousel>
           </div>
         </section>
+
+        <FeaturedStories />
       </main>
     </div>
   );

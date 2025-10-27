@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, FeaturedStory } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -489,8 +489,7 @@ export const latestNews: LatestNewsItem[] = [
     title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
     description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
     link: '#',
-    imageId: 'news-summit',
-    main: true
+    imageId: 'news-summit'
   },
   {
     id: 2,
@@ -556,3 +555,49 @@ export const latestNews: LatestNewsItem[] = [
     imageId: 'news-ginsep-demo'
   }
 ];
+
+export const featuredStories: FeaturedStory[] = [
+  {
+    id: 'embraer',
+    logoId: 'logo-embraer',
+    title: 'Drive efficiency with a customer-centric, tech-based portfolio',
+    description: 'Embraer improved its budget control and financial management using SyMetric Analytics Cloud for planning and SyMetric Tax Declaration Framework for Brazil.',
+    link: {
+      text: 'Watch the video',
+      href: '#',
+    },
+  },
+  {
+    id: 'chiesi',
+    logoId: 'logo-chiesi',
+    title: 'Future-fit business with digital transformation',
+    description: 'Chiesi drives patient-centric innovation and fuels large-scale transformation by migrating to SyMetric S/4HANA Cloud Private Edition with the RISE with SyMetric journey.',
+    link: {
+      text: 'Read the customer story',
+      href: '#',
+    },
+  },
+  {
+    id: 'sa-power-networks',
+    logoId: 'logo-sa-power',
+    title: 'Power progress with intelligent technology',
+    description: 'SA Power Networks manages assets, improves safety and efficiency, and streamlines HR processes with SyMetric Business AI, Business Technology Platform, and SuccessFactors HCM.',
+    link: {
+      text: 'Read the customer story',
+      href: '#',
+
+    },
+  },
+  {
+    id: 'christ',
+    logoId: 'logo-christ',
+    title: 'Create a world-class omnichannel experience',
+    description: 'CHRIST Juweliere delivers seamless omnichannel experiences for gift-givers and self-givers alike using the SyMetric Commerce Cloud solution and SyMetric Emarsys.',
+    link: {
+      text: 'Watch the video',
+      href: '#',
+    },
+  },
+];
+
+    
