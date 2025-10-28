@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -9,8 +10,18 @@ import { cn } from "@/lib/utils";
 import { SectionTitle } from "../shared/section-title";
 import { CheckCircle2 } from "lucide-react";
 
+const tabs = [
+  { id: "supply", label: "Supply Chain" },
+  { id: "procurement", label: "Procurement" },
+  { id: "finance", label: "Finance" },
+  { id: "hr", label: "Human Resources" },
+  { id: "customer", label: "Customer Experience" },
+  { id: "it", label: "IT & Developers" },
+];
+
 export function WhyChooseUs() {
   const [activeFeature, setActiveFeature] = useState(whyChooseUsFeatures[0]);
+  const [activeTab, setActiveTab] = useState("supply");
   const activeImage = PlaceHolderImages.find(
     (p) => p.id === activeFeature.imageId
   );
@@ -24,6 +35,26 @@ export function WhyChooseUs() {
       </div>
 
       <div className="container">
+        {/* Modern Tabs */}
+        <div className="flex flex-wrap justify-center items-center gap-8 border-b border-gray-200 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className="relative pb-2 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              {tab.label}
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-600 rounded-full"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
         <SectionTitle
           title="Why Choose Us?"
           description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
