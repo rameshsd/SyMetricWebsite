@@ -40,7 +40,7 @@ const services: {
         title: "Data Migration",
         subtitle: "Data Migration",
         description: "Migrate your data onto our Cloud Solutions with ease while ensuring that Study Data remains integrated during the migration process. You can also leverage in-depth validations, extensive data reviews, and testing across our broad spectrum of solutions.",
-        link: "#"
+        link: "/services/data-migration"
     },
     {
         icon: GraduationCap,
