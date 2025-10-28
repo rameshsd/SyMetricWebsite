@@ -26,7 +26,7 @@ const services: {
         title: "Data Management",
         subtitle: "Clinical Data Management",
         description: "Ensure data quality and compliance with global standards using our high-quality and cost-effective Data Management services to support accurate collection, standardization, cleaning, and analysis of Study Data.",
-        link: "#"
+        link: "/services/clinical-data-management"
     },
     {
         icon: GanttChart,
