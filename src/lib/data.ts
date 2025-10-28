@@ -44,13 +44,13 @@ export const navItems: NavItem[] = [
             },
             { 
                 name: 'Services', 
-                href: '#', // Or a dedicated services page
+                href: '#',
                 subItems: [
-                    { name: 'Clinical Data Management', href: '#' },
-                    { name: 'Project Management', href: '#' },
-                    { name: 'Data Migration', href: '#' },
-                    { name: 'Training', href: '#' },
-                    { name: 'Support', href: '#' },
+                    { name: 'Clinical Data Management', href: '#', description: 'Comprehensive data management services to ensure data quality and integrity.' },
+                    { name: 'Project Management', href: '#', description: 'Expert project management to keep your trials on time and on budget.' },
+                    { name: 'Data Migration', href: '#', description: 'Seamless and secure migration of your clinical trial data to our platform.' },
+                    { name: 'Training', href: '#', description: 'Customized training programs for your team to maximize platform utilization.' },
+                    { name: 'Support', href: '#', description: 'Dedicated technical and operational support available 24/7.' },
                 ]
             },
         ]

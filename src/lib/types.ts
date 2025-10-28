@@ -4,6 +4,7 @@ import type { LucideIcon } from 'lucide-react';
 export type NavItem = {
   name: string;
   href: string;
+  description?: string;
   subItems?: NavItem[];
 };
 

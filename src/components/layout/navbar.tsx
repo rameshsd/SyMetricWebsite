@@ -1,5 +1,4 @@
-
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -8,86 +7,52 @@ import { Menu, X, Search, User, Globe, ChevronDown, ChevronRight } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { navItems } from '@/lib/data';
+import { navItems, solutions } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuPortal,
-} from '@/components/ui/dropdown-menu';
-import type { NavItem } from '@/lib/types';
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import React from 'react';
 
 
-const NavLink = ({ item, closeMobileMenu }: { item: NavItem, closeMobileMenu: () => void }) => {
-  const pathname = usePathname();
-
-  if (item.subItems) {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            className={cn(
-              'text-sm font-medium transition-colors hover:text-primary px-3 py-2 flex items-center gap-1',
-              pathname.startsWith(item.href) ? 'text-primary' : 'text-foreground/60'
-            )}
-          >
-            {item.name}
-            <ChevronDown className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-64">
-          {item.subItems.map((subItem) => (
-             subItem.subItems ? (
-                <DropdownMenuSub key={subItem.name}>
-                  <DropdownMenuSubTrigger>
-                    {subItem.name}
-                    <ChevronRight className="ml-auto h-4 w-4" />
-                  </DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                      {subItem.subItems.map((nestedItem) => (
-                        <DropdownMenuItem key={nestedItem.name} asChild>
-                          <Link href={nestedItem.href}>{nestedItem.name}</Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-             ) : (
-                <DropdownMenuItem key={subItem.name} asChild>
-                  <Link href={subItem.href}>{subItem.name}</Link>
-                </DropdownMenuItem>
-             )
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  }
-
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
   return (
-    <Link
-      href={item.href}
-      className={cn(
-        'text-sm font-medium transition-colors hover:text-primary',
-        pathname === item.href ? 'text-primary' : 'text-foreground/60'
-      )}
-    >
-      {item.name}
-    </Link>
-  );
-};
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
+
 
 const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItem, closeMobileMenu: () => void }) => {
   const pathname = usePathname();
@@ -131,6 +96,19 @@ const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItem, closeMobileMe
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const productsSubitem = navItems.find(item => item.name === 'Products and Services')?.subItems?.find(sub => sub.name === 'Products');
+  const servicesSubitem = navItems.find(item => item.name === 'Products and Services')?.subItems?.find(sub => sub.name === 'Services');
+  
+  const productComponents = productsSubitem?.subItems?.map(subItem => {
+    const solution = solutions.find(s => s.slug === subItem.href.split('/').pop());
+    return {
+      title: subItem.name,
+      href: subItem.href,
+      description: solution?.description || ''
+    }
+  }) || [];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -154,11 +132,59 @@ export function Navbar() {
           <div className="flex items-center">
             <Logo />
           </div>
-          <nav className="hidden md:flex md:items-center md:space-x-2 ml-10">
-            {navItems.map((item) => (
-              <NavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} />
-            ))}
-          </nav>
+          
+          <NavigationMenu className="hidden md:flex ml-10">
+            <NavigationMenuList>
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.name}>
+                  {item.name === 'Products and Services' ? (
+                    <>
+                      <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'text-primary')}>{item.name}</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
+                            <div className="col-span-1">
+                                <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">{productsSubitem?.name}</h3>
+                                <ul className="grid gap-1">
+                                    {productComponents.map((component) => (
+                                        <ListItem
+                                        key={component.title}
+                                        title={component.title}
+                                        href={component.href}
+                                        >
+                                        {component.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="col-span-1">
+                                 <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">{servicesSubitem?.name}</h3>
+                                 <ul className="grid gap-1">
+                                    {servicesSubitem?.subItems?.map((subItem) => (
+                                         <ListItem
+                                            key={subItem.name}
+                                            title={subItem.name}
+                                            href={subItem.href}
+                                        >
+                                            {subItem.description}
+                                        </ListItem>
+                                    ))}
+                                 </ul>
+                            </div>
+                        </div>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname === item.href && 'text-primary')}>
+                        {item.name}
+                      </NavigationMenuLink>
+                    </Link>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
           <div className="hidden md:flex flex-1 items-center justify-end space-x-2">
              <Link href="#" className="text-sm font-medium text-foreground/60 hover:text-primary pr-4">
                 Explore SyMetric
@@ -228,5 +254,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
