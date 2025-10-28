@@ -579,15 +579,16 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  { id: 'flexible', title: 'Flexible and Customizable', imageId: 'why-us-flexible' },
-  { id: 'modular', title: 'Modularized and Integrated', imageId: 'why-us-modular' },
-  { id: 'intuitive', title: 'Simple and Intuitive User Interface', imageId: 'why-us-intuitive' },
-  { id: 'sso', title: 'Single Sign-In Feature', imageId: 'why-us-sso' },
-  { id: 'reusable', title: 'Reusable Forms', imageId: 'why-us-reusable' },
-  { id: 'compliant', title: 'Security Compliant', imageId: 'why-us-compliant' },
-  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', imageId: 'why-us-tracking' },
-  { id: 'support', title: '24x7 Dedicated Technical Support', imageId: 'why-us-support' },
+  { id: 'flexible', title: 'Flexible and Customizable', description: 'Our platform adapts to your unique study protocols and workflows, not the other way around.', imageId: 'why-us-flexible' },
+  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose the specific tools you need or use the fully integrated suite for seamless data flow.', imageId: 'why-us-modular' },
+  { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Designed for ease of use, reducing training time and increasing adoption across all user levels.', imageId: 'why-us-intuitive' },
+  { id: 'sso', title: 'Single Sign-On Feature', description: 'Access all our platform tools with a single, secure login, simplifying user management.', imageId: 'why-us-sso' },
+  { id: 'reusable', title: 'Reusable Forms', description: 'Save time and ensure consistency by creating and reusing forms and templates across multiple studies.', imageId: 'why-us-reusable' },
+  { id: 'compliant', title: 'Security Compliant', description: 'Built with 21 CFR Part 11 and ICH-GCP guidelines at its core to ensure data integrity and audit readiness.', imageId: 'why-us-compliant' },
+  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', description: 'Gain instant visibility into trial progress with powerful dashboards and analytics.', imageId: 'why-us-tracking' },
+  { id: "support", title: "24x7 Dedicated Technical Support", description: "Our expert team is always available to assist you, ensuring your trials run smoothly without interruption.", imageId: "why-us-support" },
 ];
+
 
 
 

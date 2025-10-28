@@ -103,5 +103,6 @@ export type ResearchIntegrateAnalyzeFeature = {
 export type WhyChooseUsFeature = {
   id: string;
   title: string;
+  description: string;
   imageId: string;
 };
