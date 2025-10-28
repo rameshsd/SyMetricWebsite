@@ -1,5 +1,4 @@
 
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature } from '@/lib/types';
 import {
   FlaskConical,
@@ -28,11 +27,38 @@ import {
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
 export const navItems: NavItem[] = [
-  { name: 'Solutions', href: '/solutions' },
-  { name: 'Industries', href: '/industries' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+    { 
+        name: 'Products and Services', 
+        href: '/solutions',
+        subItems: [
+            { 
+                name: 'Products', 
+                href: '/solutions',
+                subItems: [
+                    { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
+                    { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
+                    { name: 'EDC', href: '/solutions/edc' },
+                    { name: 'CTM', href: '/solutions/ctm' },
+                    { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
+                ]
+            },
+            { 
+                name: 'Services', 
+                href: '#', // Or a dedicated services page
+                subItems: [
+                    { name: 'Clinical Data Management', href: '#' },
+                    { name: 'Project Management', href: '#' },
+                    { name: 'Data Migration', href: '#' },
+                    { name: 'Training', href: '#' },
+                    { name: 'Support', href: '#' },
+                ]
+            },
+        ]
+    },
+    { name: 'Industries', href: '/industries' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
 ];
 
 export const solutions: Solution[] = [
@@ -589,6 +615,4 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
   { id: "support", title: "24x7 Dedicated Technical Support", description: "Our expert team is always available to assist you, ensuring your trials run smoothly without interruption.", imageId: "why-us-support" },
 ];
 
-
-
-
+    
