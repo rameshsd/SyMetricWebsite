@@ -1,4 +1,5 @@
 
+
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature } from '@/lib/types';
 import {
   FlaskConical,
@@ -615,4 +616,12 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
   { id: "support", title: "24x7 Dedicated Technical Support", description: "Our expert team is always available to assist you, ensuring your trials run smoothly without interruption.", imageId: "why-us-support" },
 ];
 
+export const companyInfo = {
+    facts: {
+      founded: '1972',
+      employees: '107,415',
+      countries: '130+',
+      customers: '440,000'
+    }
+};
     
