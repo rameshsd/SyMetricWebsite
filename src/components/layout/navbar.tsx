@@ -32,7 +32,7 @@ export function Navbar() {
         isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Logo />

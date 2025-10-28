@@ -121,7 +121,7 @@ export function PlatformToolsGrid() {
   const [selectedTool, setSelectedTool] = useState(toolsData[0]);
 
   return (
-    <section className="bg-secondary/50 min-h-screen flex flex-col">
+    <section className="bg-secondary/50 flex flex-col">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -133,7 +133,7 @@ export function PlatformToolsGrid() {
         </div>
       
         <div className="flex-grow grid md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-5 lg:col-span-4 sticky top-24 h-[calc(100vh-20rem)]">
+            <div className="md:col-span-5 lg:col-span-4 sticky top-24 h-auto md:h-[calc(100vh-20rem)]">
                 <ScrollArea className="h-full pr-4">
                     <div className="space-y-2">
                         {toolsData.map((tool) => (

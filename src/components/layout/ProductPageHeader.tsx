@@ -60,7 +60,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
         isScrolled && "shadow-sm"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="py-4">
             <div className="flex items-center text-sm text-muted-foreground mb-2">
                 <Link href="/solutions" className="hover:text-primary flex items-center">

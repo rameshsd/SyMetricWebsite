@@ -29,8 +29,8 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
     colorIndex++;
 
   return (
-    <section className={cn("w-full min-h-[450px] flex items-center py-12 dark:bg-card", backgroundColor)}>
-      <div className="container mx-auto px-4 md:px-6">
+    <section className={cn("w-full min-h-[450px] flex items-center py-12 dark:bg-card px-0", backgroundColor)}>
+      <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">

@@ -36,10 +36,10 @@ export default function AboutPage() {
         secondaryNav={secondaryNav}
         showTitle={false}
       />
-      <section className="bg-primary text-primary-foreground py-0">
+      <section className="bg-primary text-primary-foreground py-0 px-0">
         <div className="container mx-auto px-0">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="py-20 px-6 md:px-15">
+            <div className="py-20 px-4 sm:px-6 lg:px-8">
               <p className="text-sm mb-2">/ About SyMetric</p>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                 Global Company Information

@@ -7,8 +7,8 @@ import { BookOpen } from "lucide-react";
 
 export function TechEdBanner() {
   return (
-    <section className="w-full bg-background py-4">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="w-full bg-background py-4 px-0">
+      <div className="container">
         <div className="bg-blue-900 text-white rounded-lg p-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="flex items-center gap-4 text-center md:text-left">

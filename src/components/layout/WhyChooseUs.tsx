@@ -23,7 +23,7 @@ export function WhyChooseUs() {
         <div className="absolute bottom-10 right-40 w-80 h-80 bg-indigo-200/30 blur-3xl rounded-full animate-pulse-slow" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-16">
+      <div className="container">
         <SectionTitle
           title="Why Choose Us?"
           description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
