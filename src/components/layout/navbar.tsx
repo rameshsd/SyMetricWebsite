@@ -176,7 +176,7 @@ export function Navbar() {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={item.href} passHref asChild>
+                    <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname === item.href && 'text-primary')}>
                         {item.name}
                       </NavigationMenuLink>
