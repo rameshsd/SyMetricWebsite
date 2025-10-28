@@ -1,10 +1,10 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, User, Globe, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -25,7 +25,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import React from 'react';
 import type { NavItem as NavItemType } from '@/lib/types';
 
 
@@ -96,8 +95,8 @@ const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobi
 };
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
 
   const productsSubitem = navItems.find(item => item.name === 'Products and Services')?.subItems?.find(sub => sub.name === 'Products');
@@ -112,7 +111,7 @@ export function Navbar() {
     }
   }) || [];
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -176,8 +175,8 @@ export function Navbar() {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={item.href} passHref legacyBehavior>
-                      <NavigationMenuLink active={pathname === item.href} className={cn(navigationMenuTriggerStyle())}>
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink active={pathname === item.href} className={navigationMenuTriggerStyle()}>
                         {item.name}
                       </NavigationMenuLink>
                     </Link>
