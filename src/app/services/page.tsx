@@ -33,7 +33,7 @@ const services: {
         title: "Project Management",
         subtitle: "Project Management",
         description: "Manage your Clinical Trial effectively — from consulting, scoping, and monitoring to reporting and complying with regulations. We support you with all aspects of project management right from early phase to late phase Clinical Trials.",
-        link: "#"
+        link: "/services/project-management"
     },
     {
         icon: Server,
