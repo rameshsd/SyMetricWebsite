@@ -17,8 +17,8 @@ export function CustomerSuccessSection() {
   const quoteImage = PlaceHolderImages.find((p) => p.id === "quote-icon");
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-secondary/50">
+      <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-64 md:h-auto md:aspect-square flex items-center justify-center">
             {quoteImage && (
@@ -39,7 +39,7 @@ export function CustomerSuccessSection() {
                   <CarouselItem key={index}>
                     <Card className="border-0 bg-transparent shadow-none text-center md:text-left">
                       <CardContent className="p-0">
-                        <blockquote className="text-muted-foreground italic text-lg">"{story.quote}"</blockquote>
+                        <blockquote className="text-muted-foreground italic text-lg leading-relaxed">"{story.quote}"</blockquote>
                         <p className="font-semibold text-lg mt-6">{story.author}</p>
                         <p className="text-muted-foreground">{story.company}</p>
                       </CardContent>

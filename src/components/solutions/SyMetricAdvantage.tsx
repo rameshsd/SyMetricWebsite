@@ -1,6 +1,7 @@
 
 "use client";
 import { CheckCircle } from "lucide-react";
+import { SectionTitle } from "../shared/section-title";
 
 const advantages = [
     "Fully Integrated Application with Modularized Experience",
@@ -15,16 +16,15 @@ const advantages = [
 
 export function SyMetricAdvantage() {
     return (
-        <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold">The SyMetric Advantage</h2>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section>
+            <div className="container">
+                <SectionTitle title="The SyMetric Advantage" className="mb-16" />
+                
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     {advantages.map((advantage, index) => (
                         <div key={index} className="flex items-start gap-4">
                             <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0" />
-                            <p className="text-muted-foreground">{advantage}</p>
+                            <p className="text-muted-foreground text-lg">{advantage}</p>
                         </div>
                     ))}
                 </div>

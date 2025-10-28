@@ -36,10 +36,10 @@ export default function AboutPage() {
         secondaryNav={secondaryNav}
         showTitle={false}
       />
-      <section className="bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="bg-primary text-primary-foreground py-0">
+        <div className="container mx-auto px-0">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="py-12 md:py-24">
+            <div className="py-20 px-6 md:px-15">
               <p className="text-sm mb-2">/ About SyMetric</p>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                 Global Company Information
@@ -51,7 +51,7 @@ export default function AboutPage() {
                   <Link href="#">About SyMetric India</Link>
               </Button>
             </div>
-            <div className="relative h-64 md:h-full min-h-[300px]">
+            <div className="relative h-64 md:h-full min-h-[500px]">
                 {heroImage && (
                     <div className="absolute inset-0 clip-path-polygon-about-hero">
                         <Image 
@@ -70,21 +70,21 @@ export default function AboutPage() {
 
       <CompanyFacts />
       
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
+      <section>
+        <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <h2 className="text-4xl font-bold tracking-tighter">
               Revolutionizing Clinical Trials With Innovation
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground">
+            <p className="mt-6 text-lg text-muted-foreground max-w-prose mx-auto">
               At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity. We offer modularized solutions for Pharma Companies, Contract Research Organizations, and Academia. You can integrate your processes with our user-friendly applications or choose from comprehensive modules for every stage of your trial. And all this comes to you, complete with Study Configurations, in a matter of three to four weeks. So take a big leap with SyMetric!
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="bg-secondary">
+        <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
               <h2 className="text-3xl font-bold tracking-tight">Vision</h2>

@@ -17,9 +17,9 @@ export default function ContactPage() {
 
     return (
         <>
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
+            <section>
+                <div className="container">
+                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-2xl overflow-hidden">
                         {heroImage && (
                         <Image
                             src={heroImage.imageUrl}
@@ -38,38 +38,38 @@ export default function ContactPage() {
                 </div>
             </section>
             
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
+            <section>
+                <div className="container">
                     <div className="grid md:grid-cols-2 gap-16">
                         <div>
-                            <h2 className="text-3xl font-bold tracking-tight">Contact Us</h2>
-                            <p className="mt-4 text-muted-foreground">Fill out the form to the right, or use one of the methods below to connect with our team. We look forward to hearing from you.</p>
-                            <div className="mt-8 space-y-4">
+                            <h2 className="text-4xl font-bold tracking-tight">Contact Us</h2>
+                            <p className="mt-4 text-muted-foreground max-w-prose">Fill out the form to the right, or use one of the methods below to connect with our team. We look forward to hearing from you.</p>
+                            <div className="mt-8 space-y-6">
                                 <div className="flex items-start gap-4">
                                     <MapPin className="h-6 w-6 text-primary mt-1 shrink-0" />
                                     <div>
-                                        <h3 className="font-semibold">Our Headquarters</h3>
+                                        <h3 className="font-semibold text-lg">Our Headquarters</h3>
                                         <p className="text-muted-foreground">123 Innovation Drive, Tech Park, CA 94043</p>
                                     </div>
                                 </div>
                                  <div className="flex items-start gap-4">
                                     <Mail className="h-6 w-6 text-primary mt-1 shrink-0" />
                                     <div>
-                                        <h3 className="font-semibold">Email Us</h3>
+                                        <h3 className="font-semibold text-lg">Email Us</h3>
                                         <p className="text-muted-foreground">info@symetric.com</p>
                                     </div>
                                 </div>
                                  <div className="flex items-start gap-4">
                                     <Phone className="h-6 w-6 text-primary mt-1 shrink-0" />
                                     <div>
-                                        <h3 className="font-semibold">Call Us</h3>
+                                        <h3 className="font-semibold text-lg">Call Us</h3>
                                         <p className="text-muted-foreground">+1 (555) 123-4567</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                          <div>
-                            <Card>
+                            <Card className="p-4 sm:p-6 md:p-8 rounded-2xl">
                                 <ContactForm />
                             </Card>
                         </div>
@@ -77,10 +77,10 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="pb-16 md:pb-24">
-                <div className="container mx-auto px-4 md:px-6">
+            <section className="pt-0">
+                <div className="container">
                     {mapImage && (
-                        <div className="relative h-96 w-full rounded-lg overflow-hidden">
+                        <div className="relative h-96 w-full rounded-2xl overflow-hidden">
                             <Image
                                 src={mapImage.imageUrl}
                                 alt="Map to headquarters"

@@ -10,17 +10,17 @@ import { SectionTitle } from '../shared/section-title';
 
 export function LeadershipSection() {
   return (
-    <section id="leadership" className="py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="leadership">
+      <div className="container">
         <SectionTitle 
             title="A Stellar Journey Led by…" 
-            className="mb-12"
+            className="mb-16"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {leadership.map((member) => {
             const image = PlaceHolderImages.find((p) => p.id === member.imageId);
             return (
-              <Card key={member.id} className="overflow-hidden">
+              <Card key={member.id} className="overflow-hidden rounded-2xl">
                 <div className="grid grid-cols-1 sm:grid-cols-3">
                   <div className="relative h-60 sm:h-auto">
                     {image && (
@@ -34,17 +34,17 @@ export function LeadershipSection() {
                     )}
                   </div>
                   <div className="sm:col-span-2">
-                    <CardHeader>
+                    <CardHeader className="p-8">
                       <CardTitle>{member.name}</CardTitle>
-                      <p className="text-primary font-semibold">{member.role}</p>
+                      <p className="text-primary font-semibold pt-1">{member.role}</p>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="p-8 pt-0">
                       {member.bio.map((paragraph, index) => (
                         <p key={index} className="text-muted-foreground text-sm mb-3">
                           {paragraph}
                         </p>
                       ))}
-                      <Button variant="link" asChild className="px-0">
+                      <Button variant="link" asChild className="px-0 mt-2">
                         <Link href="#">Read more</Link>
                       </Button>
                     </CardContent>

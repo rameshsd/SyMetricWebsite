@@ -24,8 +24,8 @@ export default function SolutionsPage() {
       <ProductPageHeader productName="SyMetric business applications" solutions={headerSolutions} />
 
       {/* ✅ Hero Section (Fixed Animation Container) */}
-      <section className="relative w-full py-16 md:py-24 lg:py-32 text-white overflow-hidden bg-solutions-hero-gradient bg-cover bg-center">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="relative w-full text-white overflow-hidden bg-solutions-hero-gradient bg-cover bg-center py-20 md:py-32">
+        <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Text Content */}
             <div className="space-y-6">
@@ -36,7 +36,7 @@ export default function SolutionsPage() {
                 Don't get held back by disconnected applications. Be ready to seize opportunities
                 and secure your success with an integrated suite of solutions.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Button size="lg" asChild>
                   <Link href="/contact">Request a demo</Link>
                 </Button>
@@ -57,9 +57,9 @@ export default function SolutionsPage() {
       <TechEdBanner />
 
       {/* Solutions Cards Section */}
-      <section className="py-16 md:py-24">
+      <section>
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {solutions.map((solution) => {
               const placeholder = PlaceHolderImages.find(p => p.id === solution.image);
               const solutionUrl = solution.slug === 'clinical-trial-platform'
@@ -69,7 +69,7 @@ export default function SolutionsPage() {
               return (
                 <Card
                   key={solution.id}
-                  className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                  className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl"
                 >
                   <div className="relative w-full h-48 overflow-hidden">
                     {placeholder && (
@@ -83,16 +83,16 @@ export default function SolutionsPage() {
                       />
                     )}
                   </div>
-                  <CardHeader>
+                  <CardHeader className="p-8">
                     <div className="flex items-center gap-4">
                       <solution.icon className="h-8 w-8 text-primary shrink-0" />
                       <CardTitle className="text-xl">{solution.name}</CardTitle>
                     </div>
                   </CardHeader>
-                  <CardContent className="flex-grow">
+                  <CardContent className="flex-grow p-8 pt-0">
                     <CardDescription>{solution.description}</CardDescription>
                   </CardContent>
-                  <div className="p-6 pt-0">
+                  <div className="p-8 pt-0">
                     <Button variant="link" asChild className="p-0 h-auto">
                       <Link href={solutionUrl}>
                         Learn More <ArrowRight className="ml-2 h-4 w-4" />

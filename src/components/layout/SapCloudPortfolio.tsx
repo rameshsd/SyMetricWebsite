@@ -21,16 +21,16 @@ const BulletPoint = ({ children }: { children: React.ReactNode }) => (
 
 export function SapCloudPortfolio() {
     return (
-        <section className="py-16 md:py-24 bg-secondary/50">
+        <section className="bg-secondary/50">
             <div className="container">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                    <h2 className="text-4xl font-bold tracking-tighter">
                         Every day, organizations around the world trust SyMetric in the cloud
                     </h2>
-                    <p className="mt-6 text-lg text-muted-foreground">
+                    <p className="mt-6 text-lg text-muted-foreground max-w-prose mx-auto">
                         Our cloud portfolio is built on a strong, reliable, and secure foundation. Global cloud delivery services through SyMetric protect you from external threats, help you collect and process personal data lawfully, and enable you to meet regulatory and compliance requirements.
                     </p>
-                    <p className="mt-4 text-lg text-muted-foreground">
+                    <p className="mt-4 text-lg text-muted-foreground max-w-prose mx-auto">
                         Additionally, we offer specific security and sovereignty in the way we deliver our services — always tailored to your industry and business needs.
                     </p>
                 </div>
@@ -39,7 +39,7 @@ export function SapCloudPortfolio() {
                     <div className="space-y-8">
                         <div>
                             <h3 className="text-xl font-bold mb-4">Security</h3>
-                            <ul className="space-y-2">
+                            <ul className="space-y-3">
                                 <BulletPoint>Highest product and operations security</BulletPoint>
                                 <BulletPoint>Resilience and business continuity</BulletPoint>
                                 <BulletPoint>Cyber-defense measures</BulletPoint>
@@ -47,14 +47,14 @@ export function SapCloudPortfolio() {
                         </div>
                         <div>
                             <h3 className="text-xl font-bold mb-4">Compliance</h3>
-                             <ul className="space-y-2">
+                             <ul className="space-y-3">
                                 <BulletPoint>Wide range of certifications</BulletPoint>
                                 <BulletPoint>Product localizations</BulletPoint>
                             </ul>
                         </div>
                         <div>
                             <h3 className="text-xl font-bold mb-4">Data protection and privacy</h3>
-                             <ul className="space-y-2">
+                             <ul className="space-y-3">
                                 <BulletPoint>Strong company measures</BulletPoint>
                                 <BulletPoint>Global data center locations</BulletPoint>
                             </ul>
@@ -63,7 +63,7 @@ export function SapCloudPortfolio() {
                      <div className="space-y-8">
                         <div>
                             <h3 className="text-xl font-bold mb-4">Security and sovereignty options</h3>
-                            <div className="space-y-3">
+                            <div className="space-y-4">
                                 <FeatureItem>Customer managed encryption keys</FeatureItem>
                                 <FeatureItem>Local data residency and operations</FeatureItem>
                                 <FeatureItem subtext="For regulated industries">Sovereign cloud capabilities</FeatureItem>

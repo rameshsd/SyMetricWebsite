@@ -33,7 +33,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 218 100% 35%;
 
-    --radius: 0.5rem;
+    --radius: 1rem; /* Increased for softer corners */
   }
 
   .dark {
@@ -87,6 +87,12 @@
 }
 
 @layer components {
+    .container {
+        @apply max-w-[1200px] mx-auto px-6 sm:px-10 md:px-16;
+    }
+    section {
+        @apply py-20;
+    }
     .bg-sap-gradient {
         background-color: #00073D;
         background-image: linear-gradient(135deg, #00073D 0%, #000B5B 50%, #001783 100%);

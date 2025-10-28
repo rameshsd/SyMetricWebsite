@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProductSummarizerPage() {
   return (
-    <section className="py-16 md:py-24">
+    <section>
       <div className="container">
         <SectionTitle
           title="Product Information Summarizer"

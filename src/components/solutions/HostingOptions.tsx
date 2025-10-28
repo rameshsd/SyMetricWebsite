@@ -13,8 +13,8 @@ export function HostingOptions() {
     (p) => p.id === "hosting-providers-image"
   );
   return (
-    <section className="py-16 md:py-24 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-secondary/50">
+      <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-96">
             {image && (
@@ -23,15 +23,15 @@ export function HostingOptions() {
                 alt={image.description}
                 data-ai-hint={image.imageHint}
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover rounded-2xl"
               />
             )}
           </div>
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight">
+            <h2 className="text-4xl font-bold tracking-tight">
               Looking for Customized Hosting and Deployment Models?
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg max-w-prose">
               Our Clinical Trial Platform is a SaaS Solution that is available
               with the most trusted and compliant Cloud-Hosting options.
             </p>
@@ -52,7 +52,7 @@ export function HostingOptions() {
               dedicated single-tenant solution or a completely custom
               deployment model.
             </p>
-            <Button asChild>
+            <Button asChild className="mt-4">
               <Link href="/contact">Contact us</Link>
             </Button>
           </div>

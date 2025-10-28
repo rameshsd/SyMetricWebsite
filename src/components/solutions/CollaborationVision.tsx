@@ -8,13 +8,13 @@ import { SectionTitle } from "../shared/section-title";
 export function CollaborationVision() {
   const image = PlaceHolderImages.find((p) => p.id === "collaboration-diagram-full");
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-6">
+    <section>
+      <div className="container">
          <SectionTitle
             title="Our Collaboration Vision"
             description="The SyMetric Platform provides a virtual collaborative environment that is secure, user-friendly, and intuitive. It streamlines communication and provides the necessary tools for effective data capture and decision-making."
         />
-        <div className="mt-12 relative aspect-[1.6] max-w-6xl mx-auto">
+        <div className="mt-16 relative aspect-[1.6] max-w-6xl mx-auto">
           {image && (
             <Image
               src={image.imageUrl}

@@ -15,9 +15,9 @@ export default function ResourcesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'resources-hero');
     return (
         <>
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-lg overflow-hidden">
+            <section>
+                <div className="container">
+                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-2xl overflow-hidden">
                         {heroImage && (
                         <Image
                             src={heroImage.imageUrl}
@@ -36,13 +36,13 @@ export default function ResourcesPage() {
                 </div>
             </section>
             
-            <section className="py-16 md:py-24">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section>
+                <div className="container">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     {resources.map((resource) => {
                         const placeholder = PlaceHolderImages.find((p) => p.id === resource.image);
                         return (
-                        <Card key={resource.id} className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                        <Card key={resource.id} className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
                             <div className="relative w-full h-48 overflow-hidden">
                             {placeholder && (
                                 <Image
@@ -55,7 +55,7 @@ export default function ResourcesPage() {
                                 />
                             )}
                             </div>
-                            <CardContent className="p-6 flex-grow flex flex-col">
+                            <CardContent className="p-8 flex-grow flex flex-col">
                             <div className="flex-grow">
                                 <Badge variant="secondary" className="mb-2">{resource.category}</Badge>
                                 <h3 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">

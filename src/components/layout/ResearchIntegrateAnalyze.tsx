@@ -14,14 +14,14 @@ export function ResearchIntegrateAnalyze() {
     return (
         <section
             ref={ref}
-            className="py-24 md:py-32 flex flex-col items-center justify-center bg-secondary/50 px-4"
+            className="flex flex-col items-center justify-center bg-secondary/50 px-4"
         >
             <div className="container text-center">
                 {/* Title & Subtitle */}
                 <div className="max-w-3xl mx-auto">
                     <h2
                         className={cn(
-                            "text-4xl md:text-5xl font-bold tracking-tighter text-foreground opacity-0",
+                            "text-4xl font-bold tracking-tighter text-foreground opacity-0",
                             isInView && "animate-fade-in-up"
                         )}
                     >
@@ -29,7 +29,7 @@ export function ResearchIntegrateAnalyze() {
                     </h2>
                     <p
                         className={cn(
-                            "text-lg text-muted-foreground mt-4 opacity-0",
+                            "text-lg text-muted-foreground mt-4 max-w-prose mx-auto opacity-0",
                             isInView && "animate-fade-in-up"
                         )}
                         style={{ animationDelay: '200ms' }}
@@ -39,7 +39,7 @@ export function ResearchIntegrateAnalyze() {
                 </div>
 
                 {/* Main Concepts */}
-                <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-12 text-center max-w-4xl mx-auto">
+                <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center max-w-4xl mx-auto">
                     {researchIntegrateAnalyzeContent.mainConcepts.map((item, index) => (
                         <div
                             key={item.title}
@@ -60,7 +60,7 @@ export function ResearchIntegrateAnalyze() {
                 </div>
 
                 {/* Platform Features */}
-                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                         <div
                             key={item.title}

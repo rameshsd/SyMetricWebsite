@@ -41,20 +41,20 @@ const platformUsers = [
 export function DigitalPlatformSection() {
     const [ref, isInView] = useInView({ triggerOnce: true });
   return (
-    <section className="py-16 md:py-24 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-secondary/50">
+      <div className="container">
         <SectionTitle
           title="Digital Platform To Transform Your Processes"
-          className="mb-12"
+          className="mb-16"
         />
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {platformUsers.map((user, index) => {
             const image = PlaceHolderImages.find((p) => p.id === user.imageId);
             return (
               <Card
                 key={user.title}
                 className={cn(
-                    "overflow-hidden relative group text-white flex flex-col justify-end p-8 min-h-[450px] opacity-0",
+                    "overflow-hidden relative group text-white flex flex-col justify-end p-8 min-h-[450px] opacity-0 rounded-2xl",
                     isInView && "animate-fade-in-up"
                 )}
                 style={{ animationDelay: `${index * 150}ms` }}

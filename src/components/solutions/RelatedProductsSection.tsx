@@ -48,15 +48,15 @@ export function RelatedProductsSection() {
     const videoThumbnail = PlaceHolderImages.find(p => p.id === 'finance-driver-video');
 
     return (
-        <section className="py-16 md:py-24 bg-secondary/50">
-            <div className="container mx-auto px-4 md:px-6">
+        <section className="bg-secondary/50">
+            <div className="container">
                 <SectionTitle 
                     title="Turn your clinical data into a strategic driver of performance"
                     description="You're under pressure to do more with less. Equip your research team to operate more efficiently, anticipate change, and lead with confidence—with the AI-enabled SyMetric Platform."
                 />
 
-                <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div className="relative aspect-video rounded-lg overflow-hidden group">
+                <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden group">
                         {videoThumbnail && (
                             <Image 
                                 src={videoThumbnail.imageUrl}
@@ -80,10 +80,10 @@ export function RelatedProductsSection() {
                     </div>
                 </div>
 
-                <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10">
                     {relatedProducts.map(product => (
-                        <Card key={product.title} className="bg-background border-none shadow-none">
-                            <CardContent className="p-6">
+                        <Card key={product.title} className="bg-background border transition-shadow hover:shadow-lg rounded-2xl">
+                            <CardContent className="p-8">
                                 <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
                                 <p className="text-muted-foreground mt-2 min-h-[100px]">{product.description}</p>
                                 <Link href={product.link} className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">

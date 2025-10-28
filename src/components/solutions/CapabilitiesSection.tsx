@@ -70,14 +70,14 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
 
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-background">
+      <div className="container">
         <SectionTitle
             title={mainTitle}
             description={mainDescription}
         />
 
-        <div className="border-b mt-12">
+        <div className="border-b mt-16">
           <div className="flex space-x-8 overflow-x-auto -mb-px px-4">
             {tabs.map(tab => (
               <button
@@ -99,7 +99,7 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
         <div className="mt-12">
           {activeContent && (
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden border shadow-sm">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border shadow-sm">
                 {activeContent.image && (
                   <Image
                     src={activeContent.image.imageUrl}
@@ -114,11 +114,11 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
                 {activeContent.features.map((feature: {title: string; description: string}) => (
                   <div key={feature.title}>
                     <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
-                    <p className="text-muted-foreground mt-1">{feature.description}</p>
+                    <p className="text-muted-foreground mt-2">{feature.description}</p>
                   </div>
                 ))}
                  { !capabilities && (
-                    <Button variant="link" asChild className="p-0 h-auto text-base">
+                    <Button variant="link" asChild className="p-0 h-auto text-base mt-4">
                       <Link href="#">
                         Explore SyMetric Cloud Public Edition <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>

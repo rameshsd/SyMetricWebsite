@@ -21,14 +21,14 @@ export function GrowthStoryTimeline() {
     const visibleItems = growthTimeline.slice(0, visibleCount);
 
     return (
-        <section id="growth-story" className="py-16 md:py-24 bg-sap-gradient text-primary-foreground">
+        <section id="growth-story" className="bg-sap-gradient text-primary-foreground">
             <div className="container">
                 <SectionTitle 
                     title="Our Growth Story"
                     description="Key milestones in our mission to transform clinical research."
                     className="text-white"
                 />
-                <div ref={ref} className="mt-12 relative max-w-4xl mx-auto">
+                <div ref={ref} className="mt-16 relative max-w-4xl mx-auto">
                     <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2" aria-hidden="true" />
                     {visibleItems.map((item, index) => (
                         <div key={item.year} className="relative mb-12">
@@ -55,5 +55,3 @@ export function GrowthStoryTimeline() {
         </section>
     );
 }
-
-    

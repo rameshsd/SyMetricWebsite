@@ -6,18 +6,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const FactItem = ({ value, label }: { value: string; label: string }) => (
     <div className="text-center">
         <p className="text-4xl lg:text-5xl font-bold text-primary">{value}</p>
-        <p className="text-sm text-muted-foreground uppercase tracking-wider">{label}</p>
+        <p className="text-sm text-muted-foreground uppercase tracking-wider mt-2">{label}</p>
     </div>
 );
 
 export function CompanyFacts() {
     const facts = companyInfo.facts;
     return (
-        <section className="w-full py-12 md:py-20 lg:py-24">
-            <div className="container mx-auto px-4 md:px-6">
+        <section className="w-full">
+            <div className="container">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl font-bold tracking-tight mb-4">SyMetric Company Information</h2>
-                    <p className="text-muted-foreground mb-8">
+                    <h2 className="text-4xl font-bold tracking-tight mb-4">SyMetric Company Information</h2>
+                    <p className="text-muted-foreground text-lg mb-8 max-w-prose">
                         As a global leader in enterprise applications and business AI, SyMetric stands at the nexus of business and technology. For over 50 years, organisations have trusted SyMetric to bring out their best by uniting business-critical operations spanning finance, procurement, HR, supply chain, and customer experience.
                     </p>
                     <Tabs defaultValue="fast-facts" className="w-full">
@@ -28,7 +28,7 @@ export function CompanyFacts() {
                             <TabsTrigger value="report">Integrated Report</TabsTrigger>
                         </TabsList>
                         <TabsContent value="fast-facts" className="pt-10">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
                                 <FactItem value={facts.founded} label="Founded" />
                                 <FactItem value={facts.employees} label="Employees" />
                                 <FactItem value={facts.countries} label="Countries" />

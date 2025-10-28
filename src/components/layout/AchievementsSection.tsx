@@ -67,13 +67,13 @@ export function AchievementsSection() {
   }, [isInView]);
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-background">
+      <div className="container">
         <SectionTitle
           title="Our Achievements"
-          className="mb-12"
+          className="mb-16"
         />
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
           {achievements.map((item, index) => (
             <motion.div
               key={item.label}
@@ -90,7 +90,7 @@ export function AchievementsSection() {
                   <AnimatedCounter to={item.value} />
                   {item.unit}
                 </p>
-                <p className="text-muted-foreground">{item.label}</p>
+                <p className="text-muted-foreground mt-1">{item.label}</p>
               </div>
             </motion.div>
           ))}

@@ -16,8 +16,8 @@ export function WhyChooseUs() {
   const activeImage = PlaceHolderImages.find(p => p.id === activeFeature.imageId);
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32 bg-secondary/50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="w-full bg-secondary/50">
+      <div className="container">
         <SectionTitle
           title="Why Choose Us?"
           description="SyMetric offers reliable, accurate, and user-friendly Clinical Trial Solutions. You can plan, monitor, and manage trials effectively, every step of the way."
@@ -25,7 +25,7 @@ export function WhyChooseUs() {
         />
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl bg-background">
+          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-background">
             <AnimatePresence mode="wait">
               {activeImage && (
                 <motion.div
@@ -54,7 +54,7 @@ export function WhyChooseUs() {
                 key={feature.id}
                 onClick={() => setActiveFeature(feature)}
                 className={cn(
-                  "w-full text-left p-4 rounded-lg transition-all duration-300 border-2",
+                  "w-full text-left p-6 rounded-2xl transition-all duration-300 border-2",
                   activeFeature.id === feature.id
                     ? 'bg-background border-primary shadow-lg scale-105'
                     : 'bg-background/50 border-transparent hover:bg-background hover:shadow-md'

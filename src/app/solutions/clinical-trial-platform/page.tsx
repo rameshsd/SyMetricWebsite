@@ -36,8 +36,8 @@ export default function ClinicalTrialPlatformPage() {
         <ProductPageHeader productName="Clinical Trial Platform" solutions={headerSolutions} />
         
         {solution && (
-             <section className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card">
-                <div className="container mx-auto px-4 md:px-6">
+             <section className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card py-0">
+                <div className="container">
                     <div className="grid lg:grid-cols-2 gap-10 items-center">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
@@ -74,11 +74,11 @@ export default function ClinicalTrialPlatformPage() {
         <ExploreSolutions />
         <RelatedProductsSection />
 
-        <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6">
+        <section>
+            <div className="container">
               <div className="text-center">
-                  <h2 className="text-3xl font-bold mb-6">Get Started Today</h2>
-                  <div className="flex gap-4 justify-center">
+                  <h2 className="text-4xl font-bold mb-6">Get Started Today</h2>
+                  <div className="flex gap-4 justify-center mt-8">
                       <Button size="lg" asChild><a href="/contact">Get a demo</a></Button>
                       <Button size="lg" variant="outline" asChild><a href="/contact">Contact us for pricing</a></Button>
                   </div>

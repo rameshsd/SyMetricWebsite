@@ -22,23 +22,23 @@ export function GlobalPresence() {
   const mapImage = PlaceHolderImages.find(p => p.id === 'world-map');
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-background">
+      <div className="container">
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight">
             Affordable and Scalable, Globally
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mt-8">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg">
                 Over the years, we have delivered safe and reliable solutions to all our clients across India and abroad.
             </p>
-            <p className="text-muted-foreground relative pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary">
+            <p className="text-muted-foreground text-lg relative pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-primary">
                 We prove our commitment to our Global Customer base by ensuring regulatory compliance and security.
             </p>
         </div>
 
-        <div className="mt-12 relative">
+        <div className="mt-16 relative">
           {mapImage && (
             <Image
               src={mapImage.imageUrl}
