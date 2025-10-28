@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { whyChooseUsFeatures } from "@/lib/data";
+import { SectionTitle } from "../shared/section-title";
 
 const tabs = whyChooseUsFeatures.map(feature => ({
   id: feature.id,
@@ -52,8 +53,13 @@ export function WhyChooseUs() {
           ))}
         </div>
 
+        <SectionTitle
+          title="Why Choose Us?"
+          description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
+        />
+
         {/* Content Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mt-16">
           {/* Left - Image */}
           <AnimatePresence mode="wait">
             <motion.div
