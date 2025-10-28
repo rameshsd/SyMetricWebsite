@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { CompanyFacts } from '@/components/layout/CompanyFacts';
 import Link from 'next/link';
 import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
+import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 
 
 export const metadata = {
@@ -70,18 +71,7 @@ export default function AboutPage() {
 
       <CompanyFacts />
       
-      <section>
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold tracking-tighter">
-              Revolutionizing Clinical Trials With Innovation
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-prose mx-auto">
-              At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity. We offer modularized solutions for Pharma Companies, Contract Research Organizations, and Academia. You can integrate your processes with our user-friendly applications or choose from comprehensive modules for every stage of your trial. And all this comes to you, complete with Study Configurations, in a matter of three to four weeks. So take a big leap with SyMetric!
-            </p>
-          </div>
-        </div>
-      </section>
+      <RevolutionizingTrialsSection />
 
       <section className="bg-secondary">
         <div className="container">
