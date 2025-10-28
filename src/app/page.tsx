@@ -11,7 +11,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
-import { FutureOfTrials } from '@/components/layout/FutureOfTrials';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
@@ -30,58 +29,6 @@ export default function Home() {
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
          <SapTechedHero />
-         <FutureOfTrials />
-        
-        <section className="w-full bg-secondary/50">
-          <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                {content ? (
-                  <div className="space-y-6 text-center md:text-left">
-                      <p className="text-primary font-semibold tracking-wide uppercase">
-                          About SyMetric
-                      </p>
-                      <h2 className="text-4xl font-bold tracking-tighter text-foreground">
-                          {content.revolutionTitle}
-                      </h2>
-                      <p className="text-muted-foreground text-lg max-w-prose">
-                          {content.revolutionContent}
-                      </p>
-                      <Button asChild size="lg" variant="default">
-                          <Link href="/about">
-                              Know more <ArrowRight className="ml-2" />
-                          </Link>
-                      </Button>
-                  </div>
-                ) : (
-                  <div className="space-y-6 text-center md:text-left">
-                      <p className="text-primary font-semibold tracking-wide uppercase">
-                          About SyMetric
-                      </p>
-                      <h2 className="text-4xl font-bold tracking-tighter text-foreground">
-                          Loading...
-                      </h2>
-                      <p className="text-muted-foreground text-lg max-w-prose">
-                          Loading content...
-                      </p>
-                  </div>
-                )}
-                <div className="relative h-[300px] md:h-[400px] flex items-center justify-center">
-                    {revolutionImage && (
-                        <Image
-                            src={revolutionImage.imageUrl}
-                            alt={revolutionImage.description}
-                            data-ai-hint={revolutionImage.imageHint}
-                            width={500}
-                            height={400}
-                            className="object-contain rounded-lg z-10"
-                        />
-                    )}
-                    <div className="absolute -bottom-10 -left-10 h-48 w-48 bg-primary/10 rounded-full blur-2xl"></div>
-                    <div className="absolute -top-10 -right-10 h-48 w-48 bg-accent/10 rounded-full blur-2xl"></div>
-                </div>
-            </div>
-          </div>
-        </section>
         
         <FeatureGrid />
 
