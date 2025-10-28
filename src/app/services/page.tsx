@@ -1,4 +1,5 @@
 
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { solutions } from '@/lib/data';
@@ -47,7 +48,7 @@ const services: {
         title: "Training",
         subtitle: "Training",
         description: "Adopt our Platform and tools effortlessly using our comprehensive Online Training Services. Help your entire workforce get on board using tailor-made training modules that are designed for specific roles and responsibilities of a wide range of end users.",
-        link: "#"
+        link: "/services/training"
     },
     {
         icon: LifeBuoy,
