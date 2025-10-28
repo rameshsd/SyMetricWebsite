@@ -235,22 +235,22 @@ const paths = [
         </div>
 
         {/* Outer Nodes */}
-        <div className="absolute top-[20%] left-[20%]">
+        <div className="absolute top-[20%] left-[20%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={Repeat} label="IRT/IWRS" size="sm" />
         </div>
-        <div className="absolute top-[20%] left-[80%] -translate-x-1/2">
+        <div className="absolute top-[20%] left-[80%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={Database} label="EDC" size="sm" />
         </div>
-        <div className="absolute top-[80%] left-[20%] -translate-y-1/2">
+        <div className="absolute top-[80%] left-[20%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={ClipboardList} label="CTM" size="sm" />
         </div>
         <div className="absolute top-[80%] left-[80%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={PieChart} label="Analytics" size="sm" />
         </div>
-        <div className="absolute top-[12%] left-[50%] -translate-x-1/2">
+        <div className="absolute top-[15%] left-[50%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={ShieldCheck} label="Compliance" size="sm" />
         </div>
-        <div className="absolute top-[87%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-[85%] left-[50%] -translate-x-1/2 -translate-y-1/2">
         <Node icon={FileText} label="eTMF" size="sm" />
         </div>
 
@@ -258,5 +258,3 @@ const paths = [
     </div>
   );
 }
-
-    
