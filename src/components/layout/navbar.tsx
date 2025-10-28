@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -25,6 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import React from 'react';
+import type { NavItem as NavItemType } from '@/lib/types';
 
 
 const ListItem = React.forwardRef<
@@ -54,7 +56,7 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 
-const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItem, closeMobileMenu: () => void }) => {
+const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobileMenu: () => void }) => {
   const pathname = usePathname();
 
   if (item.subItems) {
@@ -174,7 +176,7 @@ export function Navbar() {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={item.href}>
+                    <Link href={item.href} passHref legacyBehavior>
                       <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname === item.href && 'text-primary')}>
                         {item.name}
                       </NavigationMenuLink>
