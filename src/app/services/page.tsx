@@ -55,7 +55,7 @@ const services: {
         title: "Support",
         subtitle: "Support",
         description: "Enjoy round-the-clock technical assistance and get your Operational queries answered with the fastest turnaround time. Reach us any time and fall back on a support system renowned for performance, speed, and reliability.",
-        link: "#"
+        link: "/services/support"
     }
 ];
 
