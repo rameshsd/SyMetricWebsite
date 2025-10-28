@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -5,9 +6,6 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { whyChooseUsFeatures } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import { SectionTitle } from "../shared/section-title";
-import { CheckCircle2 } from "lucide-react";
 
 const tabs = whyChooseUsFeatures.map(feature => ({
   id: feature.id,
@@ -16,18 +14,10 @@ const tabs = whyChooseUsFeatures.map(feature => ({
 
 export function WhyChooseUs() {
   const [activeFeature, setActiveFeature] = useState(whyChooseUsFeatures[0]);
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
   const activeImage = PlaceHolderImages.find(
     (p) => p.id === activeFeature.imageId
   );
-  
-  const handleTabClick = (tabId: string) => {
-    const newActiveFeature = whyChooseUsFeatures.find(f => f.id === tabId);
-    if (newActiveFeature) {
-        setActiveTab(tabId);
-        setActiveFeature(newActiveFeature);
-    }
-  }
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-blue-50 to-white py-24">
@@ -39,17 +29,22 @@ export function WhyChooseUs() {
 
       <div className="container">
         {/* Modern Tabs */}
-        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2 border-b border-gray-200 mb-12">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 border-b border-gray-200 mb-16">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => handleTabClick(tab.id)}
-              className="relative pb-2 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => {
+                const newFeature = whyChooseUsFeatures.find(f => f.id === tab.id);
+                if (newFeature) {
+                  setActiveFeature(newFeature);
+                }
+              }}
+              className="relative pb-3 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-all"
             >
               {tab.label}
-              {activeTab === tab.id && (
+              {activeFeature.id === tab.id && (
                 <motion.div
-                  layoutId="activeTab"
+                  layoutId="underline"
                   className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-600 rounded-full"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
@@ -58,115 +53,48 @@ export function WhyChooseUs() {
           ))}
         </div>
 
-        <SectionTitle
-          title="Why Choose Us?"
-          description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
-          className="mb-20 text-center max-w-3xl mx-auto"
-        />
-
+        {/* Content Section */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md bg-white/10 border border-white/20"
-          >
-            <AnimatePresence mode="wait">
+          {/* Left - Image */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeFeature.id}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="relative w-full h-[360px] rounded-3xl overflow-hidden shadow-xl border border-gray-100"
+            >
               {activeImage && (
-                <motion.div
-                  key={activeFeature.id}
-                  className="absolute inset-0"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                >
-                  <Image
-                    src={activeImage.imageUrl}
-                    alt={activeImage.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={activeImage.imageHint}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </motion.div>
+                <Image
+                  src={activeImage.imageUrl}
+                  alt={activeFeature.title}
+                  data-ai-hint={activeImage.imageHint}
+                  fill
+                  className="object-cover"
+                />
               )}
-            </AnimatePresence>
-          </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Right — Feature List */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="space-y-5"
-          >
-            {whyChooseUsFeatures.map((feature) => {
-              const isActive = activeFeature.id === feature.id;
-              return (
-                <motion.button
-                  key={feature.id}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setActiveFeature(feature)}
-                  className={cn(
-                    "relative w-full text-left p-6 rounded-2xl transition-all duration-500 border",
-                    "flex items-start gap-5 overflow-hidden",
-                    isActive
-                      ? "bg-white shadow-xl border-blue-300"
-                      : "bg-white/60 hover:bg-white/80 border-transparent backdrop-blur-md"
-                  )}
-                >
-                  {/* Animated Glow Accent */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-glow"
-                      className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-60 rounded-2xl -z-10"
-                      transition={{ duration: 0.4 }}
-                    />
-                  )}
-
-                  {/* Icon */}
-                  <div
-                    className={cn(
-                      "flex items-center justify-center h-12 w-12 rounded-xl shrink-0 transition-colors",
-                      isActive ? "bg-blue-100" : "bg-blue-50"
-                    )}
-                  >
-                    <CheckCircle2
-                      className={cn(
-                        "h-6 w-6 transition-colors",
-                        isActive ? "text-blue-600" : "text-gray-500"
-                      )}
-                    />
-                  </div>
-
-                  {/* Text */}
-                  <div>
-                    <h3
-                      className={cn(
-                        "text-lg font-semibold mb-1 transition-colors",
-                        isActive ? "text-blue-700" : "text-gray-800"
-                      )}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p
-                      className={cn(
-                        "text-sm leading-relaxed transition-opacity",
-                        isActive
-                          ? "text-gray-600 opacity-100"
-                          : "text-gray-600 opacity-80"
-                      )}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </motion.div>
+          {/* Right - Text */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeFeature.id}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 30}}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                {activeFeature.title}
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                {activeFeature.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
