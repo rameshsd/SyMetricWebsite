@@ -17,6 +17,7 @@ import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
+import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
 
 const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
 
@@ -29,7 +30,7 @@ export default function Home() {
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
          <SapTechedHero />
-        
+        <RevolutionizingTrials />
         <FeatureGrid />
 
         <WhyChooseUs />
