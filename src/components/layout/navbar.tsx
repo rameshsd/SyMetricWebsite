@@ -99,11 +99,15 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
 
-  const productsSubitem = navItems.find(item => item.name === 'Products and Services')?.subItems?.find(sub => sub.name === 'Products');
-  const servicesSubitem = navItems.find(item => item.name === 'Products and Services')?.subItems?.find(sub => sub.name === 'Services');
+  const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
+  const productsSubitem = productsAndServicesItem?.subItems?.find(sub => sub.name === 'Products');
+  const servicesSubitem = productsAndServicesItem?.subItems?.find(sub => sub.name === 'Services');
   
   const productComponents = productsSubitem?.subItems?.map(subItem => {
-    const solution = solutions.find(s => s.slug === subItem.href.split('/').pop());
+    const solution = solutions.find(s => {
+      const solutionSlug = subItem.href.split('/').pop();
+      return s.slug === solutionSlug || (s.slug === 'clinical-trial-platform' && solutionSlug === 'clinical-trial-platform');
+    });
     return {
       title: subItem.name,
       href: subItem.href,
@@ -138,13 +142,17 @@ export function Navbar() {
             <NavigationMenuList>
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
-                  {item.name === 'Products and Services' ? (
+                  {item.name === 'Products and Services' && productsAndServicesItem ? (
                     <>
                       <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'text-primary')}>{item.name}</NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
                             <div className="col-span-1">
-                                <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">{productsSubitem?.name}</h3>
+                                {productsSubitem && (
+                                  <Link href={productsSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
+                                    <h3>{productsSubitem.name}</h3>
+                                  </Link>
+                                )}
                                 <ul className="grid gap-1">
                                     {productComponents.map((component) => (
                                         <ListItem
@@ -158,7 +166,11 @@ export function Navbar() {
                                 </ul>
                             </div>
                             <div className="col-span-1">
-                                 <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">{servicesSubitem?.name}</h3>
+                                 {servicesSubitem && (
+                                    <Link href={servicesSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
+                                      <h3>{servicesSubitem.name}</h3>
+                                    </Link>
+                                 )}
                                  <ul className="grid gap-1">
                                     {servicesSubitem?.subItems?.map((subItem) => (
                                          <ListItem
@@ -176,7 +188,7 @@ export function Navbar() {
                     </>
                   ) : (
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink active={pathname === item.href} className={navigationMenuTriggerStyle()}>
+                      <NavigationMenuLink active={pathname === item.href} className={cn(navigationMenuTriggerStyle())}>
                         {item.name}
                       </NavigationMenuLink>
                     </Link>
