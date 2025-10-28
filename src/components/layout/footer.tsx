@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { Logo } from '@/components/shared/logo';
-import { Facebook, Youtube, Mail, MessageSquare, Globe, ArrowUp } from 'lucide-react';
+import { Facebook, Youtube, Mail, MessageSquare, Globe, ArrowUp, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useState, useEffect } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const quickLinks = [
   { name: 'SyMetric Trust Center', href: '#' },
@@ -51,6 +52,22 @@ const socialLinks = [
   { name: 'Mail', icon: Mail, href: '#' },
 ];
 
+const FooterLinkColumn = ({ title, links }: { title: string; links: { name: string; href: string }[] }) => (
+    <div>
+        <h3 className="text-sm font-bold text-foreground tracking-wide">{title}</h3>
+        <ul className="mt-4 space-y-2">
+            {links.map((link) => (
+            <li key={link.name}>
+                <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
+                {link.name}
+                </Link>
+            </li>
+            ))}
+        </ul>
+    </div>
+);
+
+
 export function Footer() {
   const [year, setYear] = useState(new Date().getFullYear());
   const [isClient, setIsClient] = useState(false);
@@ -73,14 +90,16 @@ export function Footer() {
   
   return (
     <footer className="bg-secondary/50 border-t">
-      <div className="container py-12">
-        <div className="flex justify-end items-center mb-8">
+      <div className="container px-4 sm:px-6">
+        <div className="flex justify-end items-center my-8">
             <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
                 <ArrowUp className="h-5 w-5" />
                 <span className="sr-only">Back to top</span>
             </Button>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-6 gap-8">
           <div className="col-span-2">
             <Logo />
             <div className="mt-8 space-y-4 text-sm">
@@ -102,55 +121,100 @@ export function Footer() {
                 </div>
             </div>
           </div>
-          <div>
-            <h3 className="text-sm font-bold text-foreground tracking-wide">Quick links</h3>
-            <ul className="mt-4 space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-foreground tracking-wide">Trending</h3>
-            <ul className="mt-4 space-y-2">
-              {trendingLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-           <div>
-            <h3 className="text-sm font-bold text-foreground tracking-wide">About SyMetric</h3>
-            <ul className="mt-4 space-y-2">
-              {aboutSyMetricLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-           <div>
-            <h3 className="text-sm font-bold text-foreground tracking-wide">Site Information</h3>
-            <ul className="mt-4 space-y-2">
-              {siteInfoLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterLinkColumn title="Quick links" links={quickLinks} />
+          <FooterLinkColumn title="Trending" links={trendingLinks} />
+          <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
+          <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
         </div>
+
+        {/* Mobile Accordion */}
+        <div className="md:hidden">
+            <div className="mb-8">
+                <Logo />
+                <div className="mt-8 space-y-4 text-sm">
+                    <div className="flex items-start gap-3">
+                        <Globe className="h-5 w-5 text-muted-foreground mt-0.5"/>
+                        <div>
+                            <p className="text-muted-foreground">India</p>
+                            <p className="font-semibold text-foreground">+91-80-66655771 | 1-800-266-2208</p>
+                            <Link href="#" className="text-sm text-primary underline">Or see our complete list of local country numbers</Link>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <Mail className="h-5 w-5 text-muted-foreground"/>
+                        <Link href="/contact" className="text-foreground hover:text-primary">Contact us</Link>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <MessageSquare className="h-5 w-5 text-muted-foreground"/>
+                        <Link href="#" className="text-foreground hover:text-primary">Chat now</Link>
+                    </div>
+                </div>
+            </div>
+
+            <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="quick-links">
+                    <AccordionTrigger>
+                        <div className="flex items-center gap-4">
+                            <ChevronRight className="h-4 w-4" />
+                            <span>Quick links</span>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <ul className="space-y-2 pl-8">
+                        {quickLinks.map((link) => (
+                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
+                        ))}
+                        </ul>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="trending">
+                    <AccordionTrigger>
+                         <div className="flex items-center gap-4">
+                            <ChevronRight className="h-4 w-4" />
+                            <span>Trending</span>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <ul className="space-y-2 pl-8">
+                        {trendingLinks.map((link) => (
+                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
+                        ))}
+                        </ul>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="about-symetric">
+                    <AccordionTrigger>
+                         <div className="flex items-center gap-4">
+                            <ChevronRight className="h-4 w-4" />
+                            <span>About SyMetric</span>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <ul className="space-y-2 pl-8">
+                        {aboutSyMetricLinks.map((link) => (
+                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
+                        ))}
+                        </ul>
+                    </AccordionContent>
+                </AccordionItem>
+                 <AccordionItem value="site-information">
+                    <AccordionTrigger>
+                         <div className="flex items-center gap-4">
+                            <ChevronRight className="h-4 w-4" />
+                            <span>Site Information</span>
+                        </div>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <ul className="space-y-2 pl-8">
+                        {siteInfoLinks.map((link) => (
+                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
+                        ))}
+                        </ul>
+                    </AccordionContent>
+                </AccordionItem>
+            </Accordion>
+        </div>
+
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
           <p className="text-xs text-muted-foreground">&copy; {isClient ? year : new Date().getFullYear()} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
