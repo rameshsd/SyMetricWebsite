@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -10,21 +9,25 @@ import { cn } from "@/lib/utils";
 import { SectionTitle } from "../shared/section-title";
 import { CheckCircle2 } from "lucide-react";
 
-const tabs = [
-  { id: "supply", label: "Supply Chain" },
-  { id: "procurement", label: "Procurement" },
-  { id: "finance", label: "Finance" },
-  { id: "hr", label: "Human Resources" },
-  { id: "customer", label: "Customer Experience" },
-  { id: "it", label: "IT & Developers" },
-];
+const tabs = whyChooseUsFeatures.map(feature => ({
+  id: feature.id,
+  label: feature.title,
+}));
 
 export function WhyChooseUs() {
   const [activeFeature, setActiveFeature] = useState(whyChooseUsFeatures[0]);
-  const [activeTab, setActiveTab] = useState("supply");
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
   const activeImage = PlaceHolderImages.find(
     (p) => p.id === activeFeature.imageId
   );
+  
+  const handleTabClick = (tabId: string) => {
+    const newActiveFeature = whyChooseUsFeatures.find(f => f.id === tabId);
+    if (newActiveFeature) {
+        setActiveTab(tabId);
+        setActiveFeature(newActiveFeature);
+    }
+  }
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-blue-50 to-white py-24">
@@ -36,11 +39,11 @@ export function WhyChooseUs() {
 
       <div className="container">
         {/* Modern Tabs */}
-        <div className="flex flex-wrap justify-center items-center gap-8 border-b border-gray-200 mb-12">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2 border-b border-gray-200 mb-12">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
               className="relative pb-2 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors"
             >
               {tab.label}
