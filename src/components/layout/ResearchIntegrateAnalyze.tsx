@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useInView } from '@/hooks/use-in-view';
@@ -13,7 +14,7 @@ export function ResearchIntegrateAnalyze() {
     return (
         <section
             ref={ref}
-            className="py-24 md:py-32 flex items-center justify-center bg-secondary/50 px-4"
+            className="py-24 md:py-32 flex flex-col items-center justify-center bg-secondary/50 px-4"
         >
             <div className="container text-center">
                 {/* Title & Subtitle */}

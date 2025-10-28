@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { customerSuccessStories } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function CustomerSuccessSection() {
   const quoteImage = PlaceHolderImages.find((p) => p.id === "quote-icon");
@@ -20,7 +20,7 @@ export function CustomerSuccessSection() {
     <section className="py-16 md:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-64 md:h-96 flex items-center justify-center">
+          <div className="relative h-64 md:h-auto md:aspect-square flex items-center justify-center">
             {quoteImage && (
               <Image
                 src={quoteImage.imageUrl}
@@ -37,15 +37,17 @@ export function CustomerSuccessSection() {
               <CarouselContent>
                 {customerSuccessStories.map((story, index) => (
                   <CarouselItem key={index}>
-                    <Card className="border-0 bg-transparent shadow-none text-center">
-                      <p className="text-muted-foreground italic">"{story.quote}"</p>
-                      <h6 className="font-semibold text-lg mt-4">{story.author}</h6>
-                      <small className="text-muted-foreground">{story.company}</small>
+                    <Card className="border-0 bg-transparent shadow-none text-center md:text-left">
+                      <CardContent className="p-0">
+                        <blockquote className="text-muted-foreground italic text-lg">"{story.quote}"</blockquote>
+                        <p className="font-semibold text-lg mt-6">{story.author}</p>
+                        <p className="text-muted-foreground">{story.company}</p>
+                      </CardContent>
                     </Card>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-               <div className="flex justify-center gap-4 mt-6">
+               <div className="flex justify-center md:justify-start gap-4 mt-8">
                 <CarouselPrevious className="static -translate-y-0" />
                 <CarouselNext className="static -translate-y-0" />
               </div>
