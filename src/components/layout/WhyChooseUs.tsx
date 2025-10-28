@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -28,8 +29,13 @@ export function WhyChooseUs() {
       </div>
 
       <div className="container">
+        <SectionTitle
+          title="Why Choose Us?"
+          description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
+        />
+
         {/* Modern Tabs */}
-        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 border-b border-gray-200 mb-16">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 border-b border-gray-200 mt-16 mb-16">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -53,13 +59,8 @@ export function WhyChooseUs() {
           ))}
         </div>
 
-        <SectionTitle
-          title="Why Choose Us?"
-          description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
-        />
-
         {/* Content Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mt-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image */}
           <AnimatePresence mode="wait">
             <motion.div
