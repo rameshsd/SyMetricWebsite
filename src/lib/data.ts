@@ -89,7 +89,7 @@ export const solutions: Solution[] = [
     longDescription: 'Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.',
     icon: Repeat,
     image: 'irt-iwrs-image',
-    backgroundColor: 'bg-[#ebf8ff]',
+    backgroundColor: '#ebf8ff',
   },
   {
     id: 'edc',
@@ -625,6 +625,7 @@ export const companyInfo: CompanyInfo = {
     }
 };
     
+
 
 
 

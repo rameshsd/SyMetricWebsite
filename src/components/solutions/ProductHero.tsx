@@ -13,9 +13,15 @@ type ProductHeroProps = {
     backgroundColor?: string;
 };
 
-export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor = 'bg-[#f5f3ff]' }: ProductHeroProps) {
+export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor }: ProductHeroProps) {
+  const sectionStyle = backgroundColor ? { backgroundColor } : {};
+  const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
+
   return (
-    <section className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", backgroundColor)}>
+    <section 
+        className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", defaultBgClass)}
+        style={sectionStyle}
+    >
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
@@ -58,5 +64,3 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
     </section>
   );
 }
-
-
