@@ -82,14 +82,40 @@ export const solutions: Solution[] = [
     name: 'IRT/IWRS',
     slug: 'irt-iwrs',
     hero: {
-      title: 'IRT/IWRS',
-      subtitle: 'Comprehensive solution for randomization and trial supply management. Developed with years of strong industry expertise to deliver against the most complex Clinical Trial designs.'
+      title: 'Interactive Web Response System (IRT/IWRS)',
+      subtitle: 'IRT/IWRS enables well-organized, systematized drug supply between different investigation sites, reducing drug wastage to a bare minimum and proactively handling complex randomization procedures for single-arm, large multi-arm, and multi-centred studies.'
     },
     description: 'Comprehensive solution for randomization and trial supply management.',
     longDescription: 'Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.',
     icon: Repeat,
     image: 'irt-iwrs-image',
-    backgroundColor: '#ebf8ff',
+    backgroundColor: "#ebf8ff",
+    capabilities: [
+      {
+        id: 'randomization',
+        title: 'Randomization',
+        description: 'Dynamic Adaptive Randomization helps to avoid imbalance of covariates across subjects, resulting in balanced Treatment Assignment within covariate profiles irrespective of sample sizes. This adaptive randomization procedure uses accrued information from past treatment assignments and subject covariate values to select the probability of future treatment assignments and balance them.',
+        imageId: 'resource-1'
+      },
+      {
+        id: 'subject-management',
+        title: 'Subject Management',
+        description: 'Patients Handling functionality of our Clinical Trial Platform provides Subject Screening and Enrolment, Visit Management, IP dispensing and receipt, Unblinding, Withdrawal and Completion tools to manage subjects efficiently. Different Subject statuses — from screening to study completion — can be monitored seamlessly. This enables Sites to reach the Study Enrolment and Completion targets according to planned timelines.',
+        imageId: 'resource-4'
+      },
+      {
+        id: 'sites-management',
+        title: 'Sites Management',
+        description: 'You can register, configure, and manage investigation sites on our platform with ease. Our Site Management tool enables clinical research monitors to activate, deactivate, and reactivate the sites based on study-specific requirements and site performance metrics.',
+        imageId: 'solution-sm'
+      },
+      {
+        id: 'clinical-supplies-management',
+        title: 'Clinical Supplies Management',
+        description: 'SyMetric Platform with robust IP supply management functionality allows drug supply manager to tightly control the supplies sent to Sites, adjust supply strategies for Sites based on the remaining treatment arms and new ratios. SyMetric Platform can enable on-demand labeling and shipping strategy, further reducing supply waste on adaptive trials, thus reducing the costs of IP in a Clinical Trial.',
+        imageId: 'supply-chain'
+      }
+    ]
   },
   {
     id: 'edc',
