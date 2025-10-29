@@ -89,7 +89,7 @@ export const solutions: Solution[] = [
     longDescription: 'Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.',
     icon: Repeat,
     image: 'irt-iwrs-image',
-    backgroundColor: "#ebf8ff",
+    backgroundColor: '#ebf8ff',
     capabilities: [
       {
         id: 'randomization',
@@ -650,6 +650,29 @@ export const companyInfo: CompanyInfo = {
       customers: '440,000'
     }
 };
+
+export const salesSpecialistHelp = [
+    {
+        title: "Help with designing a solution to achieve trial success",
+        description: "Help with designing a solution to achieve trial success."
+    },
+    {
+        title: "Guidance on building a proof of concept",
+        description: "Guidance on building a proof of concept."
+    },
+    {
+        title: "One-on-one demos",
+        description: "One-on-one demos to help you get started on the SyMetric portal, set up your account, and prep for run-in to your first trial."
+    },
+    {
+        title: "Assistance for migrating applications and infrastructure to the cloud",
+        description: "Assistance for migrating applications and infrastructure to the cloud and optimizing your environment."
+    },
+    {
+        title: "Information on pricing and cost optimization",
+        description: "Information on pricing and cost optimization."
+    }
+];
     
 
 
@@ -658,4 +681,5 @@ export const companyInfo: CompanyInfo = {
 
 
     
+
 

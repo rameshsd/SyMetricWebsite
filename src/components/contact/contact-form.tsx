@@ -12,9 +12,10 @@ import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(50, { message: 'Name must be 50 characters or less.'}),
   organization: z.string().min(2, { message: 'Organization must be at least 2 characters.' }),
+  mobile: z.string().regex(/^[0-9+-]*$/, { message: 'Please enter a valid mobile number.' }).min(10, { message: 'Mobile number must be at least 10 digits.'}),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
@@ -26,8 +27,9 @@ export function ContactForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      email: '',
       organization: '',
+      mobile: '',
+      email: '',
       message: '',
     },
   });
@@ -51,7 +53,8 @@ export function ContactForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <CardHeader>
-            <CardTitle>Send us a message</CardTitle>
+            <CardTitle>We Are Just a Form Away!</CardTitle>
+            <p className="text-sm text-muted-foreground">Fill in details and we will reach out to you within two business days.</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <FormField
@@ -59,9 +62,35 @@ export function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>Your name</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder="Enter your name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+           <FormField
+            control={form.control}
+            name="organization"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Organization</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter the name of your organization" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+           <FormField
+            control={form.control}
+            name="mobile"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Mobile number</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your mobile number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -74,20 +103,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="john.doe@example.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="organization"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Organization</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your Company" {...field} />
+                  <Input placeholder="Enter your email id" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -98,9 +114,9 @@ export function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>Your message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="How can we help you?" {...field} />
+                  <Textarea placeholder="Type your message here" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
