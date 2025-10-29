@@ -13,23 +13,9 @@ type ProductHeroProps = {
     backgroundColor?: string;
 };
 
-const accentColors = [
-    'bg-yellow-400',
-    'bg-blue-400',
-    'bg-green-400',
-    'bg-purple-400',
-    'bg-pink-400',
-    'bg-indigo-400',
-]
-
-let colorIndex = 0;
-
 export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor = 'bg-[#f5f3ff]' }: ProductHeroProps) {
-    const accentColor = accentColors[colorIndex % accentColors.length];
-    colorIndex++;
-
   return (
-    <section className={cn("w-full min-h-[450px] flex items-center py-12 dark:bg-card px-0", backgroundColor)}>
+    <section className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", backgroundColor)}>
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
@@ -41,30 +27,30 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
+                <Link href="/solutions">Explore the solutions</Link>
+              </Button>
+               <Button size="lg" variant="outline" asChild>
                 <Link href="/contact">Request a demo</Link>
               </Button>
             </div>
           </div>
-          <div className="relative flex justify-center">
-            <div className={`absolute -top-8 -left-8 w-40 h-40 ${accentColor}/50 rounded-full blur-2xl`} />
-            <div className={`absolute -bottom-8 -right-8 w-40 h-40 ${accentColor}/50 rounded-full blur-2xl`} />
-            <div className="relative w-[500px] h-[350px]">
+          <div className="relative flex justify-center items-center">
+            <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
                 <Image
                     src={imageSrc}
                     alt={title}
                     data-ai-hint={imageHint}
-                    width={500}
-                    height={350}
-                    className="rounded-lg object-cover shadow-lg z-10"
+                    fill
+                    className="rounded-lg object-cover z-10"
                 />
                  <div 
-                    className={`absolute -bottom-4 -left-4 w-48 h-32 ${accentColor}/70 z-0`} 
-                    style={{clipPath: 'polygon(0 0, 100% 25%, 100% 100%, 0% 100%)'}}
+                    className="absolute -top-2 right-10 w-24 h-24 border-l-[12px] border-t-[12px] border-blue-600 z-0" 
                 />
-                <div 
-                    className={`absolute -top-4 -right-4 w-48 h-32 ${accentColor}/70 z-0`}
-                    style={{clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)'}}
-                />
+            </div>
+            <div className="absolute top-1/2 -right-4 -translate-y-1/2 space-y-3">
+                {[...Array(4)].map((_, i) => (
+                    <div key={i} className="w-3 h-3 bg-blue-300/50" style={{clipPath: 'polygon(0 0, 100% 50%, 0 100%)'}} />
+                ))}
             </div>
           </div>
         </div>
