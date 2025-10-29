@@ -75,7 +75,7 @@ export const solutions: Solution[] = [
     longDescription: 'Our Clinical Trial Platform (CTP) provides a unified environment for managing all aspects of your clinical trials. From protocol development to final reporting, CTP streamlines workflows, enhances collaboration, and ensures data integrity.',
     icon: FlaskConical,
     image: 'solution-ctp',
-    backgroundColor: 'bg-[#f5f3ff]'
+    backgroundColor: '#f5f3ff'
   },
   {
     id: 'irt-iwrs',
@@ -103,7 +103,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: Database,
     image: 'edc-image',
-    backgroundColor: 'bg-sky-50',
+    backgroundColor: '#ebf5cb',
     capabilities: [
       {
         id: 'ecrf-management',
@@ -149,7 +149,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
     image: 'ctm-image',
-    backgroundColor: 'bg-amber-50'
+    backgroundColor: '#fffbeb'
   },
   {
     id: 'trial-analytics',
@@ -163,7 +163,7 @@ export const solutions: Solution[] = [
     longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
     icon: PieChart,
     image: 'trial-analytics-image',
-    backgroundColor: 'bg-violet-50'
+    backgroundColor: '#f5f3ff'
   },
   {
     id: 'etmf',
@@ -177,7 +177,7 @@ export const solutions: Solution[] = [
     longDescription: 'SyMetric’s eTMF solution offers a secure, compliant, and intuitive way to manage your trial documentation. With features like automated indexing, quality checks, and real-time collaboration, it ensures your TMF is always audit-ready.',
     icon: FileText,
     image: 'solution-etmf',
-    backgroundColor: 'bg-rose-50'
+    backgroundColor: '#fef2f2'
   },
   {
     id: 'rc',
@@ -191,7 +191,7 @@ export const solutions: Solution[] = [
     longDescription: 'Stay ahead of regulatory changes and ensure compliance with global standards. Our solutions help you manage submissions, track commitments, and maintain a state of continuous compliance throughout the product lifecycle.',
     icon: ShieldCheck,
     image: 'solution-rc',
-    backgroundColor: 'bg-fuchsia-50'
+    backgroundColor: '#fdf4ff'
   },
   {
     id: 'sm',
@@ -205,7 +205,7 @@ export const solutions: Solution[] = [
     longDescription: 'Our Site Management solutions provide clinical research sites with the tools they need to operate efficiently. From patient recruitment and scheduling to financial management and remote monitoring, we help sites focus on what matters most: patient care.',
     icon: Briefcase,
     image: 'solution-sm',
-    backgroundColor: 'bg-emerald-50'
+    backgroundColor: '#f0fdf4'
   },
 ];
 
@@ -629,3 +629,6 @@ export const companyInfo: CompanyInfo = {
 
 
 
+
+
+    
