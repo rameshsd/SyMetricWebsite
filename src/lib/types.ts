@@ -1,4 +1,5 @@
 
+
 import type { LucideIcon } from 'lucide-react';
 
 export type NavItem = {
@@ -107,5 +108,14 @@ export type WhyChooseUsFeature = {
   description: string;
   imageId: string;
 };
+
+export type CompanyInfo = {
+  facts: {
+    founded: string;
+    employees: string;
+    countries: string;
+    customers: string;
+  }
+}
 
     
