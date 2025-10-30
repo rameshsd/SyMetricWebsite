@@ -88,10 +88,10 @@
 
 @layer components {
     .container {
-        @apply max-w-7xl mx-auto px-4;
+        @apply max-w-7xl mx-auto px-8;
     }
     section {
-        @apply py-20 px-0;
+        @apply py-20;
     }
     .bg-sap-gradient {
         background-color: #00073D;
