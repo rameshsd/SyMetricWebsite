@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -666,3 +666,62 @@ export const successStories: SuccessStory[] = [
     },
 ];
 
+export const heroCarouselItems = [
+    {
+      id: "hero-carousel-1",
+      title: "Better Data. Better Clinical Trials.",
+      subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
+      imageId: 'hero-carousel-1',
+      cta: {
+          text: "Schedule a live demo",
+          link: "/contact"
+      }
+    },
+    {
+      id: "hero-carousel-2",
+      title: "Keep Close Tabs on Your Clinical Supplies",
+      subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
+      imageId: 'hero-carousel-2',
+      cta: {
+          text: "Contact us for a demo",
+          link: "/contact"
+      }
+    },
+    {
+      id: "hero-carousel-3",
+      title: "A Well-Integrated CTP",
+      subtitle: "For a bird’s-eye view of Clinical Trials",
+      imageId: 'hero-carousel-3',
+      cta: {
+          text: "Discover now",
+          link: "/solutions/clinical-trial-platform"
+      }
+    }
+  ];
+
+export const unlockPotentialItems: UnlockPotentialItem[] = [
+    {
+        id: 1,
+        title: "Better Data. Better Clinical Trials.",
+        description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
+        linkText: "Schedule a live demo",
+        linkUrl: "/contact",
+        imageId: "hero-carousel-1"
+    },
+    {
+        id: 2,
+        title: "Keep Close Tabs on Your Clinical Supplies",
+        description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
+        linkText: "Contact us for a demo",
+        linkUrl: "/contact",
+        imageId: "hero-carousel-2"
+    },
+    {
+        id: 3,
+        title: "A Well-Integrated CTP",
+        description: "For a bird’s-eye view of Clinical Trials",
+        linkText: "Discover now",
+        linkUrl: "/solutions/clinical-trial-platform",
+        imageId: "hero-carousel-3"
+    }
+]

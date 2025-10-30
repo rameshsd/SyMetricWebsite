@@ -18,8 +18,9 @@ import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSecti
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
+import { UnlockPotential } from '@/components/layout/UnlockPotential';
+import { CustomerStories } from '@/components/layout/CustomerStories';
 
-const revolutionImage = PlaceHolderImages.find((img) => img.id === 'clinical-trial-revolution');
 
 export default function Home() {
   
@@ -31,6 +32,7 @@ export default function Home() {
       <main className="flex-1">
          <SapTechedHero />
         <RevolutionizingTrials />
+        <UnlockPotential />
         <FeatureGrid />
 
         <WhyChooseUs />
@@ -91,10 +93,8 @@ export default function Home() {
           </div>
         </section>
 
-        <CustomerSuccessSection />
+        <CustomerStories />
       </main>
     </div>
   );
 }
-
-    

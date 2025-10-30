@@ -1,55 +1,61 @@
 
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { successStories } from "@/lib/data";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { customerSuccessStories } from "@/lib/data";
 import { SectionTitle } from "../shared/section-title";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import { Card, CardContent } from "../ui/card";
 
 export function CustomerSuccessSection() {
+    const quoteIcon = PlaceHolderImages.find(p => p.id === 'quote-icon');
+
   return (
-    <section>
-      <div className="container">
-        <SectionTitle
-          title="Customer success at SyMetric"
-          description="Learn why companies of all sizes trust SyMetric to help them run their business."
-        />
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {successStories.map((story) => {
-            const logo = PlaceHolderImages.find((p) => p.id === story.logoId);
-            return (
-              <div key={story.id} className="text-center md:text-left">
-                <div className="relative h-20 mb-6 flex justify-center md:justify-start">
-                  {logo && (
-                    <Image
-                      src={logo.imageUrl}
-                      alt={story.title}
-                      data-ai-hint={logo.imageHint}
-                      width={160}
-                      height={80}
-                      className="object-contain"
-                    />
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-foreground">
-                  {story.title}
-                </h3>
-                <p className="text-muted-foreground mt-2">
-                  {story.description}
-                </p>
-                <Link
-                  href={story.linkUrl}
-                  className="inline-flex items-center text-primary font-semibold mt-4"
+    <section className="bg-secondary/50">
+        <div className="container">
+            <SectionTitle
+                title="What Our Customers Say"
+                description="Real-world success stories from organizations who have partnered with SyMetric."
+            />
+            <div className="mt-16">
+                <Carousel
+                    opts={{
+                        align: "start",
+                    }}
+                    className="w-full max-w-4xl mx-auto"
                 >
-                  {story.linkText} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            );
-          })}
+                    <CarouselContent>
+                        {customerSuccessStories.map(story => (
+                            <CarouselItem key={story.id}>
+                                <div className="p-1">
+                                    <Card className="bg-background">
+                                        <CardContent className="p-10 text-center">
+                                            {quoteIcon && (
+                                                <Image 
+                                                    src={quoteIcon.imageUrl}
+                                                    alt="quote"
+                                                    data-ai-hint={quoteIcon.imageHint}
+                                                    width={40}
+                                                    height={40}
+                                                    className="mx-auto mb-6"
+                                                />
+                                            )}
+                                            <blockquote className="text-lg text-muted-foreground italic">"{story.quote}"</blockquote>
+                                            <p className="font-bold text-foreground mt-6">{story.author}</p>
+                                            <p className="text-sm text-primary">{story.company}</p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="hidden md:flex" />
+                    <CarouselNext className="hidden md:flex" />
+                </Carousel>
+            </div>
         </div>
-      </div>
     </section>
   );
 }
+

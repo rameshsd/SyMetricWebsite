@@ -158,21 +158,21 @@
     },
     {
       "id": "hero-carousel-1",
-      "description": "Better Data. Better Clinical Trials.",
+      "description": "Clinical trial platform",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner1-1.jpg",
-      "imageHint": "clinical trial platform"
+      "imageHint": "clinical trial"
     },
     {
       "id": "hero-carousel-2",
-      "description": "Keep Close Tabs on Your Clinical Supplies",
+      "description": "Clinical Supplies",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner-2-1.jpg",
       "imageHint": "clinical supplies"
     },
     {
       "id": "hero-carousel-3",
-      "description": "A Well-Integrated CTP",
+      "description": "A Well-Integrated CTP for a bird’s-eye view of Clinical Trials",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner-3-1.jpg",
-      "imageHint": "clinical trial platform"
+      "imageHint": "integrated CTP"
     },
     {
       "id": "sy-teched-hero",

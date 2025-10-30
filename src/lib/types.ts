@@ -127,4 +127,12 @@ export type CompanyInfo = {
   }
 }
 
+export type UnlockPotentialItem = {
+  id: number;
+  title: string;
+  description: string;
+  linkText: string;
+  linkUrl: string;
+  imageId: string;
+};
     
