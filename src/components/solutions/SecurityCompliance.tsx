@@ -8,8 +8,6 @@ import { Iso27001, Iso9001, Fda21Cfr, IchGcp } from "../icons/compliance-icons";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Lock, FileCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
-import React from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -83,15 +81,16 @@ const AnimatedDiagram = () => {
       }
   });
 
-  const floatingAnimation = {
+  const floatingAnimation = (delay: number) => ({
     y: ["-3px", "3px"],
     transition: {
-      duration: 3,
+      delay,
+      duration: 3 + delay,
       repeat: Infinity,
       repeatType: "reverse",
       ease: "easeInOut"
     }
-  };
+  });
 
   return (
     <motion.div
@@ -99,7 +98,7 @@ const AnimatedDiagram = () => {
       variants={diagramContainer}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="relative w-full max-w-lg mx-auto h-80 mb-16 flex items-center justify-center"
+      className="relative w-full max-w-lg mx-auto h-96 flex items-center justify-center"
     >
       <svg
         width="100%"
@@ -143,7 +142,7 @@ const AnimatedDiagram = () => {
         className="absolute"
         style={{ top: '50%', left: '50%', x: '-50%', y: '-50%' }}
       >
-        <motion.div animate={floatingAnimation}>
+        <motion.div animate={floatingAnimation(0)}>
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
               <ShieldCheck className="w-12 h-12 text-primary" />
             </div>
@@ -156,7 +155,7 @@ const AnimatedDiagram = () => {
         className="absolute flex flex-col items-center gap-2"
         style={{ top: '20%', left: '50%', x: '-50%', y: '-50%' }}
       >
-        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 0.5 } }}>
+        <motion.div animate={floatingAnimation(0.5)}>
           <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
             <Lock className="w-8 h-8 text-primary" />
           </div>
@@ -170,7 +169,7 @@ const AnimatedDiagram = () => {
         className="absolute flex flex-col items-center gap-2"
         style={{ top: '70%', left: '22%', x: '-50%', y: '-50%' }}
       >
-        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}>
+        <motion.div animate={floatingAnimation(1)}>
           <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
             <FileCheck className="w-8 h-8 text-primary" />
           </div>
@@ -184,7 +183,7 @@ const AnimatedDiagram = () => {
         className="absolute flex flex-col items-center gap-2"
         style={{ top: '70%', left: '78%', x: '-50%', y: '-50%' }}
       >
-        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1.5 } }}>
+        <motion.div animate={floatingAnimation(1.5)}>
           <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
             <ShieldCheck className="w-8 h-8 text-primary" />
           </div>
