@@ -15,6 +15,9 @@ const IconWrapper = ({ children, className }: { children: React.ReactNode; class
   </svg>
 );
 
+// This file is now unused as the diagram has been converted to a static SVG.
+// The icons are kept here in case they are needed for other purposes.
+
 export const RealWorldEvidenceIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
     <circle cx="12" cy="12" r="10" />
