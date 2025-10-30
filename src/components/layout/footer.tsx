@@ -90,7 +90,7 @@ export function Footer() {
   
   return (
     <footer className="bg-secondary/50 border-t">
-      <div className="container px-4 sm:px-6">
+      <div className="container">
         <div className="flex justify-end items-center my-8">
             <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
                 <ArrowUp className="h-5 w-5" />
@@ -99,33 +99,38 @@ export function Footer() {
         </div>
         
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-6 gap-8">
-          <div className="col-span-2">
-            <Logo />
-            <div className="mt-8 space-y-4 text-sm">
-                <div className="flex items-start gap-3">
-                    <Globe className="h-5 w-5 text-muted-foreground mt-0.5"/>
-                    <div>
-                        <p className="text-muted-foreground">India</p>
-                        <p className="font-semibold text-foreground">+91-80-66655771 | 1-800-266-2208</p>
-                        <Link href="#" className="text-sm text-primary underline">Or see our complete list of local country numbers</Link>
+        <div className="hidden md:block">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    <div className="col-span-2">
+                        <Logo />
+                        <div className="mt-8 space-y-4 text-sm">
+                            <div className="flex items-start gap-3">
+                                <Globe className="h-5 w-5 text-muted-foreground mt-0.5"/>
+                                <div>
+                                    <p className="text-muted-foreground">India</p>
+                                    <p className="font-semibold text-foreground">+91-80-66655771 | 1-800-266-2208</p>
+                                    <Link href="#" className="text-sm text-primary underline">Or see our complete list of local country numbers</Link>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <Mail className="h-5 w-5 text-muted-foreground"/>
+                                <Link href="/contact" className="text-foreground hover:text-primary">Contact us</Link>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <MessageSquare className="h-5 w-5 text-muted-foreground"/>
+                                <Link href="#" className="text-foreground hover:text-primary">Chat now</Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                 <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-muted-foreground"/>
-                    <Link href="/contact" className="text-foreground hover:text-primary">Contact us</Link>
-                </div>
-                <div className="flex items-center gap-3">
-                    <MessageSquare className="h-5 w-5 text-muted-foreground"/>
-                    <Link href="#" className="text-foreground hover:text-primary">Chat now</Link>
+                    <FooterLinkColumn title="Quick links" links={quickLinks} />
+                    <FooterLinkColumn title="Trending" links={trendingLinks} />
+                    <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
+                    <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
                 </div>
             </div>
-          </div>
-          <FooterLinkColumn title="Quick links" links={quickLinks} />
-          <FooterLinkColumn title="Trending" links={trendingLinks} />
-          <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
-          <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
         </div>
+
 
         {/* Mobile Accordion */}
         <div className="md:hidden">
