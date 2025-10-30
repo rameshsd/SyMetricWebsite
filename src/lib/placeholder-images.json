@@ -243,7 +243,7 @@
     {
       "id": "edc-image",
       "description": "Scientist entering data into a computer",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "scientist computer"
     },
     {
@@ -554,7 +554,7 @@
     },
     {
       "id": "news-icsm-partner",
-      "description": "SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN",
+      "description": "SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/02/ICSM-3.jpg",
       "imageHint": "partnership announcement"
     },
@@ -675,7 +675,7 @@
     {
       "id": "new-hero-image",
       "description": "Doctor holding a futuristic screen with medical data and charts.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/user-provided-images/image_6a20d48f-ddc7-4ac9-8f43-16275815155f.jpeg",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "doctor data"
     },
     {
