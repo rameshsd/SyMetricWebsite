@@ -1,251 +1,340 @@
+
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from '@/hooks/use-in-view';
-import { cn } from '@/lib/utils';
-import {
-  RealWorldEvidenceIcon,
-  TrialDirectoriesIcon,
-  ClinicalTrialsDataIcon,
-  DataRepositoriesIcon,
-  PublicDomainDataIcon,
-  EHR_EMR_Icon,
-  UsersIcon,
-  PillIcon,
-} from '@/components/icons/collaboration-icons';
+import React, { useEffect, useRef, useState } from 'react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
+// NOTE: This file is a self-contained, static SVG React component.
+// Removed external alias imports and framer-motion to avoid build/runtime issues in sandbox.
 
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: 'spring', stiffness: 260, damping: 20 },
-  },
-};
+// Small helper to join classnames (local fallback)
+function cn(...parts: (string | boolean | null | undefined)[]) {
+  return parts.filter(Boolean).join(' ');
+}
 
-const pathVariants = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 1, ease: 'easeInOut' },
-  },
-};
+// Lightweight useInView hook (no types) — optional: can be used to add reveal classes
+function useInView(options?: { threshold?: number, triggerOnce?: boolean }) {
+  var ref = useRef(null);
+  var [_a, setInView] = useState(false);
+  var inView = _a;
 
-const Hexagon = ({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}) => (
-  <motion.div
-    className={cn(
-      'relative flex items-center justify-center text-center p-2',
-      className
-    )}
-    style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}
-    initial="hidden"
-    animate="visible"
-    variants={{
-      hidden: { opacity: 0, scale: 0.5 },
-      visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { type: 'spring', stiffness: 260, damping: 20, delay: delay },
-      },
-    }}
-  >
-    {children}
-  </motion.div>
-);
+  useEffect(function () {
+    var el = ref.current;
+    if (!el) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (options && options.triggerOnce) observer.disconnect();
+        }
+        else {
+          if (!(options && options.triggerOnce)) setInView(false);
+        }
+      });
+    }, { threshold: (options && options.threshold) || 0.2 });
+    if (el) {
+        observer.observe(el);
+    }
+    return function () { 
+        if (el) {
+            observer.unobserve(el); 
+        }
+    };
+  }, [ref, options]);
 
-const Node = ({
-  label,
-  className,
-  delay = 0,
-}: {
-  label: string;
-  className?: string;
-  delay?: number;
-}) => (
-  <Hexagon
-    className={cn('w-24 h-28 bg-violet-200/20 text-white text-xs font-semibold', className)}
-    delay={delay}
-  >
-    {label}
-  </Hexagon>
-);
+  return [ref, inView];
+}
 
-const SourceNode = ({
-  icon,
-  label,
-  delay = 0,
-}: {
-  icon: React.ElementType;
-  label: string;
-  delay?: number;
-}) => (
-  <motion.div
-    className="flex flex-col items-center gap-1 text-white text-center text-xs w-20"
-    variants={itemVariants}
-    custom={delay}
-  >
-    <div className="w-16 h-16 bg-pink-900/40 rounded-lg flex items-center justify-center">
-      {React.createElement(icon, { className: 'w-8 h-8 text-pink-300' })}
-    </div>
-    <span className="font-medium">{label}</span>
-  </motion.div>
-);
 
-const PlatformNode = ({
-  label,
-  delay = 0,
-}: {
-  label: string;
-  delay?: number;
-}) => (
-    <motion.div
-        className="w-40 h-20 bg-cyan-400/20 text-white text-sm font-semibold flex items-center justify-center text-center p-2"
-        style={{
-            clipPath: 'polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)'
-        }}
-        variants={itemVariants}
-        custom={delay}
-    >
-        {label}
-    </motion.div>
-);
-
-const Line = ({ d, delay = 0 }: { d: string; delay?: number }) => (
-  <motion.path
-    d={d}
-    fill="none"
-    stroke="url(#line-gradient)"
-    strokeWidth="1.5"
-    variants={pathVariants}
-    custom={delay}
-  />
-);
-
-export function CollaborationDiagram() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-
+// Minimal inline SVG icons used in diagram
+function UsersIcon(props: {className?: string}) {
+  var className = props && props.className ? props.className : undefined;
   return (
-    <div ref={ref} className="w-full h-full">
-      <motion.div
-        className="relative w-full h-full"
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        {/* SVG lines */}
-        <svg
-          className="absolute inset-0 w-full h-full overflow-visible"
-          viewBox="0 0 1000 625"
-          preserveAspectRatio="xMidYMid meet"
-        >
-            <defs>
-                <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#a855f7" stopOpacity="0.5"/>
-                    <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8" />
-                </linearGradient>
-            </defs>
-            {/* Lines from outer nodes to group nodes */}
-            <Line d="M 280 156 L 390 312" delay={0.8} /> {/* Partners */}
-            <Line d="M 720 156 L 610 312" delay={0.8} /> {/* Processes */}
-            <Line d="M 280 468 L 390 312" delay={0.8} /> {/* Sources */}
-            <Line d="M 720 468 L 610 312" delay={0.8} /> {/* Platforms */}
-            {/* Line to result */}
-            <Line d="M 500 380 V 540" delay={1} />
-        </svg>
-
-        {/* Central Node */}
-        <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            variants={itemVariants} custom={0.5}
-        >
-          <Hexagon className="w-48 h-56 bg-violet-600">
-            <div className="flex flex-col items-center justify-center text-white">
-              <UsersIcon className="w-16 h-16" />
-              <span className="text-xl font-bold mt-2">Patients Data</span>
-            </div>
-          </Hexagon>
-        </motion.div>
-        
-        {/* Main Group Nodes */}
-        <motion.div className="absolute top-[25%] left-[28%]" variants={itemVariants} custom={0.6}>
-            <Hexagon className="w-28 h-32 bg-orange-600 text-lg font-bold text-white">Partners</Hexagon>
-        </motion.div>
-        <motion.div className="absolute top-[25%] left-[72%]" variants={itemVariants} custom={0.6} style={{transform: 'translateX(-100%)'}}>
-            <Hexagon className="w-28 h-32 bg-blue-600 text-lg font-bold text-white">Processes</Hexagon>
-        </motion.div>
-        <motion.div className="absolute top-[75%] left-[28%]" variants={itemVariants} custom={0.6} style={{transform: 'translateY(-100%)'}}>
-            <Hexagon className="w-28 h-32 bg-pink-600 text-lg font-bold text-white">Sources</Hexagon>
-        </motion.div>
-        <motion.div className="absolute top-[75%] left-[72%]" variants={itemVariants} custom={0.6} style={{transform: 'translate(-100%, -100%)'}}>
-            <Hexagon className="w-28 h-32 bg-green-600 text-lg font-bold text-white">Platforms</Hexagon>
-        </motion.div>
-
-        {/* Partners Cluster */}
-        <div className="absolute top-[10%] left-[8%]"> <Node label="Labs" delay={1.1} /> </div>
-        <div className="absolute top-[10%] left-[18%]"> <Node label="Labeling" delay={1.2} /> </div>
-        <div className="absolute top-[10%] left-[28%]"> <Node label="Warehouse" delay={1.3} /> </div>
-        <div className="absolute top-[23%] left-[13%]"> <Node label="CRO" delay={1.4} /> </div>
-        <div className="absolute top-[23%] left-[23%]"> <Node label="Retention" delay={1.5} /> </div>
-        <div className="absolute top-[36%] left-[8%]"> <Node label="Sponsor" delay={1.6} /> </div>
-        <div className="absolute top-[36%] left-[18%]"> <Node label="Statistician" delay={1.7} /> </div>
-        <div className="absolute top-[36%] left-[28%]"> <Node label="Investigators" delay={1.8} /> </div>
-
-        {/* Processes Cluster */}
-        <div className="absolute top-[10%] right-[28%]"> <Node label="Randomization" delay={1.1} /> </div>
-        <div className="absolute top-[10%] right-[18%]"> <Node label="Sites Mgmt." delay={1.2} /> </div>
-        <div className="absolute top-[10%] right-[8%]"> <Node label="Supplies Mgmt." delay={1.3} /> </div>
-        <div className="absolute top-[23%] right-[23%]"> <Node label="Research Platform" delay={1.4} /> </div>
-        <div className="absolute top-[23%] right-[13%]"> <Node label="Pharmaco-vigilance" delay={1.5} /> </div>
-        <div className="absolute top-[23%] right-[3%]"> <Node label="Trial Mgmt" delay={1.6} /> </div>
-        <div className="absolute top-[36%] right-[28%]"> <Node label="Pharmaco-vigilance" delay={1.7} /> </div>
-        <div className="absolute top-[36%] right-[18%]"> <Node label="Subjects Mgmt." delay={1.8} /> </div>
-        <div className="absolute top-[36%] right-[8%]"> <Node label="Medical Coding" delay={1.9} /> </div>
-        <div className="absolute top-[23%] right-[-7%]"> <Node label="ePRO eTMF" delay={2.0} /> </div>
-
-        {/* Sources Cluster */}
-        <div className="absolute bottom-[28%] left-[2%]"><SourceNode icon={RealWorldEvidenceIcon} label="Real World Evidence" delay={1.1} /></div>
-        <div className="absolute bottom-[14%] left-[2%]"><SourceNode icon={TrialDirectoriesIcon} label="Trial Directories" delay={1.2} /></div>
-        <div className="absolute bottom-[2%] left-[10%]"><SourceNode icon={EHR_EMR_Icon} label="EHR/EMR/PMR" delay={1.3} /></div>
-        <div className="absolute bottom-[2%] left-[24%]"><SourceNode icon={PublicDomainDataIcon} label="Public Domain Data" delay={1.4} /></div>
-        <div className="absolute bottom-[14%] left-[32%]"><SourceNode icon={DataRepositoriesIcon} label="Data Repositories / Data Lakes" delay={1.5} /></div>
-        <div className="absolute bottom-[28%] left-[32%]"><SourceNode icon={ClinicalTrialsDataIcon} label="Clinical Trials Data" delay={1.6} /></div>
-        
-        {/* Platforms Cluster */}
-        <div className="absolute bottom-[24%] right-[24%]"><PlatformNode label="SAP BTP" delay={1.1} /></div>
-        <div className="absolute bottom-[24%] right-[2%]"><PlatformNode label="Customer Landscape" delay={1.2} /></div>
-        <div className="absolute bottom-[4%] right-[18%]"><PlatformNode label="SyMetric Trial Analytics on SAP CP" delay={1.3} /></div>
-        <div className="absolute bottom-[4%] right-[0%]"><PlatformNode label="SyMetric CTP on Azure" delay={1.4} /></div>
-
-        {/* Result Node */}
-        <motion.div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center justify-center p-4 w-64 h-32 bg-blue-900 rounded-lg text-white"
-            variants={itemVariants}
-            custom={1.5}
-        >
-            <div className="flex items-center gap-3">
-                <PillIcon className="w-10 h-10 shrink-0 text-blue-300"/>
-                <p className="text-xs font-semibold">Analytical outcomes leading to predictive, preventive, and personalized medicine</p>
-            </div>
-        </motion.div>
-      </motion.div>
-    </div>
+    React.createElement("svg", { viewBox: "0 0 24 24", className: className, fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": true },
+      React.createElement("path", { d: "M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z", stroke: "currentColor", strokeWidth: 1.4 }),
+      React.createElement("path", { d: "M3 21c0-3.866 3.582-7 9-7s9 3.134 9 7", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round" })
+    )
   );
 }
+
+function PillIcon(props: {className?: string}) {
+  var className = props && props.className ? props.className : undefined;
+  return (
+    React.createElement("svg", { viewBox: "0 0 24 24", className: className, fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": true },
+      React.createElement("rect", { x: 3, y: 10, width: 18, height: 6, rx: 3, stroke: "currentColor", strokeWidth: 1.4 }),
+      React.createElement("path", { d: "M8 10l8 6", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round" })
+    )
+  );
+}
+
+// Exported component — static SVG for pixel-accurate layout
+export function CollaborationDiagram() {
+  var _a = useInView({ threshold: 0.15, triggerOnce: true }), ref = _a[0];
+
+  // This implementation intentionally avoids framer-motion to prevent build-time issues.
+  // If you want animated path-draw, reintroduce framer-motion and use <motion.path>.
+
+  return (
+    React.createElement("div", { ref: ref, className: "w-full h-full" },
+      React.createElement("svg", { viewBox: "0 0 1100 900", preserveAspectRatio: "xMidYMid meet", className: "w-full h-auto" },
+        React.createElement("defs", null,
+          React.createElement("linearGradient", { id: "lineGrad", x1: "0%", y1: "0%", x2: "100%", y2: "0%" },
+            React.createElement("stop", { offset: "0%", stopColor: "#a855f7", stopOpacity: "0.7" }),
+            React.createElement("stop", { offset: "100%", stopColor: "#3b82f6", stopOpacity: "0.9" })
+          ),
+          React.createElement("linearGradient", { id: "centerGrad", x1: "0%", y1: "0%", x2: "100%", y2: "100%" },
+            React.createElement("stop", { offset: "0%", stopColor: "#7c3aed" }),
+            React.createElement("stop", { offset: "100%", stopColor: "#6d28d9" })
+          ),
+          React.createElement("filter", { id: "softGlow", x: "-50%", y: "-50%", width: "200%", height: "200%" },
+            React.createElement("feGaussianBlur", { stdDeviation: 6, result: "coloredBlur" }),
+            React.createElement("feMerge", null,
+              React.createElement("feMergeNode", { in: "coloredBlur" }),
+              React.createElement("feMergeNode", { in: "SourceGraphic" })
+            )
+          ),
+          React.createElement("g", { id: "cloud" },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 44, ry: 30 }),
+            React.createElement("ellipse", { cx: 34, cy: -10, rx: 34, ry: 24 }),
+            React.createElement("ellipse", { cx: -28, cy: -10, rx: 36, ry: 26 })
+          ),
+          React.createElement("g", { id: "cylinder" },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 26, ry: 10, fill: "currentColor" }),
+            React.createElement("rect", { x: -26, y: 0, width: 52, height: 56 }),
+            React.createElement("ellipse", { cx: 0, cy: 56, rx: 26, ry: 10 })
+          )
+        ),
+
+        // background
+        React.createElement("rect", { x: 0, y: 0, width: 1100, height: 900, fill: "#000" }),
+
+        // Left sources polygon outline
+        React.createElement("polygon", { points: "60,450 220,600 420,720 420,420", fill: "none", stroke: "#be185d", strokeWidth: 2, opacity: 0.12 }),
+
+        // Right platforms polygon outline
+        React.createElement("polygon", { points: "680,420 780,600 980,720 980,420", fill: "none", stroke: "#4ade80", strokeWidth: 2, opacity: 0.08 }),
+
+        // Center big hexagon (Patients Data)
+        React.createElement("g", { transform: "translate(550,320)" },
+          React.createElement("path", { d: "M0 -90 L78 -45 L78 45 L0 90 L-78 45 L-78 -45 Z", fill: "url(#centerGrad)", stroke: "#5b21b6", strokeWidth: 2, filter: "url(#softGlow)" }),
+
+          // users icon (simple shapes)
+          React.createElement("g", { transform: "translate(-10,-10)", fill: "none", stroke: "#fff", strokeWidth: 1.5 },
+            React.createElement("path", { d: "M-8 -24a18 18 0 1 1 16 0", strokeLinecap: "round" }),
+            React.createElement("circle", { cx: 10, cy: -12, r: 12, fill: "none" }),
+            React.createElement("path", { d: "M-60 36c10-12 40-28 70-28s60 16 70 28", strokeLinecap: "round", opacity: 0.9 })
+          ),
+
+          React.createElement("text", { x: 0, y: 40, textAnchor: "middle", fill: "#fff", fontSize: 20, fontWeight: 700 }, "Patients Data")
+        ),
+
+        // Connectors from groups to center (static lines)
+        React.createElement("path", { d: "M330 220 L472 290", stroke: "url(#lineGrad)", strokeWidth: 2, fill: "none" }),
+        React.createElement("path", { d: "M770 220 L628 290", stroke: "url(#lineGrad)", strokeWidth: 2, fill: "none" }),
+        React.createElement("path", { d: "M330 460 L472 350", stroke: "url(#lineGrad)", strokeWidth: 2, fill: "none" }),
+        React.createElement("path", { d: "M770 460 L628 350", stroke: "url(#lineGrad)", strokeWidth: 2, fill: "none" }),
+
+        // Arrow to result
+        React.createElement("path", { d: "M550 410 L550 620", stroke: "url(#lineGrad)", strokeWidth: 3, fill: "none" }),
+        React.createElement("polygon", { points: "544,620 556,620 550,632", fill: "#fff", opacity: 0.9 }),
+
+        // Bottom result box
+        React.createElement("g", { transform: "translate(550,700)" },
+          React.createElement("rect", { x: -110, y: -40, width: 220, height: 80, rx: 10, fill: "#0b5394" }),
+          React.createElement("g", { transform: "translate(-70,-10)" },
+            React.createElement("svg", { viewBox: "0 0 24 24", width: 28, height: 28, "aria-hidden": true },
+              React.createElement("rect", { x: 3, y: 10, width: 18, height: 6, rx: 3, stroke: "#c7f9ff", strokeWidth: 1.4, fill: "none" }),
+              React.createElement("path", { d: "M8 10l8 6", stroke: "#c7f9ff", strokeWidth: 1.4, strokeLinecap: "round" })
+            )
+          ),
+          React.createElement("text", { x: 0, y: 6, textAnchor: "middle", fill: "#dbeafe", fontSize: 12, fontWeight: 600 }, "Analytical outcomes leading to predictive, preventive, and personalized medicine")
+        ),
+
+        // Main group hexagons: Partners, Processes, Sources, Platforms
+        React.createElement("g", { transform: "translate(330,200)" },
+          React.createElement("path", { d: "M0 -32 L28 -16 L28 16 L0 32 L-28 16 L-28 -16 Z", fill: "#f97316", stroke: "#c2410c", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 6, textAnchor: "middle", fill: "#fff", fontSize: 12 }, "Partners")
+        ),
+        React.createElement("g", { transform: "translate(770,200)" },
+          React.createElement("path", { d: "M0 -32 L28 -16 L28 16 L0 32 L-28 16 L-28 -16 Z", fill: "#0ea5e9", stroke: "#0369a1", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 6, textAnchor: "middle", fill: "#fff", fontSize: 12 }, "Processes")
+        ),
+        React.createElement("g", { transform: "translate(330,440)" },
+          React.createElement("path", { d: "M0 -32 L28 -16 L28 16 L0 32 L-28 16 L-28 -16 Z", fill: "#d946ef", stroke: "#7e22ce", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 6, textAnchor: "middle", fill: "#fff", fontSize: 12 }, "Sources")
+        ),
+        React.createElement("g", { transform: "translate(770,440)" },
+          React.createElement("path", { d: "M0 -32 L28 -16 L28 16 L0 32 L-28 16 L-28 -16 Z", fill: "#86efac", stroke: "#4ade80", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 6, textAnchor: "middle", fill: "#064e3b", fontSize: 12 }, "Platforms")
+        ),
+
+        // Partners cluster hexes (top-left)
+        React.createElement("g", { transform: "translate(180,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Labs")
+        ),
+        React.createElement("g", { transform: "translate(260,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Labeling")
+        ),
+        React.createElement("g", { transform: "translate(340,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Warehouse")
+        ),
+
+        // Row 2
+        React.createElement("g", { transform: "translate(220,150)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#e9d5ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "CRO")
+        ),
+        React.createElement("g", { transform: "translate(300,150)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Retention")
+        ),
+
+        // Row 3
+        React.createElement("g", { transform: "translate(180,220)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Sponsor")
+        ),
+        React.createElement("g", { transform: "translate(260,220)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#e9d5ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Statistician")
+        ),
+        React.createElement("g", { transform: "translate(340,220)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Investigators")
+        ),
+
+        // Processes cluster
+        React.createElement("g", { transform: "translate(860,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Randomization")
+        ),
+        React.createElement("g", { transform: "translate(780,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Sites Mgmt.")
+        ),
+        React.createElement("g", { transform: "translate(700,80)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Supplies Mgmt.")
+        ),
+
+        React.createElement("g", { transform: "translate(760,150)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Research Platform")
+        ),
+        React.createElement("g", { transform: "translate(820,150)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Pharmacovigilance")
+        ),
+        React.createElement("g", { transform: "translate(700,220)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Subjects Mgmt.")
+        ),
+        React.createElement("g", { transform: "translate(820,220)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#fbcfe8", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "Medical Coding")
+        ),
+        React.createElement("g", { transform: "translate(620,150)" },
+          React.createElement("path", { d: "M0 -20 L18 -10 L18 10 L0 20 L-18 10 L-18 -10 Z", fill: "#f3e8ff", stroke: "#7c3aed", strokeWidth: 1 }),
+          React.createElement("text", { x: 0, y: 4, textAnchor: "middle", fontSize: 9, fill: "#0b0b0b" }, "ePRO eTMF")
+        ),
+
+        // Sources cluster cylinders and icons
+        React.createElement("g", { transform: "translate(120,520)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "Real World Evidence")
+        ),
+
+        React.createElement("g", { transform: "translate(120,620)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "Trial Directories")
+        ),
+
+        React.createElement("g", { transform: "translate(240,740)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "EHR/ EMR/ PMR")
+        ),
+
+        React.createElement("g", { transform: "translate(360,740)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "Public Domain Data")
+        ),
+
+        React.createElement("g", { transform: "translate(360,660)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "Data Repositories / Data Lakes")
+        ),
+
+        React.createElement("g", { transform: "translate(280,600)" },
+          React.createElement("g", { transform: "translate(0,-60)", fill: "#ec4899", opacity: 0.95 },
+            React.createElement("ellipse", { cx: 0, cy: 0, rx: 28, ry: 10 }),
+            React.createElement("rect", { x: -28, y: 0, width: 56, height: 44 }),
+            React.createElement("ellipse", { cx: 0, cy: 44, rx: 28, ry: 10 })
+          ),
+          React.createElement("text", { x: 0, y: 60, textAnchor: "middle", fill: "#fff", fontSize: 11 }, "Clinical Trials Data")
+        ),
+
+        // Platforms cluster clouds
+        React.createElement("g", { transform: "translate(760,520)" },
+          React.createElement("g", { transform: "translate(-120,-20) scale(1)" },
+            React.createElement("g", { transform: "translate(0,0)", fill: "#c7f9ff", stroke: "#0369a1", strokeWidth: 0.8 },
+              React.createElement("use", { href: "#cloud" })
+            ),
+            React.createElement("text", { x: -80, y: 10, fontSize: 11, fill: "#052e3d" }, "SAP BTP")
+          ),
+
+          React.createElement("g", { transform: "translate(-40,30) scale(0.95)" },
+            React.createElement("g", { transform: "translate(0,0)", fill: "#c7f9ff", stroke: "#0369a1", strokeWidth: 0.8 },
+              React.createElement("use", { href: "#cloud" })
+            ),
+            React.createElement("text", { x: 0, y: 10, fontSize: 11, fill: "#052e3d" }, "SyMetric CTP on Azure")
+          ),
+
+          React.createElement("g", { transform: "translate(80,0) scale(0.95)" },
+            React.createElement("g", { transform: "translate(0,0)", fill: "#c7f9ff", stroke: "#0369a1", strokeWidth: 0.8 },
+              React.createElement("use", { href: "#cloud" })
+            ),
+            React.createElement("text", { x: 0, y: 10, fontSize: 11, fill: "#052e3d" }, "Customer Landscape")
+          ),
+
+          React.createElement("g", { transform: "translate(20,70) scale(0.95)" },
+            React.createElement("g", { transform: "translate(0,0)", fill: "#c7f9ff", stroke: "#0369a1", strokeWidth: 0.8 },
+              React.createElement("use", { href: "#cloud" })
+            ),
+            React.createElement("text", { x: 0, y: 10, fontSize: 11, fill: "#052e3d" }, "SyMetric Trial Analytics on SAP CP")
+          )
+        ),
+
+        // Small connectors from central to group hexes (short lines)
+        React.createElement("path", { d: "M472 320 L422 275", stroke: "#777", strokeWidth: 1.2, opacity: 0.9 }),
+        React.createElement("path", { d: "M628 320 L678 275", stroke: "#777", strokeWidth: 1.2, opacity: 0.9 }),
+        React.createElement("path", { d: "M472 320 L422 365", stroke: "#777", strokeWidth: 1.2, opacity: 0.9 }),
+        React.createElement("path", { d: "M628 320 L678 365", stroke: "#777", strokeWidth: 1.2, opacity: 0.9 })
+
+      )
+    )
+  );
+}
+
+    
