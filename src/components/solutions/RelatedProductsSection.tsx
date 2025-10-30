@@ -25,22 +25,22 @@ const featurePoints = [
 
 const relatedProducts = [
     {
-        title: "SyMetric Business AI",
-        description: "Guide, automate, and execute routine tasks in the flow of work with embedded AI, freeing teams to focus on strategy, not manual data entry.",
-        link: "#",
-        linkText: "Learn about Business AI"
+        title: "IRT/IWRS",
+        description: "Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.",
+        link: "/solutions/irt-iwrs",
+        linkText: "Find out more"
     },
     {
-        title: "SyMetric Business Data Cloud",
-        description: "Get one trusted, governed view of your trial data—harmonising information from all sources, from site to submission.",
-        link: "#",
-        linkText: "Learn about Business Data Cloud"
+        title: "EDC",
+        description: "The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.",
+        link: "/solutions/edc",
+        linkText: "Find out more"
     },
     {
-        title: "SyMetric Technology Platform",
-        description: "Integrate, automate, and extend clinical processes to move fast with low-code tools while staying secure and compliant.",
-        link: "#",
-        linkText: "Learn about SyMetric BTP"
+        title: "CTM",
+        description: "The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.",
+        link: "/solutions/ctm",
+        linkText: "Find out more"
     }
 ]
 

@@ -65,15 +65,14 @@ export default function ClinicalTrialPlatformPage() {
         
         <PlatformToolsGrid />
 
-        <ExploreSolutions />
+        <RelatedProductsSection />
         <CollaborationVision />
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
         <GlobalPresence />
         <CapabilitiesSection />
-        <RelatedProductsSection />
-
+        
         <section>
             <div className="container">
               <div className="text-center">
