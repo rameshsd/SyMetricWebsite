@@ -51,8 +51,8 @@ export function RelatedProductsSection() {
         <section className="bg-secondary/50">
             <div className="container">
                 <SectionTitle 
-                    title="Turn your clinical data into a strategic driver of performance"
-                    description="You're under pressure to do more with less. Equip your research team to operate more efficiently, anticipate change, and lead with confidence—with the AI-enabled SyMetric Platform."
+                    title="Explore Our Solutions"
+                    description="Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations."
                 />
 
                 <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
