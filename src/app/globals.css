@@ -88,7 +88,7 @@
 
 @layer components {
     .container {
-        @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+        @apply w-full mx-auto px-6;
     }
     section {
         @apply py-20;
