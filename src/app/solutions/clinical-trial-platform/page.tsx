@@ -64,10 +64,10 @@ export default function ClinicalTrialPlatformPage() {
 
         <RelatedProductsSection />
         <CollaborationVision />
+        <GlobalPresence />
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
-        <GlobalPresence />
         <CapabilitiesSection />
         
         <section>
