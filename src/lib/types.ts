@@ -63,6 +63,15 @@ export type Customer = {
   link: string;
 };
 
+export type SuccessStory = {
+    id: string;
+    logoId: string;
+    title: string;
+    description: string;
+    linkText: string;
+    linkUrl: string;
+}
+
 export type TeamMember = {
   id: number;
   name: string;

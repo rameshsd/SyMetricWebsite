@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -373,33 +373,6 @@ export const timeline = [
   { year: '2023', event: 'Reached 100+ enterprise customers and launched AI-powered analytics.' },
 ];
 
-export const heroCarouselItems = [
-  {
-    id: 1,
-    title: 'Unlock the Power of AI in Clinical Research',
-    subtitle: 'SyMetric\'s intelligent platform streamlines every phase of your trial, from design to submission.',
-    imageId: 'hero-carousel-1',
-    cta1: { text: 'Discover AI Solutions', link: '/solutions' },
-    cta2: { text: 'Request a Demo', link: '/contact' }
-  },
-  {
-    id: 2,
-    title: 'Seamless eTMF for Ultimate Compliance',
-    subtitle: 'Ensure your trial documentation is always complete, compliant, and inspection-ready.',
-    imageId: 'hero-carousel-2',
-    cta1: { text: 'Explore eTMF', link: '/solutions/electronic-trial-master-file' },
-    cta2: { text: 'Get Started', link: '/contact' }
-  },
-  {
-    id: 3,
-    title: 'Accelerate Trials with Real-World Data',
-    subtitle: 'Leverage our integrated data solutions to gain deeper insights and make faster decisions.',
-    imageId: 'hero-carousel-3',
-    cta1: { text: 'View Data Solutions', link: '/solutions/clinical-data-management' },
-    cta2: { text: 'Talk to an Expert', link: '/contact' }
-  }
-];
-
 export const growthTimeline = [
   {
     year: '2022',
@@ -569,7 +542,7 @@ imageId: 'news-independence'
   {
     id: 6,
     title: 'SyMetric at SAP Industries Live 2021',
-    description: 'SyMetric showcased its solutions at the SAP Industries Live virtual event.',
+    description: 'SyMetric and SAP revolutionizing the Clinical Trial process to improve Patient Care',
     link: '#',
     imageId: 'news-industries-live'
   },
@@ -674,13 +647,22 @@ export const salesSpecialistHelp = [
     }
 ];
     
-
-
-
-
-
-
-    
-
-
+export const successStories: SuccessStory[] = [
+    {
+        id: 'prestige-group',
+        logoId: 'logo-prestige',
+        title: 'Improving customer experience through digital transformation',
+        description: 'Explore how Prestige Group automated 100% of grievance management process and removed any manual intervention in customer communication management.',
+        linkText: 'Read the customer story',
+        linkUrl: '#',
+    },
+    {
+        id: 'parle',
+        logoId: 'logo-parle',
+        title: 'Transforming app development with SAP BTP',
+        description: "Learn from Parle's CIO, Sanjay Joshi, how the organisation rapidly built and deployed a highly successful mobile app for customers using SAP BTP.",
+        linkText: 'Watch the video',
+        linkUrl: '#',
+    },
+];
 

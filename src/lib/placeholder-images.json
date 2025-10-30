@@ -267,7 +267,7 @@
     {
       "id": "hosting-providers-image",
       "description": "Cloud hosting servers",
-      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud servers"
     },
     {
@@ -542,7 +542,7 @@
     },
     {
       "id": "news-industries-live",
-      "description": "SyMetric showcased its solutions at the SAP Industries Live virtual event.",
+      "description": "SyMetric at SAP Industries Live virtual event banner",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/05/SAP-Image-3.jpg",
       "imageHint": "conference banner"
     },
@@ -674,7 +674,7 @@
     },
     {
       "id": "new-hero-image",
-      "description": "Professionals collaborating around a screen with data",
+      "description": "A well-integrated CTP for a bird’s-eye view of Clinical Trials",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner-3-1.jpg",
       "imageHint": "business collaboration"
     },
@@ -695,6 +695,18 @@
       "description": "SyMetric collaboration infographic",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/collboration-infographic.png",
       "imageHint": "collaboration infographic"
+    },
+    {
+      "id": "logo-prestige",
+      "description": "Prestige Group Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/prestige.png",
+      "imageHint": "Prestige logo"
+    },
+    {
+      "id": "logo-parle",
+      "description": "Parle Logo",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/parle.png",
+      "imageHint": "Parle logo"
     }
   ]
 }
