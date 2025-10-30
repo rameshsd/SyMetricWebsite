@@ -1,85 +1,86 @@
 
 "use client";
 
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Iso27001, Iso9001, Fda21Cfr, IchGcp } from "../icons/compliance-icons";
+import { SectionTitle } from "../shared/section-title";
+
+const securityItems = [
+    "Review security measures to help protect your data's integrity, availability, and confidentiality",
+    "Implement a secure software development lifecycle",
+    "Explore security products and services from SyMetric",
+    "Report a security issue"
+]
+
+const complianceItems = [
+    "Learn about routine compliance checks through internal reviews and audits",
+    "View global offerings, such as ISO/IEC, SOC, and bridge letters",
+    "Access local and industry-specific compliance certificates, including TISAX"
+]
+
+const privacyItems = [
+    "Understand how SyMetric protects and respects individuals' privacy",
+    "View data protection guidelines",
+    "Explore global compliance of data protection laws",
+    "Learn about our data centers and their locations"
+]
 
 export function SecurityCompliance() {
-  const securityImage = PlaceHolderImages.find(
-    (p) => p.id === "security-compliance-image"
-  );
-  const privacyImage = PlaceHolderImages.find(
-    (p) => p.id === "data-privacy-image"
-  );
-
   return (
-    <section className="bg-secondary/50">
-      <div className="container space-y-20">
-        {/* Security and Compliance */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-96">
-            {securityImage && (
-              <Image
-                src={securityImage.imageUrl}
-                alt={securityImage.description}
-                data-ai-hint={securityImage.imageHint}
-                fill
-                className="object-cover rounded-2xl"
-              />
-            )}
-          </div>
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold tracking-tight">
-              Security and Compliance
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-prose">
-              Build data security from the ground up with the backing of our
-              team of experts. We ensure that you meet regulatory requirements
-              (Data protection laws, Good Clinical Practice guidelines, and
-              more) through proactive compliance measures that use well-defined
-              policies, processes, and a robust Standard Operating Procedure
-              framework. Our methods are trusted by large Pharmaceutical
-              Organizations, CROs, and Academic Institutions.
-            </p>
-            <div className="flex flex-wrap gap-4 items-center pt-2">
-              <Iso27001 className="h-12" />
-              <Iso9001 className="h-12" />
-              <Fda21Cfr className="h-12" />
-              <IchGcp className="h-12" />
-            </div>
-          </div>
-        </div>
+    <section className="bg-background">
+      <div className="container">
+        <SectionTitle
+            title="Our commitment to protecting your business operations and data"
+        />
 
-        {/* Data Privacy */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 md:order-2">
-            <h2 className="text-4xl font-bold tracking-tight">
-              Uncompromised Commitment to Data Privacy
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-prose">
-              We go to great lengths to ensure that you have full control over
-              data that powers your research. When it comes to data privacy,
-              our resolve is unmatched and we are only custodians of data that
-              is yours.
-            </p>
-            <Button variant="link" asChild className="p-0 text-base">
-              <Link href="#">Read our privacy policy</Link>
-            </Button>
-          </div>
-          <div className="relative h-96 md:order-1">
-            {privacyImage && (
-              <Image
-                src={privacyImage.imageUrl}
-                alt={privacyImage.description}
-                data-ai-hint={privacyImage.imageHint}
-                fill
-                className="object-cover rounded-2xl"
-              />
-            )}
-          </div>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            {/* Security Column */}
+            <div>
+                <h3 className="text-xl font-bold mb-4">Security</h3>
+                <ul className="space-y-3">
+                    {securityItems.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                            <span className="text-primary mt-1.5">•</span>
+                            <span className="text-muted-foreground">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+                <Link href="#" className="text-primary font-semibold text-sm flex items-center gap-1 mt-6">
+                    Learn about security <ArrowRight className="h-4 w-4" />
+                </Link>
+            </div>
+
+            {/* Compliance Column */}
+            <div>
+                <h3 className="text-xl font-bold mb-4">Compliance</h3>
+                <ul className="space-y-3">
+                    {complianceItems.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                            <span className="text-primary mt-1.5">•</span>
+                            <span className="text-muted-foreground">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+                 <Link href="#" className="text-primary font-semibold text-sm flex items-center gap-1 mt-6">
+                    Learn about compliance <ArrowRight className="h-4 w-4" />
+                </Link>
+            </div>
+
+            {/* Data Protection Column */}
+            <div>
+                <h3 className="text-xl font-bold mb-4">Data protection and privacy</h3>
+                <ul className="space-y-3">
+                    {privacyItems.map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                             <span className="text-primary mt-1.5">•</span>
+                            <span className="text-muted-foreground">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+                <Link href="#" className="text-primary font-semibold text-sm flex items-center gap-1 mt-6">
+                    Learn about privacy <ArrowRight className="h-4 w-4" />
+                </Link>
+            </div>
         </div>
       </div>
     </section>
