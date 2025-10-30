@@ -45,7 +45,7 @@
     {
       "id": "leadership-2",
       "description": "Portrait of Marcus Chen",
-      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYwODM0ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": "leadership-4",
       "description": "Portrait of Samuel Jones",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": "leadership-6",
       "description": "Portrait of David Lee",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -117,7 +117,7 @@
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -141,13 +141,13 @@
     {
       "id": "resources-hero",
       "description": "Person reading on a tablet",
-      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8MTc2MDgwMDk2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reading tablet"
     },
     {
       "id": "contact-hero",
       "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
@@ -165,13 +165,13 @@
     {
       "id": "hero-carousel-2",
       "description": "Secure digital document archive",
-      "imageUrl": "https://images.unsplash.com/photo-1664575599736-c5197c684128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2N1bWVudCUyMHNlY3VyaXR5fGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1664575599736-c5197c684128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2N1bWVudCUyMHNlY3VyaXR5fGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "document security"
     },
     {
       "id": "hero-carousel-3",
       "description": "Flowchart of data analysis",
-      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690442484297-3a936a297926?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXMlMjB2aXN1YWxpemF0aW9ufGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analysis"
     },
     {
@@ -189,43 +189,43 @@
     {
       "id": "sap-leadership",
       "description": "Diverse group of professional business leaders",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGxlYWRlcnNoaXB8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGxlYWRlcnNoaXB8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business leadership"
     },
     {
       "id": "sap-history",
       "description": "Vintage computer from the 1970s",
-      "imageUrl": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aW50YWdlJTIwY29tcHV0ZXJ8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aW50YWdlJTIwY29tcHV0ZXJ8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vintage computer"
     },
     {
       "id": "whats-new-data",
       "description": "Abstract visualization of data and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1534665763210-53b6c3c5225a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data abstract"
     },
     {
       "id": "revolutionizing-trials",
       "description": "Woman looking at a futuristic data interface.",
-      "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmdXR1cmlzdGljJTIwaW50ZXJmYWNlfGVufDB8fHx8MTc2MTEyNzE2MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmdXR1cmlzdGljJTIwaW50ZXJmYWNlfGVufDB8fHx8MTc2MTEyNzE2MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "futuristic interface"
     },
     {
       "id": "ai-infographic",
       "description": "Infographic about AI in business",
-      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "financial data"
     },
     {
       "id": "future-of-trials",
       "description": "Futuristic interface for clinical trials",
-      "imageUrl": "https://images.unsplash.com/photo-1690367375237-757022067e41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjA4MzM0ODl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690367375237-757022067e41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjA4MzM0ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "futuristic technology"
     },
     {
       "id": "sap-business-applications-hero",
       "description": "Woman looking at her phone with business app UIs floating",
-      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business woman phone"
     },
     {
@@ -237,7 +237,7 @@
     {
       "id": "irt-iwrs-image",
       "description": "Pharmacist dispensing medication",
-      "imageUrl": "https://images.unsplash.com/photo-1584515933412-24388bab4144?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtZWRpY2F0aW9uJTIwZGlzcGVuc2luZ3xlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584515933412-24388bab4144?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtZWRpY2F0aW9uJTIwZGlzcGVuc2luZ3xlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "medication dispensing"
     },
     {
@@ -267,19 +267,19 @@
     {
       "id": "hosting-providers-image",
       "description": "Cloud hosting servers",
-      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud servers"
     },
     {
       "id": "security-compliance-image",
       "description": "A person holding a tablet with a digital lock overlay, symbolizing cybersecurity and data protection.",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data security"
     },
     {
       "id": "data-privacy-image",
       "description": "Shield protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data privacy"
     },
     {
@@ -291,7 +291,7 @@
     {
       "id": "sap-building",
       "description": "Modern glass building of SyMetric headquarters",
-      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern building"
     },
     {
@@ -315,7 +315,7 @@
     {
       "id": "financial-dashboard",
       "description": "A financial dashboard showing charts and figures.",
-      "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dashboard charts"
     },
     {
@@ -495,13 +495,13 @@
     {
       "id": "edc-query",
       "description": "A dashboard showing data discrepancies and queries that need to be resolved.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "query dashboard"
     },
     {
       "id": "edc-reporting",
       "description": "An automated email notification about an Adverse Event (AE) that has been reported.",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "alert notification"
     },
     {
@@ -549,13 +549,13 @@
     {
       "id": "news-10-years",
       "description": "SyMetric celebrating 10 years in the industry",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/04/SyMetric-Celebrates-10-Years-in-the-Industry-1.png",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/04/Anniversary-Post-for-Website.jpg",
       "imageHint": "anniversary celebration"
     },
     {
       "id": "news-icsm-partner",
       "description": "SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2022/02/SyMetric-is-excited-to-be-a-strategic-partner-for-ICSM-with-SAP-and-TENTHPIN-1-768x432.jpg",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/02/ICSM-3.jpg",
       "imageHint": "partnership announcement"
     },
     {
@@ -651,13 +651,13 @@
     {
       "id": "why-us-compliant",
       "description": "A security shield icon protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "security shield"
     },
     {
       "id": "why-us-tracking",
       "description": "Dashboard with real-time analytics and charts",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "analytics dashboard"
     },
     {
