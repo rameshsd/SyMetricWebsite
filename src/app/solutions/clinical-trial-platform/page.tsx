@@ -7,17 +7,13 @@ import { Button } from '@/components/ui/button';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { PlatformAnimation } from '@/components/animations/PlatformAnimation';
 import { PlatformToolsGrid } from '@/components/solutions/PlatformToolsGrid';
-import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 import { HostingOptions } from '@/components/solutions/HostingOptions';
 import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
-import { Database, Repeat, ClipboardList } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
-import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 
 
@@ -66,7 +62,6 @@ export default function ClinicalTrialPlatformPage() {
         <PlatformToolsGrid />
 
         <RelatedProductsSection />
-        <CollaborationVision />
         <HostingOptions />
         <SyMetricAdvantage />
         <SecurityCompliance />
