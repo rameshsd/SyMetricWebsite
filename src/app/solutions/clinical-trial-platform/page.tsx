@@ -63,9 +63,9 @@ export default function ClinicalTrialPlatformPage() {
         <PlatformToolsGrid />
 
         <RelatedProductsSection />
+        <CollaborationVision />
         <HostingOptions />
         <SyMetricAdvantage />
-        <CollaborationVision />
         <SecurityCompliance />
         <GlobalPresence />
         <CapabilitiesSection />
