@@ -65,8 +65,12 @@ export function CollaborationDiagram() {
             React.createElement("stop", { offset: "0%", stopColor: "#7c3aed" }),
             React.createElement("stop", { offset: "100%", stopColor: "#6d28d9" })
           ),
+           React.createElement("radialGradient", { id: "sapBgGrad", cx: "50%", cy: "50%", r: "60%" },
+            React.createElement("stop", { offset: "0%", stopColor: "#ffffff" }),
+            React.createElement("stop", { offset: "100%", stopColor: "#D1E8FF" })
+          ),
           React.createElement("filter", { id: "softGlow", x: "-50%", y: "-50%", width: "200%", height: "200%" },
-            React.createElement("feGaussianBlur", { stdDeviation: 8, result: "coloredBlur" }),
+            React.createElement("feGaussianBlur", { stdDeviation: 12, result: "coloredBlur" }),
             React.createElement("feMerge", null,
               React.createElement("feMergeNode", { in: "coloredBlur" }),
               React.createElement("feMergeNode", { in: "SourceGraphic" })
@@ -85,9 +89,9 @@ export function CollaborationDiagram() {
           ),
           // Correct Patients Data Icon
           React.createElement("g", { id: "patientsIcon" },
-            React.createElement("path", { d: "M25,12 A5,5 0 1,1 15,12 A5,5 0 0,1 25,12 M10,28 C10,21 30,21 30,28", stroke: "white", strokeWidth: "1.5", fill: "none", "stroke-dasharray": "2 2" }),
-            React.createElement("path", { d: "M48,22 A7,7 0 1,1 34,22 A7,7 0 0,1 48,22 M27,42 C27,32 55,32 55,42", stroke: "white", strokeWidth: "2", fill: "none", "stroke-dasharray": "3 3" }),
-            React.createElement("path", { d: "M-8,22 A7,7 0 1,1 -22,22 A7,7 0 0,1 -8,22 M-29,42 C-29,32 -1,32 -1,42", stroke: "white", strokeWidth: "2", fill: "none", "stroke-dasharray": "3 3" })
+            React.createElement("path", { d: "M25,12 A5,5 0 1,1 15,12 A5,5 0 0,1 25,12 M10,28 C10,21 30,21 30,28", stroke: "white", strokeWidth: "1.5", fill: "none", "strokeDasharray": "2 2" }),
+            React.createElement("path", { d: "M48,22 A7,7 0 1,1 34,22 A7,7 0 0,1 48,22 M27,42 C27,32 55,32 55,42", stroke: "white", strokeWidth: "2", fill: "none", "strokeDasharray": "3 3" }),
+            React.createElement("path", { d: "M-8,22 A7,7 0 1,1 -22,22 A7,7 0 0,1 -8,22 M-29,42 C-29,32 -1,32 -1,42", stroke: "white", strokeWidth: "2", fill: "none", "strokeDasharray": "3 3" })
           ),
           // Correct Result Icon
           React.createElement("g", { id: "resultIcon" },
@@ -97,7 +101,14 @@ export function CollaborationDiagram() {
         ),
         
         // Background
-        React.createElement("rect", { x: 0, y: 0, width: 1100, height: 900, fill: "black" }),
+        React.createElement("rect", { x: 0, y: 0, width: 1100, height: 900, fill: "url(#sapBgGrad)" }),
+        React.createElement("rect", { x: 0, y: 0, width: 1100, height: 900, fill: "url(#sapBgGrad)" }),
+          React.createElement("g", { opacity: "0.08", fill: "none", stroke: "#0A6ED1", strokeWidth: "1.5" },
+            React.createElement("path", { d: "M -50 100 L 50 200 L 150 100 L 50 0 Z" }),
+            React.createElement("path", { d: "M 150 800 L 250 900 L 350 800 L 250 700 Z" }),
+            React.createElement("path", { d: "M 850 50 L 950 150 L 1050 50 L 950 -50 Z" }),
+            React.createElement("path", { d: "M 950 750 L 1050 850 L 1150 750 L 1050 650 Z" })
+        ),
 
         // -- Corrected Layout & Connections --
 
@@ -310,7 +321,7 @@ export function CollaborationDiagram() {
             React.createElement("text", { x:0, y:0, textAnchor:"middle", fill:"#1e1b4b", fontSize:12, fontWeight: 500 }, "SyMetric Trial"),
             React.createElement("text", { x:0, y:15, textAnchor:"middle", fill:"#1e1b4b", fontSize:12, fontWeight: 500 }, "Analytics on"),
             React.createElement("text", { x:0, y:30, textAnchor:"middle", fill:"#1e1b4b", fontSize:12, fontWeight: 500 }, "SAP CP"),
-             React.createElement("path", { d: "M-40,-20 L-180,-110", stroke: "#ccc", strokeWidth: 1.5, opacity: 0.7 })
+             React.createElement("path", { d: "-40,-20 L-180,-110", stroke: "#ccc", strokeWidth: 1.5, opacity: 0.7 })
         ),
         React.createElement("g", { transform: "translate(680, 480)" },
             React.createElement("use", { href: "#cloud", fill: "#c7d2fe"}),
@@ -328,3 +339,5 @@ export function CollaborationDiagram() {
     )
   );
 }
+
+    
