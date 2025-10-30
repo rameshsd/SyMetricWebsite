@@ -523,7 +523,7 @@ export const latestNews: LatestNewsItem[] = [
     title: 'Independence Day Celebrations 2022',
     description: 'The team celebrated India\'s Independence Day with a flag hoisting ceremony and patriotic events.',
     link: '#',
-imageId: 'news-independence'
+    imageId: 'news-independence'
   },
   {
     id: 4,
