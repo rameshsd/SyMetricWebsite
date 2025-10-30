@@ -1,56 +1,86 @@
 
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "@/hooks/use-in-view";
+import { ShieldCheck, FileText, Lock } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Fda21Cfr, IchGcp, Iso27001, Iso9001 } from "../icons/compliance-icons";
+import { cn } from "@/lib/utils";
+
+const securityConcepts = [
+  {
+    icon: ShieldCheck,
+    title: "Security",
+    description: "Highest product and operations security, resilience, business continuity, and cyber-defense measures.",
+  },
+  {
+    icon: FileText,
+    title: "Compliance",
+    description: "Wide range of certifications (ISO, 21 CFR Part 11, ICH-GCP) and product localizations to meet regulatory requirements.",
+  },
+  {
+    icon: Lock,
+    title: "Data Privacy",
+    description: "Strong company measures and global data center locations to ensure you have full control over your data.",
+  },
+];
 
 export function SecurityCompliance() {
-    const image = PlaceHolderImages.find(p => p.id === 'security-compliance-image');
+  const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.4, 0.0, 0.2, 1],
+      },
+    },
+  };
 
   return (
-    <section className="bg-background">
+    <section className="bg-secondary/50">
       <div className="container">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-square">
-                {image && (
-                    <Image
-                        src={image.imageUrl}
-                        alt={image.description}
-                        data-ai-hint={image.imageHint}
-                        fill
-                        className="object-cover rounded-2xl"
-                    />
-                )}
-            </div>
-            <div className="space-y-12">
-                <div>
-                    <h2 className="text-3xl font-bold tracking-tight">Security and Compliance</h2>
-                    <p className="mt-4 text-muted-foreground">
-                        Build data security from the ground up with the backing of our team of experts. We ensure that you meet regulatory requirements (Data protection laws, Good Clinical Practice guidelines, and more) through proactive compliance measures that use well-defined policies, processes, and a robust Standard Operating Procedure framework. Our methods are trusted by large Pharmaceutical Organizations, CROs, and Academic Institutions.
-                    </p>
-                    <div className="mt-6 grid grid-cols-2 gap-4">
-                        <Iso27001 />
-                        <Iso9001 />
-                        <Fda21Cfr />
-                        <IchGcp />
-                    </div>
-                </div>
+        <SectionTitle
+          title="Our Commitment to Protecting Your Business"
+          description="We provide a strong, reliable, and secure foundation for your clinical operations."
+        />
 
-                <div>
-                    <h2 className="text-3xl font-bold tracking-tight">Uncompromised Commitment to Data Privacy</h2>
-                    <p className="mt-4 text-muted-foreground">
-                        We go to great lengths to ensure that you have full control over data that powers your research. When it comes to data privacy, our resolve is unmatched and we are only custodians of data that is yours.
-                    </p>
-                    <Link href="#" className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">
-                        Read our privacy policy <ArrowRight className="h-4 w-4" />
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto"
+        >
+          {securityConcepts.map((concept) => (
+            <motion.div
+              key={concept.title}
+              variants={itemVariants}
+              className="bg-card p-8 rounded-2xl border text-center flex flex-col items-center shadow-sm"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-6">
+                <concept.icon className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{concept.title}</h3>
+              <p className="text-muted-foreground">{concept.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
