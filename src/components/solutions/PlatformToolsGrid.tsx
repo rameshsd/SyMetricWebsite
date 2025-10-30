@@ -132,9 +132,9 @@ export function PlatformToolsGrid() {
           </p>
         </div>
       
-        <div className="flex-grow grid md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-5 lg:col-span-4 sticky top-24 h-auto md:h-[calc(100vh-20rem)]">
-                <ScrollArea className="h-full pr-4">
+        <div className="flex-grow flex flex-col md:grid md:grid-cols-12 gap-8 md:items-start">
+            <div className="md:col-span-5 lg:col-span-4 md:sticky md:top-24 h-auto md:h-[calc(100vh-20rem)]">
+                <ScrollArea className="h-full md:pr-4">
                     <div className="space-y-2">
                         {toolsData.map((tool) => (
                             <button 
@@ -160,7 +160,7 @@ export function PlatformToolsGrid() {
                 </ScrollArea>
             </div>
             
-            <div className="md:col-span-7 lg:col-span-8 sticky top-24">
+            <div className="md:col-span-7 lg:col-span-8 md:sticky md:top-24 mt-8 md:mt-0">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={selectedTool.id}
