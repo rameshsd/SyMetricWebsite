@@ -88,7 +88,7 @@
 
 @layer components {
     .container {
-        @apply max-w-7xl mx-auto;
+        @apply max-w-screen-2xl mx-auto;
     }
     section {
         @apply py-20 px-4 sm:px-6;
