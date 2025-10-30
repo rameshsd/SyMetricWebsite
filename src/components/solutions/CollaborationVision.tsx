@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -20,7 +19,7 @@ export function CollaborationVision() {
                 <p>The SyMetric Platform provides a virtual collaborative environment that is secure, user-friendly, and intuitive.</p>
                 <p>It streamlines the communication among the multiple teams involved in a Trial and provides the necessary tools for effective data capture and decision-making. This Collaboration Model along with fully customizable role-based authorizations enables teams and individuals with secure and real-time access to Trial Data.</p>
             </div>
-            <div className="bg-secondary/50 p-4 rounded-lg shadow-lg">
+            <div className="bg-black p-4 rounded-lg shadow-lg">
                 {collaborationImage && (
                     <Image 
                         src={collaborationImage.imageUrl}
