@@ -15,6 +15,7 @@ import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSe
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
+import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 
 
 export const metadata: Metadata = {
@@ -64,6 +65,7 @@ export default function ClinicalTrialPlatformPage() {
         <RelatedProductsSection />
         <HostingOptions />
         <SyMetricAdvantage />
+        <CollaborationVision />
         <SecurityCompliance />
         <GlobalPresence />
         <CapabilitiesSection />
