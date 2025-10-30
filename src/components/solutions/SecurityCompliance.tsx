@@ -43,6 +43,7 @@ const badgeVariants = {
     },
 };
 
+
 const AnimatedDiagram = () => {
   const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.5 });
 
@@ -55,29 +56,42 @@ const AnimatedDiagram = () => {
   };
 
   const centerIcon = {
-    hidden: { scale: 0, opacity: 0, rotate: -90 },
+    hidden: { scale: 0, opacity: 0 },
     visible: { 
       scale: 1, 
-      opacity: 1, 
-      rotate: 0,
+      opacity: 1,
       transition: { type: 'spring', stiffness: 260, damping: 20, delay: 0.3 }
     }
   };
 
   const orbitingItem = (i: number) => ({
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { scale: 0, opacity: 0, y: 20 },
     visible: {
       scale: 1,
       opacity: 1,
+      y: 0,
       transition: { type: "spring", stiffness: 300, damping: 20, delay: 0.6 + i * 0.2 }
     }
   });
 
-  const orbitingItems = [
-    { icon: Lock, label: 'Security', position: 'top-0 left-1/2 -translate-x-1/2' },
-    { icon: FileCheck, label: 'Compliance', position: 'bottom-1/4 left-0 -translate-x-1/4' },
-    { icon: ShieldCheck, label: 'Data Privacy', position: 'bottom-1/4 right-0 translate-x-1/4' },
-  ];
+  const lineVariant = (delay: number) => ({
+      hidden: { pathLength: 0, opacity: 0 },
+      visible: { 
+          pathLength: 1, 
+          opacity: 1,
+          transition: { duration: 1, ease: "easeInOut", delay: delay }
+      }
+  });
+
+  const floatingAnimation = {
+    y: ["-3px", "3px"],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut"
+    }
+  };
 
   return (
     <motion.div
@@ -85,27 +99,98 @@ const AnimatedDiagram = () => {
       variants={diagramContainer}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="relative w-full max-w-sm mx-auto h-64 mb-16 flex items-center justify-center"
+      className="relative w-full max-w-lg mx-auto h-80 mb-16 flex items-center justify-center"
     >
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 400 300"
+        className="absolute inset-0"
+        aria-hidden="true"
+      >
+        <motion.line
+          x1="200"
+          y1="150"
+          x2="200"
+          y2="60"
+          stroke="hsl(var(--border))"
+          strokeWidth="1"
+          variants={lineVariant(0.9)}
+        />
+        <motion.line
+          x1="200"
+          y1="150"
+          x2="90"
+          y2="210"
+          stroke="hsl(var(--border))"
+          strokeWidth="1"
+          variants={lineVariant(1.1)}
+        />
+        <motion.line
+          x1="200"
+          y1="150"
+          x2="310"
+          y2="210"
+          stroke="hsl(var(--border))"
+          strokeWidth="1"
+          variants={lineVariant(1.3)}
+        />
+      </svg>
+      
+      {/* Central Node */}
       <motion.div
         variants={centerIcon}
-        className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center"
+        className="absolute"
+        style={{ top: '50%', left: '50%', x: '-50%', y: '-50%' }}
       >
-        <ShieldCheck className="w-12 h-12 text-primary" />
+        <motion.div animate={floatingAnimation}>
+            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
+              <ShieldCheck className="w-12 h-12 text-primary" />
+            </div>
+        </motion.div>
       </motion.div>
 
-      {orbitingItems.map((item, index) => (
-        <motion.div
-          key={item.label}
-          variants={orbitingItem(index)}
-          className={cn("absolute flex flex-col items-center gap-2", item.position)}
-        >
+      {/* Top Node */}
+      <motion.div
+        variants={orbitingItem(0)}
+        className="absolute flex flex-col items-center gap-2"
+        style={{ top: '20%', left: '50%', x: '-50%', y: '-50%' }}
+      >
+        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 0.5 } }}>
           <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
-            <item.icon className="w-8 h-8 text-primary" />
+            <Lock className="w-8 h-8 text-primary" />
           </div>
-          <span className="font-semibold text-sm text-foreground">{item.label}</span>
+          <span className="font-semibold text-sm text-foreground mt-2 block text-center">Security</span>
         </motion.div>
-      ))}
+      </motion.div>
+      
+      {/* Bottom-Left Node */}
+      <motion.div
+        variants={orbitingItem(1)}
+        className="absolute flex flex-col items-center gap-2"
+        style={{ top: '70%', left: '22%', x: '-50%', y: '-50%' }}
+      >
+        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}>
+          <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
+            <FileCheck className="w-8 h-8 text-primary" />
+          </div>
+          <span className="font-semibold text-sm text-foreground mt-2 block text-center">Compliance</span>
+        </motion.div>
+      </motion.div>
+      
+      {/* Bottom-Right Node */}
+      <motion.div
+        variants={orbitingItem(2)}
+        className="absolute flex flex-col items-center gap-2"
+        style={{ top: '70%', left: '78%', x: '-50%', y: '-50%' }}
+      >
+        <motion.div animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1.5 } }}>
+          <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
+            <ShieldCheck className="w-8 h-8 text-primary" />
+          </div>
+          <span className="font-semibold text-sm text-foreground mt-2 block text-center">Data Privacy</span>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };
