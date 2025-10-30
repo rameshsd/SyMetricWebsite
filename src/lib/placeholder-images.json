@@ -548,7 +548,7 @@
     },
     {
       "id": "news-10-years",
-      "description": "SyMetric celebrating 10 years in the industry",
+      "description": "SyMetric Celebrates 10 Years in the Industry",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/04/Anniversary-Post-for-Website.jpg",
       "imageHint": "anniversary celebration"
     },
@@ -674,9 +674,9 @@
     },
     {
       "id": "new-hero-image",
-      "description": "A well-integrated CTP for a bird’s-eye view of Clinical Trials",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner-3-1.jpg",
-      "imageHint": "business collaboration"
+      "description": "Doctor holding a futuristic screen with medical data and charts.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/user-provided-images/image_6a20d48f-ddc7-4ac9-8f43-16275815155f.jpeg",
+      "imageHint": "doctor data"
     },
     {
       "id": "training-hero",
