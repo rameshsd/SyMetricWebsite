@@ -3,61 +3,53 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
-import { ShieldCheck, FileText, Lock } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
-import { cn } from "@/lib/utils";
+import { Iso27001, Iso9001, Fda21Cfr, IchGcp } from "../icons/compliance-icons";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const securityConcepts = [
-  {
-    icon: ShieldCheck,
-    title: "Security",
-    description: "Highest product and operations security, resilience, business continuity, and cyber-defense measures.",
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
   },
-  {
-    icon: FileText,
-    title: "Compliance",
-    description: "Wide range of certifications (ISO, 21 CFR Part 11, ICH-GCP) and product localizations to meet regulatory requirements.",
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.4, 0, 0.2, 1],
+    },
   },
-  {
-    icon: Lock,
-    title: "Data Privacy",
-    description: "Strong company measures and global data center locations to ensure you have full control over your data.",
-  },
-];
+};
+
+const badgeVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+        opacity: 1, 
+        scale: 1,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
+    },
+};
 
 export function SecurityCompliance() {
-  const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.3 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.4, 0.0, 0.2, 1],
-      },
-    },
-  };
+  const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
     <section className="bg-secondary/50">
       <div className="container">
         <SectionTitle
-          title="Our Commitment to Protecting Your Business"
-          description="We provide a strong, reliable, and secure foundation for your clinical operations."
+          title="Security, Compliance, and Data Privacy"
+          className="mb-16"
         />
 
         <motion.div
@@ -65,21 +57,45 @@ export function SecurityCompliance() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto"
         >
-          {securityConcepts.map((concept) => (
-            <motion.div
-              key={concept.title}
-              variants={itemVariants}
-              className="bg-card p-8 rounded-2xl border text-center flex flex-col items-center shadow-sm"
-            >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-6">
-                <concept.icon className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">{concept.title}</h3>
-              <p className="text-muted-foreground">{concept.description}</p>
+          {/* Left Column: Text Content */}
+          <div className="space-y-10">
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Security and Compliance</h3>
+              <p className="text-muted-foreground">
+                Build data security from the ground up with the backing of our team of experts. We ensure that you meet regulatory requirements (Data protection laws, Good Clinical Practice guidelines, and more) through proactive compliance measures that use well-defined policies, processes, and a robust Standard Operating Procedure framework. Our methods are trusted by large Pharmaceutical Organizations, CROs, and Academic Institutions.
+              </p>
             </motion.div>
-          ))}
+
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Uncompromised Commitment to Data Privacy</h3>
+              <p className="text-muted-foreground">
+                We go to great lengths to ensure that you have full control over data that powers your research. When it comes to data privacy, our resolve is unmatched and we are only custodians of data that is yours.
+              </p>
+               <Button variant="link" asChild className="p-0 h-auto mt-4 text-primary">
+                  <Link href="#">
+                    Read our privacy policy <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Animated Badges */}
+          <div className="grid grid-cols-2 gap-6">
+            <motion.div variants={badgeVariants}>
+                <Iso27001 className="w-full h-auto" />
+            </motion.div>
+            <motion.div variants={badgeVariants}>
+                <Iso9001 className="w-full h-auto" />
+            </motion.div>
+            <motion.div variants={badgeVariants}>
+                <Fda21Cfr className="w-full h-auto" />
+            </motion.div>
+            <motion.div variants={badgeVariants}>
+                <IchGcp className="w-full h-auto" />
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
