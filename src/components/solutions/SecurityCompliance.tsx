@@ -54,7 +54,7 @@ const AnimatedDiagram = () => {
   };
 
   const centerIcon = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { scale: 0.5, opacity: 0 },
     visible: { 
       scale: 1, 
       opacity: 1,
@@ -63,11 +63,10 @@ const AnimatedDiagram = () => {
   };
 
   const orbitingItem = (i: number) => ({
-    hidden: { scale: 0, opacity: 0, y: 20 },
+    hidden: { scale: 0.5, opacity: 0 },
     visible: {
       scale: 1,
       opacity: 1,
-      y: 0,
       transition: { type: "spring", stiffness: 300, damping: 20, delay: 0.6 + i * 0.2 }
     }
   });
@@ -76,13 +75,13 @@ const AnimatedDiagram = () => {
       hidden: { pathLength: 0, opacity: 0 },
       visible: { 
           pathLength: 1, 
-          opacity: 1,
+          opacity: 0.5,
           transition: { duration: 1, ease: "easeInOut", delay: delay }
       }
   });
 
-  const floatingAnimation = (delay: number) => ({
-    y: ["-3px", "3px"],
+  const floatingAnimation = (delay: number, distance: string = "3px") => ({
+    y: [`-${distance}`, distance],
     transition: {
       delay,
       duration: 3 + delay,
@@ -142,7 +141,7 @@ const AnimatedDiagram = () => {
         className="absolute"
         style={{ top: '50%', left: '50%', x: '-50%', y: '-50%' }}
       >
-        <motion.div animate={floatingAnimation(0)}>
+        <motion.div animate={floatingAnimation(0, '4px')}>
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
               <ShieldCheck className="w-12 h-12 text-primary" />
             </div>
