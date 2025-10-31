@@ -1,14 +1,14 @@
 
-
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { solutions } from '@/lib/data';
 import { Button } from '@/components/ui/button';
-import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Database, GanttChart, Server, GraduationCap, LifeBuoy } from 'lucide-react';
+import { Database, GanttChart, Server, GraduationCap, LifeBuoy, ChevronDown, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -59,26 +59,78 @@ const services: {
     }
 ];
 
-export default function ServicesPage() {
-    const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
+const secondaryNav = [
+    { label: 'Overview', href: '#' },
+    { label: 'Products', href: '#' },
+    { label: 'Use cases', href: '#' },
+    { label: 'Customer stories', href: '#' },
+    { label: 'Resources', href: '#' },
+    { label: 'Get started', href: '#' },
+    { label: 'FAQs', href: '#' },
+  ];
 
+export default function ServicesPage() {
+    const heroImage = PlaceHolderImages.find(p => p.id === 'why-us-intuitive');
   return (
-    <>
-        <ProductPageHeader productName="Services" solutions={headerSolutions} />
+    <div className="bg-background">
+      <div className="border-b">
+        <div className="container">
+          <div className="py-3 flex items-center justify-between">
+            <div className="flex items-center text-sm">
+                <Link href="#" className="flex items-center gap-1 text-muted-foreground hover:text-primary">
+                    <ChevronDown className="h-4 w-4" />
+                    Industries
+                </Link>
+                <ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
+                <span className="font-semibold text-foreground">Professional services</span>
+            </div>
+          </div>
+           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+            {secondaryNav.map((tab) => (
+              <Link
+                key={tab.label}
+                href={tab.href}
+                className={tab.label === 'Overview' ? 'border-primary text-primary whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm' : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm'}
+              >
+                {tab.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
         
-        <section className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-0">
-            <div className="container">
-                <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                        Our Services
+      <section className="w-full bg-[#007075] text-white py-20 px-0">
+        <div className="container">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+                <div className="space-y-6">
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                        Professional services
                     </h1>
-                    <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
-                        As Clinical Trials create large amounts of data, managing the data ensuring high-quality and accuracy can be a highly complex task. Whether you need extensive assistance or solutions to individual problems, SyMetric’s range of services meet your needs by seamlessly integrating with your existing system or helping you build a new one.
+                    <p className="mt-4 text-lg text-white/80 max-w-lg">
+                        With professional services automation (PSA), you can run your business more efficiently and achieve smarter growth at scale.
                     </p>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                        <Button size="lg" variant="secondary" className="bg-white text-black hover:bg-gray-200">Request a demo</Button>
+                        <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-[#007075]">Read the Oxford Economics report</Button>
+                    </div>
+                </div>
+                <div className="relative h-80 md:h-96">
+                    {heroImage && (
+                        <div className="absolute inset-0 clip-path-polygon-services-hero">
+                            <Image 
+                                src={heroImage.imageUrl}
+                                alt={heroImage.description}
+                                data-ai-hint={heroImage.imageHint}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
-        </section>
-        
+        </div>
+      </section>
+
         <TechEdBanner />
 
         <section>
@@ -110,7 +162,7 @@ export default function ServicesPage() {
             </div>
         </section>
 
-        <section>
+        <section className="bg-secondary/50">
             <div className="container">
               <div className="text-center">
                   <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
@@ -122,6 +174,6 @@ export default function ServicesPage() {
               </div>
             </div>
         </section>
-    </>
+    </div>
   );
 }
