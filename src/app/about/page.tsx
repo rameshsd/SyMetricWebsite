@@ -44,16 +44,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-0">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="py-20 px-4 sm:px-6 lg:px-8">
-              <p className="text-sm mb-2">/ About SyMetric</p>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Global Company Information
+                Revolutionizing<br/>Clinical Trials<br/>With Innovation
               </h1>
-              <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">
-                With a global network of customers, partners, employees, and thought leaders, SyMetric helps the world run better and improves people's lives.
-              </p>
-              <Button asChild variant="outline" className="mt-6 bg-transparent border-white text-white hover:bg-white hover:text-primary">
-                  <Link href="#">About SyMetric India</Link>
-              </Button>
             </div>
             <div className="relative h-64 md:h-full min-h-[500px]">
                 {heroImage && (
