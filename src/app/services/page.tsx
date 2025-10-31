@@ -7,7 +7,7 @@ import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Database, GanttChart, Server, GraduationCap, LifeBuoy, ChevronDown, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { CollaborationDiagram } from '@/components/animations/CollaborationDiagram';
+import { ServicesAnimation } from '@/components/animations/ServicesAnimation';
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -114,7 +114,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="relative h-96 md:h-[500px]">
                     <div className="absolute inset-0">
-                       <CollaborationDiagram />
+                       <ServicesAnimation />
                     </div>
                 </div>
             </div>
