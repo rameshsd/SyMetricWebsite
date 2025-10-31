@@ -7,7 +7,10 @@ import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Database, GanttChart, Server, GraduationCap, LifeBuoy, ChevronDown, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { ServicesAnimation } from '@/components/animations/ServicesAnimation';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { GeometricPattern } from '@/components/shared/GeometricPattern';
+
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -69,6 +72,8 @@ const secondaryNav = [
   ];
 
 export default function ServicesPage() {
+  const heroImage = PlaceHolderImages.find(p => p.id === 'services-hero-people');
+
   return (
     <div className="bg-background">
       <div className="border-b">
@@ -97,8 +102,11 @@ export default function ServicesPage() {
         </div>
       </div>
         
-      <section className="w-full bg-[#007075] text-white py-20 px-0">
-        <div className="container">
+      <section className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10">
+          <GeometricPattern />
+        </div>
+        <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
@@ -109,13 +117,21 @@ export default function ServicesPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
                         <Button size="lg" variant="secondary" className="bg-white text-black hover:bg-gray-200">Request a demo</Button>
-                        <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-[#007075]">Read the Oxford Economics report</Button>
+                        <Button size="lg" variant="outline" asChild className="bg-transparent border-white text-white hover:bg-white hover:text-primary">
+                            <Link href="/industries">View all industries</Link>
+                        </Button>
                     </div>
                 </div>
-                <div className="relative h-96 md:h-[500px]">
-                    <div className="absolute inset-0">
-                       <ServicesAnimation />
-                    </div>
+                <div className="relative h-96 md:h-[400px]">
+                    {heroImage && (
+                        <Image 
+                            src={heroImage.imageUrl}
+                            alt={heroImage.description}
+                            data-ai-hint={heroImage.imageHint}
+                            fill
+                            className="object-contain"
+                        />
+                    )}
                 </div>
             </div>
         </div>
