@@ -4,7 +4,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, User, Globe, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -134,55 +134,12 @@ export function Navbar() {
         isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
       )}
     >
-      <div className="container flex h-16 items-center">
-          <div className="flex items-center md:hidden flex-1 justify-between">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-4">
             <Logo />
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                  <SheetHeader className="p-4 border-b">
-                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                    <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
-                    <div className="flex items-center justify-between">
-                      <Logo />
-                       <SheetTrigger asChild>
-                         <Button variant="ghost" size="icon">
-                            <X className="h-6 w-6" />
-                            <span className="sr-only">Close menu</span>
-                          </Button>
-                      </SheetTrigger>
-                    </div>
-                  </SheetHeader>
-                  <div className="p-4">
-                    <div className="relative">
-                      <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
-                      <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-                    </div>
-                  </div>
-                  <nav className="flex-1 space-y-1 px-4">
-                    {navItems.map((item) => (
-                      <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} />
-                    ))}
-                  </nav>
-                  <div className="p-4 mt-auto">
-                    <Button className="w-full h-12 text-lg" asChild>
-                        <Link href="#">Explore SyMetric</Link>
-                    </Button>
-                  </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+        </div>
           
-          <div className="hidden md:flex items-center">
-            <Logo />
-          </div>
-          
-          <NavigationMenu className="hidden md:flex ml-10">
+        <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
@@ -234,30 +191,72 @@ export function Navbar() {
                     </>
                   ) : (
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname === item.href && 'underline')}>
-                        {item.name}
-                      </NavigationMenuLink>
+                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:underline focus:underline", pathname === item.href && 'underline')}>
+                            {item.name}
+                        </NavigationMenuLink>
                     </Link>
                   )}
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
-          </NavigationMenu>
+        </NavigationMenu>
 
-          <div className="hidden md:flex flex-1 items-center justify-end space-x-2">
-            <Button variant="ghost" size="icon">
-                <Search className="h-5 w-5" />
-                <span className="sr-only">Search</span>
-            </Button>
-            <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Account</span>
-            </Button>
-             <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Language</span>
-            </Button>
-          </div>
+        <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center space-x-2">
+                <Button variant="ghost" size="icon">
+                    <Search className="h-5 w-5" />
+                    <span className="sr-only">Search</span>
+                </Button>
+                <Button variant="ghost" size="icon">
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">Account</span>
+                </Button>
+                <Button variant="ghost" size="icon">
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Language</span>
+                </Button>
+            </div>
+
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-full max-w-sm bg-card p-0 flex flex-col">
+                  <SheetHeader className="p-4 border-b">
+                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                    <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
+                    <div className="flex items-center justify-between">
+                      <Logo />
+                       <SheetTrigger asChild>
+                         <Button variant="ghost" size="icon">
+                            <X className="h-6 w-6" />
+                            <span className="sr-only">Close menu</span>
+                          </Button>
+                      </SheetTrigger>
+                    </div>
+                  </SheetHeader>
+                  <div className="p-4">
+                    <div className="relative">
+                      <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
+                      <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                    </div>
+                  </div>
+                  <nav className="flex-1 space-y-1 px-4">
+                    {navItems.map((item) => (
+                      <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} />
+                    ))}
+                  </nav>
+                  <div className="p-4 mt-auto">
+                    <Button className="w-full h-12 text-lg" asChild>
+                        <Link href="#">Explore SyMetric</Link>
+                    </Button>
+                  </div>
+              </SheetContent>
+            </Sheet>
+        </div>
       </div>
     </header>
   );
