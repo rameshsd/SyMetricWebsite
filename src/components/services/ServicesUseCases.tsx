@@ -3,9 +3,10 @@
 
 import { SectionTitle } from "@/components/shared/section-title";
 import { useCases } from "@/lib/data";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export function ServicesUseCases() {
     const [ref, inView] = useInView({ triggerOnce: true });
@@ -17,24 +18,27 @@ export function ServicesUseCases() {
                     description="Our services are tailored to address the most critical challenges in clinical research."
                     className="mb-16"
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {useCases.map((useCase, index) => (
                         <div
                             key={useCase.title}
                             className={cn('opacity-0', inView && 'animate-fade-in-up')}
                             style={{ animationDelay: `${index * 150}ms` }}
                         >
-                            <Card className="h-full text-center group p-6 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                                <CardHeader>
-                                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:scale-110">
-                                        <useCase.icon className="h-8 w-8 text-primary" />
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <h3 className="text-lg font-semibold">{useCase.title}</h3>
-                                    <p className="mt-2 text-sm text-muted-foreground">{useCase.description}</p>
-                                </CardContent>
-                            </Card>
+                            <div className="bg-card p-8 rounded-2xl border transition-shadow hover:shadow-lg h-full flex flex-col">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-6">
+                                    <useCase.icon className="h-6 w-6 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{useCase.title}</h3>
+                                <p className="text-muted-foreground mb-4 flex-grow">
+                                    {useCase.description}
+                                </p>
+                                <Button variant="link" asChild className="px-0 text-primary font-semibold self-start">
+                                    <Link href="#">
+                                    Learn more &gt;
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                     ))}
                 </div>
