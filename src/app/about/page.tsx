@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 import { SectionTitle } from '@/components/shared/section-title';
+import { ArrowRight } from 'lucide-react';
 
 
 export const metadata = {
@@ -31,6 +32,7 @@ export default function AboutPage() {
   ];
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'sap-building');
+  const sponsorshipImage = PlaceHolderImages.find(p => p.id === 'global-sponsorships-soccer');
 
   return (
     <div className="bg-background">
@@ -111,8 +113,33 @@ export default function AboutPage() {
       </div>
 
       <section id="sponsorships" className="bg-background">
-        <div className="container text-center">
-          <SectionTitle title="Global Sponsorships" description="This is a placeholder for the Global Sponsorships section." />
+        <div className="container">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold tracking-tight mb-12">Global Sponsorships</h2>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                {sponsorshipImage && (
+                  <Image
+                    src={sponsorshipImage.imageUrl}
+                    alt={sponsorshipImage.description}
+                    data-ai-hint={sponsorshipImage.imageHint}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <div className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed">
+                  As the leader in technology software, SAP is proud to expand our relationships within the sports and entertainment world. Partnerships with world-class teams, leagues, and properties have afforded us the ability to create technology solutions that engage fans, media, players, and coaches on another level, integrating real-time cloud-based analytics.
+                </p>
+                <Button variant="link" asChild className="p-0 h-auto text-primary font-semibold">
+                  <Link href="#">
+                    Explore SAP sponsorships <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
