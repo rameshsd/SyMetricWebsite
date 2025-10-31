@@ -90,6 +90,9 @@
     .clip-path-services-hero {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
     }
+    .clip-path-industries-hero {
+      clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+    }
 }
 
 @layer components {
@@ -107,4 +110,3 @@
         background-color: hsl(var(--primary));
     }
 }
-
