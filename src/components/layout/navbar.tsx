@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from 'react';
@@ -84,11 +83,8 @@ export function Navbar() {
 
   const pathname = usePathname();
 
-  const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
-  const productsSubitem = productsAndServicesItem?.subItems?.find(sub => sub.name === 'Products');
-  const servicesSubitem = productsAndServicesItem?.subItems?.find(sub => sub.name === 'Services');
-  
-  const productComponents = productsSubitem?.subItems?.map(subItem => {
+  const productsItem = navItems.find(item => item.name === 'Products');
+  const productComponents = productsItem?.subItems?.map(subItem => {
     const solution = solutions.find(s => {
       const solutionSlug = subItem.href.split('/').pop();
       return s.slug === solutionSlug || (s.slug === 'clinical-trial-platform' && solutionSlug === 'clinical-trial-platform');
@@ -99,6 +95,7 @@ export function Navbar() {
       description: solution?.description || ''
     }
   });
+
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -128,13 +125,17 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center">
-        <div className="mr-auto hidden md:flex">
+        <div className="mr-6 hidden md:flex">
           <Logo />
         </div>
         
         <div className="flex items-center md:hidden flex-1 justify-between">
             <Logo />
              <div className="flex items-center">
+                <Button variant="ghost" size="icon">
+                    <Search className="h-6 w-6" />
+                    <span className="sr-only">Search</span>
+                </Button>
                 <Button variant="ghost" size="icon">
                     <User className="h-6 w-6" />
                     <span className="sr-only">Account</span>
@@ -173,13 +174,13 @@ export function Navbar() {
                         )}
                         <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
                           {(menuContent || []).map((item) => (
-                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={setMobileSubmenu} />
+                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={(items, title) => setMobileSubmenu({ items: items || [], title })} />
                           ))}
                         </nav>
                         <div className="p-4 mt-auto border-t">
                           <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
                               <Link href="#">
-                                  Explore SyMetric
+                                  Explore SAP
                                   <ChevronRight className="h-6 w-6" />
                               </Link>
                           </Button>
@@ -194,58 +195,44 @@ export function Navbar() {
               <NavigationMenuList>
               {navItems.map((item) => (
                   <NavigationMenuItem key={item.name}>
-                  {item.name === 'Products and Services' && productsAndServicesItem ? (
+                  {item.name === 'Products' && productsItem && productsItem.subItems ? (
                       <>
-                      <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'data-[state=closed]:text-primary')}>
+                      <NavigationMenuTrigger className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}>
                           {item.name}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                          <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
-                              <div className="col-span-1">
-                                  {productsSubitem && (
-                                  <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">
-                                      {productsSubitem.name}
-                                  </h3>
-                                  )}
-                                  <ul className="grid gap-1">
-                                      {productComponents && productComponents.map((component) => (
-                                          <ListItem
-                                          key={component.title}
-                                          title={component.title}
-                                          href={component.href}
-                                          >
-                                          {component.description}
-                                          </ListItem>
-                                      ))}
-                                  </ul>
-                              </div>
-                              <div className="col-span-1">
-                                  {servicesSubitem && (
-                                      <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">
-                                          {servicesSubitem.name}
-                                      </h3>
-                                  )}
-                                  <ul className="grid gap-1">
-                                      {servicesSubitem?.subItems?.map((subItem) => (
-                                          <ListItem
-                                              key={subItem.name}
-                                              title={subItem.name}
-                                              href={subItem.href}
-                                          >
-                                              {subItem.description}
-                                          </ListItem>
-                                      ))}
-                                  </ul>
-                              </div>
-                          </div>
+                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                            <li className="row-span-3">
+                                <NavigationMenuLink asChild>
+                                <a
+                                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                    href="/"
+                                >
+                                    <Logo />
+                                    <p className="text-sm leading-tight text-muted-foreground mt-4">
+                                    End-to-end digital solutions for modern clinical research.
+                                    </p>
+                                </a>
+                                </NavigationMenuLink>
+                            </li>
+                             {productComponents && productComponents.map((component) => (
+                                <ListItem
+                                key={component.title}
+                                title={component.title}
+                                href={component.href}
+                                >
+                                {component.description}
+                                </ListItem>
+                            ))}
+                         </ul>
                       </NavigationMenuContent>
                       </>
                   ) : (
-                    <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()} active={pathname.startsWith(item.href)}>
-                        {item.name}
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink asChild active={pathname.startsWith(item.href)}>
+                        <Link href={item.href} className={navigationMenuTriggerStyle()}>
+                            {item.name}
+                        </Link>
+                    </NavigationMenuLink>
                   )}
                   </NavigationMenuItem>
               ))}
@@ -253,7 +240,12 @@ export function Navbar() {
           </NavigationMenu>
         </div>
 
-        <div className="hidden md:flex items-center gap-x-0 ml-auto">
+        <div className="hidden md:flex items-center gap-x-1 ml-auto">
+            <Button variant="link" className="text-foreground">Explore SAP</Button>
+            <Button variant="ghost" size="icon">
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+            </Button>
             <Button variant="ghost" size="icon">
                 <User className="h-5 w-5" />
                 <span className="sr-only">Account</span>
