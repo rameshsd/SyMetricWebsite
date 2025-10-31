@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Search, User, Globe, ChevronDown, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { navItems, solutions } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
@@ -143,14 +143,19 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                  <div className="flex items-center justify-end p-2 border-b">
-                    <SheetTrigger asChild>
-                       <Button variant="ghost" size="icon">
-                          <X className="h-6 w-6" />
-                          <span className="sr-only">Close menu</span>
-                        </Button>
-                    </SheetTrigger>
-                  </div>
+                  <SheetHeader className="p-4 border-b">
+                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                    <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
+                    <div className="flex items-center justify-between">
+                      <Logo />
+                       <SheetTrigger asChild>
+                         <Button variant="ghost" size="icon">
+                            <X className="h-6 w-6" />
+                            <span className="sr-only">Close menu</span>
+                          </Button>
+                      </SheetTrigger>
+                    </div>
+                  </SheetHeader>
                   <div className="p-4">
                     <div className="relative">
                       <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
