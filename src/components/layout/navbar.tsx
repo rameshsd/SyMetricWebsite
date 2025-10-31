@@ -134,11 +134,9 @@ export function Navbar() {
         isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center">
           <div className="flex items-center md:hidden flex-1 justify-between">
-            <div className="mr-auto">
-              <Logo />
-            </div>
+            <Logo />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -236,7 +234,7 @@ export function Navbar() {
                     </>
                   ) : (
                     <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink active={pathname === item.href} className={cn(navigationMenuTriggerStyle())}>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname === item.href && 'underline')}>
                         {item.name}
                       </NavigationMenuLink>
                     </Link>
