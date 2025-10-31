@@ -52,7 +52,7 @@ ListItem.displayName = "ListItem"
 
 const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
-  const isActive = item.subItems 
+  const isActive = item.subItems
     ? item.subItems.some(sub => pathname.startsWith(sub.href))
     : pathname.startsWith(item.href);
 
