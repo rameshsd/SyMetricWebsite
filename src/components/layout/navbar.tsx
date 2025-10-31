@@ -4,9 +4,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, User, Globe, ChevronRight } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { navItems, solutions } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
@@ -56,39 +56,24 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 
-const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobileMenu: () => void }) => {
+const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
   const isActive = pathname.startsWith(item.href);
 
-  if (item.subItems) {
-    return (
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value={item.name} className="border-b-0">
-          <AccordionTrigger
-            className={cn(
-              "flex w-full items-center justify-between rounded-md py-3 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground hover:no-underline",
-              isActive ? 'text-primary' : 'text-foreground'
-            )}
-          >
-            {item.name}
-          </AccordionTrigger>
-          <AccordionContent className="pb-0 pl-4">
-            {item.subItems.map((subItem) => (
-              <MobileNavLink key={subItem.name} item={subItem} closeMobileMenu={closeMobileMenu} />
-            ))}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    );
-  }
-
   return (
     <Link
-      href={item.href}
-      onClick={closeMobileMenu}
+      href={item.subItems ? '#' : item.href}
+      onClick={(e) => {
+        if (item.subItems) {
+          e.preventDefault();
+          onSubmenu(item.subItems, item.name);
+        } else {
+          closeMobileMenu();
+        }
+      }}
       className={cn(
-        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground',
-        pathname === item.href ? 'text-primary' : 'text-foreground'
+        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors hover:bg-accent/50',
+        isActive ? 'text-primary' : 'text-foreground'
       )}
     >
       {item.name}
@@ -100,6 +85,8 @@ const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobi
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = React.useState<{items: NavItemType[], title: string} | null>(null);
+
   const pathname = usePathname();
 
   const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
@@ -126,7 +113,17 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setTimeout(() => setMobileSubmenu(null), 300);
+  };
+  
+  const handleBack = () => {
+    setMobileSubmenu(null);
+  };
+
+  const menuContent = mobileSubmenu ? mobileSubmenu.items : navItems;
+
 
   return (
     <header
@@ -137,7 +134,7 @@ export function Navbar() {
     >
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <div className="mr-auto md:mr-4">
+        <div className="mr-auto">
           <Logo />
         </div>
 
@@ -156,9 +153,9 @@ export function Navbar() {
                             <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
                                 <div className="col-span-1">
                                     {productsSubitem && (
-                                    <Link href={productsSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
-                                        <h3>{productsSubitem.name}</h3>
-                                    </Link>
+                                    <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">
+                                        {productsSubitem.name}
+                                    </h3>
                                     )}
                                     <ul className="grid gap-1">
                                         {productComponents.map((component) => (
@@ -174,9 +171,9 @@ export function Navbar() {
                                 </div>
                                 <div className="col-span-1">
                                     {servicesSubitem && (
-                                        <Link href={servicesSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
-                                        <h3>{servicesSubitem.name}</h3>
-                                        </Link>
+                                        <h3 className="font-bold text-sm text-muted-foreground px-3 py-2">
+                                            {servicesSubitem.name}
+                                        </h3>
                                     )}
                                     <ul className="grid gap-1">
                                         {servicesSubitem?.subItems?.map((subItem) => (
@@ -195,7 +192,7 @@ export function Navbar() {
                         </>
                     ) : (
                         <Link href={item.href} legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()} data-active={pathname.startsWith(item.href)}>
+                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && "data-[active]:text-primary data-[active]:after:scale-x-100")}>
                                 {item.name}
                             </NavigationMenuLink>
                         </Link>
@@ -207,58 +204,56 @@ export function Navbar() {
         </div>
         
         {/* Right side icons */}
-        <div className="flex items-center gap-2 ml-auto">
-            <div className="hidden md:flex items-center space-x-2">
-                <Button variant="ghost" size="icon">
-                    <Search className="h-5 w-5" />
-                    <span className="sr-only">Search</span>
-                </Button>
-                <Button variant="ghost" size="icon">
-                    <User className="h-5 w-5" />
-                    <span className="sr-only">Account</span>
-                </Button>
-                <Button variant="ghost" size="icon">
-                    <Globe className="h-5 w-5" />
-                    <span className="sr-only">Language</span>
-                </Button>
-            </div>
-
+        <div className="flex items-center gap-x-2 md:gap-x-0 ml-auto">
+            <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+            </Button>
+            <Button variant="ghost" size="icon">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Language</span>
+            </Button>
             {/* Mobile Menu Trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
+              <SheetTrigger asChild>
+                 <Button variant="ghost" size="icon" className="relative">
+                    {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    <span className={cn(
+                        "absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-primary rounded-full transition-transform duration-300",
+                        isMobileMenuOpen ? "scale-x-100" : "scale-x-0"
+                    )}></span>
+                    <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                  <SheetHeader className="p-4 border-b">
-                      <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                      <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
-                      <div className="flex items-center justify-between">
-                          <Logo />
-                          <SheetTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                  <X className="h-6 w-6" />
-                                  <span className="sr-only">Close menu</span>
-                              </Button>
-                          </SheetTrigger>
-                      </div>
+              <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => e.preventDefault()}>
+                  <SheetHeader className="p-4 border-b sr-only">
+                    <SheetTitle>Main Menu</SheetTitle>
                   </SheetHeader>
-                  <div className="p-4">
+                  <div className="p-4 border-b">
                     <div className="relative">
                       <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
                       <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
                   </div>
+                  {mobileSubmenu && (
+                      <div className="p-4 border-b">
+                          <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
+                              <ChevronLeft className="h-6 w-6 mr-2" />
+                              {mobileSubmenu.title}
+                          </Button>
+                      </div>
+                  )}
                   <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
-                    {navItems.map((item) => (
-                      <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} />
+                    {menuContent.map((item) => (
+                      <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={setMobileSubmenu} />
                     ))}
                   </nav>
                   <div className="p-4 mt-auto border-t">
-                    <Button className="w-full h-12 text-lg" asChild>
-                        <Link href="#">Explore SyMetric</Link>
+                    <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
+                        <Link href="#">
+                            Explore SyMetric
+                            <ChevronRight className="h-6 w-6" />
+                        </Link>
                     </Button>
                   </div>
               </SheetContent>
