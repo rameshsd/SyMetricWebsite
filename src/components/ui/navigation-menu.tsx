@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -43,7 +44,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 after:absolute after:bottom-2 after:left-0 after:h-1 after:w-full after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out data-[active]:text-primary data-[state=open]:text-primary hover:after:scale-x-100 data-[state=open]:after:scale-x-100"
+  "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors text-foreground hover:text-primary focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out data-[active]:text-primary data-[state=open]:text-primary hover:after:scale-x-100 data-[state=open]:after:scale-x-100"
 )
 
 const NavigationMenuTrigger = React.forwardRef<

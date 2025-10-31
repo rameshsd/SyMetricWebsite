@@ -129,13 +129,11 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center">
-        {/* Unified Header */}
         <div className="flex w-full items-center justify-between">
             <div className="flex items-center">
               <Logo />
             </div>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex flex-1 items-center justify-center">
             <NavigationMenu>
                 <NavigationMenuList>
@@ -200,7 +198,6 @@ export function Navbar() {
             </NavigationMenu>
           </div>
 
-          {/* Mobile Menu and Right-side Icons */}
           <div className="flex items-center gap-x-0">
              <div className="hidden md:flex items-center">
                 <Button variant="ghost" size="icon">
