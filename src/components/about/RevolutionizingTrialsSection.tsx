@@ -28,7 +28,7 @@ export function RevolutionizingTrialsSection() {
             <div className="container">
                 <SectionTitle 
                     title="Revolutionizing Clinical Trials With Innovation"
-                    description="At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity."
+                    description="At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity. We offer modularized solutions for Pharma Companies, Contract Research Organizations, and Academia. You can integrate your processes with our user-friendly applications or choose from comprehensive modules for every stage of your trial. And all this comes to you, complete with Study Configurations, in a matter of three to four weeks. So take a big leap with SyMetric!"
                 />
 
                 <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
