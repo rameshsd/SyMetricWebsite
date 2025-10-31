@@ -74,20 +74,22 @@ export function PageHeader({
             </div>
         )}
         {secondaryNav && (
-          <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-            {secondaryNav.map((tab) => (
-              <Link
-                key={tab.label}
-                href={tab.href}
-                className={cn(
-                  tab.label === 'Overview' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
-                  "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
-                )}
-              >
-                {tab.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="overflow-x-auto scrollbar-hide">
+            <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+              {secondaryNav.map((tab) => (
+                <Link
+                  key={tab.label}
+                  href={tab.href}
+                  className={cn(
+                    tab.label === 'Overview' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
+                    "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
+                  )}
+                >
+                  {tab.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         )}
       </div>
     </div>
