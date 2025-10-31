@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ServicesTabs } from '@/components/services/ServicesTabs';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -27,6 +28,12 @@ export default function ServicesPage() {
 
   return (
     <div className="bg-background">
+      <PageHeader
+        title="Professional services"
+        breadcrumb={{ href: '/industries', label: 'Industries' }}
+        secondaryNav={secondaryNav}
+        showTitle={false}
+      />
       <section className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden">
         <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-10 items-center">

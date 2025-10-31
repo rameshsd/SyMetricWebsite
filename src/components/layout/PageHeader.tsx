@@ -1,7 +1,8 @@
+
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -60,6 +61,18 @@ export function PageHeader({
             <h1 className="text-2xl font-bold text-foreground">{title}</h1>
           </div>
         )}
+        {!showTitle && breadcrumb && (
+            <div className="py-3 flex items-center justify-between">
+                <div className="flex items-center text-sm">
+                    <Link href={breadcrumb.href} className="flex items-center gap-1 text-muted-foreground hover:text-primary">
+                        <ChevronDown className="h-4 w-4" />
+                        {breadcrumb.label}
+                    </Link>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
+                    <span className="font-semibold text-foreground">{title}</span>
+                </div>
+            </div>
+        )}
         {secondaryNav && (
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             {secondaryNav.map((tab) => (
@@ -67,9 +80,7 @@ export function PageHeader({
                 key={tab.label}
                 href={tab.href}
                 className={cn(
-                  pathname === tab.href
-                    ? "border-primary text-primary"
-                    : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
+                  tab.label === 'Overview' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                   "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
                 )}
               >
