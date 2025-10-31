@@ -99,7 +99,7 @@
     {
       "id": "resource-1",
       "description": "Decentralized clinical trials concept",
-      "imageUrl": "https://images.unsplash.com/photo-1533545587081-bbdccaab0c33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuZXR3b3JrJTIwcGVvcGxlfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1533545587081-bbdccaab0c33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuZXR3b3JrJTIwcGVvcGxlfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "network people"
     },
     {
@@ -592,121 +592,109 @@
       "id": "logo-christ",
       "description": "Christ Juweliere Logo",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/Christ.png",
-      "imageHint": "Christ logo"
-    },
-    {
-      "id": "quote-icon",
-      "description": "A decorative quotation mark icon",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/quote.png",
-      "imageHint": "quote icon"
-    },
-    {
-      "id": "platform-pharma",
-      "description": "Scientists working in a pharmaceutical lab",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/pharma-companies.jpg",
-      "imageHint": "pharma lab"
-    },
-    {
-      "id": "platform-cro",
-      "description": "Business professionals in a meeting",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/Contract-Research-Organizations-CROs.jpg",
-      "imageHint": "business meeting"
-    },
-    {
-      "id": "platform-academia",
-      "description": "University campus building",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/Academia-Hospitals-and-Universities.jpg",
-      "imageHint": "university campus"
-    },
-    {
-      "id": "why-us-flexible",
-      "description": "Abstract shapes showing flexibility",
-      "imageUrl": "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "abstract flexible"
-    },
-    {
-      "id": "why-us-modular",
-      "description": "Building blocks representing modularity",
-      "imageUrl": "https://images.unsplash.com/photo-1575375836854-340177f1a329?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "modular blocks"
-    },
-    {
-      "id": "why-us-intuitive",
-      "description": "Clean and simple user interface design",
-      "imageUrl": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "simple interface"
-    },
-    {
-      "id": "why-us-sso",
-      "description": "A single key unlocking multiple doors",
-      "imageUrl": "https://images.unsplash.com/photo-1563299796-17596c6a0169?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "single key"
-    },
-    {
-      "id": "why-us-reusable",
-      "description": "Stack of reusable components or templates",
-      "imageUrl": "https://images.unsplash.com/photo-1529306221199-31e23a4b553e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "reusable templates"
-    },
-    {
-      "id": "why-us-compliant",
-      "description": "A security shield icon protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "security shield"
-    },
-    {
-      "id": "why-us-tracking",
-      "description": "Dashboard with real-time analytics and charts",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "analytics dashboard"
-    },
-    {
-      "id": "why-us-support",
-      "description": "Friendly support staff member with a headset",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "customer support"
-    },
-    {
-      "id": "solutions-hero-bg",
-      "description": "Blue background with a subtle geometric pattern",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/sap-trust-center-bg.png",
-      "imageHint": "blue pattern"
-    },
-    {
-      "id": "new-hero-image",
-      "description": "Doctor holding a futuristic screen with medical data and charts.",
-      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "doctor data"
-    },
-    {
-      "id": "training-hero",
-      "description": "A diverse group of people in a modern office attending a training session.",
-      "imageUrl": "https://images.unsplash.com/photo-1538688423619-a83424e24552?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "training session"
-    },
-    {
-      "id": "supply-chain",
-      "description": "A view of a busy shipping port with cranes and containers.",
-      "imageUrl": "https://images.unsplash.com/photo-1613616892642-9a6479017997?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "shipping port"
-    },
-    {
-      "id": "collaboration-infographic",
-      "description": "SyMetric collaboration infographic",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/collboration-infographic.png",
-      "imageHint": "collaboration infographic"
+      "imageHint": "Christ Juweliere logo"
     },
     {
       "id": "logo-prestige",
       "description": "Prestige Group Logo",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/prestige.png",
-      "imageHint": "Prestige logo"
+      "imageHint": "Prestige Group logo"
     },
     {
       "id": "logo-parle",
       "description": "Parle Logo",
       "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2024/07/parle.png",
       "imageHint": "Parle logo"
+    },
+    {
+      "id": "why-us-flexible",
+      "description": "Abstract shapes showing flexibility",
+      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "abstract flowing"
+    },
+    {
+      "id": "why-us-modular",
+      "description": "Building blocks forming a structure",
+      "imageUrl": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "team puzzle"
+    },
+    {
+      "id": "why-us-intuitive",
+      "description": "A person interacting with a clean user interface",
+      "imageUrl": "https://images.unsplash.com/photo-1581089458284-8859a033f739?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "man touchscreen"
+    },
+    {
+      "id": "why-us-sso",
+      "description": "A secure lock icon",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "data security"
+    },
+    {
+      "id": "why-us-reusable",
+      "description": "Stack of organized documents",
+      "imageUrl": "https://images.unsplash.com/photo-1558362627-9426f4370244?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "files organized"
+    },
+    {
+      "id": "why-us-compliant",
+      "description": "A person signing a document",
+      "imageUrl": "https://images.unsplash.com/photo-1560520450-4d2a44117b4a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "signing document"
+    },
+    {
+      "id": "why-us-tracking",
+      "description": "A dashboard with charts and graphs",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "analytics dashboard"
+    },
+    {
+      "id": "why-us-support",
+      "description": "A customer support representative with a headset",
+      "imageUrl": "https://images.unsplash.com/photo-1616587071986-4c3d019cd5c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "customer support"
+    },
+    {
+      "id": "platform-pharma",
+      "description": "Pharmaceutical lab with scientist",
+      "imageUrl": "https://images.unsplash.com/photo-1581093582522-2b6389a9f248?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "pharma lab"
+    },
+    {
+      "id": "platform-cro",
+      "description": "Team of researchers collaborating",
+      "imageUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "research team"
+    },
+    {
+      "id": "platform-academia",
+      "description": "University building",
+      "imageUrl": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "university building"
+    },
+    {
+      "id": "quote-icon",
+      "description": "Quotation mark icon",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/quote.svg",
+      "imageHint": "quote icon"
+    },
+    {
+      "id": "collaboration-infographic",
+      "description": "SyMetric Collaboration Model Infographic",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Collaboration-Model.jpg",
+      "imageHint": "collaboration model"
+    },
+    {
+      "id": "training-hero",
+      "description": "People in a training session",
+      "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "training session"
+    },
+    {
+      "id": "supply-chain",
+      "description": "Image of supply chain logistics",
+      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "logistics boxes"
     }
   ]
 }
