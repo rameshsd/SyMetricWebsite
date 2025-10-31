@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -53,8 +54,9 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   const pathname = usePathname();
   const isActive = item.href && pathname.startsWith(item.href);
 
-  const handleClick = () => {
-    if (item.subItems) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (item.subItems && item.subItems.length > 0) {
+      e.preventDefault();
       onSubmenu(item.subItems, item.name);
     } else {
       closeMobileMenu();
@@ -62,19 +64,20 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   };
 
   return (
-    <div
+    <Link
+      href={item.href || '#'}
       onClick={handleClick}
       className={cn(
-        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary cursor-pointer',
+        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary',
         isActive && 'text-primary'
       )}
     >
-      <Link href={item.href || '#'} className="flex flex-col">
+      <div className="flex flex-col">
         <span>{item.name}</span>
         {item.description && <span className="text-sm font-normal text-muted-foreground">{item.description}</span>}
-      </Link>
-      {item.subItems && <ChevronRight className="h-5 w-5" />}
-    </div>
+      </div>
+      {item.subItems && item.subItems.length > 0 && <ChevronRight className="h-5 w-5" />}
+    </Link>
   );
 };
 
@@ -82,7 +85,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
-
+  
   const pathname = usePathname();
 
   const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
@@ -215,39 +218,51 @@ export function Navbar() {
                   <NavigationMenuItem key={item.name}>
                   {item.name === 'Products and Services' && productsAndServicesItem?.subItems ? (
                       <>
-                      <NavigationMenuTrigger className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}>
+                      <NavigationMenuTrigger className={cn((pathname.startsWith('/solutions') || pathname.startsWith('/services')) && 'data-[state=closed]:text-primary')}>
                           {item.name}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                          <div className="grid md:w-[600px] lg:w-[700px] grid-cols-2 gap-x-8 p-6">
-                            <div>
-                              <h3 className="font-semibold text-lg text-foreground mb-3">Products</h3>
-                              <ul className="grid gap-3">
-                                {productComponents && productComponents.map((component) => (
-                                    <ListItem
-                                    key={component.title}
-                                    title={component.title}
-                                    href={component.href}
-                                    >
-                                    {component.description}
-                                    </ListItem>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                               <h3 className="font-semibold text-lg text-foreground mb-3">Services</h3>
-                               <ul className="grid gap-3">
-                                {serviceComponents && serviceComponents.map((component) => (
-                                    <ListItem
-                                    key={component.name}
-                                    title={component.name}
-                                    href={component.href}
-                                    >
-                                    {component.description}
-                                    </ListItem>
-                                ))}
-                              </ul>
-                            </div>
+                            {productsSubItem && (
+                                <div>
+                                <h3 className="font-semibold text-lg text-foreground mb-3">
+                                    <Link href={productsSubItem.href} className="hover:text-primary transition-colors">
+                                    {productsSubItem.name}
+                                    </Link>
+                                </h3>
+                                <ul className="grid gap-3">
+                                    {(productComponents || []).map((component) => (
+                                        <ListItem
+                                        key={component.title}
+                                        title={component.title}
+                                        href={component.href}
+                                        >
+                                        {component.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                                </div>
+                            )}
+                            {servicesSubItem && (
+                                <div>
+                                <h3 className="font-semibold text-lg text-foreground mb-3">
+                                    <Link href={servicesSubItem.href} className="hover:text-primary transition-colors">
+                                    {servicesSubItem.name}
+                                    </Link>
+                                </h3>
+                                <ul className="grid gap-3">
+                                    {(serviceComponents || []).map((component) => (
+                                        <ListItem
+                                        key={component.name}
+                                        title={component.name}
+                                        href={component.href}
+                                        >
+                                        {component.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                                </div>
+                            )}
                          </div>
                       </NavigationMenuContent>
                       </>
