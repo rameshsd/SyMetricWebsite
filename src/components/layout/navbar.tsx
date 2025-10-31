@@ -135,6 +135,59 @@ export function Navbar() {
         
         <div className="flex items-center md:hidden flex-1 justify-between">
             <Logo />
+             <div className="flex items-center">
+                <Button variant="ghost" size="icon">
+                    <User className="h-6 w-6" />
+                    <span className="sr-only">Account</span>
+                </Button>
+                <Button variant="ghost" size="icon">
+                    <Globe className="h-6 w-6" />
+                    <span className="sr-only">Language</span>
+                </Button>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                    <SheetTrigger asChild>
+                        <Button variant="ghost" size="icon" className="relative">
+                            <Menu className="h-6 w-6" />
+                             <span className={cn(
+                                "absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-primary rounded-full transition-transform duration-300",
+                                isMobileMenuOpen ? "scale-x-100" : "scale-x-0"
+                            )}></span>
+                            <span className="sr-only">Toggle menu</span>
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => e.preventDefault()}>
+                        <SheetHeader className="p-4 border-b">
+                          <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                          <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
+                          <div className="relative">
+                            <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
+                            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                          </div>
+                        </SheetHeader>
+                        {mobileSubmenu && (
+                            <div className="p-4 border-b">
+                                <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
+                                    <ChevronLeft className="h-6 w-6 mr-2" />
+                                    {mobileSubmenu.title}
+                                </Button>
+                            </div>
+                        )}
+                        <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
+                          {menuContent.map((item) => (
+                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={setMobileSubmenu} />
+                          ))}
+                        </nav>
+                        <div className="p-4 mt-auto border-t">
+                          <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
+                              <Link href="#">
+                                  Explore SyMetric
+                                  <ChevronRight className="h-6 w-6" />
+                              </Link>
+                          </Button>
+                        </div>
+                    </SheetContent>
+                </Sheet>
+            </div>
         </div>
 
         <div className="hidden md:flex items-center justify-center">
@@ -189,11 +242,11 @@ export function Navbar() {
                       </NavigationMenuContent>
                       </>
                   ) : (
-                      <Link href={item.href} passHref>
-                          <NavigationMenuLink active={pathname.startsWith(item.href)} className={navigationMenuTriggerStyle()}>
-                              {item.name}
-                          </NavigationMenuLink>
+                    <NavigationMenuLink asChild active={pathname.startsWith(item.href)}>
+                      <Link href={item.href} className={navigationMenuTriggerStyle()}>
+                        {item.name}
                       </Link>
+                    </NavigationMenuLink>
                   )}
                   </NavigationMenuItem>
               ))}
@@ -201,60 +254,15 @@ export function Navbar() {
           </NavigationMenu>
         </div>
 
-        <div className="flex items-center gap-x-0 ml-auto">
-            <div className="hidden md:flex items-center">
-              <Button variant="ghost" size="icon">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">Account</span>
-              </Button>
-              <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Language</span>
-              </Button>
-          </div>
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative md:hidden">
-                  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                  <span className={cn(
-                      "absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-primary rounded-full transition-transform duration-300",
-                      isMobileMenuOpen ? "scale-x-100" : "scale-x-0"
-                  )}></span>
-                  <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => e.preventDefault()}>
-                <SheetHeader className="p-4 border-b">
-                  <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                  <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
-                  <div className="relative">
-                    <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
-                    <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-                  </div>
-                </SheetHeader>
-                {mobileSubmenu && (
-                    <div className="p-4 border-b">
-                        <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
-                            <ChevronLeft className="h-6 w-6 mr-2" />
-                            {mobileSubmenu.title}
-                        </Button>
-                    </div>
-                )}
-                <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
-                  {menuContent.map((item) => (
-                    <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={setMobileSubmenu} />
-                  ))}
-                </nav>
-                <div className="p-4 mt-auto border-t">
-                  <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
-                      <Link href="#">
-                          Explore SyMetric
-                          <ChevronRight className="h-6 w-6" />
-                      </Link>
-                  </Button>
-                </div>
-            </SheetContent>
-          </Sheet>
+        <div className="hidden md:flex items-center gap-x-0 ml-auto">
+            <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Account</span>
+            </Button>
+            <Button variant="ghost" size="icon">
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Language</span>
+            </Button>
         </div>
       </div>
     </header>
