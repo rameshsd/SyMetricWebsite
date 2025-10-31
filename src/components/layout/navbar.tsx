@@ -24,20 +24,18 @@ import { Input } from '../ui/input';
 
 
 const ListItem = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<typeof Link> & { title: string }
+  HTMLDivElement,
+  { title: string; href: string; children: React.ReactNode; className?: string }
 >(({ className, title, children, href, ...props }, ref) => {
   return (
-    <li>
+    <li ref={ref} {...props}>
       <NavigationMenuLink asChild>
         <Link
           href={href || '#'}
-          ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary",
             className
           )}
-          {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -192,6 +190,7 @@ export function Navbar() {
                                     <ChevronLeft className="h-6 w-6 mr-2" />
                                     {mobileSubmenuStack.length > 1 ? mobileSubmenuStack[mobileSubmenuStack.length-2].title : 'Main Menu'}
                                 </Button>
+                                {currentSubmenu.title && <h2 className="text-xl font-bold mt-2">{currentSubmenu.title}</h2>}
                             </div>
                         )}
                         <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
@@ -227,7 +226,7 @@ export function Navbar() {
                             {productsSubItem && (
                                 <div>
                                 <h3 className="font-semibold text-lg text-foreground mb-3">
-                                    <Link href={productsSubItem.href} className="hover:text-primary transition-colors">
+                                    <Link href={productsSubItem.href || '#'} className="hover:text-primary transition-colors">
                                     {productsSubItem.name}
                                     </Link>
                                 </h3>
@@ -247,7 +246,7 @@ export function Navbar() {
                             {servicesSubItem && (
                                 <div>
                                 <h3 className="font-semibold text-lg text-foreground mb-3">
-                                    <Link href={servicesSubItem.href} className="hover:text-primary transition-colors">
+                                    <Link href={servicesSubItem.href || '#'} className="hover:text-primary transition-colors">
                                     {servicesSubItem.name}
                                     </Link>
                                 </h3>
@@ -268,11 +267,11 @@ export function Navbar() {
                       </NavigationMenuContent>
                       </>
                   ) : (
-                    <NavigationMenuLink asChild active={pathname.startsWith(item.href)}>
-                        <Link href={item.href} className={navigationMenuTriggerStyle()}>
-                            {item.name}
-                        </Link>
-                    </NavigationMenuLink>
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && 'text-primary')}>
+                          {item.name}
+                      </NavigationMenuLink>
+                    </Link>
                   )}
                   </NavigationMenuItem>
               ))}
