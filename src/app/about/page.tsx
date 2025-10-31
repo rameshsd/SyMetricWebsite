@@ -1,3 +1,4 @@
+
 import { companyInfo } from '@/lib/data';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { LeadershipSection } from '@/components/layout/LeadershipSection';
@@ -80,6 +81,7 @@ export default function AboutPage() {
 
       <section id="our-strategy" className="bg-secondary">
         <div className="container">
+          <SectionTitle title="Our Strategy" description="Our vision and mission drive everything we do." className="mb-16"/>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
               <h2 className="text-3xl font-bold tracking-tight">Vision</h2>
