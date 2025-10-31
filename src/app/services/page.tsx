@@ -104,10 +104,10 @@ export default function ServicesPage() {
             <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="space-y-6">
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                        Professional services
+                        Our Services
                     </h1>
                     <p className="mt-4 text-lg text-white/80 max-w-lg">
-                        With professional services automation (PSA), you can run your business more efficiently and achieve smarter growth at scale.
+                        As Clinical Trials create large amounts of data, managing the data ensuring high-quality and accuracy can be a highly complex task. Whether you need extensive assistance or solutions to individual problems, SyMetric’s range of services meet your needs by seamlessly integrating with your existing system or helping you build a new one.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
                         <Button size="lg" variant="secondary" className="bg-white text-black hover:bg-gray-200">Request a demo</Button>
