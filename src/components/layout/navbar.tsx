@@ -134,7 +134,10 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden flex-1">
+            <Link href="/" className="mr-auto">
+              <Logo />
+            </Link>
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -176,7 +179,7 @@ export function Navbar() {
             </Sheet>
           </div>
           
-          <div className="flex items-center">
+          <div className="hidden md:flex items-center">
             <Logo />
           </div>
           
@@ -242,7 +245,7 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          <div className="flex flex-1 items-center justify-end space-x-2">
+          <div className="hidden md:flex flex-1 items-center justify-end space-x-2">
             <Button variant="ghost" size="icon">
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Search</span>
