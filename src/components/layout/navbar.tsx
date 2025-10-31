@@ -52,29 +52,28 @@ ListItem.displayName = "ListItem"
 
 const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
-  const isActive = item.subItems
-    ? item.subItems.some(sub => pathname.startsWith(sub.href))
-    : pathname.startsWith(item.href);
+  const isActive = item.href && pathname.startsWith(item.href);
 
   return (
-    <Link
-      href={item.subItems ? '#' : item.href}
-      onClick={(e) => {
+    <div
+      onClick={() => {
         if (item.subItems) {
-          e.preventDefault();
           onSubmenu(item.subItems, item.name);
         } else {
           closeMobileMenu();
         }
       }}
       className={cn(
-        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary',
+        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary cursor-pointer',
         isActive && 'text-primary'
       )}
     >
-      {item.name}
+      <Link href={item.href || '#'} className="flex flex-col">
+        <span>{item.name}</span>
+        {item.description && <span className="text-sm font-normal text-muted-foreground">{item.description}</span>}
+      </Link>
       {item.subItems && <ChevronRight className="h-5 w-5" />}
-    </Link>
+    </div>
   );
 };
 
@@ -155,7 +154,7 @@ export function Navbar() {
                             <span className="sr-only">Toggle menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => e.preventDefault()}>
+                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => { if(isMobileMenuOpen) e.preventDefault()}}>
                         <SheetHeader className="p-4 border-b">
                           <SheetTitle className="sr-only">Main Menu</SheetTitle>
                           <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
@@ -242,11 +241,11 @@ export function Navbar() {
                       </NavigationMenuContent>
                       </>
                   ) : (
-                    <NavigationMenuLink asChild active={pathname.startsWith(item.href)}>
-                      <Link href={item.href} className={navigationMenuTriggerStyle()}>
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()} active={pathname.startsWith(item.href)}>
                         {item.name}
-                      </Link>
-                    </NavigationMenuLink>
+                      </NavigationMenuLink>
+                    </Link>
                   )}
                   </NavigationMenuItem>
               ))}
