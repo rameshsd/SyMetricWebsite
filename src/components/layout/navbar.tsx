@@ -58,6 +58,7 @@ ListItem.displayName = "ListItem"
 
 const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobileMenu: () => void }) => {
   const pathname = usePathname();
+  const isActive = pathname.startsWith(item.href);
 
   if (item.subItems) {
     return (
@@ -66,7 +67,7 @@ const MobileNavLink = ({ item, closeMobileMenu }: { item: NavItemType, closeMobi
           <AccordionTrigger
             className={cn(
               "flex w-full items-center justify-between rounded-md py-3 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground hover:no-underline",
-              pathname.startsWith(item.href) ? 'text-primary' : 'text-foreground'
+              isActive ? 'text-primary' : 'text-foreground'
             )}
           >
             {item.name}
@@ -135,8 +136,8 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center">
-        {/* Unified Logo for both views */}
-        <div className="mr-auto">
+        {/* Logo */}
+        <div className="mr-auto md:mr-4">
           <Logo />
         </div>
 
@@ -194,7 +195,7 @@ export function Navbar() {
                         </>
                     ) : (
                         <Link href={item.href} legacyBehavior passHref>
-                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && "text-primary after:scale-x-100")}>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()} data-active={pathname.startsWith(item.href)}>
                                 {item.name}
                             </NavigationMenuLink>
                         </Link>
@@ -205,8 +206,8 @@ export function Navbar() {
             </NavigationMenu>
         </div>
         
-        {/* Icons and Mobile Menu Trigger */}
-        <div className="flex items-center gap-2">
+        {/* Right side icons */}
+        <div className="flex items-center gap-2 ml-auto">
             <div className="hidden md:flex items-center space-x-2">
                 <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
@@ -222,6 +223,7 @@ export function Navbar() {
                 </Button>
             </div>
 
+            {/* Mobile Menu Trigger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
@@ -249,12 +251,12 @@ export function Navbar() {
                       <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
                   </div>
-                  <nav className="flex-1 space-y-1 px-4">
+                  <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
                     {navItems.map((item) => (
                       <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} />
                     ))}
                   </nav>
-                  <div className="p-4 mt-auto">
+                  <div className="p-4 mt-auto border-t">
                     <Button className="w-full h-12 text-lg" asChild>
                         <Link href="#">Explore SyMetric</Link>
                     </Button>
