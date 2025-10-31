@@ -7,6 +7,11 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ServicesTabs } from '@/components/services/ServicesTabs';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
+import { ServicesUseCases } from '@/components/services/ServicesUseCases';
+import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
+import { ResourcesCarousel } from '@/components/home/resources-carousel';
+import { ServicesFAQ } from '@/components/services/ServicesFAQ';
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -15,12 +20,12 @@ export const metadata: Metadata = {
 
 const secondaryNav = [
     { label: 'Overview', href: '#' },
-    { label: 'Products', href: '#' },
-    { label: 'Use cases', href: '#' },
-    { label: 'Customer stories', href: '#' },
-    { label: 'Resources', href: '#' },
-    { label: 'Get started', href: '#' },
-    { label: 'FAQs', href: '#' },
+    { label: 'Products', href: '#products' },
+    { label: 'Use cases', href: '#use-cases' },
+    { label: 'Customer stories', href: '#customer-stories' },
+    { label: 'Resources', href: '#resources' },
+    { label: 'Get started', href: '#get-started' },
+    { label: 'FAQs', href: '#faqs' },
   ];
 
 export default function ServicesPage() {
@@ -32,7 +37,6 @@ export default function ServicesPage() {
         title="Professional services"
         breadcrumb={{ href: '/industries', label: 'Industries' }}
         secondaryNav={secondaryNav}
-        showTitle={false}
       />
       <section className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden">
         <div className="container relative z-10">
@@ -70,7 +74,23 @@ export default function ServicesPage() {
 
         <ServicesTabs />
 
-        <section className="bg-secondary/50">
+        <div id="products">
+            <ExploreSolutions />
+        </div>
+
+        <div id="use-cases">
+            <ServicesUseCases />
+        </div>
+
+        <div id="customer-stories">
+            <CustomerSuccessSection />
+        </div>
+
+        <div id="resources">
+            <ResourcesCarousel />
+        </div>
+
+        <section id="get-started" className="bg-secondary/50">
             <div className="container">
               <div className="text-center">
                   <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
@@ -82,6 +102,10 @@ export default function ServicesPage() {
               </div>
             </div>
         </section>
+
+        <div id="faqs">
+            <ServicesFAQ />
+        </div>
     </div>
   );
 }

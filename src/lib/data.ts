@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -24,6 +24,10 @@ import {
   BarChart,
   Rocket,
   Compass,
+  GaugeCircle,
+  Clock,
+  BookOpen,
+  Headset,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -722,4 +726,50 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         linkUrl: "/solutions/clinical-trial-platform",
         imageId: "hero-carousel-3"
     }
-]
+];
+
+export const useCases: UseCase[] = [
+    {
+        icon: Rocket,
+        title: "Accelerate Trial Timelines",
+        description: "Streamline startup, recruitment, and data capture to bring therapies to market faster."
+    },
+    {
+        icon: ShieldCheck,
+        title: "Enhance Data Quality & Compliance",
+        description: "Ensure data integrity and audit readiness with automated validation and real-time monitoring."
+    },
+    {
+        icon: GaugeCircle,
+        title: "Improve Operational Efficiency",
+        description: "Reduce manual effort and operational costs through automation and integrated workflows."
+    },
+    {
+        icon: Users,
+        title: "Boost Patient Engagement",
+        description: "Make trial participation easier and more engaging for patients with user-friendly tools."
+    }
+];
+
+export const faqItems: FAQItem[] = [
+    {
+      question: "What types of services do you offer for clinical trials?",
+      answer: "We offer a comprehensive suite of services including Clinical Data Management, Project Management, Data Migration, customized Training, and 24/7 technical and operational Support to ensure your trial's success from start to finish."
+    },
+    {
+      question: "How do your services ensure data quality and compliance?",
+      answer: "Our services are built on a foundation of regulatory compliance (including 21 CFR Part 11 and ICH-GCP) and data integrity. We use validated systems, automated data checks, and rigorous quality control processes to ensure your data is accurate, reliable, and audit-ready."
+    },
+    {
+      question: "Can you help us migrate data from our existing system?",
+      answer: "Yes, our Data Migration service ensures a seamless and secure transition of your clinical trial data from legacy systems or other EDC tools to our platform, maintaining data integrity throughout the process."
+    },
+    {
+      question: "What kind of support can we expect?",
+      answer: "We provide 24/7 dedicated support for both technical and operational queries. Our expert team is always available to ensure your trials run smoothly and any issues are resolved with a fast turnaround time."
+    },
+    {
+      question: "Are your services suitable for a trial of our size?",
+      answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
+    }
+  ];

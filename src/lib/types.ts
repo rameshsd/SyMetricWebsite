@@ -135,4 +135,15 @@ export type UnlockPotentialItem = {
   linkUrl: string;
   imageId: string;
 };
+
+export type UseCase = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export type FAQItem = {
+  question: string;
+  answer: string;
+};
     
