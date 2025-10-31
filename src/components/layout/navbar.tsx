@@ -24,8 +24,8 @@ import { Input } from '../ui/input';
 
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<typeof Link> & { title: string }
 >(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
@@ -212,12 +212,12 @@ export function Navbar() {
             </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-center">
+        <div className="hidden md:flex items-center justify-start flex-1">
           <NavigationMenu>
               <NavigationMenuList>
-              {navItems.map((item) => (
+              {(navItems || []).map((item) => (
                   <NavigationMenuItem key={item.name}>
-                  {item.name === 'Products and Services' && productsAndServicesItem?.subItems ? (
+                  {item.href === '/solutions' && productsAndServicesItem?.subItems ? (
                       <>
                       <NavigationMenuTrigger className={cn((pathname.startsWith('/solutions') || pathname.startsWith('/services')) && 'data-[state=closed]:text-primary')}>
                           {item.name}
@@ -236,7 +236,7 @@ export function Navbar() {
                                         <ListItem
                                         key={component.title}
                                         title={component.title}
-                                        href={component.href}
+                                        href={component.href!}
                                         >
                                         {component.description}
                                         </ListItem>
@@ -256,7 +256,7 @@ export function Navbar() {
                                         <ListItem
                                         key={component.name}
                                         title={component.name}
-                                        href={component.href}
+                                        href={component.href!}
                                         >
                                         {component.description}
                                         </ListItem>

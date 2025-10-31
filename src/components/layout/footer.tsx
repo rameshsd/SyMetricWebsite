@@ -74,13 +74,8 @@ export function Footer() {
 
   useEffect(() => {
     setIsClient(true);
+    setYear(new Date().getFullYear());
   }, []);
-
-  useEffect(() => {
-    if(isClient) {
-      setYear(new Date().getFullYear());
-    }
-  }, [isClient]);
 
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
@@ -90,8 +85,8 @@ export function Footer() {
   
   return (
     <footer className="bg-secondary/50 border-t">
-      <div className="container">
-        <div className="flex justify-end items-center my-8">
+      <div className="container py-8">
+        <div className="flex justify-end items-center mb-8">
             <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
                 <ArrowUp className="h-5 w-5" />
                 <span className="sr-only">Back to top</span>
@@ -221,7 +216,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
-          <p className="text-xs text-muted-foreground">&copy; {isClient ? year : new Date().getFullYear()} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">&copy; {year} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
               <a key={link.name} href={link.href} className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
