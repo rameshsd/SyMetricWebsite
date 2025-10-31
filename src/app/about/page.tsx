@@ -23,6 +23,7 @@ export default function AboutPage() {
     { label: 'Company Information', href: '#company-info' },
     { label: 'Overview', href: '#overview' },
     { label: 'Our story', href: '#our-story' },
+    { label: 'Our Growth Story', href: '#growth-story' },
     { label: 'Our strategy', href: '#our-strategy' },
     { label: 'Innovation', href: '#innovation' },
     { label: 'Global sponsorships', href: '#sponsorships' },
@@ -72,6 +73,7 @@ export default function AboutPage() {
       </section>
 
       <div id="overview">
+        <SectionTitle title="Company Overview" className='pt-20'/>
         <CompanyFacts />
       </div>
       
@@ -110,6 +112,7 @@ export default function AboutPage() {
       <SapCloudPortfolio />
       
       <div id="our-story">
+        <SectionTitle title="Our Story" className='pt-20' />
         <LeadershipSection />
         <GrowthStoryTimeline />
       </div>
