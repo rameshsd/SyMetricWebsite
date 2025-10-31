@@ -173,7 +173,7 @@ export function Navbar() {
                             </div>
                         )}
                         <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
-                          {menuContent.map((item) => (
+                          {(menuContent || []).map((item) => (
                             <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={setMobileSubmenu} />
                           ))}
                         </nav>
