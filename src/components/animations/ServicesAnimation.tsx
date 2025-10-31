@@ -17,8 +17,8 @@ const services = [
 export function ServicesAnimation() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const numServices = services.length;
-  const radius = 140;
-  const center = { x: 200, y: 200 };
+  const radius = 160;
+  const center = { x: 225, y: 225 };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,7 +70,7 @@ export function ServicesAnimation() {
       animate={inView ? "visible" : "hidden"}
       className="w-full h-full flex items-center justify-center"
     >
-      <svg viewBox="0 0 400 400" className="w-full h-auto max-w-lg">
+      <svg viewBox="0 0 450 450" className="w-full h-auto max-w-lg overflow-visible">
         <defs>
             <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                 <stop offset="0%" stopColor="rgba(255, 255, 255, 0.3)" />
@@ -116,23 +116,21 @@ export function ServicesAnimation() {
               {/* Service Node */}
               <motion.g transform={`translate(${x}, ${y})`} variants={itemVariants}>
                 <circle cx="0" cy="0" r="30" fill="rgba(255, 255, 255, 0.15)" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/>
-                <service.icon
-                  x="-16"
-                  y="-16"
-                  width="32"
-                  height="32"
-                  stroke="white"
-                  strokeWidth="1.5"
-                />
+                <foreignObject x="-16" y="-16" width="32" height="32">
+                    <service.icon
+                        stroke="white"
+                        strokeWidth="1.5"
+                        className="w-full h-full"
+                    />
+                </foreignObject>
                 <text
-                  x="0"
                   y="45"
                   textAnchor="middle"
                   fill="white"
                   fontSize="11"
                   fontWeight="medium"
                 >
-                  {service.label.split(' ').map((word, index, words) => (
+                  {service.label.split(' ').map((word, index) => (
                       <tspan key={index} x="0" dy={index > 0 ? "1.2em" : "0"}>
                           {word}
                       </tspan>
