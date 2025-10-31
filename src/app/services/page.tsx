@@ -1,14 +1,13 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { solutions } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Database, GanttChart, Server, GraduationCap, LifeBuoy, ChevronDown, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { CollaborationDiagram } from '@/components/animations/CollaborationDiagram';
 
 export const metadata: Metadata = {
   title: 'Our Services - SyMetric',
@@ -70,7 +69,6 @@ const secondaryNav = [
   ];
 
 export default function ServicesPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'why-us-intuitive');
   return (
     <div className="bg-background">
       <div className="border-b">
@@ -114,18 +112,10 @@ export default function ServicesPage() {
                         <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-[#007075]">Read the Oxford Economics report</Button>
                     </div>
                 </div>
-                <div className="relative h-80 md:h-96">
-                    {heroImage && (
-                        <div className="absolute inset-0 clip-path-polygon-services-hero">
-                            <Image 
-                                src={heroImage.imageUrl}
-                                alt={heroImage.description}
-                                data-ai-hint={heroImage.imageHint}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                    )}
+                <div className="relative h-96 md:h-[500px]">
+                    <div className="absolute inset-0">
+                       <CollaborationDiagram />
+                    </div>
                 </div>
             </div>
         </div>
