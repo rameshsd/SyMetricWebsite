@@ -105,9 +105,6 @@ export default function ServicesPage() {
       </div>
         
       <section className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <GeometricPattern />
-        </div>
         <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="space-y-6">
@@ -124,8 +121,18 @@ export default function ServicesPage() {
                         </Button>
                     </div>
                 </div>
-                <div className="relative h-96 md:h-[400px]">
-                    <ServicesHeroDiagram />
+                <div className="relative h-64 md:h-full min-h-[400px]">
+                    {heroImage && (
+                        <div className="absolute inset-0 clip-path-polygon-about-hero">
+                            <Image 
+                                src={heroImage.imageUrl}
+                                alt={heroImage.description}
+                                data-ai-hint={heroImage.imageHint}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
@@ -177,3 +184,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+
