@@ -53,15 +53,17 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   const pathname = usePathname();
   const isActive = item.href && pathname.startsWith(item.href);
 
+  const handleClick = () => {
+    if (item.subItems) {
+      onSubmenu(item.subItems, item.name);
+    } else {
+      closeMobileMenu();
+    }
+  };
+
   return (
     <div
-      onClick={() => {
-        if (item.subItems) {
-          onSubmenu(item.subItems, item.name);
-        } else {
-          closeMobileMenu();
-        }
-      }}
+      onClick={handleClick}
       className={cn(
         'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary cursor-pointer',
         isActive && 'text-primary'
@@ -79,12 +81,16 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const [mobileSubmenu, setMobileSubmenu] = React.useState<{items: NavItemType[], title: string} | null>(null);
+  const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
 
   const pathname = usePathname();
 
-  const productsItem = navItems.find(item => item.name === 'Products');
-  const productComponents = productsItem?.subItems?.map(subItem => {
+  const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
+  
+  const productsSubItem = productsAndServicesItem?.subItems?.find(item => item.name === 'Products');
+  const servicesSubItem = productsAndServicesItem?.subItems?.find(item => item.name === 'Services');
+
+  const productComponents = productsSubItem?.subItems?.map(subItem => {
     const solution = solutions.find(s => {
       const solutionSlug = subItem.href.split('/').pop();
       return s.slug === solutionSlug || (s.slug === 'clinical-trial-platform' && solutionSlug === 'clinical-trial-platform');
@@ -95,7 +101,8 @@ export function Navbar() {
       description: solution?.description || ''
     }
   });
-
+  
+  const serviceComponents = servicesSubItem?.subItems;
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -107,14 +114,19 @@ export function Navbar() {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-    setTimeout(() => setMobileSubmenu(null), 300);
+    setTimeout(() => setMobileSubmenuStack([]), 300);
+  };
+
+  const handleSubmenu = (items: NavItemType[], title: string) => {
+    setMobileSubmenuStack(prev => [...prev, { items, title }]);
   };
   
   const handleBack = () => {
-    setMobileSubmenu(null);
+    setMobileSubmenuStack(prev => prev.slice(0, -1));
   };
 
-  const menuContent = mobileSubmenu ? mobileSubmenu.items : navItems;
+  const currentSubmenu = mobileSubmenuStack[mobileSubmenuStack.length - 1];
+  const menuContent = currentSubmenu ? currentSubmenu.items : navItems;
 
 
   return (
@@ -144,7 +156,13 @@ export function Navbar() {
                     <Globe className="h-6 w-6" />
                     <span className="sr-only">Language</span>
                 </Button>
-                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
+                  if (!open) {
+                    closeMobileMenu();
+                  } else {
+                    setIsMobileMenuOpen(true);
+                  }
+                }}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" className="relative">
                             <Menu className="h-6 w-6" />
@@ -155,7 +173,7 @@ export function Navbar() {
                             <span className="sr-only">Toggle menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => { if(isMobileMenuOpen) e.preventDefault()}}>
+                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
                         <SheetHeader className="p-4 border-b">
                           <SheetTitle className="sr-only">Main Menu</SheetTitle>
                           <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
@@ -164,23 +182,23 @@ export function Navbar() {
                             <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                           </div>
                         </SheetHeader>
-                        {mobileSubmenu && (
+                        {currentSubmenu && (
                             <div className="p-4 border-b">
                                 <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
                                     <ChevronLeft className="h-6 w-6 mr-2" />
-                                    {mobileSubmenu.title}
+                                    {mobileSubmenuStack.length > 1 ? mobileSubmenuStack[mobileSubmenuStack.length-2].title : 'Main Menu'}
                                 </Button>
                             </div>
                         )}
                         <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
                           {(menuContent || []).map((item) => (
-                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={(items, title) => setMobileSubmenu({ items: items || [], title })} />
+                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
                           ))}
                         </nav>
                         <div className="p-4 mt-auto border-t">
                           <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
-                              <Link href="#">
-                                  Explore SAP
+                              <Link href="/contact">
+                                  Contact Us
                                   <ChevronRight className="h-6 w-6" />
                               </Link>
                           </Button>
@@ -195,36 +213,42 @@ export function Navbar() {
               <NavigationMenuList>
               {navItems.map((item) => (
                   <NavigationMenuItem key={item.name}>
-                  {item.name === 'Products' && productsItem && productsItem.subItems ? (
+                  {item.name === 'Products and Services' && productsAndServicesItem?.subItems ? (
                       <>
                       <NavigationMenuTrigger className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}>
                           {item.name}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                            <li className="row-span-3">
-                                <NavigationMenuLink asChild>
-                                <a
-                                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                    href="/"
-                                >
-                                    <Logo />
-                                    <p className="text-sm leading-tight text-muted-foreground mt-4">
-                                    End-to-end digital solutions for modern clinical research.
-                                    </p>
-                                </a>
-                                </NavigationMenuLink>
-                            </li>
-                             {productComponents && productComponents.map((component) => (
-                                <ListItem
-                                key={component.title}
-                                title={component.title}
-                                href={component.href}
-                                >
-                                {component.description}
-                                </ListItem>
-                            ))}
-                         </ul>
+                         <div className="grid md:w-[600px] lg:w-[700px] grid-cols-2 gap-x-8 p-6">
+                            <div>
+                              <h3 className="font-semibold text-lg text-foreground mb-3">Products</h3>
+                              <ul className="grid gap-3">
+                                {productComponents && productComponents.map((component) => (
+                                    <ListItem
+                                    key={component.title}
+                                    title={component.title}
+                                    href={component.href}
+                                    >
+                                    {component.description}
+                                    </ListItem>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                               <h3 className="font-semibold text-lg text-foreground mb-3">Services</h3>
+                               <ul className="grid gap-3">
+                                {serviceComponents && serviceComponents.map((component) => (
+                                    <ListItem
+                                    key={component.name}
+                                    title={component.name}
+                                    href={component.href}
+                                    >
+                                    {component.description}
+                                    </ListItem>
+                                ))}
+                              </ul>
+                            </div>
+                         </div>
                       </NavigationMenuContent>
                       </>
                   ) : (
@@ -241,7 +265,6 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-x-1 ml-auto">
-            <Button variant="link" className="text-foreground">Explore SAP</Button>
             <Button variant="ghost" size="icon">
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Search</span>
