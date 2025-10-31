@@ -9,6 +9,7 @@ import { CompanyFacts } from '@/components/layout/CompanyFacts';
 import Link from 'next/link';
 import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
+import { SectionTitle } from '@/components/shared/section-title';
 
 
 export const metadata = {
@@ -18,13 +19,13 @@ export const metadata = {
 
 export default function AboutPage() {
   const secondaryNav = [
-    { label: 'Company Information', href: '/about' },
-    { label: 'Overview', href: '#' },
-    { label: 'Our story', href: '#' },
-    { label: 'Our strategy', href: '#' },
-    { label: 'Innovation', href: '#' },
-    { label: 'Global sponsorships', href: '#' },
-    { label: 'Equality and inclusion', href: '#' },
+    { label: 'Company Information', href: '#company-info' },
+    { label: 'Overview', href: '#overview' },
+    { label: 'Our story', href: '#our-story' },
+    { label: 'Our strategy', href: '#our-strategy' },
+    { label: 'Innovation', href: '#innovation' },
+    { label: 'Global sponsorships', href: '#sponsorships' },
+    { label: 'Equality and inclusion', href: '#equality' },
   ];
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'sap-building');
@@ -37,7 +38,7 @@ export default function AboutPage() {
         secondaryNav={secondaryNav}
         showTitle={false}
       />
-      <section className="bg-primary text-primary-foreground py-0 px-0">
+      <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0">
         <div className="container mx-auto px-0">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="py-20 px-4 sm:px-6 lg:px-8">
@@ -69,11 +70,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CompanyFacts />
+      <div id="overview">
+        <CompanyFacts />
+      </div>
       
-      <RevolutionizingTrialsSection />
+      <div id="innovation">
+        <RevolutionizingTrialsSection />
+      </div>
 
-      <section className="bg-secondary">
+      <section id="our-strategy" className="bg-secondary">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
@@ -101,9 +106,24 @@ export default function AboutPage() {
       </section>
 
       <SapCloudPortfolio />
+      
+      <div id="our-story">
+        <LeadershipSection />
+        <GrowthStoryTimeline />
+      </div>
 
-      <LeadershipSection />
-      <GrowthStoryTimeline />
+      <section id="sponsorships" className="bg-background">
+        <div className="container text-center">
+          <SectionTitle title="Global Sponsorships" description="This is a placeholder for the Global Sponsorships section." />
+        </div>
+      </section>
+
+      <section id="equality" className="bg-secondary/50">
+        <div className="container text-center">
+          <SectionTitle title="Equality and Inclusion" description="This is a placeholder for the Equality and Inclusion section." />
+        </div>
+      </section>
+
     </div>
   );
 }
