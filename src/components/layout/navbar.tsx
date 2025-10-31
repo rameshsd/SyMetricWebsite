@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -135,9 +136,9 @@ export function Navbar() {
     >
       <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center md:hidden flex-1">
-            <Link href="/" className="mr-auto">
+            <div className="mr-auto">
               <Logo />
-            </Link>
+            </div>
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -263,3 +264,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
