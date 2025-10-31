@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { navItems, solutions } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
@@ -19,12 +19,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
 
@@ -58,7 +52,9 @@ ListItem.displayName = "ListItem"
 
 const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(item.href);
+  const isActive = item.subItems 
+    ? item.subItems.some(sub => pathname.startsWith(sub.href))
+    : pathname.startsWith(item.href);
 
   return (
     <Link
@@ -72,12 +68,12 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
         }
       }}
       className={cn(
-        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors hover:bg-accent/50',
-        isActive ? 'text-primary' : 'text-foreground'
+        'flex items-center justify-between border-b w-full rounded-none py-3 text-lg font-medium transition-colors text-foreground hover:text-primary',
+        isActive && 'text-primary'
       )}
     >
       {item.name}
-      <ChevronRight className="h-5 w-5" />
+      {item.subItems && <ChevronRight className="h-5 w-5" />}
     </Link>
   );
 };
@@ -103,7 +99,7 @@ export function Navbar() {
       href: subItem.href,
       description: solution?.description || ''
     }
-  }) || [];
+  });
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -133,20 +129,21 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center">
-        {/* Logo */}
-        <div className="mr-auto">
-          <Logo />
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 items-center justify-center">
+        {/* Unified Header */}
+        <div className="flex w-full items-center justify-between">
+            <div className="flex items-center">
+              <Logo />
+            </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex flex-1 items-center justify-center">
             <NavigationMenu>
                 <NavigationMenuList>
                 {navItems.map((item) => (
                     <NavigationMenuItem key={item.name}>
                     {item.name === 'Products and Services' && productsAndServicesItem ? (
                         <>
-                        <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'text-primary')}>
+                        <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'data-[state=closed]:text-primary')}>
                             {item.name}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -158,7 +155,7 @@ export function Navbar() {
                                     </h3>
                                     )}
                                     <ul className="grid gap-1">
-                                        {productComponents.map((component) => (
+                                        {productComponents && productComponents.map((component) => (
                                             <ListItem
                                             key={component.title}
                                             title={component.title}
@@ -192,7 +189,7 @@ export function Navbar() {
                         </>
                     ) : (
                         <Link href={item.href} legacyBehavior passHref>
-                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && "data-[active]:text-primary data-[active]:after:scale-x-100")}>
+                           <NavigationMenuLink active={pathname.startsWith(item.href)} className={navigationMenuTriggerStyle()}>
                                 {item.name}
                             </NavigationMenuLink>
                         </Link>
@@ -201,22 +198,23 @@ export function Navbar() {
                 ))}
                 </NavigationMenuList>
             </NavigationMenu>
-        </div>
-        
-        {/* Right side icons */}
-        <div className="flex items-center gap-x-2 md:gap-x-0 ml-auto">
-            <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Account</span>
-            </Button>
-            <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Language</span>
-            </Button>
-            {/* Mobile Menu Trigger */}
+          </div>
+
+          {/* Mobile Menu and Right-side Icons */}
+          <div className="flex items-center gap-x-0">
+             <div className="hidden md:flex items-center">
+                <Button variant="ghost" size="icon">
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">Account</span>
+                </Button>
+                <Button variant="ghost" size="icon">
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Language</span>
+                </Button>
+            </div>
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                 <Button variant="ghost" size="icon" className="relative">
+                  <Button variant="ghost" size="icon" className="relative md:hidden">
                     {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     <span className={cn(
                         "absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-primary rounded-full transition-transform duration-300",
@@ -226,15 +224,14 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col" onInteractOutside={(e) => e.preventDefault()}>
-                  <SheetHeader className="p-4 border-b sr-only">
-                    <SheetTitle>Main Menu</SheetTitle>
-                  </SheetHeader>
-                  <div className="p-4 border-b">
+                  <SheetHeader className="p-4 border-b">
+                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                    <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
                     <div className="relative">
                       <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
                       <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
                     </div>
-                  </div>
+                  </SheetHeader>
                   {mobileSubmenu && (
                       <div className="p-4 border-b">
                           <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
@@ -258,6 +255,7 @@ export function Navbar() {
                   </div>
               </SheetContent>
             </Sheet>
+          </div>
         </div>
       </div>
     </header>
