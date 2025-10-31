@@ -1,4 +1,5 @@
 
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { solutions } from '@/lib/data';
@@ -10,6 +11,7 @@ import type { LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { GeometricPattern } from '@/components/shared/GeometricPattern';
+import { ServicesHeroDiagram } from '@/components/animations/ServicesHeroDiagram';
 
 
 export const metadata: Metadata = {
@@ -123,15 +125,7 @@ export default function ServicesPage() {
                     </div>
                 </div>
                 <div className="relative h-96 md:h-[400px]">
-                    {heroImage && (
-                        <Image 
-                            src={heroImage.imageUrl}
-                            alt={heroImage.description}
-                            data-ai-hint={heroImage.imageHint}
-                            fill
-                            className="object-contain"
-                        />
-                    )}
+                    <ServicesHeroDiagram />
                 </div>
             </div>
         </div>
