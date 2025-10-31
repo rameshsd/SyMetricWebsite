@@ -134,73 +134,78 @@ export function Navbar() {
         isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-4">
-            <Logo />
+      <div className="container flex h-16 items-center">
+        {/* Unified Logo for both views */}
+        <div className="mr-auto">
+          <Logo />
         </div>
-          
-        <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.name}>
-                  {item.name === 'Products and Services' && productsAndServicesItem ? (
-                    <>
-                      <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'text-primary')}>
-                        {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
-                            <div className="col-span-1">
-                                {productsSubitem && (
-                                  <Link href={productsSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
-                                    <h3>{productsSubitem.name}</h3>
-                                  </Link>
-                                )}
-                                <ul className="grid gap-1">
-                                    {productComponents.map((component) => (
-                                        <ListItem
-                                        key={component.title}
-                                        title={component.title}
-                                        href={component.href}
-                                        >
-                                        {component.description}
-                                        </ListItem>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="col-span-1">
-                                 {servicesSubitem && (
-                                    <Link href={servicesSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
-                                      <h3>{servicesSubitem.name}</h3>
-                                    </Link>
-                                 )}
-                                 <ul className="grid gap-1">
-                                    {servicesSubitem?.subItems?.map((subItem) => (
-                                         <ListItem
-                                            key={subItem.name}
-                                            title={subItem.name}
-                                            href={subItem.href}
-                                        >
-                                            {subItem.description}
-                                        </ListItem>
-                                    ))}
-                                 </ul>
-                            </div>
-                        </div>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <Link href={item.href} legacyBehavior passHref>
-                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "hover:underline focus:underline", pathname === item.href && 'underline')}>
-                            {item.name}
-                        </NavigationMenuLink>
-                    </Link>
-                  )}
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-        </NavigationMenu>
 
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex flex-1 items-center justify-center">
+            <NavigationMenu>
+                <NavigationMenuList>
+                {navItems.map((item) => (
+                    <NavigationMenuItem key={item.name}>
+                    {item.name === 'Products and Services' && productsAndServicesItem ? (
+                        <>
+                        <NavigationMenuTrigger className={cn(pathname.startsWith(item.href) && 'text-primary')}>
+                            {item.name}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            <div className="grid grid-cols-2 gap-4 p-4 md:w-[600px] lg:w-[700px]">
+                                <div className="col-span-1">
+                                    {productsSubitem && (
+                                    <Link href={productsSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
+                                        <h3>{productsSubitem.name}</h3>
+                                    </Link>
+                                    )}
+                                    <ul className="grid gap-1">
+                                        {productComponents.map((component) => (
+                                            <ListItem
+                                            key={component.title}
+                                            title={component.title}
+                                            href={component.href}
+                                            >
+                                            {component.description}
+                                            </ListItem>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="col-span-1">
+                                    {servicesSubitem && (
+                                        <Link href={servicesSubitem.href} className="font-bold text-sm text-muted-foreground px-3 py-2 hover:text-primary transition-colors">
+                                        <h3>{servicesSubitem.name}</h3>
+                                        </Link>
+                                    )}
+                                    <ul className="grid gap-1">
+                                        {servicesSubitem?.subItems?.map((subItem) => (
+                                            <ListItem
+                                                key={subItem.name}
+                                                title={subItem.name}
+                                                href={subItem.href}
+                                            >
+                                                {subItem.description}
+                                            </ListItem>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </NavigationMenuContent>
+                        </>
+                    ) : (
+                        <Link href={item.href} legacyBehavior passHref>
+                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && "text-primary after:scale-x-100")}>
+                                {item.name}
+                            </NavigationMenuLink>
+                        </Link>
+                    )}
+                    </NavigationMenuItem>
+                ))}
+                </NavigationMenuList>
+            </NavigationMenu>
+        </div>
+        
+        {/* Icons and Mobile Menu Trigger */}
         <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center space-x-2">
                 <Button variant="ghost" size="icon">
@@ -226,17 +231,17 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="left" className="w-full max-w-sm bg-card p-0 flex flex-col">
                   <SheetHeader className="p-4 border-b">
-                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                    <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
-                    <div className="flex items-center justify-between">
-                      <Logo />
-                       <SheetTrigger asChild>
-                         <Button variant="ghost" size="icon">
-                            <X className="h-6 w-6" />
-                            <span className="sr-only">Close menu</span>
-                          </Button>
-                      </SheetTrigger>
-                    </div>
+                      <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                      <SheetDescription className="sr-only">Site navigation menu.</SheetDescription>
+                      <div className="flex items-center justify-between">
+                          <Logo />
+                          <SheetTrigger asChild>
+                              <Button variant="ghost" size="icon">
+                                  <X className="h-6 w-6" />
+                                  <span className="sr-only">Close menu</span>
+                              </Button>
+                          </SheetTrigger>
+                      </div>
                   </SheetHeader>
                   <div className="p-4">
                     <div className="relative">
