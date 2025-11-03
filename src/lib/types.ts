@@ -152,3 +152,22 @@ export type FAQItem = {
   answer: string;
 };
     
+export type JobOpening = {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  shortDescription: string;
+  fullDescription: string;
+};
+
+export type CompanyValue = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export type EmployeeBenefit = {
+  title: string;
+  description: string;
+};

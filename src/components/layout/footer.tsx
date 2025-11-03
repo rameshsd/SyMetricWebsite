@@ -29,7 +29,7 @@ const aboutSyMetricLinks = [
   { name: 'Company information', href: '/about' },
   { name: 'Worldwide directory', href: '#' },
   { name: 'Investor Relations', href: '#' },
-  { name: 'Careers', href: '#' },
+  { name: 'Careers', href: '/careers' },
   { name: 'News and press', href: '#' },
   { name: 'Events', href: '#' },
   { name: 'Customer stories', href: '#' },

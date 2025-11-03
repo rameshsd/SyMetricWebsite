@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -29,6 +29,12 @@ import {
   BookOpen,
   Headset,
   GraduationCap,
+  Lightbulb,
+  Scale,
+  Sparkles,
+  Stethoscope,
+  Network,
+  HeartHandshake
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -832,6 +838,71 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
+export const jobOpenings: JobOpening[] = [
+    {
+        id: 'dev-001',
+        title: 'Senior Frontend Developer',
+        department: 'Engineering',
+        location: 'Bengaluru, India',
+        shortDescription: 'We are looking for an experienced Frontend Developer to build and shape our user-facing products.',
+        fullDescription: 'As a Senior Frontend Developer, you will be responsible for developing and maintaining our web applications, collaborating with designers and backend engineers, and mentoring junior developers. You should have strong experience with React, TypeScript, and modern web technologies.',
+    },
+    {
+        id: 'pm-001',
+        title: 'Clinical Project Manager',
+        department: 'Project Management',
+        location: 'Remote',
+        shortDescription: 'Manage clinical trial projects from initiation to closure, ensuring they are on time and within budget.',
+        fullDescription: 'The Clinical Project Manager will oversee all aspects of clinical trial projects, including planning, execution, and monitoring. You will be the primary point of contact for clients and internal teams. A strong background in clinical research and project management is required.',
+    },
+    {
+        id: 'qa-001',
+        title: 'QA Engineer (Clinical Software)',
+        department: 'Quality Assurance',
+        location: 'Bengaluru, India',
+        shortDescription: 'Ensure the quality and compliance of our clinical trial software solutions.',
+        fullDescription: 'The QA Engineer will be responsible for designing and executing test plans, identifying and documenting defects, and working with the development team to ensure our software meets the highest quality standards and complies with industry regulations like 21 CFR Part 11.',
+    },
+];
+
+export const companyValues: CompanyValue[] = [
+    {
+        icon: Lightbulb,
+        title: 'Innovation',
+        description: 'We are driven by a passion for innovation and are constantly seeking better ways to solve complex problems in clinical research.',
+    },
+    {
+        icon: Network,
+        title: 'Collaboration',
+        description: 'We believe that the best results come from working together. We foster a collaborative environment both internally and with our partners.',
+    },
+    {
+        icon: HeartHandshake,
+        title: 'Integrity',
+        description: 'We operate with the highest ethical standards, ensuring transparency, and building trust with our clients and stakeholders.',
+    },
+];
+
+export const employeeBenefits: EmployeeBenefit[] = [
+    {
+        title: 'Comprehensive Health Insurance',
+        description: 'Full medical, dental, and vision coverage for you and your family.',
+    },
+    {
+        title: 'Flexible Work Arrangements',
+        description: 'We offer remote and hybrid work options to promote a healthy work-life balance.',
+    },
+    {
+        title: 'Professional Development',
+        description: 'Access to training programs, conferences, and certifications to help you grow your skills.',
+    },
+
+    {
+        title: 'Generous Paid Time Off',
+        description: 'Ample vacation days, sick leave, and paid holidays to ensure you can rest and recharge.',
+    },
+];
 
 
 
