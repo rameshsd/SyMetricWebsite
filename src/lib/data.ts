@@ -449,15 +449,36 @@ export const customerSuccessStories: CustomerSuccessStory[] = [
   {
     id: 1,
     quote: "SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.",
-    author: "Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management",
+    author: "Dr Madhavi Prabhvalkar",
+    handle: "@sunpharma",
+    avatarId: "avatar-1",
+    badge: "Sr. Manager, CDM",
+    date: "OCT 15, 2023",
+    link: "#",
     company: "Sun Pharma Advanced Research Company",
   },
   {
     id: 2,
     quote: "Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.",
-    author: "Director, Research and Development",
+    author: "R&D Director",
+    handle: "@globalpharma",
+    avatarId: "avatar-2",
+    badge: "Director",
+    date: "OCT 16, 2023",
+    link: "#",
     company: "Global Pharmaceutical Company",
-  }
+  },
+  {
+    id: 3,
+    quote: "A world-class design system project is currently underway. I've been fortunate enough to beta test it. Keep tracking this - it might turn into the perfect design system for your upcoming side project or new SaaS platform.",
+    author: "John Doe",
+    handle: "@johndoe",
+    avatarId: "avatar-3",
+    badge: "Founder",
+    date: "OCT 17, 2023",
+    link: "#",
+    company: "Startup Inc.",
+  },
 ];
 
 export const featureGridItems: FeatureGridItem[] = [
@@ -775,6 +796,7 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
 
 
 

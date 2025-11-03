@@ -101,6 +101,11 @@ export type CustomerSuccessStory = {
   id: number;
   quote: string;
   author: string;
+  handle: string;
+  avatarId: string;
+  badge?: string;
+  date: string;
+  link: string;
   company: string;
 };
 
