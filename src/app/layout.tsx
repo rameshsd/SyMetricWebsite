@@ -7,7 +7,10 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   title: 'SyMetric - Transforming Clinical Research with Technology',
   description: 'SyMetric empowers researchers, CROs, and sponsors with end-to-end digital solutions for modern clinical research.',
-  keywords: 'Clinical Trials, eTMF, eCRF, Digital Research Platform, Clinical Research, Healthcare Technology, Life Sciences'
+  keywords: 'Clinical Trials, eTMF, eCRF, Digital Research Platform, Clinical Research, Healthcare Technology, Life Sciences',
+  icons: {
+    icon: [],
+  },
 };
 
 export default function RootLayout({

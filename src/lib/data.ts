@@ -69,6 +69,8 @@ export const navItems: NavItem[] = [
     },
     { name: 'Resources', href: '/resources' },
     { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '/about' },
+    { name: 'Careers', href: '/careers' },
 ];
 
 export const solutions: Solution[] = [
@@ -817,28 +819,68 @@ export const useCases: UseCase[] = [
 ];
 
 export const faqItems: FAQItem[] = [
-    {
-      question: "What types of services do you offer for clinical trials?",
-      answer: "We offer a comprehensive suite of services including Clinical Data Management, Project Management, Data Migration, customized Training, and 24/7 technical and operational Support to ensure your trial's success from start to finish."
-    },
-    {
-      question: "How do your services ensure data quality and compliance?",
-      answer: "Our services are built on a foundation of regulatory compliance (including 21 CFR Part 11 and ICH-GCP) and data integrity. We use validated systems, automated data checks, and rigorous quality control processes to ensure your data is accurate, reliable, and audit-ready."
-    },
-    {
-      question: "Can you help us migrate data from our existing system?",
-      answer: "Yes, our Data Migration service ensures a seamless and secure transition of your clinical trial data from legacy systems or other EDC tools to our platform, maintaining data integrity throughout the process."
-    },
-    {
-      question: "What kind of support can we expect?",
-      answer: "We provide 24/7 dedicated support for both technical and operational queries. Our expert team is always available to ensure your trials run smoothly and any issues are resolved with a fast turnaround time."
-    },
-    {
-      question: "Are your services suitable for a trial of our size?",
-      answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
-    }
-  ];
-
+  {
+    question: "How do I access SyMetric Clinical Trial Platform? Do I need to install any specific software to use it?",
+    answer: "The SyMetric Clinical Trial Platform is a web-based application. You can access it through any modern web browser without needing to install any specific software."
+  },
+  {
+    question: "Can SyMetric products integrate with other systems?",
+    answer: "Yes, our products are designed for flexibility and can be integrated with other systems, including legacy EDC tools and trial analytics solutions, through our robust data services and APIs."
+  },
+  {
+    question: "How is SyMetric Clinical Trial Platform validated?",
+    answer: "Our platform is validated through rigorous internal testing, User Acceptance Testing (UAT), and stringent quality control practices that comply with regulatory standards like 21 CFR Part 11 and ICH-GCP."
+  },
+  {
+    question: "How can I get support for SyMetric’s products and solutions?",
+    answer: "You can get support by contacting our dedicated support team via phone or email. We answer most requests within 24 hours. Contact details are provided on this page."
+  },
+  {
+    question: "Is there any limit for the number of Studies, Sites, or Users that can be managed on the SyMetric Clinical Trial Platform?",
+    answer: "No, our platform is designed to be highly scalable and can manage a virtually unlimited number of studies, sites, and users to grow with your research needs."
+  },
+  {
+    question: "Can SyMetric Clinical Trial Platform be used for academic research?",
+    answer: "Absolutely. Our platform is suitable for academic research, providing powerful tools to accelerate research and development efforts in hospitals and universities."
+  },
+  {
+    question: "Can we change the build Parameters once the Study Build is completed and the Trial has started?",
+    answer: "Yes, our platform is flexible and allows for mid-study changes and amendments to the study build without disrupting the ongoing trial."
+  },
+  {
+    question: "Do you have Standard Operating Procedures (SOPs) in place to handle various business processes?",
+    answer: "Yes, our solutions are guided by well-defined SOPs that comply with all applicable industry regulations and guidelines to ensure quality and consistency."
+  },
+  {
+    question: "Does the IRT Solution on SyMetric Clinical Trial Platform come with IVRS capabilities?",
+    answer: "Yes, our IRT (Interactive Response Technology) solution includes IVRS (Interactive Voice Response System) capabilities for comprehensive trial management."
+  },
+  {
+    question: "How and where is the solution hosted? Can we customize the host of the solutions on our Cloud infrastructure?",
+    answer: "Our platform is a SaaS solution available with trusted cloud-hosting options like Microsoft Azure and SAP. We also offer custom deployment models, including dedicated single-tenant solutions or hosting on your own cloud infrastructure."
+  },
+  {
+    question: "Do we get training on how to use SyMetric Products and Solutions?",
+    answer: "Yes, we provide comprehensive and customized training services, including online modules and instructor-led sessions, to ensure your workforce can use our solutions efficiently."
+  },
+  {
+    question: "Does SyMetric have a back-up mechanism to deal with system failures?",
+    answer: "Yes, we have robust back-up and disaster recovery mechanisms in place to ensure business continuity and data integrity in the event of system failures."
+  },
+  {
+    question: "Is the technical support desk available 24/7?",
+    answer: "Yes, our dedicated technical support desk is available 24/7 to provide assistance and answer your queries with a fast turnaround time."
+  },
+  {
+    question: "Can the IRT Solution on SyMetric Clinical Trial Platform manage the reverse supply chain of Clinical Supplies?",
+    answer: "Yes, our IRT solution is equipped to manage the complete supply chain, including the reverse logistics of clinical supplies."
+  },
+  {
+    question: "Can the IRT Solution on SyMetric Clinical Trial Platform keep an account of the drugs dispensed to Subjects or Trial Participants?",
+    answer: "Yes, the platform accurately tracks and accounts for all drugs dispensed to trial participants, ensuring precise inventory management and accountability."
+  }
+];
+    
 export const jobOpenings: JobOpening[] = [
     {
         id: 'dev-001',
@@ -911,5 +953,7 @@ export const employeeBenefits: EmployeeBenefit[] = [
 
 
 
+
+    
 
     
