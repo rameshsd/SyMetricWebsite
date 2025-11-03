@@ -44,6 +44,7 @@ export type LeadershipMember = {
   role: string;
   bio: string[];
   imageId: string;
+  linkedin?: string;
 };
 
 export type Resource = {

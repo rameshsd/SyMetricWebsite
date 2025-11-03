@@ -1,14 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { leadership } from '@/lib/data';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { SectionTitle } from '../shared/section-title';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Linkedin } from 'lucide-react';
 
 const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
     const image = PlaceHolderImages.find((p) => p.id === member.imageId);
@@ -16,43 +16,53 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
     const hasLongBio = member.bio.length > 1;
 
     return (
-        <Card className="bg-background border-none shadow-none text-center h-full flex flex-col">
-            <CardHeader className="items-center">
+        <div className="relative pt-20">
+            <Card className="bg-primary text-primary-foreground rounded-2xl p-6 pt-24 shadow-xl">
                 {image && (
-                    <div className="relative h-40 w-40 rounded-full overflow-hidden mb-4">
-                        <Image
+                    <div className="absolute -top-0 left-1/2 -translate-x-1/2 w-40 h-40">
+                         <Image
                             src={image.imageUrl}
                             alt={member.name}
-                            fill
-                            className="object-cover"
+                            width={160}
+                            height={160}
+                            className="rounded-full object-cover border-4 border-background shadow-lg"
                             data-ai-hint="portrait professional"
                         />
                     </div>
                 )}
-                <CardTitle>{member.name}</CardTitle>
-                <p className="text-primary font-semibold pt-1">{member.role}</p>
-            </CardHeader>
-            <CardContent className="flex-grow">
-                <div className={cn("text-muted-foreground text-sm space-y-3", !isExpanded && hasLongBio && "line-clamp-4")}>
-                    {member.bio.map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))}
+                {member.linkedin && (
+                    <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute top-8 right-8">
+                        <div className="h-8 w-8 bg-white/90 rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors">
+                            <Linkedin className="h-5 w-5" />
+                        </div>
+                    </Link>
+                )}
+                <div className="text-center">
+                    <h3 className="text-xl font-bold">{member.name}</h3>
+                    <p className="text-primary-foreground/80 font-medium">{member.role}</p>
                 </div>
-            </CardContent>
-            {hasLongBio && (
-                 <div className="p-6 pt-0">
-                    <Button variant="link" onClick={() => setIsExpanded(!isExpanded)} className="px-0 mt-2 text-primary">
+                <CardContent className="p-0 mt-4">
+                    <div className={cn("text-primary-foreground/70 text-sm space-y-3", !isExpanded && hasLongBio && "line-clamp-4")}>
+                        {member.bio.map((paragraph, index) => (
+                            <p key={index}>{paragraph}</p>
+                        ))}
+                    </div>
+                </CardContent>
+                <div className="mt-6 text-center">
+                    <Button 
+                        variant="secondary" 
+                        className="bg-green-400 text-black hover:bg-green-500"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                    >
                         {isExpanded ? 'Read less' : 'Read more'}
                     </Button>
                 </div>
-            )}
-        </Card>
+            </Card>
+        </div>
     )
 }
 
 export function LeadershipSection() {
-  const [founder, ...otherMembers] = leadership;
-  
   return (
     <section id="leadership">
       <div className="container">
@@ -60,43 +70,8 @@ export function LeadershipSection() {
             title="A Stellar Journey Led by…" 
             className="mb-16"
         />
-
-        {founder && (
-            <div className="mb-16 max-w-4xl mx-auto">
-                <Card className="overflow-hidden rounded-2xl shadow-lg">
-                    <div className="grid grid-cols-1 md:grid-cols-3">
-                        <div className="relative h-80 md:h-auto">
-                            <Image
-                                src={PlaceHolderImages.find((p) => p.id === founder.imageId)?.imageUrl || ''}
-                                alt={founder.name}
-                                fill
-                                className="object-cover"
-                                data-ai-hint="portrait professional"
-                            />
-                        </div>
-                        <div className="md:col-span-2 flex flex-col justify-center">
-                            <CardHeader>
-                                <CardTitle>{founder.name}</CardTitle>
-                                <p className="text-primary font-semibold pt-1">{founder.role}</p>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-muted-foreground text-sm mb-3">
-                                    {founder.bio[0]}
-                                </p>
-                                <Button variant="link" asChild className="px-0 mt-2 text-primary font-semibold">
-                                    <Link href="#">
-                                        Read more about {founder.name.split(' ')[0]} <ArrowRight className="w-4 h-4 ml-2" />
-                                    </Link>
-                                </Button>
-                            </CardContent>
-                        </div>
-                    </div>
-                </Card>
-            </div>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
-          {otherMembers.map((member) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+          {leadership.map((member) => (
             <LeadershipCard key={member.id} member={member} />
           ))}
         </div>

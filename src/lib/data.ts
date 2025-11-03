@@ -282,7 +282,8 @@ export const leadership: LeadershipMember[] = [
     bio: [
       'An entrepreneur with over 20 years experience in establishing and managing multiple business entities in various fields such as Life Sciences, Healthcare, and Social Enterprise, Uma started SyMetric in 2012. She plays a seminal role in all functions — from strategic decision-making to business operations. Under her leadership, SyMetric has expanded to US, Europe, and Latin America besides forging strong partnerships with Pharma Companies, CROs, and Technology Companies such as Microsoft, SAP, Tenthpin Management Consultants, and MINT Medical. She has been at the helm of Ladies Circle India (LCI) and is a member of several reputed organizations — Anthroposophical Medical Society of India, HIMSS India Chapter, 5HT Germany, NASSCOM, and SAP Industry Consortium for Life sciences.'
     ],
-    imageId: 'leadership-1'
+    imageId: 'leadership-1',
+    linkedin: 'https://www.linkedin.com/in/uma-janapareddy-9b169b13'
   },
   {
     id: 'raghuram-janapareddy',
@@ -291,7 +292,8 @@ export const leadership: LeadershipMember[] = [
     bio: [
       'A seasoned professional with over 34 years of experience in information technology and multiple industry domains, Raghuram is currently the Managing Director, India of Tenthpin Management Consultants. As part of Tenthpin’s global initiative, he is leading the efforts towards establishing a Life Sciences Innovation Centre in India. Enrolled in the Roster of Experts of WHO Digital Health Technical Advisory Group (DHTAG), he works very closely with the healthcare ecosystem in India. He has worked at SAP for nearly 17 years in multiple areas — Supply Chain-, Project-, Global Delivery-, Strategic Vendor-, Practice-, Product-, and Process Management. His guidance is integral to designing products, processes, and delivery models for enterprises in the Life Sciences and healthcare sector.'
     ],
-    imageId: 'leadership-2'
+    imageId: 'leadership-2',
+    linkedin: 'https://www.linkedin.com/in/janapareddy'
   },
   {
     id: 'ramesh-kumar-t',
@@ -300,7 +302,8 @@ export const leadership: LeadershipMember[] = [
     bio: [
       'A strategist known for digital dexterity and business acumen, Ramesh fits squarely into SyMetric’s vision. His entrepreneurial experience in the Software Industry extends to over 35 years. He has also made significant contribution to a large-scale Technology company. Business mentorship comes naturally to him, given his background as an entrepreneur, and he helps associates achieve success and growth.'
     ],
-    imageId: 'leadership-4'
+    imageId: 'leadership-4',
+    linkedin: '#'
   },
   {
     id: 'sai-siddharth',
@@ -312,7 +315,8 @@ export const leadership: LeadershipMember[] = [
       'Sai previously was at J-PAL South Asia, where he led the Environment, Energy, and Climate Change sector. He was also interim lead for the financial inclusion sector and worked on the Cash Transfers for Child Health Initiative at J-PAL South Asia. He also worked at the National Health Authority in India, where he helped set up its Innovation Unit, and at the Government of Maharashtra (through a fellowship at the University of Chicago) on a water conservation program in the state.',
       'Sai holds a Master’s degree in Public Administration from Columbia University and a Bachelor’s degree in Mechanical Engineering from RVCE in Bangalore.'
     ],
-    imageId: 'leadership-6'
+    imageId: 'leadership-6',
+    linkedin: 'https://www.linkedin.com/in/saisiddharth-j'
   },
   {
     id: 'pranav-aditya',
@@ -325,7 +329,8 @@ export const leadership: LeadershipMember[] = [
       'He is accomplished with tone matching, tonal balance, understanding compression + ADSR and Depth, process, and need for mastering, and Ear Training.',
       'He is continuously developing more efficient workflows with every recording and improving client interactions and interactions with his/her Environment.'
     ],
-    imageId: 'leadership-5'
+    imageId: 'leadership-5',
+    linkedin: '#'
   }
 ];
 
