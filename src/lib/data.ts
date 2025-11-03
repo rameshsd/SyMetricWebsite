@@ -798,7 +798,7 @@ export const useCases: UseCase[] = [
     {
         icon: Users,
         title: "Boost Patient Engagement",
-        description: "Make trial participation easier and more engaging for patients with user-friendly tools."
+        description: "Make trial participation easier and more engaging for user-friendly tools."
     }
 ];
 
@@ -824,6 +824,7 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
 
 
 

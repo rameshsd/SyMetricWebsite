@@ -285,7 +285,7 @@
     {
       "id": "data-privacy-image",
       "description": "Shield protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data privacy"
     },
     {
@@ -735,7 +735,7 @@
     {
       "id": "service-tab-support",
       "description": "Customer support agent with a headset.",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "customer support"
     },
     {

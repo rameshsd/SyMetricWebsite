@@ -20,6 +20,7 @@ import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
 import { CustomerStories } from '@/components/layout/CustomerStories';
+import { CustomerSuccess } from '@/components/home/customer-success';
 
 
 export default function Home() {
@@ -128,7 +129,7 @@ export default function Home() {
           </div>
         </section>
 
-        <CustomerStories />
+        <CustomerSuccess />
       </main>
     </div>
   );
