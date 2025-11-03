@@ -267,11 +267,11 @@ export function Navbar() {
                       </NavigationMenuContent>
                       </>
                   ) : (
-                    <Link href={item.href} legacyBehavior passHref>
-                      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && 'text-primary')}>
-                          {item.name}
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && 'text-primary')}>
+                      <Link href={item.href}>
+                        {item.name}
+                      </Link>
+                    </NavigationMenuLink>
                   )}
                   </NavigationMenuItem>
               ))}
