@@ -134,8 +134,8 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300 border-b',
-        isScrolled ? 'bg-card/95 backdrop-blur-lg' : 'bg-background'
+        'sticky top-0 z-50 w-full transition-all duration-300 border-b bg-secondary',
+        isScrolled ? 'backdrop-blur-lg' : ''
       )}
     >
       <div className="container flex h-16 items-center">
