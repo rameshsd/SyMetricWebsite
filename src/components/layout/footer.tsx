@@ -84,7 +84,7 @@ export function Footer() {
   };
   
   return (
-    <footer className="bg-secondary/50 border-t">
+    <footer className="bg-secondary border-t">
       <div className="container py-8">
         <div className="flex justify-end items-center mb-8">
             <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
