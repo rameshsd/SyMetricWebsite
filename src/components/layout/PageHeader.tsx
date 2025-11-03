@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type PageHeaderProps = {
   title: string;
@@ -28,20 +28,37 @@ export function PageHeader({
 }: PageHeaderProps) {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+      
+      // We don't want to hide the header on the very top of the page
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY.current) { // Scrolling down
+          setIsHidden(true);
+        } else { // Scrolling up
+          setIsHidden(false);
+        }
+      } else {
+        setIsHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div
       className={cn(
-        "sticky top-16 z-40 bg-background/80 backdrop-blur-lg border-b",
-        isScrolled && "shadow-sm"
+        "sticky top-16 z-30 bg-background/80 backdrop-blur-lg border-b transition-transform duration-300",
+        isScrolled && "shadow-sm",
+        isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div className="container">
