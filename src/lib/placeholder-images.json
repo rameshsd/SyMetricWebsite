@@ -63,7 +63,7 @@
     {
       "id": "leadership-4",
       "description": "Portrait of Samuel Jones",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjA4MzQ4MTV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "resource-2",
       "description": "AI in drug discovery",
-      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "AI brain"
     },
     {
@@ -135,7 +135,7 @@
     {
       "id": "solutions-hero",
       "description": "Abstract technology plexus",
-      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODMzNDg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODMzNDg5fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "technology abstract"
     },
     {
@@ -153,7 +153,7 @@
     {
       "id": "contact-hero",
       "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
@@ -297,7 +297,7 @@
     {
       "id": "sap-building",
       "description": "Modern glass building of SyMetric headquarters",
-      "imageUrl": "https://images.unsplash.com/photo-1620322040582-19095a5a6a6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBidWlsZGluZ3xlbnwwfHx8fDE3NjA4NjQwNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594399203360-a270790c8541?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "modern building"
     },
     {
@@ -735,7 +735,7 @@
     {
       "id": "service-tab-support",
       "description": "Customer support agent with a headset.",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "customer support"
     },
     {
