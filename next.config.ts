@@ -51,6 +51,12 @@ const nextConfig: NextConfig = {
         hostname: 'symetricsystems.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'clinicalpursuit.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
