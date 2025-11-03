@@ -41,6 +41,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
+        protocol: 'http',
+        hostname: 'cgv.c32.myftpupload.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
         protocol: 'https',
         hostname: 'symetricsystems.com',
         port: '',
