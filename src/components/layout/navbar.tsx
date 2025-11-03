@@ -82,6 +82,9 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isHidden, setIsHidden] = React.useState(false);
+  const lastScrollY = React.useRef(0);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
   
@@ -108,9 +111,18 @@ export function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // Scrolling down
+        setIsHidden(true);
+      } else { // Scrolling up
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -134,8 +146,8 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300 border-b bg-secondary',
-        isScrolled ? 'backdrop-blur-lg' : ''
+        'sticky top-0 z-50 w-full transition-transform duration-300 border-b bg-secondary',
+        isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div className="container flex h-16 items-center">
