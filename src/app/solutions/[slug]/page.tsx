@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { ProductHero } from '@/components/solutions/ProductHero';
@@ -33,23 +33,40 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
   }
 
   const heroImage = PlaceHolderImages.find(p => p.id === solution.image) || PlaceHolderImages.find(p => p.id === 'product-hero-business-people');
-  const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
+  
+  const secondaryNav = [
+    { label: 'Overview', href: '#overview' },
+    { label: 'Capabilities', href: '#capabilities' },
+    { label: 'Related Products', href: '#related-products' },
+  ];
 
   return (
     <>
-      <ProductPageHeader productName={solution.name} solutions={headerSolutions} />
-      {heroImage && (
-         <ProductHero 
-            title={solution.hero.title}
-            subtitle={solution.hero.subtitle}
-            imageSrc={heroImage.imageUrl}
-            imageHint={heroImage.imageHint}
-            backgroundColor={solution.backgroundColor}
-         />
-      )}
-      <TechEdBanner />
-      <CapabilitiesSection capabilities={solution.capabilities} />
-      <RelatedProductsSection />
+      <PageHeader
+        title={solution.name}
+        breadcrumb={{ href: '/solutions', label: 'Solutions' }}
+        secondaryNav={secondaryNav}
+      />
+      <div className="pt-16">
+        {heroImage && (
+          <div id="overview">
+            <ProductHero 
+              title={solution.hero.title}
+              subtitle={solution.hero.subtitle}
+              imageSrc={heroImage.imageUrl}
+              imageHint={heroImage.imageHint}
+              backgroundColor={solution.backgroundColor}
+            />
+          </div>
+        )}
+        <TechEdBanner />
+        <div id="capabilities">
+          <CapabilitiesSection capabilities={solution.capabilities} />
+        </div>
+        <div id="related-products">
+          <RelatedProductsSection />
+        </div>
+      </div>
     </>
   );
 }

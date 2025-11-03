@@ -1,9 +1,8 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { solutions } from '@/lib/data';
 import { Button } from '@/components/ui/button';
-import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -71,63 +70,74 @@ const pmServices: {
 ];
 
 export default function ProjectManagementPage() {
+  const secondaryNav = [
+    { label: 'Overview', href: '#overview' },
+    { label: 'Offerings', href: '#offerings' },
+    { label: 'Get Started', href: '#get-started' },
+  ];
 
   return (
     <>
-      <ProductPageHeader productName="Project Management Services" solutions={[]} />
+      <PageHeader
+        title="Project Management Services"
+        breadcrumb={{ href: '/services', label: 'Services' }}
+        secondaryNav={secondaryNav}
+      />
       
-      <section className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-0">
-        <div className="container">
-          <div className="text-center max-w-4xl mx-auto">
-            <p className="text-primary font-semibold mb-2">Project Management Services</p>
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-              Simplify, Streamline, and Speed-Up Your Clinical Trial
-            </h1>
-            <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
-              We support you in all aspects of project management, right from early phase to late phase Clinical Trials. Our solutions are guided by well-defined standard operating procedures that comply with all applicable industry regulations and guidelines.
-            </p>
-          </div>
-        </div>
-      </section>
-      
-      <TechEdBanner />
-
-      <section>
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold tracking-tight">Our Project Management Offerings</h2>
-            <p className="mt-2 text-muted-foreground">End-to-end support to ensure your trial is a success.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pmServices.map((service) => (
-              <Card key={service.title} className="flex flex-col text-center p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <CardHeader>
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                    <service.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl pt-4">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground">{service.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-prose mx-auto">Let our experts help you find the right services to accelerate your research.</p>
-            <div className="flex gap-4 justify-center mt-8">
-              <Button size="lg" asChild><a href="/contact">Get a demo</a></Button>
-              <Button size="lg" variant="outline" asChild><a href="/contact">Contact us</a></Button>
+      <div className="pt-16">
+        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-0">
+          <div className="container">
+            <div className="text-center max-w-4xl mx-auto">
+              <p className="text-primary font-semibold mb-2">Project Management Services</p>
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                Simplify, Streamline, and Speed-Up Your Clinical Trial
+              </h1>
+              <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
+                We support you in all aspects of project management, right from early phase to late phase Clinical Trials. Our solutions are guided by well-defined standard operating procedures that comply with all applicable industry regulations and guidelines.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        
+        <TechEdBanner />
+
+        <section id="offerings">
+          <div className="container">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold tracking-tight">Our Project Management Offerings</h2>
+              <p className="mt-2 text-muted-foreground">End-to-end support to ensure your trial is a success.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {pmServices.map((service) => (
+                <Card key={service.title} className="flex flex-col text-center p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <CardHeader>
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                      <service.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl pt-4">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="get-started">
+          <div className="container">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+              <p className="text-muted-foreground text-lg mb-8 max-w-prose mx-auto">Let our experts help you find the right services to accelerate your research.</p>
+              <div className="flex gap-4 justify-center mt-8">
+                <Button size="lg" asChild><a href="/contact">Get a demo</a></Button>
+                <Button size="lg" variant="outline" asChild><a href="/contact">Contact us</a></Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
