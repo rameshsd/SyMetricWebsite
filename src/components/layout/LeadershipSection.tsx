@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import { leadership } from '@/lib/data';
@@ -13,10 +14,9 @@ import { Linkedin } from 'lucide-react';
 const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
   const image = PlaceHolderImages.find((p) => p.id === member.imageId);
   const [isExpanded, setIsExpanded] = useState(false);
-  const hasLongBio = member.bio.length > 1;
 
   return (
-    <div className="relative pt-20 group">
+    <div className="relative pt-20 group h-full">
       {/* Floating Profile Image with Gradient Ring */}
       {image && (
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
@@ -32,7 +32,8 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
         </div>
       )}
 
-      <Card className="rounded-2xl p-6 pt-20 bg-primary text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300">
+      <Card className="rounded-2xl p-6 pt-20 bg-primary text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+        
         {/* LinkedIn Button */}
         {member.linkedin && (
           <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4">
@@ -47,25 +48,24 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
           <p className="text-primary-foreground/80 font-medium">{member.role}</p>
         </div>
 
-        <CardContent className="p-0 mt-4">
-          <div className={cn("text-primary-foreground/70 text-sm space-y-3 transition-all", !isExpanded && hasLongBio && "line-clamp-4")}>
+        <CardContent className="p-0 mt-4 flex-grow">
+          <div className={cn("text-primary-foreground/70 text-sm space-y-3 transition-all", !isExpanded && "line-clamp-4")}>
             {member.bio.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>
         </CardContent>
 
-        {hasLongBio && (
-          <div className="mt-5 text-center">
-            <Button
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90"
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
-              {isExpanded ? 'Read less' : 'Read more'}
-            </Button>
-          </div>
-        )}
+        {/* Always Show Button */}
+        <div className="mt-5 text-center">
+          <Button
+            variant="secondary"
+            className="bg-white text-primary hover:bg-white/90"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? 'Read less' : 'Read more'}
+          </Button>
+        </div>
       </Card>
     </div>
   );
