@@ -50,8 +50,8 @@ export default function TrainingPage() {
         secondaryNav={secondaryNav}
       />
       
-      <div className="pt-16">
-        <section id="overview" className="w-full relative">
+      <div>
+        <section id="overview" className="w-full relative py-20">
           <div className="container">
               <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-2xl overflow-hidden">
                   {heroImage && (
@@ -102,7 +102,7 @@ export default function TrainingPage() {
           </div>
         </section>
 
-        <section id="get-started">
+        <section id="get-started" className="bg-secondary/50">
           <div className="container">
             <div className="text-center">
               <h2 className="text-4xl font-bold mb-6">Ready to Empower Your Team?</h2>

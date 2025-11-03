@@ -45,7 +45,7 @@ export default function ClinicalTrialPlatformPage() {
             secondaryNav={secondaryNav}
         />
         
-        <div className="pt-16">
+        <div>
             {solution && (
                 <section id="overview" className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card py-20">
                     <div className="container">
@@ -94,7 +94,7 @@ export default function ClinicalTrialPlatformPage() {
                 <CapabilitiesSection />
             </div>
             
-            <section id="pricing">
+            <section id="pricing" className="bg-secondary/50">
                 <div className="container">
                   <div className="text-center">
                       <h2 className="text-4xl font-bold mb-6">Get Started Today</h2>

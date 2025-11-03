@@ -90,8 +90,8 @@ export default function DataMigrationPage() {
         secondaryNav={secondaryNav}
       />
       
-      <div className="pt-16">
-        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-0">
+      <div>
+        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-20">
           <div className="container">
             <div className="text-center max-w-4xl mx-auto">
               <p className="text-primary font-semibold mb-2">Data Migration Services</p>
@@ -134,7 +134,7 @@ export default function DataMigrationPage() {
           </div>
         </section>
 
-        <section id="get-started">
+        <section id="get-started" className="bg-secondary/50">
           <div className="container">
             <div className="text-center">
               <h2 className="text-4xl font-bold mb-6">Ready to Migrate Your Data?</h2>

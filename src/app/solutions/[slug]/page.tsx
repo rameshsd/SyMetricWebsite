@@ -47,9 +47,9 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
         breadcrumb={{ href: '/solutions', label: 'Solutions' }}
         secondaryNav={secondaryNav}
       />
-      <div className="pt-16">
+      <div>
         {heroImage && (
-          <div id="overview">
+          <section id="overview" className="py-20">
             <ProductHero 
               title={solution.hero.title}
               subtitle={solution.hero.subtitle}
@@ -57,7 +57,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
               imageHint={heroImage.imageHint}
               backgroundColor={solution.backgroundColor}
             />
-          </div>
+          </section>
         )}
         <TechEdBanner />
         <div id="capabilities">

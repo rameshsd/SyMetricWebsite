@@ -88,8 +88,8 @@ export default function SupportPage() {
         secondaryNav={secondaryNav}
       />
       
-      <div className="pt-16">
-        <section id="overview" className="w-full min-h-[400px] flex items-center bg-primary/5 dark:bg-card py-0">
+      <div>
+        <section id="overview" className="w-full min-h-[400px] flex items-center bg-primary/5 dark:bg-card py-20">
           <div className="container">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">

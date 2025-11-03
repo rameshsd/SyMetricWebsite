@@ -39,8 +39,8 @@ export default function ServicesPage() {
         breadcrumb={{ href: '/industries', label: 'Industries' }}
         secondaryNav={secondaryNav}
       />
-      <div className="pt-16">
-        <section id="overview" className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden">
+      <div>
+        <section id="overview" className="w-full bg-primary text-white py-20 px-0 relative overflow-hidden pt-36">
           <div className="container relative z-10">
               <div className="grid md:grid-cols-2 gap-10 items-center">
                   <div className="space-y-6">

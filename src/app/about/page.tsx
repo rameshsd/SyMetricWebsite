@@ -42,8 +42,8 @@ export default function AboutPage() {
         secondaryNav={secondaryNav}
         showTitle={false}
       />
-      <div className="pt-16">
-        <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0">
+      <div>
+        <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0 pt-16">
           <div className="container mx-auto px-0">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="py-20 px-4 sm:px-6 lg:px-8">
