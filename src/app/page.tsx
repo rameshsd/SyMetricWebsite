@@ -17,7 +17,6 @@ import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateA
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
-import { CustomerStories } from '@/components/layout/CustomerStories';
 import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
 
@@ -128,7 +127,7 @@ export default function Home() {
           </div>
         </section>
 
-        <CustomerStories />
+        <CustomerSuccessSection />
       </main>
     </div>
   );

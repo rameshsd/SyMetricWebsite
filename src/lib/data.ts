@@ -651,23 +651,24 @@ export const salesSpecialistHelp = [
 ];
     
 export const successStories: SuccessStory[] = [
-    {
-        id: 'prestige-group',
-        logoId: 'logo-prestige',
-        title: 'Improving customer experience through digital transformation',
-        description: 'Explore how Prestige Group automated 100% of grievance management process and removed any manual intervention in customer communication management.',
-        linkText: 'Read the customer story',
-        linkUrl: '#',
-    },
-    {
-        id: 'parle',
-        logoId: 'logo-parle',
-        title: 'Transforming app development with SAP BTP',
-        description: "Learn from Parle's CIO, Sanjay Joshi, how the organisation rapidly built and deployed a highly successful mobile app for customers using SAP BTP.",
-        linkText: 'Watch the video',
-        linkUrl: '#',
-    },
+  {
+      id: 'sun-pharma',
+      logoId: 'logo-innovate-pharma',
+      title: 'Sun Pharma Advanced Research Company',
+      description: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.',
+      linkText: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management',
+      linkUrl: '#',
+  },
+  {
+      id: 'global-pharma',
+      logoId: 'logo-biogenex',
+      title: 'Global Pharmaceutical Company',
+      description: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.',
+      linkText: 'Director, Research and Development',
+      linkUrl: '#',
+  },
 ];
+
 
 export const heroCarouselItems = [
     {
@@ -774,5 +775,6 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
 
 
