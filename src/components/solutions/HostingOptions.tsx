@@ -1,62 +1,61 @@
-
 "use client";
 
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Microsoft, Sap } from "../icons/brand-icons";
+import { Cloud } from "lucide-react";
 
 export function HostingOptions() {
-  const image = PlaceHolderImages.find(
-    (p) => p.id === "hosting-providers-image"
-  );
   return (
-    <section className="bg-secondary/50">
+    <section className="bg-sap-gradient text-white">
       <div className="container">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-96">
-            {image && (
-              <Image
-                src={image.imageUrl}
-                alt={image.description}
-                data-ai-hint={image.imageHint}
-                fill
-                className="object-cover rounded-2xl"
-              />
-            )}
-          </div>
-          <div className="space-y-6">
+        <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold tracking-tight">
-              Looking for Customized Hosting and Deployment Models?
+                Looking for Customized Hosting and Deployment Models?
             </h2>
-            <p className="text-muted-foreground text-lg max-w-prose">
-              Our Clinical Trial Platform is a SaaS Solution that is available
-              with the most trusted and compliant Cloud-Hosting options.
+            <p className="mt-4 text-lg text-white/80 max-w-prose mx-auto">
+                Our Clinical Trial Platform is a SaaS Solution that is available with the most trusted and compliant Cloud-Hosting options.
             </p>
-            <div className="flex gap-4">
-              <Card>
-                <CardContent className="p-4 flex items-center justify-center">
-                  <Microsoft className="h-8" />
+        </div>
+
+        <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-white text-foreground text-center">
+                <CardHeader>
+                    <CardTitle className="text-lg">Microsoft Azure</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Microsoft className="h-16 mx-auto" />
                 </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-4 flex items-center justify-center">
-                  <Sap className="h-8" />
+            </Card>
+             <Card className="bg-white text-foreground text-center">
+                <CardHeader>
+                    <CardTitle className="text-lg">SAP Business Technology Platform</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Sap className="h-16 mx-auto" />
                 </CardContent>
-              </Card>
-            </div>
-            <p className="text-muted-foreground">
-              Get in touch with us to customize your solutions — whether for a
-              dedicated single-tenant solution or a completely custom
-              deployment model.
+            </Card>
+             <Card className="bg-white text-foreground text-center">
+                <CardHeader>
+                    <CardTitle className="text-lg">We support other clouds as well</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Cloud className="h-12 w-12 mx-auto text-blue-500 mb-2" />
+                    <p className="text-sm text-green-600 font-semibold">Contact us for customized Cloud Solutions</p>
+                </CardContent>
+            </Card>
+        </div>
+        
+        <div className="mt-16 max-w-2xl mx-auto text-center">
+            <p className="text-white/80">
+                Get in touch with us to customize your solutions — whether for a dedicated single-tenant solution or a completely custom deployment model.
             </p>
-            <Button asChild className="mt-4">
+            <Button asChild className="mt-8 bg-green-400 text-black hover:bg-green-500" size="lg">
               <Link href="/contact">Contact us</Link>
             </Button>
-          </div>
         </div>
+
       </div>
     </section>
   );
