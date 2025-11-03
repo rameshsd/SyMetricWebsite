@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 import { leadership } from '@/lib/data';
@@ -21,7 +20,7 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
       {/* Floating Profile Image with Gradient Ring */}
       {image && (
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
-          <div className="w-32 h-32 rounded-full p-1 bg-gradient-to-br from-white via-primary to-white shadow-xl">
+          <div className="w-32 h-32 rounded-full p-1 bg-gradient-to-br from-gray-200 via-white to-gray-300 shadow-lg">
             <Image
               src={image.imageUrl}
               alt={member.name}
