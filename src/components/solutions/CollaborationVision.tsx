@@ -1,9 +1,13 @@
+
 'use client';
 
-import { CollaborationDiagram } from '@/components/animations/CollaborationDiagram';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionTitle } from '../shared/section-title';
 
 export function CollaborationVision() {
+  const collaborationImage = PlaceHolderImages.find(p => p.id === 'collaboration-infographic');
+  
   return (
     <section className="bg-sap-gradient text-white">
       <div className="container">
@@ -18,10 +22,20 @@ export function CollaborationVision() {
                 <p>It streamlines the communication among the multiple teams involved in a Trial and provides the necessary tools for effective data capture and decision-making. This Collaboration Model along with fully customizable role-based authorizations enables teams and individuals with secure and real-time access to Trial Data.</p>
             </div>
             <div className="flex items-center justify-center">
-              <CollaborationDiagram />
+              {collaborationImage && (
+                <Image 
+                  src={collaborationImage.imageUrl}
+                  alt={collaborationImage.description}
+                  width={600}
+                  height={500}
+                  data-ai-hint={collaborationImage.imageHint}
+                />
+              )}
             </div>
         </div>
       </div>
     </section>
   );
 }
+
+    
