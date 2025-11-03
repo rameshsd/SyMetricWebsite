@@ -39,14 +39,13 @@ export function GlobalPresence() {
             </p>
         </div>
 
-        <div className="mt-16 relative">
+        <div className="mt-16 relative aspect-[2/1] w-full max-w-6xl mx-auto">
           {mapImage && (
             <Image
               src={mapImage.imageUrl}
               alt="World map"
-              width={1200}
-              height={600}
-              className="w-full h-auto object-contain"
+              fill
+              className="w-full h-auto object-contain opacity-10"
               data-ai-hint={mapImage.imageHint}
             />
           )}
