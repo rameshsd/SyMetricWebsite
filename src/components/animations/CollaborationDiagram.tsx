@@ -2,7 +2,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
-import { Users, Pill, RealWorldEvidenceIcon, TrialDirectoriesIcon, ClinicalTrialsDataIcon, DataRepositoriesIcon, PublicDomainDataIcon, EHR_EMR_Icon } from "@/components/icons/collaboration-icons";
+import { UsersIcon, PillIcon, RealWorldEvidenceIcon, TrialDirectoriesIcon, ClinicalTrialsDataIcon, DataRepositoriesIcon, PublicDomainDataIcon, EHR_EMR_Icon } from "@/components/icons/collaboration-icons";
 
 const container = {
   hidden: { opacity: 0 },
@@ -49,8 +49,8 @@ export function CollaborationDiagram() {
     <div ref={ref} className="relative w-full p-8 bg-blue-900/50 rounded-lg overflow-hidden">
       <motion.div initial="hidden" animate={inView ? "show" : "hidden"} className="space-y-12">
         <Section title="Partners">
-          <IconCard icon={Users} label="Users" />
-          <IconCard icon={Pill} label="Drug discovery and development" />
+          <IconCard icon={UsersIcon} label="Users" />
+          <IconCard icon={PillIcon} label="Drug discovery and development" />
         </Section>
         
         <div className="relative flex justify-center items-center h-20">
