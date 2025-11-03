@@ -42,113 +42,114 @@ export default function AboutPage() {
         secondaryNav={secondaryNav}
         showTitle={false}
       />
-      <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0">
-        <div className="container mx-auto px-0">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="py-20 px-4 sm:px-6 lg:px-8">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Revolutionizing<br/>Clinical Trials<br/>With Innovation
-              </h1>
-            </div>
-            <div className="relative h-64 md:h-full min-h-[500px]">
-                {heroImage && (
-                    <div className="absolute inset-0 clip-path-polygon-about-hero">
-                        <Image 
-                            src={heroImage.imageUrl}
-                            alt={heroImage.description}
-                            data-ai-hint={heroImage.imageHint}
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div id="overview">
-        <SectionTitle title="Company Overview" className='pt-20'/>
-        <CompanyFacts />
-      </div>
-      
-      <div id="innovation">
-        <RevolutionizingTrialsSection />
-      </div>
-
-      <section id="our-strategy" className="bg-secondary">
-        <div className="container">
-          <SectionTitle title="Our Strategy" description="Our vision and mission drive everything we do." className="mb-16"/>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl font-bold tracking-tight">Vision</h2>
-              <p className="mt-2 text-muted-foreground italic">Our vision...</p>
-              <p className="mt-4 text-xl font-semibold text-primary">
-                To accelerate the impact of clinical research on healthcare outcomes through digital interventions.
-              </p>
-              <p className="mt-4 text-muted-foreground">
-                We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.
-              </p>
-            </div>
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl font-bold tracking-tight">Mission</h2>
-              <p className="mt-2 text-muted-foreground italic">And we are on a mission!</p>
-              <p className="mt-4 text-xl font-semibold text-primary">
-                To transform the drug development landscape.
-              </p>
-              <p className="mt-4 text-muted-foreground">
-                The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.
-              </p>
+      <div className="pt-16">
+        <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0">
+          <div className="container mx-auto px-0">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="py-20 px-4 sm:px-6 lg:px-8">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                  Revolutionizing<br/>Clinical Trials<br/>With Innovation
+                </h1>
+              </div>
+              <div className="relative h-64 md:h-full min-h-[500px]">
+                  {heroImage && (
+                      <div className="absolute inset-0 clip-path-polygon-about-hero">
+                          <Image 
+                              src={heroImage.imageUrl}
+                              alt={heroImage.description}
+                              data-ai-hint={heroImage.imageHint}
+                              fill
+                              className="object-cover"
+                          />
+                      </div>
+                  )}
+              </div>
             </div>
           </div>
+        </section>
+
+        <div id="overview">
+          <SectionTitle title="Company Overview" className='pt-20'/>
+          <CompanyFacts />
         </div>
-      </section>
+        
+        <div id="innovation">
+          <RevolutionizingTrialsSection />
+        </div>
 
-      <SapCloudPortfolio />
-      
-      <div id="our-story">
-        <SectionTitle title="Our Story" className='pt-20' />
-        <LeadershipSection />
-        <GrowthStoryTimeline />
-      </div>
-
-      <section id="sponsorships" className="bg-background">
-        <div className="container">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold tracking-tight mb-12">Global Sponsorships</h2>
+        <section id="our-strategy" className="bg-secondary">
+          <div className="container">
+            <SectionTitle title="Our Strategy" description="Our vision and mission drive everything we do." className="mb-16"/>
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                {sponsorshipImage && (
-                  <Image
-                    src={sponsorshipImage.imageUrl}
-                    alt={sponsorshipImage.description}
-                    data-ai-hint={sponsorshipImage.imageHint}
-                    fill
-                    className="object-cover"
-                  />
-                )}
-              </div>
-              <div className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
-                  As the leader in technology software, SAP is proud to expand our relationships within the sports and entertainment world. Partnerships with world-class teams, leagues, and properties have afforded us the ability to create technology solutions that engage fans, media, players, and coaches on another level, integrating real-time cloud-based analytics.
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl font-bold tracking-tight">Vision</h2>
+                <p className="mt-2 text-muted-foreground italic">Our vision...</p>
+                <p className="mt-4 text-xl font-semibold text-primary">
+                  To accelerate the impact of clinical research on healthcare outcomes through digital interventions.
                 </p>
-                <Button variant="link" asChild className="p-0 h-auto text-primary font-semibold">
-                  <Link href="#">
-                    Explore SAP sponsorships <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                <p className="mt-4 text-muted-foreground">
+                  We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.
+                </p>
+              </div>
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl font-bold tracking-tight">Mission</h2>
+                <p className="mt-2 text-muted-foreground italic">And we are on a mission!</p>
+                <p className="mt-4 text-xl font-semibold text-primary">
+                  To transform the drug development landscape.
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                  The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="equality" className="bg-secondary/50">
-        <div className="container text-center">
-          <SectionTitle title="Equality and Inclusion" description="This is a placeholder for the Equality and Inclusion section." />
+        <SapCloudPortfolio />
+        
+        <div id="our-story">
+          <SectionTitle title="Our Story" className='pt-20' />
+          <LeadershipSection />
+          <GrowthStoryTimeline />
         </div>
-      </section>
 
+        <section id="sponsorships" className="bg-background">
+          <div className="container">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-4xl font-bold tracking-tight mb-12">Global Sponsorships</h2>
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                  {sponsorshipImage && (
+                    <Image
+                      src={sponsorshipImage.imageUrl}
+                      alt={sponsorshipImage.description}
+                      data-ai-hint={sponsorshipImage.imageHint}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+                <div className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    As the leader in technology software, SAP is proud to expand our relationships within the sports and entertainment world. Partnerships with world-class teams, leagues, and properties have afforded us the ability to create technology solutions that engage fans, media, players, and coaches on another level, integrating real-time cloud-based analytics.
+                  </p>
+                  <Button variant="link" asChild className="p-0 h-auto text-primary font-semibold">
+                    <Link href="#">
+                      Explore SAP sponsorships <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="equality" className="bg-secondary/50">
+          <div className="container text-center">
+            <SectionTitle title="Equality and Inclusion" description="This is a placeholder for the Equality and Inclusion section." />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

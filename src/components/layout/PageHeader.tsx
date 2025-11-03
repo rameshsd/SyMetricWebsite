@@ -81,8 +81,7 @@ export function PageHeader({
                   key={tab.label}
                   href={tab.href}
                   className={cn(
-                    tab.label === 'Overview' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
-                    "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
+                    "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-muted-foreground hover:text-foreground hover:border-border"
                   )}
                 >
                   {tab.label}
