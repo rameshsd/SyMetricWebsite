@@ -3,6 +3,7 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const locations = [
     { name: 'United States', top: '38%', left: '21%', value: '232', color: 'bg-teal-500' },
@@ -49,20 +50,27 @@ export function GlobalPresence() {
               data-ai-hint={mapImage.imageHint}
             />
           )}
-          {locations.map((loc) => (
-            <div
-              key={loc.name}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2"
-              style={{ top: loc.top, left: loc.left }}
-            >
-              <div className={`w-8 h-8 ${loc.color} rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg`}>
-                {loc.value}
-              </div>
-            </div>
-          ))}
+          <TooltipProvider>
+            {locations.map((loc) => (
+              <Tooltip key={loc.name}>
+                <TooltipTrigger
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+                  style={{ top: loc.top, left: loc.left }}
+                >
+                  <div className="relative">
+                    <div className={`w-3 h-3 ${loc.color} rounded-full animate-pulse`} />
+                    <div className={`absolute -top-1 -left-1 w-5 h-5 ${loc.color} rounded-full opacity-30 animate-pulse-slow`} />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-semibold">{loc.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
         </div>
 
-        <div className="mt-8 max-w-5xl mx-auto">
+        <div className="mt-12 max-w-5xl mx-auto">
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-2">
                 {locations.map(loc => (
                     <li key={loc.name} className="flex items-center gap-2 text-sm">
