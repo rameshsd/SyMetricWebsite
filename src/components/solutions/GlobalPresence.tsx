@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -19,17 +18,51 @@ const locations = [
   { name: 'India', top: '50%', left: '70%', value: '19', color: 'bg-violet-500', isHQ: true },
 ];
 
+function parsePercent(p: string) {
+  return Number(p.replace('%', '').trim());
+}
+
 export function GlobalPresence() {
   const mapImage = PlaceHolderImages.find((p) => p.id === 'world-map');
-  const india = locations.find((l) => l.name === 'India');
+  const origin = locations.find((l) => l.isHQ) || locations.find((l) => l.name === 'India');
+
+  // Build SVG path data using viewBox 0 0 100 100 (percent coords -> numbers)
+  const linePaths = origin
+    ? locations
+        .filter((l) => !l.isHQ)
+        .map((target) => {
+          const x1 = parsePercent(origin.left);
+          const y1 = parsePercent(origin.top);
+          const x2 = parsePercent(target.left);
+          const y2 = parsePercent(target.top);
+
+          // Midpoint
+          const mx = (x1 + x2) / 2;
+          const my = (y1 + y2) / 2;
+
+          // Perpendicular offset for curve (scaled to distance)
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const offset = Math.min(14 + dist * 0.08, 28); // tweak curvature
+
+          // Perpendicular control point
+          const pcx = mx - (dy / dist) * offset;
+          const pcy = my + (dx / dist) * offset;
+
+          // Quadratic Bezier: M x1 y1 Q pcx pcy x2 y2
+          return {
+            id: `${origin.name}-${target.name}`,
+            d: `M ${x1} ${y1} Q ${pcx} ${pcy} ${x2} ${y2}`,
+          };
+        })
+    : [];
 
   return (
     <section className="bg-background">
       <div className="container">
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold tracking-tight">
-            Affordable and Scalable, Globally
-          </h2>
+          <h2 className="text-4xl font-bold tracking-tight">Affordable and Scalable, Globally</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto mt-8">
@@ -41,41 +74,37 @@ export function GlobalPresence() {
           </p>
         </div>
 
-        <div className="mt-16 relative">
+        <div className="mt-16 relative max-w-[1200px] mx-auto">
           {mapImage && (
             <Image
               src={mapImage.imageUrl}
               alt="World map"
               width={1200}
               height={600}
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-contain rounded-2xl shadow-soft"
               data-ai-hint={mapImage.imageHint}
             />
           )}
 
-          {/* Connecting Curved Lines */}
-          {india &&
-            locations
-              .filter((l) => !l.isHQ)
-              .map((loc) => (
-                <svg
-                  key={loc.name}
-                  className="absolute pointer-events-none"
-                  style={{ top: 0, left: 0, width: '100%', height: '100%' }}
-                >
-                  <path
-                    d={`
-                    M ${india.left} ${india.top}
-                    Q ${(parseFloat(india.left) + parseFloat(loc.left)) / 2}% ${parseFloat(india.top) - 10}%,
-                      ${loc.left} ${loc.top}
-                  `}
-                    stroke="rgba(0,0,0,0.2)"
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeDasharray="4 4"
-                  />
-                </svg>
-              ))}
+          {/* SVG overlay that uses percentage coordinates inside a 0..100 viewBox */}
+          <svg
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0 w-full h-full"
+            aria-hidden
+          >
+            {linePaths.map((p) => (
+              <path
+                key={p.id}
+                d={p.d}
+                stroke="rgba(14, 165, 233, 0.85)" /* teal-blue feel */
+                strokeWidth={0.45}
+                fill="none"
+                strokeLinecap="round"
+                className="route-path"
+              />
+            ))}
+          </svg>
 
           <TooltipProvider>
             {locations.map((loc) => (
@@ -84,17 +113,36 @@ export function GlobalPresence() {
                   className="absolute transform -translate-x-1/2 -translate-y-1/2 focus:outline-none"
                   style={{ top: loc.top, left: loc.left }}
                 >
-                  <div className="relative flex items-center justify-center">
+                  <div className="relative flex items-center justify-center" aria-hidden>
                     <div
-                      className={`w-7 h-7 ${loc.color} text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-md`}
+                      className={`w-8 h-8 ${loc.color} text-white text-[11px] font-bold rounded-full flex items-center justify-center shadow-md relative z-10`}
                     >
                       {loc.value}
                     </div>
+
                     <div
-                      className={`absolute -top-1 -left-1 w-9 h-9 ${loc.color} rounded-full opacity-30 animate-pulse-slow`}
+                      className={`absolute -top-1 -left-1 w-10 h-10 ${loc.color} rounded-full opacity-25 animate-pulse-slow`}
+                      aria-hidden
                     />
+
+                    {/* subtle halo for HQ */}
+                    {loc.isHQ && (
+                      <span
+                        className="absolute rounded-full"
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          left: '-22px',
+                          top: '-22px',
+                          background: 'radial-gradient(circle, rgba(14,165,233,0.12) 0%, rgba(14,165,233,0) 60%)',
+                          zIndex: 0,
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    )}
                   </div>
                 </TooltipTrigger>
+
                 <TooltipContent>
                   <p className="font-semibold">{loc.name}</p>
                 </TooltipContent>
@@ -114,6 +162,51 @@ export function GlobalPresence() {
           </ul>
         </div>
       </div>
+
+      <style jsx>{`
+        /* Animated dashed route */
+        .route-path {
+          stroke-dasharray: 3 6;
+          stroke-dashoffset: 0;
+          animation: dash-move 3.2s linear infinite;
+          opacity: 0.95;
+        }
+
+        @keyframes dash-move {
+          to {
+            stroke-dashoffset: -18;
+          }
+        }
+
+        /* pulse-slow (used for halo) */
+        @keyframes pulse-slow {
+          0% {
+            transform: scale(1);
+            opacity: 0.25;
+          }
+          50% {
+            transform: scale(1.08);
+            opacity: 0.36;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 0.25;
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4.6s ease-in-out infinite;
+        }
+
+        /* soft shadow util */
+        .shadow-soft {
+          box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+        }
+
+        /* ensure svg scales correctly over image */
+        :global(section .container > .mt-16) {
+          position: relative;
+        }
+      `}</style>
     </section>
   );
 }
