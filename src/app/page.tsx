@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -20,6 +19,7 @@ import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { CustomerStories } from '@/components/layout/CustomerStories';
 import { SectionTitle } from '@/components/shared/section-title';
+import { useState } from 'react';
 
 
 export default function Home() {
@@ -27,6 +27,13 @@ export default function Home() {
   const content = homepageContent;
   const featuredNews = latestNews.find(item => item.main);
   const otherNews = latestNews.filter(item => !item.main);
+
+  const INITIAL_VISIBLE_NEWS = 2;
+  const [visibleNewsCount, setVisibleNewsCount] = useState(INITIAL_VISIBLE_NEWS);
+
+  const handleLoadMore = () => {
+    setVisibleNewsCount(otherNews.length);
+  };
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -79,7 +86,7 @@ export default function Home() {
                 );
               })()}
 
-              {otherNews.map((item) => {
+              {otherNews.slice(0, visibleNewsCount).map((item) => {
                   const image = PlaceHolderImages.find(p => p.id === item.imageId);
                   return (
                     <Card key={item.id} className="overflow-hidden group flex flex-col p-6 rounded-2xl bg-background">
@@ -111,6 +118,13 @@ export default function Home() {
                   )
                 })}
             </div>
+            {visibleNewsCount < otherNews.length && (
+              <div className="text-center mt-12">
+                <Button onClick={handleLoadMore} variant="outline" size="lg">
+                  Load More News
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
