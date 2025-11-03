@@ -607,7 +607,7 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  { id: 'flexible', title: 'Flexible and Customizable', description: 'Our platform adapts to your unique study protocols and workflows, not the other way around.', imageId: 'why-us-flexible' },
+  { id: 'flexible', title: 'Flexible and Customizable', description: 'Tailored applications to suit various research study patterns — Adaptive, Umbrella, and Basket Studies. Configure them to your needs and improve your turnaround time.', imageId: 'why-us-flexible-new' },
   { id: 'modular', title: 'Modularized and Integrated', description: 'Choose the specific tools you need or use the fully integrated suite for seamless data flow.', imageId: 'why-us-modular' },
   { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Designed for ease of use, reducing training time and increasing adoption across all user levels.', imageId: 'why-us-intuitive' },
   { id: 'sso', title: 'Single Sign-On Feature', description: 'Access all our platform tools with a single, secure login, simplifying user management.', imageId: 'why-us-sso' },
