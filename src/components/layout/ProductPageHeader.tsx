@@ -90,10 +90,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                           </DropdownMenuItem>
                         ))
                       ) : (
-                        <>
-                          <DropdownMenuItem>Item 1</DropdownMenuItem>
-                          <DropdownMenuItem>Item 2</DropdownMenuItem>
-                        </>
+                        <DropdownMenuItem>No applications found</DropdownMenuItem>
                       )}
                     </DropdownMenuContent>
                 </DropdownMenu>

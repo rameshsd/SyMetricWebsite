@@ -75,11 +75,10 @@ const faqItems = [
 ];
 
 export default function SupportPage() {
-  const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
 
   return (
     <>
-      <ProductPageHeader productName="Support" solutions={headerSolutions} />
+      <ProductPageHeader productName="Support" solutions={[]} />
       
       <section className="w-full min-h-[400px] flex items-center bg-primary/5 dark:bg-card py-0">
         <div className="container">

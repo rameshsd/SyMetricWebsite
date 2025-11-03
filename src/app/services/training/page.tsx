@@ -35,12 +35,11 @@ const trainingSteps = [
 ]
 
 export default function TrainingPage() {
-  const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
   const heroImage = PlaceHolderImages.find(p => p.id === 'training-hero');
 
   return (
     <>
-      <ProductPageHeader productName="Training Services" solutions={headerSolutions} />
+      <ProductPageHeader productName="Training Services" solutions={[]} />
       
       <section className="w-full relative">
         <div className="container">

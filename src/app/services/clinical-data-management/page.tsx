@@ -83,11 +83,10 @@ const cdmServices: {
 ];
 
 export default function ClinicalDataManagementPage() {
-  const headerSolutions = solutions.map(({ id, name, slug }) => ({ id, name, slug }));
 
   return (
     <>
-      <ProductPageHeader productName="Clinical Data Management" solutions={headerSolutions} />
+      <ProductPageHeader productName="Clinical Data Management" solutions={[]} />
       
       <section className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-0">
         <div className="container">
