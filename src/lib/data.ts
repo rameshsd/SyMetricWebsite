@@ -448,6 +448,18 @@ export const growthTimeline = [
     year: '2015',
     events: ['First successful FDA submission using data from our solution'],
   },
+  {
+    year: '2014',
+    events: ['Acquired our first customer'],
+  },
+  {
+    year: '2013',
+    events: ['Launched flagship products IRT/CTM'],
+  },
+  {
+    year: '2012',
+    events: ['Founded in Bangalore, India'],
+  },
 ].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
 
@@ -962,3 +974,4 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
