@@ -28,6 +28,7 @@ import {
   Clock,
   BookOpen,
   Headset,
+  GraduationCap,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -596,8 +597,35 @@ export const latestNews: LatestNewsItem[] = [
     title: 'SyMetric at GINSEP Demo Day',
     description: 'SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.',
     link: '#',
-    imageId: 'news-ginsep-demo'
+imageId: 'news-ginsep-demo'
   }
+];
+
+export const platformUsers = [
+  {
+    icon: Beaker,
+    title: "Pharma Companies",
+    description: "Optimize the time to market for new products with our seamlessly integrated Clinical Trial Platform.",
+    cta: "Get started",
+    link: "/solutions/pharma",
+    imageId: "platform-pharma",
+  },
+  {
+    icon: Building,
+    title: "Contract Research Organizations (CROs)",
+    description: "Ace your game by integrating your services with that of sponsors on our Clinical Trial Platform.",
+    cta: "Try now",
+    link: "/solutions/cro",
+    imageId: "platform-cro",
+  },
+  {
+    icon: GraduationCap,
+    title: "Academia (Hospitals and Universities)",
+    description: "Accelerate research and development efforts through broad collaborations with the industry. on our platform",
+    cta: "Get going",
+    link: "/solutions/academia",
+    imageId: "platform-academia",
+  },
 ];
 
 export const researchIntegrateAnalyzeContent = {
@@ -672,22 +700,22 @@ export const salesSpecialistHelp = [
 ];
     
 export const successStories: SuccessStory[] = [
-  {
-      id: 'sun-pharma',
-      logoId: 'logo-innovate-pharma',
-      title: 'Sun Pharma Advanced Research Company',
-      description: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.',
-      linkText: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management',
-      linkUrl: '#',
-  },
-  {
-      id: 'global-pharma',
-      logoId: 'logo-biogenex',
-      title: 'Global Pharmaceutical Company',
-      description: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.',
-      linkText: 'Director, Research and Development',
-      linkUrl: '#',
-  },
+    {
+        id: 'global-pharma',
+        logoId: 'logo-biogenex',
+        title: 'Global Pharmaceutical Company',
+        description: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.',
+        linkText: 'Director, Research and Development',
+        linkUrl: '#',
+    },
+    {
+        id: 'sun-pharma',
+        logoId: 'logo-innovate-pharma',
+        title: 'Sun Pharma Advanced Research Company',
+        description: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.',
+        linkText: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management',
+        linkUrl: '#',
+    },
 ];
 
 
@@ -796,6 +824,8 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
+
 
 
 

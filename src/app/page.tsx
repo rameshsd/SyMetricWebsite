@@ -19,6 +19,7 @@ import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
+import { CustomerStories } from '@/components/layout/CustomerStories';
 
 
 export default function Home() {
@@ -127,7 +128,7 @@ export default function Home() {
           </div>
         </section>
 
-        <CustomerSuccessSection />
+        <CustomerStories />
       </main>
     </div>
   );
