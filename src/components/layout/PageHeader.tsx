@@ -4,8 +4,8 @@
 import { cn } from "@/lib/utils";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 type PageHeaderProps = {
   title: string;
@@ -14,7 +14,7 @@ type PageHeaderProps = {
     label: string;
   };
   secondaryNav?: {
-    label: string;
+    label:string;
     href: string;
   }[];
   showTitle?: boolean;
@@ -30,17 +30,17 @@ export function PageHeader({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 10);
       
-      // We don't want to hide the header on the very top of the page
       if (currentScrollY > 80) {
-        if (currentScrollY > lastScrollY.current) { // Scrolling down
+        if (currentScrollY > lastScrollY.current) {
           setIsHidden(true);
-        } else { // Scrolling up
+        } else {
           setIsHidden(false);
         }
       } else {
@@ -48,61 +48,66 @@ export function PageHeader({
       }
 
       lastScrollY.current = currentScrollY;
+
+      // Active section highlighting
+      if (secondaryNav) {
+        let currentSection = '';
+        for (const navItem of secondaryNav) {
+          const element = document.querySelector(navItem.href);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 150 && rect.bottom >= 150) {
+              currentSection = navItem.href;
+              break;
+            }
+          }
+        }
+        if (currentSection && currentSection !== activeSection) {
+          setActiveSection(currentSection);
+        }
+      }
     };
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [secondaryNav, activeSection]);
+  
+  const currentActiveItem = secondaryNav?.find(item => item.href === activeSection) || secondaryNav?.[0];
 
   return (
     <div
       className={cn(
-        "sticky top-16 z-30 bg-background/80 backdrop-blur-lg border-b transition-transform duration-300",
+        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300",
         isScrolled && "shadow-sm",
         isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div className="container">
-        {showTitle && (
-          <div className="py-4">
-            {breadcrumb && (
-              <div className="flex items-center text-sm text-muted-foreground mb-2">
-                <Link href="/" className="hover:text-primary">
-                  Home
-                </Link>
-                <ChevronRight className="h-4 w-4 mx-1" />
-                <Link href={breadcrumb.href} className="hover:text-primary">
-                  {breadcrumb.label}
-                </Link>
-              </div>
-            )}
-            <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+        {breadcrumb && (
+          <div className="py-3 flex items-center text-sm">
+            <Link href={breadcrumb.href} className="flex items-center gap-1 text-muted-foreground hover:text-primary">
+              <ChevronDown className="h-4 w-4" />
+              {breadcrumb.label}
+            </Link>
           </div>
         )}
-        {!showTitle && breadcrumb && (
-            <div className="py-3 flex items-center justify-between">
-                <div className="flex items-center text-sm">
-                    <Link href={breadcrumb.href} className="flex items-center gap-1 text-muted-foreground hover:text-primary">
-                        <ChevronDown className="h-4 w-4" />
-                        {breadcrumb.label}
+        
+        {secondaryNav && currentActiveItem && (
+          <div className="flex items-baseline space-x-8 overflow-x-auto scrollbar-hide pt-2 pb-3">
+             <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
+                <Link href={currentActiveItem.href} className="hover:text-primary">{currentActiveItem.label}</Link>
+            </h2>
+            <nav className="flex items-center space-x-6" aria-label="Secondary">
+              {secondaryNav.filter(item => item.href !== activeSection).map((tab, index) => (
+                <div key={tab.label} className="flex items-center space-x-6">
+                    {index > 0 && <span className="text-muted-foreground/50">|</span>}
+                    <Link
+                      href={tab.href}
+                      className="whitespace-nowrap text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {tab.label}
                     </Link>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground mx-1" />
-                    <span className="font-semibold text-foreground">{title}</span>
                 </div>
-            </div>
-        )}
-        {secondaryNav && (
-          <div className="overflow-x-auto scrollbar-hide">
-            <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-              {secondaryNav.map((tab) => (
-                <Link
-                  key={tab.label}
-                  href={tab.href}
-                  className={cn(
-                    "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-muted-foreground hover:text-foreground hover:border-border"
-                  )}
-                >
-                  {tab.label}
-                </Link>
               ))}
             </nav>
           </div>
