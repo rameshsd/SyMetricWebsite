@@ -323,10 +323,18 @@ export const leadership: LeadershipMember[] = [
 
 
 export const customers: Customer[] = [
-    { name: 'Embraer', logo: 'logo-embraer', story: '"The SyMetric Platform is the backbone of our digital transformation."', link: '#' },
-    { name: 'Chiesi', logo: 'logo-chiesi', story: '"We achieved unprecedented efficiency gains with SyMetric."', link: '#' },
-    { name: 'SA Power Networks', logo: 'logo-sa-power', story: '"A powerful and intuitive platform for our complex needs."', link: '#' },
-    { name: 'Christ Juweliere', logo: 'logo-christ', story: '"SyMetric helped us unify our data and unlock new insights."', link: '#' },
+    { 
+        name: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management', 
+        logo: 'logo-innovate-pharma', 
+        story: '“SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.”', 
+        link: '#' 
+    },
+    { 
+        name: 'Director, Research and Development', 
+        logo: 'logo-biogenex', 
+        story: '“Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.”', 
+        link: '#' 
+    },
 ];
 
 export const resources: Resource[] = [
@@ -621,7 +629,7 @@ export const platformUsers = [
   {
     icon: GraduationCap,
     title: "Academia (Hospitals and Universities)",
-    description: "Accelerate research and development efforts through broad collaborations with the industry. on our platform",
+    description: "Accelerate research and development efforts through broad collaborations with the industry on our platform.",
     cta: "Get going",
     link: "/solutions/academia",
     imageId: "platform-academia",
@@ -658,7 +666,7 @@ export const researchIntegrateAnalyzeContent = {
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
   { id: 'flexible', title: 'Flexible and Customizable', description: 'Tailored applications to suit various research study patterns — Adaptive, Umbrella, and Basket Studies. Configure them to your needs and improve your turnaround time.', imageId: 'why-us-flexible' },
-  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose from a range of comprehensive modules that offer the advantage of seamless integration across components such as EDC, IRT, CTM, and Medical Coding.', imageId: 'why-us-modular' },
+  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose from a range of comprehensive modules that offer the advantage of seamless integration across components such as EDC, IRT, CTM, and Medical Coding', imageId: 'why-us-modular' },
   { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Solve your problems faster and smarter with easy-to-use applications designed to understand your needs.', imageId: 'why-us-intuitive' },
   { id: 'sso', title: 'Single Sign-In Feature', description: 'Access all authorized tools on a cloud platform using a single set of credentials and avoid the hassles of multiple sign-ins and user verifications.', imageId: 'why-us-sso' },
   { id: 'reusable', title: 'Reusable Forms', description: 'Import unique Case Report Forms (CRFs) that are in line with standard guidelines from our Global CRF Library and say goodbye to the tedious process of form designing.', imageId: 'why-us-reusable' },
@@ -831,3 +839,6 @@ export const faqItems: FAQItem[] = [
 
 
 
+
+
+    

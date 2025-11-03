@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import Image from 'next/image';
@@ -8,7 +9,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
-import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
+import { CustomerStories } from '@/components/layout/CustomerStories';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
@@ -19,7 +20,6 @@ import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
-import { CustomerStories } from '@/components/layout/CustomerStories';
 import { CustomerSuccess } from '@/components/home/customer-success';
 
 
@@ -129,8 +129,11 @@ export default function Home() {
           </div>
         </section>
 
-        <CustomerSuccess />
+        <CustomerStories />
+
       </main>
     </div>
   );
 }
+
+    
