@@ -511,7 +511,8 @@ export const latestNews: LatestNewsItem[] = [
     title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
     description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
     link: '#',
-    imageId: 'news-summit'
+    imageId: 'news-summit',
+    main: true,
   },
   {
     id: 2,
@@ -773,4 +774,5 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+
 

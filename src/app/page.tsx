@@ -12,7 +12,6 @@ import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
 import { FeatureGrid } from '@/components/layout/FeatureGrid';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
@@ -20,12 +19,14 @@ import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { CustomerStories } from '@/components/layout/CustomerStories';
+import { SectionTitle } from '@/components/shared/section-title';
 
 
 export default function Home() {
   
   const content = homepageContent;
-  const newsItems = latestNews;
+  const featuredNews = latestNews.find(item => item.main);
+  const otherNews = latestNews.filter(item => !item.main);
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -41,55 +42,75 @@ export default function Home() {
         <ResearchIntegrateAnalyze />
         <AchievementsSection />
 
-        <section className="w-full bg-background">
+        <section className="w-full bg-secondary/30">
           <div className="container">
-            <h2 className="text-4xl font-bold tracking-tight mb-12 text-center">Latest From SyMetric</h2>
-            <Carousel
-              opts={{
-                align: "start",
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {newsItems.map((item) => {
+            <SectionTitle title="What's new" className="text-left !max-w-none mb-8" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {featuredNews && (() => {
+                const image = PlaceHolderImages.find(p => p.id === featuredNews.imageId);
+                return (
+                  <Card className="md:col-span-2 overflow-hidden group flex flex-col md:flex-row rounded-2xl">
+                    {image && (
+                      <div className="relative w-full md:w-1/2 h-64 md:h-auto">
+                        <Link href={featuredNews.link}>
+                          <Image
+                            src={image.imageUrl}
+                            alt={featuredNews.title}
+                            data-ai-hint={image.imageHint}
+                            fill
+                            className="object-cover"
+                          />
+                        </Link>
+                      </div>
+                    )}
+                    <div className="flex flex-col justify-center p-8 md:p-12 md:w-1/2">
+                      <p className="text-sm text-primary font-semibold mb-2">SyMetric events</p>
+                      <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
+                        <Link href={featuredNews.link}>{featuredNews.title}</Link>
+                      </h3>
+                      <p className="text-muted-foreground mb-6">{featuredNews.description}</p>
+                      <div className="mt-auto">
+                        <Button asChild>
+                          <Link href={featuredNews.link}>Read More</Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })()}
+
+              {otherNews.map((item) => {
                   const image = PlaceHolderImages.find(p => p.id === item.imageId);
                   return (
-                    <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-1 h-full">
-                        <Card className="overflow-hidden group h-full flex flex-col p-6 rounded-2xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-                            <div className="block">
-                                <div className="relative aspect-video overflow-hidden rounded-lg">
-                                {image && (
-                                    <Link href={item.link}>
-                                        <Image
-                                        src={image.imageUrl}
-                                        alt={item.title}
-                                        data-ai-hint={image.imageHint}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                    </Link>
-                                )}
-                                </div>
-                            </div>
-                            <CardContent className="p-0 pt-6 flex-grow flex flex-col">
-                              <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
-                              <h3 className="text-lg font-bold mb-4 group-hover:text-primary transition-colors flex-grow">
-                                <Link href={item.link}>{item.title}</Link>
-                              </h3>
-                              <Button asChild>
-                                <Link href={item.link}>Read More</Link>
-                              </Button>
-                            </CardContent>
-                        </Card>
-                      </div>
-                    </CarouselItem>
+                    <Card key={item.id} className="overflow-hidden group flex flex-col p-6 rounded-2xl bg-background">
+                        {image && (
+                          <div className="relative aspect-video overflow-hidden rounded-lg mb-6">
+                              <Link href={item.link}>
+                                  <Image
+                                  src={image.imageUrl}
+                                  alt={item.title}
+                                  data-ai-hint={image.imageHint}
+                                  fill
+                                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                  />
+                              </Link>
+                          </div>
+                        )}
+                        <CardContent className="p-0 flex-grow flex flex-col">
+                          <p className="text-sm text-muted-foreground mb-2">Press release</p>
+                          <h3 className="text-lg font-bold mb-4 group-hover:text-primary transition-colors flex-grow">
+                            <Link href={item.link}>{item.title}</Link>
+                          </h3>
+                          <div className="mt-auto">
+                            <Button asChild>
+                              <Link href={item.link}>Read More</Link>
+                            </Button>
+                          </div>
+                        </CardContent>
+                    </Card>
                   )
                 })}
-              </CarouselContent>
-              <CarouselPrevious className="hidden lg:flex" />
-              <CarouselNext className="hidden lg:flex" />
-            </Carousel>
+            </div>
           </div>
         </section>
 
