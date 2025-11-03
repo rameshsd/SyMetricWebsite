@@ -607,14 +607,14 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  { id: 'flexible', title: 'Flexible and Customizable', description: 'Tailored applications to suit various research study patterns — Adaptive, Umbrella, and Basket Studies. Configure them to your needs and improve your turnaround time.', imageId: 'why-us-flexible-new' },
-  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose the specific tools you need or use the fully integrated suite for seamless data flow.', imageId: 'why-us-modular' },
-  { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Designed for ease of use, reducing training time and increasing adoption across all user levels.', imageId: 'why-us-intuitive' },
-  { id: 'sso', title: 'Single Sign-On Feature', description: 'Access all our platform tools with a single, secure login, simplifying user management.', imageId: 'why-us-sso' },
-  { id: 'reusable', title: 'Reusable Forms', description: 'Save time and ensure consistency by creating and reusing forms and templates across multiple studies.', imageId: 'why-us-reusable' },
-  { id: 'compliant', title: 'Security Compliant', description: 'Built with 21 CFR Part 11 and ICH-GCP guidelines at its core to ensure data integrity and audit readiness.', imageId: 'why-us-compliant' },
-  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', description: 'Gain instant visibility into trial progress with powerful dashboards and analytics.', imageId: 'why-us-tracking' },
-  { id: "support", title: "24x7 Dedicated Technical Support", description: "Our expert team is always available to assist you, ensuring your trials run smoothly without interruption.", imageId: "why-us-support" },
+  { id: 'flexible', title: 'Flexible and Customizable', description: 'Tailored applications to suit various research study patterns — Adaptive, Umbrella, and Basket Studies. Configure them to your needs and improve your turnaround time.', imageId: 'why-us-flexible' },
+  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose from a range of comprehensive modules that offer the advantage of seamless integration across components such as EDC, IRT, CTM, and Medical Coding.', imageId: 'why-us-modular' },
+  { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Solve your problems faster and smarter with easy-to-use applications designed to understand your needs.', imageId: 'why-us-intuitive' },
+  { id: 'sso', title: 'Single Sign-In Feature', description: 'Access all authorized tools on a cloud platform using a single set of credentials and avoid the hassles of multiple sign-ins and user verifications.', imageId: 'why-us-sso' },
+  { id: 'reusable', title: 'Reusable Forms', description: 'Import unique Case Report Forms (CRFs) that are in line with standard guidelines from our Global CRF Library and say goodbye to the tedious process of form designing.', imageId: 'why-us-reusable' },
+  { id: 'compliant', title: 'Security Compliant', description: 'Safeguard the confidentiality and integrity of data using our security-compliant applications that adhere to 21 CFR Part 11, ICH-GCP, ISO 27001, ISO 9001, HIIPA, and GDPR.', imageId: 'why-us-compliant' },
+  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', description: 'Deploy efficient trial management strategies with the help of real-time tracking, key performance indicators, and insightful analytics.', imageId: 'why-us-tracking' },
+  { id: "support", title: "24x7 Dedicated Technical Support", description: "Resolve issues within a short time with the help of our technical experts who offer round-the-clock support for all your needs.", imageId: "why-us-support" },
 ];
 
 export const companyInfo: CompanyInfo = {
@@ -773,3 +773,4 @@ export const faqItems: FAQItem[] = [
       answer: "Absolutely. Our platform and services are fully scalable and customizable, making them suitable for everything from small, single-site studies to large, global, multi-center trials. We tailor our solutions to meet your specific needs."
     }
   ];
+

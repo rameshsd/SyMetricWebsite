@@ -507,7 +507,7 @@
     {
       "id": "edc-reporting",
       "description": "An automated email notification about an Adverse Event (AE) that has been reported.",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "alert notification"
     },
     {
@@ -614,50 +614,50 @@
     },
     {
       "id": "why-us-flexible",
-      "description": "Abstract shapes showing flexibility",
-      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "abstract flowing"
+      "description": "A scientist working in a modern laboratory with advanced equipment.",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Flexible-and-Customizable.jpg",
+      "imageHint": "scientist laboratory"
     },
     {
       "id": "why-us-modular",
-      "description": "Building blocks forming a structure",
-      "imageUrl": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "team puzzle"
+      "description": "A diagram showing modular components integrating seamlessly.",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Modularized-and-Integrated.jpg",
+      "imageHint": "modular integration"
     },
     {
       "id": "why-us-intuitive",
-      "description": "A person interacting with a clean user interface",
-      "imageUrl": "https://images.unsplash.com/photo-1581089458284-8859a033f739?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "man touchscreen"
+      "description": "A user interacting with a clean and simple interface on a tablet.",
+      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Simple-and-Intuitive-User-Interface.jpg",
+      "imageHint": "intuitive interface"
     },
     {
       "id": "why-us-sso",
-      "description": "A secure lock icon",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "data security"
+      "description": "An illustration showing a single key unlocking multiple applications.",
+      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Single-Sign-in-Feature.jpg",
+      "imageHint": "single sign-on"
     },
     {
       "id": "why-us-reusable",
-      "description": "Stack of organized documents",
-      "imageUrl": "https://images.unsplash.com/photo-1558362627-9426f4370244?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "files organized"
+      "description": "A library of reusable digital forms and templates.",
+      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Reusable-Forms.jpg",
+      "imageHint": "reusable forms"
     },
     {
       "id": "why-us-compliant",
-      "description": "A person signing a document",
-      "imageUrl": "https://images.unsplash.com/photo-1560520450-4d2a44117b4a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "signing document"
+      "description": "A graphic showing multiple compliance badges like GDPR, HIPAA, and 21 CFR Part 11.",
+      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Security-Compliant.jpg",
+      "imageHint": "security compliance"
     },
     {
       "id": "why-us-tracking",
-      "description": "A dashboard with charts and graphs",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "analytics dashboard"
+      "description": "A business intelligence dashboard with real-time charts and analytics.",
+      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Real-Time-Tracking-and-Business-Intelligence.jpg",
+      "imageHint": "real-time analytics"
     },
     {
       "id": "why-us-support",
-      "description": "A customer support representative with a headset",
-      "imageUrl": "https://images.unsplash.com/photo-1616587071986-4c3d019cd5c9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "description": "A friendly customer support agent with a headset, available 24/7.",
+      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/24x7-Dedicated-Technical-Support.jpg",
       "imageHint": "customer support"
     },
     {
@@ -743,12 +743,6 @@
       "description": "Soccer players in a huddle on the field.",
       "imageUrl": "https://images.unsplash.com/photo-1598043449174-c6a655519451?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "soccer players"
-    },
-    {
-      "id": "why-us-flexible-new",
-      "description": "A scientist working in a modern laboratory with advanced equipment.",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Flexible-and-Customizable.jpg",
-      "imageHint": "scientist laboratory"
     }
   ]
 }
