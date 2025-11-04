@@ -12,12 +12,21 @@ import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 import { SectionTitle } from '@/components/shared/section-title';
 import { ArrowRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 
 export const metadata = {
   title: 'About Us - SyMetric',
   description: 'Learn about the history, mission, and team behind SyMetric.',
 };
+
+const StrategyCard = ({ title, description }: { title: string, description: React.ReactNode }) => (
+  <Card className="bg-blue-50/50 dark:bg-blue-900/20 p-8 rounded-2xl border-blue-100 dark:border-blue-900/30 shadow-sm">
+    <div className="w-12 h-1.5 bg-blue-200 dark:bg-blue-700 rounded-full mb-4" />
+    <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
+    <div className="text-muted-foreground space-y-3">{description}</div>
+  </Card>
+);
 
 export default function AboutPage() {
   const secondaryNav = [
@@ -77,29 +86,34 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-secondary">
+        <section id="our-strategy" className="bg-secondary/50">
           <div className="container">
-            <SectionTitle title="Our Strategy" description="Our vision and mission drive everything we do." className="mb-16"/>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold tracking-tight">Vision</h2>
-                <p className="mt-2 text-muted-foreground italic">Our vision...</p>
-                <p className="mt-4 text-xl font-semibold text-primary">
-                  To accelerate the impact of clinical research on healthcare outcomes through digital interventions.
-                </p>
-                <p className="mt-4 text-muted-foreground">
-                  We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.
+            <div className="grid lg:grid-cols-3 gap-12 items-start">
+              <div className="lg:col-span-1">
+                <h2 className="text-3xl font-bold tracking-tight">Our Strategy</h2>
+                <p className="mt-2 text-muted-foreground">
+                  Our vision and mission drive everything we do.
                 </p>
               </div>
-              <div className="text-center md:text-left">
-                <h2 className="text-3xl font-bold tracking-tight">Mission</h2>
-                <p className="mt-2 text-muted-foreground italic">And we are on a mission!</p>
-                <p className="mt-4 text-xl font-semibold text-primary">
-                  To transform the drug development landscape.
-                </p>
-                <p className="mt-4 text-muted-foreground">
-                  The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.
-                </p>
+              <div className="lg:col-span-2 grid grid-cols-1 gap-8">
+                <StrategyCard 
+                  title="Vision"
+                  description={
+                    <>
+                      <p className="text-lg font-semibold text-primary">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
+                      <p>We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
+                    </>
+                  }
+                />
+                 <StrategyCard 
+                  title="Mission"
+                  description={
+                    <>
+                      <p className="text-lg font-semibold text-primary">To transform the drug development landscape.</p>
+                      <p>The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
+                    </>
+                  }
+                />
               </div>
             </div>
           </div>
