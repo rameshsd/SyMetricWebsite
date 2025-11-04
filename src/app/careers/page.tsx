@@ -2,12 +2,11 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { jobOpenings, companyValues, employeeBenefits } from '@/lib/data';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CheckCircle, MapPin, Briefcase } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ApplyForm } from '@/components/careers/ApplyForm';
 import { SectionTitle } from '@/components/shared/section-title';
+import { CareersHeroGraphic } from '@/components/careers/CareersHeroGraphic';
 
 export const metadata = {
     title: 'Careers - SyMetric',
@@ -15,36 +14,25 @@ export const metadata = {
 };
 
 export default function CareersPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'careers-hero');
 
     return (
         <div className="bg-background">
-            <section className="relative bg-secondary/50">
+            <section className="bg-blue-100/50 dark:bg-blue-900/10 py-20 md:py-32">
                 <div className="container">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6 py-20">
+                        <div className="space-y-6">
                             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                                Join Our Mission to Transform Healthcare
+                                Bring out your best.
                             </h1>
                             <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
-                                We're looking for passionate innovators, problem-solvers, and collaborators to help us build the future of clinical research.
+                                Your skills matter. Your impact is global. Join SyMetric to shape technology that transforms businesses worldwide.
                             </p>
                             <Button size="lg" asChild>
-                                <Link href="#open-positions">View Open Positions</Link>
+                                <Link href="#open-positions">Search all jobs</Link>
                             </Button>
                         </div>
-                        <div className="relative h-[500px] hidden lg:block">
-                            {heroImage && (
-                                <div className="absolute inset-0 clip-path-polygon-about-hero">
-                                    <Image
-                                        src={heroImage.imageUrl}
-                                        alt={heroImage.description}
-                                        data-ai-hint={heroImage.imageHint}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            )}
+                        <div className="relative h-[400px] flex items-center justify-center">
+                           <CareersHeroGraphic />
                         </div>
                     </div>
                 </div>
