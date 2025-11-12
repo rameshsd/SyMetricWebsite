@@ -3,23 +3,12 @@
 import { motion } from "framer-motion"
 import { Repeat, Users, Hospital, Beaker } from "lucide-react"
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
 const itemVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { type: "spring", stiffness: 300, damping: 20 },
+    transition: { type: "spring", stiffness: 200, damping: 18 },
   },
 }
 
@@ -32,10 +21,20 @@ const pathVariants = (delay: number) => ({
   },
 })
 
-const Node = ({ icon: Icon, label, x, y }: { icon: React.ElementType; label: string; x: number; y: number }) => (
+const Node = ({
+  icon: Icon,
+  label,
+  x,
+  y,
+}: {
+  icon: React.ElementType
+  label: string
+  x: number
+  y: number
+}) => (
   <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
     <foreignObject x="-32" y="-32" width="64" height="64">
-      <div className="w-16 h-16 bg-background border border-primary/40 rounded-full flex items-center justify-center shadow-md">
+      <div className="w-16 h-16 bg-background border border-primary/30 rounded-full flex items-center justify-center shadow-sm">
         <Icon className="w-8 h-8 text-primary" />
       </div>
     </foreignObject>
@@ -47,8 +46,8 @@ const Node = ({ icon: Icon, label, x, y }: { icon: React.ElementType; label: str
       fontWeight="500"
       className="text-foreground"
     >
-      {label.split(" ").map((word, index) => (
-        <tspan key={index} x="0" dy={index === 0 ? 0 : "1.2em"}>
+      {label.split(" ").map((word, i) => (
+        <tspan key={i} x="0" dy={i === 0 ? 0 : "1.1em"}>
           {word}
         </tspan>
       ))}
@@ -57,35 +56,28 @@ const Node = ({ icon: Icon, label, x, y }: { icon: React.ElementType; label: str
 )
 
 export function IrtDiagram() {
-  const center = { x: 250, y: 200 } // Center point of SVG
-  const radius = 120 // Distance of each node from center
+  const center = { x: 250, y: 200 }
 
-  const nodes = [
-    { icon: Repeat, label: "Randomization" },
-    { icon: Users, label: "Subject Management" },
-    { icon: Hospital, label: "Site Management" },
-    { icon: Beaker, label: "Clinical Supplies" },
+  // Perfect grid layout (top, right, bottom, left)
+  const nodePositions = [
+    { icon: Repeat, label: "Randomization", x: 250, y: 60 }, // Top
+    { icon: Users, label: "Subject Management", x: 420, y: 200 }, // Right
+    { icon: Hospital, label: "Site Management", x: 250, y: 340 }, // Bottom
+    { icon: Beaker, label: "Clinical Supplies", x: 80, y: 200 }, // Left
   ]
-
-  // Place 4 nodes around a circle
-  const nodePositions = nodes.map((node, i) => {
-    const angle = (i / nodes.length) * 2 * Math.PI - Math.PI / 4 // rotate 45° for balance
-    return {
-      ...node,
-      x: center.x + radius * Math.cos(angle),
-      y: center.y + radius * Math.sin(angle),
-    }
-  })
 
   return (
     <motion.div
-      className="relative w-full h-[400px] flex items-center justify-center"
-      variants={containerVariants}
+      className="relative w-full h-[420px] flex items-center justify-center"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true }}
     >
-      <svg viewBox="0 0 500 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+      <svg
+        viewBox="0 0 500 400"
+        className="w-[500px] h-[400px]"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <defs>
           <marker
             id="arrowhead"
@@ -100,7 +92,7 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
-        {/* Draw arrows to nodes */}
+        {/* Connectors */}
         {nodePositions.map((pos, i) => (
           <motion.line
             key={i}
@@ -111,7 +103,7 @@ export function IrtDiagram() {
             stroke="hsl(var(--primary))"
             strokeWidth="1.5"
             markerEnd="url(#arrowhead)"
-            variants={pathVariants(0.2 + i * 0.2)}
+            variants={pathVariants(0.2 + i * 0.1)}
           />
         ))}
 
@@ -120,7 +112,14 @@ export function IrtDiagram() {
           <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
           <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
           <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
-          <text x="0" y="5" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" fontWeight="bold">
+          <text
+            x="0"
+            y="5"
+            textAnchor="middle"
+            fill="hsl(var(--primary-foreground))"
+            fontSize="14"
+            fontWeight="bold"
+          >
             IRT
           </text>
         </motion.g>
