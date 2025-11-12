@@ -21,29 +21,27 @@ const Node: React.FC<{
   y: number
 }> = ({ icon: Icon, label, x, y }) => {
   return (
-    <motion.g variants={itemVariants}>
-        <g transform={`translate(${x}, ${y})`}>
-            <foreignObject x={-20} y={-20} width={40} height={40}>
-                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
-                <Icon className="w-5 h-5 text-primary" />
-                </div>
-            </foreignObject>
-            <text
-                x={0}
-                y={36}
-                textAnchor="middle"
-                fontSize={11}
-                fontWeight={500}
-                fill="currentColor"
-                className="text-foreground"
-            >
-                {label.split(" ").map((w, i) => (
-                <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
-                    {w}
-                </tspan>
-                ))}
-            </text>
-      </g>
+    <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
+        <foreignObject x={-20} y={-20} width={40} height={40}>
+            <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
+            <Icon className="w-5 h-5 text-primary" />
+            </div>
+        </foreignObject>
+        <text
+            x={0}
+            y={36}
+            textAnchor="middle"
+            fontSize={11}
+            fontWeight={500}
+            fill="currentColor"
+            className="text-foreground"
+        >
+            {label.split(" ").map((w, i) => (
+            <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
+                {w}
+            </tspan>
+            ))}
+        </text>
     </motion.g>
   )
 }
