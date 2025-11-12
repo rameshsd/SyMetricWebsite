@@ -1,17 +1,25 @@
 "use client";
 
-import React from "react"
-import { motion } from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
 
 const itemVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 20 } },
-}
+};
 
 const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
   visible: { pathLength: 1, opacity: 1, transition: { duration: 1, delay } },
-})
+});
 
 const iconPaths = {
   Repeat: (
@@ -52,10 +60,10 @@ const iconPaths = {
 
 const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ iconKey, label }) => (
   <motion.g variants={itemVariants}>
-    <circle cx="0" cy="0" r="32" fill="white" stroke="hsl(var(--primary)/0.3)" strokeWidth="1.5" />
+    <circle cx="0" cy="0" r="30" fill="white" stroke="hsl(var(--primary)/0.2)" strokeWidth="1.5" />
     <g
       stroke="hsl(var(--primary))"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       fill="none"
@@ -63,48 +71,52 @@ const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ ic
     >
       {iconPaths[iconKey]}
     </g>
-    <text
-      y="48"
-      textAnchor="middle"
-      fontSize="11"
-      fontWeight="500"
-      fill="currentColor"
-      className="text-foreground"
-    >
+    <text y="45" textAnchor="middle" fontSize="11" fontWeight="500" fill="currentColor" className="text-foreground">
       {label}
     </text>
   </motion.g>
-)
+);
 
 export function IrtDiagram() {
-  const SVG_WIDTH = 600
-  const SVG_HEIGHT = 450
-  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
-  const radius = 130
+  const SVG_WIDTH = 500;
+  const SVG_HEIGHT = 380;
+  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 };
+  const radiusX = 150;
+  const radiusY = 110;
 
   const nodes = [
-    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
-    { iconKey: "Users", label: "Subject Management", x: center.x + radius, y: center.y },
-    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radius },
-    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radius, y: center.y },
-  ] as const
+    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radiusY },
+    { iconKey: "Users", label: "Subject Management", x: center.x + radiusX, y: center.y },
+    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radiusY },
+    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radiusX, y: center.y },
+  ] as const;
 
   return (
     <motion.div
-      className="w-full flex items-center justify-center h-[460px]"
+      className="w-full flex items-center justify-center h-[420px] relative"
+      variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
+      {/* Decorative IRT Tab in corner */}
+      <motion.div variants={itemVariants} className="absolute top-4 left-4 z-10">
+        <div className="flex items-center">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-md">
+                IRT
+            </div>
+        </div>
+      </motion.div>
+
       <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
         <defs>
           <marker
             id="arrow"
             markerUnits="strokeWidth"
-            markerWidth="8"
-            markerHeight="8"
+            markerWidth="5"
+            markerHeight="5"
             viewBox="0 0 10 10"
-            refX="9.5"
+            refX="8"
             refY="5"
             orient="auto"
           >
@@ -114,40 +126,29 @@ export function IrtDiagram() {
 
         {/* Connecting Lines */}
         {nodes.map((pos, i) => {
-          const start = { x: center.x, y: center.y }
-          const end = { x: pos.x, y: pos.y }
-          const dx = end.x - start.x
-          const dy = end.y - start.y
-          const length = Math.sqrt(dx * dx + dy * dy)
-          const unitDx = dx / length
-          const unitDy = dy / length
-          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 }
-          const adjustedEnd = { x: end.x - unitDx * 35, y: end.y - unitDy * 35 }
+          const end = { x: pos.x, y: pos.y };
+          const dx = end.x - center.x;
+          const dy = end.y - center.y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const unitDx = dx / length;
+          const unitDy = dy / length;
+          
+          const adjustedEnd = { x: end.x - unitDx * 35, y: end.y - unitDy * 35 };
 
           return (
             <motion.line
               key={i}
-              variants={lineVariants(0.2 * i)}
-              x1={adjustedStart.x}
-              y1={adjustedStart.y}
+              variants={lineVariants(0.2 + i * 0.1)}
+              x1={center.x}
+              y1={center.y}
               x2={adjustedEnd.x}
               y2={adjustedEnd.y}
               stroke="hsl(var(--primary))"
-              strokeWidth={1.6}
+              strokeWidth={1.5}
               markerEnd="url(#arrow)"
             />
-          )
+          );
         })}
-
-        {/* Center IRT Node */}
-        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="48" fill="hsla(var(--primary)/0.1)" />
-          <circle cx="0" cy="0" r="40" fill="hsla(var(--primary)/0.25)" />
-          <circle cx="0" cy="0" r="32" fill="hsl(var(--primary))" />
-          <text x="0" y="5" textAnchor="middle" fontSize="16" fontWeight="bold" fill="white">
-            IRT
-          </text>
-        </motion.g>
 
         {/* Outer Nodes */}
         {nodes.map((p, i) => (
@@ -157,5 +158,5 @@ export function IrtDiagram() {
         ))}
       </svg>
     </motion.div>
-  )
+  );
 }
