@@ -53,11 +53,9 @@ const iconPaths = {
 const Node: React.FC<{
   iconKey: keyof typeof iconPaths
   label: string
-  x: number
-  y: number
-}> = ({ iconKey, label, x, y }) => {
+}> = ({ iconKey, label }) => {
   return (
-    <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
+    <motion.g variants={itemVariants}>
       <circle cx="0" cy="0" r="32" fill="hsl(var(--background))" stroke="hsl(var(--primary) / 0.3)" strokeWidth="1" />
       <g
         stroke="hsl(var(--primary))"
@@ -137,7 +135,6 @@ export function IrtDiagram() {
           const unitDx = dx / length;
           const unitDy = dy / length;
           
-          // Adjust start and end points to account for circle radii
           const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 };
           const adjustedEnd = { x: end.x - unitDx * 32, y: end.y - unitDy * 32 };
 
@@ -164,10 +161,13 @@ export function IrtDiagram() {
             IRT
           </text>
         </motion.g>
-
+        
         {nodePositions.map((p, i) => (
-          <Node key={i} iconKey={p.iconKey} label={p.label} x={p.x} y={p.y} />
+            <g key={i} transform={`translate(${p.x}, ${p.y})`}>
+                <Node iconKey={p.iconKey} label={p.label} />
+            </g>
         ))}
+
       </svg>
     </motion.div>
   )
