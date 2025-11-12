@@ -120,15 +120,16 @@ export function IrtDiagram() {
         </defs>
 
         {nodePositions.map((pos, idx) => {
+          const start = { x: center.x, y: center.y };
           const end = { x: pos.x, y: pos.y };
-          const dx = end.x - center.x;
-          const dy = end.y - center.y;
+          const dx = end.x - start.x;
+          const dy = end.y - start.y;
           const length = Math.sqrt(dx * dx + dy * dy);
           const unitDx = dx / length;
           const unitDy = dy / length;
 
-          const adjustedStart = { x: center.x + unitDx * 10, y: center.y + unitDy * 10 };
-          const adjustedEnd = { x: end.x - unitDx * 35, y: end.y - unitDy * 35 };
+          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 };
+          const adjustedEnd = { x: end.x - unitDx * 30, y: end.y - unitDy * 30 };
 
           return (
             <motion.line
@@ -144,6 +145,15 @@ export function IrtDiagram() {
             />
           );
         })}
+
+        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
+          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.08)" />
+          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.15)" />
+          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
+          <text x="0" y="5" textAnchor="middle" fontSize={14} fontWeight="bold" fill="hsl(var(--primary-foreground))">
+            IRT
+          </text>
+        </motion.g>
 
         {nodePositions.map((p, i) => (
           <g key={i} transform={`translate(${p.x}, ${p.y})`}>
