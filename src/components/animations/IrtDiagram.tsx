@@ -89,14 +89,21 @@ export function IrtDiagram() {
   const SVG_WIDTH = 500
   const SVG_HEIGHT = 400
   const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
-  const radius = 130
+  const nodeRadius = 32
+  
+  const nodePositions = {
+      top: { x: center.x, y: 70 },
+      right: { x: 420, y: center.y },
+      bottom: { x: center.x, y: 330 },
+      left: { x: 80, y: center.y },
+  };
 
-  const nodePositions = [
-    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
-    { iconKey: "Users", label: "Subject Management", x: center.x + radius, y: center.y },
-    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radius },
-    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radius, y: center.y },
-  ] as const
+  const lineEndPoints = {
+      top: { x: nodePositions.top.x, y: nodePositions.top.y + nodeRadius },
+      right: { x: nodePositions.right.x - nodeRadius, y: nodePositions.right.y },
+      bottom: { x: nodePositions.bottom.x, y: nodePositions.bottom.y - nodeRadius },
+      left: { x: nodePositions.left.x + nodeRadius, y: nodePositions.left.y },
+  }
 
   return (
     <motion.div
@@ -118,7 +125,7 @@ export function IrtDiagram() {
             markerWidth="8"
             markerHeight="8"
             viewBox="0 0 10 10"
-            refX="9.5"
+            refX="0"
             refY="5"
             orient="auto"
           >
@@ -126,47 +133,41 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
-        {nodePositions.map((pos, idx) => {
-          const start = { x: center.x, y: center.y };
-          const end = { x: pos.x, y: pos.y };
-          const dx = end.x - start.x;
-          const dy = end.y - start.y;
-          const length = Math.sqrt(dx * dx + dy * dy);
-          const unitDx = dx / length;
-          const unitDy = dy / length;
-          
-          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 };
-          const adjustedEnd = { x: end.x - unitDx * 32, y: end.y - unitDy * 32 };
-
-          return (
-            <motion.line
-              key={idx}
-              variants={lineVariants(0.2 * idx)}
-              x1={adjustedStart.x}
-              y1={adjustedStart.y}
-              x2={adjustedEnd.x}
-              y2={adjustedEnd.y}
-              stroke="hsl(var(--primary))"
-              strokeWidth={1.5}
-              markerEnd="url(#arrow)"
-            />
-          );
-        })}
-
-        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
-          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
-          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
-          <text x="0" y="5" textAnchor="middle" fontSize={14} fontWeight="bold" fill="hsl(var(--primary-foreground))">
-            IRT
-          </text>
-        </motion.g>
+        {/* Lines from center to nodes */}
+        <motion.line
+          variants={lineVariants(0.1)}
+          x1={center.x} y1={center.y} x2={lineEndPoints.top.x} y2={lineEndPoints.top.y}
+          stroke="hsl(var(--primary))" strokeWidth={1.5} markerStart="url(#arrow)"
+        />
+         <motion.line
+          variants={lineVariants(0.2)}
+          x1={center.x} y1={center.y} x2={lineEndPoints.right.x} y2={lineEndPoints.right.y}
+          stroke="hsl(var(--primary))" strokeWidth={1.5} markerEnd="url(#arrow)"
+        />
+         <motion.line
+          variants={lineVariants(0.3)}
+          x1={center.x} y1={center.y} x2={lineEndPoints.bottom.x} y2={lineEndPoints.bottom.y}
+          stroke="hsl(var(--primary))" strokeWidth={1.5} markerEnd="url(#arrow)"
+        />
+        <motion.line
+          variants={lineVariants(0.4)}
+          x1={center.x} y1={center.y} x2={lineEndPoints.left.x} y2={lineEndPoints.left.y}
+          stroke="hsl(var(--primary))" strokeWidth={1.5} markerStart="url(#arrow)"
+        />
         
-        {nodePositions.map((p, i) => (
-            <g key={i} transform={`translate(${p.x}, ${p.y})`}>
-                <Node iconKey={p.iconKey} label={p.label} />
-            </g>
-        ))}
+        {/* Nodes */}
+        <g transform={`translate(${nodePositions.top.x}, ${nodePositions.top.y})`}>
+            <Node iconKey="Repeat" label="Randomization" />
+        </g>
+        <g transform={`translate(${nodePositions.right.x}, ${nodePositions.right.y})`}>
+            <Node iconKey="Users" label="Subject Management" />
+        </g>
+         <g transform={`translate(${nodePositions.bottom.x}, ${nodePositions.bottom.y})`}>
+            <Node iconKey="Hospital" label="Site Management" />
+        </g>
+        <g transform={`translate(${nodePositions.left.x}, ${nodePositions.left.y})`}>
+            <Node iconKey="Beaker" label="Clinical Supplies" />
+        </g>
 
       </svg>
     </motion.div>
