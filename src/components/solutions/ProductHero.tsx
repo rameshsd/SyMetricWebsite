@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { CollaborationDiagram } from '../animations/CollaborationDiagram';
+import { IrtDiagram } from '../animations/IrtDiagram';
 
 type ProductHeroProps = {
     title: string;
@@ -44,8 +44,8 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
           </div>
           <div className="relative flex justify-center items-center">
             {isIrtIwrs ? (
-                <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
-                    <CollaborationDiagram />
+                <div className="relative w-full max-w-[500px] h-[350px] bg-white dark:bg-slate-900/50 p-4 rounded-2xl shadow-lg">
+                    <IrtDiagram />
                 </div>
             ) : (
                 <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
