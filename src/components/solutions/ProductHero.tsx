@@ -1,9 +1,9 @@
-
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { CollaborationDiagram } from '../animations/CollaborationDiagram';
 
 type ProductHeroProps = {
     title: string;
@@ -11,11 +11,13 @@ type ProductHeroProps = {
     imageSrc: string;
     imageHint: string;
     backgroundColor?: string;
+    slug?: string;
 };
 
-export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor }: ProductHeroProps) {
+export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor, slug }: ProductHeroProps) {
   const sectionStyle = backgroundColor ? { backgroundColor } : {};
   const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
+  const isIrtIwrs = slug === 'irt-iwrs';
 
   return (
     <section 
@@ -41,18 +43,24 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
             </div>
           </div>
           <div className="relative flex justify-center items-center">
-            <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
-                <Image
-                    src={imageSrc}
-                    alt={title}
-                    data-ai-hint={imageHint}
-                    fill
-                    className="rounded-lg object-cover z-10"
-                />
-                 <div 
-                    className="absolute -top-2 right-10 w-24 h-24 border-l-[12px] border-t-[12px] border-blue-600 z-0" 
-                />
-            </div>
+            {isIrtIwrs ? (
+                <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
+                    <CollaborationDiagram />
+                </div>
+            ) : (
+                <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
+                    <Image
+                        src={imageSrc}
+                        alt={title}
+                        data-ai-hint={imageHint}
+                        fill
+                        className="rounded-lg object-cover z-10"
+                    />
+                    <div 
+                        className="absolute -top-2 right-10 w-24 h-24 border-l-[12px] border-t-[12px] border-blue-600 z-0" 
+                    />
+                </div>
+            )}
             <div className="absolute top-1/2 -right-4 -translate-y-1/2 space-y-3 z-20">
                 {[...Array(4)].map((_, i) => (
                     <div key={i} className="w-3 h-3 bg-blue-300/50" style={{clipPath: 'polygon(0 0, 100% 50%, 0 100%)'}} />

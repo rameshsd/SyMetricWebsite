@@ -56,6 +56,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
               imageSrc={heroImage.imageUrl}
               imageHint={heroImage.imageHint}
               backgroundColor={solution.backgroundColor}
+              slug={solution.slug}
             />
           </section>
         )}
