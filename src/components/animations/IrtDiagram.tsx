@@ -1,133 +1,134 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import { Repeat, Users, Hospital, Beaker } from "lucide-react"
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 200, damping: 18 },
-  },
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 18 } },
 }
 
-const pathVariants = (delay: number) => ({
+const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 1.2, ease: "easeInOut", delay },
-  },
+  visible: { pathLength: 1, opacity: 1, transition: { duration: 0.9, delay } },
 })
 
-const Node = ({
-  icon: Icon,
-  label,
-  x,
-  y,
-}: {
+const Node: React.FC<{
   icon: React.ElementType
   label: string
   x: number
   y: number
-}) => (
-  <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
-    <foreignObject x="-32" y="-32" width="64" height="64">
-      <div className="w-16 h-16 bg-background border border-primary/30 rounded-full flex items-center justify-center shadow-sm">
-        <Icon className="w-8 h-8 text-primary" />
-      </div>
-    </foreignObject>
-    <text
-      y="45"
-      textAnchor="middle"
-      fill="currentColor"
-      fontSize="11"
-      fontWeight="500"
-      className="text-foreground"
-    >
-      {label.split(" ").map((word, i) => (
-        <tspan key={i} x="0" dy={i === 0 ? 0 : "1.1em"}>
-          {word}
-        </tspan>
-      ))}
-    </text>
-  </motion.g>
-)
+}> = ({ icon: Icon, label, x, y }) => {
+  // Icon wrapper size: 40x40, centered at (x,y)
+  return (
+    <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`} aria-hidden={false}>
+      <foreignObject x={-20} y={-20} width={40} height={40}>
+        <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
+          <Icon className="w-5 h-5 text-primary" />
+        </div>
+      </foreignObject>
+
+      {/* label centered below icon */}
+      <text
+        x={0}
+        y={36}
+        textAnchor="middle"
+        fontSize={11}
+        fontWeight={500}
+        fill="currentColor"
+        className="text-foreground"
+      >
+        {label.split(" ").map((w, i) => (
+          <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
+            {w}
+          </tspan>
+        ))}
+      </text>
+    </motion.g>
+  )
+}
 
 export function IrtDiagram() {
-  const center = { x: 250, y: 200 }
+  // EXACT center and radius so nodes are Top, Right, Bottom, Left
+  const SVG_WIDTH = 500
+  const SVG_HEIGHT = 400
+  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 } // {250,200}
+  const radius = 120
 
-  // Perfect grid layout (top, right, bottom, left)
+  // positions exactly Top, Right, Bottom, Left
   const nodePositions = [
-    { icon: Repeat, label: "Randomization", x: 250, y: 60 }, // Top
-    { icon: Users, label: "Subject Management", x: 420, y: 200 }, // Right
-    { icon: Hospital, label: "Site Management", x: 250, y: 340 }, // Bottom
-    { icon: Beaker, label: "Clinical Supplies", x: 80, y: 200 }, // Left
+    { icon: Repeat, label: "Randomization", x: center.x, y: center.y - radius }, // Top
+    { icon: Users, label: "Subject Management", x: center.x + radius, y: center.y }, // Right
+    { icon: Hospital, label: "Site Management", x: center.x, y: center.y + radius }, // Bottom
+    { icon: Beaker, label: "Clinical Supplies", x: center.x - radius, y: center.y }, // Left
   ]
 
   return (
     <motion.div
-      className="relative w-full h-[420px] flex items-center justify-center"
+      className="w-full flex items-center justify-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
       <svg
-        viewBox="0 0 500 400"
-        className="w-[500px] h-[400px]"
+        viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
+        width="100%"
+        height="100%"
         preserveAspectRatio="xMidYMid meet"
+        className="max-w-[700px] h-[420px]"
       >
         <defs>
+          {/* arrow marker that points along line direction */}
           <marker
-            id="arrowhead"
+            id="arrow"
+            markerUnits="strokeWidth"
+            markerWidth="8"
+            markerHeight="8"
             viewBox="0 0 10 10"
             refX="8"
             refY="5"
-            markerWidth="6"
-            markerHeight="6"
-            orient="auto-start-reverse"
+            orient="auto"
           >
             <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
           </marker>
         </defs>
 
-        {/* Connectors */}
-        {nodePositions.map((pos, i) => (
+        {/* Center hub */}
+        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
+          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.08)" />
+          <circle cx="0" cy="0" r="36" fill="hsla(var(--primary) / 0.14)" />
+          <circle cx="0" cy="0" r="28" fill="hsl(var(--primary))" />
+          <text x="0" y="6" textAnchor="middle" fontSize={14} fontWeight={700} fill="hsl(var(--primary-foreground))">
+            IRT
+          </text>
+        </motion.g>
+
+        {/* Straight connectors from CENTER to each node (arrow at node end) */}
+        {nodePositions.map((pos, idx) => (
           <motion.line
-            key={i}
+            key={idx}
+            variants={lineVariants(0.1 * idx)}
             x1={center.x}
             y1={center.y}
             x2={pos.x}
             y2={pos.y}
             stroke="hsl(var(--primary))"
-            strokeWidth="1.5"
-            markerEnd="url(#arrowhead)"
-            variants={pathVariants(0.2 + i * 0.1)}
+            strokeWidth={1.8}
+            strokeLinecap="round"
+            markerEnd="url(#arrow)"
           />
         ))}
 
-        {/* Center Hub */}
-        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
-          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
-          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
-          <text
-            x="0"
-            y="5"
-            textAnchor="middle"
-            fill="hsl(var(--primary-foreground))"
-            fontSize="14"
-            fontWeight="bold"
-          >
-            IRT
-          </text>
-        </motion.g>
-
-        {/* Outer Nodes */}
-        {nodePositions.map((pos, i) => (
-          <Node key={i} icon={pos.icon} label={pos.label} x={pos.x} y={pos.y} />
+        {/* Render nodes exactly at positions */}
+        {nodePositions.map((p, i) => (
+          <Node key={i} icon={p.icon} label={p.label} x={p.x} y={p.y} />
         ))}
+
+        {/* OPTIONAL: Crosshair at center (visual reference) - comment out if not needed */}
+        <g>
+          <line x1={center.x - 6} y1={center.y} x2={center.x + 6} y2={center.y} strokeOpacity={0} />
+        </g>
       </svg>
     </motion.div>
   )
