@@ -20,48 +20,45 @@ const Node: React.FC<{
   x: number
   y: number
 }> = ({ icon: Icon, label, x, y }) => {
-  // Icon wrapper size: 40x40, centered at (x,y)
   return (
-    <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`} aria-hidden={false}>
-      <foreignObject x={-20} y={-20} width={40} height={40}>
-        <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
-          <Icon className="w-5 h-5 text-primary" />
-        </div>
-      </foreignObject>
-
-      {/* label centered below icon */}
-      <text
-        x={0}
-        y={36}
-        textAnchor="middle"
-        fontSize={11}
-        fontWeight={500}
-        fill="currentColor"
-        className="text-foreground"
-      >
-        {label.split(" ").map((w, i) => (
-          <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
-            {w}
-          </tspan>
-        ))}
-      </text>
+    <motion.g variants={itemVariants}>
+        <g transform={`translate(${x}, ${y})`}>
+            <foreignObject x={-20} y={-20} width={40} height={40}>
+                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
+                <Icon className="w-5 h-5 text-primary" />
+                </div>
+            </foreignObject>
+            <text
+                x={0}
+                y={36}
+                textAnchor="middle"
+                fontSize={11}
+                fontWeight={500}
+                fill="currentColor"
+                className="text-foreground"
+            >
+                {label.split(" ").map((w, i) => (
+                <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
+                    {w}
+                </tspan>
+                ))}
+            </text>
+      </g>
     </motion.g>
   )
 }
 
 export function IrtDiagram() {
-  // EXACT center and radius so nodes are Top, Right, Bottom, Left
   const SVG_WIDTH = 500
   const SVG_HEIGHT = 400
-  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 } // {250,200}
+  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
   const radius = 120
 
-  // positions exactly Top, Right, Bottom, Left
   const nodePositions = [
-    { icon: Repeat, label: "Randomization", x: center.x, y: center.y - radius }, // Top
-    { icon: Users, label: "Subject Management", x: center.x + radius, y: center.y }, // Right
-    { icon: Hospital, label: "Site Management", x: center.x, y: center.y + radius }, // Bottom
-    { icon: Beaker, label: "Clinical Supplies", x: center.x - radius, y: center.y }, // Left
+    { icon: Repeat, label: "Randomization", x: center.x, y: center.y - radius },
+    { icon: Users, label: "Subject Management", x: center.x + radius, y: center.y },
+    { icon: Hospital, label: "Site Management", x: center.x, y: center.y + radius },
+    { icon: Beaker, label: "Clinical Supplies", x: center.x - radius, y: center.y },
   ]
 
   return (
@@ -79,7 +76,6 @@ export function IrtDiagram() {
         className="max-w-[700px] h-[420px]"
       >
         <defs>
-          {/* arrow marker that points along line direction */}
           <marker
             id="arrow"
             markerUnits="strokeWidth"
@@ -94,7 +90,6 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
-        {/* Center hub */}
         <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
           <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.08)" />
           <circle cx="0" cy="0" r="36" fill="hsla(var(--primary) / 0.14)" />
@@ -104,7 +99,6 @@ export function IrtDiagram() {
           </text>
         </motion.g>
 
-        {/* Straight connectors from CENTER to each node (arrow at node end) */}
         {nodePositions.map((pos, idx) => (
           <motion.line
             key={idx}
@@ -120,15 +114,9 @@ export function IrtDiagram() {
           />
         ))}
 
-        {/* Render nodes exactly at positions */}
         {nodePositions.map((p, i) => (
           <Node key={i} icon={p.icon} label={p.label} x={p.x} y={p.y} />
         ))}
-
-        {/* OPTIONAL: Crosshair at center (visual reference) - comment out if not needed */}
-        <g>
-          <line x1={center.x - 6} y1={center.y} x2={center.x + 6} y2={center.y} strokeOpacity={0} />
-        </g>
       </svg>
     </motion.div>
   )
