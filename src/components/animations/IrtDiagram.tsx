@@ -2,46 +2,87 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { Repeat, Users, Hospital, Beaker } from "lucide-react"
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 18 } },
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 20 } },
 }
 
 const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 0.9, delay } },
+  visible: { pathLength: 1, opacity: 1, transition: { duration: 1, delay } },
 })
 
+const iconPaths = {
+  Repeat: (
+    <>
+      <path d="M17 2.1l4 4-4 4" />
+      <path d="M3 12.6A9 9 0 0 1 12 3a9 9 0 0 1 8.4 5.5" />
+      <path d="M7 21.9l-4-4 4-4" />
+      <path d="M21 11.4A9 9 0 0 1 12 21a9 9 0 0 1-8.4-5.5" />
+    </>
+  ),
+  Users: (
+    <>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  Hospital: (
+    <>
+      <path d="M12 22V8" />
+      <path d="M5 22V8" />
+      <path d="M19 22V8" />
+      <path d="M2 22h20" />
+      <path d="m20 8-8-6-8 6" />
+      <path d="M9 16h6" />
+      <path d="M12 13v6" />
+    </>
+  ),
+  Beaker: (
+    <>
+      <path d="M4.5 3h15" />
+      <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
+      <path d="M6 14h12" />
+    </>
+  ),
+}
+
 const Node: React.FC<{
-  icon: React.ElementType
+  iconKey: keyof typeof iconPaths
   label: string
   x: number
   y: number
-}> = ({ icon: Icon, label, x, y }) => {
+}> = ({ iconKey, label, x, y }) => {
   return (
     <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
-        <foreignObject x={-20} y={-20} width={40} height={40}>
-            <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center border border-primary/25 bg-white shadow-sm">
-            <Icon className="w-5 h-5 text-primary" />
-            </div>
-        </foreignObject>
-        <text
-            x={0}
-            y={36}
-            textAnchor="middle"
-            fontSize={11}
-            fontWeight={500}
-            fill="currentColor"
-            className="text-foreground"
-        >
-            {label.split(" ").map((w, i) => (
-            <tspan key={i} x={0} dy={i === 0 ? 0 : "1.15em"}>
-                {w}
-            </tspan>
-            ))}
-        </text>
+      <circle cx="0" cy="0" r="32" fill="hsl(var(--background))" stroke="hsl(var(--primary) / 0.3)" strokeWidth="1" />
+      <g
+        stroke="hsl(var(--primary))"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+        transform="translate(-12, -12)"
+      >
+        {iconPaths[iconKey]}
+      </g>
+      <text
+        y="48"
+        textAnchor="middle"
+        fontSize="11"
+        fontWeight="500"
+        fill="currentColor"
+        className="text-foreground"
+      >
+        {label.split(" ").map((w, i) => (
+          <tspan key={i} x="0" dy={i === 0 ? 0 : "1.2em"}>
+            {w}
+          </tspan>
+        ))}
+      </text>
     </motion.g>
   )
 }
@@ -50,18 +91,18 @@ export function IrtDiagram() {
   const SVG_WIDTH = 500
   const SVG_HEIGHT = 400
   const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
-  const radius = 120
+  const radius = 130
 
   const nodePositions = [
-    { icon: Repeat, label: "Randomization", x: center.x, y: center.y - radius },
-    { icon: Users, label: "Subject Management", x: center.x + radius, y: center.y },
-    { icon: Hospital, label: "Site Management", x: center.x, y: center.y + radius },
-    { icon: Beaker, label: "Clinical Supplies", x: center.x - radius, y: center.y },
-  ]
+    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
+    { iconKey: "Users", label: "Subject Management", x: center.x + radius, y: center.y },
+    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radius },
+    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radius, y: center.y },
+  ] as const
 
   return (
     <motion.div
-      className="w-full flex items-center justify-center"
+      className="w-full flex items-center justify-center h-[420px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -71,7 +112,6 @@ export function IrtDiagram() {
         width="100%"
         height="100%"
         preserveAspectRatio="xMidYMid meet"
-        className="max-w-[700px] h-[420px]"
       >
         <defs>
           <marker
@@ -80,7 +120,7 @@ export function IrtDiagram() {
             markerWidth="8"
             markerHeight="8"
             viewBox="0 0 10 10"
-            refX="8"
+            refX="9.5"
             refY="5"
             orient="auto"
           >
@@ -88,32 +128,45 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
+        {nodePositions.map((pos, idx) => {
+          const start = { x: center.x, y: center.y };
+          const end = { x: pos.x, y: pos.y };
+          const dx = end.x - start.x;
+          const dy = end.y - start.y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const unitDx = dx / length;
+          const unitDy = dy / length;
+          
+          // Adjust start and end points to account for circle radii
+          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 };
+          const adjustedEnd = { x: end.x - unitDx * 32, y: end.y - unitDy * 32 };
+
+          return (
+            <motion.line
+              key={idx}
+              variants={lineVariants(0.2 * idx)}
+              x1={adjustedStart.x}
+              y1={adjustedStart.y}
+              x2={adjustedEnd.x}
+              y2={adjustedEnd.y}
+              stroke="hsl(var(--primary))"
+              strokeWidth={1.5}
+              markerEnd="url(#arrow)"
+            />
+          );
+        })}
+
         <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.08)" />
-          <circle cx="0" cy="0" r="36" fill="hsla(var(--primary) / 0.14)" />
-          <circle cx="0" cy="0" r="28" fill="hsl(var(--primary))" />
-          <text x="0" y="6" textAnchor="middle" fontSize={14} fontWeight={700} fill="hsl(var(--primary-foreground))">
+          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
+          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
+          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
+          <text x="0" y="5" textAnchor="middle" fontSize={14} fontWeight="bold" fill="hsl(var(--primary-foreground))">
             IRT
           </text>
         </motion.g>
 
-        {nodePositions.map((pos, idx) => (
-          <motion.line
-            key={idx}
-            variants={lineVariants(0.1 * idx)}
-            x1={center.x}
-            y1={center.y}
-            x2={pos.x}
-            y2={pos.y}
-            stroke="hsl(var(--primary))"
-            strokeWidth={1.8}
-            strokeLinecap="round"
-            markerEnd="url(#arrow)"
-          />
-        ))}
-
         {nodePositions.map((p, i) => (
-          <Node key={i} icon={p.icon} label={p.label} x={p.x} y={p.y} />
+          <Node key={i} iconKey={p.iconKey} label={p.label} x={p.x} y={p.y} />
         ))}
       </svg>
     </motion.div>
