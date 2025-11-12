@@ -32,20 +32,10 @@ const pathVariants = (delay: number) => ({
   },
 })
 
-const Node = ({
-  icon: Icon,
-  label,
-  x,
-  y,
-}: {
-  icon: React.ElementType
-  label: string
-  x: number
-  y: number
-}) => (
+const Node = ({ icon: Icon, label, x, y }: { icon: React.ElementType; label: string; x: number; y: number }) => (
   <motion.g variants={itemVariants} transform={`translate(${x}, ${y})`}>
     <foreignObject x="-32" y="-32" width="64" height="64">
-      <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
+      <div className="w-16 h-16 bg-background border border-primary/40 rounded-full flex items-center justify-center shadow-md">
         <Icon className="w-8 h-8 text-primary" />
       </div>
     </foreignObject>
@@ -57,7 +47,7 @@ const Node = ({
       fontWeight="500"
       className="text-foreground"
     >
-      {label.split(' ').map((word, index) => (
+      {label.split(" ").map((word, index) => (
         <tspan key={index} x="0" dy={index === 0 ? 0 : "1.2em"}>
           {word}
         </tspan>
@@ -67,8 +57,8 @@ const Node = ({
 )
 
 export function IrtDiagram() {
-  const center = { x: 250, y: 200 }
-  const radius = 130
+  const center = { x: 250, y: 200 } // Center point of SVG
+  const radius = 120 // Distance of each node from center
 
   const nodes = [
     { icon: Repeat, label: "Randomization" },
@@ -77,9 +67,9 @@ export function IrtDiagram() {
     { icon: Beaker, label: "Clinical Supplies" },
   ]
 
-  // Arrange nodes evenly in a circle
+  // Place 4 nodes around a circle
   const nodePositions = nodes.map((node, i) => {
-    const angle = (i / nodes.length) * 2 * Math.PI
+    const angle = (i / nodes.length) * 2 * Math.PI - Math.PI / 4 // rotate 45° for balance
     return {
       ...node,
       x: center.x + radius * Math.cos(angle),
@@ -95,11 +85,7 @@ export function IrtDiagram() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.5 }}
     >
-      <svg
-        viewBox="0 0 500 400"
-        className="w-full h-full overflow-visible"
-        preserveAspectRatio="xMidYMid meet"
-      >
+      <svg viewBox="0 0 500 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <marker
             id="arrowhead"
@@ -114,7 +100,7 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
-        {/* Lines connecting nodes to center */}
+        {/* Draw arrows to nodes */}
         {nodePositions.map((pos, i) => (
           <motion.line
             key={i}
@@ -129,24 +115,17 @@ export function IrtDiagram() {
           />
         ))}
 
-        {/* Center IRT Node */}
+        {/* Center Hub */}
         <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
           <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
           <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
           <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
-          <text
-            x="0"
-            y="5"
-            textAnchor="middle"
-            fill="hsl(var(--primary-foreground))"
-            fontSize="14"
-            fontWeight="bold"
-          >
+          <text x="0" y="5" textAnchor="middle" fill="hsl(var(--primary-foreground))" fontSize="14" fontWeight="bold">
             IRT
           </text>
         </motion.g>
 
-        {/* Peripheral Nodes */}
+        {/* Outer Nodes */}
         {nodePositions.map((pos, i) => (
           <Node key={i} icon={pos.icon} label={pos.label} x={pos.x} y={pos.y} />
         ))}
