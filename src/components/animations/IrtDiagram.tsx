@@ -4,13 +4,13 @@ import React from "react"
 import { motion } from "framer-motion"
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 20 } },
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 }
 
 const lineVariants = (delay = 0) => ({
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 1, delay } },
+  hidden: { pathLength: 0 },
+  visible: { pathLength: 1, transition: { duration: 1, delay } },
 })
 
 const iconPaths = {
@@ -55,7 +55,7 @@ const Node: React.FC<{
   label: string
 }> = ({ iconKey, label }) => {
   return (
-    <motion.g variants={itemVariants}>
+    <g>
       <circle cx="0" cy="0" r="32" fill="hsl(var(--background))" stroke="hsl(var(--primary) / 0.3)" strokeWidth="1" />
       <g
         stroke="hsl(var(--primary))"
@@ -81,7 +81,7 @@ const Node: React.FC<{
           </tspan>
         ))}
       </text>
-    </motion.g>
+    </g>
   )
 }
 
@@ -90,19 +90,20 @@ export function IrtDiagram() {
   const SVG_HEIGHT = 400
   const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
   const nodeRadius = 32
-  
-  const nodePositions = {
-      top: { x: center.x, y: 70 },
-      right: { x: 420, y: center.y },
-      bottom: { x: center.x, y: 330 },
-      left: { x: 80, y: center.y },
-  };
 
+  const nodePositions = {
+    top: { x: center.x, y: 70 },
+    right: { x: 420, y: center.y },
+    bottom: { x: center.x, y: 330 },
+    left: { x: 80, y: center.y },
+  }
+
+  // Calculate line endpoints to touch the edge of the circle
   const lineEndPoints = {
-      top: { x: nodePositions.top.x, y: nodePositions.top.y + nodeRadius },
-      right: { x: nodePositions.right.x - nodeRadius, y: nodePositions.right.y },
-      bottom: { x: nodePositions.bottom.x, y: nodePositions.bottom.y - nodeRadius },
-      left: { x: nodePositions.left.x + nodeRadius, y: nodePositions.left.y },
+    top: { x: nodePositions.top.x, y: nodePositions.top.y + nodeRadius },
+    right: { x: nodePositions.right.x - nodeRadius, y: nodePositions.right.y },
+    bottom: { x: nodePositions.bottom.x, y: nodePositions.bottom.y - nodeRadius },
+    left: { x: nodePositions.left.x + nodeRadius, y: nodePositions.left.y },
   }
 
   return (
@@ -112,7 +113,8 @@ export function IrtDiagram() {
       whileInView="visible"
       viewport={{ once: true }}
     >
-      <svg
+      <motion.svg
+        variants={itemVariants}
         viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
         width="100%"
         height="100%"
@@ -133,18 +135,35 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
+        {/* Center IRT Hub */}
+        <g transform={`translate(${center.x}, ${center.y})`}>
+          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.1)" />
+          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.2)" />
+          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
+          <text
+            x="0"
+            y="5"
+            textAnchor="middle"
+            fill="hsl(var(--primary-foreground))"
+            fontSize="14"
+            fontWeight="bold"
+          >
+            IRT
+          </text>
+        </g>
+
         {/* Lines from center to nodes */}
         <motion.line
           variants={lineVariants(0.1)}
           x1={center.x} y1={center.y} x2={lineEndPoints.top.x} y2={lineEndPoints.top.y}
           stroke="hsl(var(--primary))" strokeWidth={1.5} markerStart="url(#arrow)"
         />
-         <motion.line
+        <motion.line
           variants={lineVariants(0.2)}
           x1={center.x} y1={center.y} x2={lineEndPoints.right.x} y2={lineEndPoints.right.y}
           stroke="hsl(var(--primary))" strokeWidth={1.5} markerEnd="url(#arrow)"
         />
-         <motion.line
+        <motion.line
           variants={lineVariants(0.3)}
           x1={center.x} y1={center.y} x2={lineEndPoints.bottom.x} y2={lineEndPoints.bottom.y}
           stroke="hsl(var(--primary))" strokeWidth={1.5} markerEnd="url(#arrow)"
@@ -154,22 +173,21 @@ export function IrtDiagram() {
           x1={center.x} y1={center.y} x2={lineEndPoints.left.x} y2={lineEndPoints.left.y}
           stroke="hsl(var(--primary))" strokeWidth={1.5} markerStart="url(#arrow)"
         />
-        
+
         {/* Nodes */}
         <g transform={`translate(${nodePositions.top.x}, ${nodePositions.top.y})`}>
-            <Node iconKey="Repeat" label="Randomization" />
+          <Node iconKey="Repeat" label="Randomization" />
         </g>
         <g transform={`translate(${nodePositions.right.x}, ${nodePositions.right.y})`}>
-            <Node iconKey="Users" label="Subject Management" />
+          <Node iconKey="Users" label="Subject Management" />
         </g>
-         <g transform={`translate(${nodePositions.bottom.x}, ${nodePositions.bottom.y})`}>
-            <Node iconKey="Hospital" label="Site Management" />
+        <g transform={`translate(${nodePositions.bottom.x}, ${nodePositions.bottom.y})`}>
+          <Node iconKey="Hospital" label="Site Management" />
         </g>
         <g transform={`translate(${nodePositions.left.x}, ${nodePositions.left.y})`}>
-            <Node iconKey="Beaker" label="Clinical Supplies" />
+          <Node iconKey="Beaker" label="Clinical Supplies" />
         </g>
-
-      </svg>
+      </motion.svg>
     </motion.div>
   )
 }
