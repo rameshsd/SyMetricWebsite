@@ -84,7 +84,7 @@ export function PageHeader({
     >
       <div className="container">
         {breadcrumb && (
-          <div className="py-3 flex items-center text-sm">
+          <div className="pt-3 flex items-center text-sm">
             <Link href={breadcrumb.href} className="flex items-center gap-1 text-muted-foreground hover:text-primary">
               <ChevronDown className="h-4 w-4" />
               {breadcrumb.label}
@@ -93,7 +93,7 @@ export function PageHeader({
         )}
         
         {secondaryNav && currentActiveItem && (
-          <div className="flex items-baseline space-x-8 overflow-x-auto scrollbar-hide pt-2 pb-3">
+          <div className="flex items-baseline space-x-8 overflow-x-auto scrollbar-hide pt-2">
              <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
                 <Link href={currentActiveItem.href} className="hover:text-primary">{currentActiveItem.label}</Link>
             </h2>
