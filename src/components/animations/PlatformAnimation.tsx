@@ -70,18 +70,16 @@ const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string })
   </motion.div>
 );
 
-const FlowArrow = ({ d, delay = 0, markerEndId }: { d: string; delay?: number; markerEndId?: string }) => (
-    <motion.path
-      d={d}
-      fill="none"
-      stroke="hsl(var(--primary))"
-      strokeWidth={2}
-      strokeLinecap="round"
-      markerEnd={markerEndId ? `url(#${markerEndId})` : undefined}
-      variants={pathVariants(delay)}
-    />
-  );
-  
+const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
+  <motion.path
+    d={d}
+    fill="none"
+    stroke="hsl(var(--primary))"
+    strokeWidth={2}
+    strokeLinecap="round"
+    variants={pathVariants(delay)}
+  />
+);
 
 const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
   <g>
@@ -130,10 +128,6 @@ export function PlatformAnimation() {
         <div className="absolute top-0 left-0 w-full h-full">
           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="overflow-visible">
             <defs>
-              <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
-              </marker>
-
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
                 <feMerge>
@@ -147,11 +141,11 @@ export function PlatformAnimation() {
               <path id="path-right" d={`M ${centerX} ${topNodeY + 48} V ${busY} H ${rightX} V ${bottomNodeY - 48}`} fill="none" />
             </defs>
 
-            <FlowArrow d={`M ${centerX} ${topNodeY + 48} V ${busY}`} delay={0.2} markerEndId="arrowhead" />
+            <FlowArrow d={`M ${centerX} ${topNodeY + 48} V ${busY}`} delay={0.2} />
             <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.4} />
-            <FlowArrow d={`M ${leftX} ${busY} V ${bottomNodeY - 48}`} delay={0.6} markerEndId="arrowhead" />
-            <FlowArrow d={`M ${centerX} ${busY} V ${bottomNodeY - 48}`} delay={0.7} markerEndId="arrowhead" />
-            <FlowArrow d={`M ${rightX} ${busY} V ${bottomNodeY - 48}`} delay={0.8} markerEndId="arrowhead" />
+            <FlowArrow d={`M ${leftX} ${busY} V ${bottomNodeY - 48}`} delay={0.6} />
+            <FlowArrow d={`M ${centerX} ${busY} V ${bottomNodeY - 48}`} delay={0.7} />
+            <FlowArrow d={`M ${rightX} ${busY} V ${bottomNodeY - 48}`} delay={0.8} />
 
             <FlowParticle pathId="path-left" delay={0.8} />
             <FlowParticle pathId="path-center" delay={1.1} />
