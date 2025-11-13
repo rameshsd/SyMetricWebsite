@@ -3,14 +3,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { 
+      staggerChildren: 0.2,
+      delayChildren: 0.1 
+    } 
+  },
+};
+
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 20 } },
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 1, delay } },
+  visible: { pathLength: 1, opacity: 1, transition: { duration: 0.8, delay, ease: "easeInOut" } },
 });
 
 const iconPaths = {
@@ -50,28 +61,17 @@ const iconPaths = {
   ),
 };
 
-const Node: React.FC<{
-  iconKey: keyof typeof iconPaths;
-  label: string;
-}> = ({ iconKey, label }) => {
+const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string; }> = ({ iconKey, label }) => {
+  const words = label.split(" ");
   return (
     <motion.g variants={itemVariants}>
-      <circle cx="0" cy="0" r="30" fill="white" stroke="hsl(var(--primary) / 0.5)" strokeWidth="1.5" />
-      <g
-        stroke="hsl(var(--primary))"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-        transform="translate(-12, -12)"
-      >
+      <circle cx="0" cy="0" r="30" fill="white" stroke="hsl(var(--primary))" strokeWidth="1" />
+      <g stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(-12, -12)">
         {iconPaths[iconKey]}
       </g>
-      <text y="48" textAnchor="middle" fontSize="11" fontWeight="500" fill="currentColor">
-        {label.split(" ").map((w, i) => (
-          <tspan key={i} x="0" dy={i === 0 ? 0 : "1.2em"}>
-            {w}
-          </tspan>
+      <text y="40" textAnchor="middle" fontSize="10" fontWeight="500" fill="currentColor">
+        {words.map((word, i) => (
+          <tspan key={i} x="0" dy={i > 0 ? "1.2em" : 0}>{word}</tspan>
         ))}
       </text>
     </motion.g>
@@ -79,88 +79,83 @@ const Node: React.FC<{
 };
 
 export function IrtDiagram() {
-  const SVG_WIDTH = 550;
-  const SVG_HEIGHT = 420;
+  const SVG_WIDTH = 500;
+  const SVG_HEIGHT = 400;
   const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 };
-  const radius = 130;
+  const hRadius = 150;
+  const vRadius = 110;
 
   const nodePositions = [
-    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
-    { iconKey: "Users", label: "Subject Management", x: center.x + radius, y: center.y },
-    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radius },
-    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radius, y: center.y },
+    { key: "Repeat", label: "Randomization", x: center.x, y: center.y - vRadius },
+    { key: "Users", label: "Subject Management", x: center.x + hRadius, y: center.y },
+    { key: "Hospital", label: "Site Management", x: center.x, y: center.y + vRadius },
+    { key: "Beaker", label: "Clinical Supplies", x: center.x - hRadius, y: center.y },
   ] as const;
 
   return (
-    <motion.div
-      className="w-full flex items-center justify-center h-[420px]"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <svg
+    <div className="relative w-full h-full">
+      {/* Decorative IRT Tab */}
+      <motion.div 
+        className="absolute top-4 left-4 z-10 flex items-center justify-center"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, type: "spring" }}
+      >
+        <div className="w-16 h-16 rounded-full bg-background flex items-center justify-center shadow-inner">
+            <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
+                IRT
+            </div>
+        </div>
+      </motion.div>
+
+      <motion.svg
         viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
         width="100%"
         height="100%"
         preserveAspectRatio="xMidYMid meet"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
       >
         <defs>
-          <marker
-            id="arrow"
-            markerUnits="strokeWidth"
-            markerWidth="8"
-            markerHeight="8"
-            viewBox="0 0 10 10"
-            refX="9"
-            refY="5"
-            orient="auto"
-          >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+          <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L6,3 L0,6 z" fill="hsl(var(--primary))" />
           </marker>
         </defs>
 
-        {nodePositions.map((pos, idx) => {
-          const start = { x: center.x, y: center.y };
+        {nodePositions.map((pos, i) => {
           const end = { x: pos.x, y: pos.y };
-          const dx = end.x - start.x;
-          const dy = end.y - start.y;
-          const length = Math.sqrt(dx * dx + dy * dy);
-          const unitDx = dx / length;
-          const unitDy = dy / length;
+          const dx = end.x - center.x;
+          const dy = end.y - center.y;
+          const length = Math.sqrt(dx*dx + dy*dy);
+          const unitDx = dx/length;
+          const unitDy = dy/length;
 
-          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 };
-          const adjustedEnd = { x: end.x - unitDx * 30, y: end.y - unitDy * 30 };
+          // Start line from center, end it just before the circle
+          const adjustedEnd = { x: end.x - unitDx * 35, y: end.y - unitDy * 35 };
 
           return (
             <motion.line
-              key={idx}
-              variants={lineVariants(0.2 * idx)}
-              x1={adjustedStart.x}
-              y1={adjustedStart.y}
+              key={pos.key}
+              x1={center.x}
+              y1={center.y}
               x2={adjustedEnd.x}
               y2={adjustedEnd.y}
               stroke="hsl(var(--primary))"
-              strokeWidth={1.5}
-              markerEnd="url(#arrow)"
+              strokeWidth="1.5"
+              markerEnd="url(#arrowhead)"
+              variants={lineVariants(i * 0.15)}
             />
           );
         })}
 
-        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="45" fill="hsla(var(--primary) / 0.08)" />
-          <circle cx="0" cy="0" r="38" fill="hsla(var(--primary) / 0.15)" />
-          <circle cx="0" cy="0" r="30" fill="hsl(var(--primary))" />
-          <text x="0" y="5" textAnchor="middle" fontSize={14} fontWeight="bold" fill="hsl(var(--primary-foreground))">
-            IRT
-          </text>
-        </motion.g>
-
-        {nodePositions.map((p, i) => (
-          <g key={i} transform={`translate(${p.x}, ${p.y})`}>
-            <Node iconKey={p.iconKey} label={p.label} />
+        {nodePositions.map(pos => (
+          <g key={pos.key} transform={`translate(${pos.x}, ${pos.y})`}>
+            <Node iconKey={pos.key} label={pos.label} />
           </g>
         ))}
-      </svg>
-    </motion.div>
+      </motion.svg>
+    </div>
   );
 }
