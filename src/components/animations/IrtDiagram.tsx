@@ -42,8 +42,7 @@ const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string })
 const IRTHub = () => (
   <motion.div variants={itemVariants}>
     <div className="relative flex h-20 w-20 items-center justify-center rounded-full 
-                    bg-gradient-to-br from-blue-600 to-blue-500 text-lg font-bold text-white 
-                    shadow-xl ring-4 ring-blue-200/40">
+                    border-2 border-blue-500 bg-white text-lg font-bold text-blue-600">
       IRT
     </div>
   </motion.div>
