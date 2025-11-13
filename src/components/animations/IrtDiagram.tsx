@@ -1,7 +1,40 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Shuffle, Beaker, Users, Hospital } from "lucide-react";
+
+const pathVariants = (delay = 0) => ({
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 1.2, ease: "easeInOut", delay },
+  },
+});
+
+const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
+  <motion.path
+    d={d}
+    fill="none"
+    stroke="hsl(var(--primary))"
+    strokeWidth={2}
+    strokeLinecap="round"
+    markerEnd="url(#arrowhead)"
+    variants={pathVariants(delay)}
+  />
+);
+
+const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
+  <g>
+    <circle r={4} fill="hsl(var(--primary))" filter="url(#glow)">
+      <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite">
+        <mpath href={`#${pathId}`} />
+      </animateMotion>
+    </circle>
+  </g>
+);
+
 
 const Node = ({ Icon, label }: { Icon: any; label: string }) => (
   <div className="flex flex-col items-center gap-2">
@@ -37,83 +70,39 @@ export function IrtDiagram() {
   return (
     <div className="flex items-center justify-center w-full py-10 bg-transparent">
       <div className="relative w-[520px] h-[460px] bg-white rounded-2xl shadow-xl overflow-visible">
-        <style>{`
-          @keyframes float-diamond {
-            0% { opacity: 0.85; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.18); }
-            100% { opacity: 0.85; transform: scale(1); }
-          }
-          .flow-diamond { 
-            fill: #9b7bff;
-            transform-origin: center;
-            animation: float-diamond 2.6s ease-in-out infinite; 
-          }
-          .soft-glow { filter: drop-shadow(0 6px 14px rgba(139,92,246,0.12)); }
-        `}</style>
+        
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-10"
           viewBox="0 0 520 460"
           preserveAspectRatio="xMidYMid meet"
         >
           <defs>
-            <linearGradient id="bizGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#CBBAFF" stopOpacity="1" />
-              <stop offset="100%" stopColor="#8B5CF6" stopOpacity="1" />
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="6" result="b" />
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+            </marker>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
               <feMerge>
-                <feMergeNode in="b" />
+                <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
+            <path id="path-top" d={`M ${cx} ${cy} L ${cx} ${topEndY}`} fill="none" />
+            <path id="path-bottom" d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} fill="none" />
+            <path id="path-left" d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} fill="none" />
+            <path id="path-right" d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} fill="none" />
           </defs>
 
-          <path
-            id="line-top"
-            d={`M ${cx} ${cy} L ${cx} ${topEndY}`}
-            stroke="url(#bizGrad)" strokeWidth="3.5" strokeLinecap="round" fill="none"
-            className="soft-glow" filter="url(#glow)"
-          />
-          <path
-            id="line-bottom"
-            d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`}
-            stroke="url(#bizGrad)" strokeWidth="3.5" strokeLinecap="round" fill="none"
-            className="soft-glow" filter="url(#glow)"
-          />
-          <path
-            id="line-left"
-            d={`M ${cx} ${cy} L ${leftEndX} ${cy}`}
-            stroke="url(#bizGrad)" strokeWidth="3.5" strokeLinecap="round" fill="none"
-            className="soft-glow" filter="url(#glow)"
-          />
-          <path
-            id="line-right"
-            d={`M ${cx} ${cy} L ${rightEndX} ${cy}`}
-            stroke="url(#bizGrad)" strokeWidth="3.5" strokeLinecap="round" fill="none"
-            className="soft-glow" filter="url(#glow)"
-          />
+          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${topEndY}`} delay={0.2} />
+          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} delay={0.3} />
+          <FlowArrow d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} delay={0.4} />
+          <FlowArrow d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} delay={0.5} />
 
-          <rect className="flow-diamond" width="8" height="8" transform="rotate(45)">
-            <animateMotion dur="3s" repeatCount="indefinite">
-              <mpath href="#line-top" />
-            </animateMotion>
-          </rect>
-           <rect className="flow-diamond" width="8" height="8" transform="rotate(45)">
-            <animateMotion dur="3s" repeatCount="indefinite">
-              <mpath href="#line-bottom" />
-            </animateMotion>
-          </rect>
-           <rect className="flow-diamond" width="8" height="8" transform="rotate(45)">
-            <animateMotion dur="3s" repeatCount="indefinite">
-              <mpath href="#line-left" />
-            </animateMotion>
-          </rect>
-           <rect className="flow-diamond" width="8" height="8" transform="rotate(45)">
-            <animateMotion dur="3s" repeatCount="indefinite">
-              <mpath href="#line-right" />
-            </animateMotion>
-          </rect>
+          <FlowParticle pathId="#path-top" delay={0.8} />
+          <FlowParticle pathId="#path-bottom" delay={1.0} />
+          <FlowParticle pathId="#path-left" delay={1.2} />
+          <FlowParticle pathId="#path-right" delay={1.4} />
+
         </svg>
 
         <div className="absolute left-[220px] top-[60px] z-40">
