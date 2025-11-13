@@ -49,16 +49,14 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
       />
       <div>
         {heroImage && (
-          <section id="overview">
-            <ProductHero 
-              title={solution.hero.title}
-              subtitle={solution.hero.subtitle}
-              imageSrc={heroImage.imageUrl}
-              imageHint={heroImage.imageHint}
-              backgroundColor={solution.backgroundColor}
-              slug={solution.slug}
-            />
-          </section>
+          <ProductHero 
+            title={solution.hero.title}
+            subtitle={solution.hero.subtitle}
+            imageSrc={heroImage.imageUrl}
+            imageHint={heroImage.imageHint}
+            backgroundColor={solution.backgroundColor}
+            slug={solution.slug}
+          />
         )}
         <TechEdBanner />
         <div id="capabilities">
