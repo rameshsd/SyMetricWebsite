@@ -26,19 +26,6 @@ const itemVariants = {
   },
 };
 
-const lineVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-        delay: 0.5,
-      },
-    },
-};
-
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div variants={itemVariants} className="flex flex-col items-center gap-2">
     <div className="relative flex h-16 w-16 items-center justify-center 
@@ -93,92 +80,166 @@ export function IrtDiagram() {
           place-items-center
         "
       >
-        {/* FLOW ARROWS SVG */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 520 460">
             <defs>
-                <linearGradient id="soft-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#A9C8FF" />
-                <stop offset="100%" stopColor="#4B89DC" />
+                {/* Soft purple line gradient */}
+                <linearGradient id="purple-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#C7B8FF" />
+                <stop offset="100%" stopColor="#7D5CFF" />
                 </linearGradient>
+
+                {/* Glow diamond */}
+                <radialGradient id="diamond-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#8B66FF" />
+                <stop offset="100%" stopColor="#8B66FF00" />
+                </radialGradient>
             </defs>
 
-            <motion.path
+            {/* === TOP LINE (curved) === */}
+            <path
                 id="line-top"
-                d="M260 220 C 260 180, 260 150, 260 112"
-                stroke="url(#soft-line)"
-                strokeWidth="2.2"
+                d="
+                M 260 230
+                C 260 170, 260 150, 260 125
+                "
+                stroke="url(#purple-line)"
+                strokeWidth="3.5"
                 fill="none"
-                variants={lineVariants}
             />
 
-            <motion.path
+            {/* === BOTTOM LINE === */}
+            <path
                 id="line-bottom"
-                d="M260 240 C 260 280, 260 310, 260 348"
-                stroke="url(#soft-line)"
-                strokeWidth="2.2"
+                d="
+                M 260 230
+                C 260 290, 260 310, 260 335
+                "
+                stroke="url(#purple-line)"
+                strokeWidth="3.5"
                 fill="none"
-                variants={lineVariants}
             />
 
-            <motion.path
+            {/* === LEFT CURVED CONNECTOR === */}
+            <path
                 id="line-left"
-                d="M250 230 C 210 230, 180 230, 142 230"
-                stroke="url(#soft-line)"
-                strokeWidth="2.2"
+                d="
+                M 260 230
+                C 210 230, 180 230, 155 230
+                "
+                stroke="url(#purple-line)"
+                strokeWidth="3.5"
                 fill="none"
-                variants={lineVariants}
             />
 
-            <motion.path
+            {/* === RIGHT CURVED CONNECTOR === */}
+            <path
                 id="line-right"
-                d="M270 230 C 310 230, 340 230, 378 230"
-                stroke="url(#soft-line)"
-                strokeWidth="2.2"
+                d="
+                M 260 230
+                C 310 230, 340 230, 365 230
+                "
+                stroke="url(#purple-line)"
+                strokeWidth="3.5"
                 fill="none"
-                variants={lineVariants}
             />
 
-            {["line-top", "line-bottom", "line-left", "line-right"].map((id) => (
+            {/* === FLOWING DIAMONDS === */}
+            {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
                 <rect
-                key={id}
+                key={i}
                 className="flow-diamond"
-                width="5"
-                height="5"
+                width="10"
+                height="10"
                 transform="rotate(45)"
+                fill="#8B66FF"
                 >
-                <animateMotion dur="3s" repeatCount="indefinite">
+                <animateMotion dur="3.5s" repeatCount="indefinite">
                     <mpath href={`#${id}`} />
                 </animateMotion>
                 </rect>
             ))}
-        </svg>
+
+            {/* === STATIC DIAMOND NODES (like screenshot) === */}
+            {/* Center diamond */}
+            <rect
+                x="256"
+                y="226"
+                width="8"
+                height="8"
+                transform="rotate(45 260 230)"
+                fill="url(#diamond-glow)"
+            />
+
+            {/* TOP diamond node */}
+            <rect
+                x="256"
+                y="150"
+                width="8"
+                height="8"
+                transform="rotate(45 260 154)"
+                fill="url(#diamond-glow)"
+            />
+
+            {/* RIGHT diamond node */}
+            <rect
+                x="350"
+                y="226"
+                width="8"
+                height="8"
+                transform="rotate(45 354 230)"
+                fill="url(#diamond-glow)"
+            />
+
+            {/* LEFT diamond node */}
+            <rect
+                x="160"
+                y="226"
+                width="8"
+                height="8"
+                transform="rotate(45 164 230)"
+                fill="url(#diamond-glow)"
+            />
+
+            {/* BOTTOM diamond node */}
+            <rect
+                x="256"
+                y="305"
+                width="8"
+                height="8"
+                transform="rotate(45 260 309)"
+                fill="url(#diamond-glow)"
+            />
+            </svg>
 
         {/* DIAGRAM GRID */}
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
-          
-          <div />
-          <div className="-mt-6">
-            <Node icon={Shuffle} label="Randomization" />
-          </div>
-          <div />
 
-          <div className="-ml-2">
-            <Node icon={Beaker} label="Clinical Supplies" />
-          </div>
+            {/* TOP */}
+            <div />
+            <div className="-mt-10">
+                <Node icon={Shuffle} label="Randomization" />
+            </div>
+            <div />
 
-          <div>
-            <IRTHub />
-          </div>
+            {/* MIDDLE */}
+            <div className="-ml-6">
+                <Node icon={Beaker} label="Clinical Supplies" />
+            </div>
 
-          <div className="ml-2">
-            <Node icon={Users} label="Subject Management" />
-          </div>
+            <div>
+                <IRTHub />
+            </div>
 
-          <div />
-          <div className="mt-6">
-            <Node icon={Hospital} label="Site Management" />
-          </div>
-          <div />
+            <div className="ml-6">
+                <Node icon={Users} label="Subject Management" />
+            </div>
+
+            {/* BOTTOM */}
+            <div />
+            <div className="mt-10">
+                <Node icon={Hospital} label="Site Management" />
+            </div>
+            <div />
 
         </div>
       </motion.div>
