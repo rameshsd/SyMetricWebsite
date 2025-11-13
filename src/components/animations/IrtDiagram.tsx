@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -83,71 +82,78 @@ export function IrtDiagram() {
       >
         {/* FLOW ARROWS SVG */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 520 460">
-          
-          <defs>
-            {/* Arrowhead */}
-            <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
-              <path d="M0,0 L12,6 L0,12" fill="#2563eb" />
-            </marker>
+            <defs>
+                {/* Small Arrowhead */}
+                <marker id="tiny-arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6" fill="#4B89DC" />
+                </marker>
 
-            {/* Gradient Line */}
-            <linearGradient id="blue-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#60a5fa" />
-              <stop offset="100%" stopColor="#2563eb" />
-            </linearGradient>
-          </defs>
+                {/* Soft thin line */}
+                <linearGradient id="soft-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#9CC3FF" />
+                <stop offset="100%" stopColor="#4B89DC" />
+                </linearGradient>
+            </defs>
 
-          {/* TOP arrow */}
-          <path
-            id="line-top"
-            d="M260 210 L260 120"
-            stroke="url(#blue-line)"
-            strokeWidth="3"
-            markerEnd="url(#arrow-blue)"
-          />
+            {/* TOP CURVED LINE */}
+            <path
+                id="line-top"
+                d="M260 210 
+                C 260 170, 260 150, 260 120"
+                stroke="url(#soft-line)"
+                strokeWidth="2"
+                fill="none"
+                markerEnd="url(#tiny-arrow)"
+            />
 
-          {/* BOTTOM arrow */}
-          <path
-            id="line-bottom"
-            d="M260 250 L260 340"
-            stroke="url(#blue-line)"
-            strokeWidth="3"
-            markerEnd="url(#arrow-blue)"
-          />
+            {/* BOTTOM CURVED LINE */}
+            <path
+                id="line-bottom"
+                d="M260 250 
+                C 260 290, 260 310, 260 340"
+                stroke="url(#soft-line)"
+                strokeWidth="2"
+                fill="none"
+                markerEnd="url(#tiny-arrow)"
+            />
 
-          {/* LEFT arrow */}
-          <path
-            id="line-left"
-            d="M240 230 L160 230"
-            stroke="url(#blue-line)"
-            strokeWidth="3"
-            markerEnd="url(#arrow-blue)"
-          />
+            {/* LEFT CURVED LINE */}
+            <path
+                id="line-left"
+                d="M240 230
+                C 200 230, 180 230, 160 230"
+                stroke="url(#soft-line)"
+                strokeWidth="2"
+                fill="none"
+                markerEnd="url(#tiny-arrow)"
+            />
 
-          {/* RIGHT arrow */}
-          <path
-            id="line-right"
-            d="M280 230 L360 230"
-            stroke="url(#blue-line)"
-            strokeWidth="3"
-            markerEnd="url(#arrow-blue)"
-          />
+            {/* RIGHT CURVED LINE */}
+            <path
+                id="line-right"
+                d="M280 230
+                C 320 230, 340 230, 360 230"
+                stroke="url(#soft-line)"
+                strokeWidth="2"
+                fill="none"
+                markerEnd="url(#tiny-arrow)"
+            />
 
-          {/* FLOWING diamonds */}
-          {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
-            <rect
-              key={i}
-              className="flow-diamond"
-              width="6"
-              height="6"
-              transform="rotate(45)"
-            >
-              <animateMotion dur="3s" repeatCount="indefinite">
-                <mpath href={`#${id}`} />
-              </animateMotion>
-            </rect>
-          ))}
-        </svg>
+            {/* Flowing diamonds like sample */}
+            {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
+                <rect
+                key={i}
+                className="flow-diamond"
+                width="5"
+                height="5"
+                transform="rotate(45)"
+                >
+                <animateMotion dur="3s" repeatCount="indefinite">
+                    <mpath href={`#${id}`} />
+                </animateMotion>
+                </rect>
+            ))}
+            </svg>
 
         {/* DIAGRAM GRID */}
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
