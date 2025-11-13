@@ -18,7 +18,7 @@ const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
     d={d}
     fill="none"
     stroke="hsl(var(--primary))"
-    strokeWidth={2}
+    strokeWidth={2.4}
     strokeLinecap="round"
     markerEnd="url(#arrowhead)"
     variants={pathVariants(delay)}
@@ -28,15 +28,14 @@ const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
 const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
   <g>
     <circle r={4} fill="hsl(var(--primary))" filter="url(#glow)">
-      <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite">
-        <mpath href={`#${pathId}`} />
+      <animateMotion dur="3s" begin={`${delay}s`} repeatCount="indefinite">
+        <mpath href={pathId} />
       </animateMotion>
     </circle>
   </g>
 );
 
-
-const Node = ({ Icon, label }: { Icon: any; label: string }) => (
+const Node = ({ Icon, label }: { Icon: React.ElementType; label: string }) => (
   <div className="flex flex-col items-center gap-2">
     <div className="h-16 w-16 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow">
       <Icon className="h-7 w-7" />
@@ -53,8 +52,8 @@ const IRT = () => (
 );
 
 export function IrtDiagram() {
-  const cx = 260; 
-  const cy = 230; 
+  const cx = 260;
+  const cy = 230;
 
   const top = { x: cx, y: 110 };
   const left = { x: 120, y: cy };
@@ -74,12 +73,12 @@ export function IrtDiagram() {
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-10"
           viewBox="0 0 520 460"
-          preserveAspectRatio="xMidYMid meet"
         >
           <defs>
-            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
               <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
             </marker>
+
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
               <feMerge>
@@ -87,24 +86,27 @@ export function IrtDiagram() {
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <path id="path-top" d={`M ${cx} ${cy} L ${cx} ${topEndY}`} fill="none" />
-            <path id="path-bottom" d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} fill="none" />
-            <path id="path-left" d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} fill="none" />
-            <path id="path-right" d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} fill="none" />
+
+            <path id="path-top" d={`M ${cx} ${cy} L ${cx} ${topEndY}`} />
+            <path id="path-bottom" d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} />
+            <path id="path-left" d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} />
+            <path id="path-right" d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} />
           </defs>
 
-          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${topEndY}`} delay={0.2} />
-          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} delay={0.3} />
-          <FlowArrow d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} delay={0.4} />
-          <FlowArrow d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} delay={0.5} />
+          {/* lines */}
+          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${topEndY}`} delay={0.1} />
+          <FlowArrow d={`M ${cx} ${cy} L ${cx} ${bottomEndY}`} delay={0.15} />
+          <FlowArrow d={`M ${cx} ${cy} L ${leftEndX} ${cy}`} delay={0.2} />
+          <FlowArrow d={`M ${cx} ${cy} L ${rightEndX} ${cy}`} delay={0.25} />
 
-          <FlowParticle pathId="#path-top" delay={0.8} />
-          <FlowParticle pathId="#path-bottom" delay={1.0} />
-          <FlowParticle pathId="#path-left" delay={1.2} />
-          <FlowParticle pathId="#path-right" delay={1.4} />
-
+          {/* floating particles */}
+          <FlowParticle pathId="#path-top" delay={0.6} />
+          <FlowParticle pathId="#path-bottom" delay={0.8} />
+          <FlowParticle pathId="#path-left" delay={1.0} />
+          <FlowParticle pathId="#path-right" delay={1.2} />
         </svg>
 
+        {/* nodes */}
         <div className="absolute left-[220px] top-[60px] z-40">
           <Node Icon={Shuffle} label="Randomization" />
         </div>
