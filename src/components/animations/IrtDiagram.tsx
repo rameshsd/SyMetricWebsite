@@ -10,10 +10,9 @@ const containerVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
       delayChildren: 0.1,
-      duration: 0.5,
-      ease: "easeOut",
+      when: "beforeChildren",
     },
   },
 };
@@ -29,32 +28,37 @@ const itemVariants = {
 
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div variants={itemVariants} className="flex flex-col items-center gap-2">
-    <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-blue-100/70 text-blue-600 shadow-sm">
+    <div className="relative flex h-16 w-16 items-center justify-center rounded-xl bg-blue-100/70 text-blue-600 shadow-sm">
       <Icon className="h-7 w-7" />
+      <div className="absolute top-1/2 -translate-y-1/2 -right-1.5 w-0 h-0 
+        border-t-[6px] border-t-transparent
+        border-l-[8px] border-l-blue-600
+        border-b-[6px] border-b-transparent"></div>
     </div>
-    <span className="text-xs font-medium text-slate-600">{label}</span>
+    <span className="text-sm font-medium text-slate-700">{label}</span>
   </motion.div>
 );
+
+const ClinicalSuppliesNode = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
+  <motion.div variants={itemVariants} className="flex flex-col items-center gap-2">
+    <div className="relative flex h-16 w-16 items-center justify-center rounded-xl bg-blue-100/70 text-blue-600 shadow-sm">
+      <Icon className="h-7 w-7" />
+       <div className="absolute top-1/2 -translate-y-1/2 -left-1.5 w-0 h-0 
+        border-t-[6px] border-t-transparent
+        border-r-[8px] border-r-blue-600
+        border-b-[6px] border-b-transparent"></div>
+    </div>
+    <span className="text-sm font-medium text-slate-700">{label}</span>
+  </motion.div>
+);
+
 
 const IRTHub = () => (
   <motion.div variants={itemVariants}>
-    <div className="relative flex h-20 w-20 items-center justify-center rounded-full 
-                    border-2 border-blue-500 bg-white text-lg font-bold text-blue-600">
+    <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-blue-600 text-lg font-bold text-blue-600">
       IRT
     </div>
   </motion.div>
-);
-
-const Arrow = ({ rotation }: { rotation: number }) => (
-    <motion.div 
-        variants={itemVariants} 
-        style={{ transform: `rotate(${rotation}deg)` }}
-        className="absolute"
-    >
-        <svg width="40" height="20" viewBox="0 0 40 20">
-            <path d="M 25 0 L 40 10 L 25 20 Z" fill="#4B89DC" />
-        </svg>
-    </motion.div>
 );
 
 export function IrtDiagram() {
@@ -64,37 +68,33 @@ export function IrtDiagram() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative w-[480px] h-[400px] bg-white rounded-2xl shadow-lg p-4 flex items-center justify-center"
+        className="grid grid-cols-3 grid-rows-3 w-[480px] h-[420px] bg-white rounded-2xl shadow-xl p-4 place-items-center"
       >
-        {/* Main Grid for Layout */}
-        <div className="grid grid-cols-3 grid-rows-3 gap-x-8 gap-y-4 items-center justify-items-center w-full h-full">
-            {/* Top Row */}
-            <div />
-            <div className="flex flex-col items-center">
-                <Node icon={Shuffle} label="Randomization" />
-                <Arrow rotation={-90} />
-            </div>
-            <div />
-            
-            {/* Middle Row */}
-            <div className="flex items-center">
-                 <Node icon={Beaker} label="Clinical Supplies" />
-                 <Arrow rotation={180} />
-            </div>
-            <IRTHub />
-            <div className="flex items-center">
-                 <Arrow rotation={0} />
-                 <Node icon={Users} label="Subject Management" />
-            </div>
-
-            {/* Bottom Row */}
-            <div />
-            <div className="flex flex-col items-center">
-                <Arrow rotation={90} />
-                <Node icon={Hospital} label="Site Management" />
-            </div>
-            <div />
+        {/* Row 1 */}
+        <div />
+        <div className="col-start-2">
+          <Node icon={Shuffle} label="Randomization" />
         </div>
+        <div />
+
+        {/* Row 2 */}
+        <div>
+          <ClinicalSuppliesNode icon={Beaker} label="Clinical Supplies" />
+        </div>
+        <div>
+          <IRTHub />
+        </div>
+        <div>
+          <Node icon={Users} label="Subject Management" />
+        </div>
+        
+        {/* Row 3 */}
+        <div />
+        <div className="col-start-2">
+          <Node icon={Hospital} label="Site Management" />
+        </div>
+        <div />
+
       </motion.div>
     </div>
   );
