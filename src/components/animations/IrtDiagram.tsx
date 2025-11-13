@@ -83,19 +83,22 @@ export function IrtDiagram() {
           viewBox="0 0 520 460"
         >
           <defs>
+            {/* Soft purple gradient like Business-AI */}
             <linearGradient id="bizLine" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#A78BFA" />
-              <stop offset="100%" stopColor="#7C3AED" />
+              <stop offset="0%" stopColor="#C3B5FF" />
+              <stop offset="100%" stopColor="#8B5CF6" />
             </linearGradient>
           </defs>
 
-          {/* ===== TOP CONNECTOR (Business-AI style) ===== */}
+          {/* ============================
+                TOP SOFT CURVED LINE
+              ============================ */}
           <path
-            id="top-line"
+            id="line-top"
             d="
               M 260 230
-              L 260 180
-              C 260 160, 260 150, 260 135
+              L 260 185
+              C 260 165, 260 150, 260 130
             "
             stroke="url(#bizLine)"
             strokeWidth="3"
@@ -103,13 +106,15 @@ export function IrtDiagram() {
             fill="none"
           />
 
-          {/* ===== BOTTOM CONNECTOR ===== */}
+          {/* ============================
+                BOTTOM SOFT CURVED LINE
+              ============================ */}
           <path
-            id="bottom-line"
+            id="line-bottom"
             d="
               M 260 230
-              L 260 280
-              C 260 300, 260 315, 260 335
+              L 260 275
+              C 260 295, 260 315, 260 340
             "
             stroke="url(#bizLine)"
             strokeWidth="3"
@@ -117,13 +122,15 @@ export function IrtDiagram() {
             fill="none"
           />
 
-          {/* ===== LEFT CONNECTOR ===== */}
+          {/* ============================
+                LEFT SOFT CURVED LINE
+              ============================ */}
           <path
-            id="left-line"
+            id="line-left"
             d="
               M 260 230
               L 210 230
-              C 190 230, 170 230, 150 230
+              C 185 230, 160 230, 140 230
             "
             stroke="url(#bizLine)"
             strokeWidth="3"
@@ -131,13 +138,15 @@ export function IrtDiagram() {
             fill="none"
           />
 
-          {/* ===== RIGHT CONNECTOR ===== */}
+          {/* ============================
+                RIGHT SOFT CURVED LINE
+              ============================ */}
           <path
-            id="right-line"
+            id="line-right"
             d="
               M 260 230
               L 310 230
-              C 330 230, 350 230, 370 230
+              C 335 230, 360 230, 380 230
             "
             stroke="url(#bizLine)"
             strokeWidth="3"
@@ -145,17 +154,19 @@ export function IrtDiagram() {
             fill="none"
           />
 
-          {/* === FLOATING DIAMOND FLOW (like screenshot) === */}
-          {["top-line","bottom-line","left-line","right-line"].map((id, i) => (
+          {/* =========================================
+                FLOATING PURPLE DIAMONDS (ANIMATED FLOW)
+              ========================================= */}
+          {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
             <rect
               key={i}
               width="10"
               height="10"
               transform="rotate(45)"
-              fill="#7C3AED"
+              fill="#8B5CF6"
               className="opacity-80"
             >
-              <animateMotion dur="3s" repeatCount="indefinite">
+              <animateMotion dur="3.4s" repeatCount="indefinite">
                 <mpath href={`#${id}`} />
               </animateMotion>
             </rect>
