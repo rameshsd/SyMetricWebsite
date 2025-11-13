@@ -21,14 +21,15 @@ const IRTHub = () => (
 );
 
 export function IrtDiagram() {
-  const cx = 260; 
+  const cx = 272; // moved 12px to the right
   const cy = 230; 
+  const radius = 40;
 
   // Corrected perfect geometry
-  const topEnd =    { x: 260, y: 130 };
-  const bottomEnd = { x: 260, y: 330 };
-  const leftEnd =   { x: 140, y: 230 };
-  const rightEnd =  { x: 380, y: 230 };
+  const topEnd =    { x: cx, y: 130 };
+  const bottomEnd = { x: cx, y: 330 };
+  const leftEnd =   { x: cx - 120, y: 230 }; // Adjusted relative to new cx
+  const rightEnd =  { x: cx + 120, y: 230 }; // Adjusted relative to new cx
 
   return (
     <div className="flex items-center justify-center w-full py-10">
@@ -46,66 +47,69 @@ export function IrtDiagram() {
             </marker>
 
             {/* Flow paths */}
-            <path id="flow-top"    d={`M ${cx} ${cy - 40} L ${topEnd.x} ${topEnd.y}`} />
-            <path id="flow-bottom" d={`M ${cx} ${cy + 40} L ${bottomEnd.x} ${bottomEnd.y}`} />
-            <path id="flow-left"   d={`M ${cx - 40} ${cy} L ${leftEnd.x} ${leftEnd.y}`} />
-            <path id="flow-right"  d={`M ${cx + 40} ${cy} L ${rightEnd.x} ${rightEnd.y}`} />
-
+            <path id="flow-top"    d={`M ${cx} ${cy} L ${topEnd.x} ${topEnd.y}`} />
+            <path id="flow-bottom" d={`M ${cx} ${cy} L ${bottomEnd.x} ${bottomEnd.y}`} />
+            <path id="flow-left"   d={`M ${cx} ${cy} L ${leftEnd.x} ${leftEnd.y}`} />
+            <path id="flow-right"  d={`M ${cx} ${cy} L ${rightEnd.x} ${rightEnd.y}`} />
 
             {/* Glow */}
             <filter id="glow">
-              <feGaussianBlur stdDeviation="3" />
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
             </filter>
           </defs>
 
           {/* TOP ARROW */}
           <line
-            x1={cx} y1={cy - 40}
+            x1={cx} y1={cy}
             x2={topEnd.x} y2={topEnd.y}
             stroke="#1E40AF" strokeWidth="3"
             markerEnd="url(#arrowhead)"
           />
-          <circle r="5" fill="#1E40AF" filter="url(#glow)">
-            <animateMotion dur="2.3s" repeatCount="indefinite">
+          <circle r="6" fill="#1E40AF" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="1.6s" repeatCount="indefinite">
               <mpath href="#flow-top" />
             </animateMotion>
           </circle>
 
           {/* BOTTOM ARROW */}
           <line
-            x1={cx} y1={cy + 40}
+            x1={cx} y1={cy}
             x2={bottomEnd.x} y2={bottomEnd.y}
             stroke="#1E40AF" strokeWidth="3"
             markerEnd="url(#arrowhead)"
           />
-          <circle r="5" fill="#1E40AF" filter="url(#glow)">
-            <animateMotion dur="2.3s" repeatCount="indefinite" begin="0.2s">
+          <circle r="6" fill="#1E40AF" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="1.6s" repeatCount="indefinite">
               <mpath href="#flow-bottom" />
             </animateMotion>
           </circle>
 
           {/* LEFT ARROW */}
           <line
-            x1={cx - 40} y1={cy}
+            x1={cx} y1={cy}
             x2={leftEnd.x} y2={leftEnd.y}
             stroke="#1E40AF" strokeWidth="3"
             markerEnd="url(#arrowhead)"
           />
-          <circle r="5" fill="#1E40AF" filter="url(#glow)">
-            <animateMotion dur="2.3s" repeatCount="indefinite" begin="0.4s">
+          <circle r="6" fill="#1E40AF" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="1.6s" repeatCount="indefinite">
               <mpath href="#flow-left" />
             </animateMotion>
           </circle>
 
           {/* RIGHT ARROW */}
           <line
-            x1={cx + 40} y1={cy}
+            x1={cx} y1={cy}
             x2={rightEnd.x} y2={rightEnd.y}
             stroke="#1E40AF" strokeWidth="3"
             markerEnd="url(#arrowhead)"
           />
-          <circle r="5" fill="#1E40AF" filter="url(#glow)">
-            <animateMotion dur="2.3s" repeatCount="indefinite" begin="0.6s">
+          <circle r="6" fill="#1E40AF" filter="url(#glow)" opacity="0.9">
+            <animateMotion dur="1.6s" repeatCount="indefinite">
               <mpath href="#flow-right" />
             </animateMotion>
           </circle>
@@ -117,7 +121,7 @@ export function IrtDiagram() {
         ============================ */}
         
         {/* TOP */}
-        <div className="absolute left-[220px] top-[60px]">
+        <div className="absolute left-[232px] top-[60px]">
           <Node Icon={Shuffle} label="Randomization" />
         </div>
 
@@ -127,17 +131,17 @@ export function IrtDiagram() {
         </div>
 
         {/* IRT CENTER */}
-        <div className="absolute left-[220px] top-[190px]">
+        <div className="absolute left-[232px] top-[190px]">
           <IRTHub />
         </div>
 
         {/* RIGHT */}
-        <div className="absolute left-[380px] top-[200px]">
+        <div className="absolute left-[392px] top-[200px]">
           <Node Icon={Users} label="Subject Management" />
         </div>
 
         {/* BOTTOM */}
-        <div className="absolute left-[220px] top-[340px]">
+        <div className="absolute left-[232px] top-[340px]">
           <Node Icon={Hospital} label="Site Management" />
         </div>
 
