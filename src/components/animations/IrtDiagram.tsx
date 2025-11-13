@@ -49,7 +49,6 @@ const IRTHub = () => (
 export function IrtDiagram() {
   return (
     <div className="flex items-center justify-center w-full py-10 bg-transparent">
-
       {/* FLOW DIAMOND ANIMATION */}
       <style>
         {`
@@ -64,7 +63,6 @@ export function IrtDiagram() {
         `}
       </style>
 
-      {/* ONLY ONE WHITE CARD */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -90,23 +88,6 @@ export function IrtDiagram() {
               <stop offset="100%" stopColor="#7d5dff" />
             </linearGradient>
           </defs>
-
-          {/* REAL CENTER POINTS (CALCULATED) */}
-          {/* IRT center */}
-          {/* (260, 230) */}
-
-          {/* top node center */}
-          {/* (260, 100) */}
-
-          {/* bottom node center */}
-          {/* (260, 360) */}
-
-          {/* left node center */}
-          {/* (120, 230) */}
-
-          {/* right node center */}
-          {/* (400, 230) */}
-
 
           {/* TOP CONNECTOR */}
           <path
