@@ -42,10 +42,8 @@ export function IrtDiagram() {
       viewport={{ once: true }}
     >
       <div className="absolute top-0 left-0">
-        <div className="flex items-center">
-            <div className="bg-primary text-primary-foreground font-bold text-lg p-4 rounded-tl-2xl rounded-br-2xl">
-              IRT
-            </div>
+        <div className="bg-primary text-primary-foreground font-bold text-lg p-4 rounded-tl-2xl rounded-br-2xl">
+          IRT
         </div>
       </div>
       <svg
@@ -69,7 +67,7 @@ export function IrtDiagram() {
           </marker>
         </defs>
 
-        {arrows.map((arrow, i) => (
+        {arrows.map((arrow) => (
           <motion.path
             key={arrow.id}
             d={arrow.d}
