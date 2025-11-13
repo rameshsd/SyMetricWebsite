@@ -9,7 +9,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
       delayChildren: 0.1,
     },
   },
@@ -33,24 +33,24 @@ const lineVariants = {
     visible: { 
         pathLength: 1, 
         opacity: 1,
-        transition: { duration: 0.8, ease: "easeInOut", delay: 0.3 }
+        transition: { duration: 0.8, ease: "easeInOut" }
     }
 };
 
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div
     variants={itemVariants}
-    className="flex flex-col items-center gap-1.5 text-center"
+    className="flex flex-col items-center gap-2 text-center"
   >
-    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
-      <Icon className="h-5 w-5" />
+    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+      <Icon className="h-6 w-6" />
     </div>
-    <span className="text-[11px] font-medium text-slate-600 max-w-[80px]">{label}</span>
+    <span className="text-xs font-medium text-slate-600 max-w-[80px]">{label}</span>
   </motion.div>
 );
 
 const IRTHub = () => (
-    <motion.div variants={itemVariants} className="col-start-2 row-start-2">
+    <motion.div variants={itemVariants}>
         <div
         className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-500 text-lg font-bold text-white shadow-lg"
         >
@@ -62,12 +62,27 @@ const IRTHub = () => (
 export function IrtDiagram() {
   return (
     <div className="flex items-center justify-center w-full py-10 bg-slate-50">
-      <div className="relative w-full max-w-lg h-[400px] bg-white rounded-2xl shadow-xl overflow-hidden p-4">
-        
+       <style>{`
+        .flow-diamond {
+          fill: #3b82f6;
+          animation: diamond-flow 4s linear infinite;
+        }
+
+        @keyframes diamond-flow {
+          from {
+            motion-offset: 0%;
+          }
+          to {
+            motion-offset: 100%;
+          }
+        }
+      `}</style>
+      <div className="relative w-full max-w-lg h-[400px] bg-white rounded-2xl shadow-xl p-4">
         <motion.svg
           initial="hidden"
           animate="visible"
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 h-full w-full overflow-visible"
+          viewBox="0 0 400 400"
           aria-hidden
         >
             <defs>
@@ -75,31 +90,57 @@ export function IrtDiagram() {
                     <path d="M0,0 L6,3 L0,6" fill="#d1d5db" />
                 </marker>
             </defs>
-            <motion.line x1="50%" y1="50%" x2="50%" y2="25%" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)" />
-            <motion.line x1="50%" y1="50%" x2="50%" y2="75%" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)" />
-            <motion.line x1="50%" y1="50%" x2="25%" y2="50%" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)" />
-            <motion.line x1="50%" y1="50%" x2="75%" y2="50%" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)" />
+
+            {/* Paths for diamond animation */}
+            <motion.path id="line-top" d="M 200 200 L 200 95" fill="none" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)"/>
+            <motion.path id="line-bottom" d="M 200 200 L 200 305" fill="none" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} />
+            <motion.path id="line-left" d="M 200 200 L 95 200" fill="none" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)"/>
+            <motion.path id="line-right" d="M 200 200 L 305 200" fill="none" stroke="#d1d5db" strokeWidth="1.5" variants={lineVariants} markerEnd="url(#arrow-end)"/>
+
+            {/* Flowing Diamonds */}
+            <rect className="flow-diamond" width="4" height="4" transform="rotate(45)">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                  <mpath href="#line-top" />
+              </animateMotion>
+            </rect>
+            <rect className="flow-diamond" width="4" height="4" transform="rotate(45)">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                  <mpath href="#line-bottom" />
+              </animateMotion>
+            </rect>
+             <rect className="flow-diamond" width="4" height="4" transform="rotate(45)">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                  <mpath href="#line-left" />
+              </animateMotion>
+            </rect>
+            <rect className="flow-diamond" width="4" height="4" transform="rotate(45)">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                  <mpath href="#line-right" />
+              </animateMotion>
+            </rect>
         </motion.svg>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-[1fr_auto_1fr] grid-rows-[1fr_auto_1fr] h-full w-full place-items-center gap-x-10 gap-y-4"
+          className="grid grid-cols-[1fr_auto_1fr] grid-rows-[1fr_auto_1fr] h-full w-full place-items-center gap-x-12 gap-y-6"
         >
-          <div className="col-start-2 row-start-1">
+          <div className="col-start-2 row-start-1 -mt-8">
             <Node icon={Shuffle} label="Randomization" />
           </div>
           <div className="col-start-1 row-start-2">
             <Node icon={Beaker} label="Clinical Supplies" />
           </div>
           
-          <IRTHub />
+          <div className="col-start-2 row-start-2">
+            <IRTHub />
+          </div>
 
           <div className="col-start-3 row-start-2">
             <Node icon={Users} label="Subject Management" />
           </div>
-          <div className="col-start-2 row-start-3">
+          <div className="col-start-2 row-start-3 -mb-8">
             <Node icon={Hospital} label="Site Management" />
           </div>
         </motion.div>
