@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -77,6 +78,7 @@ const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
     stroke="hsl(var(--primary))"
     strokeWidth={2}
     strokeLinecap="round"
+    markerEnd="url(#arrowhead)"
     variants={pathVariants(delay)}
   />
 );
@@ -128,6 +130,9 @@ export function PlatformAnimation() {
         <div className="absolute top-0 left-0 w-full h-full">
           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="overflow-visible">
             <defs>
+              <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 9 3 L 0 6 z" fill="hsl(var(--primary))" />
+              </marker>
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
                 <feMerge>
@@ -142,7 +147,14 @@ export function PlatformAnimation() {
             </defs>
 
             <FlowArrow d={`M ${centerX} ${topNodeY + 48} V ${busY}`} delay={0.2} />
-            <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.4} />
+            <motion.path
+                d={`M ${leftX} ${busY} H ${rightX}`}
+                fill="none"
+                stroke="hsl(var(--primary))"
+                strokeWidth={2}
+                strokeLinecap="round"
+                variants={pathVariants(0.4)}
+            />
             <FlowArrow d={`M ${leftX} ${busY} V ${bottomNodeY - 48}`} delay={0.6} />
             <FlowArrow d={`M ${centerX} ${busY} V ${bottomNodeY - 48}`} delay={0.7} />
             <FlowArrow d={`M ${rightX} ${busY} V ${bottomNodeY - 48}`} delay={0.8} />
