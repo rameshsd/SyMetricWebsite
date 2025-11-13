@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { IrtDiagram } from '../animations/IrtDiagram';
+import IrtDiagram from '../animations/IrtDiagram';
 
 type ProductHeroProps = {
     title: string;
