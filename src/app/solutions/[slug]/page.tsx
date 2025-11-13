@@ -13,7 +13,6 @@ import { PageHeader } from '@/components/layout/PageHeader';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { ProductHero } from '@/components/solutions/ProductHero';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 
 type Props = {
   params: { slug: string };
@@ -60,7 +59,6 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
             />
           </section>
         )}
-        <TechEdBanner />
         <div id="capabilities">
           <CapabilitiesSection capabilities={solution.capabilities} />
         </div>
