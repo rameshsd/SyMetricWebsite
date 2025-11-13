@@ -54,7 +54,7 @@ export function IrtDiagram() {
       <style>
         {`
           .flow-diamond {
-            fill: #2563eb;
+            fill: #8b66ff;
             animation: diamond-flow 3.2s linear infinite;
           }
           @keyframes diamond-flow {
@@ -85,137 +85,96 @@ export function IrtDiagram() {
           viewBox="0 0 520 460"
         >
           <defs>
-            {/* Strong visible purple gradient */}
-            <linearGradient id="visible-purple-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#b79cff" />
-              <stop offset="100%" stopColor="#7a5bff" />
+            <linearGradient id="purple-line" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#b493ff" />
+              <stop offset="100%" stopColor="#7d5dff" />
             </linearGradient>
-
-            {/* Diamond glow */}
-            <radialGradient id="diamond-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#946bff" />
-              <stop offset="100%" stopColor="#946bff00" />
-            </radialGradient>
           </defs>
 
-          {/* === TOP CURVED LINE === */}
+          {/* REAL CENTER POINTS (CALCULATED) */}
+          {/* IRT center */}
+          {/* (260, 230) */}
+
+          {/* top node center */}
+          {/* (260, 100) */}
+
+          {/* bottom node center */}
+          {/* (260, 360) */}
+
+          {/* left node center */}
+          {/* (120, 230) */}
+
+          {/* right node center */}
+          {/* (400, 230) */}
+
+
+          {/* TOP CONNECTOR */}
           <path
             id="line-top"
             d="
               M 260 230
-              C 260 175, 260 150, 260 125
+              C 260 180, 260 150, 260 100
             "
-            stroke="url(#visible-purple-line)"
+            stroke="url(#purple-line)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* === BOTTOM CURVED LINE === */}
+          {/* BOTTOM CONNECTOR */}
           <path
             id="line-bottom"
             d="
               M 260 230
-              C 260 285, 260 310, 260 335
+              C 260 280, 260 320, 260 360
             "
-            stroke="url(#visible-purple-line)"
+            stroke="url(#purple-line)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* === LEFT CURVED LINE === */}
+          {/* LEFT CONNECTOR */}
           <path
             id="line-left"
             d="
               M 260 230
-              C 210 230, 180 230, 155 230
+              C 200 230, 160 230, 120 230
             "
-            stroke="url(#visible-purple-line)"
+            stroke="url(#purple-line)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* === RIGHT CURVED LINE === */}
+          {/* RIGHT CONNECTOR */}
           <path
             id="line-right"
             d="
               M 260 230
-              C 310 230, 340 230, 365 230
+              C 320 230, 360 230, 400 230
             "
-            stroke="url(#visible-purple-line)"
+            stroke="url(#purple-line)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* === MOVING DIAMONDS (flow animation) === */}
+          {/* MOVING DIAMONDS */}
           {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
             <rect
               key={i}
               className="flow-diamond"
-              width="10"
-              height="10"
+              width="8"
+              height="8"
               transform="rotate(45)"
               fill="#8b66ff"
             >
-              <animateMotion dur="3.4s" repeatCount="indefinite">
+              <animateMotion dur="3s" repeatCount="indefinite">
                 <mpath href={`#${id}`} />
               </animateMotion>
             </rect>
           ))}
-
-          {/* === STATIC DIAMOND NODES === */}
-          {/* CENTER */}
-          <rect
-            x="256"
-            y="226"
-            width="8"
-            height="8"
-            transform="rotate(45 260 230)"
-            fill="url(#diamond-glow)"
-          />
-
-          {/* TOP */}
-          <rect
-            x="256"
-            y="155"
-            width="8"
-            height="8"
-            transform="rotate(45 260 159)"
-            fill="url(#diamond-glow)"
-          />
-
-          {/* RIGHT */}
-          <rect
-            x="350"
-            y="226"
-            width="8"
-            height="8"
-            transform="rotate(45 354 230)"
-            fill="url(#diamond-glow)"
-          />
-
-          {/* LEFT */}
-          <rect
-            x="160"
-            y="226"
-            width="8"
-            height="8"
-            transform="rotate(45 164 230)"
-            fill="url(#diamond-glow)"
-          />
-
-          {/* BOTTOM */}
-          <rect
-            x="256"
-            y="305"
-            width="8"
-            height="8"
-            transform="rotate(45 260 309)"
-            fill="url(#diamond-glow)"
-          />
         </svg>
 
         {/* DIAGRAM GRID */}
@@ -223,27 +182,27 @@ export function IrtDiagram() {
           
           {/* TOP */}
           <div />
-          <div className="-mt-10">
+          <div className="col-start-2 row-start-1 justify-self-center self-end mb-12">
             <Node icon={Shuffle} label="Randomization" />
           </div>
           <div />
 
           {/* MIDDLE */}
-          <div className="-ml-6">
+          <div className="col-start-1 row-start-2 justify-self-start self-center ml-12">
             <Node icon={Beaker} label="Clinical Supplies" />
           </div>
 
-          <div>
+          <div className="col-start-2 row-start-2 justify-self-center self-center">
             <IRTHub />
           </div>
 
-          <div className="ml-6">
+          <div className="col-start-3 row-start-2 justify-self-end self-center mr-12">
             <Node icon={Users} label="Subject Management" />
           </div>
 
           {/* BOTTOM */}
           <div />
-          <div className="mt-10">
+          <div className="col-start-2 row-start-3 justify-self-center self-start mt-12">
             <Node icon={Hospital} label="Site Management" />
           </div>
           <div />
