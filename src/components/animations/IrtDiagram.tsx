@@ -83,63 +83,60 @@ export function IrtDiagram() {
         {/* FLOW ARROWS SVG */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 520 460">
             <defs>
-                {/* Small Arrowhead */}
-                <marker id="tiny-arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6" fill="#4B89DC" />
-                </marker>
-
-                {/* Soft thin line */}
+                {/* Soft gradient line */}
                 <linearGradient id="soft-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#9CC3FF" />
+                <stop offset="0%" stopColor="#A9C8FF" />
                 <stop offset="100%" stopColor="#4B89DC" />
                 </linearGradient>
             </defs>
 
-            {/* TOP CURVED LINE */}
+            {/* 
+                PERFECT CENTER POINT (IRT)
+                IRT center = (260, 230)
+                Node sizes = 64px, so connectors must hit EXACT center.
+            */}
+
+            {/* TOP connection to Randomization */}
             <path
                 id="line-top"
-                d="M260 210 
-                C 260 170, 260 150, 260 120"
+                d="M260 230 
+                C 260 190, 260 160, 260 135"
                 stroke="url(#soft-line)"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 fill="none"
-                markerEnd="url(#tiny-arrow)"
             />
 
-            {/* BOTTOM CURVED LINE */}
+            {/* BOTTOM connection to Site Management */}
             <path
                 id="line-bottom"
-                d="M260 250 
-                C 260 290, 260 310, 260 340"
+                d="M260 230
+                C 260 270, 260 300, 260 325"
                 stroke="url(#soft-line)"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 fill="none"
-                markerEnd="url(#tiny-arrow)"
             />
 
-            {/* LEFT CURVED LINE */}
+            {/* LEFT connection to Clinical Supplies */}
             <path
                 id="line-left"
-                d="M240 230
-                C 200 230, 180 230, 160 230"
+                d="M260 230
+                C 220 230, 200 230, 175 230"
                 stroke="url(#soft-line)"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 fill="none"
-                markerEnd="url(#tiny-arrow)"
             />
 
-            {/* RIGHT CURVED LINE */}
+            {/* RIGHT connection to Subject Management */}
             <path
                 id="line-right"
-                d="M280 230
-                C 320 230, 340 230, 360 230"
+                d="M260 230
+                C 300 230, 320 230, 345 230"
                 stroke="url(#soft-line)"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 fill="none"
-                markerEnd="url(#tiny-arrow)"
             />
 
-            {/* Flowing diamonds like sample */}
+            {/* Animated diamonds */}
             {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
                 <rect
                 key={i}
@@ -153,7 +150,8 @@ export function IrtDiagram() {
                 </animateMotion>
                 </rect>
             ))}
-            </svg>
+        </svg>
+
 
         {/* DIAGRAM GRID */}
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
