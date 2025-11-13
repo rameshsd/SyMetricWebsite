@@ -1,163 +1,151 @@
+
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-/**
- * Requirements:
- * - TailwindCSS in your project
- * - framer-motion installed
- *
- * Usage: import and render <IrtDiagram /> wherever you want the diagram.
- */
-
 export function IrtDiagram() {
-  const [hovered, setHovered] = useState<string | null>(null);
-
-  const nodes = [
-    { id: "randomization", label: "Randomization", x: 0, y: -150 },
-    { id: "clinical", label: "Clinical Supplies", x: -220, y: 0 },
-    { id: "subject", label: "Subject Management", x: 220, y: 0 },
-    { id: "site", label: "Site Management", x: 0, y: 150 },
-    { id: "irt", label: "IRT", x: 0, y: 0, center: true },
-  ] as const;
-
-  const nodeMotion = {
-    hidden: { opacity: 0, y: 8, scale: 0.9 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 20 } },
-  };
-
   return (
-    <div className="flex items-center justify-center w-full min-h-[520px] p-6 bg-slate-50">
-      {/* Inline small CSS for the flowing stroke animation */}
+    <div className="flex items-center justify-center py-10 bg-slate-50">
       <style>{`
         .flow-line {
-          stroke: #1e3a8a; /* darker blue */
-          stroke-width: 3;
-          fill: none;
+          stroke: url(#gradFlow);
+          stroke-width: 4;
           stroke-linecap: round;
           stroke-linejoin: round;
-          stroke-dasharray: 200;
-          stroke-dashoffset: 0;
-          animation: flow 2.4s linear infinite;
         }
-        @keyframes flow {
-          to { stroke-dashoffset: -400; }
+
+        /* gradient animation */
+        @keyframes gradientFlow {
+          0% { stop-color: #60a5fa; }
+          50% { stop-color: #2563eb; }
+          100% { stop-color: #60a5fa; }
         }
-        /* a lighter faint trail */
-        .flow-trail {
-          stroke: #bfdbfe; /* light blue */
-          stroke-width: 6;
-          fill: none;
-          stroke-linecap: round;
-          opacity: 0.28;
+
+        .flowStop1 {
+          animation: gradientFlow 2s linear infinite;
         }
-        .arrow-marker path { fill: #1e3a8a; }
+        .flowStop2 {
+          animation: gradientFlow 2s linear infinite;
+          animation-delay: 1s;
+        }
       `}</style>
 
-      <div className="relative w-[760px] h-[520px] rounded-2xl bg-white shadow-md flex items-center justify-center">
-        {/* SVG canvas for lines and arrow markers */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 760 520" preserveAspectRatio="xMidYMid meet">
+      <div className="relative w-[750px] h-[520px] bg-white rounded-2xl shadow-xl">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 750 520">
           <defs>
+            {/* Moving gradient */}
+            <linearGradient id="gradFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" className="flowStop1" />
+              <stop offset="100%" className="flowStop2" stopOpacity="0.6" />
+            </linearGradient>
+
+            {/* Arrow head */}
             <marker
               id="arrowBlue"
-              markerWidth="10"
-              markerHeight="10"
+              markerWidth="13"
+              markerHeight="13"
               refX="6"
-              refY="5"
+              refY="6"
               orient="auto"
-              className="arrow-marker"
             >
-              <path d="M0,0 L10,5 L0,10 z" />
+              <path d="M0,0 L12,6 L0,12 z" fill="#2563eb" />
             </marker>
           </defs>
 
-          {/* Coordinates - center is (380,260) */}
-          {/* Trail (faint) lines — static background */}
-          <path className="flow-trail" d="M380 260 L380 110" />
-          <path className="flow-trail" d="M380 260 L160 260" />
-          <path className="flow-trail" d="M380 260 L600 260" />
-          <path className="flow-trail" d="M380 260 L380 410" />
+          {/* IRT center at (375,260) */}
+          {/* TOP */}
+          <line
+            className="flow-line"
+            x1="375"
+            y1="260"
+            x2="375"
+            y2="120"
+            markerEnd="url(#arrowBlue)"
+          />
 
-          {/* Flowing main lines — animated with stroke-dashoffset */}
-          {/* Top (Randomization) */}
-          <path
+          {/* LEFT */}
+          <line
             className="flow-line"
-            d="M380 260 L380 120"
+            x1="375"
+            y1="260"
+            x2="165"
+            y2="260"
             markerEnd="url(#arrowBlue)"
-            vectorEffect="non-scaling-stroke"
           />
-          {/* Left (Clinical Supplies) */}
-          <path
+
+          {/* RIGHT */}
+          <line
             className="flow-line"
-            d="M380 260 L160 260"
+            x1="375"
+            y1="260"
+            x2="585"
+            y2="260"
             markerEnd="url(#arrowBlue)"
-            vectorEffect="non-scaling-stroke"
           />
-          {/* Right (Subject Management) */}
-          <path
+
+          {/* BOTTOM */}
+          <line
             className="flow-line"
-            d="M380 260 L600 260"
+            x1="375"
+            y1="260"
+            x2="375"
+            y2="400"
             markerEnd="url(#arrowBlue)"
-            vectorEffect="non-scaling-stroke"
-          />
-          {/* Bottom (Site Management) */}
-          <path
-            className="flow-line"
-            d="M380 260 L380 400"
-            markerEnd="url(#arrowBlue)"
-            vectorEffect="non-scaling-stroke"
           />
         </svg>
 
-        {/* Nodes (positioned relative to center) */}
-        {nodes.map((n) => {
-          const left = 380 + n.x - (n.center ? 40 : 220 / 2); // center offset adjustments
-          const top = 260 + n.y - (n.center ? 40 : 24); // center offset adjustments
-          return (
-            <motion.div
-              key={n.id}
-              initial="hidden"
-              animate="visible"
-              variants={nodeMotion}
-              onHoverStart={() => setHovered(n.id)}
-              onHoverEnd={() => setHovered(null)}
-              className={
-                n.center
-                  ? "absolute flex items-center justify-center rounded-full shadow-2xl cursor-default select-none"
-                  : "absolute flex items-center justify-center rounded-full shadow-md cursor-default select-none"
-              }
-              style={{
-                left,
-                top,
-                width: n.center ? 80 : 220,
-                height: n.center ? 80 : 48,
-                transform: `translate(0,0)`,
-              }}
-            >
-              {n.center ? (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-full text-lg font-semibold">
-                  IRT
-                </div>
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-white border border-slate-100 rounded-full text-blue-800 text-sm font-medium shadow-sm px-4">
-                  {n.label}
-                </div>
-              )}
-            </motion.div>
-          );
-        })}
+        {/* IRT center node */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+          className="absolute left-[335px] top-[220px] w-[80px] h-[80px] rounded-full bg-gradient-to-br from-blue-600 to-blue-500 shadow-2xl flex items-center justify-center text-white font-semibold text-lg"
+        >
+          IRT
+        </motion.div>
 
-        {/* small subtle hover tooltip (optional) - shows id only while hovering */}
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white px-3 py-2 rounded-lg shadow-sm text-xs text-slate-700 border"
-          >
-            {hovered}
-          </motion.div>
-        )}
+        {/* MODULES */}
+
+        {/* TOP */}
+        <motion.div
+          initial={{ y: -10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          className="absolute left-[275px] top-[60px] w-[200px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
+        >
+          Randomization
+        </motion.div>
+
+        {/* LEFT */}
+        <motion.div
+          initial={{ x: -10, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+          className="absolute left-[60px] top-[234px] w-[220px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
+        >
+          Clinical Supplies
+        </motion.div>
+
+        {/* RIGHT */}
+        <motion.div
+          initial={{ x: 10, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+          className="absolute right-[60px] top-[234px] w-[220px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
+        >
+          Subject Management
+        </motion.div>
+
+        {/* BOTTOM */}
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+          className="absolute left-[275px] top-[420px] w-[200px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
+        >
+          Site Management
+        </motion.div>
       </div>
     </div>
   );
