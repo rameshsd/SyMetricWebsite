@@ -1,117 +1,140 @@
+
 "use client";
 
 import React from "react";
 import { Shuffle, Beaker, Users, Hospital } from "lucide-react";
 
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string; }) => (
-  <div className="flex flex-col items-center gap-2 text-center">
-    <div className="h-16 w-16 rounded-xl bg-blue-100/70 text-blue-600 flex items-center justify-center shadow-sm">
+  <div className="flex flex-col items-center gap-2">
+    <div className="h-16 w-16 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow">
       <Icon className="h-7 w-7" />
     </div>
-    <span className="text-sm font-medium text-slate-700">{label}</span>
+    <p className="text-sm font-medium text-slate-700">{label}</p>
   </div>
 );
 
-const IRT = () => (
-  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-blue-600 text-lg font-bold text-blue-600 bg-white shadow-md">
+const IRTHub = () => (
+  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-blue-600 bg-white
+                  text-blue-600 text-lg font-bold shadow-lg">
     IRT
   </div>
 );
 
 export function IrtDiagram() {
   return (
-    <div className="flex items-center justify-center w-full py-10 bg-slate-50 overflow-visible">
-      <div className="relative w-[520px] h-[460px] bg-white rounded-2xl shadow-xl overflow-visible p-4">
+    <div className="w-full flex justify-center py-10 bg-transparent">
 
-        {/* BUSINESS-AI CURVED LINES */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-[50]"
-          viewBox="0 0 520 460"
-        >
+      <div className="relative w-[520px] h-[460px] bg-white rounded-3xl shadow-xl overflow-visible">
+
+        {/* ======================
+            BUSINESS-AI LINES
+        ======================= */}
+        <svg className="absolute inset-0 w-full h-full z-30 pointer-events-none" viewBox="0 0 520 460">
+
           <defs>
-            <linearGradient id="bizLine" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C3B5FF" />
+            {/* glowing purple gradient */}
+            <linearGradient id="bizLine" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#C2B3FF" />
               <stop offset="100%" stopColor="#8B5CF6" />
             </linearGradient>
+
+            {/* line glow */}
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feBlend in="SourceGraphic" in2="blur" mode="normal" />
+            </filter>
           </defs>
 
-          {/* TOP CURVED */}
+          {/* TOP CURVE */}
           <path
-            d="
-              M 260 230
-              L 260 175
-              C 260 155, 260 145, 260 130
-            "
+            id="line-top"
+            d="M260 230 L260 170 Q260 150 260 130"
             stroke="url(#bizLine)"
             strokeWidth="4"
             strokeLinecap="round"
             fill="none"
+            filter="url(#softGlow)"
           />
 
-          {/* LEFT CURVED */}
+          {/* BOTTOM CURVE */}
           <path
-            d="
-              M 260 230
-              L 200 230
-              C 175 230, 160 230, 140 230
-            "
+            id="line-bottom"
+            d="M260 230 L260 290 Q260 310 260 340"
             stroke="url(#bizLine)"
             strokeWidth="4"
             strokeLinecap="round"
             fill="none"
+            filter="url(#softGlow)"
           />
 
-          {/* RIGHT CURVED */}
+          {/* LEFT CURVE */}
           <path
-            d="
-              M 260 230
-              L 320 230
-              C 345 230, 360 230, 380 230
-            "
+            id="line-left"
+            d="M260 230 L200 230 Q170 230 140 230"
             stroke="url(#bizLine)"
             strokeWidth="4"
             strokeLinecap="round"
             fill="none"
+            filter="url(#softGlow)"
           />
 
-          {/* BOTTOM CURVED */}
+          {/* RIGHT CURVE */}
           <path
-            d="
-              M 260 230
-              L 260 285
-              C 260 305, 260 320, 260 340
-            "
+            id="line-right"
+            d="M260 230 L320 230 Q350 230 380 230"
             stroke="url(#bizLine)"
             strokeWidth="4"
             strokeLinecap="round"
             fill="none"
+            filter="url(#softGlow)"
           />
+
+          {/* FLOATING DIAMONDS */}
+          {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
+            <rect
+              key={i}
+              width="10"
+              height="10"
+              transform="rotate(45)"
+              fill="#8B5CF6"
+              opacity="0.8"
+            >
+              <animateMotion dur="3.2s" repeatCount="indefinite">
+                <mpath href={`#${id}`} />
+              </animateMotion>
+            </rect>
+          ))}
         </svg>
 
-        {/* CENTER NODE */}
-        <div className="absolute top-[210px] left-[240px]">
-          <IRT />
+        {/* ======================
+            ABSOLUTE NODE LAYOUT
+        ======================= */}
+
+        {/* CENTER */}
+        <div className="absolute top-[210px] left-[240px] z-[40]">
+          <IRTHub />
         </div>
 
-        {/* TOP NODE */}
-        <div className="absolute top-[60px] left-[220px]">
+        {/* TOP */}
+        <div className="absolute top-[60px] left-[220px] z-[40]">
           <Node icon={Shuffle} label="Randomization" />
         </div>
 
-        {/* LEFT NODE */}
-        <div className="absolute top-[200px] left-[60px]">
+        {/* LEFT */}
+        <div className="absolute top-[200px] left-[60px] z-[40]">
           <Node icon={Beaker} label="Clinical Supplies" />
         </div>
 
-        {/* RIGHT NODE */}
-        <div className="absolute top-[200px] left-[380px]">
+        {/* RIGHT */}
+        <div className="absolute top-[200px] left-[380px] z-[40]">
           <Node icon={Users} label="Subject Management" />
         </div>
 
-        {/* BOTTOM NODE */}
-        <div className="absolute top-[340px] left-[220px]">
+        {/* BOTTOM */}
+        <div className="absolute top-[340px] left-[220px] z-[40]">
           <Node icon={Hospital} label="Site Management" />
         </div>
+
       </div>
     </div>
   );
