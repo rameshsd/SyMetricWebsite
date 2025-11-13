@@ -1,161 +1,130 @@
-"use client"
 
-import React from "react"
-import { motion } from "framer-motion"
+"use client";
 
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 180, damping: 16 } },
-}
-
-const lineVariants = (delay = 0) => ({
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 1.2, delay } },
-})
-
-const iconPaths = {
-  Repeat: (
-    <>
-      <path d="M17 2.1l4 4-4 4" />
-      <path d="M3 12.6A9 9 0 0 1 12 3a9 9 0 0 1 8.4 5.5" />
-      <path d="M7 21.9l-4-4 4-4" />
-      <path d="M21 11.4A9 9 0 0 1 12 21a9 9 0 0 1-8.4-5.5" />
-    </>
-  ),
-  Users: (
-    <>
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </>
-  ),
-  Hospital: (
-    <>
-      <path d="M12 22V8" />
-      <path d="M5 22V8" />
-      <path d="M19 22V8" />
-      <path d="M2 22h20" />
-      <path d="m20 8-8-6-8 6" />
-      <path d="M9 16h6" />
-      <path d="M12 13v6" />
-    </>
-  ),
-  Beaker: (
-    <>
-      <path d="M4.5 3h15" />
-      <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
-      <path d="M6 14h12" />
-    </>
-  ),
-}
-
-const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ iconKey, label }) => (
-  <motion.g variants={itemVariants}>
-    <circle cx="0" cy="0" r="35" fill="white" stroke="hsl(var(--primary)/0.4)" strokeWidth="1.6" />
-    <g
-      stroke="hsl(var(--primary))"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-      transform="translate(-12, -12)"
-    >
-      {iconPaths[iconKey]}
-    </g>
-    <text
-      y="55"
-      textAnchor="middle"
-      fontSize="12"
-      fontWeight="500"
-      fill="hsl(var(--primary))"
-      className="text-foreground"
-    >
-      {label}
-    </text>
-  </motion.g>
-)
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export function IrtDiagram() {
-  const SVG_WIDTH = 600
-  const SVG_HEIGHT = 480
-  const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
-  const radius = 150
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const nodes = [
-    { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
-    { iconKey: "Users", label: "Subject Management", x: center.x + radius, y: center.y },
-    { iconKey: "Hospital", label: "Site Management", x: center.x, y: center.y + radius },
-    { iconKey: "Beaker", label: "Clinical Supplies", x: center.x - radius, y: center.y },
-  ] as const
+    { id: "randomization", label: "Randomization", x: 0, y: -160 },
+    { id: "clinical", label: "Clinical Supplies", x: -200, y: 0 },
+    { id: "subject", label: "Subject Management", x: 200, y: 0 },
+    { id: "site", label: "Site Management", x: 0, y: 160 },
+    { id: "irt", label: "IRT", x: 0, y: 0, center: true },
+  ];
 
   return (
-    <motion.div
-      className="flex items-center justify-center w-full h-[480px] bg-gradient-to-b from-white to-slate-50 rounded-2xl"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <marker
-            id="arrow"
-            markerUnits="strokeWidth"
-            markerWidth="8"
-            markerHeight="8"
-            viewBox="0 0 10 10"
-            refX="9.5"
-            refY="5"
-            orient="auto"
+    <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 rounded-2xl">
+      <div className="relative w-[600px] h-[600px] flex items-center justify-center scale-[0.6] sm:scale-[0.7] md:scale-[0.8] lg:scale-100">
+        {/* Connecting Lines (with glowing animation) */}
+        <svg className="absolute w-full h-full" viewBox="0 0 600 600">
+          <defs>
+            <marker
+              id="arrow"
+              markerWidth="10"
+              markerHeight="10"
+              refX="5"
+              refY="3"
+              orient="auto"
+              markerUnits="strokeWidth"
+            >
+              <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+            </marker>
+
+            {/* Glowing animated gradient */}
+            <linearGradient id="glowLine" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2563eb">
+                <animate
+                  attributeName="offset"
+                  values="0;1;0"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
+              </stop>
+              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          {/* IRT to Randomization */}
+          <line
+            x1="300"
+            y1="250" 
+            x2="300"
+            y2="140"
+            stroke="url(#glowLine)"
+            strokeWidth="3"
+            markerEnd="url(#arrow)"
+          />
+          {/* IRT to Clinical Supplies */}
+          <line
+            x1="250"
+            y1="300"
+            x2="100"
+            y2="300"
+            stroke="url(#glowLine)"
+            strokeWidth="3"
+            markerEnd="url(#arrow)"
+          />
+          {/* IRT to Subject Management */}
+          <line
+            x1="350"
+            y1="300"
+            x2="500"
+            y2="300"
+            stroke="url(#glowLine)"
+            strokeWidth="3"
+            markerEnd="url(#arrow)"
+          />
+          {/* IRT to Site Management */}
+          <line
+            x1="300"
+            y1="350"
+            x2="300"
+            y2="460"
+            stroke="url(#glowLine)"
+            strokeWidth="3"
+            markerEnd="url(#arrow)"
+          />
+        </svg>
+
+        {/* Nodes */}
+        {nodes.map((node) => (
+          <motion.div
+            key={node.id}
+            onHoverStart={() => setHovered(node.label)}
+            onHoverEnd={() => setHovered(null)}
+            className={`absolute flex items-center justify-center rounded-full shadow-lg cursor-pointer text-center 
+              ${
+                node.center
+                  ? "bg-blue-600 text-white w-20 h-20 text-lg font-semibold"
+                  : "bg-white text-gray-800 w-44 h-16 font-medium border border-gray-300"
+              }`}
+            style={{
+              transform: `translate(${node.x}px, ${node.y}px)`,
+            }}
+            whileHover={{
+              scale: 1.1,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
-          </marker>
-        </defs>
-
-        {/* Connecting Lines */}
-        {nodes.map((pos, i) => {
-          const start = { x: center.x, y: center.y }
-          const end = { x: pos.x, y: pos.y }
-          const dx = end.x - start.x
-          const dy = end.y - start.y
-          const length = Math.sqrt(dx * dx + dy * dy)
-          const unitDx = dx / length
-          const unitDy = dy / length
-          const adjustedStart = { x: start.x + unitDx * 50, y: start.y + unitDy * 50 }
-          const adjustedEnd = { x: end.x - unitDx * 40, y: end.y - unitDy * 40 }
-
-          return (
-            <motion.line
-              key={i}
-              variants={lineVariants(0.3 * i)}
-              x1={adjustedStart.x}
-              y1={adjustedStart.y}
-              x2={adjustedEnd.x}
-              y2={adjustedEnd.y}
-              stroke="hsl(var(--primary))"
-              strokeWidth={1.6}
-              markerEnd="url(#arrow)"
-            />
-          )
-        })}
-
-        {/* Center IRT Node */}
-        <motion.g variants={itemVariants} transform={`translate(${center.x}, ${center.y})`}>
-          <circle cx="0" cy="0" r="48" fill="hsla(var(--primary)/0.1)" />
-          <circle cx="0" cy="0" r="40" fill="hsla(var(--primary)/0.25)" />
-          <circle cx="0" cy="0" r="32" fill="hsl(var(--primary))" />
-          <text x="0" y="5" textAnchor="middle" fontSize="16" fontWeight="bold" fill="white">
-            IRT
-          </text>
-        </motion.g>
-
-        {/* Outer Nodes */}
-        {nodes.map((p, i) => (
-          <g key={i} transform={`translate(${p.x}, ${p.y})`}>
-            <Node iconKey={p.iconKey} label={p.label} />
-          </g>
+            {node.label}
+          </motion.div>
         ))}
-      </svg>
-    </motion.div>
-  )
+
+        {/* Hover Tooltip */}
+        {hovered && (
+          <motion.div
+            className="absolute bottom-10 text-gray-700 bg-white px-4 py-2 rounded-xl shadow-md border text-sm"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {hovered}
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
 }
