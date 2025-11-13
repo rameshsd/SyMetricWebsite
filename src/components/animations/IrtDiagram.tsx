@@ -3,118 +3,115 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { type: "spring", stiffness: 180, damping: 16 },
-  },
-};
-
-const lineVariants = (delay = 0) => ({
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 1.2, delay } },
-});
-
-const Node = ({ label }: { label: string }) => (
-  <motion.div
-    variants={itemVariants}
-    className="h-[52px] w-[220px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
-  >
-    {label}
-  </motion.div>
-);
-
-const Line = ({ delay, ...props }: { delay: number } & React.SVGProps<SVGLineElement>) => (
-    <motion.line
-        variants={lineVariants(delay)}
-        stroke="#1d4ed8"
-        strokeWidth="3"
-        markerEnd="url(#arrowBlue)"
-    />
-);
-
-
 export function IrtDiagram() {
   return (
-    <div className="flex items-center justify-center w-full py-14 bg-slate-50">
-      <motion.div 
-        className="relative w-[780px] h-[600px] bg-white rounded-2xl shadow-xl overflow-hidden grid place-items-center"
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-        >
-        
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 780 600"
-          preserveAspectRatio="xMidYMid meet"
-        >
+    <div className="flex items-center justify-center w-full py-20 bg-[#eef5ff]">
+      <style>{`
+        .flow {
+          stroke: url(#grad);
+          stroke-width: 3;
+          stroke-linecap: round;
+          fill: none;
+        }
+
+        @keyframes flowColor {
+          0% { stop-color: #60a5fa; }
+          50% { stop-color: #2563eb; }
+          100% { stop-color: #60a5fa; }
+        }
+
+        .flowStop1 { animation: flowColor 2s linear infinite; }
+        .flowStop2 { animation: flowColor 2s linear infinite; animation-delay: 1s; }
+      `}</style>
+
+      <div className="relative w-[900px] h-[600px] bg-white rounded-3xl shadow-xl overflow-hidden">
+
+        {/* SVG Connectors */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 900 600">
           <defs>
-            <marker
-              id="arrowBlue"
-              markerWidth="10"
-              markerHeight="10"
-              refX="8"
-              refY="5"
-              orient="auto"
-            >
-              <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8" />
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" className="flowStop1" />
+              <stop offset="100%" className="flowStop2" stopOpacity="0.7" />
+            </linearGradient>
+
+            <marker id="arrowBlue" markerWidth="13" markerHeight="13" refX="6" refY="6" orient="auto">
+              <path d="M0,0 L12,6 L0,12 z" fill="#2563eb" />
             </marker>
           </defs>
 
-          {/* Lines from center (390, 300) */}
-          <Line delay={0.2} x1="390" y1="300" x2="390" y2="152" /> {/* Top */}
-          <Line delay={0.3} x1="390" y1="300" x2="295" y2="300" /> {/* Left */}
-          <Line delay={0.4} x1="390" y1="300" x2="485" y2="300" /> {/* Right */}
-          <Line delay={0.5} x1="390" y1="300" x2="390" y2="448" /> {/* Bottom */}
-        </svg>
-
-        <div className="relative w-full h-full grid" style={{gridTemplateColumns: '1fr auto 1fr', gridTemplateRows: '1fr auto 1fr'}}>
-
           {/* TOP */}
-          <div className="flex justify-center items-end" style={{gridColumn: 2, gridRow: 1}}>
-            <Node label="Randomization" />
-          </div>
+          <path d="M450 300 L450 140" className="flow" markerEnd="url(#arrowBlue)" />
 
           {/* LEFT */}
-           <div className="flex justify-end items-center" style={{gridColumn: 1, gridRow: 2}}>
-            <Node label="Clinical Supplies" />
-          </div>
-
-          {/* CENTER – IRT */}
-           <div className="flex justify-center items-center" style={{gridColumn: 2, gridRow: 2}}>
-                <motion.div
-                    variants={itemVariants}
-                    className="w-[80px] h-[80px] rounded-full bg-gradient-to-br from-blue-600 to-blue-500 shadow-xl flex items-center justify-center text-white font-semibold text-lg"
-                    >
-                    IRT
-                </motion.div>
-          </div>
+          <path d="M450 300 L220 300" className="flow" markerEnd="url(#arrowBlue)" />
 
           {/* RIGHT */}
-          <div className="flex justify-start items-center" style={{gridColumn: 3, gridRow: 2}}>
-            <Node label="Subject Management" />
-          </div>
+          <path d="M450 300 L680 300" className="flow" markerEnd="url(#arrowBlue)" />
 
           {/* BOTTOM */}
-          <div className="flex justify-center items-start" style={{gridColumn: 2, gridRow: 3}}>
-            <Node label="Site Management" />
-          </div>
-        </div>
-      </motion.div>
+          <path d="M450 300 L450 460" className="flow" markerEnd="url(#arrowBlue)" />
+        </svg>
+
+        {/* CENTER HUB (like Business AI) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: "spring", stiffness: 180, damping: 15 }}
+          className="absolute left-[400px] top-[250px] w-[120px] h-[120px]
+                     bg-white rounded-2xl shadow-xl border border-blue-100
+                     flex items-center justify-center text-blue-700 font-semibold text-xl"
+        >
+          IRT
+        </motion.div>
+
+        {/* TOP: Randomization */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="absolute left-[370px] top-[60px] w-[180px] h-[55px]
+                     bg-white rounded-2xl shadow-md border border-slate-100
+                     flex items-center justify-center text-blue-900 font-medium"
+        >
+          Randomization
+        </motion.div>
+
+        {/* LEFT: Clinical Supplies */}
+        <motion.div
+          initial={{ opacity: 0, x: -15 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.25 }}
+          className="absolute left-[60px] top-[272px] w-[230px] h-[55px]
+                     bg-white rounded-2xl shadow-md border border-slate-100
+                     flex items-center justify-center text-blue-900 font-medium"
+        >
+          Clinical Supplies
+        </motion.div>
+
+        {/* RIGHT: Subject Management */}
+        <motion.div
+          initial={{ opacity: 0, x: 15 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+          className="absolute right-[60px] top-[272px] w-[230px] h-[55px]
+                     bg-white rounded-2xl shadow-md border border-slate-100
+                     flex items-center justify-center text-blue-900 font-medium"
+        >
+          Subject Management
+        </motion.div>
+
+        {/* BOTTOM: Site Management */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+          className="absolute left-[370px] top-[500px] w-[180px] h-[55px]
+                     bg-white rounded-2xl shadow-md border border-slate-100
+                     flex items-center justify-center text-blue-900 font-medium"
+        >
+          Site Management
+        </motion.div>
+      </div>
     </div>
   );
 }
