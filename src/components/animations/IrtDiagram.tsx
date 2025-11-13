@@ -1,15 +1,14 @@
-
 "use client";
 
 import React from "react";
 import { Shuffle, Beaker, Users, Hospital } from "lucide-react";
 
-const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string; }) => (
+const Node = ({ icon: Icon, label }: { icon: React.ElementType, label: string; }) => (
   <div className="flex flex-col items-center gap-2">
     <div className="h-16 w-16 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow">
       <Icon className="h-7 w-7" />
     </div>
-    <p className="text-sm font-medium text-slate-700">{label}</p>
+    <p className="text-sm font-medium text-slate-700 text-center">{label}</p>
   </div>
 );
 
@@ -92,7 +91,7 @@ export function IrtDiagram() {
           {/* FLOATING DIAMONDS */}
           {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
             <rect
-              key={i}
+              key={id}
               width="10"
               height="10"
               transform="rotate(45)"
