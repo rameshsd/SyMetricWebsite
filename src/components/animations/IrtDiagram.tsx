@@ -26,8 +26,8 @@ const lineVariants = {
   visible: {
     pathLength: 1,
     opacity: 1,
-    transition: { duration: 0.65, ease: "easeInOut" }
-  }
+    transition: { duration: 0.65, ease: "easeInOut" },
+  },
 };
 
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
@@ -42,8 +42,8 @@ const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string })
 const IRTHub = () => (
   <motion.div variants={itemVariants}>
     <div className="relative flex h-20 w-20 items-center justify-center rounded-full 
-        bg-gradient-to-br from-blue-600 to-blue-500 text-lg font-bold text-white 
-        shadow-2xl ring-4 ring-blue-200/40">
+                    bg-gradient-to-br from-blue-600 to-blue-500 text-lg font-bold text-white 
+                    shadow-xl ring-4 ring-blue-200/40">
       IRT
     </div>
   </motion.div>
@@ -51,9 +51,9 @@ const IRTHub = () => (
 
 export function IrtDiagram() {
   return (
-    <div className="flex items-center justify-center w-full py-10 bg-transparent">
+    <div className="flex items-center justify-center w-full py-10 bg-slate-50">
 
-      {/* ENHANCED BLUE ARROWS + FLOW */}
+      {/* DIAMOND ANIMATION */}
       <style>{`
         .flow-diamond {
           fill: #2563eb;
@@ -65,64 +65,69 @@ export function IrtDiagram() {
         }
       `}</style>
 
-      <div className="relative w-full max-w-lg h-[400px] p-4">
+      {/* CLEAN WHITE CARD - NO OVERFLOW */}
+      <div className="relative w-[480px] h-[420px] bg-white rounded-2xl shadow-xl p-4 overflow-hidden">
 
-        {/* SVG FLOW LINES */}
+        {/* SVG ARROWS + DIAMONDS */}
         <motion.svg
           initial="hidden"
           animate="visible"
-          className="absolute inset-0 h-full w-full overflow-visible"
+          className="absolute inset-0 h-full w-full"
           viewBox="0 0 400 400"
         >
           <defs>
-            {/* BEAUTIFUL BLUE ARROW HEAD */}
             <marker id="arrow-end" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
               <path d="M0,0 L10,5 L0,10" fill="#2563eb" />
             </marker>
 
-            {/* GRADIENT BLUE LINE */}
             <linearGradient id="blue-line" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#60a5fa" />
               <stop offset="100%" stopColor="#2563eb" />
             </linearGradient>
           </defs>
 
-          {/* Blue Lines */}
+          {/* TOP ARROW */}
           <motion.path
             id="line-top"
-            d="M 200 200 L 200 95"
+            d="M200 200 L200 110"
             stroke="url(#blue-line)"
             strokeWidth="2.5"
-            variants={lineVariants}
             markerEnd="url(#arrow-end)"
-          />
-          <motion.path
-            id="line-bottom"
-            d="M 200 200 L 200 305"
-            stroke="url(#blue-line)"
-            strokeWidth="2.5"
             variants={lineVariants}
-            markerEnd="url(#arrow-end)"
-          />
-          <motion.path
-            id="line-left"
-            d="M 200 200 L 95 200"
-            stroke="url(#blue-line)"
-            strokeWidth="2.5"
-            variants={lineVariants}
-            markerEnd="url(#arrow-end)"
-          />
-          <motion.path
-            id="line-right"
-            d="M 200 200 L 305 200"
-            stroke="url(#blue-line)"
-            strokeWidth="2.5"
-            variants={lineVariants}
-            markerEnd="url(#arrow-end)"
           />
 
-          {/* Animated Diamonds */}
-          {["line-top", "line-bottom", "line-left", "line-right"].map((line, i) => (
+          {/* BOTTOM ARROW */}
+          <motion.path
+            id="line-bottom"
+            d="M200 200 L200 290"
+            stroke="url(#blue-line)"
+            strokeWidth="2.5"
+            markerEnd="url(#arrow-end)"
+            variants={lineVariants}
+          />
+
+          {/* LEFT ARROW */}
+          <motion.path
+            id="line-left"
+            d="M200 200 L115 200"
+            stroke="url(#blue-line)"
+            strokeWidth="2.5"
+            markerEnd="url(#arrow-end)"
+            variants={lineVariants}
+          />
+
+          {/* RIGHT ARROW */}
+          <motion.path
+            id="line-right"
+            d="M200 200 L285 200"
+            stroke="url(#blue-line)"
+            strokeWidth="2.5"
+            markerEnd="url(#arrow-end)"
+            variants={lineVariants}
+          />
+
+          {/* ANIMATED DIAMONDS */}
+          {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
             <rect
               key={i}
               className="flow-diamond"
@@ -131,42 +136,37 @@ export function IrtDiagram() {
               transform="rotate(45)"
             >
               <animateMotion dur="3.4s" repeatCount="indefinite">
-                <mpath href={`#${line}`} />
+                <mpath href={`#${id}`} />
               </animateMotion>
             </rect>
           ))}
         </motion.svg>
 
-        {/* NODES: Grid Layout */}
+        {/* GRID NODES */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-[1fr_auto_1fr] grid-rows-[1fr_auto_1fr]
-                     h-full w-full place-items-center gap-x-12 gap-y-6"
+          className="grid grid-cols-[1fr_auto_1fr] grid-rows-[1fr_auto_1fr] 
+                     h-full w-full place-items-center gap-x-10 gap-y-6"
         >
-          {/* TOP */}
-          <div className="col-start-2 row-start-1 -mt-8">
+          <div className="col-start-2 row-start-1 -mt-3">
             <Node icon={Shuffle} label="Randomization" />
           </div>
 
-          {/* LEFT */}
           <div className="col-start-1 row-start-2">
             <Node icon={Beaker} label="Clinical Supplies" />
           </div>
 
-          {/* CENTER */}
           <div className="col-start-2 row-start-2">
             <IRTHub />
           </div>
 
-          {/* RIGHT */}
           <div className="col-start-3 row-start-2">
             <Node icon={Users} label="Subject Management" />
           </div>
 
-          {/* BOTTOM */}
-          <div className="col-start-2 row-start-3 -mb-8">
+          <div className="col-start-2 row-start-3 mb-2">
             <Node icon={Hospital} label="Site Management" />
           </div>
         </motion.div>
