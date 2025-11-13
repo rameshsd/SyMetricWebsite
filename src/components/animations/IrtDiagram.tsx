@@ -79,44 +79,87 @@ export function IrtDiagram() {
         "
       >
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-[999]"
+          className="absolute inset-0 w-full h-full pointer-events-none z-[80]"
           viewBox="0 0 520 460"
         >
-          {/* TOP */}
+          <defs>
+            <linearGradient id="bizLine" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#A78BFA" />
+              <stop offset="100%" stopColor="#7C3AED" />
+            </linearGradient>
+          </defs>
+
+          {/* ===== TOP CONNECTOR (Business-AI style) ===== */}
           <path
-            d="M260 230 C260 170, 260 150, 260 120"
-            stroke="#9FA8FF"
+            id="top-line"
+            d="
+              M 260 230
+              L 260 180
+              C 260 160, 260 150, 260 135
+            "
+            stroke="url(#bizLine)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* BOTTOM */}
+          {/* ===== BOTTOM CONNECTOR ===== */}
           <path
-            d="M260 230 C260 290, 260 310, 260 340"
-            stroke="#9FA8FF"
+            id="bottom-line"
+            d="
+              M 260 230
+              L 260 280
+              C 260 300, 260 315, 260 335
+            "
+            stroke="url(#bizLine)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* LEFT */}
+          {/* ===== LEFT CONNECTOR ===== */}
           <path
-            d="M260 230 C200 230, 160 230, 120 230"
-            stroke="#9FA8FF"
+            id="left-line"
+            d="
+              M 260 230
+              L 210 230
+              C 190 230, 170 230, 150 230
+            "
+            stroke="url(#bizLine)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
 
-          {/* RIGHT */}
+          {/* ===== RIGHT CONNECTOR ===== */}
           <path
-            d="M260 230 C320 230, 360 230, 400 230"
-            stroke="#9FA8FF"
+            id="right-line"
+            d="
+              M 260 230
+              L 310 230
+              C 330 230, 350 230, 370 230
+            "
+            stroke="url(#bizLine)"
             strokeWidth="3"
             strokeLinecap="round"
             fill="none"
           />
+
+          {/* === FLOATING DIAMOND FLOW (like screenshot) === */}
+          {["top-line","bottom-line","left-line","right-line"].map((id, i) => (
+            <rect
+              key={i}
+              width="10"
+              height="10"
+              transform="rotate(45)"
+              fill="#7C3AED"
+              className="opacity-80"
+            >
+              <animateMotion dur="3s" repeatCount="indefinite">
+                <mpath href={`#${id}`} />
+              </animateMotion>
+            </rect>
+          ))}
         </svg>
 
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
