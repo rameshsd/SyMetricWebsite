@@ -48,7 +48,7 @@ const IRTHub = () => (
 
 export function IrtDiagram() {
   return (
-    <div className="flex items-center justify-center w-full py-10 bg-transparent">
+    <div className="flex items-center justify-center w-full py-10 bg-slate-50 overflow-visible">
       <style>
         {`
           .flow-diamond {
@@ -79,98 +79,36 @@ export function IrtDiagram() {
         "
       >
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-[80]"
+          className="absolute inset-0 w-full h-full pointer-events-none z-[99] overflow-visible"
           viewBox="0 0 520 460"
         >
-          <defs>
-            {/* Soft purple gradient like Business-AI */}
-            <linearGradient id="bizLine" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C3B5FF" />
-              <stop offset="100%" stopColor="#8B5CF6" />
-            </linearGradient>
-          </defs>
-
-          {/* ============================
-                TOP SOFT CURVED LINE
-              ============================ */}
           <path
-            id="line-top"
-            d="
-              M 260 230
-              L 260 185
-              C 260 165, 260 150, 260 130
-            "
-            stroke="url(#bizLine)"
+            d="M260 230 L260 180 C260 160 260 150 260 130"
+            stroke="#8B5CF6"
             strokeWidth="3"
-            strokeLinecap="round"
             fill="none"
           />
 
-          {/* ============================
-                BOTTOM SOFT CURVED LINE
-              ============================ */}
           <path
-            id="line-bottom"
-            d="
-              M 260 230
-              L 260 275
-              C 260 295, 260 315, 260 340
-            "
-            stroke="url(#bizLine)"
+            d="M260 230 L260 280 C260 300 260 315 260 340"
+            stroke="#8B5CF6"
             strokeWidth="3"
-            strokeLinecap="round"
             fill="none"
           />
 
-          {/* ============================
-                LEFT SOFT CURVED LINE
-              ============================ */}
           <path
-            id="line-left"
-            d="
-              M 260 230
-              L 210 230
-              C 185 230, 160 230, 140 230
-            "
-            stroke="url(#bizLine)"
+            d="M260 230 L210 230 C185 230 160 230 140 230"
+            stroke="#8B5CF6"
             strokeWidth="3"
-            strokeLinecap="round"
             fill="none"
           />
 
-          {/* ============================
-                RIGHT SOFT CURVED LINE
-              ============================ */}
           <path
-            id="line-right"
-            d="
-              M 260 230
-              L 310 230
-              C 335 230, 360 230, 380 230
-            "
-            stroke="url(#bizLine)"
+            d="M260 230 L310 230 C335 230 360 230 380 230"
+            stroke="#8B5CF6"
             strokeWidth="3"
-            strokeLinecap="round"
             fill="none"
           />
-
-          {/* =========================================
-                FLOATING PURPLE DIAMONDS (ANIMATED FLOW)
-              ========================================= */}
-          {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
-            <rect
-              key={i}
-              width="10"
-              height="10"
-              transform="rotate(45)"
-              fill="#8B5CF6"
-              className="opacity-80"
-            >
-              <animateMotion dur="3.4s" repeatCount="indefinite">
-                <mpath href={`#${id}`} />
-              </animateMotion>
-            </rect>
-          ))}
         </svg>
 
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
