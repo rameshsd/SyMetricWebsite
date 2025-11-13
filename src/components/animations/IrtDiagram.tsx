@@ -2,52 +2,23 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Shuffle, Beaker, Users, Hospital } from "lucide-react";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 260, damping: 20 } },
-};
-
-const lineVariants = (delay = 0) => ({
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 0.8, ease: "easeInOut", delay },
-  },
-});
-
-const Node: React.FC<{ label: string; className?: string }> = ({ label, className }) => (
-  <motion.div
-    variants={itemVariants}
-    className={`w-[200px] h-[60px] bg-white border border-slate-200/90 rounded-full flex items-center justify-center shadow-sm ${className}`}
-  >
-    <span className="text-blue-900/80 font-medium text-sm tracking-wide">{label}</span>
-  </motion.div>
-);
+const nodes = [
+    { id: "randomization", label: "Randomization", x: 0, y: -160, icon: Shuffle },
+    { id: "clinical", label: "Clinical Supplies", x: -220, y: 0, icon: Beaker },
+    { id: "subject", label: "Subject Management", x: 220, y: 0, icon: Users },
+    { id: "site", label: "Site Management", x: 0, y: 160, icon: Hospital },
+    { id: "irt", label: "IRT", x: 0, y: 0, center: true, icon: null },
+];
 
 export function IrtDiagram() {
   return (
     <div className="flex items-center justify-center w-full min-h-[640px] bg-[#eef5ff] p-4">
-      <motion.div
-        className="relative w-[800px] h-[600px] bg-white rounded-2xl shadow-lg grid grid-cols-3 grid-rows-3 items-center justify-items-center"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+      <div
+        className="relative w-[800px] h-[600px] bg-white rounded-2xl shadow-lg"
       >
-        {/* SVG Layer for lines and arrows */}
+        {/* SVG Layer for lines */}
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 800 600"
@@ -55,63 +26,77 @@ export function IrtDiagram() {
           aria-hidden="true"
         >
           <defs>
-            <path id="diamond" d="M-3 0 L0 -3 L3 0 L0 3 Z" fill="#2563eb" />
-            <path id="chevron" d="M-3 0 L0 4 L3 0 L0 1 Z" fill="#2563eb" />
+            <marker
+              id="arrow-end-circle"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+              orient="auto"
+            >
+              <circle cx="4" cy="4" r="2" fill="#2563eb" />
+            </marker>
           </defs>
 
-          {/* Line to Top */}
-          <motion.g variants={lineVariants(0.2)}>
-            <line x1="400" y1="260" x2="400" y2="160" stroke="#2563eb" strokeWidth="1.5" />
-            <use href="#diamond" x="400" y="160" />
-          </motion.g>
-
-          {/* Line to Left */}
-           <motion.g variants={lineVariants(0.3)}>
-            <line x1="240" y1="300" x2="350" y2="300" stroke="#2563eb" strokeWidth="1.5" />
-             <use href="#diamond" x="240" y="300" transform="rotate(270 240 300)" />
-          </motion.g>
-
-          {/* Line to Right */}
-          <motion.g variants={lineVariants(0.4)}>
-            <line x1="450" y1="300" x2="560" y2="300" stroke="#2563eb" strokeWidth="1.5" />
-            <use href="#diamond" x="560" y="300" transform="rotate(90 560 300)" />
-          </motion.g>
-
-          {/* Line to Bottom */}
-          <motion.g variants={lineVariants(0.5)}>
-            <line x1="400" y1="345" x2="400" y2="440" stroke="#2563eb" strokeWidth="1.5" />
-            <use href="#chevron" x="400" y="440" />
-          </motion.g>
+          {/* Lines from Center to Nodes */}
+          {nodes.filter(n => !n.center).map(node => (
+             <motion.line
+                key={`line-${node.id}`}
+                x1="400"
+                y1="300"
+                x2={400 + node.x}
+                y2={300 + node.y}
+                stroke="#2563eb"
+                strokeWidth="1.5"
+                strokeDasharray="4 4"
+                markerEnd={node.id === 'randomization' || node.id === 'site' ? "url(#arrow-end-circle)" : undefined}
+                markerStart={node.id === 'clinical' || node.id === 'subject' ? "url(#arrow-end-circle)" : undefined}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+            />
+          ))}
         </svg>
+        
+        {/* Node Components */}
+        {nodes.map((node, index) => {
+            const isCenter = node.center;
+            const Icon = node.icon;
 
-        {/* Top Node */}
-        <div className="col-start-2 row-start-1">
-          <Node label="Randomization" />
-        </div>
-
-        {/* Left Node */}
-        <div className="col-start-1 row-start-2 justify-self-end mr-[-20px]">
-          <Node label="Clinical Supplies" />
-        </div>
-
-        {/* Center IRT Hub */}
-        <motion.div
-          variants={itemVariants}
-          className="col-start-2 row-start-2 w-24 h-24 rounded-full bg-blue-600 shadow-lg flex items-center justify-center"
-        >
-          <span className="text-white font-bold text-xl tracking-wider">IRT</span>
-        </motion.div>
-
-        {/* Right Node */}
-        <div className="col-start-3 row-start-2 justify-self-start ml-[-20px]">
-          <Node label="Subject Management" />
-        </div>
-
-        {/* Bottom Node */}
-        <div className="col-start-2 row-start-3">
-          <Node label="Site Management" />
-        </div>
-      </motion.div>
+            return (
+                 <motion.div
+                    key={node.id}
+                    className="absolute"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.2 + index * 0.1 }}
+                    style={{
+                        top: '50%',
+                        left: '50%',
+                        x: `${node.x}px`,
+                        y: `${node.y}px`,
+                        translateX: '-50%',
+                        translateY: '-50%',
+                    }}
+                >
+                    {isCenter ? (
+                        <div
+                            className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center shadow-lg"
+                        >
+                            <span className="text-white font-bold text-xl tracking-wider">IRT</span>
+                        </div>
+                    ) : (
+                        <div
+                            className="flex items-center justify-center gap-2 bg-white border border-slate-200/90 rounded-full shadow-sm px-6 py-3"
+                        >
+                            {Icon && <Icon className="w-5 h-5 text-blue-800/80" />}
+                            <span className="text-blue-800/90 font-medium text-sm tracking-wide">{node.label}</span>
+                        </div>
+                    )}
+                </motion.div>
+            )
+        })}
+      </div>
     </div>
   );
 }
