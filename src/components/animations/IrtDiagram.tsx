@@ -9,124 +9,165 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.1,
+      delayChildren: 0.3,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0, scale: 0.5 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { type: "spring", stiffness: 300, damping: 20 },
+    transition: { type: "spring", stiffness: 260, damping: 20 },
   },
 };
 
-const lineVariants = {
+const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0 },
   visible: {
     pathLength: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-    },
+    transition: { duration: 1, ease: "easeInOut", delay },
   },
-};
+});
 
-const diamondVariants = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.3,
-      duration: 0.3,
-    },
-  },
-};
-
+const Node = ({ label }: { label: string }) => (
+  <motion.div
+    variants={itemVariants}
+    className="w-48 h-14 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-sm"
+  >
+    <span className="text-blue-900 font-medium text-sm">{label}</span>
+  </motion.div>
+);
 
 export function IrtDiagram() {
+  const center = { x: 300, y: 300 };
+  const nodeRadius = 70; // Logical radius for placing nodes
+  const linePadding = { hub: 50, node: 35 };
+
+  const nodes = [
+    {
+      id: "rand",
+      label: "Randomization",
+      position: { x: center.x, y: center.y - 180 },
+    },
+    {
+      id: "supply",
+      label: "Clinical Supplies",
+      position: { x: center.x - 220, y: center.y },
+    },
+    {
+      id: "subject",
+      label: "Subject Management",
+      position: { x: center.x + 220, y: center.y },
+    },
+    {
+      id: "site",
+      label: "Site Management",
+      position: { x: center.x, y: center.y + 180 },
+    },
+  ];
+
   return (
-    <div className="flex items-center justify-center w-full min-h-[480px] p-4 bg-[#f0f4f9]">
+    <div className="flex items-center justify-center w-full min-h-[640px] bg-[#eef5ff]">
       <motion.div
-        className="relative w-full max-w-2xl aspect-square bg-white rounded-3xl shadow-lg p-8 grid grid-cols-3 grid-rows-3 items-center justify-items-center"
+        className="relative w-[600px] h-[600px] bg-white rounded-3xl shadow-xl flex items-center justify-center"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
       >
-        {/* SVG layer for connectors */}
+        {/* SVG layer for lines and animations */}
         <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
+          className="absolute inset-0"
+          viewBox="0 0 600 600"
+          preserveAspectRatio="xMidYMid meet"
         >
           <defs>
             <marker
-              id="irt-arrow"
+              id="arrowhead-irt"
               viewBox="0 0 10 10"
               refX="8"
               refY="5"
-              markerWidth="5"
-              markerHeight="5"
+              markerWidth="6"
+              markerHeight="6"
               orient="auto-start-reverse"
             >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8" />
             </marker>
+            <path
+              id="diamond-shape"
+              d="M -4 0 L 0 -4 L 4 0 L 0 4 Z"
+              fill="#3b82f6"
+            />
           </defs>
-          
-          {/* Line from Top to Center */}
-          <motion.line x1="50" y1="25" x2="50" y2="44" stroke="#2563eb" strokeWidth="1" variants={lineVariants} markerEnd="url(#irt-arrow)" />
-          
-          {/* Line from Left to Center */}
-          <motion.line x1="25" y1="50" x2="44" y2="50" stroke="#2563eb" strokeWidth="1" variants={lineVariants} markerEnd="url(#irt-arrow)" />
 
-          {/* Line from Right to Center */}
-          <motion.line x1="75" y1="50" x2="56" y2="50" stroke="#2563eb" strokeWidth="1" variants={lineVariants} markerEnd="url(#irt-arrow)" />
+          {nodes.map((node, i) => {
+            const startX = center.x;
+            const startY = center.y;
+            const endX = node.position.x;
+            const endY = node.position.y;
 
-          {/* Line from Bottom to Center */}
-          <motion.line x1="50" y1="75" x2="50" y2="56" stroke="#2563eb" strokeWidth="1" variants={lineVariants} markerEnd="url(#irt-arrow)" />
+            const angle = Math.atan2(endY - startY, endX - startX);
+            const lineStartX = startX + linePadding.hub * Math.cos(angle);
+            const lineStartY = startY + linePadding.hub * Math.sin(angle);
+            const lineEndX = endX - linePadding.node * Math.cos(angle);
+            const lineEndY = endY - linePadding.node * Math.sin(angle);
+            
+            const pathId = `flow-path-${i}`;
+            const pathD = `M ${lineStartX},${lineStartY} L ${lineEndX},${lineEndY}`;
 
-          {/* Diamonds */}
-          <motion.path d="M 50 34.5 L 51.5 36 L 50 37.5 L 48.5 36 Z" fill="#2563eb" variants={diamondVariants} />
-          <motion.path d="M 34.5 50 L 36 51.5 L 37.5 50 L 36 48.5 Z" fill="#2563eb" variants={diamondVariants} />
-          <motion.path d="M 65.5 50 L 64 51.5 L 62.5 50 L 64 48.5 Z" fill="#2563eb" variants={diamondVariants} />
-          <motion.path d="M 50 65.5 L 51.5 64 L 50 62.5 L 48.5 64 Z" fill="#2563eb" variants={diamondVariants} />
-
+            return (
+              <g key={node.id}>
+                <motion.path
+                  d={pathD}
+                  variants={lineVariants(i * 0.15)}
+                  stroke="#a5b4fc"
+                  strokeWidth="1.5"
+                  markerEnd="url(#arrowhead-irt)"
+                />
+                <path id={pathId} d={pathD} style={{ display: 'none' }} />
+                <use href="#diamond-shape" stroke="white" strokeWidth="1">
+                  <animateMotion
+                    dur={`${2.5 + i * 0.2}s`}
+                    repeatCount="indefinite"
+                    begin={`${i * 0.5}s`}
+                  >
+                    <mpath href={`#${pathId}`} />
+                  </animateMotion>
+                </use>
+              </g>
+            );
+          })}
         </svg>
 
-        {/* Grid items for layout */}
-        <div className="col-start-2 row-start-1 flex items-center justify-center">
-            <motion.div variants={itemVariants} className="bg-white border border-gray-200 shadow-sm text-blue-900 font-medium py-3 px-8 rounded-full">
-                Randomization
-            </motion.div>
-        </div>
+        {/* Node Components */}
+        {nodes.map((node) => (
+          <div
+            key={node.id}
+            className="absolute"
+            style={{
+              left: node.position.x,
+              top: node.position.y,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <Node label={node.label} />
+          </div>
+        ))}
 
-        <div className="col-start-1 row-start-2 flex items-center justify-center">
-            <motion.div variants={itemVariants} className="bg-white border border-gray-200 shadow-sm text-blue-900 font-medium py-3 px-8 rounded-full">
-                Clinical Supplies
-            </motion.div>
-        </div>
-        
-        <div className="col-start-2 row-start-2 flex items-center justify-center">
-            <motion.div variants={itemVariants} className="w-28 h-28 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                IRT
-            </motion.div>
-        </div>
-
-        <div className="col-start-3 row-start-2 flex items-center justify-center">
-            <motion.div variants={itemVariants} className="bg-white border border-gray-200 shadow-sm text-blue-900 font-medium py-3 px-8 rounded-full">
-                Subject Management
-            </motion.div>
-        </div>
-        
-        <div className="col-start-2 row-start-3 flex items-center justify-center">
-             <motion.div variants={itemVariants} className="bg-white border border-gray-200 shadow-sm text-blue-900 font-medium py-3 px-8 rounded-full">
-                Site Management
-            </motion.div>
-        </div>
+        {/* Center IRT Hub */}
+        <motion.div
+          variants={itemVariants}
+          className="absolute w-24 h-24 rounded-full bg-blue-600 shadow-lg flex items-center justify-center"
+          style={{
+            left: center.x,
+            top: center.y,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <span className="text-white font-bold text-xl">IRT</span>
+        </motion.div>
       </motion.div>
     </div>
   );
