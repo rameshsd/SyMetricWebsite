@@ -1,152 +1,87 @@
-
 "use client";
 
 import React from "react";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 25 } },
+};
+
+
+const Node = ({ label, isHighlighted }: { label: string; isHighlighted?: boolean }) => {
+    return (
+        <div className="relative flex items-center justify-center">
+            <div className="bg-white border border-gray-200/80 rounded-full px-6 py-3 text-sm font-medium text-gray-700 shadow-md">
+                {label}
+            </div>
+            {isHighlighted && (
+                <div className="absolute -right-5 top-1/2 -translate-y-1/2 w-12 h-12">
+                    <div className="w-full h-full rounded-full border-[6px] border-blue-600"/>
+                </div>
+            )}
+        </div>
+    )
+}
+
 export function IrtDiagram() {
+
   return (
-    <div className="flex items-center justify-center py-10 bg-slate-50">
-      <style>{`
-        .flow-line {
-          stroke: url(#gradFlow);
-          stroke-width: 4;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-        }
-
-        /* gradient animation */
-        @keyframes gradientFlow {
-          0% { stop-color: #60a5fa; }
-          50% { stop-color: #2563eb; }
-          100% { stop-color: #60a5fa; }
-        }
-
-        .flowStop1 {
-          animation: gradientFlow 2s linear infinite;
-        }
-        .flowStop2 {
-          animation: gradientFlow 2s linear infinite;
-          animation-delay: 1s;
-        }
-      `}</style>
-
-      <div className="relative w-[750px] h-[520px] bg-white rounded-2xl shadow-xl">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 750 520">
-          <defs>
-            {/* Moving gradient */}
-            <linearGradient id="gradFlow" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" className="flowStop1" />
-              <stop offset="100%" className="flowStop2" stopOpacity="0.6" />
-            </linearGradient>
-
-            {/* Arrow head */}
-            <marker
-              id="arrowBlue"
-              markerWidth="13"
-              markerHeight="13"
-              refX="6"
-              refY="6"
-              orient="auto"
-            >
-              <path d="M0,0 L12,6 L0,12 z" fill="#2563eb" />
-            </marker>
-          </defs>
-
-          {/* IRT center at (375,260) */}
-          {/* TOP */}
-          <line
-            className="flow-line"
-            x1="375"
-            y1="260"
-            x2="375"
-            y2="120"
-            markerEnd="url(#arrowBlue)"
-          />
-
-          {/* LEFT */}
-          <line
-            className="flow-line"
-            x1="375"
-            y1="260"
-            x2="165"
-            y2="260"
-            markerEnd="url(#arrowBlue)"
-          />
-
-          {/* RIGHT */}
-          <line
-            className="flow-line"
-            x1="375"
-            y1="260"
-            x2="585"
-            y2="260"
-            markerEnd="url(#arrowBlue)"
-          />
-
-          {/* BOTTOM */}
-          <line
-            className="flow-line"
-            x1="375"
-            y1="260"
-            x2="375"
-            y2="400"
-            markerEnd="url(#arrowBlue)"
-          />
-        </svg>
-
-        {/* IRT center node */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          className="absolute left-[335px] top-[220px] w-[80px] h-[80px] rounded-full bg-gradient-to-br from-blue-600 to-blue-500 shadow-2xl flex items-center justify-center text-white font-semibold text-lg"
-        >
-          IRT
+    <motion.div
+        className="relative w-full h-full min-h-[450px] flex flex-col items-center justify-center gap-8 bg-slate-50/50"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+    >
+        {/* Randomization Node */}
+        <motion.div variants={itemVariants}>
+            <Node label="Randomization" />
         </motion.div>
 
-        {/* MODULES */}
-
-        {/* TOP */}
-        <motion.div
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="absolute left-[275px] top-[60px] w-[200px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
-        >
-          Randomization
+        {/* Up Arrow */}
+        <motion.div variants={itemVariants}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L12 22" stroke="#2563eb" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M2 12L12 2L22 12" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
         </motion.div>
 
-        {/* LEFT */}
-        <motion.div
-          initial={{ x: -10, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-          className="absolute left-[60px] top-[234px] w-[220px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
-        >
-          Clinical Supplies
+
+        {/* Middle Row */}
+        <div className="flex items-center gap-8">
+            <motion.div variants={itemVariants}>
+                <Node label="Clinical Supplies" />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+                <Node label="Subject Management" isHighlighted />
+            </motion.div>
+        </div>
+
+        {/* Down Arrow */}
+        <motion.div variants={itemVariants}>
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22L12 2" stroke="#2563eb" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M22 12L12 22L2 12" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
         </motion.div>
 
-        {/* RIGHT */}
-        <motion.div
-          initial={{ x: 10, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-          className="absolute right-[60px] top-[234px] w-[220px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
-        >
-          Subject Management
+         {/* Site Management Node */}
+        <motion.div variants={itemVariants}>
+            <Node label="Site Management" />
         </motion.div>
 
-        {/* BOTTOM */}
-        <motion.div
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-          className="absolute left-[275px] top-[420px] w-[200px] h-[52px] bg-white border shadow-md rounded-full flex items-center justify-center text-blue-900 font-medium"
-        >
-          Site Management
-        </motion.div>
-      </div>
-    </div>
+    </motion.div>
   );
 }
