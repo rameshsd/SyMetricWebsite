@@ -3,7 +3,7 @@
 import React from "react";
 import { Shuffle, Beaker, Users, Hospital } from "lucide-react";
 
-const Node = ({ Icon, label }: { Icon: React.ElementType; label: string }) => (
+const Node = ({ Icon, label }: { Icon: any; label: string }) => (
   <div className="flex flex-col items-center gap-2">
     <div className="h-16 w-16 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow">
       <Icon className="h-7 w-7" />
@@ -13,8 +13,9 @@ const Node = ({ Icon, label }: { Icon: React.ElementType; label: string }) => (
 );
 
 const IRTHub = () => (
-  <div className="h-20 w-20 rounded-full border-2 border-blue-600 text-blue-600
-                  flex items-center justify-center text-lg font-semibold shadow-md bg-white">
+  <div className="h-20 w-20 rounded-full border-2 border-blue-600 bg-white 
+                  text-blue-600 flex items-center justify-center 
+                  text-lg font-semibold shadow-md">
     IRT
   </div>
 );
