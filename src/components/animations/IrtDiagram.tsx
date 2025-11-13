@@ -26,6 +26,19 @@ const itemVariants = {
   },
 };
 
+const lineVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+        delay: 0.5,
+      },
+    },
+};
+
 const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string }) => (
   <motion.div variants={itemVariants} className="flex flex-col items-center gap-2">
     <div className="relative flex h-16 w-16 items-center justify-center 
@@ -83,63 +96,51 @@ export function IrtDiagram() {
         {/* FLOW ARROWS SVG */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 520 460">
             <defs>
-                {/* Soft gradient line */}
                 <linearGradient id="soft-line" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#A9C8FF" />
                 <stop offset="100%" stopColor="#4B89DC" />
                 </linearGradient>
             </defs>
 
-            {/* 
-                PERFECT CENTER POINT (IRT)
-                IRT center = (260, 230)
-                Node sizes = 64px, so connectors must hit EXACT center.
-            */}
-
-            {/* TOP connection to Randomization */}
-            <path
+            <motion.path
                 id="line-top"
-                d="M260 230 
-                C 260 190, 260 160, 260 135"
+                d="M260 220 C 260 180, 260 150, 260 112"
                 stroke="url(#soft-line)"
                 strokeWidth="2.2"
                 fill="none"
+                variants={lineVariants}
             />
 
-            {/* BOTTOM connection to Site Management */}
-            <path
+            <motion.path
                 id="line-bottom"
-                d="M260 230
-                C 260 270, 260 300, 260 325"
+                d="M260 240 C 260 280, 260 310, 260 348"
                 stroke="url(#soft-line)"
                 strokeWidth="2.2"
                 fill="none"
+                variants={lineVariants}
             />
 
-            {/* LEFT connection to Clinical Supplies */}
-            <path
+            <motion.path
                 id="line-left"
-                d="M260 230
-                C 220 230, 200 230, 175 230"
+                d="M250 230 C 210 230, 180 230, 142 230"
                 stroke="url(#soft-line)"
                 strokeWidth="2.2"
                 fill="none"
+                variants={lineVariants}
             />
 
-            {/* RIGHT connection to Subject Management */}
-            <path
+            <motion.path
                 id="line-right"
-                d="M260 230
-                C 300 230, 320 230, 345 230"
+                d="M270 230 C 310 230, 340 230, 378 230"
                 stroke="url(#soft-line)"
                 strokeWidth="2.2"
                 fill="none"
+                variants={lineVariants}
             />
 
-            {/* Animated diamonds */}
-            {["line-top", "line-bottom", "line-left", "line-right"].map((id, i) => (
+            {["line-top", "line-bottom", "line-left", "line-right"].map((id) => (
                 <rect
-                key={i}
+                key={id}
                 className="flow-diamond"
                 width="5"
                 height="5"
@@ -152,18 +153,15 @@ export function IrtDiagram() {
             ))}
         </svg>
 
-
         {/* DIAGRAM GRID */}
         <div className="grid grid-cols-3 grid-rows-3 w-full h-full place-items-center">
           
-          {/* Row 1 */}
           <div />
           <div className="-mt-6">
             <Node icon={Shuffle} label="Randomization" />
           </div>
           <div />
 
-          {/* Row 2 */}
           <div className="-ml-2">
             <Node icon={Beaker} label="Clinical Supplies" />
           </div>
@@ -176,7 +174,6 @@ export function IrtDiagram() {
             <Node icon={Users} label="Subject Management" />
           </div>
 
-          {/* Row 3 */}
           <div />
           <div className="mt-6">
             <Node icon={Hospital} label="Site Management" />
