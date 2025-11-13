@@ -5,12 +5,12 @@ import { motion } from "framer-motion"
 
 const itemVariants = {
   hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 220, damping: 20 } },
+  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 180, damping: 16 } },
 }
 
 const lineVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
-  visible: { pathLength: 1, opacity: 1, transition: { duration: 1, delay } },
+  visible: { pathLength: 1, opacity: 1, transition: { duration: 1.2, delay } },
 })
 
 const iconPaths = {
@@ -48,11 +48,11 @@ const iconPaths = {
       <path d="M6 14h12" />
     </>
   ),
-};
+}
 
 const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ iconKey, label }) => (
   <motion.g variants={itemVariants}>
-    <circle cx="0" cy="0" r="32" fill="white" stroke="hsl(var(--primary)/0.3)" strokeWidth="1.5" />
+    <circle cx="0" cy="0" r="35" fill="white" stroke="hsl(var(--primary)/0.4)" strokeWidth="1.6" />
     <g
       stroke="hsl(var(--primary))"
       strokeWidth="2"
@@ -64,11 +64,11 @@ const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ ic
       {iconPaths[iconKey]}
     </g>
     <text
-      y="48"
+      y="55"
       textAnchor="middle"
-      fontSize="11"
+      fontSize="12"
       fontWeight="500"
-      fill="currentColor"
+      fill="hsl(var(--primary))"
       className="text-foreground"
     >
       {label}
@@ -78,9 +78,9 @@ const Node: React.FC<{ iconKey: keyof typeof iconPaths; label: string }> = ({ ic
 
 export function IrtDiagram() {
   const SVG_WIDTH = 600
-  const SVG_HEIGHT = 450
+  const SVG_HEIGHT = 480
   const center = { x: SVG_WIDTH / 2, y: SVG_HEIGHT / 2 }
-  const radius = 130
+  const radius = 150
 
   const nodes = [
     { iconKey: "Repeat", label: "Randomization", x: center.x, y: center.y - radius },
@@ -91,7 +91,7 @@ export function IrtDiagram() {
 
   return (
     <motion.div
-      className="w-full flex items-center justify-center h-[460px]"
+      className="flex items-center justify-center w-full h-[480px] bg-gradient-to-b from-white to-slate-50 rounded-2xl"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -121,13 +121,13 @@ export function IrtDiagram() {
           const length = Math.sqrt(dx * dx + dy * dy)
           const unitDx = dx / length
           const unitDy = dy / length
-          const adjustedStart = { x: start.x + unitDx * 45, y: start.y + unitDy * 45 }
-          const adjustedEnd = { x: end.x - unitDx * 35, y: end.y - unitDy * 35 }
+          const adjustedStart = { x: start.x + unitDx * 50, y: start.y + unitDy * 50 }
+          const adjustedEnd = { x: end.x - unitDx * 40, y: end.y - unitDy * 40 }
 
           return (
             <motion.line
               key={i}
-              variants={lineVariants(0.2 * i)}
+              variants={lineVariants(0.3 * i)}
               x1={adjustedStart.x}
               y1={adjustedStart.y}
               x2={adjustedEnd.x}
