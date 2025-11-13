@@ -51,9 +51,9 @@ const Node = ({ label, area }: { label: string; area: string }) => (
 
 export function IrtDiagram() {
   return (
-    <div className="flex items-center justify-center w-full py-14 bg-slate-50">
+    <div className="flex items-center justify-center w-full h-full p-4">
         <div 
-            className="relative w-[700px] h-[500px] bg-white rounded-2xl shadow-xl overflow-hidden grid p-4"
+            className="relative w-full h-full grid"
             style={{
                 gridTemplateAreas: `
                     ". top ."
@@ -70,6 +70,7 @@ export function IrtDiagram() {
                 viewBox="0 0 700 500"
                 initial="hidden"
                 animate="visible"
+                preserveAspectRatio="xMidYMid meet"
                 variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
             >
                 <defs>

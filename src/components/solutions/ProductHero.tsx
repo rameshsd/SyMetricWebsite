@@ -42,30 +42,20 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
               </Button>
             </div>
           </div>
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center h-[500px]">
             {isIrtIwrs ? (
-                <div className="relative w-full max-w-[500px] h-[350px] bg-white dark:bg-slate-900/50 p-4 rounded-2xl shadow-lg">
-                    <IrtDiagram />
-                </div>
+                <IrtDiagram />
             ) : (
-                <div className="relative w-full max-w-[500px] h-[350px] bg-white p-4 rounded-2xl shadow-lg">
+                <div className="relative w-full max-w-[500px] h-[350px]">
                     <Image
                         src={imageSrc}
                         alt={title}
                         data-ai-hint={imageHint}
                         fill
-                        className="rounded-lg object-cover z-10"
-                    />
-                    <div 
-                        className="absolute -top-2 right-10 w-24 h-24 border-l-[12px] border-t-[12px] border-blue-600 z-0" 
+                        className="rounded-lg object-cover"
                     />
                 </div>
             )}
-            <div className="absolute top-1/2 -right-4 -translate-y-1/2 space-y-3 z-20">
-                {[...Array(4)].map((_, i) => (
-                    <div key={i} className="w-3 h-3 bg-blue-300/50" style={{clipPath: 'polygon(0 0, 100% 50%, 0 100%)'}} />
-                ))}
-            </div>
           </div>
         </div>
       </div>
