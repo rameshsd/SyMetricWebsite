@@ -1,3 +1,4 @@
+
 "use client";
 
 import { companyInfo } from '@/lib/data';
@@ -21,12 +22,14 @@ export function CompanyFacts() {
                         As a global leader in enterprise applications and business AI, SyMetric stands at the nexus of business and technology. For over 50 years, organisations have trusted SyMetric to bring out their best by uniting business-critical operations spanning finance, procurement, HR, supply chain, and customer experience.
                     </p>
                     <Tabs defaultValue="fast-facts" className="w-full">
-                        <TabsList>
-                            <TabsTrigger value="fast-facts">Fast facts</TabsTrigger>
-                            <TabsTrigger value="locations">Worldwide Locations</TabsTrigger>
-                            <TabsTrigger value="faqs">FAQs</TabsTrigger>
-                            <TabsTrigger value="report">Integrated Report</TabsTrigger>
-                        </TabsList>
+                        <div className="overflow-x-auto scrollbar-hide">
+                            <TabsList>
+                                <TabsTrigger value="fast-facts">Fast facts</TabsTrigger>
+                                <TabsTrigger value="locations">Worldwide Locations</TabsTrigger>
+                                <TabsTrigger value="faqs">FAQs</TabsTrigger>
+                                <TabsTrigger value="report">Integrated Report</TabsTrigger>
+                            </TabsList>
+                        </div>
                         <TabsContent value="fast-facts" className="pt-10">
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
                                 <FactItem value={facts.founded} label="Founded" />
