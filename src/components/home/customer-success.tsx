@@ -6,6 +6,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '../ui/card';
+import { User } from 'lucide-react';
 
 export function CustomerSuccess() {
   const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -38,7 +39,7 @@ export function CustomerSuccess() {
                             </blockquote>
                         </CardContent>
                         <div className="mt-6 flex items-center gap-4">
-                            {placeholder && (
+                            {placeholder ? (
                                 <Image
                                     src={placeholder.imageUrl}
                                     alt={`${customer.name}`}
@@ -47,6 +48,10 @@ export function CustomerSuccess() {
                                     className="rounded-full"
                                     data-ai-hint={placeholder.imageHint}
                                 />
+                            ) : (
+                                <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+                                    <User className="h-6 w-6 text-muted-foreground" />
+                                </div>
                             )}
                             <div>
                                 <p className="font-semibold text-foreground text-base">{customer.name}</p>

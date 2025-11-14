@@ -746,27 +746,27 @@
     },
     {
       "id": "avatar-1",
-      "description": "Portrait of a professional woman.",
+      "description": "Dummy icon for a female user.",
       "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "woman portrait"
+      "imageHint": "woman avatar"
     },
     {
       "id": "avatar-2",
-      "description": "Portrait of a professional man.",
+      "description": "Dummy icon for a male user.",
       "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "man portrait"
+      "imageHint": "man avatar"
     },
     {
       "id": "avatar-3",
-      "description": "Portrait of a man.",
+      "description": "Dummy icon for a male user.",
       "imageUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "man portrait"
+      "imageHint": "man avatar"
     },
     {
       "id": "avatar-4",
-      "description": "Portrait of a woman with glasses.",
+      "description": "Dummy icon for a female user.",
       "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "woman portrait"
+      "imageHint": "woman avatar"
     },
     {
       "id": "careers-hero",
