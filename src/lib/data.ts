@@ -523,19 +523,90 @@ export const customerSuccessStories: CustomerSuccessStory[] = [
 ];
 
 export const featureGridItems: FeatureGridItem[] = [
-  { icon: Settings, title: 'Study Management', link: '#' },
-  { icon: Hospital, title: 'Site Management', link: '#' },
-  { icon: Beaker, title: 'Clinical Supplies Management', link: '#' },
-  { icon: Users, title: 'Subject Management', link: '#' },
-  { icon: Database, title: 'Data Management', link: '#' },
-  { icon: FlaskConical, title: 'Lab Management', link: '#' },
-  { icon: BookMarked, title: 'Medical Coding', link: '#' },
-  { icon: Archive, title: 'Document Management', link: '#' },
-  { icon: BarChart, title: 'Reports', link: '#' },
-  { icon: GraduationCap, title: 'Digital Learning', link: '#' },
-  { icon: TestTube, title: 'Sample Management', link: '#' },
-  { icon: Tag, title: 'Label Management', link: '#' },
-  { icon: LifeBuoy, title: 'Help and Support', link: '#' },
+    { 
+        icon: Settings, 
+        title: 'Study Management',
+        description: 'Define, configure, and oversee all aspects of your clinical studies from a centralized dashboard.',
+        link: '#' 
+    },
+    { 
+        icon: Hospital, 
+        title: 'Site Management',
+        description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
+        link: '#' 
+    },
+    { 
+        icon: Beaker, 
+        title: 'Clinical Supplies Management',
+        description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
+        link: '#' 
+    },
+    { 
+        icon: Users, 
+        title: 'Subject Management',
+        description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
+        link: '#' 
+    },
+    { 
+        icon: Database, 
+        title: 'Data Management',
+        description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
+        link: '#' 
+    },
+    { 
+        icon: FlaskConical, 
+        title: 'Lab Management',
+        description: 'Manage lab data, normal ranges, and sample tracking with seamless integration.',
+        link: '#' 
+    },
+    { 
+        icon: BookMarked, 
+        title: 'Medical Coding',
+        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
+        link: '#' 
+    },
+    { 
+        icon: Archive, 
+        title: 'Document Management',
+        description: 'Maintain a compliant and audit-ready eTMF with version control and secure access.',
+        link: '#' 
+    },
+    { 
+        icon: BarChart, 
+        title: 'Reports',
+        description: 'Generate insightful reports and visualizations for real-time trial oversight.',
+        link: '#' 
+    },
+    { 
+        icon: GraduationCap, 
+        title: 'Digital Learning',
+        description: 'Provide training and certification for trial personnel directly on the platform.',
+        link: '#' 
+    },
+    {
+        icon: Users,
+        title: 'Volunteer Management',
+        description: 'Efficiently manage and communicate with your pool of trial volunteers and participants.',
+        link: '#'
+    },
+    { 
+        icon: TestTube, 
+        title: 'Sample Management',
+        description: 'Track the entire lifecycle of biological samples, from collection to storage and analysis.',
+        link: '#' 
+    },
+    { 
+        icon: Tag, 
+        title: 'Label Management',
+        description: 'Ensure compliance and accuracy with integrated tools for creating and managing drug labels.',
+        link: '#' 
+    },
+    { 
+        icon: LifeBuoy, 
+        title: 'Help and Support',
+        description: 'Access our dedicated support team and comprehensive knowledge base 24/7.',
+        link: '#' 
+    },
 ];
 
 export const latestNews: LatestNewsItem[] = [
@@ -952,6 +1023,7 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
 
 
 

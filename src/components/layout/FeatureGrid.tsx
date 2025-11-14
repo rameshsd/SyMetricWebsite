@@ -16,18 +16,21 @@ export function FeatureGrid() {
             description="Equip every team with the tools to adapt, scale, and deliver real results."
             className="mb-16"
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featureGridItems.map((item) => (
-            <Card key={item.title} className="group flex items-center gap-4 p-4 rounded-xl border transition-all hover:shadow-lg hover:border-primary/20 hover:-translate-y-1">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
-                <item.icon className="h-5 w-5 text-primary" />
+            <Card key={item.title} className="group flex flex-col text-left p-6 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-1 bg-secondary/50">
+              <div className="flex-shrink-0 flex items-center gap-4 mb-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <item.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">
+                    <Link href={item.link} className="focus:outline-none">
+                        <span className="absolute inset-0" aria-hidden="true" />
+                        {item.title}
+                    </Link>
+                </h3>
               </div>
-              <h3 className="text-sm font-semibold text-foreground group-hover:text-primary">
-                  <Link href={item.link} className="focus:outline-none">
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      {item.title}
-                  </Link>
-              </h3>
+              <p className="text-muted-foreground text-sm flex-grow">{item.description}</p>
             </Card>
           ))}
         </div>
