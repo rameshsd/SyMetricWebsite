@@ -356,21 +356,7 @@ export const customers: Customer[] = [
         company: 'Global Pharmaceutical Company',
         avatarId: 'avatar-2', 
         story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.'
-    },
-    { 
-        name: 'Phoebe Nelson',
-        role: 'Sales Manager',
-        company: 'BioGenex',
-        avatarId: 'avatar-3', 
-        story: 'The SyMetric platform has streamlined our entire clinical trial process. The intuitive interface and powerful analytics have been a game-changer for our team, allowing us to focus on the science rather than the paperwork.'
-    },
-    { 
-        name: 'Jennie Roberts',
-        role: 'Office Manager',
-        company: 'Apex Clinical',
-        avatarId: 'avatar-4', 
-        story: 'The support we receive from the SyMetric team is second to none. They are responsive, knowledgeable, and truly feel like a partner in our research endeavors. We couldn\'t be happier with the service and the product.'
-    },
+    }
 ];
 
 export const resources: Resource[] = [
@@ -1039,6 +1025,7 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
 
 
 
