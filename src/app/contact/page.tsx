@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact/contact-form';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { salesSpecialistHelp } from '@/lib/data';
@@ -59,31 +59,43 @@ export default function ContactPage() {
                 <div className="container">
                     <SectionTitle title="We Would Love To Hear From You" description="Here’s how you can reach us" />
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
-                        <Card className="p-6">
-                            <Phone className="h-10 w-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-lg font-semibold">Dial</h3>
-                            <p className="text-muted-foreground mt-2">
-                                <a href="tel:+918041135402" className="hover:text-primary">+91 (80) 41135402</a><br/>
-                                <a href="tel:+919740272700" className="hover:text-primary">+91 97402 72700</a>
-                            </p>
+                        <Card>
+                            <CardHeader>
+                                <Phone className="h-10 w-10 text-primary mx-auto" />
+                                <CardTitle className="text-lg">Dial</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">
+                                    <a href="tel:+918041135402" className="hover:text-primary">+91 (80) 41135402</a><br/>
+                                    <a href="tel:+919740272700" className="hover:text-primary">+91 97402 72700</a>
+                                </p>
+                            </CardContent>
                         </Card>
-                        <Card className="p-6">
-                            <Mail className="h-10 w-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-lg font-semibold">Reach out to us</h3>
-                            <p className="text-muted-foreground mt-2">
-                                <a href="mailto:info@symetricsystems.com" className="text-primary hover:underline">info@symetricsystems.com</a>
-                            </p>
+                        <Card>
+                            <CardHeader>
+                                <Mail className="h-10 w-10 text-primary mx-auto" />
+                                <CardTitle className="text-lg">Reach out to us</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">
+                                    <a href="mailto:info@symetricsystems.com" className="text-primary hover:underline">info@symetricsystems.com</a>
+                                </p>
+                            </CardContent>
                         </Card>
-                        <Card className="p-6">
-                            <MapPin className="h-10 w-10 text-primary mx-auto mb-4" />
-                             <h3 className="text-lg font-semibold">Visit us</h3>
-                            <p className="text-muted-foreground mt-2">
-                                No. 51, 1st Floor<br/>
-                                Kodihalli Main Road<br/>
-                                HAL 2nd Stage<br/>
-                                Opp. Udupi Park Hotel<br/>
-                                Bengaluru - 560 008, India
-                            </p>
+                        <Card>
+                             <CardHeader>
+                                <MapPin className="h-10 w-10 text-primary mx-auto" />
+                                <CardTitle className="text-lg">Visit us</CardTitle>
+                             </CardHeader>
+                            <CardContent>
+                                <p className="text-muted-foreground">
+                                    No. 51, 1st Floor<br/>
+                                    Kodihalli Main Road<br/>
+                                    HAL 2nd Stage<br/>
+                                    Opp. Udupi Park Hotel<br/>
+                                    Bengaluru - 560 008, India
+                                </p>
+                            </CardContent>
                         </Card>
                     </div>
                 </div>
