@@ -100,7 +100,7 @@ export function ServicesTabs() {
 
         <div className="border-b">
           <div
-            className="flex space-x-8 overflow-x-auto -mb-px px-4"
+            className="flex space-x-8 overflow-x-auto -mb-px px-4 scrollbar-hide"
             role="tablist"
           >
             {services.map(service => (

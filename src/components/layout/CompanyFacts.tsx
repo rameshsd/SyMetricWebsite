@@ -23,7 +23,7 @@ export function CompanyFacts() {
                     </p>
                     <Tabs defaultValue="fast-facts" className="w-full">
                         <div className="overflow-x-auto scrollbar-hide">
-                            <TabsList>
+                            <TabsList className="inline-flex">
                                 <TabsTrigger value="fast-facts">Fast facts</TabsTrigger>
                                 <TabsTrigger value="locations">Worldwide Locations</TabsTrigger>
                                 <TabsTrigger value="faqs">FAQs</TabsTrigger>
