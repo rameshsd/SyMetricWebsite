@@ -49,10 +49,10 @@ export default function CtpPieChart(): JSX.Element {
                 </p>
             </div>
             <div className="relative max-w-6xl w-full px-6 mx-auto mt-16">
-                <div className="flex items-center justify-center gap-12">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
 
                 {/* Left side: Compliance & Data protection lists */}
-                <aside className="w-1/4 text-sm text-gray-700 dark:text-gray-300">
+                <aside className="w-full lg:w-1/4 text-sm text-gray-700 dark:text-gray-300 order-2 lg:order-1">
                     <div className="mb-6">
                     <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-3">Compliance</h4>
                     <ul className="space-y-3">
@@ -83,8 +83,8 @@ export default function CtpPieChart(): JSX.Element {
                 </aside>
 
                 {/* Center SVG pie */}
-                <div className="w-2/3 relative flex justify-center">
-                    <svg viewBox="0 0 600 600" className="w-[560px] h-[560px]" role="img" aria-label="SyMetric CTP pie chart">
+                <div className="w-full lg:w-1/2 relative flex justify-center order-1 lg:order-2">
+                    <svg viewBox="0 0 600 600" className="w-full max-w-[560px] h-auto" role="img" aria-label="SyMetric CTP pie chart">
                     <defs>
                         <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
                         <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000" floodOpacity="0.08" />
@@ -128,7 +128,7 @@ export default function CtpPieChart(): JSX.Element {
                 </div>
 
                 {/* Right feature cards: Security items */}
-                <aside className="w-1/4 pr-6">
+                <aside className="w-full lg:w-1/4 lg:pr-6 order-3">
                     <div className="space-y-4">
                     <div className="p-3 rounded-md bg-blue-100 dark:bg-blue-900/40 flex gap-3 items-start shadow-sm">
                         <div className="bg-background rounded-full p-1 shadow-sm">
