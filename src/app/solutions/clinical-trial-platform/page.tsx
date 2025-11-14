@@ -33,7 +33,6 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Tools', href: '#tools' },
         { label: 'Related Products', href: '#related-products' },
         { label: 'Hosting', href: '#hosting' },
-        { label: 'Capabilities', href: '#capabilities' },
         { label: 'Pricing', href: '#pricing' },
     ];
 
@@ -90,9 +89,6 @@ export default function ClinicalTrialPlatformPage() {
             </div>
             <SyMetricAdvantage />
             <SecurityCompliance />
-            <div id="capabilities">
-                <CapabilitiesSection />
-            </div>
             
             <section id="pricing" className="bg-secondary/50">
                 <div className="container">
