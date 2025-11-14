@@ -59,10 +59,10 @@ export type Resource = {
 
 export type Customer = {
   name: string;
-  logo: string;
-  story: string;
-  link: string;
+  role: string;
   company: string;
+  avatarId: string;
+  story: string;
 };
 
 export type SuccessStory = {

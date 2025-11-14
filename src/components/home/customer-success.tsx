@@ -1,7 +1,5 @@
-
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { customers } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionTitle } from '@/components/shared/section-title';
@@ -10,60 +8,51 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '../ui/card';
 
 export function CustomerSuccess() {
-  const [ref, isInView] = useInView({ triggerOnce: true });
-  const quoteIcon = PlaceHolderImages.find((p) => p.id === 'quote-icon');
+  const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="bg-secondary/50 dark:bg-card py-16 md:py-24">
+    <section className="bg-primary text-primary-foreground">
         <div className="container">
             <SectionTitle
-                title="Customer Success Stories"
-                description="See how leading organizations are achieving their goals with SyMetric Systems."
+                title="Read what our customers say"
+                className="text-primary-foreground"
             />
             <div
                 ref={ref}
-                className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+                className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2"
             >
                 {customers.map((customer, index) => {
-                const placeholder = PlaceHolderImages.find((p) => p.id === customer.logo);
+                const placeholder = PlaceHolderImages.find((p) => p.id === customer.avatarId);
                 return (
                     <Card
                         key={customer.name}
                         className={cn(
-                            'opacity-0 bg-background rounded-2xl flex flex-col justify-between p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2', 
+                            'opacity-0 bg-background text-foreground rounded-2xl flex flex-col p-8 transform transition-all duration-500 hover:shadow-xl hover:-translate-y-2', 
                             isInView && 'animate-fade-in-up'
                         )}
                         style={{ animationDelay: `${index * 150}ms` }}
                     >
-                        <CardContent className="p-0">
-                            {quoteIcon && (
-                                <Image 
-                                    src={quoteIcon.imageUrl} 
-                                    alt="quote"
-                                    width={32}
-                                    height={32}
-                                    className="mb-4 opacity-20" 
-                                />
-                            )}
-                            <blockquote className="text-muted-foreground italic text-base leading-relaxed">
+                        <CardContent className="p-0 flex-grow flex flex-col">
+                            <span className="text-6xl font-bold text-primary/20 leading-none">“</span>
+                            <blockquote className="text-muted-foreground text-base leading-relaxed -mt-4 flex-grow">
                                 {customer.story}
                             </blockquote>
                         </CardContent>
-                        <div className="mt-6">
+                        <div className="mt-6 flex items-center gap-4">
                             {placeholder && (
-                                <div className="relative h-10 mb-4">
-                                    <Image
-                                        src={placeholder.imageUrl}
-                                        alt={`${customer.company} logo`}
-                                        fill
-                                        style={{ objectFit: 'contain', objectPosition: 'left' }}
-                                        data-ai-hint={placeholder.imageHint}
-                                        className="grayscale opacity-70"
-                                    />
-                                </div>
+                                <Image
+                                    src={placeholder.imageUrl}
+                                    alt={`${customer.name}`}
+                                    width={48}
+                                    height={48}
+                                    className="rounded-full"
+                                    data-ai-hint={placeholder.imageHint}
+                                />
                             )}
-                            <p className="font-semibold text-foreground text-sm">{customer.name}</p>
-                            <p className="text-xs text-muted-foreground">{customer.company}</p>
+                            <div>
+                                <p className="font-semibold text-foreground text-base">{customer.name}</p>
+                                <p className="text-sm text-muted-foreground">{customer.role}, {customer.company}</p>
+                            </div>
                         </div>
                     </Card>
                 );

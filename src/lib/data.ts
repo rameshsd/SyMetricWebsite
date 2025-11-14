@@ -344,18 +344,32 @@ export const leadership: LeadershipMember[] = [
 
 export const customers: Customer[] = [
     { 
-        name: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management', 
+        name: 'Dr Madhavi Prabhvalkar',
+        role: 'Senior Manager, Clinical Data Management',
         company: 'Sun Pharma Advanced Research Company',
-        logo: 'logo-innovate-pharma', 
-        story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.', 
-        link: '#' 
+        avatarId: 'avatar-1', 
+        story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
     },
     { 
-        name: 'Director, Research and Development', 
+        name: 'Director, R&D',
+        role: 'Director, Research and Development',
         company: 'Global Pharmaceutical Company',
-        logo: 'logo-biogenex', 
-        story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.', 
-        link: '#' 
+        avatarId: 'avatar-2', 
+        story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.'
+    },
+    { 
+        name: 'Phoebe Nelson',
+        role: 'Sales Manager',
+        company: 'BioGenex',
+        avatarId: 'avatar-3', 
+        story: 'The SyMetric platform has streamlined our entire clinical trial process. The intuitive interface and powerful analytics have been a game-changer for our team, allowing us to focus on the science rather than the paperwork.'
+    },
+    { 
+        name: 'Jennie Roberts',
+        role: 'Office Manager',
+        company: 'Apex Clinical',
+        avatarId: 'avatar-4', 
+        story: 'The support we receive from the SyMetric team is second to none. They are responsive, knowledgeable, and truly feel like a partner in our research endeavors. We couldn\'t be happier with the service and the product.'
     },
 ];
 
@@ -1025,6 +1039,7 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
 
 
 
