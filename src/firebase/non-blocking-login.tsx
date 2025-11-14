@@ -27,20 +27,22 @@ export function initiateEmailSignIn(authInstance: Auth, email: string, password:
                 resolve();
             })
             .catch((error: FirebaseError) => {
-                if (error.code === 'auth/user-not-found') {
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+                    // 'auth/invalid-credential' can mean user not found in newer SDKs
                     createUserWithEmailAndPassword(authInstance, email, password)
                         .then(userCredential => {
                             resolve();
                         })
                         .catch(creationError => {
-                            console.error("Account creation failed:", creationError);
+                            // If creation fails, it might be because the password is weak,
+                            // or another issue. Reject with that error.
                             reject(creationError);
                         });
-                } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                } else if (error.code === 'auth/wrong-password') {
                     // Reject with the specific error for wrong password
                     reject(error);
                 } else {
-                    console.error("Sign-in failed:", error);
+                    // For any other sign-in errors, reject them
                     reject(error);
                 }
             });

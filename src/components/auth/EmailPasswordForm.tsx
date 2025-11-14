@@ -40,11 +40,12 @@ export function EmailPasswordForm({ onLoginSuccess }: EmailPasswordFormProps) {
       await initiateEmailSignIn(auth, values.email, values.password);
       onLoginSuccess();
     } catch (error: any) {
-      if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+      if (error.code === 'auth/wrong-password') {
         setError('Wrong password. Please try again.');
       } else {
         setError(error.message || 'An unexpected error occurred.');
       }
+    } finally {
       setIsSubmitting(false);
     }
   };
