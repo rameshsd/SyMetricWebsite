@@ -357,13 +357,6 @@ export const customers: Customer[] = [
         story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.', 
         link: '#' 
     },
-    { 
-        name: 'Clinical Operations Head', 
-        company: 'Apex Clinical Research',
-        logo: 'logo-apex-clinical', 
-        story: 'The eTMF solution from SyMetric has revolutionized our document management. It is intuitive, compliant, and has made us audit-ready at all times. The real-time collaboration features have significantly improved our team\'s efficiency.', 
-        link: '#' 
-    },
 ];
 
 export const resources: Resource[] = [
@@ -1032,6 +1025,7 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
 
 
 

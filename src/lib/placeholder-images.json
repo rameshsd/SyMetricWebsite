@@ -111,7 +111,7 @@
     {
       "id": "resource-2",
       "description": "AI in drug discovery",
-      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "AI brain"
     },
     {
@@ -123,7 +123,7 @@
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -135,7 +135,7 @@
     {
       "id": "solutions-hero",
       "description": "Abstract technology plexus",
-      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODMzNDg5fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0ZWNobm9sb2d5JTIwYWJzdHJhY3R8ZW58MHx8fHwxNzYwODMzNDg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "technology abstract"
     },
     {
@@ -147,19 +147,19 @@
     {
       "id": "resources-hero",
       "description": "Person reading on a tablet",
-      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8fDE3NjA4MDA5NjN8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8fDE3NjA4MDA5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reading tablet"
     },
     {
       "id": "contact-hero",
       "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
       "id": "map-placeholder",
       "description": "Map of a city for HQ location",
-      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
@@ -201,7 +201,7 @@
     {
       "id": "sap-history",
       "description": "Vintage computer from the 1970s",
-      "imageUrl": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aW50YWdlJTIwY29tcHV0ZXJ8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aW50YWdlJTIwY29tcHV0ZXJ8ZW58MHx8fHwxNzYwODY0MDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vintage computer"
     },
     {
@@ -225,7 +225,7 @@
     {
       "id": "future-of-trials",
       "description": "Futuristic interface for clinical trials",
-      "imageUrl": "https://images.unsplash.com/photo-1690367375237-757022067e41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjA4MzM0ODl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690367375237-757022067e41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjA4MzM0ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "futuristic technology"
     },
     {
@@ -717,7 +717,7 @@
     {
       "id": "service-tab-pm",
       "description": "Project management gantt chart interface.",
-      "imageUrl": "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "project planning"
     },
     {
@@ -729,13 +729,13 @@
     {
       "id": "service-tab-training",
       "description": "Online training session on a laptop.",
-      "imageUrl": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxvbmxpbmUlMjBsZWFybmluZ3xlbnwwfHx8fDE3NjA4NjI2NTh8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxvbmxpbmUlMjBsZWFybmluZ3xlbnwwfHx8fDE3NjA4NjI2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "online learning"
     },
     {
       "id": "service-tab-support",
       "description": "Customer support agent with a headset.",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "customer support"
     },
     {
