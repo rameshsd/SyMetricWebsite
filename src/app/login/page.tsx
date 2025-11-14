@@ -27,19 +27,24 @@ export default function LoginPage() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    initiateEmailSignIn(auth, values.email, values.password);
-    // After initiating sign-in, onAuthStateChanged in the provider will handle the user state.
-    // We can redirect the user assuming the login will be successful.
-    router.push('/community'); 
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await initiateEmailSignIn(auth, values.email, values.password);
+      // After initiating sign-in, onAuthStateChanged in the provider will handle the user state.
+      // We can redirect the user assuming the login will be successful.
+      router.push('/community');
+    } catch (error: any) {
+      console.error("Login failed:", error);
+      // The initiateEmailSignIn function in non-blocking-login.tsx will handle user creation.
+    }
   };
 
   return (
     <div className="container py-20 flex items-center justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Access the community to post and interact.</CardDescription>
+          <CardTitle>Login or Sign Up</CardTitle>
+          <CardDescription>Enter your credentials to access the community. If you don't have an account, one will be created for you.</CardDescription>
         </CardHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -72,7 +77,7 @@ export default function LoginPage() {
               />
             </CardContent>
             <CardFooter>
-              <Button type="submit" className="w-full">Login</Button>
+              <Button type="submit" className="w-full">Continue</Button>
             </CardFooter>
           </form>
         </Form>
