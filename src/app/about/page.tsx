@@ -21,10 +21,10 @@ export const metadata = {
 };
 
 const StrategyCard = ({ title, description }: { title: string, description: React.ReactNode }) => (
-  <Card className="bg-blue-50/50 dark:bg-blue-900/20 p-8 rounded-2xl border-blue-100 dark:border-blue-900/30 shadow-sm">
-    <div className="w-12 h-1.5 bg-blue-200 dark:bg-blue-700 rounded-full mb-4" />
-    <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
-    <div className="text-muted-foreground space-y-3">{description}</div>
+  <Card className="bg-background/10 dark:bg-blue-900/30 p-8 rounded-2xl border-white/20 shadow-sm text-primary-foreground">
+    <div className="w-12 h-1.5 bg-white/30 rounded-full mb-4" />
+    <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+    <div className="text-primary-foreground/90 space-y-3">{description}</div>
   </Card>
 );
 
@@ -92,12 +92,12 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-secondary/50 py-20">
+        <section id="our-strategy" className="bg-primary text-primary-foreground py-20">
           <div className="container">
             <div className="grid lg:grid-cols-3 gap-12 items-start">
               <div className="lg:col-span-1">
-                <h2 className="text-3xl font-bold tracking-tight">Our Strategy</h2>
-                <p className="mt-2 text-muted-foreground">
+                <h2 className="text-3xl font-bold tracking-tight text-white">Our Strategy</h2>
+                <p className="mt-2 text-primary-foreground/80">
                   Our vision and mission drive everything we do.
                 </p>
               </div>
@@ -106,7 +106,7 @@ export default function AboutPage() {
                   title="Vision"
                   description={
                     <>
-                      <p className="text-lg font-semibold text-primary">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
+                      <p className="text-lg font-semibold text-white">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
                       <p>We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
                     </>
                   }
@@ -115,7 +115,7 @@ export default function AboutPage() {
                   title="Mission"
                   description={
                     <>
-                      <p className="text-lg font-semibold text-primary">To transform the drug development landscape.</p>
+                      <p className="text-lg font-semibold text-white">To transform the drug development landscape.</p>
                       <p>The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
                     </>
                   }
