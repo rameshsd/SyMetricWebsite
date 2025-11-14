@@ -40,7 +40,7 @@ export default function AboutPage() {
     { label: 'Equality and inclusion', href: '#equality' },
   ];
 
-  const heroImage = PlaceHolderImages.find(p => p.id === 'sap-building');
+  const heroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
   const sponsorshipImage = PlaceHolderImages.find(p => p.id === 'global-sponsorships-soccer');
 
   return (
