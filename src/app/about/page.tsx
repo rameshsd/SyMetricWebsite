@@ -92,7 +92,7 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-secondary/50">
+        <section id="our-strategy" className="bg-secondary/50 py-20">
           <div className="container">
             <div className="grid lg:grid-cols-3 gap-12 items-start">
               <div className="lg:col-span-1">
