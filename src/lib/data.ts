@@ -349,18 +349,18 @@ export const leadership: LeadershipMember[] = [
 
 export const customers: Customer[] = [
     { 
-        name: 'Dr Madhavi Prabhvalkar',
-        role: 'Senior Manager, Clinical Data Management',
-        company: 'Sun Pharma Advanced Research Company',
+        name: 'Phoebe Nelson',
+        role: 'Sales Manager',
+        company: 'BioGenex',
         avatarId: 'avatar-1', 
-        story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
+        story: 'The SyMetric platform has streamlined our entire clinical trial process. The intuitive interface and powerful analytics have been a game-changer for our team, allowing us to focus on the science rather than the paperwork.'
     },
     { 
-        name: 'Director, R&D',
-        role: 'Director, Research and Development',
-        company: 'Global Pharmaceutical Company',
-        avatarId: 'avatar-2', 
-        story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.'
+        name: 'Jennie Roberts',
+        role: 'Office Manager',
+        company: 'Apex Clinical',
+        avatarId: 'avatar-4', 
+        story: 'The support we receive from the SyMetric team is second to none. They are responsive, knowledgeable, and truly feel like a partner in our research endeavors. We couldn\'t be happier with the service and the product.'
     }
 ];
 
@@ -1069,7 +1069,7 @@ export const recentActivity: CommunityPost[] = [
         },
         title: 'Need ABAP expert support to solution the serial number copy from service order to sales order.',
         content: 'Hi Team,Copy line item serial number from the service order to the sales order via forward exchange(CL_CRMS4_PROC_SALESDOC_FWD). We are unable to find a solution.',
-        createdAt: '38m ago',
+        createdAt: '2024-07-28T10:00:00Z',
         category: 'Enterprise Resource Planning Q&A',
         views: 1,
         comments: 0,
@@ -1084,7 +1084,7 @@ export const recentActivity: CommunityPost[] = [
         },
         title: 'Repeated reminders and escalations',
         content: 'Hi All, GRC 12. SP24can you please suggest if and how repeated reminders and escalations after certain days is possible in PCRegardsPlaban',
-        createdAt: 'an hour ago',
+        createdAt: '2024-07-28T09:30:00Z',
         category: 'Technology Q&A',
         views: 19,
         comments: 0,
@@ -1099,7 +1099,7 @@ export const recentActivity: CommunityPost[] = [
         },
         title: 'How to configuration Year Wise in Fund Management',
         content: 'We are running fund management quarterly. The next plan is to run fund management yearly in the new financial year. Please suggest how to configuration year wise in Fund Management.',
-        createdAt: 'an hour ago',
+        createdAt: '2024-07-28T09:00:00Z',
         category: 'Enterprise Resource Planning Q&A',
         views: 22,
         comments: 0,
@@ -1114,7 +1114,7 @@ export const recentActivity: CommunityPost[] = [
         },
         title: 'How to export overload data in FBL3H',
         content: 'We are trying to export a large dataset from FBL3H but are running into performance issues and timeouts. What is the best practice for exporting large volumes of data from this transaction? Are there alternatives to direct export that might be more efficient?',
-        createdAt: '2 hours ago',
+        createdAt: '2024-07-28T08:00:00Z',
         category: 'Financials Q&A',
         views: 35,
         comments: 2,
@@ -1154,4 +1154,6 @@ export const topAuthors: TopAuthor[] = [
     { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12 },
 ];
+    
+
     

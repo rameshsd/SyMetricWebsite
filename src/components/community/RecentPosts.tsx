@@ -1,7 +1,7 @@
+
 'use client';
 
-import { useCollection, useUser, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy, limit } from 'firebase/firestore';
+import { useUser, useAuth } from '@/firebase';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -16,11 +16,11 @@ import {
 import { Eye, MessageSquare, ThumbsUp } from 'lucide-react';
 import type { CommunityPost } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
+import { recentActivity } from '@/lib/data';
+import { useState } from 'react';
 
 function PostItem({ post }: { post: CommunityPost }) {
-  const createdAt = post.createdAt instanceof Date 
-    ? post.createdAt 
-    : (post.createdAt as any).toDate();
+  const createdAt = new Date(post.createdAt as string);
 
   return (
     <Card className="p-6">
@@ -63,19 +63,8 @@ function PostItem({ post }: { post: CommunityPost }) {
 
 
 export function RecentPosts() {
-  const { user } = useUser();
-  const firestore = useFirestore();
-
-  const postsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(
-        collection(firestore, 'communityPosts'), 
-        orderBy('createdAt', 'desc'), 
-        limit(10)
-    );
-  }, [firestore]);
-
-  const { data: posts, isLoading } = useCollection<CommunityPost>(postsQuery);
+  const { user, isUserLoading } = useUser();
+  const [posts, setPosts] = useState<CommunityPost[]>(recentActivity);
 
   return (
     <div>
@@ -92,7 +81,9 @@ export function RecentPosts() {
               <SelectItem value="most-kudos">Most Kudos</SelectItem>
             </SelectContent>
           </Select>
-          {user ? (
+          {isUserLoading ? (
+            <Button disabled>Loading...</Button>
+          ) : user ? (
             <Button>Create Post</Button>
           ) : (
             <Button asChild>
@@ -102,9 +93,10 @@ export function RecentPosts() {
         </div>
       </div>
       <div className="space-y-6">
-        {isLoading && <p>Loading posts...</p>}
-        {posts && posts.map(post => <PostItem key={post.id} post={post} />)}
+        {posts.map(post => <PostItem key={post.id} post={post} />)}
       </div>
     </div>
   );
 }
+
+    
