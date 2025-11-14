@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Carousel,
@@ -26,15 +25,14 @@ import {
   Search,
   Users,
   X,
-  Eye,
   ThumbsUp,
 } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { communityLeadersSlides, featuredTopics, recentActivity, welcomeLinks, topAuthors } from '@/lib/data';
+import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { SectionTitle } from '@/components/shared/section-title';
+import { RecentPosts } from '@/components/community/RecentPosts';
 
 export const metadata: Metadata = {
   title: 'Community - SyMetric',
@@ -200,59 +198,7 @@ export default function CommunityPage() {
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-3xl font-bold tracking-tight">Recent Activity</h2>
-                <div className="flex items-center gap-4">
-                  <Select defaultValue="creation-date">
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Sort by" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="creation-date">Sort by: Creation Date</SelectItem>
-                      <SelectItem value="most-recent">Most Recent</SelectItem>
-                      <SelectItem value="most-kudos">Most Kudos</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button>Sign in to Post</Button>
-                </div>
-              </div>
-              <div className="space-y-6">
-                {recentActivity.map(activity => (
-                  <Card key={activity.id} className="p-6">
-                    <div className="flex justify-between items-start">
-                      <div className="flex items-start gap-4">
-                        <Avatar className="h-10 w-10">
-                           <AvatarFallback className="bg-primary/20 text-primary font-bold">{activity.avatarLetter}</AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-semibold text-foreground">{activity.user}</p>
-                          <p className="text-sm text-muted-foreground">{activity.role}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Eye className="h-4 w-4" /> {activity.views}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <MessageSquare className="h-4 w-4" /> {activity.comments}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <ThumbsUp className="h-4 w-4" /> {activity.likes}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 pl-14">
-                      <h3 className="text-lg font-bold hover:text-primary cursor-pointer">{activity.title}</h3>
-                      <p className="mt-2 text-muted-foreground line-clamp-3">{activity.excerpt}</p>
-                      <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                        <span>{activity.timestamp}</span>
-                        <span>|</span>
-                        <span>Posted in <Link href="#" className="text-primary hover:underline">{activity.category}</Link></span>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
+                <RecentPosts />
             </div>
             <div className="lg:col-span-4">
               <div className="sticky top-24 space-y-8">

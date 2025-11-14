@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, RecentActivityItem, WelcomeLink, TopAuthor } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, WelcomeLink, TopAuthor, CommunityPost } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -1059,15 +1059,17 @@ export const featuredTopics: FeaturedTopic[] = [
   },
 ];
 
-export const recentActivity: RecentActivityItem[] = [
+export const recentActivity: CommunityPost[] = [
     {
         id: '1',
-        user: 'PENDURV',
-        role: 'Explorer',
-        avatarLetter: 'V',
+        authorId: 'PENDURV',
+        author: {
+          name: 'PENDURV',
+          role: 'Explorer',
+        },
         title: 'Need ABAP expert support to solution the serial number copy from service order to sales order.',
-        excerpt: 'Hi Team,Copy line item serial number from the service order to the sales order via forward exchange(CL_CRMS4_PROC_SALESDOC_FWD). We are unable to find a solution.',
-        timestamp: '38m ago',
+        content: 'Hi Team,Copy line item serial number from the service order to the sales order via forward exchange(CL_CRMS4_PROC_SALESDOC_FWD). We are unable to find a solution.',
+        createdAt: '38m ago',
         category: 'Enterprise Resource Planning Q&A',
         views: 1,
         comments: 0,
@@ -1075,12 +1077,14 @@ export const recentActivity: RecentActivityItem[] = [
     },
     {
         id: '2',
-        user: 'plaban_sahoo28',
-        role: 'Participant',
-        avatarLetter: 'P',
+        authorId: 'plaban_sahoo28',
+        author: {
+          name: 'plaban_sahoo28',
+          role: 'Participant',
+        },
         title: 'Repeated reminders and escalations',
-        excerpt: 'Hi All, GRC 12. SP24can you please suggest if and how repeated reminders and escalations after certain days is possible in PCRegardsPlaban',
-        timestamp: 'an hour ago',
+        content: 'Hi All, GRC 12. SP24can you please suggest if and how repeated reminders and escalations after certain days is possible in PCRegardsPlaban',
+        createdAt: 'an hour ago',
         category: 'Technology Q&A',
         views: 19,
         comments: 0,
@@ -1088,12 +1092,14 @@ export const recentActivity: RecentActivityItem[] = [
     },
     {
         id: '3',
-        user: '9614386165',
-        role: 'Newcomer',
-        avatarLetter: 'M',
+        authorId: '9614386165',
+        author: {
+          name: '9614386165',
+          role: 'Newcomer',
+        },
         title: 'How to configuration Year Wise in Fund Management',
-        excerpt: 'We are running fund management quarterly. The next plan is to run fund management yearly in the new financial year. Please suggest how to configuration year wise in Fund Management.',
-        timestamp: 'an hour ago',
+        content: 'We are running fund management quarterly. The next plan is to run fund management yearly in the new financial year. Please suggest how to configuration year wise in Fund Management.',
+        createdAt: 'an hour ago',
         category: 'Enterprise Resource Planning Q&A',
         views: 22,
         comments: 0,
@@ -1101,12 +1107,14 @@ export const recentActivity: RecentActivityItem[] = [
     },
      {
         id: '4',
-        user: 'leah_huang71',
-        role: 'Newcomer',
-        avatarLetter: 'L',
+        authorId: 'leah_huang71',
+        author: {
+          name: 'leah_huang71',
+          role: 'Newcomer',
+        },
         title: 'How to export overload data in FBL3H',
-        excerpt: 'We are trying to export a large dataset from FBL3H but are running into performance issues and timeouts. What is the best practice for exporting large volumes of data from this transaction? Are there alternatives to direct export that might be more efficient?',
-        timestamp: '2 hours ago',
+        content: 'We are trying to export a large dataset from FBL3H but are running into performance issues and timeouts. What is the best practice for exporting large volumes of data from this transaction? Are there alternatives to direct export that might be more efficient?',
+        createdAt: '2 hours ago',
         category: 'Financials Q&A',
         views: 35,
         comments: 2,

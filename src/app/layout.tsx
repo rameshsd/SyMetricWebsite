@@ -3,6 +3,7 @@ import './globals.css';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
   title: 'SyMetric - Transforming Clinical Research with Technology',
@@ -20,13 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth overflow-x-hidden scroll-mt-32">
-      <body className="font-sans antialiased">
+      <body>
+        <FirebaseClientProvider>
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
           <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );

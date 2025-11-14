@@ -1,6 +1,8 @@
 
 
 import type { LucideIcon } from 'lucide-react';
+import type { Timestamp } from 'firebase/firestore'
+
 
 export type NavItem = {
   name: string;
@@ -185,18 +187,20 @@ export type FeaturedTopic = {
   imageId: string;
 };
 
-export type RecentActivityItem = {
-  id: string;
-  user: string;
-  role: string;
-  avatarLetter: string;
-  title: string;
-  excerpt: string;
-  timestamp: string;
-  category: string;
-  views: number;
-  comments: number;
-  likes: number;
+export type CommunityPost = {
+    id: string;
+    authorId: string;
+    author: {
+        name: string;
+        role: string;
+    }
+    title: string;
+    content: string;
+    createdAt: string | Date | Timestamp;
+    category: string;
+    views: number;
+    comments: number;
+    likes: number;
 };
 
 export type WelcomeLink = {
@@ -213,4 +217,3 @@ export type TopAuthor = {
   sapLogo?: string;
 };
     
-
