@@ -1,3 +1,4 @@
+
 "use client";
 
 import { featureGridItems } from "@/lib/data";
@@ -24,13 +25,17 @@ export function FeatureGrid() {
                   <item.icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground">
-                    <Link href={item.link} className="focus:outline-none">
-                        <span className="absolute inset-0" aria-hidden="true" />
-                        {item.title}
-                    </Link>
+                    {item.title}
                 </h3>
               </div>
               <p className="text-muted-foreground text-sm flex-grow">{item.description}</p>
+              <div className="mt-4">
+                <Button variant="link" asChild className="p-0 h-auto font-semibold">
+                    <Link href={item.link}>
+                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
