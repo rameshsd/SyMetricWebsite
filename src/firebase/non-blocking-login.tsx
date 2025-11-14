@@ -1,25 +1,22 @@
 'use client';
 import {
-  Auth, // Import Auth type for type hinting
+  Auth,
   signInAnonymously,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  // Assume getAuth and app are initialized elsewhere
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
 /** Initiate anonymous sign-in (non-blocking). */
 export function initiateAnonymousSignIn(authInstance: Auth): void {
-  // CRITICAL: Call signInAnonymously directly. Do NOT use 'await signInAnonymously(...)'.
   signInAnonymously(authInstance);
-  // Code continues immediately. Auth state change is handled by onAuthStateChanged listener.
 }
 
 /** Initiate email/password sign-up (non-blocking). */
 export function initiateEmailSignUp(authInstance: Auth, email: string, password: string): void {
-  // CRITICAL: Call createUserWithEmailAndPassword directly. Do NOT use 'await createUserWithEmailAndPassword(...)'.
   createUserWithEmailAndPassword(authInstance, email, password);
-  // Code continues immediately. Auth state change is handled by onAuthStateChanged listener.
 }
 
 /** Initiate email/password sign-in (non-blocking), with automatic sign-up. */
@@ -27,27 +24,36 @@ export function initiateEmailSignIn(authInstance: Auth, email: string, password:
     return new Promise((resolve, reject) => {
         signInWithEmailAndPassword(authInstance, email, password)
             .then(userCredential => {
-                // Sign-in successful.
                 resolve();
             })
             .catch((error: FirebaseError) => {
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
-                    // If user does not exist, create a new account.
+                if (error.code === 'auth/user-not-found') {
                     createUserWithEmailAndPassword(authInstance, email, password)
                         .then(userCredential => {
-                            // Account created and signed in.
                             resolve();
                         })
                         .catch(creationError => {
-                            // Handle errors during account creation (e.g., weak password).
                             console.error("Account creation failed:", creationError);
                             reject(creationError);
                         });
+                } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                    // Reject with the specific error for wrong password
+                    reject(error);
                 } else {
-                    // Handle other errors (e.g., wrong password, network issues).
                     console.error("Sign-in failed:", error);
                     reject(error);
                 }
             });
     });
+}
+
+/** Initiate Google Sign-In using a popup. */
+export async function initiateGoogleSignIn(authInstance: Auth): Promise<void> {
+    const provider = new GoogleAuthProvider();
+    try {
+        await signInWithPopup(authInstance, provider);
+    } catch (error) {
+        console.error("Google Sign-in failed:", error);
+        throw error;
+    }
 }

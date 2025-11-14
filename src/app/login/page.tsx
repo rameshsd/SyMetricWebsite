@@ -1,86 +1,52 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useAuth, initiateEmailSignIn } from '@/firebase';
+import { useAuth, initiateGoogleSignIn } from '@/firebase';
 import { useRouter } from 'next/navigation';
-
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
+import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 
 export default function LoginPage() {
   const auth = useAuth();
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const handleGoogleSignIn = async () => {
     try {
-      await initiateEmailSignIn(auth, values.email, values.password);
-      // After initiating sign-in, onAuthStateChanged in the provider will handle the user state.
-      // We can redirect the user assuming the login will be successful.
+      await initiateGoogleSignIn(auth);
       router.push('/community');
-    } catch (error: any) {
-      console.error("Login failed:", error);
-      // The initiateEmailSignIn function in non-blocking-login.tsx will handle user creation.
+    } catch (error) {
+      console.error("Google Sign-in failed:", error);
     }
+  };
+
+  const handleLoginSuccess = () => {
+    router.push('/community');
   };
 
   return (
     <div className="container py-20 flex items-center justify-center">
       <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle>Login or Sign Up</CardTitle>
-          <CardDescription>Enter your credentials to access the community. If you don't have an account, one will be created for you.</CardDescription>
+        <CardHeader className="text-center">
+          <CardTitle>Welcome</CardTitle>
+          <CardDescription>Sign in or create an account to join the community.</CardDescription>
         </CardHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="you@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardFooter>
-              <Button type="submit" className="w-full">Continue</Button>
-            </CardFooter>
-          </form>
-        </Form>
+        <CardContent className="space-y-6">
+          <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+            <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 23.4 172.9 61.9l-76.2 64.5C308.6 102.3 279.2 88 248 88c-73.2 0-132.3 59.2-132.3 132.3s59.1 132.3 132.3 132.3c76.9 0 111.2-51.8 115.7-77.9H248v-62h239.5c.3 12.7.6 24.9.6 37.8z"></path></svg>
+            Sign in with Google
+          </Button>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <EmailPasswordForm onLoginSuccess={handleLoginSuccess} />
+        </CardContent>
       </Card>
     </div>
   );
