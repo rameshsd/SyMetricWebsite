@@ -26,59 +26,21 @@ import {
   Search,
   Users,
   X,
+  Eye,
+  ThumbsUp,
 } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { communityLeadersSlides, featuredTopics, recentActivity, welcomeLinks, topAuthors } from '@/lib/data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export const metadata: Metadata = {
   title: 'Community - SyMetric',
   description:
     'Connect and engage with the SyMetric community to get answers, discuss best practices, and learn more about our solutions.',
 };
-
-const communityLeadersSlides = [
-  {
-    title: 'Meet our SyMetric Community Leaders',
-    description:
-      'Meet our SyMetric Community Leaders and learn about our Champions program and Mentors program.',
-    links: [
-      { text: 'SyMetric Community Leaders', href: '#' },
-      { text: 'Champions program', href: '#' },
-      { text: 'Mentors program', href: '#' },
-    ],
-  },
-  {
-    title: 'Become a Community Contributor',
-    description:
-      'Share your expertise, answer questions, and help grow our community. Learn how you can get started as a contributor.',
-    links: [{ text: 'Contribution Guidelines', href: '#' }],
-  },
-  {
-    title: 'Upcoming Community Events',
-    description:
-      'Join our upcoming webinars, Q&A sessions, and virtual meetups to connect with experts and peers.',
-    links: [{ text: 'View All Events', href: '#' }],
-  },
-];
-
-const featuredTopics = [
-  {
-    id: 'dev-news',
-    title: 'SyMetric Developer News October 30th, 2025',
-    imageId: 'community-dev-news',
-  },
-  {
-    id: 'teched-berlin',
-    title: 'SyMetric Community Voice: TechEd in Berlin special edition!',
-    imageId: 'community-teched',
-  },
-  {
-    id: 'content-integrity',
-    title: 'Protecting the integrity of the community content',
-    imageId: 'community-integrity',
-  },
-];
 
 export default function CommunityPage() {
   return (
@@ -229,6 +191,115 @@ export default function CommunityPage() {
             <Button size="lg" variant="outline" asChild>
                 <Link href="#">View All Topics <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Activity Section */}
+      <section className="bg-secondary/50">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold tracking-tight">Recent Activity</h2>
+                <div className="flex items-center gap-4">
+                  <Select defaultValue="creation-date">
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Sort by" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="creation-date">Sort by: Creation Date</SelectItem>
+                      <SelectItem value="most-recent">Most Recent</SelectItem>
+                      <SelectItem value="most-kudos">Most Kudos</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button>Sign in to Post</Button>
+                </div>
+              </div>
+              <div className="space-y-6">
+                {recentActivity.map(activity => (
+                  <Card key={activity.id} className="p-6">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-4">
+                        <Avatar className="h-10 w-10">
+                           <AvatarFallback className="bg-primary/20 text-primary font-bold">{activity.avatarLetter}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold text-foreground">{activity.user}</p>
+                          <p className="text-sm text-muted-foreground">{activity.role}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <Eye className="h-4 w-4" /> {activity.views}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MessageSquare className="h-4 w-4" /> {activity.comments}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ThumbsUp className="h-4 w-4" /> {activity.likes}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-4 pl-14">
+                      <h3 className="text-lg font-bold hover:text-primary cursor-pointer">{activity.title}</h3>
+                      <p className="mt-2 text-muted-foreground line-clamp-3">{activity.excerpt}</p>
+                      <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+                        <span>{activity.timestamp}</span>
+                        <span>|</span>
+                        <span>Posted in <Link href="#" className="text-primary hover:underline">{activity.category}</Link></span>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+            <div className="lg:col-span-4">
+              <div className="sticky top-24 space-y-8">
+                <Card className="p-6">
+                  <h3 className="font-bold text-lg mb-4">Welcome to SyMetric Community!</h3>
+                  <p className="text-muted-foreground mb-6">These materials will help you participate and connect with other members.</p>
+                  <ul className="space-y-4">
+                    {welcomeLinks.map(link => (
+                      <li key={link.title}>
+                        <Link href="#" className="flex items-start gap-4 group">
+                          <div className="p-2 bg-primary/10 rounded-lg">
+                            <link.icon className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-foreground group-hover:text-primary">{link.title}</p>
+                            <p className="text-sm text-muted-foreground">{link.description}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+                <Card className="p-6">
+                  <h3 className="font-bold text-lg mb-4">Top Kudoed Authors</h3>
+                  <ul className="space-y-4">
+                    {topAuthors.map(author => {
+                      const avatarImg = PlaceHolderImages.find(p => p.id === author.avatarId);
+                      return (
+                      <li key={author.id} className="flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                          <Avatar className="h-9 w-9">
+                            {avatarImg ? <AvatarImage src={avatarImg.imageUrl} alt={author.name} /> : <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>}
+                          </Avatar>
+                          <div>
+                            <p className="font-semibold text-sm text-foreground">{author.name}</p>
+                            {author.sapLogo && <Image src={author.sapLogo} alt="SAP Logo" width={24} height={12} />}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <ThumbsUp className="h-4 w-4" /> {author.kudos}
+                        </div>
+                      </li>
+                    )})}
+                  </ul>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>

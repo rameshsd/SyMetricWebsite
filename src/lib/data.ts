@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, RecentActivityItem, WelcomeLink, TopAuthor } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -41,7 +41,11 @@ import {
   FileSearch,
   BookMarked,
   Tag,
-  LifeBuoy
+  LifeBuoy,
+  HelpCircle,
+  Book,
+  Monitor,
+  MessageCircle,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -1015,24 +1019,131 @@ export const employeeBenefits: EmployeeBenefit[] = [
     },
 ];
 
+export const communityLeadersSlides: CommunityLeaderSlide[] = [
+  {
+    title: 'Meet our SyMetric Community Leaders',
+    description: 'Meet our SyMetric Community Leaders and learn about our Champions program and Mentors program.',
+    links: [
+      { text: 'SyMetric Community Leaders', href: '#' },
+      { text: 'Champions program', href: '#' },
+      { text: 'Mentors program', href: '#' },
+    ],
+  },
+  {
+    title: 'Become a Community Contributor',
+    description: 'Share your expertise, answer questions, and help grow our community. Learn how you can get started as a contributor.',
+    links: [{ text: 'Contribution Guidelines', href: '#' }],
+  },
+  {
+    title: 'Upcoming Community Events',
+    description: 'Join our upcoming webinars, Q&A sessions, and virtual meetups to connect with experts and peers.',
+    links: [{ text: 'View All Events', href: '#' }],
+  },
+];
 
+export const featuredTopics: FeaturedTopic[] = [
+  {
+    id: 'dev-news',
+    title: 'SyMetric Developer News October 30th, 2025',
+    imageId: 'community-dev-news',
+  },
+  {
+    id: 'teched-berlin',
+    title: 'SyMetric Community Voice: TechEd in Berlin special edition!',
+    imageId: 'community-teched',
+  },
+  {
+    id: 'content-integrity',
+    title: 'Protecting the integrity of the community content',
+    imageId: 'community-integrity',
+  },
+];
 
+export const recentActivity: RecentActivityItem[] = [
+    {
+        id: '1',
+        user: 'PENDURV',
+        role: 'Explorer',
+        avatarLetter: 'V',
+        title: 'Need ABAP expert support to solution the serial number copy from service order to sales order.',
+        excerpt: 'Hi Team,Copy line item serial number from the service order to the sales order via forward exchange(CL_CRMS4_PROC_SALESDOC_FWD). We are unable to find a solution.',
+        timestamp: '38m ago',
+        category: 'Enterprise Resource Planning Q&A',
+        views: 1,
+        comments: 0,
+        likes: 0
+    },
+    {
+        id: '2',
+        user: 'plaban_sahoo28',
+        role: 'Participant',
+        avatarLetter: 'P',
+        title: 'Repeated reminders and escalations',
+        excerpt: 'Hi All, GRC 12. SP24can you please suggest if and how repeated reminders and escalations after certain days is possible in PCRegardsPlaban',
+        timestamp: 'an hour ago',
+        category: 'Technology Q&A',
+        views: 19,
+        comments: 0,
+        likes: 0
+    },
+    {
+        id: '3',
+        user: '9614386165',
+        role: 'Newcomer',
+        avatarLetter: 'M',
+        title: 'How to configuration Year Wise in Fund Management',
+        excerpt: 'We are running fund management quarterly. The next plan is to run fund management yearly in the new financial year. Please suggest how to configuration year wise in Fund Management.',
+        timestamp: 'an hour ago',
+        category: 'Enterprise Resource Planning Q&A',
+        views: 22,
+        comments: 0,
+        likes: 0
+    },
+     {
+        id: '4',
+        user: 'leah_huang71',
+        role: 'Newcomer',
+        avatarLetter: 'L',
+        title: 'How to export overload data in FBL3H',
+        excerpt: 'We are trying to export a large dataset from FBL3H but are running into performance issues and timeouts. What is the best practice for exporting large volumes of data from this transaction? Are there alternatives to direct export that might be more efficient?',
+        timestamp: '2 hours ago',
+        category: 'Financials Q&A',
+        views: 35,
+        comments: 2,
+        likes: 1
+    }
+];
 
+export const welcomeLinks: WelcomeLink[] = [
+    {
+        icon: HelpCircle,
+        title: 'FAQs',
+        description: 'Find answers to basic questions about using SyMetric Community.'
+    },
+    {
+        icon: Book,
+        title: 'Resources',
+        description: 'Learn about community rules, take our tutorial, and get support.'
+    },
+    {
+        icon: MessageCircle,
+        title: 'Welcome Corner',
+        description: 'Introduce yourself and get to know other members.'
+    },
+    {
+        icon: Monitor,
+        title: 'All SyMetric Managed Tags',
+        description: 'Check out the comprehensive A-Z list of SAP managed tags'
+    }
+];
 
-
-
-
-
+export const topAuthors: TopAuthor[] = [
+    { id: '1', name: 'thomasalexander_ritter', avatarId: 'avatar-1', kudos: 56, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
+    { id: '2', name: 'Andre_Fischer', avatarId: 'avatar-2', kudos: 24, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
+    { id: '3', name: 'SandeepBSV', avatarId: 'avatar-3', kudos: 22, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
+    { id: '4', name: 'patty_1982', avatarId: 'avatar-4', kudos: 14 },
+    { id: '5', name: 'ggalves', avatarId: 'avatar-2', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
+    { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
+    { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12 },
+];
     
-
-    
-
-
-
-
-
-
-
-
-
-

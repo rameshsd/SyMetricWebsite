@@ -173,4 +173,44 @@ export type EmployeeBenefit = {
   description: string;
 };
 
+export type CommunityLeaderSlide = {
+  title: string;
+  description: string;
+  links: { text: string; href: string }[];
+};
+
+export type FeaturedTopic = {
+  id: string;
+  title: string;
+  imageId: string;
+};
+
+export type RecentActivityItem = {
+  id: string;
+  user: string;
+  role: string;
+  avatarLetter: string;
+  title: string;
+  excerpt: string;
+  timestamp: string;
+  category: string;
+  views: number;
+  comments: number;
+  likes: number;
+};
+
+export type WelcomeLink = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export type TopAuthor = {
+  id: string;
+  name: string;
+  avatarId: string;
+  kudos: number;
+  sapLogo?: string;
+};
     
+
