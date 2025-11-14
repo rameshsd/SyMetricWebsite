@@ -11,11 +11,10 @@ export function CustomerSuccess() {
   const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="bg-primary text-primary-foreground">
+    <section className="bg-secondary/50">
         <div className="container">
             <SectionTitle
                 title="Read what our customers say"
-                className="text-primary-foreground"
             />
             <div
                 ref={ref}
