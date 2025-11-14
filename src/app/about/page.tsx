@@ -52,15 +52,21 @@ export default function AboutPage() {
         showTitle={false}
       />
       <div>
-        <section id="company-info" className="bg-primary text-primary-foreground py-0 px-0 pt-16">
-          <div className="container mx-auto px-0">
+        <section id="company-info" className="bg-primary text-primary-foreground py-20 px-0">
+          <div className="container">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="py-20 px-4 sm:px-6 lg:px-8">
+              <div className="space-y-6">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                  Revolutionizing<br/>Clinical Trials<br/>With Innovation
+                  Global Company Information
                 </h1>
+                <p className="max-w-lg text-lg text-primary-foreground/80">
+                  With a global network of customers, partners, employees, and thought leaders, SyMetric helps the world run better and improves people's lives.
+                </p>
+                <Button variant="secondary" size="lg" className="bg-white text-black hover:bg-gray-200" asChild>
+                  <Link href="#our-story">Learn More</Link>
+                </Button>
               </div>
-              <div className="relative h-64 md:h-full min-h-[500px]">
+              <div className="relative h-64 md:h-full min-h-[400px]">
                   {heroImage && (
                       <div className="absolute inset-0 clip-path-polygon-about-hero">
                           <Image 
