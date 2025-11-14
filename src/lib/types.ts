@@ -62,6 +62,7 @@ export type Customer = {
   logo: string;
   story: string;
   link: string;
+  company: string;
 };
 
 export type SuccessStory = {
