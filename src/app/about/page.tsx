@@ -22,7 +22,7 @@ export const metadata = {
 
 const StrategyCard = ({ title, description }: { title: string, description: React.ReactNode }) => (
   <Card className="bg-background/10 dark:bg-blue-900/30 p-8 rounded-2xl border-white/20 shadow-sm text-primary-foreground">
-    <div className="w-12 h-1.5 bg-white/30 rounded-full mb-4" />
+    <div className="w-12 h-1.5 bg-primary rounded-full mb-4" />
     <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
     <div className="text-primary-foreground/90 space-y-3">{description}</div>
   </Card>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative aspect-square">
+              <div className="relative aspect-[4/3] max-w-lg mx-auto">
                 {strategyImage && (
                   <Image
                     src={strategyImage.imageUrl}
