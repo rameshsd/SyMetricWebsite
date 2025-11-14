@@ -18,7 +18,7 @@ export function FeatureGrid() {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featureGridItems.map((item) => (
-            <Card key={item.title} className="group flex flex-col text-left p-6 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-1 bg-secondary/50">
+            <Card key={item.title} className="group flex flex-col text-left p-6 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-1 bg-background">
               <div className="flex-shrink-0 flex items-center gap-4 mb-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                   <item.icon className="h-6 w-6 text-primary" />
