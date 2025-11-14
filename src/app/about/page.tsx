@@ -8,7 +8,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { CompanyFacts } from '@/components/layout/CompanyFacts';
 import Link from 'next/link';
-import { SapCloudPortfolio } from '@/components/layout/SapCloudPortfolio';
+import { CtpPortfolio } from '@/components/layout/CtpPortfolio';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 import { SectionTitle } from '@/components/shared/section-title';
 import { ArrowRight } from 'lucide-react';
@@ -125,7 +125,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <SapCloudPortfolio />
+        <CtpPortfolio />
         
         <div id="our-story">
           <SectionTitle title="Our Story" className='pt-20' />
