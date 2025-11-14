@@ -1,0 +1,77 @@
+/**
+ * @fileoverview Firestore Security Rules for SyMetric Systems platform.
+ *
+ * Core Philosophy:
+ * This ruleset balances open access for community content with strict user ownership for personal data.
+ * Community posts are publicly readable, but require authentication to create, update, or delete.
+ * User profiles are private, with each user only able to access their own data.
+ *
+ * Data Structure:
+ * - /communityPosts/{communityPostId}: Stores community posts. Publicly readable.
+ * - /users/{userId}: Stores user profiles. Owner-only access.
+ *
+ * Key Security Decisions:
+ * - Community posts are publicly readable to allow for open community access.
+ * - User listing is disallowed to protect user privacy.
+ * - All write operations are protected by authentication checks.
+ *
+ * Denormalization for Authorization:
+ * - Community posts include the `authorId` field, which is used to determine ownership for write operations, avoiding costly `get()` calls.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows read access to all community posts for any user, but restricts write access to authenticated users only.
+     * @path /communityPosts/{communityPostId}
+     * @allow (get, list) User is not required to be signed in
+     * @allow (create) User is signed in and `request.resource.data.authorId == request.auth.uid`
+     * @allow (update, delete) User is signed in and `resource.data.authorId == request.auth.uid`
+     * @deny (create) User is not signed in
+     * @deny (update, delete) User is not signed in
+     * @deny (create) User is signed in but `request.resource.data.authorId != request.auth.uid`
+     * @deny (update, delete) User is signed in but `resource.data.authorId != request.auth.uid`
+     * @principle Allows public read access while enforcing ownership for write operations.
+     */
+    match /communityPosts/{communityPostId} {
+      allow get: if true;
+      allow list: if true;
+
+      allow create: if isSignedIn() && request.resource.data.authorId == request.auth.uid;
+      allow update: if isSignedIn() && isOwner(resource.data.authorId);
+      allow delete: if isSignedIn() && isOwner(resource.data.authorId) && resource != null;
+    }
+
+    /**
+     * @description Restricts read and write access to user profiles to the owning user only.
+     * @path /users/{userId}
+     * @allow (get, list) User is signed in and `request.auth.uid == userId`
+     * @allow (create) User is signed in and `request.auth.uid == userId`
+     * @allow (update, delete) User is signed in and `request.auth.uid == userId` and resource exists
+     * @deny (get, list) User is signed in but `request.auth.uid != userId`
+     * @deny (create) User is signed in but `request.auth.uid != userId`
+     * @deny (update, delete) User is signed in but `request.auth.uid != userId`
+     * @principle Enforces strict user ownership for profile data.
+     */
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+  }
+}

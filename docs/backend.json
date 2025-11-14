@@ -1,0 +1,128 @@
+{
+  "entities": {
+    "CommunityPost": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CommunityPost",
+      "type": "object",
+      "description": "Represents a post in the community forum.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the community post."
+        },
+        "authorId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N CommunityPost).  The user who created the post."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the community post."
+        },
+        "content": {
+          "type": "string",
+          "description": "The main content of the community post."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the post was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the post was last updated.",
+          "format": "date-time"
+        },
+        "likes": {
+          "type": "number",
+          "description": "Number of likes the community post has."
+        }
+      },
+      "required": [
+        "id",
+        "authorId",
+        "title",
+        "content",
+        "createdAt"
+      ]
+    },
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the SyMetric Systems platform.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user.",
+          "format": "email"
+        },
+        "organization": {
+          "type": "string",
+          "description": "Organization the user belongs to."
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "organization"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/communityPosts/{communityPostId}",
+        "definition": {
+          "entityName": "CommunityPost",
+          "schema": {
+            "$ref": "#/backend/entities/CommunityPost"
+          },
+          "description": "Stores all community posts. Open read access for all users.  Requires authentication to create a post. Includes the denormalized 'authorId' for authorization independence.",
+          "params": [
+            {
+              "name": "communityPostId",
+              "description": "Unique identifier for the community post."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profiles. Only the authenticated user can read/write their own data.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "Unique identifier for the user."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure prioritizes ease of access for community posts while adhering to the principle of Authorization Independence. Community posts are stored in a top-level collection called `communityPosts`. This enables anonymous users to read all posts, fulfilling the requirement for open community access.  For users to create posts, authentication via the `authorId` field is required in the rules, which links back to the `/users/{userId}` collection. This keeps public read access separate from authenticated write access. This flat structure, combined with the inclusion of the `authorId` within the `communityPosts` documents, avoids the need for `get()` calls in the security rules, ensuring Authorization Independence.  The segregation of concerns into a single collection simplifies querying and security rule management."
+  }
+}
