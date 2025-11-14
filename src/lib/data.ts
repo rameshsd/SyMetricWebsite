@@ -349,11 +349,11 @@ export const leadership: LeadershipMember[] = [
 
 export const customers: Customer[] = [
     { 
-        name: 'Phoebe Nelson',
-        role: 'Sales Manager',
-        company: 'BioGenex',
+        name: 'Dr Madhavi Prabhvalkar',
+        role: 'Senior Manager, Clinical Data Management',
+        company: 'Sun Pharma Advanced Research Company',
         avatarId: 'avatar-1', 
-        story: 'The SyMetric platform has streamlined our entire clinical trial process. The intuitive interface and powerful analytics have been a game-changer for our team, allowing us to focus on the science rather than the paperwork.'
+        story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
     },
     { 
         name: 'Jennie Roberts',
