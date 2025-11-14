@@ -13,7 +13,7 @@ export function FeatureGrid() {
       <div className="container">
         <SectionTitle 
             title="A Comprehensive Suite of Tools"
-            description="Our platform provides a modular, integrated set of tools to manage every aspect of your clinical trial, from startup to closeout."
+            description="Equip every team with the tools to adapt, scale, and deliver real results."
             className="mb-16"
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
