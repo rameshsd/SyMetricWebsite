@@ -34,7 +34,14 @@ import {
   Sparkles,
   Stethoscope,
   Network,
-  HeartHandshake
+  HeartHandshake,
+  Settings,
+  Archive,
+  BookCopy,
+  FileSearch,
+  BookMarked,
+  Tag,
+  LifeBuoy
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
@@ -516,48 +523,19 @@ export const customerSuccessStories: CustomerSuccessStory[] = [
 ];
 
 export const featureGridItems: FeatureGridItem[] = [
-  {
-    icon: CloudErpIcon,
-    title: 'Cloud ERP',
-    description: 'Stay flexible and future-ready using complete, modular solutions driven by built-in AI and analytics.',
-    link: '#',
-    linkText: 'Explore cloud ERP'
-  },
-  {
-    icon: FinancialManagementIcon,
-    title: 'Financial management',
-    description: 'See what\'s coming and act with precision using solutions that help you manage uncertainty, optimise processes, and enable compliance.',
-    link: '#',
-    linkText: 'Explore financial management software'
-  },
-  {
-    icon: SpendManagementIcon,
-    title: 'Spend management',
-    description: 'Implement AI-powered spend management processes from source to pay with an integrated suite of solutions to deliver spend visibility, control, and savings.',
-    link: '#',
-    linkText: 'Explore spend management solutions'
-  },
-  {
-    icon: SupplyChainIcon,
-    title: 'Supply chain management',
-    description: 'Run a risk-resilient and sustainable supply chain that can adapt to anything with our solutions for supply chain planning, manufacturing, and logistics.',
-    link: '#',
-    linkText: 'Explore supply chain solutions'
-  },
-  {
-    icon: HumanCapitalIcon,
-    title: 'Human capital management',
-    description: 'Align your workforce and business priorities with AI-enabled solutions for core HR and payroll, employee experience, talent management, and contingent workforce management functions.',
-    link: '#',
-    linkText: 'Explore HCM software'
-  },
-  {
-    icon: CustomerExperienceIcon,
-    title: 'Customer experience',
-    description: 'Connect e-commerce, marketing, sales, and service data with our customer experience solutions—and use AI to personalise the customer experience at every touchpoint.',
-    link: '#',
-    linkText: 'Explore CX software'
-  }
+  { icon: Settings, title: 'Study Management', link: '#' },
+  { icon: Hospital, title: 'Site Management', link: '#' },
+  { icon: Beaker, title: 'Clinical Supplies Management', link: '#' },
+  { icon: Users, title: 'Subject Management', link: '#' },
+  { icon: Database, title: 'Data Management', link: '#' },
+  { icon: FlaskConical, title: 'Lab Management', link: '#' },
+  { icon: BookMarked, title: 'Medical Coding', link: '#' },
+  { icon: Archive, title: 'Document Management', link: '#' },
+  { icon: BarChart, title: 'Reports', link: '#' },
+  { icon: GraduationCap, title: 'Digital Learning', link: '#' },
+  { icon: TestTube, title: 'Sample Management', link: '#' },
+  { icon: Tag, title: 'Label Management', link: '#' },
+  { icon: LifeBuoy, title: 'Help and Support', link: '#' },
 ];
 
 export const latestNews: LatestNewsItem[] = [
@@ -974,5 +952,6 @@ export const employeeBenefits: EmployeeBenefit[] = [
     
 
     
+
 
 

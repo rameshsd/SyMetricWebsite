@@ -84,9 +84,7 @@ export type TeamMember = {
 export type FeatureGridItem = {
   icon: React.ElementType;
   title: string;
-  description: string;
   link: string;
-  linkText: string;
 };
 
 export type LatestNewsItem = {
