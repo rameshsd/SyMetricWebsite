@@ -93,7 +93,7 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-primary text-primary-foreground py-20">
+        <section id="our-strategy" className="bg-sap-gradient text-primary-foreground py-20">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-white">Our Strategy</h2>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                     alt={strategyImage.description}
                     data-ai-hint={strategyImage.imageHint}
                     fill
-                    className="object-contain"
+                    className=""
                   />
                 )}
               </div>
