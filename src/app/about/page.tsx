@@ -42,6 +42,7 @@ export default function AboutPage() {
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
   const sponsorshipImage = PlaceHolderImages.find(p => p.id === 'global-sponsorships-soccer');
+  const strategyImage = PlaceHolderImages.find(p => p.id === 'strategy-illustration');
 
   return (
     <div className="bg-background">
@@ -94,14 +95,25 @@ export default function AboutPage() {
 
         <section id="our-strategy" className="bg-primary text-primary-foreground py-20">
           <div className="container">
-            <div className="grid lg:grid-cols-3 gap-12 items-start">
-              <div className="lg:col-span-1">
-                <h2 className="text-3xl font-bold tracking-tight text-white">Our Strategy</h2>
-                <p className="mt-2 text-primary-foreground/80">
-                  Our vision and mission drive everything we do.
-                </p>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-white">Our Strategy</h2>
+              <p className="mt-2 text-primary-foreground/80">
+                Our vision and mission drive everything we do.
+              </p>
+            </div>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="relative aspect-square">
+                {strategyImage && (
+                  <Image
+                    src={strategyImage.imageUrl}
+                    alt={strategyImage.description}
+                    data-ai-hint={strategyImage.imageHint}
+                    fill
+                    className="object-contain"
+                  />
+                )}
               </div>
-              <div className="lg:col-span-2 grid grid-cols-1 gap-8">
+              <div className="space-y-8">
                 <StrategyCard 
                   title="Vision"
                   description={
