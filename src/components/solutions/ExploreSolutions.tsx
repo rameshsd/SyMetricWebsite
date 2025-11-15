@@ -31,7 +31,7 @@ export function ExploreSolutions() {
                     <p className="text-muted-foreground mb-4 min-h-[140px]">{solution.longDescription}</p>
                     <Button variant="link" asChild className="p-0 h-auto font-semibold text-primary">
                         <Link href={`/solutions/${solution.slug}`}>
-                            Learn more >
+                            Learn more <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
                 </div>
