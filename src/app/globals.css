@@ -102,7 +102,7 @@
 
 @layer components {
     .container {
-        @apply max-w-[90rem] mx-auto px-4;
+        @apply max-w-[85rem] mx-auto px-4;
     }
     section {
         @apply py-20;
