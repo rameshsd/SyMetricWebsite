@@ -57,7 +57,7 @@ export default function CommunityPage() {
                 best practices, and continually learn more about SyMetric
                 solutions.
               </p>
-              <div className="flex items-center bg-background rounded-md p-1.5 shadow-md">
+              <div className="flex flex-wrap items-center bg-background rounded-md p-1.5 shadow-md">
                 <Select defaultValue="all">
                   <SelectTrigger className="w-auto sm:w-[150px] border-none bg-muted h-10 text-foreground">
                     <SelectValue placeholder="All community" />
@@ -72,7 +72,7 @@ export default function CommunityPage() {
                 <Input
                   type="search"
                   placeholder="Search"
-                  className="flex-1 bg-transparent border-none focus-visible:ring-0 h-10"
+                  className="flex-1 bg-transparent border-none focus-visible:ring-0 h-10 min-w-[150px]"
                 />
                 <Button variant="ghost" size="icon">
                   <Search className="h-5 w-5 text-muted-foreground" />
