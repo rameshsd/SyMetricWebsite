@@ -50,12 +50,36 @@ import {
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
 export const navItems: NavItem[] = [
-    { name: 'Products', href: '/solutions' },
+    { 
+      name: 'Products and Services', 
+      href: '/solutions',
+      subItems: [
+        {
+          name: 'Products',
+          href: '/solutions',
+          subItems: [
+            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform', description: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools.' },
+            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
+            { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
+            { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
+          ]
+        },
+        {
+          name: 'Services',
+          href: '/services',
+          subItems: [
+            { name: 'Clinical Data Management', href: '/services/clinical-data-management', description: 'Ensure data quality and compliance with our high-quality Data Management services.' },
+            { name: 'Project Management', href: '/services/project-management', description: 'Manage your Clinical Trial effectively from consulting to reporting.' },
+            { name: 'Data Migration', href: '/services/data-migration', description: 'Migrate your data onto our Cloud Solutions with ease and integration.' },
+            { name: 'Training', href: '/services/training', description: 'Adopt our Platform and tools effortlessly using our comprehensive Online Training Services.' },
+            { name: 'Support', href: '/services/support', description: 'Enjoy round-the-clock technical assistance and get your Operational queries answered.' },
+          ]
+        }
+      ]
+    },
     { name: 'Industries', href: '/industries' },
-    { name: 'Transform and Support', href: '/services'},
-    { name: 'Learning', href: '/services/training'},
     { name: 'Community', href: '/community' },
-    { name: 'Partners', href: '#' },
+    { name: 'Resources', href: '/resources'},
     { name: 'About', href: '/about' },
 ];
 
