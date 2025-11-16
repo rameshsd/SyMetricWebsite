@@ -4,7 +4,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -92,7 +92,6 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
     >
       <div className="flex flex-col">
         <span>{item.name}</span>
-        {item.description && <span className="text-sm font-normal text-muted-foreground">{item.description}</span>}
       </div>
       {item.subItems && item.subItems.length > 0 && <ChevronRight className="h-5 w-5" />}
     </Link>
@@ -297,21 +296,33 @@ export function Navbar() {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                         <SheetHeader className="p-4 border-b flex flex-row justify-between items-center">
-                          <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                          <Logo />
-                          <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon">
-                              <X className="h-6 w-6" />
-                              <span className="sr-only">Close menu</span>
-                            </Button>
-                          </SheetTrigger>
+                        <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
+                            <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                           <div className="flex items-center gap-2">
+                             <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
+                             <UserNav />
+                             <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
+                           </div>
+                           <div className="flex items-center">
+                            <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon" className="relative">
+                                    <Menu className="h-6 w-6" />
+                                    <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
+                                </Button>
+                            </SheetTrigger>
+                            <SheetTrigger asChild>
+                              <Button variant="ghost" size="icon">
+                                <X className="h-6 w-6" />
+                                <span className="sr-only">Close menu</span>
+                              </Button>
+                            </SheetTrigger>
+                           </div>
                         </SheetHeader>
                         
                         <div className="p-4">
                             <div className="relative">
-                                <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
-                                <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                                <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 rounded-full border-2 focus-visible:ring-primary" />
+                                <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                             </div>
                         </div>
 
@@ -330,17 +341,10 @@ export function Navbar() {
                           ))}
                         </nav>
 
-                        <div className="p-4 mt-auto border-t space-y-4">
-                            <div className="flex justify-around">
-                                <UserNav />
-                                <Button variant="ghost" size="icon">
-                                    <Globe className="h-6 w-6" />
-                                    <span className="sr-only">Language</span>
-                                </Button>
-                            </div>
+                        <div className="p-4 mt-auto">
                             <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
-                              <Link href="/contact">
-                                  Contact Us
+                              <Link href="/solutions">
+                                  Explore SyMetric
                                   <ChevronRight className="h-6 w-6" />
                               </Link>
                           </Button>

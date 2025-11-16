@@ -50,39 +50,13 @@ import {
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 
 export const navItems: NavItem[] = [
-    { 
-        name: 'Products and Services', 
-        href: '/solutions',
-        subItems: [
-            { 
-                name: 'Products', 
-                href: '/solutions',
-                subItems: [
-                    { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
-                    { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
-                    { name: 'EDC', href: '/solutions/edc' },
-                    { name: 'CTM', href: '/solutions/ctm' },
-                    { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
-                ]
-            },
-            { 
-                name: 'Services', 
-                href: '/services',
-                subItems: [
-                    { name: 'Clinical Data Management', href: '/services/clinical-data-management', description: 'Comprehensive data management services to ensure data quality and integrity.' },
-                    { name: 'Project Management', href: '/services/project-management', description: 'Expert project management to keep your trials on time and on budget.' },
-                    { name: 'Data Migration', href: '/services/data-migration', description: 'Seamless and secure migration of your clinical trial data to our platform.' },
-                    { name: 'Training', href: '/services/training', description: 'Customized training programs for your team to maximize platform utilization.' },
-                    { name: 'Support', href: '/services/support', description: 'Dedicated technical and operational support available 24/7.' },
-                ]
-            },
-        ]
-    },
+    { name: 'Products', href: '/solutions' },
+    { name: 'Industries', href: '/industries' },
+    { name: 'Transform and Support', href: '/services'},
+    { name: 'Learning', href: '/services/training'},
     { name: 'Community', href: '/community' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Partners', href: '#' },
     { name: 'About', href: '/about' },
-    { name: 'Careers', href: '/careers' },
 ];
 
 export const solutions: Solution[] = [
