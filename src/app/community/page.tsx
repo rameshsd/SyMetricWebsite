@@ -94,8 +94,8 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            <div className="relative px-0 sm:px-10 lg:px-0">
-              <Carousel className="w-full max-w-md mx-auto">
+            <div className="relative w-full max-w-md mx-auto">
+              <Carousel className="w-full">
                 <CarouselContent>
                   {communityLeadersSlides.map((slide, index) => (
                     <CarouselItem key={index}>
@@ -125,8 +125,8 @@ export default function CommunityPage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-[-1.5rem] top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-[-1.5rem] top-1/2 -translate-y-1/2 z-10" />
+                <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
               </Carousel>
             </div>
           </div>
