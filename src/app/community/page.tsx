@@ -47,7 +47,7 @@ export default function CommunityPage() {
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground">
         <div className="container py-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">
                 Welcome to SyMetric Community
@@ -59,7 +59,7 @@ export default function CommunityPage() {
               </p>
               <div className="flex items-center bg-background rounded-md p-1.5 shadow-md">
                 <Select defaultValue="all">
-                  <SelectTrigger className="w-[150px] border-none bg-muted h-10 text-foreground">
+                  <SelectTrigger className="w-auto sm:w-[150px] border-none bg-muted h-10 text-foreground">
                     <SelectValue placeholder="All community" />
                   </SelectTrigger>
                   <SelectContent>
@@ -197,11 +197,11 @@ export default function CommunityPage() {
       {/* Recent Activity Section */}
       <section className="bg-secondary/50">
         <div className="container">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-12 xl:col-span-8">
+          <div className="grid xl:grid-cols-12 gap-12">
+            <div className="xl:col-span-8">
                 <RecentPosts />
             </div>
-            <div className="lg:col-span-12 xl:col-span-4">
+            <div className="xl:col-span-4">
               <div className="sticky top-24 space-y-8">
                 <Card className="p-6">
                   <h3 className="font-bold text-lg mb-4">Welcome to SyMetric Community!</h3>
