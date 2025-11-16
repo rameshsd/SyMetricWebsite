@@ -279,15 +279,6 @@ export function Navbar() {
         <div className="flex items-center md:hidden flex-1 justify-between">
             <Logo />
              <div className="flex items-center">
-                <Button variant="ghost" size="icon">
-                    <Search className="h-6 w-6" />
-                    <span className="sr-only">Search</span>
-                </Button>
-                <UserNav />
-                <Button variant="ghost" size="icon">
-                    <Globe className="h-6 w-6" />
-                    <span className="sr-only">Language</span>
-                </Button>
                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
                   if (!open) {
                     closeMobileMenu();
@@ -306,14 +297,23 @@ export function Navbar() {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                        <SheetHeader className="p-4 border-b">
-                          <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                          <SheetDescription className="sr-only">Site navigation menu</SheetDescription>
-                          <div className="relative">
-                            <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
-                            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-                          </div>
+                         <SheetHeader className="p-4 border-b flex flex-row justify-between items-center">
+                          <Logo />
+                          <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                              <X className="h-6 w-6" />
+                              <span className="sr-only">Close menu</span>
+                            </Button>
+                          </SheetTrigger>
                         </SheetHeader>
+                        
+                        <div className="p-4">
+                            <div className="relative">
+                                <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 border-2 focus-visible:ring-primary" />
+                                <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+                            </div>
+                        </div>
+
                         {currentSubmenu && (
                             <div className="p-4 border-b">
                                 <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
@@ -328,8 +328,16 @@ export function Navbar() {
                             <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
                           ))}
                         </nav>
-                        <div className="p-4 mt-auto border-t">
-                          <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
+
+                        <div className="p-4 mt-auto border-t space-y-4">
+                            <div className="flex justify-around">
+                                <UserNav />
+                                <Button variant="ghost" size="icon">
+                                    <Globe className="h-6 w-6" />
+                                    <span className="sr-only">Language</span>
+                                </Button>
+                            </div>
+                            <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
                               <Link href="/contact">
                                   Contact Us
                                   <ChevronRight className="h-6 w-6" />
