@@ -298,6 +298,7 @@ export function Navbar() {
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
                          <SheetHeader className="p-4 border-b flex flex-row justify-between items-center">
+                          <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                           <Logo />
                           <SheetTrigger asChild>
                             <Button variant="ghost" size="icon">
@@ -432,3 +433,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
