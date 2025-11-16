@@ -23,7 +23,7 @@ function PostItem({ post }: { post: CommunityPost }) {
   const createdAt = new Date(post.createdAt as string);
 
   return (
-    <Card className="p-6">
+    <Card className="p-4 sm:p-6">
       <div className="flex justify-between items-start">
         <div className="flex items-start gap-4">
           <Avatar className="h-10 w-10">

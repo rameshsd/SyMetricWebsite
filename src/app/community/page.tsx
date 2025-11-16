@@ -57,9 +57,9 @@ export default function CommunityPage() {
                 best practices, and continually learn more about SyMetric
                 solutions.
               </p>
-              <div className="flex flex-wrap items-center bg-background rounded-md p-1.5 shadow-md w-full max-w-lg gap-2">
+              <div className="flex flex-col sm:flex-row bg-background rounded-md p-1.5 shadow-md w-full max-w-lg gap-2">
                 <Select defaultValue="all">
-                  <SelectTrigger className="w-full sm:w-[150px] border-none bg-muted h-10 text-foreground">
+                  <SelectTrigger className="w-full sm:w-40 border-none bg-muted h-10 text-foreground">
                     <SelectValue placeholder="All community" />
                   </SelectTrigger>
                   <SelectContent>
@@ -69,7 +69,7 @@ export default function CommunityPage() {
                     <SelectItem value="general">General</SelectItem>
                   </SelectContent>
                 </Select>
-                <div className="relative flex-1 w-full sm:w-auto min-w-[150px]">
+                <div className="relative w-full">
                   <Input
                     type="search"
                     placeholder="Search Community"
@@ -96,11 +96,11 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            <div className="relative w-full max-w-md mx-auto">
-              <Carousel className="w-full overflow-hidden">
+            <div className="relative w-full max-w-md mx-auto overflow-hidden">
+              <Carousel className="w-full">
                 <CarouselContent>
                   {communityLeadersSlides.map((slide, index) => (
-                    <CarouselItem key={index}>
+                    <CarouselItem key={index} className="px-2">
                       <div className="p-1">
                         <Card className="bg-background/90 text-foreground p-8 rounded-2xl">
                           <CardContent className="p-0">
@@ -167,7 +167,7 @@ export default function CommunityPage() {
               return (
                 <Card key={topic.id} className="group overflow-hidden rounded-2xl transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <Link href="#">
-                    <div className="relative h-56 w-full">
+                    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
                       {image && (
                         <Image
                           src={image.imageUrl}
@@ -197,7 +197,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Recent Activity Section */}
-      <section className="bg-secondary/50">
+      <section className="bg-secondary/50 overflow-hidden">
         <div className="container">
           <div className="grid xl:grid-cols-12 gap-12">
             <div className="xl:col-span-8">
