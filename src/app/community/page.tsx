@@ -57,9 +57,9 @@ export default function CommunityPage() {
                 best practices, and continually learn more about SyMetric
                 solutions.
               </p>
-              <div className="flex flex-wrap items-center bg-background rounded-md p-1.5 shadow-md">
+              <div className="flex flex-col sm:flex-row items-center bg-background rounded-md p-1.5 shadow-md w-full max-w-lg">
                 <Select defaultValue="all">
-                  <SelectTrigger className="w-auto sm:w-[150px] border-none bg-muted h-10 text-foreground">
+                  <SelectTrigger className="w-full sm:w-auto border-none bg-muted h-10 text-foreground mb-2 sm:mb-0 sm:mr-2">
                     <SelectValue placeholder="All community" />
                   </SelectTrigger>
                   <SelectContent>
@@ -69,14 +69,16 @@ export default function CommunityPage() {
                     <SelectItem value="general">General</SelectItem>
                   </SelectContent>
                 </Select>
-                <Input
-                  type="search"
-                  placeholder="Search"
-                  className="flex-1 bg-transparent border-none focus-visible:ring-0 h-10 min-w-[150px]"
-                />
-                <Button variant="ghost" size="icon">
-                  <Search className="h-5 w-5 text-muted-foreground" />
-                </Button>
+                <div className="relative flex-1 w-full">
+                  <Input
+                    type="search"
+                    placeholder="Search Community"
+                    className="w-full bg-transparent border-none focus-visible:ring-0 h-10 pl-4 pr-10"
+                  />
+                  <Button variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8">
+                    <Search className="h-5 w-5 text-muted-foreground" />
+                  </Button>
+                </div>
               </div>
               <div className="flex items-center gap-x-8 gap-y-2 flex-wrap text-sm pt-4">
                 <div className="flex items-center gap-2">
@@ -95,7 +97,7 @@ export default function CommunityPage() {
             </div>
 
             <div className="relative w-full max-w-md mx-auto">
-              <Carousel className="w-full">
+              <Carousel className="w-full overflow-hidden">
                 <CarouselContent>
                   {communityLeadersSlides.map((slide, index) => (
                     <CarouselItem key={index}>
