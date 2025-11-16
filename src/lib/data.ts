@@ -48,6 +48,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
+import { PlaceHolderImages } from './placeholder-images';
 
 export const navItems: NavItem[] = [
     { 
@@ -1147,13 +1148,13 @@ export const welcomeLinks: WelcomeLink[] = [
 ];
 
 export const topAuthors: TopAuthor[] = [
-    { id: '1', name: 'thomasalexander_ritter', avatarId: 'avatar-1', kudos: 56, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '2', name: 'Andre_Fischer', avatarId: 'avatar-2', kudos: 24, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '3', name: 'SandeepBSV', avatarId: 'avatar-3', kudos: 22, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '4', name: 'patty_1982', avatarId: 'avatar-4', kudos: 14 },
-    { id: '5', name: 'ggalves', avatarId: 'avatar-2', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12 },
+    { id: '1', name: 'thomasalexander_ritter', avatarId: 'avatar-1', kudos: 56, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
+    { id: '2', name: 'Andre_Fischer', avatarId: 'avatar-2', kudos: 24, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-2')?.imageUrl || '' },
+    { id: '3', name: 'SandeepBSV', avatarId: 'avatar-3', kudos: 22, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
+    { id: '4', name: 'patty_1982', avatarId: 'avatar-4', kudos: 14, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-4')?.imageUrl || '' },
+    { id: '5', name: 'ggalves', avatarId: 'avatar-2', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-2')?.imageUrl || '' },
+    { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
+    { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
     
 

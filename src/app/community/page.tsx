@@ -197,17 +197,25 @@ export default function CommunityPage() {
       </section>
 
       {/* Recent Activity Section */}
-      <section className="bg-secondary/50 overflow-hidden">
+      <section className="bg-secondary/50">
         <div className="container">
-          <div className="grid xl:grid-cols-12 gap-12">
-            <div className="xl:col-span-8">
-                <RecentPosts />
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 sm:gap-8">
+
+            {/* Recent Posts */}
+            <div className="xl:col-span-8 w-full">
+              <RecentPosts />
             </div>
+
+            {/* Right Sidebar */}
             <div className="xl:col-span-4">
-              <div className="sticky top-24 space-y-8">
-                <Card className="p-6">
+              <div className="space-y-6 xl:sticky xl:top-24 w-full">
+
+                {/* Welcome Card */}
+                <Card className="p-4 sm:p-6 w-full overflow-hidden">
                   <h3 className="font-bold text-lg mb-4">Welcome to SyMetric Community!</h3>
-                  <p className="text-muted-foreground mb-6">These materials will help you participate and connect with other members.</p>
+                  <p className="text-muted-foreground mb-6">
+                    These materials will help you participate and connect with other members.
+                  </p>
                   <ul className="space-y-4">
                     {welcomeLinks.map(link => (
                       <li key={link.title}>
@@ -215,40 +223,45 @@ export default function CommunityPage() {
                           <div className="p-2 bg-primary/10 rounded-lg">
                             <link.icon className="h-5 w-5 text-primary" />
                           </div>
-                          <div>
-                            <p className="font-semibold text-foreground group-hover:text-primary">{link.title}</p>
-                            <p className="text-sm text-muted-foreground">{link.description}</p>
+                          <div className="min-w-0">
+                            <p className="font-semibold group-hover:text-primary">{link.title}</p>
+                            <p className="text-sm text-muted-foreground break-words">{link.description}</p>
                           </div>
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </Card>
-                <Card className="p-6">
+
+                {/* Top Authors */}
+                <Card className="p-4 sm:p-6 w-full overflow-hidden">
                   <h3 className="font-bold text-lg mb-4">Top Kudoed Authors</h3>
                   <ul className="space-y-4">
                     {topAuthors.map(author => {
                       const avatarImg = PlaceHolderImages.find(p => p.id === author.avatarId);
                       return (
-                      <li key={author.id} className="flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <Avatar className="h-9 w-9">
-                            {avatarImg ? <AvatarImage src={avatarImg.imageUrl} alt={author.name} /> : <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>}
-                          </Avatar>
-                          <div>
-                            <p className="font-semibold text-sm text-foreground">{author.name}</p>
-                            {author.sapLogo && <Image src={author.sapLogo} alt="SAP Logo" width={24} height={12} />}
+                      <li key={author.id} className="flex justify-between items-center w-full">
+                        <div className="flex items-center gap-3 min-w-0">
+                           <Avatar className="h-9 w-9">
+                              {avatarImg ? <AvatarImage src={avatarImg.imageUrl} alt={author.name} /> : <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>}
+                           </Avatar>
+                          <div className="min-w-0">
+                            <p className="font-semibold text-sm truncate">{author.name}</p>
+                             {author.sapLogo && <Image src={author.sapLogo} alt="SAP Logo" width={24} height={12} />}
                           </div>
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground shrink-0">
                           <ThumbsUp className="h-4 w-4" /> {author.kudos}
                         </div>
                       </li>
                     )})}
                   </ul>
                 </Card>
+
               </div>
             </div>
+
           </div>
         </div>
       </section>

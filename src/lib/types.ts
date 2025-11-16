@@ -215,5 +215,6 @@ export type TopAuthor = {
   avatarId: string;
   kudos: number;
   sapLogo?: string;
+  imageUrl: string;
 };
     
