@@ -3,7 +3,7 @@
 
 import { useUser, useAuth } from '@/firebase';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -16,8 +16,9 @@ import {
 import { Eye, MessageSquare, ThumbsUp } from 'lucide-react';
 import type { CommunityPost } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
-import { recentActivity } from '@/lib/data';
+import { recentActivity, topAuthors } from '@/lib/data';
 import { useState } from 'react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 function PostItem({ post }: { post: CommunityPost }) {
   const createdAt = new Date(post.createdAt as string);
@@ -68,11 +69,11 @@ export function RecentPosts() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <h2 className="text-3xl font-bold tracking-tight">Recent Activity</h2>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <Select defaultValue="creation-date">
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
@@ -82,11 +83,11 @@ export function RecentPosts() {
             </SelectContent>
           </Select>
           {isUserLoading ? (
-            <Button disabled>Loading...</Button>
+            <Button disabled className="w-full sm:w-auto whitespace-nowrap">Loading...</Button>
           ) : user ? (
-            <Button>Create Post</Button>
+            <Button className="w-full sm:w-auto whitespace-nowrap">Create Post</Button>
           ) : (
-            <Button asChild>
+            <Button asChild className="w-full sm:w-auto whitespace-nowrap">
                 <Link href="/login">Sign in to Post</Link>
             </Button>
           )}
