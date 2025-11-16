@@ -57,7 +57,7 @@ export default function CommunityPage() {
                 best practices, and continually learn more about SyMetric
                 solutions.
               </p>
-              <div className="flex flex-col sm:flex-row items-center bg-background rounded-md p-1.5 shadow-md w-full max-w-lg">
+              <div className="flex flex-wrap sm:flex-nowrap items-center bg-background rounded-md p-1.5 shadow-md w-full max-w-lg">
                 <Select defaultValue="all">
                   <SelectTrigger className="w-full sm:w-auto border-none bg-muted h-10 text-foreground mb-2 sm:mb-0 sm:mr-2">
                     <SelectValue placeholder="All community" />
