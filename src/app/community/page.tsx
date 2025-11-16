@@ -94,7 +94,7 @@ export default function CommunityPage() {
               </div>
             </div>
 
-            <div className="relative px-12 sm:px-16 lg:px-0">
+            <div className="relative px-0 sm:px-10 lg:px-0">
               <Carousel className="w-full max-w-md mx-auto">
                 <CarouselContent>
                   {communityLeadersSlides.map((slide, index) => (
@@ -125,8 +125,8 @@ export default function CommunityPage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselPrevious className="absolute left-[-1.5rem] top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-[-1.5rem] top-1/2 -translate-y-1/2 z-10" />
               </Carousel>
             </div>
           </div>
@@ -198,10 +198,10 @@ export default function CommunityPage() {
       <section className="bg-secondary/50">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-12 xl:col-span-8">
                 <RecentPosts />
             </div>
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-12 xl:col-span-4">
               <div className="sticky top-24 space-y-8">
                 <Card className="p-6">
                   <h3 className="font-bold text-lg mb-4">Welcome to SyMetric Community!</h3>
