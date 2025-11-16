@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -268,12 +269,15 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center">
-        <div className="mr-auto flex items-center md:hidden">
+        <div className="mr-6 hidden md:flex">
           <Logo />
         </div>
         
+        <div className="flex items-center md:hidden flex-1">
+            <Logo />
+        </div>
+
         <div className="hidden md:flex items-center justify-start flex-1">
-          <Logo />
           <NavigationMenu>
               <NavigationMenuList>
               {(navItems || []).map((item) => (
@@ -342,7 +346,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
-            <div className="flex items-center gap-x-1">
+            <div className="hidden md:flex items-center gap-x-1">
                 <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Search</span>
