@@ -373,26 +373,24 @@ export function Navbar() {
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
                        <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
-                           <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                           <div className="flex items-center gap-2">
-                             <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                             <UserNav />
-                             <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
-                           </div>
-                           <div className="flex items-center">
-                            <SheetTrigger asChild>
+                            <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                            <div className="flex items-center gap-2">
+                                <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
+                                <UserNav />
+                                <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
+                            </div>
+                            <div className="flex items-center">
                                 <Button variant="ghost" size="icon" className="relative">
                                     <Menu className="h-6 w-6" />
                                     <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
                                 </Button>
-                            </SheetTrigger>
-                            <SheetTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                <X className="h-6 w-6" />
-                                <span className="sr-only">Close menu</span>
-                              </Button>
-                            </SheetTrigger>
-                           </div>
+                                <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon">
+                                    <X className="h-6 w-6" />
+                                    <span className="sr-only">Close menu</span>
+                                </Button>
+                                </SheetTrigger>
+                            </div>
                         </SheetHeader>
                         
                         <div className="p-4">
@@ -433,3 +431,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    

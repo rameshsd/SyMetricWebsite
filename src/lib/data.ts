@@ -58,10 +58,11 @@ export const navItems: NavItem[] = [
           name: 'Products',
           href: '/solutions',
           subItems: [
-            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform', description: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools.' },
-            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
-            { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
-            { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
+            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
+            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
+            { name: 'EDC', href: '/solutions/edc' },
+            { name: 'CTM', href: '/solutions/ctm' },
+            { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
           ]
         },
         {
@@ -81,12 +82,14 @@ export const navItems: NavItem[] = [
     { name: 'Community', href: '/community' },
     { name: 'Resources', href: '/resources'},
     { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact'},
+    { name: 'Careers', href: '/careers'},
 ];
 
 export const solutions: Solution[] = [
   {
     id: 'ctp',
-    name: 'CTP (Clinical Trial Platform)',
+    name: 'Clinical Trial Platform',
     slug: 'clinical-trial-platform',
     hero: {
       title: 'SyMetric Clinical Trial Platform',
