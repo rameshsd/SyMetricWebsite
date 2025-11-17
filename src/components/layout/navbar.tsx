@@ -199,10 +199,6 @@ function UserNav() {
 
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isHidden, setIsHidden] = React.useState(false);
-  const lastScrollY = React.useRef(0);
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
   
@@ -227,23 +223,6 @@ export function Navbar() {
   
   const serviceComponents = servicesSubItem?.subItems;
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 10);
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // Scrolling down
-        setIsHidden(true);
-      } else { // Scrolling up
-        setIsHidden(false);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setTimeout(() => setMobileSubmenuStack([]), 300);
@@ -264,8 +243,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-transform duration-300 border-b bg-secondary',
-        isHidden ? '-translate-y-full' : 'translate-y-0'
+        'sticky top-0 z-50 w-full border-b bg-secondary'
       )}
     >
       <div className="container flex h-16 items-center">
