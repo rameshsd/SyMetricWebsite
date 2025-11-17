@@ -51,7 +51,7 @@ export function IrtDiagram() {
           style={{
             left: "50%",
             top: "15%",
-            transform: "translateX(-50%)"
+            transform: "translate(-50%, -50%)"
           }}
         >
           <Node Icon={Shuffle} label="Randomization" />
@@ -63,7 +63,7 @@ export function IrtDiagram() {
           style={{
             left: "50%",
             top: "85%",
-            transform: "translate(-50%, -100%)"
+            transform: "translate(-50%, -50%)"
           }}
         >
           <Node Icon={Hospital} label="Site Management" />
@@ -75,7 +75,7 @@ export function IrtDiagram() {
           style={{
             left: "15%",
             top: "50%",
-            transform: "translateY(-50%)"
+            transform: "translate(-50%, -50%)"
           }}
         >
           <Node Icon={Beaker} label="Clinical Supplies" />
@@ -87,7 +87,8 @@ export function IrtDiagram() {
           style={{
             right: "15%",
             top: "50%",
-            transform: "translateY(-50%)"
+            transform: "translate(-50%, 50%)",
+            left: "auto"
           }}
         >
           <Node Icon={Users} label="Subject Management" />
@@ -96,32 +97,34 @@ export function IrtDiagram() {
         {/* === SVG LAYER FOR LINES + MOVING DOTS === */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
           <defs>
-            <marker id="arrowhead" markerWidth="3" markerHeight="3" refX="2" refY="1.5" orient="auto">
-              <path d="M0 0 L3 1.5 L0 3 Z" fill="#1E40AF" />
+            <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
+              <path d="M0,0 L4,2 L0,4 z" fill="#1E40AF" />
             </marker>
-
-            {/* Glow Effect */}
             <filter id="glow">
-              <feGaussianBlur stdDeviation="1" />
+              <feGaussianBlur stdDeviation="0.5" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
             </filter>
-
-            {/* FLOW PATHS */}
-            <path id="p-top" d="M 50 50 L 50 30" />
-            <path id="p-bottom" d="M 50 50 L 50 70" />
-            <path id="p-left" d="M 50 50 L 30 50" />
-            <path id="p-right" d="M 50 50 L 70 50" />
+            
+            {/* Animation paths */}
+            <path id="p-top" d="M 50 42 V 30" />
+            <path id="p-bottom" d="M 50 58 V 70" />
+            <path id="p-left" d="M 42 50 H 30" />
+            <path id="p-right" d="M 58 50 H 70" />
           </defs>
 
           {/* ARROWS */}
-          <line x1="50" y1="50" x2="50" y2="30" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
-          <line x1="50" y1="50" x2="50" y2="70" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
-          <line x1="50" y1="50" x2="30" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
-          <line x1="50" y1="50" x2="70" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
-
+          <line x1="50" y1="42" x2="50" y2="30" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="50" y1="58" x2="50" y2="70" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="42" y1="50" x2="30" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="58" y1="50" x2="70" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          
           {/* MOVING FLOW DOTS */}
-          {["p-top", "p-bottom", "p-left", "p-right"].map((p) => (
-            <circle r="1" fill="#1E40AF" filter="url(#glow)" opacity="0.9" key={p}>
-              <animateMotion dur="1.5s" repeatCount="indefinite">
+          {["p-top", "p-bottom", "p-left", "p-right"].map((p, i) => (
+            <circle r="1" fill="#3B82F6" filter="url(#glow)" key={p}>
+              <animateMotion dur="2.5s" begin={`${i * 0.4}s`} repeatCount="indefinite">
                 <mpath href={`#${p}`} />
               </animateMotion>
             </circle>
