@@ -48,47 +48,49 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
+import { PlaceHolderImages } from './placeholder-images';
 
 export const navItems: NavItem[] = [
     { 
-        name: 'Products and Services', 
-        href: '/solutions',
-        subItems: [
-            { 
-                name: 'Products', 
-                href: '/solutions',
-                subItems: [
-                    { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
-                    { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
-                    { name: 'EDC', href: '/solutions/edc' },
-                    { name: 'CTM', href: '/solutions/ctm' },
-                    { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
-                ]
-            },
-            { 
-                name: 'Services', 
-                href: '/services',
-                subItems: [
-                    { name: 'Clinical Data Management', href: '/services/clinical-data-management', description: 'Comprehensive data management services to ensure data quality and integrity.' },
-                    { name: 'Project Management', href: '/services/project-management', description: 'Expert project management to keep your trials on time and on budget.' },
-                    { name: 'Data Migration', href: '/services/data-migration', description: 'Seamless and secure migration of your clinical trial data to our platform.' },
-                    { name: 'Training', href: '/services/training', description: 'Customized training programs for your team to maximize platform utilization.' },
-                    { name: 'Support', href: '/services/support', description: 'Dedicated technical and operational support available 24/7.' },
-                ]
-            },
-        ]
+      name: 'Products and Services', 
+      href: '/solutions',
+      subItems: [
+        {
+          name: 'Products',
+          href: '/solutions',
+          subItems: [
+            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
+            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
+            { name: 'EDC', href: '/solutions/edc' },
+            { name: 'CTM', href: '/solutions/ctm' },
+            { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
+          ]
+        },
+        {
+          name: 'Services',
+          href: '/services',
+          subItems: [
+            { name: 'Clinical Data Management', href: '/services/clinical-data-management', description: 'Ensure data quality and compliance with our high-quality Data Management services.' },
+            { name: 'Project Management', href: '/services/project-management', description: 'Manage your Clinical Trial effectively from consulting to reporting.' },
+            { name: 'Data Migration', href: '/services/data-migration', description: 'Migrate your data onto our Cloud Solutions with ease and integration.' },
+            { name: 'Training', href: '/services/training', description: 'Adopt our Platform and tools effortlessly using our comprehensive Online Training Services.' },
+            { name: 'Support', href: '/services/support', description: 'Enjoy round-the-clock technical assistance and get your Operational queries answered.' },
+          ]
+        }
+      ]
     },
+    { name: 'Industries', href: '/industries' },
     { name: 'Community', href: '/community' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Resources', href: '/resources'},
     { name: 'About', href: '/about' },
-    { name: 'Careers', href: '/careers' },
+    { name: 'Contact', href: '/contact'},
+    { name: 'Careers', href: '/careers'},
 ];
 
 export const solutions: Solution[] = [
   {
     id: 'ctp',
-    name: 'CTP (Clinical Trial Platform)',
+    name: 'Clinical Trial Platform',
     slug: 'clinical-trial-platform',
     hero: {
       title: 'SyMetric Clinical Trial Platform',
@@ -1146,13 +1148,13 @@ export const welcomeLinks: WelcomeLink[] = [
 ];
 
 export const topAuthors: TopAuthor[] = [
-    { id: '1', name: 'thomasalexander_ritter', avatarId: 'avatar-1', kudos: 56, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '2', name: 'Andre_Fischer', avatarId: 'avatar-2', kudos: 24, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '3', name: 'SandeepBSV', avatarId: 'avatar-3', kudos: 22, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '4', name: 'patty_1982', avatarId: 'avatar-4', kudos: 14 },
-    { id: '5', name: 'ggalves', avatarId: 'avatar-2', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg' },
-    { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12 },
+    { id: '1', name: 'thomasalexander_ritter', avatarId: 'avatar-1', kudos: 56, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
+    { id: '2', name: 'Andre_Fischer', avatarId: 'avatar-2', kudos: 24, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-2')?.imageUrl || '' },
+    { id: '3', name: 'SandeepBSV', avatarId: 'avatar-3', kudos: 22, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
+    { id: '4', name: 'patty_1982', avatarId: 'avatar-4', kudos: 14, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-4')?.imageUrl || '' },
+    { id: '5', name: 'ggalves', avatarId: 'avatar-2', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-2')?.imageUrl || '' },
+    { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
+    { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
     
 

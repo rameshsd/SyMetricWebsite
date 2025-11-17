@@ -1,12 +1,11 @@
 
-
 "use client";
 
+import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,7 +30,6 @@ type ProductPageHeaderProps = {
 
 export function ProductPageHeader({ productName, solutions }: ProductPageHeaderProps) {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const isSolutionsPage = pathname === '/solutions';
 
   const applicationsNav = secondaryNav.map(item => {
@@ -45,19 +43,10 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   });
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div
       className={cn(
-        "sticky top-16 z-40 bg-background/80 backdrop-blur-lg border-b",
-        isScrolled && "shadow-sm"
+        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b shadow-sm"
       )}
     >
       <div className="container">
