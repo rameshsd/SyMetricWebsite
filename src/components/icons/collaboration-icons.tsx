@@ -17,25 +17,19 @@ const IconWrapper = ({ children, className, viewBox = "0 0 64 64" }: { children:
 );
 
 export const IdentityIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className} viewBox="0 0 50 50">
-    <path fill="#007bff" d="M10 10h30v30H10z" />
-    <path fill="#fff" d="M20 21h10v2H20z" />
-    <circle cx="25" cy="18" r="3" fill="#fff" />
-    <path fill="#fff" d="M21 25h8v8h-8z" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path d="M32 34.6667C37.8914 34.6667 42.6667 39.4419 42.6667 45.3333V48H21.3333V45.3333C21.3333 39.4419 26.1086 34.6667 32 34.6667Z" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M32 34.6667C29.0556 34.6667 26.6667 32.2778 26.6667 29.3333C26.6667 26.3889 29.0556 24 32 24C34.9444 24 37.3333 26.3889 37.3333 29.3333C37.3333 32.2778 34.9444 34.6667 32 34.6667Z" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect x="12" y="12" width="40" height="40" rx="3" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
   </IconWrapper>
 );
 
 export const OrganizationIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className} viewBox="0 0 64 64">
-    <rect x="25" y="28" width="14" height="26" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     <rect x="15" y="10" width="34" height="44" rx="2" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M25 28H39V54H25V28Z" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M24 19H31" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M24 25H31" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M40 19H41" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M40 25H41" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M40 31H41" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M40 37H41" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M40 43H41" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
   </IconWrapper>
 );
 
@@ -46,8 +40,6 @@ export const StudyIcon = ({ className }: { className?: string }) => (
     <circle cx="48" cy="18" r="4" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
     <circle cx="16" cy="46" r="4" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
     <circle cx="48" cy="46" r="4" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
-    <circle cx="32" cy="12" r="3" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
-    <circle cx="32" cy="52" r="3" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
     <path d="M32 26V15" stroke="hsl(var(--accent))" strokeWidth="2"/>
     <path d="M32 49V38" stroke="hsl(var(--accent))" strokeWidth="2"/>
     <path d="M44.5 44.5L37.5 37.5" stroke="hsl(var(--accent))" strokeWidth="2"/>
@@ -58,41 +50,43 @@ export const StudyIcon = ({ className }: { className?: string }) => (
 );
 
 export const SiteIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className} viewBox="0 0 50 50">
-        <path fill="#6f42c1" d="M10 15h30v20H10z" />
-        <path fill="#fff" d="M13 18h5v5h-5zM22 18h6v5h-6zM32 18h5v5h-5zM13 27h5v5h-5zM22 27h6v5h-6zM32 27h5v5h-5z" />
-        <path fill="red" d="M24 20h2v3h3v2h-3v3h-2v-3h-3v-2h3z" />
-  </IconWrapper>
+    <IconWrapper className={className} viewBox="0 0 64 64">
+        <path d="M50 42H14C12.8954 42 12 41.1046 12 40V22C12 20.8954 12.8954 20 14 20H50C51.1046 20 52 20.8954 52 22V40C52 41.1046 51.1046 42 50 42Z" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinejoin="round"/>
+        <path d="M18 20V42" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M24 20V42" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M40 20V42" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M46 20V42" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M32 26V36" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M27 31H37" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </IconWrapper>
 );
 
 export const SuppliesIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className} viewBox="0 0 50 50">
-    <defs>
-      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: 'rgb(255,0,255)', stopOpacity: 1}} />
-        <stop offset="100%" style={{stopColor: 'rgb(0,255,255)', stopOpacity: 1}} />
-      </linearGradient>
-    </defs>
-    <path d="M20 15 a10 10 0 0 1 20 0 l-10 15 z" fill="url(#grad1)" />
-    <circle cx="30" cy="30" r="8" fill="#ccc" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path d="M50 34H14V22C14 20.8954 14.8954 20 16 20H48C49.1046 20 50 20.8954 50 22V34Z" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 34H52L50 50H14L12 34Z" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M24 26H28" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M24 42H40" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round"/>
   </IconWrapper>
 );
 
 export const SubjectIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className} viewBox="0 0 50 50">
-    <circle cx="25" cy="18" r="5" fill="#007bff" />
-    <path d="M15 35 q10 -15 20 0" stroke="#007bff" fill="none" strokeWidth="2" />
-    <circle cx="15" cy="20" r="4" fill="#0056b3" />
-    <path d="M8 35 q7 -10 14 0" stroke="#0056b3" fill="none" strokeWidth="2" />
-    <circle cx="35" cy="20" r="4" fill="#0056b3" />
-    <path d="M28 35 q7 -10 14 0" stroke="#0056b3" fill="none" strokeWidth="2" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path d="M21.3333 45.3333V42.6667C21.3333 36.7753 26.1086 32 32 32C37.8914 32 42.6667 36.7753 42.6667 42.6667V45.3333" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="32" cy="24" r="5.33333" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M49.3333 50.6667V48C49.3333 44.3181 46.3482 41.3333 42.6667 41.3333H38.6667" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14.6667 50.6667V48C14.6667 44.3181 17.6518 41.3333 21.3333 41.3333H25.3333" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="44" cy="21.3333" r="4" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="20" cy="21.3333" r="4" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
   </IconWrapper>
 );
 
 export const DataManagementIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className} viewBox="0 0 50 50">
-      <path fill="#17a2b8" d="M12 10h26v30H12z" />
-      <path fill="#fff" d="M17 15h16v3H17zM17 22h16v3H17zM17 29h16v3H17z" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+      <ellipse cx="32" cy="22" rx="18" ry="8" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
+      <path d="M14 30C14 34.4183 22.0589 38 32 38C41.9411 38 50 34.4183 50 30" stroke="hsl(var(--accent))" strokeWidth="2.5"/>
+      <path d="M14 38C14 42.4183 22.0589 46 32 46C41.9411 46 50 42.4183 50 38" stroke="hsl(var(--accent))" strokeWidth="2.5"/>
+      <path d="M14 22V46C14 50.4183 22.0589 54 32 54C41.9411 54 50 50.4183 50 46V22" stroke="hsl(var(--primary))" strokeWidth="2.5"/>
   </IconWrapper>
 );
 
@@ -126,14 +120,10 @@ export const DataServicesIcon = ({ className }: { className?: string }) => (
 );
 
 export const DigitalLearningIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className} viewBox="0 0 50 50">
-      <path fill="#007bff" d="M10 15h20v15H10z" />
-      <path fill="#fff" d="M12 17h2v2h-2z" />
-      <path fill="#fff" d="M25 18h2v10h-2z" />
-      <circle cx="18" cy="28" r="1.5" fill="#fff" />
-      <circle cx="22" cy="28" r="1.5" fill="#fff" />
-      <circle cx="26" cy="28" r="1.5" fill="#fff" />
-      <circle cx="30" cy="28" r="1.5" fill="#fff" />
+  <IconWrapper className={className}>
+      <path d="M12 38V16C12 14.8954 12.8954 14 14 14H42C43.1046 14 44 14.8954 44 16V38" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M52 46H8" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round"/>
+      <path d="M28 34H36" stroke="hsl(var(--accent))" strokeWidth="2.5" strokeLinecap="round"/>
   </IconWrapper>
 );
 
@@ -144,3 +134,5 @@ export const HelpIcon = ({ className }: { className?: string }) => (
     <circle cx="32" cy="39" r="1.5" fill="hsl(var(--accent))"/>
   </IconWrapper>
 );
+
+    
