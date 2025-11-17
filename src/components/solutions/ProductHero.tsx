@@ -1,3 +1,4 @@
+
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,7 +43,7 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
               </Button>
             </div>
           </div>
-          <div className="relative flex justify-center items-center h-[500px]">
+          <div className="relative flex justify-center items-center h-auto md:h-[500px]">
             {isIrtIwrs ? (
                 <IrtDiagram />
             ) : (

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -27,7 +28,7 @@ export function IrtDiagram() {
     <div className="flex items-center justify-center w-full py-10">
 
       {/* FULL DIAGRAM WRAPPER */}
-      <div className="relative bg-white rounded-2xl shadow-xl w-[520px] h-[460px]">
+      <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-[520px] h-auto aspect-square">
 
         {/* === CENTER IRT === */}
         <div
@@ -49,7 +50,7 @@ export function IrtDiagram() {
           className="absolute"
           style={{
             left: "50%",
-            top: "75px",
+            top: "15%",
             transform: "translateX(-50%)"
           }}
         >
@@ -61,8 +62,8 @@ export function IrtDiagram() {
           className="absolute"
           style={{
             left: "50%",
-            top: "325px",
-            transform: "translateX(-50%)"
+            top: "85%",
+            transform: "translate(-50%, -100%)"
           }}
         >
           <Node Icon={Hospital} label="Site Management" />
@@ -72,7 +73,7 @@ export function IrtDiagram() {
         <div
           className="absolute"
           style={{
-            left: "85px",
+            left: "15%",
             top: "50%",
             transform: "translateY(-50%)"
           }}
@@ -84,7 +85,7 @@ export function IrtDiagram() {
         <div
           className="absolute"
           style={{
-            left: "355px",
+            right: "15%",
             top: "50%",
             transform: "translateY(-50%)"
           }}
@@ -93,44 +94,33 @@ export function IrtDiagram() {
         </div>
 
         {/* === SVG LAYER FOR LINES + MOVING DOTS === */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 520 460">
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
           <defs>
-            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-              <path d="M0 0 L8 4 L0 8 Z" fill="#1E40AF" />
+            <marker id="arrowhead" markerWidth="3" markerHeight="3" refX="2" refY="1.5" orient="auto">
+              <path d="M0 0 L3 1.5 L0 3 Z" fill="#1E40AF" />
             </marker>
 
             {/* Glow Effect */}
             <filter id="glow">
-              <feGaussianBlur stdDeviation="2.5" />
+              <feGaussianBlur stdDeviation="1" />
             </filter>
 
-            {/* FLOW PATHS GENERATED FROM TRUE CENTER (260,230) */}
-            <path id="p-top" d="M 260 230 L 260 150" />
-            <path id="p-bottom" d="M 260 230 L 260 310" />
-            <path id="p-left" d="M 260 230 L 180 230" />
-            <path id="p-right" d="M 260 230 L 340 230" />
+            {/* FLOW PATHS */}
+            <path id="p-top" d="M 50 50 L 50 30" />
+            <path id="p-bottom" d="M 50 50 L 50 70" />
+            <path id="p-left" d="M 50 50 L 30 50" />
+            <path id="p-right" d="M 50 50 L 70 50" />
           </defs>
 
           {/* ARROWS */}
-          {/* TOP */}
-          <line x1="260" y1="230" x2="260" y2="150" stroke="#1E40AF" strokeWidth="3"
-                markerEnd="url(#arrowhead)" />
-
-          {/* BOTTOM */}
-          <line x1="260" y1="230" x2="260" y2="310" stroke="#1E40AF" strokeWidth="3"
-                markerEnd="url(#arrowhead)" />
-
-          {/* LEFT */}
-          <line x1="260" y1="230" x2="180" y2="230" stroke="#1E40AF" strokeWidth="3"
-                markerEnd="url(#arrowhead)" />
-
-          {/* RIGHT */}
-          <line x1="260" y1="230" x2="340" y2="230" stroke="#1E40AF" strokeWidth="3"
-                markerEnd="url(#arrowhead)" />
+          <line x1="50" y1="50" x2="50" y2="30" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="50" y1="50" x2="50" y2="70" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="50" y1="50" x2="30" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
+          <line x1="50" y1="50" x2="70" y2="50" stroke="#1E40AF" strokeWidth="0.75" markerEnd="url(#arrowhead)" />
 
           {/* MOVING FLOW DOTS */}
           {["p-top", "p-bottom", "p-left", "p-right"].map((p) => (
-            <circle r="5" fill="#1E40AF" filter="url(#glow)" opacity="0.9" key={p}>
+            <circle r="1" fill="#1E40AF" filter="url(#glow)" opacity="0.9" key={p}>
               <animateMotion dur="1.5s" repeatCount="indefinite">
                 <mpath href={`#${p}`} />
               </animateMotion>

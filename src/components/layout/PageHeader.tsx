@@ -93,11 +93,11 @@ export function PageHeader({
         )}
         
         {secondaryNav && currentActiveItem && (
-          <div className="flex items-baseline space-x-8 overflow-x-auto scrollbar-hide pt-2">
+          <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2 pt-2">
              <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
                 <Link href={currentActiveItem.href} className="hover:text-primary">{currentActiveItem.label}</Link>
             </h2>
-            <nav className="flex items-center space-x-6" aria-label="Secondary">
+            <nav className="flex items-center gap-x-6 flex-wrap" aria-label="Secondary">
               {secondaryNav.filter(item => item.href !== activeSection).map((tab, index) => (
                 <div key={tab.label} className="flex items-center space-x-6">
                     {index > 0 && <span className="text-muted-foreground/50">|</span>}
