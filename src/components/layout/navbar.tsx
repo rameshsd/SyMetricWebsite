@@ -204,6 +204,28 @@ export function Navbar() {
   
   const pathname = usePathname();
 
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isHidden, setIsHidden] = React.useState(false);
+  const lastScrollY = React.useRef(0);
+
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // Scrolling down
+        setIsHidden(true);
+      } else { // Scrolling up
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
   
   const productsSubItem = productsAndServicesItem?.subItems?.find(item => item.name === 'Products');
@@ -243,7 +265,9 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full border-b bg-secondary'
+        'sticky top-0 z-50 w-full border-b bg-secondary transition-transform duration-300',
+        isScrolled && "shadow-sm",
+        isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div className="container flex h-16 items-center">
