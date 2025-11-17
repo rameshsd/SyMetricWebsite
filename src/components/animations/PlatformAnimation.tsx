@@ -77,7 +77,7 @@ export const PlatformAnimation = () => {
   const rightX = viewBoxWidth * 0.85;
 
   return (
-    <div ref={ref} className="w-full h-full">
+    <div ref={ref} className="w-full h-full overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
