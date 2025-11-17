@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import Image from 'next/image';
@@ -111,7 +110,7 @@ export default function Home() {
                           </h3>
                           <div className="mt-auto">
                             <Button asChild>
-                              <Link href={item.link}>Read More</Link>
+                              <Link href={item.link}>{item.title}</Link>
                             </Button>
                           </div>
                         </CardContent>
