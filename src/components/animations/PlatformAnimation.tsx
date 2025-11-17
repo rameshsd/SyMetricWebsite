@@ -19,7 +19,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
-const pathVariants = (delay = 0.5) => ({
+const pathVariants = (delay = 0) => ({
   hidden: { pathLength: 0, opacity: 0 },
   visible: {
     pathLength: 1,
@@ -40,14 +40,37 @@ const Node = ({ icon: Icon, label }: { icon: React.ElementType; label: string })
   </motion.div>
 );
 
+const FlowArrow = ({ d, delay = 0 }: { d: string; delay?: number }) => (
+    <motion.path
+      d={d}
+      fill="none"
+      stroke="hsl(var(--primary))"
+      strokeWidth={2}
+      strokeLinecap="round"
+      markerEnd="url(#arrowhead)"
+      variants={pathVariants(delay)}
+    />
+);
+  
+const FlowParticle = ({ pathId, delay = 0 }: { pathId: string; delay?: number }) => (
+    <g>
+      <circle r={4} fill="hsl(var(--primary))" filter="url(#glow)">
+        <animateMotion dur="4s" begin={`${delay}s`} repeatCount="indefinite">
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </circle>
+    </g>
+);
+
 export const PlatformAnimation = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
 
   const viewBoxWidth = 600;
-  const viewBoxHeight = 400;
-
+  const viewBoxHeight = 450;
+  
   const topNodeY = 60;
-  const bottomNodeY = 320;
+  const busY = 200;
+  const bottomNodeY = 340;
 
   const centerX = viewBoxWidth / 2;
   const leftX = viewBoxWidth * 0.15;
@@ -58,73 +81,51 @@ export const PlatformAnimation = () => {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate={inView ? "visible" : "hidden"}
         className="relative w-full h-[450px] sm:h-[520px] flex flex-col items-center justify-start pt-4"
       >
-        {/* Node Components */}
-        <div className="absolute" style={{ top: `${topNodeY - 50}px`, left: '50%', transform: 'translateX(-50%)' }}>
-          <Node icon={Gem} label="SyMetric Platform" />
-        </div>
-        <div className="absolute" style={{ top: `${bottomNodeY - 60}px`, left: `${leftX}%`, transform: 'translateX(-50%)' }}>
-          <Node icon={Repeat} label="IRT / IWRS" />
-        </div>
-        <div className="absolute" style={{ top: `${bottomNodeY - 60}px`, left: '50%', transform: 'translateX(-50%)' }}>
-          <Node icon={ClipboardList} label="CTM" />
-        </div>
-        <div className="absolute" style={{ top: `${bottomNodeY - 60}px`, left: `${rightX}%`, transform: 'translateX(-50%)' }}>
-          <Node icon={Database} label="EDC" />
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center pointer-events-none">
+            <div className="pt-5" style={{ transform: 'scale(0.8) sm:scale(1)'}}>
+                <Node icon={Gem} label="SyMetric Platform" />
+            </div>
+            <div className="absolute w-full max-w-xl" style={{top: '300px', transform: 'scale(0.8) sm:scale(1)'}}>
+                <div className="flex justify-between w-full">
+                    <Node icon={Repeat} label="IRT / IWRS" />
+                    <Node icon={ClipboardList} label="CTM" />
+                    <Node icon={Database} label="EDC" />
+                </div>
+            </div>
         </div>
 
-        {/* SVG for lines and dots */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full">
           <svg width="100%" height="100%" viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="overflow-visible">
             <defs>
-              <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" opacity="0.8" />
+              <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 9 3 L 0 6 z" fill="hsl(var(--primary))" />
               </marker>
+
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              
+              <path id="path-left" d={`M ${centerX} ${topNodeY + 48} V ${busY} H ${leftX} V ${bottomNodeY - 48}`} fill="none" />
+              <path id="path-center" d={`M ${centerX} ${topNodeY + 48} V ${busY} H ${centerX} V ${bottomNodeY - 48}`} fill="none" />
+              <path id="path-right" d={`M ${centerX} ${topNodeY + 48} V ${busY} H ${rightX} V ${bottomNodeY - 48}`} fill="none" />
             </defs>
 
-            {/* Lines */}
-            <motion.line
-              x1={centerX} y1={topNodeY + 30}
-              x2={centerX} y2={bottomNodeY - 150}
-              stroke="hsl(var(--primary))" strokeWidth="2"
-              variants={pathVariants(0.4)}
-            />
-            <motion.line
-              x1={leftX} y1={bottomNodeY - 150}
-              x2={rightX} y2={bottomNodeY - 150}
-              stroke="hsl(var(--primary))" strokeWidth="2"
-              variants={pathVariants(0.6)}
-            />
-            <motion.line
-              x1={leftX} y1={bottomNodeY - 150}
-              x2={leftX} y2={bottomNodeY - 80}
-              stroke="hsl(var(--primary))" strokeWidth="2"
-              variants={pathVariants(0.8)}
-              markerEnd="url(#arrowhead)"
-            />
-            <motion.line
-              x1={centerX} y1={bottomNodeY - 150}
-              x2={centerX} y2={bottomNodeY - 80}
-              stroke="hsl(var(--primary))" strokeWidth="2"
-              variants={pathVariants(0.9)}
-              markerEnd="url(#arrowhead)"
-            />
-            <motion.line
-              x1={rightX} y1={bottomNodeY - 150}
-              x2={rightX} y2={bottomNodeY - 80}
-              stroke="hsl(var(--primary))" strokeWidth="2"
-              variants={pathVariants(1.0)}
-              markerEnd="url(#arrowhead)"
-            />
-            
-            {/* Dots */}
-            <motion.circle cx={centerX} cy={topNodeY + 40} r="4" fill="hsl(var(--primary))" variants={itemVariants} />
-            <motion.circle cx={centerX} cy={bottomNodeY - 150} r="4" fill="hsl(var(--primary))" variants={itemVariants} />
-            <motion.circle cx={leftX} cy={bottomNodeY - 150} r="4" fill="hsl(var(--primary))" variants={itemVariants} />
-            <motion.circle cx={rightX} cy={bottomNodeY - 150} r="4" fill="hsl(var(--primary))" variants={itemVariants} />
+            <FlowArrow d={`M ${centerX} ${topNodeY + 48} V ${busY}`} delay={0.2} />
+            <FlowArrow d={`M ${leftX} ${busY} H ${rightX}`} delay={0.4} />
+            <FlowArrow d={`M ${leftX} ${busY} V ${bottomNodeY - 48}`} delay={0.6} />
+            <FlowArrow d={`M ${centerX} ${busY} V ${bottomNodeY - 48}`} delay={0.7} />
+            <FlowArrow d={`M ${rightX} ${busY} V ${bottomNodeY - 48}`} delay={0.8} />
 
+            <FlowParticle pathId="path-left" delay={0.8} />
+            <FlowParticle pathId="path-center" delay={1.1} />
+            <FlowParticle pathId="path-right" delay={1.4} />
           </svg>
         </div>
       </motion.div>
