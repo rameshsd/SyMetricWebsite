@@ -2,20 +2,6 @@
 "use client";
 
 import {
-  Users,
-  Building,
-  Book,
-  Hospital,
-  Beaker,
-  ClipboardList,
-  Database,
-  FlaskConical,
-  GraduationCap,
-  LifeBuoy,
-  LayoutGrid,
-  ShieldCheck,
-} from "lucide-react";
-import {
   IdentityIcon,
   OrganizationIcon,
   StudyIcon,
@@ -42,6 +28,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Card, CardContent } from '../ui/card';
 
 const toolsData = [
   { 
@@ -132,10 +119,9 @@ const toolsData = [
 
 
 export function PlatformToolsGrid() {
-  const [selectedTool, setSelectedTool] = useState(toolsData[0]);
 
   return (
-    <section className="bg-secondary/50 flex flex-col">
+    <section className="bg-secondary/50">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold tracking-tight">
@@ -146,83 +132,17 @@ export function PlatformToolsGrid() {
           </p>
         </div>
       
-        <div className="flex-grow flex flex-col md:grid md:grid-cols-12 gap-8 md:items-start">
-            <div className="md:col-span-5 lg:col-span-4 md:sticky md:top-24 h-auto md:h-[calc(100vh-20rem)]">
-                <ScrollArea className="h-full md:pr-4">
-                    <div className="space-y-2">
-                        {toolsData.map((tool) => (
-                            <button 
-                                key={tool.id} 
-                                onClick={() => setSelectedTool(tool)}
-                                className={cn(
-                                    "w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all duration-200",
-                                    selectedTool.id === tool.id 
-                                        ? "bg-primary text-primary-foreground font-semibold shadow-md" 
-                                        : "text-foreground hover:bg-background/50"
-                                )}
-                            >
-                                <div className={cn(
-                                    "flex items-center justify-center h-10 w-10 rounded-lg shrink-0",
-                                    selectedTool.id === tool.id ? "bg-primary-foreground/20" : "bg-primary/10"
-                                )}>
-                                    <tool.icon className={cn("h-8 w-8", selectedTool.id === tool.id ? "text-primary-foreground" : "text-primary")} />
-                                </div>
-                                <span className="text-sm font-medium">{tool.label}</span>
-                            </button>
-                        ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-6 gap-y-12">
+            {toolsData.map((tool) => (
+                <div key={tool.id} className="flex flex-col items-center text-center group">
+                    <div className={cn(
+                        "flex items-center justify-center h-24 w-24 rounded-lg shrink-0 transition-all duration-300 group-hover:scale-110"
+                    )}>
+                        <tool.icon className={cn("h-full w-full text-primary")} />
                     </div>
-                </ScrollArea>
-            </div>
-            
-            <div className="md:col-span-7 lg:col-span-8 md:sticky md:top-24 mt-8 md:mt-0">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={selectedTool.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-8"
-                    >
-                        <div>
-                            <h3 className="text-2xl font-bold text-primary">{selectedTool.label}</h3>
-                            <p className="mt-2 text-lg text-muted-foreground">{selectedTool.description}</p>
-                        </div>
-                        
-                        <div className="relative">
-                            <Carousel className="w-full rounded-2xl overflow-hidden border shadow-lg bg-background">
-                                <CarouselContent>
-                                {selectedTool.images.map((imageId, index) => {
-                                    const image = PlaceHolderImages.find(p => p.id === imageId);
-                                    return (
-                                        <CarouselItem key={index}>
-                                            <div className="p-1">
-                                                {image && (
-                                                <Image
-                                                    src={image.imageUrl}
-                                                    alt={image.description}
-                                                    width={800}
-                                                    height={500}
-                                                    data-ai-hint={image.imageHint}
-                                                    className="object-contain w-full"
-                                                />
-                                                )}
-                                            </div>
-                                        </CarouselItem>
-                                    )
-                                })}
-                                </CarouselContent>
-                                {selectedTool.images.length > 1 && (
-                                <>
-                                    <CarouselPrevious className="left-4" />
-                                    <CarouselNext className="right-4" />
-                                </>
-                                )}
-                            </Carousel>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
+                    <span className="text-sm font-semibold mt-4 text-foreground">{tool.label}</span>
+                </div>
+            ))}
         </div>
       </div>
     </section>
