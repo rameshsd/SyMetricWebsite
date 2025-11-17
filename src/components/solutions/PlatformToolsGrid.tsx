@@ -15,6 +15,7 @@ import {
   DigitalLearningIcon,
   HelpIcon
 } from '@/components/icons/collaboration-icons';
+import { ClipboardList } from 'lucide-react';
 
 const toolsData = [
   { 
@@ -37,7 +38,7 @@ const toolsData = [
   },
   { 
     id: "site-management",
-    icon: SiteIcon, 
+    icon: ClipboardList, 
     label: "Site Management",
     description: "Streamline site activation, monitoring, and communication.",
   },
@@ -83,7 +84,7 @@ const toolsData = [
     label: "Digital Learning",
     description: "Provide training and certification for trial personnel directly on the platform.",
   },
-  { a
+  {
     id: "support",
     icon: HelpIcon, 
     label: "Help and Support",
@@ -108,7 +109,7 @@ export function PlatformToolsGrid() {
       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {toolsData.map((tool) => (
-                <div key={tool.id} className="group p-6 bg-background rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all duration-300 flex flex-col text-left">
+                <div key={tool.id} className="group p-6 bg-background rounded-2xl border transition-shadow hover:shadow-lg flex flex-col text-left">
                     <div className="flex items-center justify-start gap-6 mb-4">
                         <div className="flex-shrink-0 h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center shadow-sm">
                             <tool.icon className="h-8 w-8 text-primary" />
