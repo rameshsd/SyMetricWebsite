@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import { ClipboardList } from 'lucide-react';
 
 const IconWrapper = ({ children, className, viewBox = "0 0 24 24" }: { children: React.ReactNode; className?: string, viewBox?: string }) => (
   <svg
@@ -9,7 +10,7 @@ const IconWrapper = ({ children, className, viewBox = "0 0 24 24" }: { children:
     viewBox={viewBox}
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
     className={className}
@@ -40,16 +41,24 @@ export const OrganizationIcon = ({ className }: { className?: string }) => (
 
 export const StudyIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v16a2 2 0 0 1-2 2H6.5a2.5 2.5 0 0 1 0-5H20" />
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
   </IconWrapper>
 );
 
 export const SiteIcon = ({ className }: { className?: string }) => (
     <IconWrapper className={className}>
-        <rect x="5" y="3" width="14" height="18" rx="2" />
-        <path d="M9 7h6" />
-        <path d="M9 12h6" />
-        <path d="M9 17h2" />
+        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+        <path d="M9 22v-4h6v4" />
+        <path d="M8 6h.01" />
+        <path d="M16 6h.01" />
+        <path d="M12 6h.01" />
+        <path d="M12 10h.01" />
+        <path d="M12 14h.01" />
+        <path d="M16 10h.01" />
+        <path d="M8 10h.01" />
+        <path d="M8 14h.01" />
+        <path d="M16 14h.01" />
     </IconWrapper>
 );
 
@@ -62,8 +71,8 @@ export const SuppliesIcon = ({ className }: { className?: string }) => (
 
 export const SubjectIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <circle cx="12" cy="8" r="4" />
-    <path d="M18.5 21a8 8 0 1 0-13 0" />
+    <circle cx="12" cy="8" r="5" />
+    <path d="M20 21a8 8 0 1 0-16 0" />
   </IconWrapper>
 );
 
