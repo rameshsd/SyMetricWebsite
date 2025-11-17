@@ -109,14 +109,14 @@ export function PlatformToolsGrid() {
       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {toolsData.map((tool) => (
-                <div key={tool.id} className="flex flex-col items-center text-center p-6 bg-background rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all duration-300">
-                    <div className={cn(
-                        "flex items-center justify-center h-28 w-28 rounded-lg shrink-0 mb-4"
-                    )}>
-                        <tool.icon className={cn("h-full w-full")} />
+                <div key={tool.id} className="group p-6 bg-background rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all duration-300 flex flex-col text-left">
+                    <div className="flex items-center gap-4">
+                        <div className="flex-shrink-0 h-16 w-16 bg-blue-100/50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                            <tool.icon className="h-8 w-8 text-primary" />
+                        </div>
+                        <h3 className="text-base font-bold text-foreground leading-snug">{tool.label}</h3>
                     </div>
-                    <h3 className="text-base font-bold text-foreground mb-2">{tool.label}</h3>
-                    <p className="text-sm text-muted-foreground flex-grow">{tool.description}</p>
+                    <p className="text-sm text-muted-foreground mt-4 flex-grow">{tool.description}</p>
                 </div>
             ))}
         </div>
