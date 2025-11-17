@@ -2,6 +2,7 @@
 
 "use client";
 
+import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -32,6 +33,28 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   const pathname = usePathname();
   const isSolutionsPage = pathname === '/solutions';
 
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isHidden, setIsHidden] = React.useState(false);
+  const lastScrollY = React.useRef(0);
+
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // Scrolling down
+        setIsHidden(true);
+      } else { // Scrolling up
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const applicationsNav = secondaryNav.map(item => {
     if (item.dropdown && item.label === "Applications") {
       return {
@@ -45,7 +68,11 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
 
   return (
     <div
-      className="sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b"
+      className={cn(
+        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300",
+        isScrolled && "shadow-sm",
+        isHidden ? '-translate-y-full' : 'translate-y-0'
+      )}
     >
       <div className="container">
         <div className="py-4">
