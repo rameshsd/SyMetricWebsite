@@ -1,12 +1,50 @@
-
 "use client";
 
-import { featureGridItems } from "@/lib/data";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Card } from "../ui/card";
 import { ArrowRight } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
+import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from "../icons/feature-icons";
+
+const featureGridItems = [
+    { 
+        icon: CloudErpIcon, 
+        title: 'Study Management',
+        description: 'Define, configure, and oversee all aspects of your clinical studies from a centralized dashboard.',
+        link: '#' 
+    },
+    { 
+        icon: FinancialManagementIcon, 
+        title: 'Site Management',
+        description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
+        link: '#' 
+    },
+    { 
+        icon: SpendManagementIcon, 
+        title: 'Clinical Supplies Management',
+        description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
+        link: '#' 
+    },
+    { 
+        icon: SupplyChainIcon, 
+        title: 'Subject Management',
+        description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
+        link: '#' 
+    },
+    { 
+        icon: HumanCapitalIcon, 
+        title: 'Data Management',
+        description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
+        link: '#' 
+    },
+    { 
+        icon: CustomerExperienceIcon, 
+        title: 'Digital Learning',
+        description: 'Provide training and certification for trial personnel directly on the platform.',
+        link: '#' 
+    },
+];
 
 export function FeatureGrid() {
   return (

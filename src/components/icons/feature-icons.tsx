@@ -17,53 +17,47 @@ const IconWrapper = ({ children, className }: { children: React.ReactNode, class
 
 export const CloudErpIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M12 2.69l.346.666L19.5 17.5h-15L8.654 3.356z" />
-    <path d="M12 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-    <path d="M12 12.5v5" />
-    <path d="M12 17.5h-2.5" />
-    <path d="M12 17.5h2.5" />
+    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
   </IconWrapper>
 );
 
 export const FinancialManagementIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <circle cx="12" cy="12" r="10" />
-    <path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8" />
-    <path d="M12 18V6" />
+    <path d="M12 2v20" />
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
   </IconWrapper>
 );
 
 export const SpendManagementIcon = ({ className }: { className?: string }) => (
     <IconWrapper className={className}>
-        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-        <path d="M12 8v4" />
-        <path d="M12 16h.01" />
-        <path d="M8 12h8" />
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 10h18" />
+      <path d="M7 15h.01" />
+      <path d="M11 15h.01" />
     </IconWrapper>
 );
 
 export const SupplyChainIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M14 16.5V14a2 2 0 00-2-2h-4a2 2 0 00-2 2v2.5" />
-    <path d="M20 12H4" />
-    <path d="M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6" />
-    <path d="M16 5.5V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v1.5" />
+    <path d="M2 17a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5" />
+    <path d="M7 17a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4" />
+    <path d="M15 7h2a2 2 0 0 1 2 2v5" />
+    <path d="m15 12-3-3 3-3" />
   </IconWrapper>
 );
 
 export const HumanCapitalIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-    <circle cx="8.5" cy="7" r="4" />
-    <path d="M20 8v6" />
-    <path d="M23 11h-6" />
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <line x1="19" x2="19" y1="8" y2="14" />
+    <line x1="22" x2="16" y1="11" y2="11" />
   </IconWrapper>
 );
 
 export const CustomerExperienceIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <path d="M12 12s-4-3-4-5a4 4 0 018 0c0 2-4 5-4 5z" />
-    <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
-    <path d="M12 12v9" />
+    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
+    <path d="M18 9h2a2 2 0 0 1 2 2v10l-4-4H12a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2h2Z" />
   </IconWrapper>
 );
