@@ -15,6 +15,20 @@ import {
   LayoutGrid,
   ShieldCheck,
 } from "lucide-react";
+import {
+  IdentityIcon,
+  OrganizationIcon,
+  StudyIcon,
+  SiteIcon,
+  SuppliesIcon,
+  SubjectIcon,
+  DataManagementIcon,
+  LabIcon,
+  MedicalCodingIcon,
+  DataServicesIcon,
+  DigitalLearningIcon,
+  HelpIcon
+} from '@/components/icons/collaboration-icons';
 import { useState } from "react";
 import {
   Carousel,
@@ -32,84 +46,84 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const toolsData = [
   { 
     id: "iam",
-    icon: ShieldCheck, 
+    icon: IdentityIcon, 
     label: "Identity and Access Management",
     description: "Role-Based Access Control and Self-Service Account Management.",
     images: ["tool-iam-1", "tool-iam-2"],
   },
   { 
     id: "org-management",
-    icon: Building, 
+    icon: OrganizationIcon, 
     label: "Organization Management",
     description: "Manage all organizations participating in your trials from a central location.",
     images: ["tool-org-1", "tool-org-2"],
   },
   { 
     id: "study-management",
-    icon: Book, 
+    icon: StudyIcon, 
     label: "Study Management",
     description: "Define, configure, and oversee all aspects of your clinical studies.",
     images: ["tool-study-1", "tool-study-2"],
   },
   { 
     id: "site-management",
-    icon: Hospital, 
+    icon: SiteIcon, 
     label: "Site Management",
     description: "Streamline site activation, monitoring, and communication.",
     images: ["tool-site-1", "tool-site-2"],
   },
   { 
     id: "supplies-management",
-    icon: Beaker, 
+    icon: SuppliesIcon, 
     label: "Clinical Supplies Management",
     description: "Track and manage investigational products and trial supplies in real-time.",
     images: ["tool-supplies-1", "tool-supplies-2"],
   },
   { 
     id: "subject-management",
-    icon: Users, 
+    icon: SubjectIcon, 
     label: "Subject Management",
     description: "Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.",
     images: ["tool-subject-1", "tool-subject-2"],
   },
   { 
     id: "data-management",
-    icon: Database, 
+    icon: DataManagementIcon, 
     label: "Data Management",
     description: "Global Library, Data Designer, Data Validation Manager, Data Collection, Discrepancy Management, Source Data Verification, and Data Exports",
     images: ["tool-data-1", "tool-data-2"],
   },
   { 
     id: "lab-management",
-    icon: FlaskConical, 
+    icon: LabIcon, 
     label: "Lab Management",
     description: "Manage lab data, normal ranges, and sample tracking with ease.",
     images: ["tool-lab-1", "tool-lab-2"],
   },
   { 
     id: "medical-coding",
-    icon: ClipboardList, 
+    icon: MedicalCodingIcon, 
     label: "Medical Coding",
     description: "Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.",
     images: ["tool-coding-1", "tool-coding-2"],
   },
   { 
     id: "data-services",
-    icon: LayoutGrid, 
+    icon: DataServicesIcon, 
     label: "Data Services",
     description: "Custom data exports, integrations, and reporting services.",
     images: ["tool-data-svc-1", "tool-data-svc-2"],
   },
   { 
     id: "learning",
-    icon: GraduationCap, 
+    icon: DigitalLearningIcon, 
     label: "Digital Learning",
     description: "Provide training and certification for trial personnel directly on the platform.",
     images: ["tool-learning-1", "tool-learning-2"],
   },
   { 
     id: "support",
-    icon: LifeBuoy, 
+    icon: HelpIcon, 
     label: "Help and Support",
     description: "Access our dedicated support team and comprehensive knowledge base.",
     images: ["tool-support-1", "tool-support-2"],
@@ -148,10 +162,10 @@ export function PlatformToolsGrid() {
                                 )}
                             >
                                 <div className={cn(
-                                    "flex items-center justify-center h-8 w-8 rounded-lg shrink-0",
+                                    "flex items-center justify-center h-10 w-10 rounded-lg shrink-0",
                                     selectedTool.id === tool.id ? "bg-primary-foreground/20" : "bg-primary/10"
                                 )}>
-                                    <tool.icon className={cn("h-5 w-5", selectedTool.id === tool.id ? "text-primary-foreground" : "text-primary")} />
+                                    <tool.icon className={cn("h-8 w-8", selectedTool.id === tool.id ? "text-primary-foreground" : "text-primary")} />
                                 </div>
                                 <span className="text-sm font-medium">{tool.label}</span>
                             </button>
