@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,7 +45,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
 
   return (
     <div
-      className="bg-background border-b"
+      className="sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b"
     >
       <div className="container">
         <div className="py-4">
