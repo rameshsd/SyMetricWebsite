@@ -201,6 +201,7 @@ function UserNav() {
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
+  const [mounted, setMounted] = React.useState(false);
   
   const pathname = usePathname();
 
@@ -210,6 +211,8 @@ export function Navbar() {
 
 
   React.useEffect(() => {
+    setMounted(true);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 10);
@@ -266,8 +269,8 @@ export function Navbar() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full border-b bg-secondary transition-transform duration-300',
-        isScrolled && "shadow-sm",
-        isHidden ? '-translate-y-full' : 'translate-y-0'
+        mounted && isScrolled && "shadow-sm",
+        mounted && isHidden ? '-translate-y-full' : 'translate-y-0'
       )}
     >
       <div className="container flex h-16 items-center">
