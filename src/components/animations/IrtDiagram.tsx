@@ -87,7 +87,7 @@ export function IrtDiagram() {
           style={{
             right: "15%",
             top: "50%",
-            transform: "translate(-50%, 50%)",
+            transform: "translate(-50%, -50%)",
             left: "auto"
           }}
         >
