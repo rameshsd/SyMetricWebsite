@@ -85,10 +85,9 @@ export function IrtDiagram() {
         <div
           className="absolute"
           style={{
-            right: "15%",
+            left: "85%",
             top: "50%",
-            transform: "translate(-50%, -50%)",
-            left: "auto"
+            transform: "translate(-50%, -50%)"
           }}
         >
           <Node Icon={Users} label="Subject Management" />
