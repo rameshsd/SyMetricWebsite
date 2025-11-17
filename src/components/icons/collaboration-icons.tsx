@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { ClipboardList } from 'lucide-react';
 
 const IconWrapper = ({ children, className, viewBox = "0 0 24 24" }: { children: React.ReactNode; className?: string, viewBox?: string }) => (
   <svg
@@ -30,13 +29,13 @@ export const IdentityIcon = ({ className }: { className?: string }) => (
 );
 
 export const OrganizationIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <rect width="18" height="18" x="3" y="3" rx="2" />
-    <path d="M9 3v18" />
-    <path d="M15 3v18" />
-    <path d="M3 9h18" />
-    <path d="M3 15h18" />
-  </IconWrapper>
+    <IconWrapper className={className}>
+        <rect width="16" height="16" x="4" y="4" rx="2" />
+        <path d="M9 4v16" />
+        <path d="M15 4v16" />
+        <path d="M4 9h16" />
+        <path d="M4 15h16" />
+    </IconWrapper>
 );
 
 export const StudyIcon = ({ className }: { className?: string }) => (
@@ -48,19 +47,13 @@ export const StudyIcon = ({ className }: { className?: string }) => (
 
 export const SiteIcon = ({ className }: { className?: string }) => (
     <IconWrapper className={className}>
-        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-        <path d="M9 22v-4h6v4" />
-        <path d="M8 6h.01" />
-        <path d="M16 6h.01" />
-        <path d="M12 6h.01" />
-        <path d="M12 10h.01" />
-        <path d="M12 14h.01" />
-        <path d="M16 10h.01" />
-        <path d="M8 10h.01" />
-        <path d="M8 14h.01" />
-        <path d="M16 14h.01" />
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+      <polyline points="14 2 14 8 20 8" />
+      <path d="M9 15h6" />
+      <path d="M9 19h6" />
     </IconWrapper>
 );
+
 
 export const SuppliesIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
@@ -71,8 +64,14 @@ export const SuppliesIcon = ({ className }: { className?: string }) => (
 
 export const SubjectIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <circle cx="12" cy="8" r="5" />
-    <path d="M20 21a8 8 0 1 0-16 0" />
+    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2" />
+    <path d="M2 5.2 2 8l3.8 2.3" />
+    <path d="m11.5 10.5 4.5 2.5" />
+    <path d="M13 19.7V14" />
+    <path d="M7 19.7V14" />
+    <path d="M4 14.5 2 13" />
+    <path d="m22 13-2 1.5" />
+    <circle cx="12" cy="4" r="2" />
   </IconWrapper>
 );
 
