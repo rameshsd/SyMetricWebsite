@@ -5,7 +5,6 @@ import {
   IdentityIcon,
   OrganizationIcon,
   StudyIcon,
-  SiteIcon,
   SuppliesIcon,
   SubjectIcon,
   DataManagementIcon,
@@ -111,8 +110,11 @@ export function PlatformToolsGrid() {
             {toolsData.map((tool) => (
                 <div key={tool.id} className="group p-6 bg-background rounded-2xl border transition-shadow hover:shadow-lg flex flex-col text-left">
                     <div className="flex items-center justify-start gap-6 mb-4">
-                        <div className="flex-shrink-0 h-16 w-16 bg-primary/10 rounded-lg flex items-center justify-center shadow-sm">
-                            <tool.icon className="h-8 w-8 text-primary" />
+                        <div 
+                            className="flex-shrink-0 h-20 w-20 rounded-lg flex items-center justify-center shadow-sm"
+                            style={{ backgroundColor: '#f5f3ff' }}
+                        >
+                            <tool.icon className="h-10 w-10 text-primary" />
                         </div>
                         <h3 className="text-lg font-bold text-foreground leading-snug">{tool.label}</h3>
                     </div>
