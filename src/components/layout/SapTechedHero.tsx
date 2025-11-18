@@ -6,7 +6,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function SapTechedHero() {
-  const heroImage = PlaceHolderImages.find((p) => p.id === 'hero-section-image');
+  const heroImage = PlaceHolderImages.find((p) => p.id === 'new-hero-image');
 
   return (
     <section className="w-full bg-sap-gradient text-white py-20 overflow-hidden">
@@ -51,4 +51,3 @@ export function SapTechedHero() {
     </section>
   );
 }
-    
