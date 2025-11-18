@@ -183,7 +183,7 @@
     {
       "id": "what-is-sap",
       "description": "Collage of business processes and technology",
-      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDgzNDA0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "business team"
     },
     {
@@ -796,7 +796,7 @@
       "id": "hero-section-image",
       "description": "Doctor holding a futuristic medical data interface.",
       "imageHint": "doctor data",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1n0T1CdMoAE4vueKd4JbCSzHg99pwIpAi"
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/doctor-holding-futuristic-medical-data-interface.jpg"
     },
     {
       "id": "new-hero-image",
