@@ -183,7 +183,7 @@
     {
       "id": "new-hero-image",
       "description": "Doctor holding a futuristic medical data interface.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/user-images/h-d-E35L35A.jpg",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/doctor-holding-futuristic-medical-data-interface.jpg",
       "imageHint": "doctor data"
     },
     {
@@ -687,7 +687,7 @@
     {
       "id": "collaboration-infographic",
       "description": "SyMetric Collaboration Model Infographic",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/collboration-infographic.png",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/06/collaboration-infographic.png",
       "imageHint": "collaboration model"
     },
     {
