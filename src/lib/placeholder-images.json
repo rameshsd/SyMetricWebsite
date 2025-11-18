@@ -182,9 +182,9 @@
     },
     {
       "id": "new-hero-image",
-      "description": "Woman at a desk with a laptop",
-      "imageUrl": "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "imageHint": "woman laptop"
+      "description": "Doctor holding a futuristic medical data interface.",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/user-images/h-d-E35L35A.jpg",
+      "imageHint": "doctor data"
     },
     {
       "id": "what-is-sap",
