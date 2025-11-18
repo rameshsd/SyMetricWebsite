@@ -181,12 +181,6 @@
       "imageHint": "integrated CTP"
     },
     {
-      "id": "new-hero-image",
-      "description": "Doctor holding a futuristic medical data interface.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/doctor-holding-futuristic-medical-data-interface.jpg",
-      "imageHint": "doctor data"
-    },
-    {
       "id": "what-is-sap",
       "description": "Collage of business processes and technology",
       "imageUrl": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDB8fHx8MTc2MDgzNDA0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -317,12 +311,6 @@
       "description": "Man in a suit looking at a phone with UI overlays for messages and tasks.",
       "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "business man phone"
-    },
-    {
-      "id": "financial-dashboard",
-      "description": "A financial dashboard showing charts and figures.",
-      "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dashboard charts"
     },
     {
       "id": "product-hero-business-people",
@@ -808,7 +796,7 @@
       "id": "hero-section-image",
       "description": "Doctor holding a futuristic medical data interface.",
       "imageHint": "doctor data",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1n0T1CdMoAE4vueKd4JbCSzHg99pwIpAi"
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/doctor-holding-futuristic-medical-data-interface.jpg"
     }
   ]
 }
