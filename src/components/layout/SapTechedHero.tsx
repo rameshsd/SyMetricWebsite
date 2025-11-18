@@ -13,7 +13,7 @@ export function SapTechedHero() {
     <section className="w-full bg-sap-gradient text-white py-20 overflow-hidden">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-col justify-center text-center md:text-left space-y-6 relative">
+          <div className="flex flex-col justify-center text-center md:text-left space-y-6">
             <div className="max-w-3xl">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Better Data. Better Clinical Trials.
