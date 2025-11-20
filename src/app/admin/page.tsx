@@ -5,7 +5,7 @@ import { SalesOverview } from '@/components/admin/SalesOverview';
 import { TaskList } from '@/components/admin/TaskList';
 import { Clock, Eye, ShoppingCart, UserCheck, Users } from 'lucide-react';
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { collection, query, where, Timestamp } from 'firebase/firestore';
 import { subDays } from 'date-fns';
 
 export default function AdminDashboard() {
@@ -36,9 +36,12 @@ export default function AdminDashboard() {
     ? Array.from({ length: 30 }, (_, i) => {
         const date = subDays(new Date(), 29 - i);
         const dayString = date.toISOString().split('T')[0];
-        const sales = recentVisits.filter(
-          (visit) => new Date(visit.timestamp).toISOString().split('T')[0] === dayString
-        ).length;
+        const sales = recentVisits.filter((visit) => {
+          if (!visit.timestamp) return false;
+          // Firestore timestamps need to be converted to JS Dates
+          const visitDate = (visit.timestamp as Timestamp).toDate();
+          return visitDate.toISOString().split('T')[0] === dayString;
+        }).length;
         return { name: date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' }), sales };
       })
     : [];
