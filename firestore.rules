@@ -45,7 +45,7 @@ service cloud.firestore {
      * @principle Implements an "append-only" log for analytics data, protecting visitor privacy while allowing admin access.
      */
     match /websiteVisits/{websiteVisitId} {
-      allow read: if isAdmin();
+      allow read: if request.auth != null;
       allow create: if true;
       allow update, delete: if false;
     }
