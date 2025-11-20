@@ -30,7 +30,7 @@ function isAdmin() {
   // In a real application, you would use custom claims.
   // For this prototype, we'll check against a hardcoded admin UID.
   // To get a user UID, you can sign up and check the Firebase Auth console.
-  return request.auth != null && request.auth.uid == "P2OH5YCS1wRXGdmBwBFHnJuyEVv1";
+  return request.auth != null && request.auth.uid == "n0SZRfWeBLgv2kR2Ann3u6LUXht1";
 }
 
 service cloud.firestore {
