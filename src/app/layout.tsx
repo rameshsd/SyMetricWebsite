@@ -6,6 +6,7 @@ import { FirebaseClientProvider } from '@/firebase';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ThemeProvider } from '@/components/shared/theme-provider';
+import { AnalyticsTracker } from '@/components/analytics/AnalyticsTracker';
 
 export const metadata: Metadata = {
   title: 'SyMetric - Transforming Clinical Research with Technology',
@@ -31,6 +32,7 @@ export default function RootLayout({
             disableTransitionOnChange
         >
           <FirebaseClientProvider>
+            <AnalyticsTracker />
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
               <main className="flex-1">{children}</main>

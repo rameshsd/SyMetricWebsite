@@ -6,16 +6,12 @@
       "type": "object",
       "description": "Represents a single visit to the SyMetric Systems website.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the website visit."
-        },
         "timestamp": {
           "type": "string",
           "description": "Timestamp of when the visit occurred.",
           "format": "date-time"
         },
-        "pageViewed": {
+        "path": {
           "type": "string",
           "description": "The specific page that was viewed during the visit."
         },
@@ -23,15 +19,15 @@
           "type": "string",
           "description": "The user agent string of the visitor's browser."
         },
-        "ipAddress": {
+        "userId": {
           "type": "string",
-          "description": "The IP address of the visitor."
+          "description": "The anonymous or authenticated user ID."
         }
       },
       "required": [
-        "id",
         "timestamp",
-        "pageViewed"
+        "path",
+        "userId"
       ]
     },
     "ContactFormSubmission": {

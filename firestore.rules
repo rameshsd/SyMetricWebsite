@@ -37,11 +37,8 @@ service cloud.firestore {
      * @principle Implements an "append-only" log for analytics data, protecting visitor privacy.
      */
     match /websiteVisits/{websiteVisitId} {
-      allow get: if false;
-      allow list: if false;
+      allow read, update, delete: if false;
       allow create: if true;
-      allow update: if false;
-      allow delete: if false;
     }
 
     /**

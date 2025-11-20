@@ -1,29 +1,21 @@
-
 'use client';
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { ArrowUp, ArrowDown } from 'lucide-react';
+import { Skeleton } from '../ui/skeleton';
 
-const data = [
-  { name: '10 Nov', sales: 25 },
-  { name: '11 Nov', sales: 40 },
-  { name: '12 Nov', sales: 30 },
-  { name: '13 Nov', sales: 15 },
-  { name: '14 Nov', sales: 45 },
-  { name: '15 Nov', sales: 50 },
-  { name: '16 Nov', sales: 70 },
-  { name: '17 Nov', sales: 85 },
-  { name: '18 Nov', sales: 60 },
-  { name: '19 Nov', sales: 100 },
-];
+interface SalesOverviewProps {
+  data: { name: string; sales: number }[];
+  isLoading: boolean;
+}
 
-export function SalesOverview() {
+export function SalesOverview({ data, isLoading }: SalesOverviewProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Sales Overview</CardTitle>
+        <CardTitle>Analytics Overview</CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="md:col-span-1 space-y-4">
@@ -40,6 +32,7 @@ export function SalesOverview() {
           <Button>View Details</Button>
         </div>
         <div className="md:col-span-3 h-80">
+          {isLoading ? <Skeleton className="h-full w-full" /> : 
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
@@ -54,6 +47,7 @@ export function SalesOverview() {
               <Line type="monotone" dataKey="sales" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
+          }
         </div>
       </CardContent>
     </Card>

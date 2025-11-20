@@ -4,8 +4,45 @@ import { StatCard } from '@/components/admin/StatCard';
 import { SalesOverview } from '@/components/admin/SalesOverview';
 import { TaskList } from '@/components/admin/TaskList';
 import { Clock, Eye, ShoppingCart, UserCheck, Users } from 'lucide-react';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import { subDays } from 'date-fns';
 
 export default function AdminDashboard() {
+  const firestore = useFirestore();
+
+  const visitsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return collection(firestore, 'websiteVisits');
+  }, [firestore]);
+
+  const { data: visits, isLoading: visitsLoading } = useCollection(visitsQuery);
+
+  const recentVisitsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    const thirtyDaysAgo = subDays(new Date(), 30);
+    return query(
+      collection(firestore, 'websiteVisits'),
+      where('timestamp', '>=', thirtyDaysAgo)
+    );
+  }, [firestore]);
+
+  const { data: recentVisits, isLoading: recentVisitsLoading } = useCollection(recentVisitsQuery);
+
+  const pageViews = visits?.length || 0;
+  const uniqueUsers = visits ? new Set(visits.map(v => v.userId)).size : 0;
+
+  const salesData = recentVisits
+    ? Array.from({ length: 30 }, (_, i) => {
+        const date = subDays(new Date(), 29 - i);
+        const dayString = date.toISOString().split('T')[0];
+        const sales = recentVisits.filter(
+          (visit) => new Date(visit.timestamp).toISOString().split('T')[0] === dayString
+        ).length;
+        return { name: date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' }), sales };
+      })
+    : [];
+
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -14,21 +51,19 @@ export default function AdminDashboard() {
         </div>
         <StatCard
           title="Page Views"
-          value="92.4k"
+          value={pageViews.toLocaleString()}
           icon={Eye}
-          chartData={[{ value: 45 }, { value: 50 }, { value: 30 }, { value: 60 }, { value: 80 }, { value: 70 }]}
-          chartColor="hsl(220, 80%, 60%)"
+          isLoading={visitsLoading}
         />
         <StatCard
           title="Unique Users"
-          value="67.2k"
+          value={uniqueUsers.toLocaleString()}
           icon={UserCheck}
-          chartData={[{ value: 20 }, { value: 40 }, { value: 35 }, { value: 55 }, { value: 45 }, { value: 60 }]}
-          chartColor="hsl(40, 90%, 60%)"
+          isLoading={visitsLoading}
         />
       </div>
 
-      <SalesOverview />
+      <SalesOverview data={salesData} isLoading={recentVisitsLoading} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard title="Total Users" value="67.4k" icon={Users} variant="simple" />
