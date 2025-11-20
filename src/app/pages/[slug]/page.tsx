@@ -54,5 +54,3 @@ export default function DynamicPage({ params }: { params: { slug: string } }) {
     </section>
   );
 }
-
-    
