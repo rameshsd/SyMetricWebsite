@@ -31,7 +31,7 @@ function isAdmin() {
   // In a real application, you would use custom claims.
   // For this prototype, we'll check against a hardcoded admin UID.
   // To get a user UID, you can sign up and check the Firebase Auth console.
-  return request.auth != null && request.auth.uid == "n0SZRfWeBLgv2kR2Ann3u6LUXht1";
+  return request.auth != null && request.auth.uid == "P2OH5YCS1wRXGdmBwBFHnJuyEVv1";
 }
 
 service cloud.firestore {
@@ -46,7 +46,7 @@ service cloud.firestore {
      * @principle Implements an "append-only" log for analytics data, protecting visitor privacy while allowing admin access.
      */
     match /websiteVisits/{websiteVisitId} {
-      allow read: if request.auth != null;
+      allow read: if isAdmin();
       allow create: if true;
       allow update, delete: if false;
     }
