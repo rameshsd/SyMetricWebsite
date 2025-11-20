@@ -1,3 +1,4 @@
+'use client';
 
 import { StatCard } from '@/components/admin/StatCard';
 import { SalesOverview } from '@/components/admin/SalesOverview';
