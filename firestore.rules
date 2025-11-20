@@ -1,3 +1,4 @@
+
 /**
  * Core Philosophy: This ruleset implements a security model for a public-facing website that needs to
  * collect analytics and submission data while serving public content. The model is based on two key principles:
@@ -98,5 +99,20 @@ service cloud.firestore {
       allow update: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
       allow delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
     }
+
+    /**
+     * @description Allows public read access to dynamic pages. Only admins can create, update, or delete them.
+     * @path /pages/{pageId}
+     * @allow (get, list) Any user can read page content.
+     * @allow (create, update, delete) Only admins can manage page content.
+     * @principle Public content is readable by all, but managed only by authorized administrators.
+     */
+    match /pages/{pageId} {
+      allow get: if true;
+      allow list: if true;
+      allow write: if isAdmin();
+    }
   }
 }
+
+    

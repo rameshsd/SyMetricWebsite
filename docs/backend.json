@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "WebsiteVisit": {
@@ -138,6 +139,20 @@
         "publishDate",
         "contentUrl"
       ]
+    },
+    "Page": {
+      "title": "Page",
+      "type": "object",
+      "description": "Represents a dynamically created page on the website.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the page." },
+        "slug": { "type": "string", "description": "The URL-friendly slug for the page." },
+        "title": { "type": "string", "description": "The main title of the page." },
+        "content": { "type": "string", "description": "The main content of the page, can be markdown or HTML." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the page was created." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the page was last updated." }
+      },
+      "required": ["id", "slug", "title", "content", "createdAt"]
     }
   },
   "auth": {
@@ -211,8 +226,26 @@
             }
           ]
         }
+      },
+      {
+        "path": "/pages/{pageId}",
+        "definition": {
+          "entityName": "Page",
+          "schema": {
+            "$ref": "#/backend/entities/Page"
+          },
+          "description": "Stores the content for dynamically created pages. 'pageId' is the unique ID for each page.",
+          "params": [
+            {
+              "name": "pageId",
+              "description": "Unique identifier for the page."
+            }
+          ]
+        }
       }
     ],
     "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations."
   }
 }
+
+    

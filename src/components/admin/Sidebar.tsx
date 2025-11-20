@@ -16,6 +16,7 @@ import {
   Clock,
   Settings,
   Badge,
+  File,
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
@@ -24,6 +25,7 @@ import { usePathname } from 'next/navigation';
 const mainNav = [
   { name: 'Dashboards', href: '/admin', icon: LayoutDashboard },
   { name: 'Analytics', href: '/admin/analytics', icon: GanttChartSquare },
+  { name: 'Pages', href: '/admin/pages', icon: File },
 ];
 
 const appNav = [
@@ -116,3 +118,5 @@ export function Sidebar() {
     </aside>
   );
 }
+
+    
