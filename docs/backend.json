@@ -1,128 +1,222 @@
 {
   "entities": {
-    "CommunityPost": {
+    "WebsiteVisit": {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "CommunityPost",
+      "title": "WebsiteVisit",
       "type": "object",
-      "description": "Represents a post in the community forum.",
+      "description": "Represents a single visit to the SyMetric Systems website.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the community post."
+          "description": "Unique identifier for the website visit."
         },
-        "authorId": {
+        "timestamp": {
           "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N CommunityPost).  The user who created the post."
-        },
-        "title": {
-          "type": "string",
-          "description": "Title of the community post."
-        },
-        "content": {
-          "type": "string",
-          "description": "The main content of the community post."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the post was created.",
+          "description": "Timestamp of when the visit occurred.",
           "format": "date-time"
         },
-        "updatedAt": {
+        "pageViewed": {
           "type": "string",
-          "description": "Timestamp indicating when the post was last updated.",
-          "format": "date-time"
+          "description": "The specific page that was viewed during the visit."
         },
-        "likes": {
-          "type": "number",
-          "description": "Number of likes the community post has."
+        "userAgent": {
+          "type": "string",
+          "description": "The user agent string of the visitor's browser."
+        },
+        "ipAddress": {
+          "type": "string",
+          "description": "The IP address of the visitor."
         }
       },
       "required": [
         "id",
-        "authorId",
-        "title",
-        "content",
-        "createdAt"
+        "timestamp",
+        "pageViewed"
       ]
     },
-    "User": {
+    "ContactFormSubmission": {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "User",
+      "title": "ContactFormSubmission",
       "type": "object",
-      "description": "Represents a user of the SyMetric Systems platform.",
+      "description": "Represents a submission made through the contact form on the website.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the user."
+          "description": "Unique identifier for the contact form submission."
         },
-        "firstName": {
+        "timestamp": {
           "type": "string",
-          "description": "First name of the user."
+          "description": "Timestamp of when the form was submitted.",
+          "format": "date-time"
         },
-        "lastName": {
+        "name": {
           "type": "string",
-          "description": "Last name of the user."
+          "description": "The name of the person submitting the form."
         },
         "email": {
           "type": "string",
-          "description": "Email address of the user.",
+          "description": "The email address of the person submitting the form.",
           "format": "email"
         },
         "organization": {
           "type": "string",
-          "description": "Organization the user belongs to."
+          "description": "The organization the person belongs to."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message submitted through the form."
         }
       },
       "required": [
         "id",
-        "firstName",
-        "lastName",
+        "timestamp",
+        "name",
         "email",
-        "organization"
+        "message"
+      ]
+    },
+    "ResourceInteraction": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ResourceInteraction",
+      "type": "object",
+      "description": "Represents a user interaction with a resource (e.g., blog post, case study).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the resource interaction."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp of when the interaction occurred.",
+          "format": "date-time"
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "Reference to the Resource that was interacted with."
+        },
+        "interactionType": {
+          "type": "string",
+          "description": "Type of interaction (e.g., view, download, share)."
+        }
+      },
+      "required": [
+        "id",
+        "timestamp",
+        "resourceId",
+        "interactionType"
+      ]
+    },
+    "Resource": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Resource",
+      "type": "object",
+      "description": "Represents a resource on the website, such as a blog post or a case study.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the resource."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the resource."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of resource (e.g., 'blog', 'case study')."
+        },
+        "publishDate": {
+          "type": "string",
+          "description": "Date when the resource was published.",
+          "format": "date-time"
+        },
+        "contentUrl": {
+          "type": "string",
+          "description": "URL where the content can be accessed.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "type",
+        "publishDate",
+        "contentUrl"
       ]
     }
   },
   "auth": {
     "providers": [
       "password",
-      "google.com"
+      "anonymous"
     ]
   },
   "firestore": {
     "structure": [
       {
-        "path": "/communityPosts/{communityPostId}",
+        "path": "/websiteVisits/{websiteVisitId}",
         "definition": {
-          "entityName": "CommunityPost",
+          "entityName": "WebsiteVisit",
           "schema": {
-            "$ref": "#/backend/entities/CommunityPost"
+            "$ref": "#/backend/entities/WebsiteVisit"
           },
-          "description": "Stores all community posts. Open read access for all users.  Requires authentication to create a post. Includes the denormalized 'authorId' for authorization independence.",
+          "description": "Stores individual website visit records.  'websiteVisitId' is the unique ID for each visit.",
           "params": [
             {
-              "name": "communityPostId",
-              "description": "Unique identifier for the community post."
+              "name": "websiteVisitId",
+              "description": "Unique identifier for the website visit."
             }
           ]
         }
       },
       {
-        "path": "/users/{userId}",
+        "path": "/contactFormSubmissions/{contactFormSubmissionId}",
         "definition": {
-          "entityName": "User",
+          "entityName": "ContactFormSubmission",
           "schema": {
-            "$ref": "#/backend/entities/User"
+            "$ref": "#/backend/entities/ContactFormSubmission"
           },
-          "description": "Stores user profiles. Only the authenticated user can read/write their own data.",
+          "description": "Stores contact form submissions. 'contactFormSubmissionId' is the unique ID for each submission.",
           "params": [
             {
-              "name": "userId",
-              "description": "Unique identifier for the user."
+              "name": "contactFormSubmissionId",
+              "description": "Unique identifier for the contact form submission."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/resourceInteractions/{resourceInteractionId}",
+        "definition": {
+          "entityName": "ResourceInteraction",
+          "schema": {
+            "$ref": "#/backend/entities/ResourceInteraction"
+          },
+          "description": "Stores records of user interactions with resources. 'resourceInteractionId' is the unique ID for each interaction.",
+          "params": [
+            {
+              "name": "resourceInteractionId",
+              "description": "Unique identifier for the resource interaction."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/resources/{resourceId}",
+        "definition": {
+          "entityName": "Resource",
+          "schema": {
+            "$ref": "#/backend/entities/Resource"
+          },
+          "description": "Stores metadata about resources available on the website (e.g., blog posts, case studies). 'resourceId' is the unique ID for each resource.",
+          "params": [
+            {
+              "name": "resourceId",
+              "description": "Unique identifier for the resource."
             }
           ]
         }
       }
     ],
-    "reasoning": "The Firestore structure prioritizes ease of access for community posts while adhering to the principle of Authorization Independence. Community posts are stored in a top-level collection called `communityPosts`. This enables anonymous users to read all posts, fulfilling the requirement for open community access.  For users to create posts, authentication via the `authorId` field is required in the rules, which links back to the `/users/{userId}` collection. This keeps public read access separate from authenticated write access. This flat structure, combined with the inclusion of the `authorId` within the `communityPosts` documents, avoids the need for `get()` calls in the security rules, ensuring Authorization Independence.  The segregation of concerns into a single collection simplifies querying and security rule management."
+    "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations."
   }
 }
