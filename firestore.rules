@@ -25,20 +25,29 @@
  *   data types of documents. Authorization is based on the operation and path, not the document's content.
  */
 rules_version = '2';
+
+function isAdmin() {
+  // In a real application, you would use custom claims.
+  // For this prototype, we'll check against a hardcoded admin UID.
+  // To get a user UID, you can sign up and check the Firebase Auth console.
+  return request.auth != null && request.auth.uid == "REPLACE_WITH_YOUR_ADMIN_UID";
+}
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows any user to create a website visit record but prevents anyone from reading or modifying them.
+     * @description Allows any user to create a visit record, but only admins can read them.
      * @path /websiteVisits/{websiteVisitId}
      * @allow (create) An anonymous visitor's browser creating a new visit log.
-     * @deny (get) A user trying to read the visit record of another user.
-     * @deny (list) A malicious user attempting to list all website visit records.
-     * @principle Implements an "append-only" log for analytics data, protecting visitor privacy.
+     * @allow (read) An authenticated admin viewing the analytics dashboard.
+     * @deny (get, list) A non-admin user trying to read analytics data.
+     * @principle Implements an "append-only" log for analytics data, protecting visitor privacy while allowing admin access.
      */
     match /websiteVisits/{websiteVisitId} {
-      allow read, update, delete: if false;
+      allow read: if isAdmin();
       allow create: if true;
+      allow update, delete: if false;
     }
 
     /**
