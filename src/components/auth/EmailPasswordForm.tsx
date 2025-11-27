@@ -7,9 +7,10 @@ import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useAuth, initiateEmailSignIn } from '@/firebase';
+import { useAuth, initiateEmailSignIn, initiateEmailSignUp } from '@/firebase';
 import { Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { FirebaseError } from 'firebase/app';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
@@ -40,11 +41,20 @@ export function EmailPasswordForm({ onLoginSuccess }: EmailPasswordFormProps) {
       await initiateEmailSignIn(auth, values.email, values.password);
       onLoginSuccess();
     } catch (error: any) {
-      if (error.code === 'auth/wrong-password') {
-        setError('Wrong password. Please try again.');
-      } else {
-        setError(error.message || 'An unexpected error occurred.');
-      }
+        if (error instanceof FirebaseError && error.code === 'auth/user-not-found') {
+            // If user not found, try to sign them up
+            try {
+                await initiateEmailSignUp(auth, values.email, values.password);
+                onLoginSuccess();
+            } catch (signUpError: any) {
+                setError(signUpError.message || 'An unexpected error occurred during sign up.');
+            }
+        } else if (error instanceof FirebaseError && error.code === 'auth/wrong-password') {
+            setError('Wrong password. Please try again.');
+        }
+        else {
+            setError(error.message || 'An unexpected error occurred.');
+        }
     } finally {
       setIsSubmitting(false);
     }
