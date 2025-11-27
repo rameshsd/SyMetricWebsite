@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -43,6 +42,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Skeleton } from '../ui/skeleton';
 
+
 const ListItem = React.forwardRef<
   HTMLDivElement,
   { title: string; href: string; children: React.ReactNode; className?: string }
@@ -67,6 +67,7 @@ const ListItem = React.forwardRef<
   )
 })
 ListItem.displayName = "ListItem"
+
 
 const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
@@ -106,7 +107,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
     await auth.signOut();
     router.push('/');
   };
-
+  
   const handleGoogleSignIn = async () => {
     try {
       await initiateGoogleSignIn();
@@ -202,6 +203,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   );
 }
 
+
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
@@ -212,6 +214,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHidden, setIsHidden] = React.useState(false);
   const lastScrollY = React.useRef(0);
+
 
   React.useEffect(() => {
     setMounted(true);
@@ -266,6 +269,7 @@ export function Navbar() {
 
   const currentSubmenu = mobileSubmenuStack[mobileSubmenuStack.length - 1];
   const menuContent = currentSubmenu ? currentSubmenu.items : navItems;
+
 
   return (
     <header
@@ -353,19 +357,27 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
-          <div className="hidden md:flex items-center gap-x-1">
-              <Button variant="ghost" size="icon">
-                  <Search className="h-5 w-5" />
-                  <span className="sr-only">Search</span>
-              </Button>
-              <UserNav />
-              <Button variant="ghost" size="icon">
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Language</span>
-              </Button>
-          </div>
-           <div className="flex items-center md:hidden">
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <div className="hidden md:flex items-center gap-x-1">
+                <Button variant="ghost" size="icon">
+                    <Search className="h-5 w-5" />
+                    <span className="sr-only">Search</span>
+                </Button>
+                <UserNav />
+                <Button variant="ghost" size="icon">
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Language</span>
+                </Button>
+            </div>
+
+            <div className="flex items-center md:hidden">
+              <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
+              <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
+                if (!open) {
+                  closeMobileMenu();
+                } else {
+                  setIsMobileMenuOpen(true);
+                }
+              }}>
                   <SheetTrigger asChild>
                       <Button variant="ghost" size="icon">
                           <Menu className="h-6 w-6" />
@@ -373,11 +385,10 @@ export function Navbar() {
                       </Button>
                   </SheetTrigger>
                   <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                     <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
+                      <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
                           <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                           <div className="flex items-center gap-2">
                               <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                              <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
                               <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                           </div>
                           <div className="flex items-center">
@@ -426,7 +437,7 @@ export function Navbar() {
                       </div>
                   </SheetContent>
               </Sheet>
-          </div>
+            </div>
         </div>
       </div>
     </header>
