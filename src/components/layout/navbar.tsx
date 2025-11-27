@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -29,7 +28,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 import {
@@ -98,7 +96,7 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   );
 };
 
-function UserNav() {
+function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const router = useRouter();
@@ -108,11 +106,12 @@ function UserNav() {
     await auth.signOut();
     router.push('/');
   };
-  
+
   const handleGoogleSignIn = async () => {
     try {
       await initiateGoogleSignIn();
-      setIsDialogOpen(false);
+      setIsDialogOpen(false); // Close dialog on success
+      if (onLoginClick) onLoginClick(); // Close mobile menu if function is provided
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -121,7 +120,15 @@ function UserNav() {
   
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
+    if (onLoginClick) onLoginClick();
     router.push('/community');
+  };
+
+  const handleDialogTriggerClick = (e: React.MouseEvent) => {
+    if (onLoginClick) {
+      onLoginClick();
+    }
+    // We let the Dialog's default behavior handle opening.
   };
 
   if (isUserLoading) {
@@ -162,12 +169,10 @@ function UserNav() {
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" onClick={handleDialogTriggerClick}>
           <User className="h-5 w-5" />
           <span className="sr-only">Account</span>
         </Button>
-      </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Welcome</DialogTitle>
@@ -349,35 +354,40 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
-            {/* ONE UserNav for both desktop & mobile */}
-            <UserNav />
-
-            {/* Desktop-only icons */}
+            {/* Desktop icons */}
             <div className="hidden md:flex items-center gap-x-1">
                 <Button variant="ghost" size="icon">
-                <Search className="h-5 w-5" />
-                <span className="sr-only">Search</span>
+                    <Search className="h-5 w-5" />
+                    <span className="sr-only">Search</span>
                 </Button>
+                <UserNav />
                 <Button variant="ghost" size="icon">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Language</span>
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Language</span>
                 </Button>
             </div>
 
-            {/* Mobile-only menu button */}
+            {/* Mobile icons */}
             <div className="flex items-center md:hidden">
-                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
+                  if (!open) {
+                    closeMobileMenu();
+                  } else {
+                    setIsMobileMenuOpen(true);
+                  }
+                }}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
-                        <Menu className="h-6 w-6" />
-                        <span className="sr-only">Toggle menu</span>
+                            <Menu className="h-6 w-6" />
+                            <span className="sr-only">Toggle menu</span>
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                        <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
+                       <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
+                                <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <SheetTrigger asChild>
@@ -405,9 +415,9 @@ export function Navbar() {
                             </div>
                         )}
                         <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
-                        {(menuContent || []).map((item) => (
-                          <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
-                        ))}
+                          {(menuContent || []).map((item) => (
+                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
+                          ))}
                         </nav>
 
                         <div className="p-4 mt-auto">
@@ -426,3 +436,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
