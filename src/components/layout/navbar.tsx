@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useUser, initiateGoogleSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -41,6 +41,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Skeleton } from '../ui/skeleton';
+import { useAuth } from '@/firebase';
 
 
 const ListItem = React.forwardRef<
@@ -97,7 +98,7 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   );
 };
 
-function UserNav() {
+function UserNav({ closeMobileMenu }: { closeMobileMenu?: () => void }) {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const router = useRouter();
@@ -111,10 +112,10 @@ function UserNav() {
   };
 
   const handleGoogleSignIn = async () => {
-    if (!auth) return;
     try {
-      await initiateGoogleSignIn(auth);
+      await initiateGoogleSignIn();
       setIsDialogOpen(false);
+      if (closeMobileMenu) closeMobileMenu();
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -123,8 +124,16 @@ function UserNav() {
 
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
+    if (closeMobileMenu) closeMobileMenu();
     router.push('/community');
   };
+  
+  const handleTriggerClick = () => {
+    if (closeMobileMenu) {
+        closeMobileMenu();
+    }
+    setIsDialogOpen(true);
+  }
 
   if (isUserLoading) {
     return <Skeleton className="h-10 w-10 rounded-full" />;
@@ -165,7 +174,7 @@ function UserNav() {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" onClick={() => closeMobileMenu && closeMobileMenu()}>
           <User className="h-5 w-5" />
           <span className="sr-only">Login</span>
         </Button>
@@ -381,7 +390,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav />
+                                <UserNav closeMobileMenu={closeMobileMenu} />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">
@@ -437,4 +446,3 @@ export function Navbar() {
   );
 }
 
-    
