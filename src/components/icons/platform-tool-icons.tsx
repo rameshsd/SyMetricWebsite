@@ -2,17 +2,15 @@
 
 import React from 'react';
 
-const IconWrapper = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
+const IconWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="currentColor"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={className}
     aria-hidden="true"
   >
@@ -21,75 +19,99 @@ const IconWrapper = ({
 );
 
 export const UserAccessIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M16.5,8.5c0,2.48-2.02,4.5-4.5,4.5s-4.5-2.02-4.5-4.5c0-2.48,2.02-4.5,4.5-4.5S16.5,6.02,16.5,8.5z M12,6 c-1.38,0-2.5,1.12-2.5,2.5S10.62,11,12,11s2.5-1.12,2.5-2.5S13.38,6,12,6z"/>
-        <path d="M12,14c-3.31,0-6,2.69-6,6v2h12v-2C18,16.69,15.31,14,12,14z M8.18,18.06C8.8,16.83,10.29,16,12,16s3.2,0.83,3.82,2.06 L8.18,18.06z"/>
-        <path d="M20,10.38V4h- período8v16h10.19C21.39,18.3,22,16.27,22,14C22,12.42,21.3,11.01,20,10.38z M18,18h-6v-2h6V18z M18,14h-6v-2h6V14z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="8.5" cy="7" r="4" />
+    <polyline points="17 11 19 13 23 9" />
+  </IconWrapper>
 );
 
 export const OrgManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="3" y="2" width="18" height="20" rx="2" ry="2" />
+    <line x1="9" y1="2" x2="9" y2="22" />
+    <line x1="15" y1="2" x2="15" y2="22" />
+    <line x1="3" y1="8" x2="21" y2="8" />
+    <line x1="3" y1="16" x2="21" y2="16" />
+  </IconWrapper>
 );
 
 export const StudyManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M20,3H4C2.9,3,2,3.9,2,5v14c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V5C22,3.9,21.1,3,20,3z M12,18H6v-2h6V18z M18,14H6v-2h12V14z M18,10H6V8h12V10z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    <line x1="9" y1="8" x2="15" y2="8" />
+    <line x1="9" y1="12" x2="13" y2="12" />
+  </IconWrapper>
 );
 
 export const SiteManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M12,2C8.13,2,5,5.13,5,9c0,5.25,7,13,7,13s7-7.75,7-13C19,5.13,15.87,2,12,2z M12,11.5c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5S13.38,11.5,12,11.5z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </IconWrapper>
 );
 
 export const SuppliesManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M20,8h-3V4h-2v4h-4V4H9v4H6C4.9,8,4,8.9,4,10v10c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V10C22,8.9,21.1,8,20,8z M16,16h-3v3h-2v-3H8v-2h3v-3h2v3h3V16z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+    <line x1="12" y1="22.08" x2="12" y2="12" />
+  </IconWrapper>
 );
 
 export const SubjectManagementIcon = ({ className }: { className?: string }) => (
     <IconWrapper className={className}>
-        <path d="M12,12c2.21,0,4-1.79,4-4s-1.79-4-4-4S8,5.79,8,8S9.79,12,12,12z M12,14c-2.67,0-8,1.34-8,4v2h16v-2 C20,15.34,14.67,14,12,14z"/>
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="8.5" cy="7" r="4" />
+        <path d="M20 8v6" />
+        <path d="M23 11h-6" />
     </IconWrapper>
 );
 
+
 export const DataManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M12,3C7.03,3,3,4.79,3,7v10c0,2.21,4.03,4,9,4s9-1.79,9-4V7C21,4.79,16.97,3,12,3z M12,18.5 c-3.87,0-7-1.34-7-3v-1.45c1.47,1.01,4.05,1.8,7,1.8s5.53-0.79,7-1.8v1.45C19,17.16,15.87,18.5,12,18.5z M12,13.5 c-3.87,0-7-1.34-7-3V9.05C6.47,9.84,9.05,10.63,12,10.63s5.53-0.79,7-1.58V10.5C19,12.16,15.87,13.5,12,13.5z M12,8.5 c-3.87,0-7-1.34-7-3s3.13-3,7-3s7,1.34,7,3S15.87,8.5,12,8.5z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <ellipse cx="12" cy="5" rx="9" ry="3" />
+    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+  </IconWrapper>
 );
 
 export const LabManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M7.83,4.06c0.51-1.36,1.94-2.28,3.47-2.04c1.64,0.25,2.94,1.43,3.38,2.99l1.45,4.99H6.38L7.83,4.06z M20.94,19.23 c0.33-0.91-0.12-1.92-1-2.22l-6.38-2.21l-1.45,4.99h6.88L20.94,19.23z M15.25,22l-4.14-1.43L9.66,24.7l4.14,1.43 C14.71,26.43,15.54,25.9,15.79,25.04L15.25,22z M4.94,17.02l-1-2.22C3.62,13.9,4.07,12.89,5,12.6l6.38-2.21l1.45,4.99H5.94 L4.94,17.02z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M2 21h20" />
+    <path d="M7 21a4 4 0 0 0 4-4V3" />
+    <path d="M13 21a4 4 0 0 1-4-4V3" />
+  </IconWrapper>
 );
 
 export const MedicalCodingIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z M12,18H8v-2h4V18z M16,14H8v-2h8V14z M13,9V3.5L18.5,9H13z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M20.42 4.58a2.1 2.1 0 0 0-2.92 0L12 10l-2.08-2.08a2.1 2.1 0 0 0-2.92 0L3 12l2.08 2.08a2.1 2.1 0 0 0 2.92 0L12 10l5.5 5.5a2.1 2.1 0 0 0 2.92 0L21 12l-2.08-2.08a2.1 2.1 0 0 0-2.92 0L12 14l-5.5-5.5a2.1 2.1 0 0 0-2.92 0L3 9" />
+  </IconWrapper>
 );
 
 export const DataServicesIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M22,13h-4v4h4V13z M22,6h-4v4h4V6z M2,17h16v-4H2V17z M2,10v4h16v-4H2z M2,6v4h16V6H2z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="3" y="4" width="18" height="16" rx="2" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+    <line x1="9" y1="15" x2="15" y2="15" />
+  </IconWrapper>
 );
 
 export const DigitalLearningIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+    <line x1="2" y1="20" x2="22" y2="20" />
+    <line x1="12" y1="17" x2="12" y2="20" />
+  </IconWrapper>
 );
 
 export const HelpSupportIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M21,3H3C1.9,3,1,3.9,1,5v12c0,1.1,0.9,2,2,2h5v4l4-4h7c1.1,0,2-0.9,2-2V5C23,3.9,22.1,3,21,3z M12,15 c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5S14.76,15,12,15z"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <line x1="12" y1="17" x2="12.01" y2="17" />
+  </IconWrapper>
 );
