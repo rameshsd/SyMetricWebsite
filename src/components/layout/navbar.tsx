@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -114,23 +113,23 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
     try {
       await initiateGoogleSignIn();
       setIsDialogOpen(false);
-      if (onLoginClick) onLoginClick(); // Close mobile menu if open
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
     }
   };
-  
+
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
-    if (onLoginClick) onLoginClick(); // Close mobile menu if open
     router.push('/community');
   };
 
-  const handleTriggerClick = () => {
-    if (onLoginClick) onLoginClick();
+  const handleDialogTriggerClick = () => {
+    if (onLoginClick) {
+      onLoginClick();
+    }
     setIsDialogOpen(true);
-  }
+  };
 
   if (isUserLoading) {
     return <Skeleton className="h-10 w-10 rounded-full" />;
@@ -171,7 +170,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" onClick={onLoginClick}>
+        <Button variant="ghost" size="icon" onClick={handleDialogTriggerClick}>
           <User className="h-5 w-5" />
           <span className="sr-only">Account</span>
         </Button>
@@ -436,5 +435,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
