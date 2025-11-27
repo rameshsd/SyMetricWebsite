@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, initiateGoogleSignIn } from '@/firebase';
+import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -40,8 +40,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Skeleton } from '../ui/skeleton';
-import { useAuth } from '@/firebase';
 
 
 const ListItem = React.forwardRef<
@@ -98,24 +96,21 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
   );
 };
 
-function UserNav({ closeMobileMenu }: { closeMobileMenu?: () => void }) {
+function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const router = useRouter();
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleSignOut = async () => {
-    if (auth) {
-      await auth.signOut();
-      router.push('/');
-    }
+    await auth.signOut();
+    router.push('/');
   };
 
   const handleGoogleSignIn = async () => {
     try {
       await initiateGoogleSignIn();
       setIsDialogOpen(false);
-      if (closeMobileMenu) closeMobileMenu();
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -124,19 +119,18 @@ function UserNav({ closeMobileMenu }: { closeMobileMenu?: () => void }) {
 
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
-    if (closeMobileMenu) closeMobileMenu();
     router.push('/community');
   };
-  
+
   const handleTriggerClick = () => {
-    if (closeMobileMenu) {
-        closeMobileMenu();
+    if (onLoginClick) {
+        onLoginClick();
     }
     setIsDialogOpen(true);
   }
 
   if (isUserLoading) {
-    return <Skeleton className="h-10 w-10 rounded-full" />;
+    return <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />;
   }
 
   if (user) {
@@ -174,9 +168,9 @@ function UserNav({ closeMobileMenu }: { closeMobileMenu?: () => void }) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" onClick={() => closeMobileMenu && closeMobileMenu()}>
+        <Button variant="ghost" size="icon" onClick={() => onLoginClick?.()}>
           <User className="h-5 w-5" />
-          <span className="sr-only">Login</span>
+          <span className="sr-only">Account</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
@@ -390,7 +384,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav closeMobileMenu={closeMobileMenu} />
+                                <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">
@@ -446,3 +440,4 @@ export function Navbar() {
   );
 }
 
+    
