@@ -363,12 +363,7 @@ export function Navbar() {
                 </Button>
             </div>
              <div className="flex items-center md:hidden">
-                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
-                    if (!open) {
-                        closeMobileMenu();
-                    }
-                    setIsMobileMenuOpen(open);
-                }}>
+                 <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
@@ -380,7 +375,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav onLoginClick={closeMobileMenu} />
+                                <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">

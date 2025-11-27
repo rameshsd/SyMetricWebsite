@@ -3,9 +3,8 @@
 import React, { createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
 import { FirebaseApp } from 'firebase/app';
 import { Firestore } from 'firebase/firestore';
-import { Auth, User } from 'firebase/auth';
+import { Auth, User, onAuthStateChanged } from 'firebase/auth';
 import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
-import { useUser as useUserHook } from '@/firebase/auth/use-user'; // Import the dedicated hook
 
 interface FirebaseProviderProps {
   children: ReactNode;
@@ -14,7 +13,13 @@ interface FirebaseProviderProps {
   auth: Auth;
 }
 
-interface FirebaseContextState {
+interface UserAuthState {
+  user: User | null;
+  isUserLoading: boolean;
+  userError: Error | null;
+}
+
+export interface FirebaseContextState {
   firebaseApp: FirebaseApp | null;
   firestore: Firestore | null;
   auth: Auth | null;
@@ -31,16 +36,33 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   firestore,
   auth,
 }) => {
-  const { user, isUserLoading, userError } = useUserHook(); // Use the dedicated hook
+  const [userAuthState, setUserAuthState] = useState<UserAuthState>({
+    user: null,
+    isUserLoading: true,
+  });
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
+        setUserAuthState({ user, isUserLoading: false, userError: null });
+      },
+      (error) => {
+        console.error("FirebaseProvider: onAuthStateChanged error:", error);
+        setUserAuthState({ user: null, isUserLoading: false, userError: error });
+      }
+    );
+    return () => unsubscribe();
+  }, [auth]);
 
   const contextValue = useMemo((): FirebaseContextState => ({
     firebaseApp,
     firestore,
     auth,
-    user,
-    isUserLoading,
-    userError,
-  }), [firebaseApp, firestore, auth, user, isUserLoading, userError]);
+    user: userAuthState.user,
+    isUserLoading: userAuthState.isUserLoading,
+    userError: userAuthState.userError,
+  }), [firebaseApp, firestore, auth, userAuthState]);
 
   return (
     <FirebaseContext.Provider value={contextValue}>
@@ -90,8 +112,3 @@ export function useMemoFirebase<T>(factory: () => T, deps: React.DependencyList)
   }
   return memoized;
 }
-
-export const useUser = () => {
-  const { user, isUserLoading, userError } = useFirebase();
-  return { user, isUserLoading, userError };
-};
