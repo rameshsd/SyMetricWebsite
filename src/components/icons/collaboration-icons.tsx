@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,107 +19,103 @@ const IconWrapper = ({ children, className, viewBox = "0 0 24 24" }: { children:
 );
 
 export const IdentityIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M42.7,42.7a16,16,0,0,0-21.4,0,16,16,0,0,0-10.7,14.6V62h42.8V57.3A16,16,0,0,0,42.7,42.7Z" />
+    <circle fill="hsl(var(--primary))" cx="32" cy="24" r="10.7" />
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const OrganizationIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <rect width="16" height="16" x="4" y="4" rx="2" />
-        <path d="M9 4v16" />
-        <path d="M15 4v16" />
-        <path d="M4 9h16" />
-        <path d="M4 15h16" />
+    <IconWrapper className={className} viewBox="0 0 64 64">
+        <path fill="hsl(var(--primary))" d="M56,5.3H8A2.7,2.7,0,0,0,5.3,8V56a2.7,2.7,0,0,0,2.7,2.7H56A2.7,2.7,0,0,0,58.7,56V8A2.7,2.7,0,0,0,56,5.3Zm-24,48H10.7V34.7H32Zm0-21.3H10.7V10.7H32ZM53.3,53.3H37.3V34.7h16Zm0-21.3H37.3V10.7h16Z" />
+        <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+        <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
     </IconWrapper>
 );
 
 export const StudyIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M50.7 5.3H13.3a8 8 0 0 0-8 8V56a2.7 2.7 0 0 0 4.6 2.1l7.4-6a2.7 2.7 0 0 1 1.7-.6h29a2.7 2.7 0 0 0 2.7-2.7V8a2.7 2.7 0 0 0-2.7-2.7ZM37.3 40h-16a2.7 2.7 0 0 1 0-5.3h16a2.7 2.7 0 0 1 0 5.3Zm5.4-13.3h-24a2.7 2.7 0 0 1 0-5.4h24a2.7 2.7 0 0 1 0 5.4Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const SiteIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-      <polyline points="14 2 14 8 20 8" />
-      <path d="M9 15h6" />
-      <path d="M9 19h6" />
+    <IconWrapper className={className} viewBox="0 0 64 64">
+      <path fill="hsl(var(--primary))" d="M48,5.3H16A5.34,5.34,0,0,0,10.7,10.7V53.3A5.34,5.34,0,0,0,16,58.7H48A5.34,5.34,0,0,0,53.3,53.3V10.7A5.34,5.34,0,0,0,48,5.3ZM32,21.3a5.3,5.3,0,1,1,5.3-5.3A5.3,5.3,0,0,1,32,21.3Zm10.7,26.7c0,5.9-10.7,13.3-10.7,13.3s-10.7-7.4-10.7-13.3a10.7,10.7,0,1,1,21.4,0Z"/>
+      <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+      <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
     </IconWrapper>
 );
 
 
 export const SuppliesIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M56,13.3H8a2.7,2.7,0,0,0-2.7,2.7V50.7A2.7,2.7,0,0,0,8,53.3H56a2.7,2.7,0,0,0,2.7-2.7V16A2.7,2.7,0,0,0,56,13.3ZM42.7,24,32,34.7,21.3,24,18.7,26.7l13.3,13.3,13.3-13.3Z"/>
+    <path fill="hsl(var(--primary))" d="M48,5.3H16a2.7,2.7,0,0,0-2.7,2.7v5.3h37.3V8a2.7,2.7,0,0,0-2.7-2.7Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const SubjectIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2" />
-    <path d="M2 5.2 2 8l3.8 2.3" />
-    <path d="m11.5 10.5 4.5 2.5" />
-    <path d="M13 19.7V14" />
-    <path d="M7 19.7V14" />
-    <path d="M4 14.5 2 13" />
-    <path d="m22 13-2 1.5" />
-    <circle cx="12" cy="4" r="2" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <circle fill="hsl(var(--primary))" cx="32" cy="18.7" r="8"/>
+    <path fill="hsl(var(--primary))" d="M42.7,32H21.3A10.68,10.68,0,0,0,10.7,42.7V58.7h42.7V42.7A10.68,10.68,0,0,0,42.7,32Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const DataManagementIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-     <ellipse cx="12" cy="5" rx="9" ry="3" />
-     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+     <path fill="hsl(var(--primary))" d="M32,5.3C16.2,5.3,5.3,12.5,5.3,21.3S16.2,37.3,32,37.3,58.7,30.1,58.7,21.3,47.8,5.3,32,5.3Zm0,26.7A10.7,10.7,0,1,1,42.7,21.3,10.68,10.68,0,0,1,32,32Z"/>
+     <path fill="hsl(var(--primary))" d="M5.3,32c0,8.8,10.9,16,26.7,16s26.7-7.2,26.7-16S47.8,16,32,16,5.3,23.2,5.3,32Zm26.7,10.7A10.7,10.7,0,1,1,42.7,32,10.68,10.68,0,0,1,32,42.7Z"/>
+     <path fill="hsl(var(--primary))" d="M5.3,42.7c0,8.8,10.9,16,26.7,16s26.7-7.2,26.7-16S47.8,26.7,32,26.7,5.3,33.9,5.3,42.7Zm26.7,10.6A10.7,10.7,0,1,1,42.7,42.7,10.68,10.68,0,0,1,32,53.3Z"/>
+     <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+     <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const LabIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <path d="M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5h-5c-1.4 0-2.5-1.1-2.5-2.5V2" />
-    <path d="M8.5 2h7" />
-    <path d="M14.5 16h-5" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M48,5.3H16a2.7,2.7,0,0,0-2.7,2.7V42.7a13.3,13.3,0,1,0,26.6,0V8a2.7,2.7,0,0,0-2.7-2.7Zm-5.3,40a8,8,0,1,1-16,0V10.7H42.7Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const MedicalCodingIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <rect x="2" y="4" width="20" height="16" rx="2" />
-    <path d="M2 10h20" />
-    <path d="M9 16v-4" />
-    <path d="M15 16v-4" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M50.7,5.3H13.3A2.7,2.7,0,0,0,10.7,8V56a2.7,2.7,0,0,0,2.7,2.7H50.7A2.7,2.7,0,0,0,53.3,56V8A2.7,2.7,0,0,0,50.7,5.3ZM26.7,48H21.3V37.3h5.3Zm10.6,0H32V37.3h5.3Zm10.7,0H42.7V37.3h5.3Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const DataServicesIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-      <path d="M12 18v-6" />
-      <path d="m9 15 3 3 3-3" />
+    <IconWrapper className={className} viewBox="0 0 64 64">
+      <path fill="hsl(var(--primary))" d="M48,5.3H16A5.34,5.34,0,0,0,10.7,10.7V53.3A5.34,5.34,0,0,0,16,58.7H48A5.34,5.34,0,0,0,53.3,53.3V10.7A5.34,5.34,0,0,0,48,5.3Zm-5.3,42.7H21.3a2.7,2.7,0,0,1,0-5.3H42.7a2.7,2.7,0,0,1,0,5.3Zm0-10.7H21.3a2.7,2.7,0,0,1,0-5.3H42.7a2.7,2.7,0,0,1,0,5.3Zm0-10.6H21.3a2.7,2.7,0,0,1,0-5.4H42.7a2.7,2.7,0,0,1,0,5.4Z"/>
+      <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+      <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
     </IconWrapper>
 );
 
 export const DigitalLearningIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-      <rect x="2" y="3" width="20" height="14" rx="2" />
-      <path d="M8 21h8" />
-      <path d="M12 17v4" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+      <path fill="hsl(var(--primary))" d="M56,5.3H8a8,8,0,0,0-8,8V40a8,8,0,0,0,8,8H24v5.3H16a2.7,2.7,0,1,0,0,5.4H48a2.7,2_7,0,1,0,0-5.4H40V48H56a8,8,0,0,0,8-8V13.3a8,8,0,0,0-8-8Zm-24,8L45.3,24,32,34.7,18.7,24Z"/>
+      <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+      <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
 
 export const HelpIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <circle cx="12" cy="12" r="10" />
-    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-    <path d="M12 17h.01" />
+  <IconWrapper className={className} viewBox="0 0 64 64">
+    <path fill="hsl(var(--primary))" d="M32,5.3A26.7,26.7,0,1,0,58.7,32,26.7,26.7,0,0,0,32,5.3ZM32,50.7a2.7,2.7,0,1,1,2.7-2.7A2.7,2.7,0,0,1,32,50.7Zm5.3-21.8c-2.4,2.5-5.3,4.3-5.3,8.2a2.7,2.7,0,0,1-5.4,0c0-6.2,4.3-8.6,7.4-11.7a5.3,5.3,0,1,0-7.5-7.5,2.7,2.7,0,1,1-3.8-3.8A10.7,10.7,0,1,1,37.3,28.9Z"/>
+    <circle fill="hsl(var(--accent))" cx="48" cy="48" r="13.3" />
+    <path fill="hsl(var(--primary))" d="M54.6,44.2,46,52.8l-3.3-3.3a1.3,1.3,0,0,0-1.9,1.9l4.2,4.2a1.3,1.3,0,0,0,1.9,0l9.6-9.6a1.3,1.3,0,1,0-1.9-1.9Z" />
   </IconWrapper>
 );
