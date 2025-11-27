@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useUser, useAuth } from '@/firebase';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import {
   Dialog,
   DialogContent,
@@ -113,7 +114,8 @@ function UserNav() {
   const handleGoogleSignIn = async () => {
     if (!auth) return;
     try {
-      await initiateGoogleSignIn(auth);
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
       setIsDialogOpen(false);
       router.push('/community');
     } catch (error) {
