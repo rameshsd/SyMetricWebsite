@@ -1,7 +1,8 @@
 
 
 import type { LucideIcon } from 'lucide-react';
-import type { Timestamp } from 'firebase/firestore'
+import type { Timestamp, DocumentReference } from 'firebase/firestore'
+import type { User } from 'firebase/auth'
 
 
 export type NavItem = {
@@ -218,3 +219,37 @@ export type TopAuthor = {
   imageUrl: string;
 };
     
+export interface UserHookResult {
+  user: User | null;
+  isUserLoading: boolean;
+  userError: Error | null;
+}
+    
+export interface WithId<T> {
+  id: string;
+  [key: string]: T;
+}
+    
+export interface UseCollectionResult<T> {
+  data: WithId<T>[] | null;
+  isLoading: boolean;
+  error: Error | null;
+}
+    
+export interface UseDocResult<T> {
+  data: WithId<T> | null;
+  isLoading: boolean;
+  error: Error | null;
+}
+    
+export interface UseCollectionOptions {
+  where?: [string, '==', any];
+}
+    
+export interface UseDocOptions {
+  docId: string;
+}
+    
+export type FirestoreHookResult<T> =
+  | UseCollectionResult<T>
+  | UseDocResult<T>;

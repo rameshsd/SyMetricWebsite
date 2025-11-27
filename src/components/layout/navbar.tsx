@@ -21,8 +21,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth } from '@/firebase';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -114,8 +113,7 @@ function UserNav() {
   const handleGoogleSignIn = async () => {
     if (!auth) return;
     try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      await initiateGoogleSignIn(auth);
       setIsDialogOpen(false);
       router.push('/community');
     } catch (error) {
@@ -383,7 +381,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <Button variant="ghost" size="icon"><User className="h-5 w-5" /></Button>
+                                <UserNav />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">

@@ -47,5 +47,6 @@ export * from './firestore/use-doc';
 export * from './non-blocking-updates';
 export * from './non-blocking-login';
 export * from './auth/google-auth';
+export * from './auth/use-user';
 export * from './errors';
 export * from './error-emitter';
