@@ -1,8 +1,9 @@
+
 'use client';
 
 import * as React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, Search, Globe, ChevronRight, ChevronLeft, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -20,6 +21,9 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
+import { auth, useUser } from '@/firebase';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
 
 const ListItem = React.forwardRef<
   HTMLDivElement,
@@ -74,6 +78,60 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
     </Link>
   );
 };
+
+function UserNav() {
+  const { user, isUserLoading } = useUser();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      router.push('/');
+    } catch (error) {
+      console.error('Sign out failed:', error);
+    }
+  };
+
+
+  if (isUserLoading) {
+    return <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />;
+  }
+
+  if (user) {
+    return (
+       <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src={user.photoURL || undefined} alt={user.displayName || user.email || ''} />
+              <AvatarFallback>{user.email?.charAt(0).toUpperCase()}</AvatarFallback>
+            </Avatar>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">{user.displayName || 'User'}</p>
+              <p className="text-xs leading-none text-muted-foreground">
+                {user.email}
+              </p>
+            </div>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={handleSignOut}>
+            Log out
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  return (
+    <Button asChild>
+      <Link href="/login">Login</Link>
+    </Button>
+  )
+}
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -238,6 +296,7 @@ export function Navbar() {
                     <Globe className="h-5 w-5" />
                     <span className="sr-only">Language</span>
                 </Button>
+                 <UserNav />
             </div>
 
             {/* Mobile icons */}
