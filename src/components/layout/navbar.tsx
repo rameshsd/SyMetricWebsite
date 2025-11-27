@@ -20,7 +20,8 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useUser } from '@/firebase/auth/use-user';
+import { useAuth, initiateGoogleSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -109,6 +110,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
     try {
       await initiateGoogleSignIn();
       setIsDialogOpen(false);
+      onLoginClick?.(); // Close mobile menu if open
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -117,6 +119,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
+    onLoginClick?.(); // Close mobile menu if open
     router.push('/community');
   };
 
@@ -426,3 +429,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    
