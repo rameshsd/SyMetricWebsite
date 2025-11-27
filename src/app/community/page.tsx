@@ -1,7 +1,6 @@
-
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Carousel,
@@ -37,12 +36,13 @@ import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
 import { useUser } from '@/firebase';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CommunityPage() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isUserLoading && !user) {
       router.push('/login');
     }
@@ -51,7 +51,14 @@ export default function CommunityPage() {
   if (isUserLoading || !user) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <p>Loading...</p>
+        <div className="flex flex-col items-center gap-4">
+            <p className="text-muted-foreground">Redirecting to login...</p>
+            <Skeleton className="h-12 w-12 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-[250px]" />
+              <Skeleton className="h-4 w-[200px]" />
+            </div>
+        </div>
       </div>
     );
   }

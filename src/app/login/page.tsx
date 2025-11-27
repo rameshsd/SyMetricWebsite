@@ -1,18 +1,26 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useAuth, initiateGoogleSignIn, useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 
 export default function LoginPage() {
   const auth = useAuth();
+  const { user } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/community');
+    }
+  }, [user, router]);
 
   const handleGoogleSignIn = async () => {
     try {
-      await initiateGoogleSignIn(auth);
+      await initiateGoogleSignIn();
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);

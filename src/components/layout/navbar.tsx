@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -21,7 +20,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useUser, initiateGoogleSignIn, useAuth } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -40,6 +39,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Skeleton } from '../ui/skeleton';
 
 
 const ListItem = React.forwardRef<
@@ -132,7 +132,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   }
 
   if (isUserLoading) {
-    return <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />;
+    return <Skeleton className="h-10 w-10 rounded-full" />;
   }
 
   if (user) {
@@ -368,13 +368,7 @@ export function Navbar() {
                 </Button>
             </div>
              <div className="flex items-center md:hidden">
-                <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
-                  if (!open) {
-                    closeMobileMenu();
-                  } else {
-                    setIsMobileMenuOpen(true);
-                  }
-                }}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
@@ -441,5 +435,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
