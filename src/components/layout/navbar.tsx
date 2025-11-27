@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -357,27 +358,19 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
+            <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
             <div className="hidden md:flex items-center gap-x-1">
                 <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Search</span>
                 </Button>
-                <UserNav />
                 <Button variant="ghost" size="icon">
                     <Globe className="h-5 w-5" />
                     <span className="sr-only">Language</span>
                 </Button>
             </div>
-
             <div className="flex items-center md:hidden">
-              <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
-              <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
-                if (!open) {
-                  closeMobileMenu();
-                } else {
-                  setIsMobileMenuOpen(true);
-                }
-              }}>
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                   <SheetTrigger asChild>
                       <Button variant="ghost" size="icon">
                           <Menu className="h-6 w-6" />
@@ -391,18 +384,12 @@ export function Navbar() {
                               <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
                               <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                           </div>
-                          <div className="flex items-center">
-                              <Button variant="ghost" size="icon" className="relative">
-                                  <Menu className="h-6 w-6" />
-                                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
-                              </Button>
-                              <SheetTrigger asChild>
+                           <SheetTrigger asChild>
                               <Button variant="ghost" size="icon">
                                   <X className="h-6 w-6" />
                                   <span className="sr-only">Close menu</span>
                               </Button>
-                              </SheetTrigger>
-                          </div>
+                          </SheetTrigger>
                       </SheetHeader>
                       
                       <div className="p-4">
