@@ -111,14 +111,13 @@ function UserNav() {
   };
 
   const handleGoogleSignIn = async () => {
-    if (auth) {
-      try {
-        await initiateGoogleSignIn(auth);
-        setIsDialogOpen(false);
-        router.push('/community');
-      } catch (error) {
-        console.error("Google Sign-in failed:", error);
-      }
+    if (!auth) return;
+    try {
+      await initiateGoogleSignIn(auth);
+      setIsDialogOpen(false);
+      router.push('/community');
+    } catch (error) {
+      console.error("Google Sign-in failed:", error);
     }
   };
 
