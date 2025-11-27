@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -127,6 +128,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
     if (onLoginClick) {
       onLoginClick();
     }
+    setIsDialogOpen(true);
   };
 
   if (isUserLoading) {
@@ -351,80 +353,80 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
-            <div className="hidden md:flex items-center gap-x-1">
-                <Button variant="ghost" size="icon">
-                    <Search className="h-5 w-5" />
-                    <span className="sr-only">Search</span>
-                </Button>
-                <UserNav />
-                <Button variant="ghost" size="icon">
-                    <Globe className="h-5 w-5" />
-                    <span className="sr-only">Language</span>
-                </Button>
-            </div>
-             <div className="flex items-center md:hidden">
-                 <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                    <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                            <Menu className="h-6 w-6" />
-                            <span className="sr-only">Toggle menu</span>
+          <div className="hidden md:flex items-center gap-x-1">
+              <Button variant="ghost" size="icon">
+                  <Search className="h-5 w-5" />
+                  <span className="sr-only">Search</span>
+              </Button>
+              <UserNav />
+              <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Language</span>
+              </Button>
+          </div>
+           <div className="flex items-center md:hidden">
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                      <Button variant="ghost" size="icon">
+                          <Menu className="h-6 w-6" />
+                          <span className="sr-only">Toggle menu</span>
+                      </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
+                     <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
+                          <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                          <div className="flex items-center gap-2">
+                              <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
+                              <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
+                              <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
+                          </div>
+                          <div className="flex items-center">
+                              <Button variant="ghost" size="icon" className="relative">
+                                  <Menu className="h-6 w-6" />
+                                  <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
+                              </Button>
+                              <SheetTrigger asChild>
+                              <Button variant="ghost" size="icon">
+                                  <X className="h-6 w-6" />
+                                  <span className="sr-only">Close menu</span>
+                              </Button>
+                              </SheetTrigger>
+                          </div>
+                      </SheetHeader>
+                      
+                      <div className="p-4">
+                          <div className="relative">
+                              <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 rounded-full border-2 focus-visible:ring-primary" />
+                              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          </div>
+                      </div>
+
+                      {currentSubmenu && (
+                          <div className="p-4 border-b">
+                              <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
+                                  <ChevronLeft className="h-6 w-6 mr-2" />
+                                  {mobileSubmenuStack.length > 1 ? mobileSubmenuStack[mobileSubmenuStack.length-2].title : 'Main Menu'}
+                              </Button>
+                              {currentSubmenu.title && <h2 className="text-xl font-bold mt-2">{currentSubmenu.title}</h2>}
+                          </div>
+                      )}
+                      <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
+                        {(menuContent || []).map((item) => (
+                          <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
+                        ))}
+                      </nav>
+
+                      <div className="p-4 mt-auto">
+                          <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
+                            <Link href="/solutions">
+                                Explore SyMetric
+                                <ChevronRight className="h-6 w-6" />
+                            </Link>
                         </Button>
-                    </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm bg-card p-0 flex flex-col">
-                       <SheetHeader className="p-2 border-b flex flex-row justify-between items-center h-16">
-                            <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                            <div className="flex items-center gap-2">
-                                <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
-                                <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
-                            </div>
-                            <div className="flex items-center">
-                                <Button variant="ghost" size="icon" className="relative">
-                                    <Menu className="h-6 w-6" />
-                                    <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
-                                </Button>
-                                <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon">
-                                    <X className="h-6 w-6" />
-                                    <span className="sr-only">Close menu</span>
-                                </Button>
-                                </SheetTrigger>
-                            </div>
-                        </SheetHeader>
-                        
-                        <div className="p-4">
-                            <div className="relative">
-                                <Input placeholder="Search" className="h-12 text-base pl-4 pr-10 rounded-full border-2 focus-visible:ring-primary" />
-                                <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            </div>
-                        </div>
-
-                        {currentSubmenu && (
-                            <div className="p-4 border-b">
-                                <Button variant="ghost" onClick={handleBack} className="flex items-center text-lg font-bold p-0 h-auto">
-                                    <ChevronLeft className="h-6 w-6 mr-2" />
-                                    {mobileSubmenuStack.length > 1 ? mobileSubmenuStack[mobileSubmenuStack.length-2].title : 'Main Menu'}
-                                </Button>
-                                {currentSubmenu.title && <h2 className="text-xl font-bold mt-2">{currentSubmenu.title}</h2>}
-                            </div>
-                        )}
-                        <nav className="flex-1 space-y-1 px-4 overflow-y-auto">
-                          {(menuContent || []).map((item) => (
-                            <MobileNavLink key={item.name} item={item} closeMobileMenu={closeMobileMenu} onSubmenu={handleSubmenu} />
-                          ))}
-                        </nav>
-
-                        <div className="p-4 mt-auto">
-                            <Button className="w-full h-14 text-lg justify-between bg-primary hover:bg-primary/90" asChild>
-                              <Link href="/solutions">
-                                  Explore SyMetric
-                                  <ChevronRight className="h-6 w-6" />
-                              </Link>
-                          </Button>
-                        </div>
-                    </SheetContent>
-                </Sheet>
-            </div>
+                      </div>
+                  </SheetContent>
+              </Sheet>
+          </div>
         </div>
       </div>
     </header>
