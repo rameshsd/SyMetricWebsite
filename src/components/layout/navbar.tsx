@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -103,10 +104,8 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleSignOut = async () => {
-    if (auth) {
-      await auth.signOut();
-      router.push('/');
-    }
+    await auth.signOut();
+    router.push('/');
   };
 
   const handleGoogleSignIn = async () => {
@@ -368,7 +367,13 @@ export function Navbar() {
                 </Button>
             </div>
              <div className="flex items-center md:hidden">
-                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
+                  if (!open) {
+                    closeMobileMenu();
+                  } else {
+                    setIsMobileMenuOpen(true);
+                  }
+                }}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
