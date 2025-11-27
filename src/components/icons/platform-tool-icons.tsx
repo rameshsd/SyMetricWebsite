@@ -21,24 +21,17 @@ const fg = "#FFFFFF";
 ----------------------------------------------------------*/
 export const UserAccessIcon = ({ className }: { className?: string }) => (
   <IconWrapper className={className}>
-    <circle cx="100" cy="100" r="95" fill="hsl(var(--primary))" />
-
-    {/* User */}
-    <circle cx="90" cy="70" r="24" fill={fg} />
-    <path
-      d="M60 140 C60 115, 120 115, 120 140 Z"
-      fill={fg}
+    <circle cx="100" cy="100" r="80" stroke="hsl(var(--primary))" strokeWidth="20" fill="white" />
+    <circle cx="100" cy="70" r="25" stroke="hsl(var(--primary))" strokeWidth="18" fill="none" />
+    <path d="M60 140 C60 110, 140 110, 140 140" 
+      stroke="hsl(var(--primary))"
+      strokeWidth="18"
+      strokeLinecap="round"
+      fill="none"
     />
-
-    {/* Lock */}
-    <rect x="120" y="115" width="32" height="28" rx="6" fill={fg} />
-    <path
-      d="M136 110 C130 110,130 115,130 120 H144 C144 115,144 110,138 110 Z"
-      fill={fg}
-    />
-    <circle cx="136" cy="128" r="3" fill="hsl(var(--primary))" />
   </IconWrapper>
 );
+
 
 /* ---------------------------------------------------------
    2. Organization Management Icon
