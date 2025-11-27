@@ -8,7 +8,7 @@
  *    details, IP addresses) while allowing the application to record data.
  * 2. Read-Only Content: The 'resources' collection, which holds public content like blog posts, is
  *    publicly readable by everyone but is locked down against all writes from the client-side. This
- *    ensures content integrity, assuming it will be managed through a secure admin panel or backend process.
+ *   ensures content integrity, assuming it will be managed through a secure admin panel or backend process.
  *
  * Data Structure: All data is organized into distinct, top-level collections (e.g., /websiteVisits,
  * /contactFormSubmissions, etc.). This flat structure simplifies rules and queries, as there are no
@@ -31,7 +31,7 @@ function isAdmin() {
   // In a real application, you would use custom claims.
   // For this prototype, we'll check against a hardcoded admin UID.
   // To get a user UID, you can sign up and check the Firebase Auth console.
-  return request.auth != null && request.auth.uid == "P2OH5YCS1wRXGdmBwBFHnJuyEVv1";
+  return request.auth != null && request.auth.uid == "MkxVdBOWkwSswO9KQziYZJFVkhI3";
 }
 
 service cloud.firestore {
@@ -104,7 +104,7 @@ service cloud.firestore {
      * @description Allows public read access to dynamic pages. Only admins can create, update, or delete them.
      * @path /pages/{pageId}
      * @allow (get, list) Any user can read page content.
-     * @allow (create, update, delete) Only admins can manage page content.
+     * @allow (write) Only admins can manage page content.
      * @principle Public content is readable by all, but managed only by authorized administrators.
      */
     match /pages/{pageId} {
