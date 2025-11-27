@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -20,7 +21,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import { useUser, useAuth, initiateGoogleSignIn, initiateEmailSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -164,9 +165,8 @@ function UserNav() {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <User className="h-5 w-5" />
-          <span className="sr-only">Account</span>
+        <Button variant="ghost">
+          Login
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
@@ -380,7 +380,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav />
+                                <Button variant="ghost" size="icon"><User className="h-5 w-5" /></Button>
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">
