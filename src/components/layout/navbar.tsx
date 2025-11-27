@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { useUser, useAuth, initiateGoogleSignIn, initiateEmailSignIn } from '@/firebase';
+import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
 import {
   Dialog,
   DialogContent,
@@ -40,6 +40,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Skeleton } from '../ui/skeleton';
 
 
 const ListItem = React.forwardRef<
@@ -127,7 +128,7 @@ function UserNav() {
   };
 
   if (isUserLoading) {
-    return <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />;
+    return <Skeleton className="h-10 w-20" />;
   }
 
   if (user) {
