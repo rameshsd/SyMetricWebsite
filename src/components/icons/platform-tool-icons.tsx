@@ -10,7 +10,9 @@ const IconWrapper = ({ children, className }: { children: React.ReactNode; class
     className={className}
     aria-hidden="true"
   >
-    {children}
+    <g transform="scale(1.2) translate(-2,-2)">
+      {children}
+    </g>
   </svg>
 );
 
@@ -23,7 +25,7 @@ export const UserAccessIcon = ({ className }: { className?: string }) => (
 
 export const OrgManagementIcon = ({ className }: { className?: string }) => (
     <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4Zm8 2.5a.5.5 0 0 0-1 0V7h-2v.5a.5.5 0 0 0 1 0V8h.5a.5.5 0 0 0 0-1H9v-.5a.5.5 0 0 0-1 0V7h-.5a.5.5 0 0 0 0 1H8v.5a.5.5 0 0 0 1 0V8h.5a.5.5 0 0 0 0-1H9v-.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H7v.5a.5.5 0 0 0 1 0V8h.5a.5.5 0 0 0 0-1H8v-.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H7v.5a.5.5 0 0 0 1 0V8h.5a.5.5 0 0 0 0-1H8V6.5Zm5.5 2a.5.5 0 0 0 0-1H14v.5a.5.5 0 0 0 1 0V7h.5a.5.5 0 0 0 0-1H15v-.5a.5.5 0 0 0-1 0V6h-.5a.5.5 0 0 0 0 1H14v.5a.5.5 0 0 0 1 0V7h.5a.5.5 0 0 0 0-1H15V5.5a.5.5 0 0 0-1 0V6h-2v.5a.5.5 0 0 0 1 0V6h.5a.5.5 0 0 0 0-1H12V4.5a.5.5 0 0 0-1 0V5h-.5a.5.5 0 0 0 0 1H11v.5a.5.5 0 0 0 1 0V5h.5a.5.5 0 0 0 0-1H12V3.5a.5.5 0 0 0-1 0V4H8.5a.5.5 0 0 0 0 1H9v.5a.5.5 0 0 0 1 0V4h.5a.5.5 0 0 0 0-1H10V2.5ZM8.5 11a.5.5 0 0 0 0-1H8v.5a.5.5 0 0 0 1 0V10h.5a.5.5 0 0 0 0-1H9v-.5a.5.5 0 0 0-1 0V9H6.5a.5.5 0 0 0 0 1H7v.5a.5.5 0 0 0 1 0V10h.5a.5.5 0 0 0 0-1H8V8.5Zm5.5 2a.5.5 0 0 0 0-1H14v.5a.5.5 0 0 0 1 0V12h.5a.5.5 0 0 0 0-1H15v-.5a.5.5 0 0 0-1 0V11h-.5a.5.5 0 0 0 0 1H14v.5a.5.5 0 0 0 1 0V12h.5a.5.5 0 0 0 0-1H15v-.5a.5.5 0 0 0-1 0v.5h-2v-.5a.5.5 0 0 0-1 0v.5h-.5a.5.5 0 0 0 0 1H11v.5a.5.5 0 0 0 1 0v-.5h.5a.5.5 0 0 0 0 1H12v.5a.5.5 0 0 0 1 0v-.5h2.5Zm-5.5 5a.5.5 0 0 0 0-1H8v.5a.5.5 0 0 0 1 0V17h.5a.5.5 0 0 0 0-1H9v-.5a.5.5 0 0 0-1 0V16H6.5a.5.5 0 0 0 0 1H7v.5a.5.5 0 0 0 1 0V17h.5a.5.5 0 0 0 0-1H8v-.5Zm5.5 2a.5.5 0 0 0 0-1H14v.5a.5.5 0 0 0 1 0V19h.5a.5.5 0 0 0 0-1H15v-.5a.5.5 0 0 0-1 0V18h-.5a.5.5 0 0 0 0 1H14v.5a.5.5 0 0 0 1 0V19h.5a.5.5 0 0 0 0-1H15v-.5a.5.5 0 0 0-1 0v.5h-2v-.5a.5.5 0 0 0-1 0v.5h-.5a.5.5 0 0 0 0 1H11v.5a.5.5 0 0 0 1 0v-.5h.5a.5.5 0 0 0 0 1H12v.5a.5.5 0 0 0 1 0v-.5h2.5Z" clipRule="evenodd"/>
+        <path fillRule="evenodd" d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4Zm4 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-1 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z" clipRule="evenodd"/>
     </IconWrapper>
 );
 
