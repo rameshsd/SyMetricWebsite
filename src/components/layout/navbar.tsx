@@ -103,8 +103,10 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleSignOut = async () => {
-    await auth.signOut();
-    router.push('/');
+    if (auth) {
+      await auth.signOut();
+      router.push('/');
+    }
   };
 
   const handleGoogleSignIn = async () => {
@@ -168,7 +170,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" onClick={() => onLoginClick?.()}>
+        <Button variant="ghost" size="icon" onClick={handleTriggerClick}>
           <User className="h-5 w-5" />
           <span className="sr-only">Account</span>
         </Button>
