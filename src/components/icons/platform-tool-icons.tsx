@@ -5,87 +5,110 @@ import React from 'react';
 const IconWrapper = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
+    viewBox="0 0 200 200"
     className={className}
     aria-hidden="true"
+    fill="none"
+    stroke="hsl(var(--primary))"
+    strokeWidth="12"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
-    <g transform="scale(1.2) translate(-2,-2)">
-      {children}
-    </g>
+    {children}
   </svg>
 );
 
-
 export const UserAccessIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M7 2a2 2 0 0 0-2 2v1a1 1 0 0 0 0 2v1a1 1 0 0 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7Zm3 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-1 7a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3 1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <circle cx="100" cy="60" r="30" />
+    <path d="M50 180v-20a40 40 0 0 1 40-40h20a40 40 0 0 1 40 40v20" />
+  </IconWrapper>
 );
 
 export const OrgManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M4 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4Zm4 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm1 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-1 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="40" y="90" width="50" height="90" rx="6" />
+    <rect x="110" y="50" width="50" height="130" rx="6" />
+    <path d="M40 90l60-40 60 40" />
+  </IconWrapper>
 );
 
 export const StudyManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6Zm1.5 5.5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6Zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M50 40h70a20 20 0 0 1 20 20v110H70a20 20 0 0 1-20-20V40z" />
+    <path d="M140 60h30v110h-30" />
+  </IconWrapper>
 );
 
 export const SiteManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M100 20c-40 0-70 30-70 70 0 50 70 100 70 100s70-50 70-100c0-40-30-70-70-70z" />
+    <circle cx="100" cy="90" r="25" />
+  </IconWrapper>
 );
 
 export const SuppliesManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M20 6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6ZM4 12a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2Zm14 6H6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M30 70l70-30 70 30v90l-70 30-70-30V70z" />
+    <path d="M100 40v150" />
+    <path d="M30 70l70 30 70-30" />
+  </IconWrapper>
 );
 
 export const SubjectManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path d="M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-3 1a1 1 0 1 0 0 2 1 1 0 1 0 0-2Z"/>
-        <path fillRule="evenodd" d="M12 20a1 1 0 0 1-1-1v-2.5a4.5 4.5 0 0 1 2-4 1 1 0 0 1 1.414.054 5.5 5.5 0 0 1 3.536 2.146 1 1 0 0 1-.95 1.446H17a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1h-2Zm-6-4.5A4.5 4.5 0 0 1 10.5 11h.054a1 1 0 0 1 .95 1.446A5.5 5.5 0 0 1 8 17.586a1 1 0 0 1-.95-1.446H7a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2.5Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <circle cx="70" cy="60" r="30" />
+    <circle cx="130" cy="60" r="30" />
+    <path d="M40 180v-30a30 30 0 0 1 30-30" />
+    <path d="M160 180v-30a30 30 0 0 0-30-30" />
+  </IconWrapper>
 );
 
 export const DataManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <ellipse cx="100" cy="50" rx="70" ry="25" />
+    <path d="M30 50v50c0 13.8 31.34 25 70 25s70-11.2 70-25V50" />
+    <path d="M30 100v50c0 13.8 31.34 25 70 25s70-11.2 70-25v-50" />
+  </IconWrapper>
 );
 
 export const LabManagementIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M13.43 3.322a1 1 0 0 1 .632 1.25l-4 11a1 1 0 0 1-1.85-.67l2-5.5H8.5a1 1 0 0 1 0-2h2.03l-2-5.5a1 1 0 0 1 1.25-.632l.632.227ZM5 21a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M80 20h40" />
+    <path d="M80 20v60l-40 70a40 40 0 0 0 35 50h50a40 40 0 0 0 35-50l-40-70V20" />
+  </IconWrapper>
 );
 
 export const MedicalCodingIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M10 2a1 1 0 0 1 1 1v1h2V3a1 1 0 1 1 2 0v1h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2V3a1 1 0 1 1 2 0v1h1V3a1 1 0 0 1 1-1Zm.5 8a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <path d="M50 20h70l40 40v120H50z" />
+    <path d="M120 20v40h40" />
+    <path d="M100 90v60" />
+    <path d="M80 120h40" />
+  </IconWrapper>
 );
 
 export const DataServicesIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M3 8a3 3 0 0 1 3-3h12a3 3 0 1 1 0 6H6a3 3 0 0 1-3-3Zm3 10a3 3 0 0 0 0 6h12a3 3 0 1 0 0-6H6Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="30" y="40" width="140" height="40" rx="5" />
+    <rect x="30" y="120" width="140" height="40" rx="5" />
+    <circle cx="55" cy="60" r="5" />
+    <circle cx="55" cy="140" r="5" />
+  </IconWrapper>
 );
 
 export const DigitalLearningIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M5 4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5Zm1.707 5.293a1 1 0 0 1 0 1.414l-1 1a1 1 0 0 1-1.414-1.414l1-1a1 1 0 0 1 1.414 0Zm2.586-2.586a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1-1.414 1.414l-1-1a1 1 0 0 1 0-1.414Zm8.414 7.586a1 1 0 0 1 0-1.414l1-1a1 1 0 1 1 1.414 1.414l-1 1a1 1 0 0 1-1.414 0Zm-2.586 2.586a1 1 0 0 1-1.414 0l-1-1a1 1 0 1 1 1.414-1.414l1 1a1 1 0 0 1 0 1.414Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <rect x="30" y="40" width="140" height="90" rx="5" />
+    <path d="M20 150h160" />
+    <polygon points="90,75 125,95 90,115" />
+  </IconWrapper>
 );
 
 export const HelpSupportIcon = ({ className }: { className?: string }) => (
-    <IconWrapper className={className}>
-        <path fillRule="evenodd" d="M18 10a6 6 0 1 1-12 0 6 6 0 0 1 12 0Zm-2 0a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clipRule="evenodd"/>
-    </IconWrapper>
+  <IconWrapper className={className}>
+    <circle cx="100" cy="100" r="80" />
+    <path d="M75 80a25 25 0 1 1 50 0c0 15-25 15-25 40" />
+    <circle cx="100" cy="150" r="5" fill="hsl(var(--primary))" stroke="none" />
+  </IconWrapper>
 );
