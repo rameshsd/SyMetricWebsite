@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -42,7 +41,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Skeleton } from '../ui/skeleton';
 
-
 const ListItem = React.forwardRef<
   HTMLDivElement,
   { title: string; href: string; children: React.ReactNode; className?: string }
@@ -67,7 +65,6 @@ const ListItem = React.forwardRef<
   )
 })
 ListItem.displayName = "ListItem"
-
 
 const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType, closeMobileMenu: () => void, onSubmenu: (items: NavItemType[], title: string) => void }) => {
   const pathname = usePathname();
@@ -117,16 +114,14 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
       console.error("Google Sign-in failed:", error);
     }
   };
-
+  
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
     router.push('/community');
   };
 
   const handleDialogTriggerClick = () => {
-    if (onLoginClick) {
-      onLoginClick();
-    }
+    onLoginClick?.();
     setIsDialogOpen(true);
   };
 
@@ -201,7 +196,6 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   );
 }
 
-
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
@@ -212,7 +206,6 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHidden, setIsHidden] = React.useState(false);
   const lastScrollY = React.useRef(0);
-
 
   React.useEffect(() => {
     setMounted(true);
@@ -267,7 +260,6 @@ export function Navbar() {
 
   const currentSubmenu = mobileSubmenuStack[mobileSubmenuStack.length - 1];
   const menuContent = currentSubmenu ? currentSubmenu.items : navItems;
-
 
   return (
     <header
@@ -367,13 +359,7 @@ export function Navbar() {
                 </Button>
             </div>
              <div className="flex items-center md:hidden">
-                <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
-                  if (!open) {
-                    closeMobileMenu();
-                  } else {
-                    setIsMobileMenuOpen(true);
-                  }
-                }}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />

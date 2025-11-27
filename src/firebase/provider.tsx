@@ -3,8 +3,9 @@
 import React, { createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
 import { FirebaseApp } from 'firebase/app';
 import { Firestore } from 'firebase/firestore';
-import { Auth, User, onAuthStateChanged } from 'firebase/auth';
-import { FirebaseErrorListener } from '@/components/FirebaseErrorListener'
+import { Auth, User } from 'firebase/auth';
+import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
+import { useUser as useUserHook } from '@/firebase/auth/use-user'; // Import the dedicated hook
 
 interface FirebaseProviderProps {
   children: ReactNode;
@@ -30,31 +31,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
   firestore,
   auth,
 }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isUserLoading, setIsUserLoading] = useState(true);
-  const [userError, setUserError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    if (!auth) {
-      setIsUserLoading(false);
-      setUserError(new Error("Auth service not provided."));
-      return;
-    }
-
-    const unsubscribe = onAuthStateChanged(
-      auth,
-      (firebaseUser) => {
-        setUser(firebaseUser);
-        setIsUserLoading(false);
-      },
-      (error) => {
-        console.error("FirebaseProvider: onAuthStateChanged error:", error);
-        setUserError(error);
-        setIsUserLoading(false);
-      }
-    );
-    return () => unsubscribe();
-  }, [auth]);
+  const { user, isUserLoading, userError } = useUserHook(); // Use the dedicated hook
 
   const contextValue = useMemo((): FirebaseContextState => ({
     firebaseApp,
@@ -107,7 +84,11 @@ export const useFirebaseApp = (): FirebaseApp => {
 
 export function useMemoFirebase<T>(factory: () => T, deps: React.DependencyList): T {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useMemo(factory, deps);
+  const memoized = useMemo(factory, deps);
+  if (typeof memoized === 'object' && memoized !== null) {
+    (memoized as any).__memo = true;
+  }
+  return memoized;
 }
 
 export const useUser = () => {

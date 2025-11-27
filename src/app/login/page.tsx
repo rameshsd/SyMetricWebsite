@@ -8,19 +8,20 @@ import { useRouter } from 'next/navigation';
 import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 
 export default function LoginPage() {
-  const auth = useAuth();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    // Redirect if user is already logged in and we're not still loading
+    if (!isUserLoading && user) {
       router.push('/community');
     }
-  }, [user, router]);
+  }, [user, isUserLoading, router]);
 
   const handleGoogleSignIn = async () => {
     try {
       await initiateGoogleSignIn();
+      // No need to set dialog state, it's handled by the page navigation
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -30,6 +31,15 @@ export default function LoginPage() {
   const handleLoginSuccess = () => {
     router.push('/community');
   };
+
+  // While loading, you might want to show a spinner or nothing
+  if (isUserLoading || user) {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <div className="h-10 w-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    );
+  }
 
   return (
     <div className="container py-20 flex items-center justify-center">
