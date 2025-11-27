@@ -110,7 +110,7 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
     try {
       await initiateGoogleSignIn();
       setIsDialogOpen(false);
-      onLoginClick?.(); // Close mobile menu if open
+      onLoginClick?.();
       router.push('/community');
     } catch (error) {
       console.error("Google Sign-in failed:", error);
@@ -119,13 +119,14 @@ function UserNav({ onLoginClick }: { onLoginClick?: () => void }) {
   
   const handleLoginSuccess = () => {
     setIsDialogOpen(false);
-    onLoginClick?.(); // Close mobile menu if open
+    onLoginClick?.();
     router.push('/community');
   };
 
-  const handleDialogTriggerClick = () => {
-    onLoginClick?.();
-    setIsDialogOpen(true);
+  const handleDialogTriggerClick = (e: React.MouseEvent) => {
+    if (onLoginClick) {
+      onLoginClick();
+    }
   };
 
   if (isUserLoading) {
@@ -362,7 +363,12 @@ export function Navbar() {
                 </Button>
             </div>
              <div className="flex items-center md:hidden">
-                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
+                    if (!open) {
+                        closeMobileMenu();
+                    }
+                    setIsMobileMenuOpen(open);
+                }}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
                             <Menu className="h-6 w-6" />
@@ -374,7 +380,7 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
-                                <UserNav onLoginClick={() => setIsMobileMenuOpen(false)} />
+                                <UserNav onLoginClick={closeMobileMenu} />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
                             <div className="flex items-center">
@@ -429,5 +435,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
