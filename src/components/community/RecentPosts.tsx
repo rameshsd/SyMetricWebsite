@@ -1,9 +1,7 @@
-
 'use client';
 
-import { useUser, useAuth } from '@/firebase';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -16,9 +14,8 @@ import {
 import { Eye, MessageSquare, ThumbsUp } from 'lucide-react';
 import type { CommunityPost } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
-import { recentActivity, topAuthors } from '@/lib/data';
+import { recentActivity } from '@/lib/data';
 import { useState } from 'react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 function PostItem({ post }: { post: CommunityPost }) {
   const createdAt = new Date(post.createdAt as string);
@@ -64,7 +61,6 @@ function PostItem({ post }: { post: CommunityPost }) {
 
 
 export function RecentPosts() {
-  const { user, isUserLoading } = useUser();
   const [posts, setPosts] = useState<CommunityPost[]>(recentActivity);
 
   return (
@@ -82,15 +78,7 @@ export function RecentPosts() {
               <SelectItem value="most-kudos">Most Kudos</SelectItem>
             </SelectContent>
           </Select>
-          {isUserLoading ? (
-            <Button disabled className="w-full sm:w-auto whitespace-nowrap">Loading...</Button>
-          ) : user ? (
             <Button className="w-full sm:w-auto whitespace-nowrap">Create Post</Button>
-          ) : (
-            <Button asChild className="w-full sm:w-auto whitespace-nowrap">
-                <Link href="/login">Sign in to Post</Link>
-            </Button>
-          )}
         </div>
       </div>
       <div className="space-y-6">

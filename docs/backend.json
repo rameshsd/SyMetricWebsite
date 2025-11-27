@@ -156,10 +156,7 @@
     }
   },
   "auth": {
-    "providers": [
-      "password",
-      "anonymous"
-    ]
+    "providers": []
   },
   "firestore": {
     "structure": [
@@ -247,5 +244,3 @@
     "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations."
   }
 }
-
-    

@@ -35,29 +35,8 @@ import Link from 'next/link';
 import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
-import { useUser } from '@/firebase';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CommunityPage() {
-  const { user, isUserLoading } = useUser();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isUserLoading && !user) {
-      router.push('/login');
-    }
-  }, [user, isUserLoading, router]);
-
-  if (isUserLoading || !user) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-            <p className="text-muted-foreground">Redirecting to login...</p>
-            <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-background">
