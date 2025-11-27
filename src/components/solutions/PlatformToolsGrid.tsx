@@ -110,9 +110,9 @@ export function PlatformToolsGrid() {
                 <div key={tool.id} className="group p-6 bg-background rounded-2xl border transition-shadow hover:shadow-lg flex flex-col text-left">
                     <div className="flex items-center justify-start gap-4 mb-4">
                         <div 
-                            className="flex-shrink-0 h-16 w-16 rounded-lg flex items-center justify-center bg-primary/10"
+                            className="flex-shrink-0 h-20 w-20 rounded-lg flex items-center justify-center bg-primary/10"
                         >
-                            <tool.icon className="h-8 w-8 text-primary" />
+                            <tool.icon className="h-10 w-10 text-primary" />
                         </div>
                         <h3 className="text-base font-bold text-foreground">{tool.label}</h3>
                     </div>
