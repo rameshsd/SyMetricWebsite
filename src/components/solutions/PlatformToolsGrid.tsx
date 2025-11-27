@@ -1,54 +1,54 @@
 'use client';
 
 import {
-  IdentityIcon,
-  OrganizationIcon,
-  StudyIcon,
-  SiteIcon,
-  SuppliesIcon,
-  SubjectIcon,
+  UserAccessIcon,
+  OrgManagementIcon,
+  StudyManagementIcon,
+  SiteManagementIcon,
+  SuppliesManagementIcon,
+  SubjectManagementIcon,
   DataManagementIcon,
-  LabIcon,
+  LabManagementIcon,
   MedicalCodingIcon,
   DataServicesIcon,
   DigitalLearningIcon,
-  HelpIcon
-} from '@/components/icons/collaboration-icons';
+  HelpSupportIcon
+} from '@/components/icons/platform-tool-icons';
 
 const toolsData = [
   { 
     id: "iam",
-    icon: IdentityIcon, 
+    icon: UserAccessIcon, 
     label: "Identity and Access Management",
     description: "Role-Based Access Control and Self-Service Account Management.",
   },
   { 
     id: "org-management",
-    icon: OrganizationIcon, 
+    icon: OrgManagementIcon, 
     label: "Organization Management",
     description: "Manage all organizations participating in your trials from a central location.",
   },
   { 
     id: "study-management",
-    icon: StudyIcon, 
+    icon: StudyManagementIcon, 
     label: "Study Management",
     description: "Define, configure, and oversee all aspects of your clinical studies.",
   },
   { 
     id: "site-management",
-    icon: SiteIcon, 
+    icon: SiteManagementIcon, 
     label: "Site Management",
     description: "Streamline site activation, monitoring, and communication.",
   },
   { 
     id: "supplies-management",
-    icon: SuppliesIcon, 
+    icon: SuppliesManagementIcon, 
     label: "Clinical Supplies Management",
     description: "Track and manage investigational products and trial supplies in real-time.",
   },
   { 
     id: "subject-management",
-    icon: SubjectIcon, 
+    icon: SubjectManagementIcon, 
     label: "Subject Management",
     description: "Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.",
   },
@@ -60,7 +60,7 @@ const toolsData = [
   },
   { 
     id: "lab-management",
-    icon: LabIcon, 
+    icon: LabManagementIcon, 
     label: "Lab Management",
     description: "Manage lab data, normal ranges, and sample tracking with ease.",
   },
@@ -84,7 +84,7 @@ const toolsData = [
   },
   {
     id: "support",
-    icon: HelpIcon, 
+    icon: HelpSupportIcon, 
     label: "Help and Support",
     description: "Access our dedicated support team and comprehensive knowledge base.",
   },
@@ -110,9 +110,9 @@ export function PlatformToolsGrid() {
                 <div key={tool.id} className="group p-6 bg-background rounded-2xl border transition-shadow hover:shadow-lg flex flex-col text-left">
                     <div className="flex items-center justify-start gap-4 mb-4">
                         <div 
-                            className="flex-shrink-0 h-16 w-16 rounded-lg flex items-center justify-center bg-primary/10"
+                            className="flex-shrink-0 h-16 w-16 rounded-lg flex items-center justify-center bg-transparent"
                         >
-                            <tool.icon className="h-8 w-8 text-primary" />
+                            <tool.icon className="h-12 w-12" />
                         </div>
                         <h3 className="text-base font-bold text-foreground">{tool.label}</h3>
                     </div>
