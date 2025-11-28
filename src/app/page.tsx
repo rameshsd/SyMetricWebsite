@@ -110,7 +110,7 @@ export default function Home() {
                           </h3>
                           <div className="mt-auto">
                             <Button asChild>
-                              <Link href={item.link}>{item.title}</Link>
+                              <Link href={item.link}>Read More</Link>
                             </Button>
                           </div>
                         </CardContent>
@@ -134,5 +134,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
