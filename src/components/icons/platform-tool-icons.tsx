@@ -25,15 +25,15 @@ const IconWrapper = ({
 );
 
 export const UserAccessIcon = ({ className }: { className?: string }) => (
-  <IconWrapper className={className}>
-    <path d="M18 14H38V42H18z" strokeWidth="3" />
-    <path d="M42 42V50" strokeWidth="3" />
-    <path d="M14 42V50" strokeWidth="3" />
-    <circle cx="28" cy="24" r="5" strokeWidth="3" />
-    <path d="M22 34h12" strokeWidth="3" />
-    <path d="M40 34l8 8" strokeWidth="3" />
-    <path d="M48 34l-8 8" strokeWidth="3" />
-  </IconWrapper>
+    <IconWrapper className={className}>
+        <path d="M18 14H38V42H18z" strokeWidth="3" />
+        <path d="M42 42V50" strokeWidth="3" />
+        <path d="M14 42V50" strokeWidth="3" />
+        <circle cx="28" cy="24" r="5" strokeWidth="3" />
+        <path d="M22 34h12" strokeWidth="3" />
+        <path d="M40 34l8 8" strokeWidth="3" />
+        <path d="M48 34l-8 8" strokeWidth="3" />
+    </IconWrapper>
 );
 
 export const OrgManagementIcon = ({ className }: { className?: string }) => (
@@ -52,11 +52,11 @@ export const StudyManagementIcon = ({ className }: { className?: string }) => (
     <circle cx="14" cy="28" r="6" strokeWidth="3" />
     <circle cx="50" cy="28" r="6" strokeWidth="3" />
     <circle cx="23" cy="48" r="6" strokeWidth="3" />
-    <circle cx="41" cy-="48" r="6" strokeWidth="3" />
+    <circle cx="41" cy="48" r="6" strokeWidth="3" />
     <path d="M32 20v14" strokeWidth="3" />
     <path d="M20 28h24" strokeWidth="3" />
     <path d="M28 32l-5 10" strokeWidth="3" />
-    <path d'="M36 32l5 10" strokeWidth="3" />
+    <path d="M36 32l5 10" strokeWidth="3" />
   </IconWrapper>
 );
 
