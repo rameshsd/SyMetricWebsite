@@ -252,4 +252,3 @@ export interface UseDocOptions {
 export type FirestoreHookResult<T> =
   | UseCollectionResult<T>
   | UseDocResult<T>;
-
