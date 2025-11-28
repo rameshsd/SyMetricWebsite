@@ -113,7 +113,7 @@ export function PlatformToolsGrid() {
                         <div 
                             className="flex-shrink-0 h-20 w-20 rounded-lg flex items-center justify-center"
                         >
-                            <tool.icon className="h-10 w-10 text-primary" />
+                            <tool.icon className="h-12 w-12 text-primary" />
                         </div>
                         <h3 className="text-base font-bold text-foreground">{tool.label}</h3>
                     </div>
