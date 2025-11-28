@@ -222,7 +222,6 @@ export type TopAuthor = {
 export interface UserHookResult {
   user: User | null;
   isUserLoading: boolean;
-  userError: Error | null;
 }
     
 export interface WithId<T> {
@@ -253,3 +252,4 @@ export interface UseDocOptions {
 export type FirestoreHookResult<T> =
   | UseCollectionResult<T>
   | UseDocResult<T>;
+
