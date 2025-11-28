@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { useAuth, useFirestore, initiateAnonymousSignIn, addDocumentNonBlocking } from '@/firebase';
+import { useAuth, useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
 
 export function AnalyticsTracker() {
@@ -16,8 +16,7 @@ export function AnalyticsTracker() {
       if (user) {
         setUserId(user.uid);
       } else {
-        // No user signed in, so we sign them in anonymously
-        initiateAnonymousSignIn(auth);
+        setUserId(null);
       }
     });
     return () => unsubscribe();
