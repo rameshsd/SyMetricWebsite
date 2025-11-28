@@ -1,17 +1,18 @@
+
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  UserAccessIcon,
-  OrgManagementIcon,
-  StudyManagementIcon,
-  SiteManagementIcon,
-  SuppliesManagementIcon,
-  SubjectManagementIcon,
+  IdentityAccessIcon,
+  OrganizationIcon,
+  StudyIcon,
+  SiteIcon,
+  SuppliesIcon,
+  SubjectIcon,
   DataManagementIcon,
-  LabManagementIcon,
+  LabIcon,
   MedicalCodingIcon,
   DataServicesIcon,
   DigitalLearningIcon,
@@ -23,42 +24,42 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 const toolsData = [
   {
     id: 'iam',
-    icon: UserAccessIcon,
+    icon: IdentityAccessIcon,
     label: 'Identity and Access Management',
     description: 'Role-Based Access Control and Self-Service Account Management.',
     imageId: 'tool-iam-1'
   },
   {
     id: 'org-management',
-    icon: OrgManagementIcon,
+    icon: OrganizationIcon,
     label: 'Organization Management',
     description: 'Manage all organizations participating in your trials from a central location.',
     imageId: 'tool-org-1'
   },
   {
     id: 'study-management',
-    icon: StudyManagementIcon,
+    icon: StudyIcon,
     label: 'Study Management',
     description: 'Define, configure, and oversee all aspects of your clinical studies.',
     imageId: 'tool-study-1'
   },
   {
     id: 'site-management',
-    icon: SiteManagementIcon,
+    icon: SiteIcon,
     label: 'Site Management',
     description: 'Streamline site activation, monitoring, and communication.',
     imageId: 'tool-site-1'
   },
   {
     id: 'supplies-management',
-    icon: SuppliesManagementIcon,
+    icon: SuppliesIcon,
     label: 'Clinical Supplies Management',
     description: 'Track and manage investigational products and trial supplies in real-time.',
     imageId: 'tool-supplies-1'
   },
   {
     id: 'subject-management',
-    icon: SubjectManagementIcon,
+    icon: SubjectIcon,
     label: 'Subject Management',
     description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
     imageId: 'tool-subject-1'
@@ -72,7 +73,7 @@ const toolsData = [
   },
   {
     id: 'lab-management',
-    icon: LabManagementIcon,
+    icon: LabIcon,
     label: 'Lab Management',
     description: 'Manage lab data, normal ranges, and sample tracking with ease.',
     imageId: 'tool-lab-1'
