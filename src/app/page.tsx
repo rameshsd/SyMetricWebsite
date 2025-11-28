@@ -106,7 +106,7 @@ export default function Home() {
                         <CardContent className="p-0 flex-grow flex flex-col">
                           <p className="text-sm text-muted-foreground mb-2">Press release</p>
                           <h3 className="text-lg font-bold mb-4 group-hover:text-primary transition-colors flex-grow">
-                            <Link href={item.link}>{item.title}</Link>
+                            {item.title}
                           </h3>
                           <div className="mt-auto">
                             <Button asChild>
