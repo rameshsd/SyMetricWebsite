@@ -11,23 +11,20 @@ export interface UserHookResult {
 }
 
 export function useUser(): UserHookResult {
-  const [user, setUser] = useState<User | any | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        // Fetch Firestore USER DOCUMENT
-        const userDoc = await getDoc(doc(firestore, "users", firebaseUser.uid));
+        const userDocRef = doc(firestore, "users", firebaseUser.uid);
+        const userDoc = await getDoc(userDocRef);
 
         if (userDoc.exists()) {
           setUser({
-            uid: firebaseUser.uid,
-            displayName: firebaseUser.displayName || userDoc.data().name,
-            email: firebaseUser.email,
-            photoURL: firebaseUser.photoURL,
+            ...firebaseUser,
             ...userDoc.data(),
-          });
+          } as User);
         } else {
           setUser(firebaseUser);
         }
