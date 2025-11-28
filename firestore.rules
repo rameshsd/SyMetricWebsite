@@ -1,116 +1,77 @@
-
 /**
- * Core Philosophy: This ruleset implements a security model for a public-facing website that needs to
- * collect analytics and submission data while serving public content. The model is based on two key principles:
- * 1. Append-Only Logs: Collections for website visits, contact forms, and resource interactions are
- *    configured as append-only logs. Any user (including anonymous visitors) can create new documents,
- *    but no one can read, update, or delete existing documents. This protects user privacy (e.g., contact
- *    details, IP addresses) while allowing the application to record data.
- * 2. Read-Only Content: The 'resources' collection, which holds public content like blog posts, is
- *    publicly readable by everyone but is locked down against all writes from the client-side. This
- *   ensures content integrity, assuming it will be managed through a secure admin panel or backend process.
+ * @fileoverview Firestore Security Rules for SyMetric Systems platform.
  *
- * Data Structure: All data is organized into distinct, top-level collections (e.g., /websiteVisits,
- * /contactFormSubmissions, etc.). This flat structure simplifies rules and queries, as there are no
- * complex user-specific subcollections or relationships that require validation.
+ * Core Philosophy:
+ * This ruleset balances open access for community content with strict user ownership for personal data.
+ * Community posts are publicly readable, but require authentication to create, update, or delete.
+ * User profiles are private, with each user only able to access their own data.
+ *
+ * Data Structure:
+ * - /communityPosts/{communityPostId}: Stores community posts. Publicly readable.
+ * - /users/{userId}: Stores user profiles. Owner-only access.
  *
  * Key Security Decisions:
- * - Public Write Access is Denied by Default: All write operations (create, update, delete) are
- *   explicitly denied unless a rule specifically permits them. This follows the principle of least privilege.
- * - No User Listing: For collections containing potentially sensitive user-generated data, list
- *   operations are disabled to prevent data snooping.
- * - Content Management is External: All write operations to the public /resources collection are
- *   prohibited. This is a secure default that presumes content is added or modified via a trusted
- *   server-side process (e.g., Admin SDK), not directly by clients.
- * - Flexible Data Schema: In line with prototyping, these rules do not enforce the specific shape or
- *   data types of documents. Authorization is based on the operation and path, not the document's content.
+ * - Community posts are publicly readable to allow for open community access.
+ * - User listing is disallowed to protect user privacy.
+ * - All write operations are protected by authentication checks.
+ *
+ * Denormalization for Authorization:
+ * - Community posts include the `authorId` field, which is used to determine ownership for write operations, avoiding costly `get()` calls.
  */
 rules_version = '2';
-
-function isAdmin() {
-  // In a real application, you would use custom claims.
-  // For this prototype, we'll check against a hardcoded admin UID.
-  // To get a user UID, you can sign up and check the Firebase Auth console.
-  return request.auth != null && request.auth.uid == "MkxVdBOWkwSswO9KQziYZJFVkhI3";
-}
-
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows any user to create a visit record, but only admins can read them.
-     * @path /websiteVisits/{websiteVisitId}
-     * @allow (create) An anonymous visitor's browser creating a new visit log.
-     * @allow (read) An authenticated admin viewing the analytics dashboard.
-     * @deny (get, list) A non-admin user trying to read analytics data.
-     * @principle Implements an "append-only" log for analytics data, protecting visitor privacy while allowing admin access.
+     * @description Allows read access to all community posts for any user, but restricts write access to authenticated users only.
+     * @path /communityPosts/{communityPostId}
+     * @allow (get, list) User is not required to be signed in
+     * @allow (create) User is signed in and `request.resource.data.authorId == request.auth.uid`
+     * @allow (update, delete) User is signed in and `resource.data.authorId == request.auth.uid`
+     * @deny (create) User is not signed in
+     * @deny (update, delete) User is not signed in
+     * @deny (create) User is signed in but `request.resource.data.authorId != request.auth.uid`
+     * @deny (update, delete) User is signed in but `resource.data.authorId != request.auth.uid`
+     * @principle Allows public read access while enforcing ownership for write operations.
      */
-    match /websiteVisits/{websiteVisitId} {
-      allow read: if isAdmin();
-      allow create: if true;
-      allow update, delete: if false;
-    }
-
-    /**
-     * @description Allows any user to submit a contact form but denies all read and modification access to protect personal information.
-     * @path /contactFormSubmissions/{contactFormSubmissionId}
-     * @allow (create) A public user submitting the website's contact form.
-     * @deny (get) A user trying to read someone else's contact information.
-     * @deny (list) A malicious user trying to download all submitted contact details.
-     * @principle Implements a secure, write-only drop box for sensitive user submissions (PII).
-     */
-    match /contactFormSubmissions/{contactFormSubmissionId} {
-      allow get: if false;
-      allow list: if false;
-      allow create: if true;
-      allow update: if false;
-      allow delete: if false;
-    }
-
-    /**
-     * @description Allows any user to create a resource interaction record but prevents anyone from reading or modifying them.
-     * @path /resourceInteractions/{resourceInteractionId}
-     * @allow (create) An anonymous user's browser logging a download or view of a case study.
-     * @deny (get) A user attempting to see the interaction history of another user.
-     * @deny (list) A malicious user attempting to list all resource interactions.
-     * @principle Implements an "append-only" log for analytics data, protecting user privacy.
-     */
-    match /resourceInteractions/{resourceInteractionId} {
-      allow get: if false;
-      allow list: if false;
-      allow create: if true;
-      allow update: if false;
-      allow delete: if false;
-    }
-
-    /**
-     * @description Allows public read-only access to all resources like blog posts and case studies. All writes are denied.
-     * @path /resources/{resourceId}
-     * @allow (get) Any user reading a single blog post.
-     * @allow (list) The website's main page querying all available case studies to display them.
-     * @deny (create) A public user attempting to publish their own article to the site.
-     * @principle Enforces that public content is read-only from the client, ensuring data integrity. Content must be managed by a trusted backend.
-     */
-    match /resources/{resourceId} {
+    match /communityPosts/{communityPostId} {
       allow get: if true;
       allow list: if true;
-      // CRITICAL: Cannot implement owner-only writes. The 'Resource' entity is missing an 'ownerId' or 'authorId' field.
-      allow create: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
-      allow update: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
-      allow delete: if false; // TODO: Add owner validation once the schema is updated with an ownership field.
+
+      allow create: if isSignedIn() && request.resource.data.authorId == request.auth.uid;
+      allow update: if isSignedIn() && isOwner(resource.data.authorId);
+      allow delete: if isSignedIn() && isOwner(resource.data.authorId) && resource != null;
     }
 
     /**
-     * @description Allows public read access to dynamic pages. Only admins can create, update, or delete them.
-     * @path /pages/{pageId}
-     * @allow (get, list) Any user can read page content.
-     * @allow (write) Only admins can manage page content.
-     * @principle Public content is readable by all, but managed only by authorized administrators.
+     * @description Restricts read and write access to user profiles to the owning user only.
+     * @path /users/{userId}
+     * @allow (get, list) User is signed in and `request.auth.uid == userId`
+     * @allow (create) User is signed in and `request.auth.uid == userId`
+     * @allow (update, delete) User is signed in and `request.auth.uid == userId` and resource exists
+     * @deny (get, list) User is signed in but `request.auth.uid != userId`
+     * @deny (create) User is signed in but `request.auth.uid != userId`
+     * @deny (update, delete) User is signed in but `request.auth.uid != userId`
+     * @principle Enforces strict user ownership for profile data.
      */
-    match /pages/{pageId} {
-      allow get: if true;
-      allow list: if true;
-      allow write: if isAdmin();
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
     }
   }
 }
