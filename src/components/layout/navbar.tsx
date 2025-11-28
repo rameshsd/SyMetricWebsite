@@ -4,7 +4,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, Search, Globe, ChevronRight, ChevronLeft, MessageSquare, User as UserIcon } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -21,9 +21,26 @@ import {
 } from "@/components/ui/navigation-menu"
 import type { NavItem as NavItemType } from '@/lib/types';
 import { Input } from '../ui/input';
-import { auth, useUser } from '@/firebase';
+import { useUser, useAuth, initiateGoogleSignIn } from '@/firebase';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
+
 
 const ListItem = React.forwardRef<
   HTMLDivElement,
@@ -81,43 +98,105 @@ const MobileNavLink = ({ item, closeMobileMenu, onSubmenu }: { item: NavItemType
 
 function UserNav() {
   const { user, isUserLoading } = useUser();
+  const auth = useAuth();
   const router = useRouter();
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleSignOut = async () => {
-    await auth.signOut();
-    router.push('/');
+    if (auth) {
+      await auth.signOut();
+      router.push('/');
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    if (auth) {
+      try {
+        await initiateGoogleSignIn(auth);
+        setIsDialogOpen(false);
+        router.push('/community');
+      } catch (error) {
+        console.error("Google Sign-in failed:", error);
+      }
+    }
+  };
+
+  const handleLoginSuccess = () => {
+    setIsDialogOpen(false);
+    router.push('/community');
   };
 
   if (isUserLoading) {
-    return <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />;
+    return <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />;
   }
 
   if (user) {
     return (
-       <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-              <Avatar className="h-8 w-8">
-                <AvatarImage src={user.photoURL || ''} />
-                <AvatarFallback>{user.email?.charAt(0)}</AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem onClick={handleSignOut}>Log out</DropdownMenuItem>
-          </DropdownMenuContent>
-       </DropdownMenu>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+            <Avatar className="h-10 w-10">
+              {user.photoURL && <AvatarImage src={user.photoURL} alt={user.displayName || ''} />}
+              <AvatarFallback>
+                {user.displayName ? user.displayName.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">{user.displayName || 'User'}</p>
+              <p className="text-xs leading-none text-muted-foreground">
+                {user.email}
+              </p>
+            </div>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={handleSignOut}>
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     );
   }
 
   return (
-    <Button variant="ghost" size="icon" asChild>
-      <Link href="/login">
-        <UserIcon className="h-5 w-5" />
-      </Link>
-    </Button>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <User className="h-5 w-5" />
+          <span className="sr-only">Account</span>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Welcome</DialogTitle>
+          <DialogDescription>Sign in or create an account to join the community.</DialogDescription>
+        </DialogHeader>
+        <div className="space-y-6">
+          <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+            <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 23.4 172.9 61.9l-76.2 64.5C308.6 102.3 279.2 88 248 88c-73.2 0-132.3 59.2-132.3 132.3s59.1 132.3 132.3 132.3c76.9 0 111.2-51.8 115.7-77.9H248v-62h239.5c.3 12.7.6 24.9.6 37.8z"></path></svg>
+            Sign in with Google
+          </Button>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <EmailPasswordForm onLoginSuccess={handleLoginSuccess} />
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
+
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -272,22 +351,18 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-1 ml-auto">
-            {/* Desktop icons */}
             <div className="hidden md:flex items-center gap-x-1">
                 <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Search</span>
                 </Button>
+                <UserNav />
                 <Button variant="ghost" size="icon">
                     <Globe className="h-5 w-5" />
                     <span className="sr-only">Language</span>
                 </Button>
-                 <UserNav />
             </div>
-
-            {/* Mobile icons */}
-            <div className="flex items-center md:hidden">
-                <UserNav />
+             <div className="flex items-center md:hidden">
                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
                   if (!open) {
                     closeMobileMenu();
@@ -306,14 +381,21 @@ export function Navbar() {
                             <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
                             <div className="flex items-center gap-2">
                                 <Button variant="ghost" size="icon"><MessageSquare className="h-5 w-5" /></Button>
+                                <UserNav />
                                 <Button variant="ghost" size="icon"><Globe className="h-5 w-5" /></Button>
                             </div>
-                            <SheetTrigger asChild>
+                            <div className="flex items-center">
+                                <Button variant="ghost" size="icon" className="relative">
+                                    <Menu className="h-6 w-6" />
+                                    <span className="absolute bottom-1 left-0 w-full h-0.5 bg-primary rounded-full"></span>
+                                </Button>
+                                <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon">
                                     <X className="h-6 w-6" />
                                     <span className="sr-only">Close menu</span>
                                 </Button>
-                            </SheetTrigger>
+                                </SheetTrigger>
+                            </div>
                         </SheetHeader>
                         
                         <div className="p-4">
