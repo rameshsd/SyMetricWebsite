@@ -5,11 +5,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  OrganizationManagementIcon,
-  StudyManagementIcon,
-  SiteManagementIcon,
+  OrganizationIcon,
+  StudyIcon,
+  SiteIcon,
   SuppliesIcon,
-  SubjectManagementIcon,
+  SubjectIcon,
   DataManagementIcon,
   LabIcon,
   MedicalCodingIcon,
@@ -31,21 +31,21 @@ const toolsData = [
   },
   {
     id: 'org-management',
-    icon: OrganizationManagementIcon,
+    icon: OrganizationIcon,
     label: 'Organization Management',
     description: 'Manage all organizations participating in your trials from a central location.',
     imageId: 'tool-org-1'
   },
   {
     id: 'study-management',
-    icon: StudyManagementIcon,
+    icon: StudyIcon,
     label: 'Study Management',
     description: 'Define, configure, and oversee all aspects of your clinical studies.',
     imageId: 'tool-study-1'
   },
   {
     id: 'site-management',
-    icon: SiteManagementIcon,
+    icon: SiteIcon,
     label: 'Site Management',
     description: 'Streamline site activation, monitoring, and communication.',
     imageId: 'tool-site-1'
@@ -59,7 +59,7 @@ const toolsData = [
   },
   {
     id: 'subject-management',
-    icon: SubjectManagementIcon,
+    icon: SubjectIcon,
     label: 'Subject Management',
     description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
     imageId: 'tool-subject-1'
