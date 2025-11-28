@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -16,7 +17,7 @@ const IconWrapper = ({
     aria-hidden="true"
     fill="none"
     stroke="currentColor"
-    strokeWidth="18"
+    strokeWidth="28"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
