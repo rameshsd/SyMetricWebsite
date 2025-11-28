@@ -8,7 +8,7 @@ import {
   OrganizationManagementIcon,
   StudyManagementIcon,
   SiteManagementIcon,
-  ClinicalSuppliesIcon,
+  SuppliesIcon,
   SubjectManagementIcon,
   DataManagementIcon,
   LabIcon,
@@ -52,7 +52,7 @@ const toolsData = [
   },
   {
     id: 'supplies-management',
-    icon: ClinicalSuppliesIcon,
+    icon: SuppliesIcon,
     label: 'Clinical Supplies Management',
     description: 'Track and manage investigational products and trial supplies in real-time.',
     imageId: 'tool-supplies-1'
