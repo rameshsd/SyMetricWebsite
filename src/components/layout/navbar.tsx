@@ -1,9 +1,10 @@
+
 'use client';
 
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, Search, Globe, ChevronRight, ChevronLeft, MessageSquare } from 'lucide-react';
+import { Menu, X, Search, Globe, ChevronRight, ChevronLeft, MessageSquare, User as UserIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -117,6 +118,8 @@ function UserNav() {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => router.push('/admin')}>Dashboard</DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut}>
             Log out
           </DropdownMenuItem>
@@ -126,8 +129,11 @@ function UserNav() {
   }
 
   return (
-    <Button asChild>
-      <Link href="/login">Login</Link>
+    <Button variant="ghost" size="icon" asChild>
+      <Link href="/login">
+        <UserIcon className="h-5 w-5" />
+        <span className="sr-only">Login</span>
+      </Link>
     </Button>
   )
 }
@@ -272,8 +278,8 @@ export function Navbar() {
                       </NavigationMenuContent>
                       </>
                   ) : (
-                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), pathname.startsWith(item.href) && 'text-primary')}>
-                      <Link href={item.href}>
+                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), item.href && pathname.startsWith(item.href) && 'text-primary')}>
+                      <Link href={item.href || '#'}>
                         {item.name}
                       </Link>
                     </NavigationMenuLink>
@@ -300,6 +306,7 @@ export function Navbar() {
 
             {/* Mobile icons */}
             <div className="flex items-center md:hidden">
+                <UserNav />
                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
                   if (!open) {
                     closeMobileMenu();
