@@ -1,3 +1,4 @@
+
 /**
  * @fileoverview Firestore Security Rules for SyMetric Systems platform.
  *
@@ -9,6 +10,7 @@
  * Data Structure:
  * - /communityPosts/{communityPostId}: Stores community posts. Publicly readable.
  * - /users/{userId}: Stores user profiles. Owner-only access.
+ * - /websiteVisits/{visitId}: Stores anonymous analytics data. Write-only for any user.
  *
  * Key Security Decisions:
  * - Community posts are publicly readable to allow for open community access.
@@ -60,6 +62,19 @@ service cloud.firestore {
       allow create: if isSignedIn() && request.auth.uid == userId;
       allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
       allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Allows any authenticated user (including anonymous) to create a website visit record.
+     * Read and update operations are disallowed to protect privacy.
+     * @path /websiteVisits/{visitId}
+     * @allow (create) User is signed in
+     * @deny (get, list, update, delete) For all users
+     * @principle Enables analytics tracking while maintaining user privacy.
+     */
+    match /websiteVisits/{visitId} {
+      allow create: if isSignedIn();
+      allow get, list, update, delete: if false;
     }
 
     function isSignedIn() {
