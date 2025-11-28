@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -110,7 +109,7 @@ const toolsData = [
 
 const ToolButton = ({ tool, isActive, onClick }: { tool: typeof toolsData[0], isActive: boolean, onClick: () => void }) => (
     <button onClick={onClick} className="text-center group flex flex-col items-center gap-2">
-        <tool.icon className={cn("h-14 w-14 transition-colors", isActive ? "text-[#a3ff12]" : "text-purple-400 group-hover:text-purple-300")} />
+        <tool.icon className={cn("h-12 w-12 transition-colors", isActive ? "text-[#a3ff12]" : "text-purple-400 group-hover:text-purple-300")} />
         <div className="text-sm font-semibold max-w-[120px]">
             <p className={cn("transition-colors", isActive ? "text-white" : "text-white/80 group-hover:text-white")}>{tool.label}</p>
              <div className={cn("mt-2 h-1 w-full bg-[#a3ff12] rounded-full transition-transform duration-300", isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50")} />
