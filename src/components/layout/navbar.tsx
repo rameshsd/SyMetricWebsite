@@ -162,8 +162,9 @@ function UserNav() {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-         <Button asChild>
-          <Link href="/login">Login</Link>
+         <Button variant="ghost" size="icon">
+            <User className="h-5 w-5" />
+            <span className="sr-only">Login</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
