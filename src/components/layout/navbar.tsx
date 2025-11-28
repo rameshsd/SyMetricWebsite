@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -138,7 +137,7 @@ function UserNav() {
             <Avatar className="h-10 w-10">
               {user.photoURL && <AvatarImage src={user.photoURL} alt={user.displayName || ''} />}
               <AvatarFallback>
-                {user.displayName ? user.displayName.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase()}
+                {user.displayName ? user.displayName.charAt(0).toUpperCase() : (user.email ? user.email.charAt(0).toUpperCase() : 'U')}
               </AvatarFallback>
             </Avatar>
           </Button>
@@ -147,9 +146,7 @@ function UserNav() {
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">{user.displayName || 'User'}</p>
-              <p className="text-xs leading-none text-muted-foreground">
-                {user.email}
-              </p>
+              {user.email && <p className="text-xs leading-none text-muted-foreground">{user.email}</p>}
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />

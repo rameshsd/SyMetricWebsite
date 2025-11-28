@@ -2,7 +2,7 @@
 
 import type { LucideIcon } from 'lucide-react';
 import type { Timestamp, DocumentReference } from 'firebase/firestore'
-import type { User } from 'firebase/auth'
+import type { User as FirebaseUser } from 'firebase/auth'
 
 
 export type NavItem = {
@@ -220,7 +220,7 @@ export type TopAuthor = {
 };
     
 export interface UserHookResult {
-  user: User | null;
+  user: FirebaseUser | null;
   isUserLoading: boolean;
 }
     
