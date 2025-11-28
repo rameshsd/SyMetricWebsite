@@ -4,7 +4,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, firestore } from "@/firebase";
 import type { User } from 'firebase/auth';
-import type { UserHookResult } from '@/lib/types';
+
+export interface UserHookResult {
+  user: User | null;
+  isUserLoading: boolean;
+}
 
 export function useUser(): UserHookResult {
   const [user, setUser] = useState<User | any | null>(null);
