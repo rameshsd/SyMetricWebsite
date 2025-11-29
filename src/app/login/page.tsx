@@ -10,6 +10,7 @@ import { initiateGoogleSignIn, useAuth } from '@/firebase';
 import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { FirebaseError } from 'firebase/app';
 
 export default function LoginPage() {
   const { user, isUserLoading } = useUser();
@@ -29,6 +30,10 @@ export default function LoginPage() {
         await initiateGoogleSignIn(auth);
         router.push('/community');
       } catch (error) {
+        if (error instanceof FirebaseError && error.code === 'auth/popup-closed-by-user') {
+          // User closed the popup, do nothing.
+          return;
+        }
         console.error("Google Sign-in failed:", error);
       }
     }
