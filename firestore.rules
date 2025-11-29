@@ -1,92 +1,25 @@
 
-/**
- * @fileoverview Firestore Security Rules for SyMetric Systems platform.
- *
- * Core Philosophy:
- * This ruleset balances open access for community content with strict user ownership for personal data.
- * Community posts are publicly readable, but require authentication to create, update, or delete.
- * User profiles are private, with each user only able to access their own data.
- *
- * Data Structure:
- * - /communityPosts/{communityPostId}: Stores community posts. Publicly readable.
- * - /users/{userId}: Stores user profiles. Owner-only access.
- * - /websiteVisits/{visitId}: Stores anonymous analytics data. Write-only for any user.
- *
- * Key Security Decisions:
- * - Community posts are publicly readable to allow for open community access.
- * - User listing is disallowed to protect user privacy.
- * - All write operations are protected by authentication checks.
- *
- * Denormalization for Authorization:
- * - Community posts include the `authorId` field, which is used to determine ownership for write operations, avoiding costly `get()` calls.
- */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    /**
-     * @description Allows read access to all community posts for any user, but restricts write access to authenticated users only.
-     * @path /communityPosts/{communityPostId}
-     * @allow (get, list) User is not required to be signed in
-     * @allow (create) User is signed in and `request.resource.data.authorId == request.auth.uid`
-     * @allow (update, delete) User is signed in and `resource.data.authorId == request.auth.uid`
-     * @deny (create) User is not signed in
-     * @deny (update, delete) User is not signed in
-     * @deny (create) User is signed in but `request.resource.data.authorId != request.auth.uid`
-     * @deny (update, delete) User is signed in but `resource.data.authorId != request.auth.uid`
-     * @principle Allows public read access while enforcing ownership for write operations.
-     */
-    match /communityPosts/{communityPostId} {
-      allow get: if true;
-      allow list: if true;
-
-      allow create: if isSignedIn() && request.resource.data.authorId == request.auth.uid;
-      allow update: if isSignedIn() && isOwner(resource.data.authorId);
-      allow delete: if isSignedIn() && isOwner(resource.data.authorId) && resource != null;
-    }
-
-    /**
-     * @description Restricts read and write access to user profiles to the owning user only.
-     * @path /users/{userId}
-     * @allow (get, list) User is signed in and `request.auth.uid == userId`
-     * @allow (create) User is signed in and `request.auth.uid == userId`
-     * @allow (update, delete) User is signed in and `request.auth.uid == userId` and resource exists
-     * @deny (get, list) User is signed in but `request.auth.uid != userId`
-     * @deny (create) User is signed in but `request.auth.uid != userId`
-     * @deny (update, delete) User is signed in but `request.auth.uid != userId`
-     * @principle Enforces strict user ownership for profile data.
-     */
     match /users/{userId} {
-      allow get: if isOwner(userId);
-      allow list: if false;
-      allow create: if isSignedIn() && request.auth.uid == userId;
-      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
-      allow delete: if isExistingOwner(userId);
+      allow read, write: if request.auth != null && request.auth.uid == userId;
     }
 
-    /**
-     * @description Allows any authenticated user (including anonymous) to create a website visit record.
-     * Read and update operations are disallowed to protect privacy.
-     * @path /websiteVisits/{visitId}
-     * @allow (create) User is signed in
-     * @deny (get, list, update, delete) For all users
-     * @principle Enables analytics tracking while maintaining user privacy.
-     */
+    match /communityPosts/{postId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && resource.data.authorId == request.auth.uid;
+    }
+
     match /websiteVisits/{visitId} {
-      allow create: if isSignedIn();
-      allow get, list, update, delete: if false;
+      allow create: if true;
+      allow read, update, delete: if false;
     }
 
-    function isSignedIn() {
-      return request.auth != null;
-    }
-
-    function isOwner(userId) {
-      return request.auth.uid == userId;
-    }
-
-    function isExistingOwner(userId) {
-      return isOwner(userId) && resource != null;
+    match /pages/{pageId} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
     }
   }
 }

@@ -30,6 +30,7 @@ import {
   Users,
   X,
   ThumbsUp,
+  Plus,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -37,6 +38,7 @@ import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
 import { useUser } from '@/firebase';
+import { CreatePostForm } from '@/components/community/CreatePostForm';
 
 export default function CommunityPage() {
   const { user, isUserLoading } = useUser();
@@ -71,29 +73,26 @@ export default function CommunityPage() {
                 best practices, and continually learn more about SyMetric
                 solutions.
               </p>
-              <div className="flex flex-col sm:flex-row bg-background rounded-md p-1.5 shadow-md w-full max-w-lg gap-2">
-                <Select defaultValue="all">
-                  <SelectTrigger className="w-full sm:w-40 border-none bg-muted h-10 text-foreground">
-                    <SelectValue placeholder="All community" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All community</SelectItem>
-                    <SelectItem value="products">Products</SelectItem>
-                    <SelectItem value="services">Services</SelectItem>
-                    <SelectItem value="general">General</SelectItem>
-                  </SelectContent>
-                </Select>
-                <div className="relative w-full">
-                  <Input
-                    type="search"
-                    placeholder="Search Community"
-                    className="w-full bg-transparent border-none focus-visible:ring-0 h-10 pl-4 pr-10"
+               <div className="flex flex-col sm:flex-row gap-4">
+                  <CreatePostForm
+                    trigger={
+                      <Button size="lg" variant="secondary" className="bg-white text-black hover:bg-white/80">
+                          <Plus className="mr-2 h-5 w-5" />
+                          Create a Post
+                      </Button>
+                    }
                   />
-                  <Button variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8">
-                    <Search className="h-5 w-5 text-muted-foreground" />
-                  </Button>
+                  <div className="relative w-full max-w-sm">
+                    <Input
+                      type="search"
+                      placeholder="Search Community..."
+                      className="w-full bg-white/20 border-white/30 text-white placeholder:text-white/70 h-12 pl-4 pr-12 focus-visible:ring-white"
+                    />
+                    <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 text-white/80 hover:bg-white/20 hover:text-white">
+                      <Search className="h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
-              </div>
               <div className="flex items-center gap-x-8 gap-y-2 flex-wrap text-sm pt-4">
                 <div className="flex items-center gap-2">
                   <MessageSquare className="h-4 w-4" />
