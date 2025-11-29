@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -48,24 +47,23 @@ export const SiteIcon: React.FC<IconProps> = ({ className }) => (
   />
 );
 
-// 4. Clinical Supplies (exact SVG)
-export const ClinicalSuppliesIcon: React.FC<IconProps> = ({ className }) => (
+// 4. Clinical Supplies
+export const SuppliesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG className={className} svg={`<svg fill="#a73bb5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#a73bb5"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.9,3.1a2.8,2.8,0,0,0-4,0L4,13.9a2.8,2.8,0,0,0,0,4L10,24a2.8,2.8,0,0,0,4,0L24.9,13.1a2.8,2.8,0,0,0,0-4Zm-6,6L11,11l-2,2,4,4,2-2,2-2Zm-1.6,9.2-4-4,9.8-9.8,4,4Z"></path></g></svg>`} />
 );
 
-// 5. Subject Management (exact SVG)
+// 5. Subject Management
 export const SubjectIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG className={className} svg={`<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M12.5 9h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0 4 6.36V18a2 2 0 0 1 2 2v6h-1v-6a1 1 0 0 0-1-1v-2.08a8.38 8.38 0 0 1-5.1-7.56L10 17H8v1a2 2 0 0 1-2 2v6H5v-6a1 1 0 0 0-1-1v-2.08A8.38 8.38 0 0 1 .91 8.36L1 9.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V9.94a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v.58a8.38 8.38 0 0 1 5.1 7.56L18 13h2V9.5a.5.5 0 0 0-.5-.5zM7 9.94v.06H2.06a6.94 6.94 0 0 0 4-6.36v.06H7a1 1 0 0 1-1 1v5.24zm8.06-6.36A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path><path d="M25 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M29 13v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0-4 6.36V18a2 2 0 0 1-2 2v6h1v-6a1 1 0 0 0 1-1v-2.08a8.38 8.38 0 0 1 5.1-7.56L24 10h2V8.5a.5.5 0 0 0 .5-.5h6a.5.5 0 0 0 .5.5v.06a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1-1-1h-6a1 1 0 0 1-1 1v.58a8.38 8.38 0 0 1-5.1 7.56L15 13h-2v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V10a2 2 0 0 1-2-2V2h1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2h1v6a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8.5a.5.5 0 0 0-.5-.5H29zm-4 .06V9.94h4.94v.06a6.94 6.94 0 0 0-4-6.36v.06H25a1 1 0 0 1-1 1v5.24zm-8.06-6.36A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path></g></svg>`} />
 );
-// Settings Icon (exact SVG)
+
+// Settings Icon
 export const SettingsIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
     svg={`<svg fill="#000000" viewBox="0 0 24 24" id="settings" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="12" r="3" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle><path id="primary" d="M20,10h-.59a1,1,0,0,1-.94-.67v0a1,1,0,0,1,.2-1.14l.41-.41a1,1,0,0,0,0-1.42L17.66,4.93a1,1,0,0,0-1.42,0l-.41.41a1,1,0,0,1-1.14.2h0A1,1,0,0,1,14,4.59V4a1,1,0,0,0-1-1H11a1,1,0,0,0-1,1v.59a1,1,0,0,1-.67.94h0a1,1,0,0,1-1.14-.2l-.41-.41a1,1,0,0,0-1.42,0L4.93,6.34a1,1,0,0,0,0,1.42l.41.41a1,1,0,0,1,.2,1.14v0a1,1,0,0,1-.94.67H4a1,1,0,0,0-1,1v2a1,1,0,0,0,1,1h.59a1,1,0,0,1,.94.67v0a1,1,0,0,1-.2,1.14l-.41.41a1,1,0,0,0,0,1.42l1.41,1.41a1,1,0,0,0,1.42,0l.41-.41a1,1,0,0,1,1.14-.2h0a1,1,0,0,1,.67.94V20a1,1,0,0,0,1,1h2a1,1,0,0,0,1-1v-.59a1,1,0,0,1,.67-.94h0a1,1,0,0,1,1.14.2l.41.41a1,1,0,0,0,1.42,0l1.41-1.41a1,1,0,0,0,0-1.42l-.41-.41a1,1,0,0,1-.2-1.14v0a1,1,0,0,1,.94-.67H20a1,1,0,0,0,1-1V11A1,1,0,0,0,20,10Z" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`}
   />
 );
-
-
 
 export const DataManagementIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
