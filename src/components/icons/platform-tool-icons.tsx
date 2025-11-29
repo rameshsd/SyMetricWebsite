@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -48,15 +49,14 @@ export const SiteIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // 4. Clinical Supplies (exact SVG)
-export const SuppliesIcon: React.FC<IconProps> = ({ className }) => (
+export const ClinicalSuppliesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG className={className} svg={`<svg fill="#a73bb5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#a73bb5"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.9,3.1a2.8,2.8,0,0,0-4,0L4,13.9a2.8,2.8,0,0,0,0,4L10,24a2.8,2.8,0,0,0,4,0L24.9,13.1a2.8,2.8,0,0,0,0-4Zm-6,6L11,11l-2,2,4,4,2-2,2-2Zm-1.6,9.2-4-4,9.8-9.8,4,4Z"></path></g></svg>`} />
 );
 
 // 5. Subject Management (exact SVG)
-export const SubjectManagementIcon: React.FC<IconProps> = ({ className }) => (
-  <RawSVG className={className} svg={`<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M12.5 9h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0 4 6.36V18a2 2 0 0 1 2 2v6h-1v-6a1 1 0 0 0-1-1v-2.08a8.38 8.38 0 0 1-5.1-7.56L10 17H8v1a2 2 0 0 1-2 2v6H5v-6a1 1 0 0 0-1-1v-2.08A8.38 8.38 0 0 1 .91 8.36L1 9.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V9.94a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v.58a8.38 8.38 0 0 1 5.1 7.56L18 13h2V9.5a.5.5 0 0 0-.5-.5zM7 9.94v.06H2.06a6.94 6.94 0 0 0 4-6.36v.06H7a1 1 0 0 1-1 1v5.24zM16.94 3.64A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path><path d="M25 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M29 13v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0-4 6.36V18a2 2 0 0 1-2 2v6h1v-6a1 1 0 0 0 1-1v-2.08a8.38 8.38 0 0 1 5.1-7.56L24 10h2V8.5a.5.5 0 0 0 .5-.5h6a.5.5 0 0 0 .5.5v.06a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1-1-1h-6a1 1 0 0 1-1 1v.58a8.38 8.38 0 0 1-5.1 7.56L15 13h-2v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V10a2 2 0 0 1-2-2V2h1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2h1v6a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8.5a.5.5 0 0 0-.5-.5H29zm-4 .06V9.94h4.94v.06a6.94 6.94 0 0 0-4-6.36v.06H25a1 1 0 0 1-1 1v5.24zm-8.06-6.36A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path></g></svg>`} />
+export const SubjectIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG className={className} svg={`<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M12.5 9h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0 4 6.36V18a2 2 0 0 1 2 2v6h-1v-6a1 1 0 0 0-1-1v-2.08a8.38 8.38 0 0 1-5.1-7.56L10 17H8v1a2 2 0 0 1-2 2v6H5v-6a1 1 0 0 0-1-1v-2.08A8.38 8.38 0 0 1 .91 8.36L1 9.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V9.94a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v.58a8.38 8.38 0 0 1 5.1 7.56L18 13h2V9.5a.5.5 0 0 0-.5-.5zM7 9.94v.06H2.06a6.94 6.94 0 0 0 4-6.36v.06H7a1 1 0 0 1-1 1v5.24zm8.06-6.36A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path><path d="M25 4a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm0 1.5a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0z" fill="#00ff41" class="fill-000000"></path><path d="M29 13v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.06a6.94 6.94 0 0 0-4 6.36V18a2 2 0 0 1-2 2v6h1v-6a1 1 0 0 0 1-1v-2.08a8.38 8.38 0 0 1 5.1-7.56L24 10h2V8.5a.5.5 0 0 0 .5-.5h6a.5.5 0 0 0 .5.5v.06a6.94 6.94 0 0 0-4-6.36V3a1 1 0 0 1-1-1h-6a1 1 0 0 1-1 1v.58a8.38 8.38 0 0 1-5.1 7.56L15 13h-2v-3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V10a2 2 0 0 1-2-2V2h1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2h1v6a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8.5a.5.5 0 0 0-.5-.5H29zm-4 .06V9.94h4.94v.06a6.94 6.94 0 0 0-4-6.36v.06H25a1 1 0 0 1-1 1v5.24zm-8.06-6.36A6.94 6.94 0 0 0 11 9.94v.06h4.94v-.06a6.94 6.94 0 0 0-4-6.36v.06a1 1 0 0 1-1-1V3.28a1 1 0 0 1 .36-1.36z" fill="#00ff41" class="fill-000000"></path></g></svg>`} />
 );
-
 // Settings Icon (exact SVG)
 export const SettingsIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -67,8 +67,9 @@ export const SettingsIcon: React.FC<IconProps> = ({ className }) => (
 
 
 
-export const DataManagementIcon = () => (
+export const DataManagementIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
+    className={className}
     svg={`<svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g><path d="M16,27c-0.5527,0-1-0.4478-1-1v-6c0-0.5522,0.4473-1,1-1s1,0.4478,1,1v6C17,26.5522,16.5527,27,16,27z" fill="#00ACBA"/>
 <path d="M24,27c-0.5527,0-1-0.4478-1-1v-2H9v2c0,0.5522-0.4473,1-1,1s-1-0.4478-1-1v-3c0-0.5522,0.4473-1,1-1h16 c0.5527,0,1,0.4478,1,1v3C25,26.5522,24.5527,27,24,27z" fill="#00ACBA"/>
