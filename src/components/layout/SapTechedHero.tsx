@@ -1,9 +1,10 @@
+
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { RequestDemoForm } from "../forms/RequestDemoForm";
 
 export function SapTechedHero() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero-section-image');
@@ -22,9 +23,7 @@ export function SapTechedHero() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center md:justify-start">
-              <Button asChild size="lg" variant="secondary" className="bg-green-400 text-black hover:bg-green-500">
-                <Link href="/contact">Schedule a live demo</Link>
-              </Button>
+              <RequestDemoForm />
             </div>
           </div>
           <div className="relative h-[300px] lg:h-[400px] w-full">

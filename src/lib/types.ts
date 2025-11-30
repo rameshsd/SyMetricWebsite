@@ -218,6 +218,16 @@ export type TopAuthor = {
   sapLogo?: string;
   imageUrl: string;
 };
+
+export type DemoRequest = {
+  id: string;
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  status: 'New' | 'Contacted' | 'In Progress' | 'Closed' | 'Archived';
+  createdAt: Timestamp;
+}
     
 export interface UserHookResult {
   user: FirebaseUser | null;

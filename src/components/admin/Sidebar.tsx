@@ -18,6 +18,7 @@ import {
   Badge,
   File,
   Edit,
+  TrendingUp,
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
@@ -26,6 +27,7 @@ import { usePathname } from 'next/navigation';
 const mainNav = [
   { name: 'Dashboards', href: '/admin', icon: LayoutDashboard },
   { name: 'Analytics', href: '/admin/analytics', icon: GanttChartSquare },
+  { name: 'Sales', href: '/admin/sales', icon: TrendingUp },
   { name: 'Pages', href: '/admin/pages', icon: File },
   { name: 'Content', href: '/admin/content', icon: Edit },
 ];

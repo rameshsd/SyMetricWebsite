@@ -72,6 +72,22 @@
         "message"
       ]
     },
+    "DemoRequest": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DemoRequest",
+      "type": "object",
+      "description": "Represents a request for a product demo, serving as a sales lead.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the demo request." },
+        "name": { "type": "string", "description": "Full name of the person requesting the demo." },
+        "email": { "type": "string", "format": "email", "description": "Email address of the requester." },
+        "company": { "type": "string", "description": "The company the requester works for." },
+        "phone": { "type": "string", "description": "Phone number of the requester." },
+        "status": { "type": "string", "enum": ["New", "Contacted", "In Progress", "Closed", "Archived"], "description": "The current status of the sales lead." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the request was submitted." }
+      },
+      "required": ["id", "name", "email", "company", "status", "createdAt"]
+    },
     "ResourceInteraction": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "ResourceInteraction",
@@ -202,6 +218,17 @@
               "name": "contactFormSubmissionId",
               "description": "Unique identifier for the contact form submission."
             }
+          ]
+        }
+      },
+      {
+        "path": "/demoRequests/{demoRequestId}",
+        "definition": {
+          "entityName": "DemoRequest",
+          "schema": { "$ref": "#/backend/entities/DemoRequest" },
+          "description": "Stores sales leads from demo requests. 'demoRequestId' is the unique ID for each lead.",
+          "params": [
+            { "name": "demoRequestId", "description": "Unique identifier for the demo request." }
           ]
         }
       },
