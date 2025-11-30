@@ -48,24 +48,29 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   });
 
   return (
-    <div className="bg-background/95 backdrop-blur-lg border-b shadow-sm">
-      <div className="container">
-        {/* TITLE BLOCK (non-sticky) */}
-        <div className="py-4">
-          <div className="flex items-center text-sm text-muted-foreground mb-2">
-            <Link href="/solutions" className="hover:text-primary flex items-center">
-              <ChevronRight className="h-4 w-4 transform rotate-180" />
-              All products
-            </Link>
-          </div>
-          <div className="flex justify-between items-center">
+    <div className="w-full">
+      {/* ----------------------------- */}
+      {/*   PRODUCT TITLE (SCROLLS AWAY) */}
+      {/* ----------------------------- */}
+      <div className="bg-background/95 backdrop-blur-lg border-b shadow-sm">
+        <div className="container">
+          <div className="py-4">
+            <div className="flex items-center text-sm text-muted-foreground mb-2">
+              <Link href="/solutions" className="hover:text-primary flex items-center">
+                <ChevronRight className="h-4 w-4 transform rotate-180" />
+                All products
+              </Link>
+            </div>
+
             <h1 className="text-2xl font-bold text-foreground">{productName}</h1>
           </div>
         </div>
       </div>
 
-      {/* STICKY TABS BAR */}
-      <div className="sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-t shadow-sm">
+      {/* ------------------------------------------- */}
+      {/*   SUB MENU THAT SHOULD ACT AS HEADER (STICKY) */}
+      {/* ------------------------------------------- */}
+      <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-lg border-b shadow-sm">
         <div className="container">
           <nav className="-mb-px flex space-x-8 relative z-50" aria-label="Tabs">
             {secondaryNav.map((tab) =>
@@ -123,4 +128,3 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
     </div>
   );
 }
-
