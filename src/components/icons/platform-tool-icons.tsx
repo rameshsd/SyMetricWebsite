@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -48,7 +47,22 @@ export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 3. Site Management
+// 3. Study Management
+// ===============================
+export const StudyIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`
+<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+</svg>`}
+  />
+);
+
+
+// ===============================
+// 4. Site Management
 // ===============================
 export const SiteIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -62,7 +76,7 @@ export const SiteIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 4. Clinical Supplies
+// 5. Clinical Supplies
 // ===============================
 export const SuppliesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -77,7 +91,7 @@ export const SuppliesIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 5. Subject Management
+// 6. Subject Management
 // ===============================
 export const SubjectIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -91,7 +105,7 @@ export const SubjectIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 6. Data Management
+// 7. Data Management
 // ===============================
 export const DataManagementIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -106,7 +120,7 @@ export const DataManagementIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 7. Lab Management
+// 8. Lab Management
 // ===============================
 export const LabIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -120,7 +134,7 @@ export const LabIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 8. Medical Coding
+// 9. Medical Coding
 // ===============================
 export const MedicalCodingIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -136,7 +150,7 @@ export const MedicalCodingIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 9. Data Services
+// 10. Data Services
 // ===============================
 export const DataServicesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -151,7 +165,7 @@ export const DataServicesIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 10. Digital Learning
+// 11. Digital Learning
 // ===============================
 export const DigitalLearningIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
@@ -169,7 +183,7 @@ export const DigitalLearningIcon: React.FC<IconProps> = ({ className }) => (
 );
 
 // ===============================
-// 11. Help & Support
+// 12. Help & Support
 // ===============================
 export const HelpSupportIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
