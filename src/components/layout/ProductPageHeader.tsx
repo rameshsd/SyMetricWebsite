@@ -37,6 +37,7 @@ type ProductPageHeaderProps = {
 
 export function ProductPageHeader({ productName, solutions }: ProductPageHeaderProps) {
   const pathname = usePathname();
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const isSolutionsPage = pathname === '/solutions';
 
   const secondaryNav = secondaryNavTemplate.map(item => {
@@ -46,6 +47,15 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
     return item;
   });
 
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (isDropdownOpen) {
+        setIsDropdownOpen(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, true);
+    return () => window.removeEventListener('scroll', handleScroll, true);
+  }, [isDropdownOpen]);
 
   return (
     <div className="sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b shadow-sm relative overflow-visible">
@@ -65,7 +75,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
         <nav className="-mb-px flex space-x-8 relative z-50" aria-label="Tabs">
             {secondaryNav.map((tab) =>
                 tab.dropdown ? (
-                <DropdownMenu key={tab.label}>
+                <DropdownMenu key={tab.label} open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
                     <DropdownMenuTrigger asChild>
                         <button className="flex items-center gap-1 whitespace-nowrap py-3 px-1 border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border font-medium text-sm">
                             {tab.label} <ChevronDown className="h-4 w-4" />
