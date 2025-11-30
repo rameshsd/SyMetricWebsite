@@ -62,7 +62,11 @@ import {
     SiteIcon,
     StudyIcon,
     SubjectIcon,
-    SuppliesIcon
+    SuppliesIcon,
+    CustomerManagementIcon,
+    ReportsIcon,
+    SampleManagementIcon,
+    LabelManagementIcon,
 } from '@/components/icons/platform-tool-icons';
 
 export const navItems: NavItem[] = [
@@ -560,7 +564,7 @@ export const featureGridItems: FeatureGridItem[] = [
         link: '#' 
     },
     { 
-        icon: Users, // Placeholder - consider a more specific icon
+        icon: CustomerManagementIcon,
         title: 'Customer Management',
         description: 'Manage relationships and data for sponsors and CROs.',
         link: '#' 
@@ -608,7 +612,7 @@ export const featureGridItems: FeatureGridItem[] = [
         link: '#',
     },
     { 
-        icon: BarChart, 
+        icon: ReportsIcon, 
         title: 'Reports',
         description: 'Generate insightful reports and visualizations for real-time trial oversight.',
         link: '#' 
@@ -626,13 +630,13 @@ export const featureGridItems: FeatureGridItem[] = [
         link: '#'
     },
     { 
-        icon: TestTube, 
+        icon: SampleManagementIcon, 
         title: 'Sample Management',
         description: 'Track the entire lifecycle of biological samples, from collection to storage and analysis.',
         link: '#' 
     },
     { 
-        icon: Tag, 
+        icon: LabelManagementIcon, 
         title: 'Label Management',
         description: 'Ensure compliance and accuracy with integrated tools for creating and managing drug labels.',
         link: '#',
