@@ -73,7 +73,7 @@ export function RequestDemoForm() {
 
       toast({
         title: 'Demo Request Sent!',
-        description: "Thank you for your interest. We'll be in touch shortly to schedule your demo.",
+        description: "Thank you for your interest. We'll be in touch shortly to schedule your personalized demo.",
       });
 
       form.reset();
