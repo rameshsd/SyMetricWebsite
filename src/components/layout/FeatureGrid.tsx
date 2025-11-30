@@ -5,46 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "../ui/card";
 import { ArrowRight } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
-import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from "../icons/feature-icons";
-
-const featureGridItems = [
-    { 
-        icon: CloudErpIcon, 
-        title: 'Study Management',
-        description: 'Define, configure, and oversee all aspects of your clinical studies from a centralized dashboard.',
-        link: '#' 
-    },
-    { 
-        icon: FinancialManagementIcon, 
-        title: 'Site Management',
-        description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
-        link: '#' 
-    },
-    { 
-        icon: SpendManagementIcon, 
-        title: 'Clinical Supplies Management',
-        description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
-        link: '#' 
-    },
-    { 
-        icon: SupplyChainIcon, 
-        title: 'Subject Management',
-        description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
-        link: '#' 
-    },
-    { 
-        icon: HumanCapitalIcon, 
-        title: 'Data Management',
-        description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
-        link: '#' 
-    },
-    { 
-        icon: CustomerExperienceIcon, 
-        title: 'Digital Learning',
-        description: 'Provide training and certification for trial personnel directly on the platform.',
-        link: '#' 
-    },
-];
+import { featureGridItems } from "@/lib/data";
 
 export function FeatureGrid() {
   return (
@@ -55,14 +16,14 @@ export function FeatureGrid() {
             description="Explore our full suite of integrated modules, meticulously designed to power every phase of your clinical trial with precision and ease."
             className="mb-16"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {featureGridItems.map((item) => (
             <Card key={item.title} className="group flex flex-col text-left p-6 rounded-2xl border transition-all hover:shadow-lg hover:-translate-y-1 bg-background">
               <div className="flex-shrink-0 flex items-center gap-4 mb-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <item.icon className="h-6 w-6 text-primary" />
+                  <item.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-foreground">
+                <h3 className="text-base font-bold text-foreground leading-tight">
                     {item.title}
                 </h3>
               </div>

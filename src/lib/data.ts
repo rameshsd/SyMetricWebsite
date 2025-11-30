@@ -50,6 +50,20 @@ import {
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
+import { 
+    DataManagementIcon,
+    DataServicesIcon,
+    DigitalLearningIcon,
+    HelpSupportIcon,
+    IdentityAccessIcon,
+    LabIcon,
+    MedicalCodingIcon,
+    OrganizationIcon,
+    SiteIcon,
+    StudyIcon,
+    SubjectIcon,
+    SuppliesIcon
+} from '@/components/icons/platform-tool-icons';
 
 export const navItems: NavItem[] = [
     { 
@@ -534,52 +548,64 @@ export const customerSuccessStories: CustomerSuccessStory[] = [
 
 export const featureGridItems: FeatureGridItem[] = [
     { 
-        icon: Settings, 
-        title: 'Study Management',
-        description: 'Define, configure, and oversee all aspects of your clinical studies from a centralized dashboard.',
+        icon: IdentityAccessIcon, 
+        title: 'Identity and Access Management',
+        description: 'Role-Based Access Control and Self-Service Account Management.',
         link: '#' 
     },
     { 
-        icon: Hospital, 
-        title: 'Site Management',
-        description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
-        link: '#',
+        icon: OrganizationIcon, 
+        title: 'Organization Management',
+        description: 'Manage all organizations participating in your trials from a central location.',
+        link: '#' 
     },
     { 
-        icon: Beaker, 
+        icon: Users, // Placeholder - consider a more specific icon
+        title: 'Customer Management',
+        description: 'Manage relationships and data for sponsors and CROs.',
+        link: '#' 
+    },
+    { 
+        icon: StudyIcon, 
+        title: 'Study Management',
+        description: 'Define, configure, and oversee all aspects of your clinical studies.',
+        link: '#' 
+    },
+    { 
+        icon: SiteIcon, 
+        title: 'Site Management',
+        description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
+        link: '#' 
+    },
+    { 
+        icon: SuppliesIcon, 
         title: 'Clinical Supplies Management',
         description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
         link: '#' 
     },
     { 
-        icon: Users, 
+        icon: SubjectIcon, 
         title: 'Subject Management',
         description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
         link: '#' 
     },
     { 
-        icon: Database, 
+        icon: DataManagementIcon, 
         title: 'Data Management',
         description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
         link: '#' 
     },
     { 
-        icon: FlaskConical, 
+        icon: LabIcon, 
         title: 'Lab Management',
         description: 'Manage lab data, normal ranges, and sample tracking with seamless integration.',
         link: '#' 
     },
     { 
-        icon: BookMarked, 
+        icon: MedicalCodingIcon, 
         title: 'Medical Coding',
         description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
         link: '#',
-    },
-    { 
-        icon: Archive, 
-        title: 'Document Management',
-        description: 'Maintain a compliant and audit-ready eTMF with version control and secure access.',
-        link: '#' 
     },
     { 
         icon: BarChart, 
@@ -588,15 +614,15 @@ export const featureGridItems: FeatureGridItem[] = [
         link: '#' 
     },
     { 
-        icon: GraduationCap, 
+        icon: DigitalLearningIcon, 
         title: 'Digital Learning',
         description: 'Provide training and certification for trial personnel directly on the platform.',
         link: '#' 
     },
     {
-        icon: Users,
-        title: 'Volunteer Management',
-        description: 'Efficiently manage and communicate with your pool of trial volunteers and participants.',
+        icon: DataServicesIcon,
+        title: 'Data Services',
+        description: 'Custom data exports, integrations, and reporting services to meet unique needs.',
         link: '#'
     },
     { 
@@ -612,7 +638,7 @@ export const featureGridItems: FeatureGridItem[] = [
         link: '#',
     },
     { 
-        icon: LifeBuoy, 
+        icon: HelpSupportIcon, 
         title: 'Help and Support',
         description: 'Access our dedicated support team and comprehensive knowledge base 24/7.',
         link: '#' 
