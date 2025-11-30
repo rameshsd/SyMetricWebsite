@@ -19,25 +19,19 @@ const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className 
 export const IdentityAccessIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M41 50H23C20.7909 50 19 48.2091 19 46V18C19 15.7909 20.7909 14 23 14H41C43.2091 14 45 15.7909 45 18V46C45 48.2091 43.2091 50 41 50Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="32" cy="24" r="4" fill="white"/>
-<path d="M40 36C40 31.5817 36.4183 28 32 28C27.5817 28 24 31.5817 24 36" fill="white"/>
-<path d="M26 42H38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="42" cy="44" r="8" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M39 44L41.5 46.5L46 42" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`}
+    svg={`<svg fill="#b80dce" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#b80dce"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M311.257,403.215c-0.983-3.026-3.476-5.315-6.575-6.036l-26.731-6.225l-14.181-23.497 c-1.642-2.723-4.591-4.388-7.772-4.388s-6.128,1.664-7.772,4.388l-14.181,23.497l-26.731,6.225 c-3.099,0.721-5.592,3.012-6.575,6.036c-0.984,3.025-0.311,6.344,1.771,8.748l17.966,20.747l-2.34,27.345 c-0.271,3.169,1.135,6.249,3.709,8.119c1.576,1.145,3.448,1.733,5.337,1.733c1.193,0,2.395-0.236,3.529-0.715l25.285-10.676 l25.284,10.676c2.929,1.237,6.293,0.851,8.866-1.018c2.573-1.869,3.98-4.949,3.709-8.118l-2.34-27.345l17.967-20.747 C311.568,409.559,312.241,406.241,311.257,403.215z M275.286,423.723c-1.604,1.852-2.392,4.275-2.182,6.717l1.383,16.176 l-14.956-6.315c-1.129-0.477-2.33-0.715-3.531-0.715s-2.401,0.238-3.531,0.715l-14.957,6.315l1.385-16.176 c0.209-2.443-0.579-4.865-2.182-6.717l-10.627-12.273l15.811-3.682c2.387-0.556,4.447-2.053,5.713-4.152l8.389-13.9l8.389,13.9 c1.266,2.098,3.326,3.595,5.713,4.152l15.811,3.682L275.286,423.723z"></path> </g> </g> <g> <g> <path d="M456.706,0H55.293c-5.015,0-9.078,4.065-9.078,9.078V419.73c0,5.013,4.063,9.078,9.078,9.078s9.078-4.065,9.078-9.078 V18.156h383.258v475.688H64.371V448.78c0-5.013-4.063-9.078-9.078-9.078s-9.078,4.065-9.078,9.078v54.142 c0,5.013,4.063,9.078,9.078,9.078h401.414c5.015,0,9.078-4.065,9.078-9.078V9.078C465.784,4.065,461.721,0,456.706,0z"></path> </g> </g> <g> <g> <path d="M198.595,138.981c6.809-11.378,10.953-24.842,10.953-36.582c0-27.978-22.763-50.74-50.74-50.74 c-27.986,0-50.753,22.762-50.753,50.74c0,11.742,4.146,25.209,10.955,36.587c-14.075,9.301-22.973,25.27-22.973,42.561v35.029 c0,5.013,4.063,9.078,9.078,9.078h107.375c5.015,0,9.078-4.065,9.078-9.078v-35.029 C221.567,164.245,212.669,148.277,198.595,138.981z M158.808,69.815c17.967,0,32.584,14.617,32.584,32.584 c0,10.92-5.291,24.621-13.166,34.091c-0.001,0.001-0.002,0.002-0.004,0.004c-3.522,4.241-10.73,11.356-19.415,11.356 c-8.695,0-15.906-7.115-19.432-11.36c-7.875-9.47-13.166-23.171-13.166-34.091C126.21,84.432,140.834,69.815,158.808,69.815z M203.411,207.498h-89.219v-25.951c0-11.661,6.299-22.373,16.12-28.21c8.594,8.208,18.514,12.668,28.495,12.668 c9.976,0,19.894-4.462,28.487-12.671c9.819,5.831,16.117,16.543,16.117,28.212V207.498z"></path> </g> </g> <g> <g> <path d="M403.665,91.912H266.329c-5.015,0-9.078,4.065-9.078,9.078s4.063,9.078,9.078,9.078h137.336 c5.015,0,9.078-4.065,9.078-9.078S408.68,91.912,403.665,91.912z"></path> </g> </g> <g> <g> <path d="M403.665,149.555h-16.938c-5.015,0-9.078,4.065-9.078,9.078s4.063,9.078,9.078,9.078h16.938 c5.015,0,9.078-4.065,9.078-9.078S408.68,149.555,403.665,149.555z"></path> </g> </g> <g> <g> <path d="M360.098,149.555h-93.769c-5.015,0-9.078,4.065-9.078,9.078s4.065,9.078,9.078,9.078h93.769 c5.015,0,9.078-4.065,9.078-9.078S365.112,149.555,360.098,149.555z"></path> </g> </g> <g> <g> <path d="M403.665,207.197H266.329c-5.015,0-9.078,4.065-9.078,9.078s4.065,9.078,9.078,9.078h137.336 c5.015,0,9.078-4.065,9.078-9.078S408.68,207.197,403.665,207.197z"></path> </g> </g> <g> <g> <path d="M403.665,264.84H178.537c-5.015,0-9.078,4.065-9.078,9.078c0,5.013,4.063,9.078,9.078,9.078h225.128 c5.015,0,9.078-4.065,9.078-9.078C412.743,268.904,408.68,264.84,403.665,264.84z"></path> </g> </g> <g> <g> <path d="M150.698,264.84h-42.364c-5.015,0-9.078,4.065-9.078,9.078c0,5.013,4.063,9.078,9.078,9.078h42.364 c5.015,0,9.078-4.065,9.078-9.078C159.776,268.904,155.713,264.84,150.698,264.84z"></path> </g> </g> <g> <g> <path d="M403.665,322.481H108.334c-5.015,0-9.078,4.065-9.078,9.078s4.063,9.078,9.078,9.078h295.331 c5.015,0,9.078-4.065,9.078-9.078S408.68,322.481,403.665,322.481z"></path> </g> </g> </g></svg>`}
   />
 );
+
 
 // 2. Organization Management
 export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
     svg={`<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 52H12V22L32 12L52 22V52H40" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M40 52V36H24V52" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M32 52V44" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 52H12V22L32 12L52 22V52H40" stroke="#b80dce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 52V36H24V52" stroke="#b80dce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 52V44" stroke="#b80dce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="28" y="26" width="4" height="4" fill="white"/>
 <rect x="32" y="26" width="4" height="4" fill="white"/>
 <rect x="36" y="26" width="4" height="4" fill="white"/>
@@ -103,4 +97,45 @@ export const LabIcon: React.FC<IconProps> = ({ className }) => (
 export const MedicalCodingIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`<svg fill="#3314d1" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#3314d1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>medical-coding</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="medical-coding" fill="#3314d1" transform="translate(85.333333, 42.666667)"> <path d="M128,0 L21.3333333,0 C9.55733333,0 0,9.55733333 0,21.3333333 L0,362.666667 C0,374.442667 9.55733333,384 21.3333333,384 L234.666667,384 C246.442667,384 256,374.442667 256,362.666667 L256,128 L128,0 Z M192,341.333333 L64,341.333333 L64,320 L192,320 L192,341.333333 Z M192,277.333333 L64,277.333333 L64,256 L192,256 L192,277.333333 Z M192,213.333333 L64,213.333333 L64,192 L192,192 L192,213.333333 Z M149.333333,128 L149.333333,21.3333333 L234.666667,128 L149.333333,128 Z M298.666667,85.3333333 L298.666667,405.333333 C298.666667,417.109333 289.109333,426.666667 277.333333,426.666667 L64,426.666667 C52.224,426.666667 42.6666667,417.109333 42.6666667,405.333333 L42.6666667,384 L21.3333333,384 C9.55733333,384 0,374.442667 0,362.666667 L0,21.3333333 C0,9.55733333 9.55733333,0 21.3333333,0 L128,0 L256,128 L256,384 L277.333333,384 C289.109333,384 298.666667,374.442667 298.666667,362.666667 L298.666667,85.3333333 L298.666667,85.333
+    svg={`<svg fill="#3314d1" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="#3314d1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>medical-coding</title> <g id="Page-1" stroke-width="0.00512" fill="none" fill-rule="evenodd"> <g id="medical-coding" fill="#3314d1" transform="translate(85.333333, 42.666667)"> <path d="M128,0 L21.3333333,0 C9.55733333,0 0,9.55733333 0,21.3333333 L0,362.666667 C0,374.442667 9.55733333,384 21.3333333,384 L234.666667,384 C246.442667,384 256,374.442667 256,362.666667 L256,128 L128,0 Z M192,341.333333 L64,341.333333 L64,320 L192,320 L192,341.333333 Z M192,277.333333 L64,277.333333 L64,256 L192,256 L192,277.333333 Z M192,213.333333 L64,213.333333 L64,192 L192,192 L192,213.333333 Z M149.333333,128 L149.333333,21.3333333 L234.666667,128 L149.333333,128 Z M298.666667,85.3333333 L298.666667,405.333333 C298.666667,417.109333 289.109333,426.666667 277.333333,426.666667 L64,426.666667 C52.224,426.666667 42.6666667,417.109333 42.6666667,405.333333 L42.6666667,384 L21.3333333,384 C9.55733333,384 0,374.442667 0,362.666667 L0,21.3333333 C0,9.55733333 9.55733333,0 21.3333333,0 L128,0 L256,128 L256,384 L277.333333,384 C289.109333,384 298.666667,374.442667 298.666667,362.666667 L298.666667,85.3333333 L298.666667,85.3333333 Z" id="Shape"> </path> </g> </g> </g></svg>`}
+  />
+);
+
+// 9. Data Services
+export const DataServicesIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 58H40C49.9411 58 58 49.9411 58 40V24C58 14.0589 49.9411 6 40 6H24C14.0589 6 6 14.0589 6 24V40C6 49.9411 14.0589 58 24 58Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 22H36" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 32H42" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 42H30" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`}
+  />
+);
+
+// 10. Digital Learning
+export const DigitalLearningIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 58L12 50M12 50L6 48L8 40L20 44L22 52L12 50Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 40H52L58 22L46 12L28 18L30 40Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M38 48L30 40" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 18L40 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46 12L40 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`}
+  />
+);
+
+// 11. Help & Support
+export const HelpSupportIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 58C46.3594 58 58 46.3594 58 32C58 17.6406 46.3594 6 32 6C17.6406 6 6 17.6406 6 32C6 46.3594 17.6406 58 32 58Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26 26C26.5 23 28.5 21 32 21C35.5 21 38 23.5 38 26C38 30 34 30 32 34V36" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 42V42.02" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`}
+  />
+);
