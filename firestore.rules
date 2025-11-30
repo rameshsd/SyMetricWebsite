@@ -27,5 +27,10 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    match /pageContent/{pageId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

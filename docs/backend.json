@@ -153,6 +153,16 @@
         "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the page was last updated." }
       },
       "required": ["id", "slug", "title", "content", "createdAt"]
+    },
+    "PageContent": {
+        "title": "Page Content",
+        "type": "object",
+        "description": "Stores editable content for various pages, structured as a JSON object.",
+        "properties": {
+            "pageId": { "type": "string", "description": "Unique identifier for the page this content belongs to (e.g., 'home', 'about')." },
+            "content": { "type": "object", "description": "A JSON object holding the structured content for the page." }
+        },
+        "required": ["pageId", "content"]
     }
   },
   "auth": {
@@ -241,6 +251,22 @@
               "description": "Unique identifier for the page."
             }
           ]
+        }
+      },
+      {
+        "path": "/pageContent/{pageId}",
+        "definition": {
+            "entityName": "PageContent",
+            "schema": {
+                "$ref": "#/backend/entities/PageContent"
+            },
+            "description": "Stores editable content for website pages. 'pageId' corresponds to the page slug (e.g., 'home', 'about').",
+            "params": [
+                {
+                    "name": "pageId",
+                    "description": "The unique identifier for the page's content."
+                }
+            ]
         }
       }
     ],
