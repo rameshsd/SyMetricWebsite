@@ -3,11 +3,12 @@
 
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { SectionTitle } from '@/components/shared/section-title';
 
-export default function DynamicPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function DynamicPage() {
+  const params = useParams();
+  const slug = params.slug as string;
   const firestore = useFirestore();
 
   const pageQuery = useMemoFirebase(
