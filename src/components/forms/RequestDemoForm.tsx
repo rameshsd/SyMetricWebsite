@@ -22,15 +22,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { useFirestore, addDocumentNonBlocking } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { countries } from '@/lib/data';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   company: z.string().min(2, { message: 'Company name is required.' }),
-  countryCode: z.string(),
-  phone: z.string().min(5, { message: 'Please enter a valid phone number.' }),
+  phone: z.string().min(5, { message: 'Please enter a valid phone number including country code.' }),
 });
 
 export function RequestDemoForm() {
@@ -45,7 +42,6 @@ export function RequestDemoForm() {
       name: '',
       email: '',
       company: '',
-      countryCode: '+91',
       phone: '',
     },
   });
@@ -66,7 +62,6 @@ export function RequestDemoForm() {
       const leadsCollection = collection(firestore, 'demoRequests');
       await addDocumentNonBlocking(leadsCollection, {
         ...values,
-        phone: `${values.countryCode} ${values.phone}`,
         status: 'New',
         createdAt: serverTimestamp(),
       });
@@ -146,45 +141,19 @@ export function RequestDemoForm() {
                     </FormItem>
                 )}
               />
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <div className="flex gap-2">
-                    <FormField
-                        control={form.control}
-                        name="countryCode"
-                        render={({ field }) => (
-                            <FormItem className="w-1/3">
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <FormControl>
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Code" />
-                                    </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        {countries.map(country => (
-                                            <SelectItem key={`${country.name}-${country.code}`} value={country.dial_code}>
-                                                {country.dial_code} ({country.code})
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                            <FormItem className="w-2/3">
-                                <FormControl>
-                                <Input placeholder="Phone number" {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                </div>
-                <FormMessage>{form.formState.errors.phone?.message}</FormMessage>
-              </FormItem>
+               <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                            <Input placeholder="+1 (555) 123-4567" {...field} />
+                        </FormControl>
+                         <FormMessage />
+                    </FormItem>
+                )}
+              />
             </div>
             <DialogFooter>
               <DialogClose asChild>
