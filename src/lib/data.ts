@@ -46,6 +46,7 @@ import {
   Book,
   Monitor,
   MessageCircle,
+  Fingerprint
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -749,26 +750,53 @@ export const researchIntegrateAnalyzeContent = {
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
   { 
-    id: 'accelerate', 
-    title: 'Accelerate complex workflows', 
-    description: 'Reduce time spent on complex workflows by up to 75% to accelerate business execution, increase productivity, and free employees to focus on high-value work.',
-    icon: Zap,
-    imageId: ''
+    id: 'flexible-customizable', 
+    title: 'Flexible and Customizable', 
+    description: 'Highly adaptable to your specific research study protocols and unique workflows.',
+    imageId: 'why-us-flexible'
   },
   { 
-    id: 'save', 
-    title: 'Save costs in every function', 
-    description: 'Achieve cost savings with agents that streamline operations, reduce bad debt write-offs, enable better spend decisions, increase employee retention, and more.',
-    icon: Network,
-    imageId: ''
+    id: 'modular-integrated', 
+    title: 'Modularized and Integrated', 
+    description: 'A modularized experience that allows seamless integration and scalability for your trials.',
+    imageId: 'why-us-modular'
   },
   { 
-    id: 'realise', 
-    title: 'Realise AI value at scale', 
-    description: 'Deliver enterprise-wide results with a system of agents that reliably connect and optimise business-critical processes across functions.',
-    icon: BrainCircuit,
-    imageId: ''
+    id: 'simple-intuitive', 
+    title: 'Simple and Intuitive User Interface', 
+    description: 'An easy-to-use interface that reduces training time and increases user adoption.',
+    imageId: 'why-us-intuitive'
   },
+  { 
+    id: 'sso', 
+    title: 'Single Sign-In Feature', 
+    description: 'Access all platform tools with a single, secure login, simplifying user management.',
+    imageId: 'why-us-sso'
+  },
+  {
+    id: 'reusable-forms',
+    title: 'Reusable Forms',
+    description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
+    imageId: 'why-us-reusable'
+  },
+  {
+    id: 'security-compliant',
+    title: 'Security Compliant',
+    description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
+    imageId: 'why-us-compliant'
+  },
+  {
+    id: 'real-time-tracking',
+    title: 'Real-Time Tracking and Business Intelligence',
+    description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
+    imageId: 'why-us-tracking'
+  },
+  {
+    id: 'support',
+    title: '24x7 Dedicated Technical Support',
+    description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
+    imageId: 'why-us-support'
+  }
 ];
 
 export const companyInfo: CompanyInfo = {
@@ -1169,3 +1197,5 @@ export const topAuthors: TopAuthor[] = [
     { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
+
+    
