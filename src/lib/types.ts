@@ -262,3 +262,9 @@ export interface UseDocOptions {
 export type FirestoreHookResult<T> =
   | UseCollectionResult<T>
   | UseDocResult<T>;
+
+export type Country = {
+    name: string;
+    dial_code: string;
+    code: string;
+};
