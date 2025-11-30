@@ -48,11 +48,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
 
 
   return (
-    <div
-      className={cn(
-        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b shadow-sm"
-      )}
-    >
+    <div className="sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b shadow-sm relative overflow-visible">
       <div className="container">
         <div className="py-4">
             <div className="flex items-center text-sm text-muted-foreground mb-2">
@@ -66,7 +62,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
             </div>
         </div>
         
-        <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+        <nav className="-mb-px flex space-x-8 relative z-50" aria-label="Tabs">
             {secondaryNav.map((tab) =>
                 tab.dropdown ? (
                 <DropdownMenu key={tab.label}>
@@ -75,7 +71,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                             {tab.label} <ChevronDown className="h-4 w-4" />
                         </button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="z-[9999]">
                       {tab.items && tab.items.length > 0 ? (
                         tab.items.map(item => (
                           <DropdownMenuItem key={item.id} asChild>
@@ -107,4 +103,3 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
     </div>
   );
 }
-
