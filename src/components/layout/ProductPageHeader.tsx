@@ -107,3 +107,4 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
     </div>
   );
 }
+
