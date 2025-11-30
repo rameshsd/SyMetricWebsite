@@ -17,6 +17,8 @@ import {
   FileText,
   type LucideIcon,
 } from 'lucide-react';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Data Migration Services - SyMetric',
@@ -82,6 +84,8 @@ export default function DataMigrationPage() {
     { label: 'Get Started', href: '#get-started' },
   ];
 
+  const heroImage = PlaceHolderImages.find(p => p.id === 'dm-hero');
+
   return (
     <>
       <PageHeader
@@ -91,19 +95,32 @@ export default function DataMigrationPage() {
       />
       
       <div>
-        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-20">
+        <section id="overview" className="w-full bg-[#c1d3f7] py-20">
           <div className="container">
-            <div className="text-center max-w-4xl mx-auto">
-              <p className="text-primary font-semibold mb-2">Data Migration Services</p>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Migrating Clinical Studies Made Effortless
-              </h1>
-              <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
-                Our clinical management expertise, technological innovation, and Data Migration team’s proficiency has made migrating clinical studies from one database to another effortless. We offer a range of services including Study data transfers from legacy systems or other EDC tools, data export to Trial Analytics solutions, and data integration with devices and wearables.
-              </p>
-              <p className="mt-4 text-muted-foreground mx-auto max-w-prose">
-                  Migrate your data onto our Cloud Solutions with ease while ensuring that Study Data remains integrated during the migration process. You can also leverage in-depth validations, extensive data reviews, and testing across our broad spectrum of solutions.
-              </p>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <p className="text-primary font-semibold mb-2">Data Migration Services</p>
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                    Migrating Clinical Studies Made Effortless
+                </h1>
+                <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed">
+                  Our clinical management expertise, technological innovation, and Data Migration team’s proficiency has made migrating clinical studies from one database to another effortless. We offer a range of services including Study data transfers from legacy systems or other EDC tools, data export to Trial Analytics solutions, and data integration with devices and wearables.
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                    Migrate your data onto our Cloud Solutions with ease while ensuring that Study Data remains integrated during the migration process. You can also leverage in-depth validations, extensive data reviews, and testing across our broad spectrum of solutions.
+                </p>
+              </div>
+              <div className="relative h-80 w-full lg:h-96">
+                {heroImage && (
+                    <Image
+                        src={heroImage.imageUrl}
+                        alt={heroImage.description}
+                        data-ai-hint={heroImage.imageHint}
+                        fill
+                        className="object-cover rounded-2xl shadow-lg"
+                    />
+                )}
+              </div>
             </div>
           </div>
         </section>
