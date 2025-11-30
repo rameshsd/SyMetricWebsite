@@ -13,9 +13,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const secondaryNav = [
-    { label: "Overview", href: "#" },
-    { label: "Applications", dropdown: true, items: [] as { id: string; name: string; slug: string }[] },
+type SecondaryNavItem = {
+    label: string;
+    href?: string;
+    dropdown?: boolean;
+    items?: { id: string; name: string; slug: string }[];
+}
+
+const secondaryNavTemplate: SecondaryNavItem[] = [
+    { label: "Overview", href: "/solutions" },
+    { label: "Applications", dropdown: true, items: [] },
     { label: "Pricing", href: "#" },
 ]
 
@@ -32,12 +39,9 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   const pathname = usePathname();
   const isSolutionsPage = pathname === '/solutions';
 
-  const applicationsNav = secondaryNav.map(item => {
+  const secondaryNav = secondaryNavTemplate.map(item => {
     if (item.dropdown && item.label === "Applications") {
-      return {
-        ...item,
-        items: solutions.map(s => ({id: s.id, name: s.name, slug: s.slug}))
-      };
+      return { ...item, items: solutions };
     }
     return item;
   });
@@ -63,7 +67,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
         </div>
         
         <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-            {applicationsNav.map((tab) =>
+            {secondaryNav.map((tab) =>
                 tab.dropdown ? (
                 <DropdownMenu key={tab.label}>
                     <DropdownMenuTrigger asChild>
@@ -88,7 +92,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                     key={tab.label}
                     href={tab.href!}
                     className={cn(
-                        (isSolutionsPage || pathname.endsWith(productName.toLowerCase().replace(/ /g, '-'))) && tab.label === 'Overview'
+                        (isSolutionsPage && tab.label === 'Overview')
                         ? "border-primary text-primary"
                         : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                         "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"
