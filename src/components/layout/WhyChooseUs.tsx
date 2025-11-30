@@ -33,9 +33,9 @@ export function WhyChooseUs() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex"
               >
-                <Card className="group flex flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div className="group flex flex-col overflow-hidden rounded-2xl text-left bg-background h-full">
                   {image && (
-                     <div className="relative w-full h-48 overflow-hidden">
+                     <div className="relative w-full h-48 overflow-hidden rounded-lg">
                         <Image
                             src={image.imageUrl}
                             alt={feature.title}
@@ -46,7 +46,7 @@ export function WhyChooseUs() {
                         />
                      </div>
                   )}
-                  <CardContent className="p-6 flex-grow flex flex-col">
+                  <div className="pt-6 flex-grow flex flex-col">
                     <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
                     <p className="text-sm text-muted-foreground flex-grow">{feature.description}</p>
                      <div className="mt-4">
@@ -56,8 +56,8 @@ export function WhyChooseUs() {
                             </Link>
                         </Button>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             )
           })}
