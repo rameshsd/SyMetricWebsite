@@ -10,7 +10,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerStories } from '@/components/layout/CustomerStories';
 import { SapTechedHero } from '@/components/layout/SapTechedHero';
-import { FeatureGrid } from '@/components/layout/FeatureGrid';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { DigitalPlatformSection } from '@/components/layout/DigitalPlatformSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
@@ -20,6 +19,7 @@ import { UnlockPotential } from '@/components/layout/UnlockPotential';
 import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
 import { CustomerSuccess } from '@/components/home/customer-success';
+import { PlatformToolsSection } from '@/components/solutions/PlatformToolsSection';
 
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
          <SapTechedHero />
         <RevolutionizingTrials />
         <UnlockPotential />
-        <FeatureGrid />
+        <PlatformToolsSection />
 
         <WhyChooseUs />
         
