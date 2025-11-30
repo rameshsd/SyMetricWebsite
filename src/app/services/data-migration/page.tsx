@@ -95,7 +95,7 @@ export default function DataMigrationPage() {
       />
       
       <div>
-        <section id="overview" className="w-full bg-[#c1d3f7] py-20">
+        <section id="overview" className="w-full bg-[#d7e3fa] py-20">
           <div className="container">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
