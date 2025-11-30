@@ -15,29 +15,9 @@ const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className 
   />
 );
 
-// ===============================
-// 1. Identity & Access
-// ===============================
-export const IdentityAccessIcon: React.FC<IconProps> = ({ className }) => (
-  <RawSVG
-    className={className}
-    svg={`<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#bc10b6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,3,5,6v5c0,5,3.5,9,7,10,3.5-1,7-5,7-10V6Z" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><circle cx="12" cy="11" r="2" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"></circle></g></svg>`}
-  />
-);
-
-// ===============================
-// 2. Organization
-// ===============================
-export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
-  <RawSVG
-    className={className}
-    svg={`<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#bc10b6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7 8V4h10v4" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><rect x="3" y="8" width="18" height="12" rx="2" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></rect><path d="M10 14v2" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path d="M14 14v2" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`}
-  />
-);
-
-// ===============================
-// 3. Study Management
-// ===============================
+// -----------------------------------------------------------
+// 2. Study Management (DO NOT CHANGE – as you requested)
+// -----------------------------------------------------------
 export const StudyIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
@@ -45,138 +25,159 @@ export const StudyIcon: React.FC<IconProps> = ({ className }) => (
   />
 );
 
-// ===============================
-// 4. Site Management
-// ===============================
+// -----------------------------------------------------------
+// 1. Identity & Access
+// -----------------------------------------------------------
+export const IdentityAccessIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#bc10b6" d="M12 3L5 6v5c0 5 3.5 9 7 10c3.5-1 7-5 7-10V6l-7-3z" />
+  <circle stroke="white" cx="12" cy="11" r="2" />
+  <path stroke="white" d="M12 13v2" />
+</svg>`}
+  />
+);
+
+// -----------------------------------------------------------
+// 2. Organization
+// -----------------------------------------------------------
+export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
+  <RawSVG
+    className={className}
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect stroke="#bc10b6" x="3" y="8" width="18" height="12" rx="2" />
+  <path stroke="#bc10b6" d="M7 8V4h10v4" />
+  <path stroke="white" d="M10 14v2" />
+  <path stroke="white" d="M14 14v2" />
+</svg>`}
+  />
+);
+
+// -----------------------------------------------------------
+// 3. Site Management
+// -----------------------------------------------------------
 export const SiteIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 21c4-4 6-7 6-10a6 6 0 1 0-12 0c0 3 2 6 6 10z" />
-  <circle cx="12" cy="11" r="2" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#bc10b6" d="M12 21c4-4 6-7 6-10a6 6 0 1 0-12 0c0 3 2 6 6 10z" />
+  <circle stroke="white" cx="12" cy="11" r="2" />
 </svg>`}
   />
 );
 
-// ===============================
-// 5. Clinical Supplies
-// ===============================
+// -----------------------------------------------------------
+// 4. Clinical Supplies
+// -----------------------------------------------------------
 export const SuppliesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M3 7l9-4l9 4v10l-9 4l-9-4z" />
-  <path d="M3 7l9 4l9-4" />
-  <path d="M12 11v10" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#bc10b6" d="M3 7l9-4l9 4v10l-9 4l-9-4z" />
+  <path stroke="white" d="M3 7l9 4l9-4" />
+  <path stroke="white" d="M12 11v10" />
 </svg>`}
   />
 );
 
-// ===============================
-// 6. Subject Management
-// ===============================
+// -----------------------------------------------------------
+// 5. Subject Management
+// -----------------------------------------------------------
 export const SubjectIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="7" r="4" />
-  <path d="M5 21c1-4 4-6 7-6s6 2 7 6" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle stroke="#bc10b6" cx="12" cy="7" r="4" />
+  <path stroke="white" d="M5 21c1-4 4-6 7-6s6 2 7 6" />
 </svg>`}
   />
 );
 
-// ===============================
-// 7. Data Management
-// ===============================
+// -----------------------------------------------------------
+// 6. Data Management
+// -----------------------------------------------------------
 export const DataManagementIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <ellipse cx="12" cy="5" rx="7" ry="3" />
-  <path d="M5 5v6c0 2 3 3 7 3s7-1 7-3V5" />
-  <path d="M5 11v6c0 2 3 3 7 3s7-1 7-3v-6" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse stroke="#bc10b6" cx="12" cy="5" rx="7" ry="3" />
+  <path stroke="white" d="M5 5v6c0 2 3 3 7 3s7-1 7-3V5" />
+  <path stroke="white" d="M5 11v6c0 2 3 3 7 3s7-1 7-3v-6" />
 </svg>`}
   />
 );
 
-// ===============================
-// 8. Lab Management
-// ===============================
+// -----------------------------------------------------------
+// 7. Lab Management
+// -----------------------------------------------------------
 export const LabIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M10 2h4" />
-  <path d="M9 2v3l-3 4v9a5 5 0 0 0 5 5h2a5 5 0 0 0 5-5v-9l-3-4V2" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#bc10b6" d="M10 2h4" />
+  <path stroke="#bc10b6" d="M9 2v3l-3 4v9a5 5 0 0 0 5 5h2a5 5 0 0 0 5-5v-9l-3-4V2" />
+  <path stroke="white" d="M9 9h6" />
 </svg>`}
   />
 );
 
-// ===============================
-// 9. Medical Coding
-// ===============================
+// -----------------------------------------------------------
+// 8. Medical Coding
+// -----------------------------------------------------------
 export const MedicalCodingIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
-  <path d="M13 2v6h6" />
-  <path d="M9 14l-2 2l2 2" />
-  <path d="M15 14l2 2l-2 2" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#bc10b6" d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+  <path stroke="#bc10b6" d="M13 2v6h6" />
+  <path stroke="white" d="M9 14l-2 2l2 2" />
+  <path stroke="white" d="M15 14l2 2l-2 2" />
 </svg>`}
   />
 );
 
-// ===============================
-// 10. Data Services
-// ===============================
+// -----------------------------------------------------------
+// 9. Data Services
+// -----------------------------------------------------------
 export const DataServicesIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="3" y="4" width="18" height="6" rx="2" />
-  <rect x="3" y="14" width="18" height="6" rx="2" />
-  <circle cx="8" cy="17" r="1" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect stroke="#bc10b6" x="3" y="4" width="18" height="6" rx="2" />
+  <rect stroke="#bc10b6" x="3" y="14" width="18" height="6" rx="2" />
+  <circle stroke="white" cx="8" cy="17" r="1" />
 </svg>`}
   />
 );
 
-// ===============================
-// 11. Digital Learning
-// ===============================
+// -----------------------------------------------------------
+// 10. Digital Learning
+// -----------------------------------------------------------
 export const DigitalLearningIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="3" y="4" width="18" height="12" rx="2" />
-  <path d="M12 2l7 3l-7 3l-7-3z" />
-  <path d="M12 8v3" />
-  <path d="M8 20h8" />
-  <path d="M10 16v4" />
-  <path d="M14 16v4" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect stroke="#bc10b6" x="3" y="4" width="18" height="12" rx="2" />
+  <path stroke="#bc10b6" d="M12 2l7 3l-7 3l-7-3z" />
+  <path stroke="white" d="M12 8v3" />
+  <path stroke="white" d="M10 16v4" />
+  <path stroke="white" d="M14 16v4" />
+  <path stroke="white" d="M8 20h8" />
 </svg>`}
   />
 );
 
-// ===============================
-// 12. Help & Support
-// ===============================
+// -----------------------------------------------------------
+// 11. Help & Support
+// -----------------------------------------------------------
 export const HelpSupportIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="10" />
-  <path d="M9 9a3 3 0 1 1 5 2c-.9.5-1.5 1-1.5 2" />
-  <path d="M12 17h.01" />
+    svg={`<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle stroke="#bc10b6" cx="12" cy="12" r="10" />
+  <path stroke="white" d="M9 9a3 3 0 1 1 5 2c-.9.5-1.5 1-1.5 2" />
+  <path stroke="white" d="M12 17h.01" />
 </svg>`}
   />
 );
