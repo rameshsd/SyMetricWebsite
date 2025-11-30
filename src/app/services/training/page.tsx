@@ -51,22 +51,23 @@ export default function TrainingPage() {
       />
       
       <div>
-        <section id="overview" className="w-full relative py-20">
-          <div className="container">
-              <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-2xl overflow-hidden">
-                  {heroImage && (
-                  <Image
-                      src={heroImage.imageUrl}
-                      alt={heroImage.description}
-                      fill
-                      className="object-cover"
-                      data-ai-hint={heroImage.imageHint}
-                  />
-                  )}
-                  <div className="absolute inset-0 bg-black/60" />
-                  <div className="relative z-10 text-center p-4 max-w-4xl mx-auto">
-                      <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Make Your Workforce Future-Ready</h1>
-                      <p className="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto">Our promise of technology includes easy adoption. With our training module, introducing your workforce to new technology is a cakewalk.</p>
+        <section id="overview" className="w-full relative py-20 bg-light-cyan">
+           <div className="container">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                  <div className="space-y-6">
+                      <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Make Your Workforce Future-Ready</h1>
+                      <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">Our promise of technology includes easy adoption. With our training module, introducing your workforce to new technology is a cakewalk.</p>
+                  </div>
+                  <div className="relative h-80 w-full lg:h-96">
+                      {heroImage && (
+                          <Image
+                              src={heroImage.imageUrl}
+                              alt={heroImage.description}
+                              data-ai-hint={heroImage.imageHint}
+                              fill
+                              className="object-cover rounded-2xl shadow-lg"
+                          />
+                      )}
                   </div>
               </div>
           </div>
@@ -118,3 +119,5 @@ export default function TrainingPage() {
     </>
   );
 }
+
+    

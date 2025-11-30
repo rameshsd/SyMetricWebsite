@@ -21,6 +21,7 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         'light-blue': '#d1efff',
+        'light-cyan': '#d1f0ef',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -150,3 +151,5 @@ export default {
   },
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/container-queries')],
 } satisfies Config;
+
+    
