@@ -36,10 +36,28 @@ export default function DynamicPage() {
 
   const page = pages?.[0];
 
-  if (!page) {
-    // If you have a custom 404 page, Next.js will render it.
+  // Only call notFound if loading is complete and no page was found.
+  if (!isLoading && !page) {
     notFound();
   }
+
+  // Render a loading state or nothing if page is not yet available but still loading
+  if (!page) {
+      return (
+        <div className="container py-20">
+          <div className="space-y-4">
+              <div className="h-10 bg-muted rounded w-1/2 mx-auto animate-pulse"></div>
+              <div className="h-4 bg-muted rounded w-3/4 mx-auto animate-pulse"></div>
+              <div className="pt-12 space-y-2">
+                  <div className="h-4 bg-muted rounded w-full animate-pulse"></div>
+                  <div className="h-4 bg-muted rounded w-full animate-pulse"></div>
+                  <div className="h-4 bg-muted rounded w-5/6 animate-pulse"></div>
+              </div>
+          </div>
+        </div>
+      );
+  }
+
 
   return (
     <section>
