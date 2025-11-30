@@ -101,27 +101,30 @@ export default function ClinicalDataManagementPage() {
       />
       
       <div>
-        <section id="overview" className="w-full relative min-h-[450px] flex items-center justify-center text-center text-white py-20">
-          {heroImage && (
-            <Image 
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              data-ai-hint={heroImage.imageHint}
-              fill
-              className="object-cover"
-            />
-          )}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="container relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                SyMetric — Smarter Data Management for Better Outcomes
-              </h1>
-              <p className="mt-6 max-w-[800px] text-lg text-white/90 md:text-xl/relaxed mx-auto">
-                Data forms the crux of the clinical research process. It takes efficient solutions to manage and retain the quality and statistical soundness of data generated from Clinical Trials. Our cost-effective and first-rate Data Management services enable accurate collection, standardization, cleaning, and analysis of Study Data.
-              </p>
+        <section id="overview" className="w-full bg-secondary/50 py-20">
+            <div className="container">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                            SyMetric — Smarter Data Management for Better Outcomes
+                        </h1>
+                        <p className="text-lg text-muted-foreground">
+                            Data forms the crux of the clinical research process. It takes efficient solutions to manage and retain the quality and statistical soundness of data generated from Clinical Trials. Our cost-effective and first-rate Data Management services enable accurate collection, standardization, cleaning, and analysis of Study Data.
+                        </p>
+                    </div>
+                    <div className="relative h-80 w-full lg:h-96">
+                        {heroImage && (
+                            <Image
+                                src={heroImage.imageUrl}
+                                alt={heroImage.description}
+                                data-ai-hint={heroImage.imageHint}
+                                fill
+                                className="object-cover rounded-2xl shadow-lg"
+                            />
+                        )}
+                    </div>
+                </div>
             </div>
-          </div>
         </section>
         
         <TechEdBanner />
