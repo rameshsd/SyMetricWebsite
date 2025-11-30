@@ -21,12 +21,7 @@ const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className 
 export const IdentityAccessIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 3L5 6v5c0 5 3.5 9 7 10c3.5-1 7-5 7-10V6l-7-3z" />
-  <circle cx="12" cy="11" r="2" />
-  <path d="M12 13v2" />
-</svg>`}
+    svg={`<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#bc10b6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,3,5,6v5c0,5,3.5,9,7,10,3.5-1,7-5,7-10V6Z" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><circle cx="12" cy="11" r="2" style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"></circle></g></svg>`}
   />
 );
 
@@ -36,13 +31,7 @@ export const IdentityAccessIcon: React.FC<IconProps> = ({ className }) => (
 export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="3" y="8" width="18" height="12" rx="2" />
-  <path d="M7 8V4h10v4" />
-  <path d="M10 14v2" />
-  <path d="M14 14v2" />
-</svg>`}
+    svg={`<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#bc10b6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7 8V4h10v4" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><rect x="3" y="8" width="18" height="12" rx="2" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></rect><path d="M10 14v2" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path d="M14 14v2" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`}
   />
 );
 
@@ -52,14 +41,9 @@ export const OrganizationIcon: React.FC<IconProps> = ({ className }) => (
 export const StudyIcon: React.FC<IconProps> = ({ className }) => (
   <RawSVG
     className={className}
-    svg={`
-<svg viewBox="0 0 24 24" fill="none" stroke="#bc10b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-</svg>`}
+    svg={`<svg fill="#000000" viewBox="0 0 24 24" id="settings" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="12" r="3" style="fill: none; stroke: #ffffff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></circle><path id="primary" d="M20,10h-.59a1,1,0,0,1-.94-.67v0a1,1,0,0,1,.2-1.14l.41-.41a1,1,0,0,0,0-1.42L17.66,4.93a1,1,0,0,0-1.42,0l-.41.41a1,1,0,0,1-1.14-.2h0A1,1,0,0,1,14,4.59V4a1,1,0,0,0-1-1H11a1,1,0,0,0-1,1v.59a1,1,0,0,1-.67.94h0a1,1,0,0,1-1.14-.2l-.41-.41a1,1,0,0,0-1.42,0L4.93,6.34a1,1,0,0,0,0,1.42l.41.41a1,1,0,0,1,.2,1.14v0a1,1,0,0,1-.94.67H4a1,1,0,0,0-1,1v2a1,1,0,0,0,1,1h.59a1,1,0,0,1,.94.67v0a1,1,0,0,1-.2,1.14l-.41.41a1,1,0,0,0,0,1.42l1.41,1.41a1,1,0,0,0,1.42,0l.41-.41a1,1,0,0,1,1.14-.2h0a1,1,0,0,1,.67.94V20a1,1,0,0,0,1,1h2a1,1,0,0,0,1-1v-.59a1,1,0,0,1,.67-.94h0a1,1,0,0,1,1.14.2l.41.41a1,1,0,0,0,1.42,0l1.41-1.41a1,1,0,0,0,0-1.42l-.41-.41a1,1,0,0,1-.2-1.14v0a1,1,0,0,1,.94-.67H20a1,1,0,0,0,1-1V11A1,1,0,0,0,20,10Z" style="fill: none; stroke: #bc10b6; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`}
   />
 );
-
 
 // ===============================
 // 4. Site Management
