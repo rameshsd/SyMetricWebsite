@@ -748,14 +748,27 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  { id: 'flexible', title: 'Flexible and Customizable', description: 'Tailored applications to suit various research study patterns — Adaptive, Umbrella, and Basket Studies. Configure them to your needs and improve your turnaround time.', imageId: 'why-us-flexible' },
-  { id: 'modular', title: 'Modularized and Integrated', description: 'Choose from a range of comprehensive modules that offer the advantage of seamless integration across components such as EDC, IRT, CTM, and Medical Coding', imageId: 'why-us-modular' },
-  { id: 'intuitive', title: 'Simple and Intuitive User Interface', description: 'Solve your problems faster and smarter with easy-to-use applications designed to understand your needs.', imageId: 'why-us-intuitive' },
-  { id: 'sso', title: 'Single Sign-In Feature', description: 'Access all authorized tools on a cloud platform using a single set of credentials and avoid the hassles of multiple sign-ins and user verifications.', imageId: 'why-us-sso' },
-  { id: 'reusable', title: 'Reusable Forms', description: 'Import unique Case Report Forms (CRFs) that are in line with standard guidelines from our Global CRF Library and say goodbye to the tedious process of form designing.', imageId: 'why-us-reusable' },
-  { id: 'compliant', title: 'Security Compliant', description: 'Safeguard the confidentiality and integrity of data using our security-compliant applications that adhere to 21 CFR Part 11, ICH-GCP, ISO 27001, ISO 9001, HIIPA, and GDPR.', imageId: 'why-us-compliant' },
-  { id: 'tracking', title: 'Real-Time Tracking and Business Intelligence', description: 'Deploy efficient trial management strategies with the help of real-time tracking, key performance indicators, and insightful analytics.', imageId: 'why-us-tracking' },
-  { id: "support", title: "24x7 Dedicated Technical Support", description: "Resolve issues within a short time with the help of our technical experts who offer round-the-clock support for all your needs.", imageId: "why-us-support" },
+  { 
+    id: 'accelerate', 
+    title: 'Accelerate complex workflows', 
+    description: 'Reduce time spent on complex workflows by up to 75% to accelerate business execution, increase productivity, and free employees to focus on high-value work.',
+    icon: Zap,
+    imageId: ''
+  },
+  { 
+    id: 'save', 
+    title: 'Save costs in every function', 
+    description: 'Achieve cost savings with agents that streamline operations, reduce bad debt write-offs, enable better spend decisions, increase employee retention, and more.',
+    icon: Network,
+    imageId: ''
+  },
+  { 
+    id: 'realise', 
+    title: 'Realise AI value at scale', 
+    description: 'Deliver enterprise-wide results with a system of agents that reliably connect and optimise business-critical processes across functions.',
+    icon: BrainCircuit,
+    imageId: ''
+  },
 ];
 
 export const companyInfo: CompanyInfo = {
