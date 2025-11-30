@@ -5,24 +5,30 @@ import * as React from 'react';
 
 export type IconProps = { className?: string };
 
-const ICON_COLOR = "#bc10b6";
+// ----------------------------------------------------
+// GLOBAL COLOR
+// ----------------------------------------------------
+const ICON_COLOR = "#1b11ac";
 
-// FIXED RawSVG (NO stroke override)
+// SVG wrapper
 const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className }) => (
   <span
     className={className}
     style={{ display: 'inline-block' }}
     dangerouslySetInnerHTML={{
-      __html: svg.replace('<svg', '<svg class="h-full w-full"')
+      __html: svg.replace(
+        '<svg',
+        `<svg class="h-full w-full" stroke="${ICON_COLOR}" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`
+      )
     }}
   />
 );
 
-const SVG_BASE = `viewBox="0 0 24 24" fill="none" stroke="${ICON_COLOR}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`;
+const SVG_BASE = `viewBox="0 0 24 24"`;
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 1. Identity & Access
-// -----------------------------------------------------------------------------
+// ====================================================
 export const IdentityAccessIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <path d="M12 2L5 5v5c0 5.5 3.5 10 7 10s7-4.5 7-10V5l-7-3z" />
@@ -30,9 +36,9 @@ export const IdentityAccessIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 2. Organization Management (BUILDING)
-// -----------------------------------------------------------------------------
+// ====================================================
+// 2. Organization Management (Buildings)
+// ====================================================
 export const OrganizationIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <rect x="7" y="6" width="10" height="12" rx="1" />
@@ -44,9 +50,9 @@ export const OrganizationIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 3. Customer Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const CustomerManagementIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -56,9 +62,9 @@ export const CustomerManagementIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 4. Study Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const StudyIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
@@ -66,9 +72,9 @@ export const StudyIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 5. Site Management (HOSPITAL)
-// -----------------------------------------------------------------------------
+// ====================================================
+// 5. Site Management (Hospital)
+// ====================================================
 export const SiteIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <rect x="4" y="6" width="16" height="14" rx="2" />
@@ -79,21 +85,23 @@ export const SiteIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 6. Clinical Supplies (Capsule + Tablet)
-// -----------------------------------------------------------------------------
+// ====================================================
+// 6. Clinical Supplies Management (Capsule + Tablet)
+// ====================================================
 export const SuppliesIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <path d="M9 5a3 3 0 0 1 4.24 0l2.83 2.83a3 3 0 0 1 0 4.24l-1.41 1.41a3 3 0 0 1-4.24 0L7.59 10.5a3 3 0 0 1 0-4.24L9 5z" />
-    <path d="M10.5 6.5l4 4" />
+    <!-- Capsule -->
+    <path d="M9 4a3 3 0 014.24 0l3 3a3 3 0 010 4.24l-1.5 1.5a3 3 0 01-4.24 0l-3-3A3 3 0 019 4z" />
+    <path d="M11 6l4 4" />
+    <!-- Tablet -->
     <circle cx="7" cy="17" r="3" />
-    <path d="M5.5 17h3" />
+    <path d="M5.2 17h3.6" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 7. Subject Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const SubjectIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" />
@@ -102,9 +110,9 @@ export const SubjectIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 8. Data Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const DataManagementIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -113,97 +121,97 @@ export const DataManagementIcon = ({ className }: IconProps) => (
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 9. Lab Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const LabIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <path d="M10 2h4" />
-    <path d="M9 2v3l-3 4v9a5 5 0 0 0 5 5h2a5 5 0 0 0 5-5v-9l-3-4V2" />
+    <path d="M9 2v3l-3 4v9a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-9l-3-4V2" />
     <path d="M9 9h6" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 10. Medical Coding
-// -----------------------------------------------------------------------------
+// ====================================================
 export const MedicalCodingIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2V8z" />
     <polyline points="14 2 14 8 20 8" />
     <path d="M9 16.5l-2-2.5 2-2.5" />
     <path d="M15 16.5l2-2.5-2-2.5" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 11. Reports
-// -----------------------------------------------------------------------------
+// ====================================================
+// 11. Reports (CLEAN VERSION)
+// ====================================================
 export const ReportsIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <path d="M8 6h8" />
-    <path d="M8 10h4" />
-    <path d="M10 18v-1a2 2 0 0 1 2-2h4" />
-    <path d="M10 18a2 2 0 1 0-4 0" />
-    <path d="M18 18a2 2 0 1 0-4 0" />
-    <path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+    <rect x="4" y="2" width="16" height="20" rx="2" />
+    <path d="M8 7h8" />
+    <path d="M8 11h6" />
+    <path d="M8 15h4" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 12. Digital Learning
-// -----------------------------------------------------------------------------
+// ====================================================
+// 12. Digital Learning (Laptop + Cap)
+// ====================================================
 export const DigitalLearningIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
+    <!-- Laptop -->
     <rect x="3" y="7" width="18" height="12" rx="2" />
     <path d="M2 19h20" />
+    <!-- Cap -->
     <path d="M12 6l6 3l-6 3l-6-3l6-3z" />
     <path d="M12 9v3" />
     <path d="M15 10.5v2" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
-// 13. Data Services (Database + Arrows)
-// -----------------------------------------------------------------------------
+// ====================================================
+// 13. Data Services + Flow Arrows (FIXED)
+// ====================================================
 export const DataServicesIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <ellipse cx="12" cy="5" rx="6" ry="2.5" />
-    <path d="M6 5v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V5" />
-    <path d="M6 9v4c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V9" />
-    <path d="M5 17h3l-1 1.5A3 3 0 0 0 7 21" />
-    <path d="M19 17h-3l1 1.5A3 3 0 0 1 17 21" />
+    <ellipse cx="12" cy="5" rx="6" ry="2.3" />
+    <path d="M6 5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5" />
+    <path d="M6 9v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V9" />
+    <path d="M5 17h3l-1.2 1.8A3 3 0 0 0 7 21" />
+    <path d="M19 17h-3l1.2 1.8A3 3 0 0 1 17 21" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 14. Sample Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const SampleManagementIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z" />
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2V7.5L14.5 2z" />
     <polyline points="14 2 14 8 20 8" />
     <path d="M9 12h6" />
     <path d="M12 9v6" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 15. Label Management
-// -----------------------------------------------------------------------------
+// ====================================================
 export const LabelManagementIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
-    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49 -8.49l9.19 -9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1 -2.83 -2.83l8.49 -8.48" />
   </svg>`} />
 );
 
-// -----------------------------------------------------------------------------
+// ====================================================
 // 16. Help & Support
-// -----------------------------------------------------------------------------
+// ====================================================
 export const HelpSupportIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE}>
     <circle cx="12" cy="12" r="10" />
-    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2 -3 3 -3 3" />
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>`} />
 );
