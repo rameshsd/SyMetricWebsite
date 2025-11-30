@@ -16,6 +16,8 @@ import {
   Archive,
   type LucideIcon,
 } from 'lucide-react';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Project Management Services - SyMetric',
@@ -75,6 +77,8 @@ export default function ProjectManagementPage() {
     { label: 'Offerings', href: '#offerings' },
     { label: 'Get Started', href: '#get-started' },
   ];
+  
+  const heroImage = PlaceHolderImages.find(p => p.id === 'pm-hero');
 
   return (
     <>
@@ -85,18 +89,31 @@ export default function ProjectManagementPage() {
       />
       
       <div>
-        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-20">
-          <div className="container">
-            <div className="text-center max-w-4xl mx-auto">
-              <p className="text-primary font-semibold mb-2">Project Management Services</p>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Simplify, Streamline, and Speed-Up Your Clinical Trial
-              </h1>
-              <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
-                We support you in all aspects of project management, right from early phase to late phase Clinical Trials. Our solutions are guided by well-defined standard operating procedures that comply with all applicable industry regulations and guidelines.
-              </p>
+         <section id="overview" className="w-full bg-secondary/50 py-20">
+            <div className="container">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <p className="text-primary font-semibold mb-2">Project Management Services</p>
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                            Simplify, Streamline, and Speed-Up Your Clinical Trial
+                        </h1>
+                        <p className="text-lg text-muted-foreground">
+                          We support you in all aspects of project management, right from early phase to late phase Clinical Trials. Our solutions are guided by well-defined standard operating procedures that comply with all applicable industry regulations and guidelines.
+                        </p>
+                    </div>
+                    <div className="relative h-80 w-full lg:h-96">
+                        {heroImage && (
+                            <Image
+                                src={heroImage.imageUrl}
+                                alt={heroImage.description}
+                                data-ai-hint={heroImage.imageHint}
+                                fill
+                                className="object-cover rounded-2xl shadow-lg"
+                            />
+                        )}
+                    </div>
+                </div>
             </div>
-          </div>
         </section>
         
         <TechEdBanner />
@@ -141,3 +158,4 @@ export default function ProjectManagementPage() {
     </>
   );
 }
+    
