@@ -162,7 +162,7 @@ export function RequestDemoForm() {
                                     </FormControl>
                                     <SelectContent>
                                         {countries.map(country => (
-                                            <SelectItem key={`${country.code}-${country.name}`} value={country.dial_code}>
+                                            <SelectItem key={`${country.name}-${country.code}`} value={country.dial_code}>
                                                 {country.dial_code} ({country.code})
                                             </SelectItem>
                                         ))}
