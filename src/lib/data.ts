@@ -67,7 +67,7 @@ import {
     ReportsIcon,
     SampleManagementIcon,
     LabelManagementIcon,
-} from '@/components/icons/platform-tool-icons';
+} from '@/components/icons/feature-grid-icons';
 
 export const navItems: NavItem[] = [
     { 
