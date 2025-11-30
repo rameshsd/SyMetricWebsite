@@ -5,6 +5,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Mail } from 'lucide-react';
 import { faqItems } from '@/lib/data';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Support Center - SyMetric',
@@ -17,6 +19,8 @@ export default function SupportPage() {
     { label: 'FAQs', href: '#faqs' },
     { label: 'Contact', href: '#contact' },
   ];
+  
+  const heroImage = PlaceHolderImages.find(p => p.id === 'support-hero');
 
   return (
     <>
@@ -27,15 +31,28 @@ export default function SupportPage() {
       />
       
       <div>
-        <section id="overview" className="w-full min-h-[400px] flex items-center bg-primary/5 dark:bg-card py-20">
+        <section id="overview" className="w-full flex items-center bg-primary/5 dark:bg-card py-20">
           <div className="container">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Welcome to SyMetric Support Center!
-              </h1>
-              <p className="mt-6 max-w-prose text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
-                Our dedicated support team proactively helps you optimize your performance and improve speed by being your reliable technology partner. We save time for your team by helping you move faster on the cloud and focus on your core business. Close to 99% of the requests we receive are answered at best within 24 hours.
-              </p>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                  Welcome to SyMetric Support Center!
+                </h1>
+                <p className="max-w-prose text-lg text-muted-foreground md:text-xl/relaxed">
+                  Our dedicated support team proactively helps you optimize your performance and improve speed by being your reliable technology partner. We save time for your team by helping you move faster on the cloud and focus on your core business. Close to 99% of the requests we receive are answered at best within 24 hours.
+                </p>
+              </div>
+              <div className="relative h-80 w-full lg:h-96">
+                {heroImage && (
+                  <Image
+                    src={heroImage.imageUrl}
+                    alt={heroImage.description}
+                    data-ai-hint={heroImage.imageHint}
+                    fill
+                    className="object-cover rounded-2xl shadow-lg"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </section>
