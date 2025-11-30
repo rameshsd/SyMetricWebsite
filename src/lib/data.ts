@@ -47,7 +47,6 @@ import {
   Monitor,
   MessageCircle,
   Fingerprint,
-  MousePointerClick
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
