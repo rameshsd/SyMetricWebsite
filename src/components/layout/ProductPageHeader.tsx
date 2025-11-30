@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -39,6 +38,16 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const isSolutionsPage = pathname === "/solutions";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsDropdownOpen(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const secondaryNav = secondaryNavTemplate.map((item) => {
     if (item.dropdown && item.label === "Applications") {
