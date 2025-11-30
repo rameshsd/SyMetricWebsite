@@ -803,6 +803,12 @@
       "description": "A financial dashboard showing charts and graphs.",
       "imageHint": "financial data dashboard",
       "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080"
+    },
+    {
+      "id": "cdm-hero",
+      "description": "Smarter Data Management hero image",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1LGmCG7vwZZAq7DxwTErLm2BPicKbadPa",
+      "imageHint": "data management"
     }
   ]
 }

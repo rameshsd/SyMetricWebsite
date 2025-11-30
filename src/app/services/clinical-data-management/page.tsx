@@ -1,6 +1,7 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { TechEdBanner } from '@/components/layout/TechEdBanner';
@@ -18,6 +19,7 @@ import {
   Lock,
   type LucideIcon,
 } from 'lucide-react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Clinical Data Management - SyMetric',
@@ -88,6 +90,8 @@ export default function ClinicalDataManagementPage() {
     { label: 'Get Started', href: '#get-started' },
   ];
 
+  const heroImage = PlaceHolderImages.find(p => p.id === 'cdm-hero');
+
   return (
     <>
       <PageHeader
@@ -97,14 +101,23 @@ export default function ClinicalDataManagementPage() {
       />
       
       <div>
-        <section id="overview" className="w-full min-h-[450px] flex items-center bg-primary/5 dark:bg-card py-20">
-          <div className="container">
-            <div className="text-center max-w-4xl mx-auto">
-              <p className="text-primary font-semibold mb-2">Clinical Data Management</p>
+        <section id="overview" className="w-full relative min-h-[450px] flex items-center justify-center text-center text-white py-20">
+          {heroImage && (
+            <Image 
+              src={heroImage.imageUrl}
+              alt={heroImage.description}
+              data-ai-hint={heroImage.imageHint}
+              fill
+              className="object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="container relative z-10">
+            <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                 SyMetric — Smarter Data Management for Better Outcomes
               </h1>
-              <p className="mt-6 max-w-[800px] text-lg text-muted-foreground md:text-xl/relaxed mx-auto">
+              <p className="mt-6 max-w-[800px] text-lg text-white/90 md:text-xl/relaxed mx-auto">
                 Data forms the crux of the clinical research process. It takes efficient solutions to manage and retain the quality and statistical soundness of data generated from Clinical Trials. Our cost-effective and first-rate Data Management services enable accurate collection, standardization, cleaning, and analysis of Study Data.
               </p>
             </div>
