@@ -45,6 +45,13 @@ export default function AnalyticsPage() {
 
     const { data: visits, isLoading: visitsLoading } = useCollection(visitsQuery);
     
+    const demoRequestsQuery = useMemoFirebase(() => {
+        if (!firestore) return null;
+        return collection(firestore, 'demoRequests');
+    }, [firestore]);
+
+    const { data: demoRequests, isLoading: demoRequestsLoading } = useCollection(demoRequestsQuery);
+    
     const recentVisitsQuery = useMemoFirebase(() => {
         if (!firestore) return null;
         const thirtyDaysAgo = subDays(new Date(), 30);
@@ -70,6 +77,7 @@ export default function AnalyticsPage() {
 
     const pageViews = visits?.length || 0;
     const uniqueUsers = visits ? new Set(visits.map(v => v.userId)).size : 0;
+    const totalSales = demoRequests?.length || 0;
 
     const salesData = recentVisits
         ? Array.from({ length: 30 }, (_, i) => {
@@ -119,7 +127,7 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCard title="Page Views" value={pageViews.toLocaleString()} icon={Eye} isLoading={visitsLoading} />
                 <StatCard title="Unique Users" value={uniqueUsers.toLocaleString()} icon={UserCheck} isLoading={visitsLoading} />
-                <StatCard title="Total Sales" value="96.2k" icon={ShoppingCart} />
+                <StatCard title="Total Sales" value={totalSales.toLocaleString()} icon={ShoppingCart} isLoading={demoRequestsLoading} />
                 <StatCard title="Conversion Rate" value="6.92%" icon={Users} />
             </div>
 
