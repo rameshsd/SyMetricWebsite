@@ -16,8 +16,8 @@ const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className 
   />
 );
 
-const PRIMARY_COLOR = "#a3ff12";
-const SECONDARY_COLOR = "#D1D5DB";
+const PRIMARY_COLOR = "#bc10b6";
+const SECONDARY_COLOR = "white";
 
 // -----------------------------------------------------------
 // 1. Identity & Access

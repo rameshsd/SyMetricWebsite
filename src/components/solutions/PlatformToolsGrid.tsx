@@ -110,10 +110,10 @@ const toolsData = [
 
 const ToolButton = ({ tool, isActive, onClick }: { tool: typeof toolsData[0], isActive: boolean, onClick: () => void }) => (
     <button onClick={onClick} className="text-center group flex flex-col items-center gap-2">
-        <tool.icon className={cn("h-14 w-14 transition-colors", isActive ? "text-[#a3ff12]" : "text-purple-400 group-hover:text-purple-300")} />
+        <tool.icon className={cn("h-14 w-14 transition-colors", isActive ? "text-[#bc10b6]" : "text-purple-400 group-hover:text-purple-300")} />
         <div className="text-sm font-semibold max-w-[120px]">
             <p className={cn("transition-colors", isActive ? "text-white" : "text-white/80 group-hover:text-white")}>{tool.label}</p>
-             <div className={cn("mt-2 h-1 w-full bg-[#a3ff12] rounded-full transition-transform duration-300", isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50")} />
+             <div className={cn("mt-2 h-1 w-full bg-[#bc10b6] rounded-full transition-transform duration-300", isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50")} />
         </div>
     </button>
 )
@@ -151,7 +151,7 @@ export function PlatformToolsGrid() {
             >
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="space-y-4 text-center md:text-left">
-                        <h3 className="text-3xl font-bold text-[#a3ff12]">{activeTool.label}</h3>
+                        <h3 className="text-3xl font-bold text-[#bc10b6]">{activeTool.label}</h3>
                         <p className="text-lg text-white/80">{activeTool.description}</p>
                     </div>
                      <div className="relative w-full aspect-video rounded-lg bg-gray-900/50 p-2 border border-white/20 shadow-2xl">
@@ -178,5 +178,3 @@ export function PlatformToolsGrid() {
     </section>
   );
 }
-
-    
