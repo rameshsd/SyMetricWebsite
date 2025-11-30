@@ -46,7 +46,8 @@ import {
   Book,
   Monitor,
   MessageCircle,
-  Fingerprint
+  Fingerprint,
+  MousePointerClick
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -121,7 +122,7 @@ export const solutions: Solution[] = [
         id: 'randomization',
         title: 'Randomization',
         description: 'Dynamic Adaptive Randomization helps to avoid imbalance of covariates across subjects, resulting in balanced Treatment Assignment within covariate profiles irrespective of sample sizes. This adaptive randomization procedure uses accrued information from past treatment assignments and subject covariate values to select the probability of future treatment assignments and balance them.',
-        imageId: 'resource-1'
+        imageId: 'irt-randomization'
       },
       {
         id: 'subject-management',
@@ -749,27 +750,27 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  { 
-    id: 'flexible-customizable', 
-    title: 'Flexible and Customizable', 
+  {
+    id: 'flexible-customizable',
+    title: 'Flexible and Customizable',
     description: 'Highly adaptable to your specific research study protocols and unique workflows.',
     imageId: 'why-us-flexible'
   },
-  { 
-    id: 'modular-integrated', 
-    title: 'Modularized and Integrated', 
+  {
+    id: 'modular-integrated',
+    title: 'Modularized and Integrated',
     description: 'A modularized experience that allows seamless integration and scalability for your trials.',
     imageId: 'why-us-modular'
   },
-  { 
-    id: 'simple-intuitive', 
-    title: 'Simple and Intuitive User Interface', 
+  {
+    id: 'simple-intuitive',
+    title: 'Simple and Intuitive User Interface',
     description: 'An easy-to-use interface that reduces training time and increases user adoption.',
     imageId: 'why-us-intuitive'
   },
-  { 
-    id: 'sso', 
-    title: 'Single Sign-In Feature', 
+  {
+    id: 'sso',
+    title: 'Single Sign-In Feature',
     description: 'Access all platform tools with a single, secure login, simplifying user management.',
     imageId: 'why-us-sso'
   },
@@ -1198,4 +1199,5 @@ export const topAuthors: TopAuthor[] = [
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
 
+    
     
