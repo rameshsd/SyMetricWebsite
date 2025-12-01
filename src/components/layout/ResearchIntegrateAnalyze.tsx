@@ -14,7 +14,7 @@ export function ResearchIntegrateAnalyze() {
     return (
         <section
             ref={ref}
-            className="flex flex-col items-center justify-center bg-secondary/50 px-4"
+            className="flex flex-col items-center justify-center bg-background px-4"
         >
             <div className="container">
                 {/* Title & Subtitle */}
@@ -49,8 +49,8 @@ export function ResearchIntegrateAnalyze() {
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}
                         >
-                            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
-                                <item.icon className="h-8 w-8 text-primary" />
+                            <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-primary/10">
+                                <item.icon className="h-10 w-10 text-primary" strokeWidth={2.5}/>
                             </div>
                             <div>
                                 <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Application</p>

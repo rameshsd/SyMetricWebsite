@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { platformFeatures } from '@/lib/data';
@@ -11,7 +12,7 @@ export function PlatformFeatures() {
     const [ref, isInView] = useInView({ triggerOnce: true });
     
     return (
-        <section ref={ref} className="bg-secondary/50">
+        <section ref={ref} className="bg-secondary/30">
             <div className="container">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {platformFeatures.map((item, index) => (
@@ -23,8 +24,8 @@ export function PlatformFeatures() {
                             )}
                             style={{ animationDelay: `${200 + index * 150}ms` }}
                         >
-                            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                                <item.icon className="h-8 w-8 text-primary" />
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+                                <item.icon className="h-10 w-10 text-primary" strokeWidth={2.5}/>
                             </div>
                             <div>
                                 <h3 className="font-bold text-xl mt-1">{item.title}</h3>
