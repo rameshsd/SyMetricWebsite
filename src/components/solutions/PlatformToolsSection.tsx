@@ -18,6 +18,39 @@ export function PlatformToolsSection() {
             Empower your teams with the adaptive tools they need to innovate, scale, and achieve remarkable outcomes.
           </p>
         </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
+          {toolsData.map(tool => (
+            <div
+              key={tool.id}
+              className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+
+              {/* Icon */}
+              <div className="p-3 rounded-xl text-primary bg-primary/10 group-hover:bg-primary/10 transition mb-4">
+                <tool.icon className="h-16 w-16" />
+              </div>
+
+              {/* Text */}
+              <div className="flex-grow">
+                <h3 className="text-lg font-semibold text-foreground">
+                  {tool.label}
+                </h3>
+                <p className="mt-2 text-muted-foreground text-sm">
+                  {tool.description}
+                </p>
+              </div>
+
+              <Link
+                  href={tool.link}
+                  className="mt-4 inline-block text-primary font-medium text-sm hover:underline"
+                >
+                  Explore {tool.label.toLowerCase()} →
+                </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
