@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -11,8 +10,9 @@ export function PlatformToolsSection() {
       <div className="container max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900">
+        <div className="text-left max-w-3xl">
+          <h2 className="text-4xl font-bold text-gray-900 relative pl-4">
+            <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
             Support every team and strengthen every process
           </h2>
           <p className="mt-4 text-lg text-gray-600">
@@ -21,7 +21,7 @@ export function PlatformToolsSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
           {toolsData.map(tool => (
             <div
               key={tool.id}
