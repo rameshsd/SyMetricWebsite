@@ -756,29 +756,27 @@ export const platformUsers = [
 ];
 
 export const researchIntegrateAnalyzeContent = {
-  mainConcepts: [
-    { title: "Research", icon: Search },
-    { title: "Integrate", icon: Combine },
-    { title: "Analyze", icon: BarChart },
-  ],
   platformFeatures: [
     { 
-      title: "Clinical Trial Platform",
-      description: "A unified, end-to-end solution for managing your trials with maximum efficiency.",
-      icon: Rocket,
+      title: "Research",
+      description: "Our platform provides a unified, end-to-end solution for managing your trials with maximum efficiency.",
+      icon: Search,
       link: "/solutions/clinical-trial-platform",
+      linkText: "Explore Platform"
     },
     { 
-      title: "Trial Analytics",
+      title: "Integrate",
       description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
-      icon: TrendingUp,
+      icon: Combine,
       link: "/solutions/trial-analytics",
+      linkText: "Explore Analytics"
     },
     { 
-      title: "Aiding You in Your Journey",
+      title: "Analyze",
       description: "Our dedicated team provides expert support to ensure your success at every step.",
-      icon: Compass,
+      icon: BarChart,
       link: "/contact",
+      linkText: "Explore Support"
     },
   ]
 };

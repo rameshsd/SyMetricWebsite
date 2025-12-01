@@ -1,10 +1,10 @@
 
+
 "use client";
 
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
 import { researchIntegrateAnalyzeContent } from '@/lib/data';
-import { Button } from '../ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -38,53 +38,31 @@ export function ResearchIntegrateAnalyze() {
                     </p>
                 </div>
 
-                {/* Main Concepts */}
-                <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center max-w-4xl mx-auto">
-                    {researchIntegrateAnalyzeContent.mainConcepts.map((item, index) => (
-                        <div
-                            key={item.title}
-                            className={cn(
-                                "flex flex-col items-center opacity-0",
-                                isInView && "animate-fade-in-up"
-                            )}
-                            style={{ animationDelay: `${200 + index * 150}ms` }}
-                        >
-                            <div className="flex justify-center items-center mb-4">
-                                <div className="p-4 bg-primary/10 rounded-full">
-                                    <item.icon className="h-8 w-8 text-primary" />
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-semibold">{item.title}</h3>
-                        </div>
-                    ))}
-                </div>
-
                 {/* Platform Features */}
-                <div className="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-10">
                     {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
                         <div
                             key={item.title}
                             className={cn(
-                                "flex flex-col items-center text-center gap-2 opacity-0",
+                                "flex flex-col items-start text-left gap-2 opacity-0",
                                 isInView && "animate-fade-in-up"
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}
                         >
                             <div className="flex justify-center items-center mb-4">
-                                <div className="p-4 bg-primary/10 rounded-full">
-                                    <item.icon className="h-10 w-10 text-primary" />
+                                <div className="p-3 bg-primary/10 rounded-lg">
+                                    <item.icon className="h-8 w-8 text-primary" />
                                 </div>
                             </div>
                             <div>
-                                <h4 className="font-bold text-lg">{item.title}</h4>
-                                <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
+                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SYMETRIC APPLICATION</p>
+                                <h3 className="font-bold text-lg mt-1">{item.title}</h3>
+                                <p className="text-muted-foreground text-sm mt-2">{item.description}</p>
                             </div>
                             {item.link && (
-                                <Button variant="link" asChild className="p-0 h-auto mt-2">
-                                    <Link href={item.link}>
-                                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                </Button>
+                                <Link href={item.link} className="flex items-center text-sm text-primary font-semibold mt-4">
+                                    {item.linkText} <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
                             )}
                         </div>
                     ))}
