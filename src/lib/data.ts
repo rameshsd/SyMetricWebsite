@@ -46,6 +46,7 @@ import {
   Monitor,
   MessageCircle,
   Fingerprint,
+  MousePointerClick,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -782,49 +783,49 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     id: 'flexible-customizable',
     title: 'Flexible and Customizable',
     description: 'Highly adaptable to your specific research study protocols and unique workflows.',
-    imageId: 'why-us-flexible'
+    icon: Settings
   },
   {
     id: 'modular-integrated',
     title: 'Modularized and Integrated',
     description: 'A modularized experience that allows seamless integration and scalability for your trials.',
-    imageId: 'why-us-modular'
+    icon: Combine
   },
   {
     id: 'simple-intuitive',
     title: 'Simple and Intuitive User Interface',
     description: 'An easy-to-use interface that reduces training time and increases user adoption.',
-    imageId: 'why-us-intuitive'
+    icon: MousePointerClick
   },
   {
     id: 'sso',
     title: 'Single Sign-In Feature',
     description: 'Access all platform tools with a single, secure login, simplifying user management.',
-    imageId: 'why-us-sso'
+    icon: Fingerprint
   },
   {
     id: 'reusable-forms',
     title: 'Reusable Forms',
     description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
-    imageId: 'why-us-reusable'
+    icon: Archive
   },
   {
     id: 'security-compliant',
     title: 'Security Compliant',
     description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
-    imageId: 'why-us-compliant'
+    icon: ShieldCheck
   },
   {
     id: 'real-time-tracking',
     title: 'Real-Time Tracking and Business Intelligence',
     description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
-    imageId: 'why-us-tracking'
+    icon: BarChart
   },
   {
     id: 'support',
     title: '24x7 Dedicated Technical Support',
     description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
-    imageId: 'why-us-support'
+    icon: Headset
   }
 ];
 
@@ -1226,5 +1227,3 @@ export const topAuthors: TopAuthor[] = [
     { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
-
-    
