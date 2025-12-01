@@ -15,21 +15,21 @@ export default function IndustriesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'industries-hero');
     return (
         <>
-            <section className="bg-background py-0 px-0">
+            <section className="bg-primary text-primary-foreground py-0 px-0">
                 <div className="container mx-auto px-0">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="py-20 px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                         Powering Research Across the Life Sciences Spectrum
                     </h1>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-lg">
+                    <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">
                         We provide specialized solutions to meet the unique regulatory and operational needs of diverse organizations.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                        <Button size="lg" asChild>
+                        <Button size="lg" variant="secondary" asChild>
                             <Link href="/contact">Request a demo</Link>
                         </Button>
-                        <Button size="lg" variant="outline" asChild>
+                        <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" asChild>
                             <Link href="/solutions">Explore solutions</Link>
                         </Button>
                     </div>
