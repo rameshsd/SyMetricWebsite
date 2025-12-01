@@ -7,7 +7,7 @@ export type IconProps = { className?: string };
 // ----------------------------------------------------
 // GLOBAL COLOR
 // ----------------------------------------------------
-const ICON_COLOR = "#bc10b6";
+const ICON_COLOR = "currentColor";
 
 // SVG wrapper
 const RawSVG: React.FC<{ svg: string; className?: string }> = ({ svg, className }) => (

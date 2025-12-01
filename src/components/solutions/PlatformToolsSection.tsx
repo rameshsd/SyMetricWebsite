@@ -28,8 +28,8 @@ export function PlatformToolsSection() {
             >
 
               {/* Icon */}
-              <div className="p-3 rounded-xl bg-purple-100 text-purple-600 group-hover:bg-purple-200 transition mb-4">
-                <tool.icon className="h-8 w-8" />
+              <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition mb-4">
+                <tool.icon className="h-12 w-12" />
               </div>
 
               {/* Text */}
@@ -44,7 +44,7 @@ export function PlatformToolsSection() {
 
               <Link
                   href={tool.link}
-                  className="mt-4 inline-block text-purple-700 font-medium text-sm hover:underline"
+                  className="mt-4 inline-block text-primary font-medium text-sm hover:underline"
                 >
                   Explore {tool.label.toLowerCase()} →
                 </Link>
