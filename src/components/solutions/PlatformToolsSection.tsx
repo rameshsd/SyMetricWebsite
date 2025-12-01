@@ -10,14 +10,11 @@ export function PlatformToolsSection() {
       <div className="container max-w-7xl mx-auto">
 
         {/* Heading */}
-        <div className="text-left max-w-3xl">
+        <div className="text-left">
           <h2 className="text-4xl font-bold text-gray-900 relative pl-4">
             <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
             Support every team and strengthen every process
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Equip every team with the tools to adapt, scale, and deliver real results.
-          </p>
         </div>
 
         {/* Grid */}
