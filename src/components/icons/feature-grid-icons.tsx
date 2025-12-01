@@ -164,15 +164,15 @@ export const DigitalLearningIcon = ({ className }: IconProps) => (
 );
 
 // ====================================================
-// 13. Data Services + Flow Arrows (FIXED)
+// 13. Data Services
 // ====================================================
 export const DataServicesIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <ellipse cx="12" cy="5" rx="6" ry="2.3" />
-    <path d="M6 5v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5" />
-    <path d="M6 9v4c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V9" />
-    <path d="M5 17h3l-1.2 1.8A3 3 0 0 0 7 21" stroke="${SECONDARY_COLOR}" />
-    <path d="M19 17h-3l1.2 1.8A3 3 0 0 1 17 21" stroke="${SECONDARY_COLOR}" />
+    <path d="M12 8V4H8" />
+    <rect x="4" y="4" width="16" height="16" rx="2" />
+    <path d="M8 12h4" />
+    <path d="M12 16h-4" />
+    <path d="M16 12h4v4" />
   </svg>`} />
 );
 
@@ -193,9 +193,11 @@ export const SampleManagementIcon = ({ className }: IconProps) => (
 // ====================================================
 export const LabelManagementIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49 -8.49l9.19 -9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1 -2.83 -2.83l8.49 -8.48" />
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+    <line x1="7" y1="7" x2="7.01" y2="7" stroke="${SECONDARY_COLOR}" stroke-width="2.5" />
   </svg>`} />
 );
+
 
 // ====================================================
 // 16. Help & Support
@@ -207,5 +209,6 @@ export const HelpSupportIcon = ({ className }: IconProps) => (
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>`} />
 );
+
 
 
