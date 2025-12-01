@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -21,35 +20,34 @@ export function PlatformToolsSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
           {toolsData.map(tool => (
             <div
               key={tool.id}
-              className="group flex gap-6 items-start"
+              className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
 
               {/* Icon */}
-              <div className="p-4 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-200 transition">
-                <tool.icon className="h-10 w-10" />
+              <div className="p-3 rounded-xl bg-purple-100 text-purple-600 group-hover:bg-purple-200 transition mb-4">
+                <tool.icon className="h-8 w-8" />
               </div>
 
               {/* Text */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900">
+              <div className="flex-grow">
+                <h3 className="text-lg font-semibold text-gray-900">
                   {tool.label}
                 </h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-gray-600 text-sm">
                   {tool.description}
                 </p>
+              </div>
 
-                <Link
+              <Link
                   href={tool.link}
-                  className="mt-4 block text-blue-700 font-medium hover:underline"
+                  className="mt-4 inline-block text-purple-700 font-medium text-sm hover:underline"
                 >
                   Explore {tool.label.toLowerCase()} →
                 </Link>
-              </div>
-
             </div>
           ))}
         </div>
