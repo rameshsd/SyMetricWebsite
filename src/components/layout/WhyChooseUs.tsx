@@ -37,7 +37,7 @@ export function WhyChooseUs() {
                 className="h-full flex flex-col group"
               >
                   {image && (
-                    <div className="relative w-full h-48 overflow-hidden rounded-2xl mb-6">
+                    <div className="relative w-full h-48 overflow-hidden rounded-lg mb-6">
                       <Image 
                         src={image.imageUrl}
                         alt={feature.title}
