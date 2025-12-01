@@ -17,23 +17,12 @@ export function ResearchIntegrateAnalyze() {
             className="flex flex-col items-center justify-center bg-background px-4"
         >
             <div className="container">
-                {/* Title & Subtitle */}
-                <div className="max-w-3xl mx-auto text-center">
-                    <h2
-                        className={cn(
-                            "text-4xl font-bold tracking-tighter text-foreground opacity-0",
-                            isInView && "animate-fade-in-up"
-                        )}
-                    >
+                <div className="text-left mb-16">
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative pl-4">
+                        <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
                         Research. Integrate. Analyze.
                     </h2>
-                    <p
-                        className={cn(
-                            "text-lg text-muted-foreground mt-4 max-w-prose mx-auto opacity-0",
-                            isInView && "animate-fade-in-up"
-                        )}
-                        style={{ animationDelay: '200ms' }}
-                    >
+                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
                         Our platform is designed to streamline every phase of the clinical trial lifecycle.
                     </p>
                 </div>
