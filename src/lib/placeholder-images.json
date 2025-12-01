@@ -601,24 +601,6 @@
       "imageHint": "Parle logo"
     },
     {
-      "id": "why-us-flexible",
-      "description": "A scientist working in a modern laboratory with advanced equipment.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Flexible-and-Customizable.jpg",
-      "imageHint": "business solutions"
-    },
-    {
-      "id": "why-us-intuitive",
-      "description": "A user interacting with a clean and simple interface on a tablet.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Simple-and-Intuitive-User-Interface.jpg",
-      "imageHint": "business partner"
-    },
-    {
-      "id": "why-us-sso",
-      "description": "An illustration showing a single key unlocking multiple applications.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Single-Sign-in-Feature.jpg",
-      "imageHint": "single sign-on"
-    },
-    {
       "id": "why-us-reusable",
       "description": "A library of reusable digital forms and templates.",
       "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Reusable-Forms.jpg",
@@ -833,6 +815,24 @@
       "description": "A diagram showing modular components integrating seamlessly.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1cPm3DONTG4URdBYXZJfji8iMZmzDkLyA",
       "imageHint": "modular components"
+    },
+    {
+      "id": "why-us-flexible",
+      "description": "A scientist working in a modern laboratory with advanced equipment.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1gB0s4Yb1fR8yOp8ryg_XCcNyRXk-AhBd",
+      "imageHint": "business solutions"
+    },
+    {
+      "id": "why-us-intuitive",
+      "description": "A user interacting with a clean and simple interface on a tablet.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1T-IB21womBeHGtRl0UDCz6N81UI8yQVl",
+      "imageHint": "business partner"
+    },
+    {
+      "id": "why-us-sso",
+      "description": "An illustration showing a single key unlocking multiple applications.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1Nm9X54JRforA9KSXRqrHvAiAr_MfldU7",
+      "imageHint": "single sign-on"
     }
   ]
 }
