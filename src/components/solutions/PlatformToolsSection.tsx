@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function PlatformToolsSection() {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <div className="container">
         <div className="text-left mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 relative pl-4">

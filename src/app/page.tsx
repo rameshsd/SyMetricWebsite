@@ -37,7 +37,7 @@ export default function Home() {
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <main className="flex-1">
+      <main className="flex-1 space-y-12 md:space-y-16">
          <SapTechedHero />
         <RevolutionizingTrials />
         <UnlockPotential />
@@ -49,7 +49,7 @@ export default function Home() {
         <PlatformFeatures />
         <AchievementsSection />
 
-        <section className="w-full bg-secondary/30">
+        <section className="w-full bg-secondary/30 py-16">
           <div className="container">
             <SectionTitle title="What's new" className="text-left !max-w-none mb-8" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
