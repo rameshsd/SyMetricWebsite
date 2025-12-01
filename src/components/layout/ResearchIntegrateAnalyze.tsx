@@ -70,8 +70,10 @@ export function ResearchIntegrateAnalyze() {
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}
                         >
-                            <div className="flex-shrink-0 mt-1">
-                                <item.icon className="h-6 w-6 text-primary" />
+                            <div className="flex justify-center items-center mb-4">
+                                <div className="p-4 bg-primary/10 rounded-full">
+                                    <item.icon className="h-10 w-10 text-primary" />
+                                </div>
                             </div>
                             <div>
                                 <h4 className="font-bold text-lg">{item.title}</h4>
