@@ -118,6 +118,7 @@ export type ResearchIntegrateAnalyzeFeature = {
     description: string;
     icon: LucideIcon;
     link?: string;
+    linkText?: string;
 }
 
 export type WhyChooseUsFeature = {
@@ -263,3 +264,11 @@ export interface UseDocOptions {
 export type FirestoreHookResult<T> =
   | UseCollectionResult<T>
   | UseDocResult<T>;
+
+export type PlatformFeature = {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+    link: string;
+    linkText: string;
+};

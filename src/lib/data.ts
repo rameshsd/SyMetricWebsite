@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -760,25 +760,25 @@ export const researchIntegrateAnalyzeContent: {
 } = {
   platformFeatures: [
     {
-      title: "Research",
-      description: "Our unified platform provides end-to-end solutions for managing trials with maximum efficiency, from startup to submission.",
-      icon: Rocket,
-      link: "/solutions/clinical-trial-platform",
-      linkText: "Explore SyMetric Research"
+      title: 'Research',
+      description: 'Our unified platform provides end-to-end solutions for managing trials with maximum efficiency, from startup to submission.',
+      icon: Search,
+      link: '/solutions/clinical-trial-platform',
+      linkText: 'Explore Research'
     },
     {
-      title: "Integrate",
-      description: "Seamlessly connect data sources, systems, and partners to create a single source of truth for your clinical data.",
+      title: 'Integrate',
+      description: 'Seamlessly connect data sources, systems, and partners to create a single source of truth for your clinical data.',
       icon: Combine,
-      link: "/services/data-migration",
-      linkText: "Explore SyMetric Integration"
+      link: '/services/data-migration',
+      linkText: 'Explore Integration'
     },
     {
-      title: "Analyze",
-      description: "Leverage real-time data and powerful AI to derive actionable insights, monitor progress, and make informed decisions faster.",
-      icon: TrendingUp,
-      link: "/solutions/trial-analytics",
-      linkText: "Explore SyMetric Analytics"
+      title: 'Analyze',
+      description: 'Leverage real-time data and powerful AI to derive actionable insights, monitor progress, and make informed decisions faster.',
+      icon: BarChart,
+      link: '/solutions/trial-analytics',
+      linkText: 'Explore Analytics'
     }
   ]
 };
@@ -786,7 +786,6 @@ export const researchIntegrateAnalyzeContent: {
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     {
         id: 'flexible-customizable',
-        icon: Settings,
         title: 'Flexible and Customizable',
         description: 'Highly adaptable to your specific research study protocols and unique workflows.',
         imageId: 'why-us-flexible',
@@ -794,7 +793,6 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     },
     {
         id: 'modular-integrated',
-        icon: Combine,
         title: 'Modularized and Integrated',
         description: 'A modularized experience that allows seamless integration and scalability for your trials.',
         imageId: 'why-us-modular',
@@ -802,53 +800,37 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     },
     {
         id: 'simple-intuitive',
-        icon: MousePointerClick,
         title: 'Simple and Intuitive User Interface',
         description: 'An easy-to-use interface that reduces training time and increases user adoption.',
         imageId: 'why-us-intuitive',
         learnMoreLink: '#'
-    },
-    {
-        id: 'sso',
-        icon: Fingerprint,
-        title: 'Single Sign-In Feature',
-        description: 'Access all platform tools with a single, secure login, simplifying user management.',
-        imageId: 'why-us-sso',
-        learnMoreLink: '#'
-    },
-    {
-        id: 'reusable-forms',
-        icon: Files,
-        title: 'Reusable Forms',
-        description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
-        imageId: 'why-us-reusable',
-        learnMoreLink: '#'
-    },
-    {
-        id: 'compliant',
-        icon: ShieldCheck,
-        title: 'Security Compliant',
-        description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
-        imageId: 'why-us-compliant',
-        learnMoreLink: '#'
-    },
-    {
-        id: 'tracking',
-        icon: BarChart,
-        title: 'Real-Time Tracking and Business Intelligence',
-        description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
-        imageId: 'why-us-tracking',
-        learnMoreLink: '#'
-    },
-    {
-        id: 'support',
-        icon: LifeBuoy,
-        title: '24x7 Dedicated Technical Support',
-        description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
-        imageId: 'why-us-support',
-        learnMoreLink: '#'
-    },
+    }
 ];
+
+export const platformFeatures: PlatformFeature[] = [
+    {
+      title: "Clinical Trial Platform",
+      description: "A unified, end-to-end solution for managing your trials with maximum efficiency.",
+      icon: Rocket,
+      link: "/solutions/clinical-trial-platform",
+      linkText: "Learn More"
+    },
+    {
+      title: "Trial Analytics",
+      description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
+      icon: TrendingUp,
+      link: "/solutions/trial-analytics",
+      linkText: "Learn More"
+    },
+    {
+      title: "Aiding You in Your Journey",
+      description: "Our dedicated team provides expert support to ensure your success at every step.",
+      icon: Compass,
+      link: "/services/support",
+      linkText: "Learn More"
+    }
+];
+
 
 export const companyInfo: CompanyInfo = {
     facts: {

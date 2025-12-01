@@ -19,6 +19,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
 import { CustomerSuccess } from '@/components/home/customer-success';
 import { PlatformToolsSection } from '@/components/solutions/PlatformToolsSection';
+import { PlatformFeatures } from '@/components/layout/PlatformFeatures';
 
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
         <WhyChooseUs />
         
         <ResearchIntegrateAnalyze />
+        <PlatformFeatures />
         <AchievementsSection />
 
         <section className="w-full bg-secondary/30">
