@@ -1,4 +1,3 @@
-
 "use client";
 
 import { whyChooseUsFeatures } from "@/lib/data";
@@ -13,7 +12,7 @@ export function WhyChooseUs() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className="bg-background">
+    <section ref={ref} className="bg-secondary/30">
       <div className="container">
         <div className="text-left mb-16">
            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative pl-4">
