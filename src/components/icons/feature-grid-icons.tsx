@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -151,15 +150,13 @@ export const ReportsIcon = ({ className }: IconProps) => (
 );
 
 // ====================================================
-// 12. Digital Learning (Laptop + Cap)
+// 12. Digital Learning
 // ====================================================
 export const DigitalLearningIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <rect x="2" y="7" width="20" height="14" rx="2" />
-    <path d="M1 21h22" />
-    <path d="M3 13h18" />
-    <path d="M12 6l-6 2.5 6 2.5 6-2.5-6-2.5z" stroke="${SECONDARY_COLOR}" />
-    <path d="M12 6v3" stroke="${SECONDARY_COLOR}" />
+    <rect x="4" y="8" width="16" height="12" rx="2"/>
+    <path d="M20 8v5.33a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8"/>
+    <path d="M18 8l-6-5-6 5"/>
   </svg>`} />
 );
 
@@ -209,6 +206,3 @@ export const HelpSupportIcon = ({ className }: IconProps) => (
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>`} />
 );
-
-
-
