@@ -37,7 +37,7 @@ export default function Home() {
   
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <main className="flex-1 space-y-8 md:space-y-10">
+      <main className="flex-1">
          <SapTechedHero />
         <RevolutionizingTrials />
         <UnlockPotential />
