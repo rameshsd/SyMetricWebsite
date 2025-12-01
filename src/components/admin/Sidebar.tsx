@@ -8,12 +8,16 @@ import {
   Edit,
   TrendingUp,
   Settings,
+  Calendar,
+  Mail,
+  MessageSquare,
+  Users
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
-const analyticsNav = [
+const mainNav = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { name: 'Analytics', href: '/admin/analytics', icon: GanttChartSquare },
   { name: 'Sales', href: '/admin/sales', icon: TrendingUp },
@@ -23,6 +27,16 @@ const contentNav = [
   { name: 'Pages', href: '/admin/pages', icon: File },
   { name: 'Content Editor', href: '/admin/content', icon: Edit },
 ];
+
+const toolsNav = [
+    { name: 'Calendar', href: '/admin/calendar', icon: Calendar },
+    { name: 'Mail', href: '/admin/mail', icon: Mail },
+    { name: 'Chat', href: '/admin/chat', icon: MessageSquare },
+]
+
+const managementNav = [
+    { name: 'Users', href: '/admin/users', icon: Users },
+]
 
 const NavLink = ({ href, icon: Icon, name }: { href: string; icon: React.ElementType; name: string;}) => {
     const pathname = usePathname();
@@ -62,8 +76,10 @@ export function Sidebar() {
         <Logo />
       </div>
       <nav className="flex-1 overflow-y-auto">
-        <NavGroup title="Analytics" items={analyticsNav} />
+        <NavGroup title="Main" items={mainNav} />
         <NavGroup title="Content" items={contentNav} />
+        <NavGroup title="Tools" items={toolsNav} />
+        <NavGroup title="Management" items={managementNav} />
       </nav>
       <div className="pt-4 mt-auto border-t border-gray-200 dark:border-gray-700">
         <Link href="#" className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700">
