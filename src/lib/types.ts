@@ -125,6 +125,7 @@ export type WhyChooseUsFeature = {
   title: string;
   description: string;
   imageId: string;
+  learnMoreLink: string;
 };
 
 export type CompanyInfo = {

@@ -2,7 +2,6 @@
 "use client";
 
 import { whyChooseUsFeatures } from "@/lib/data";
-import { SectionTitle } from "../shared/section-title";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
