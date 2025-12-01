@@ -2,12 +2,10 @@
 "use client";
 
 import { whyChooseUsFeatures } from "@/lib/data";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -36,32 +34,28 @@ export function WhyChooseUs() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="h-full flex"
+                className="h-full flex flex-col group"
               >
-                  <Card className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl bg-card border">
-                      {image && (
-                        <div className="relative w-full h-48 overflow-hidden rounded-t-2xl">
-                          <Image 
-                            src={image.imageUrl}
-                            alt={feature.title}
-                            data-ai-hint={image.imageHint}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      )}
-                      <CardHeader>
-                        <CardTitle>{feature.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-grow">
-                          <p className="text-muted-foreground text-sm">{feature.description}</p>
-                      </CardContent>
-                      <CardFooter>
-                          <Link href={feature.learnMoreLink} className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline">
-                              Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
-                      </CardFooter>
-                  </Card>
+                  {image && (
+                    <div className="relative w-full h-48 overflow-hidden rounded-2xl mb-6">
+                      <Image 
+                        src={image.imageUrl}
+                        alt={feature.title}
+                        data-ai-hint={image.imageHint}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-grow flex flex-col">
+                      <h3 className="text-xl font-bold">{feature.title}</h3>
+                      <p className="text-muted-foreground text-sm mt-2 flex-grow">{feature.description}</p>
+                      <div className="mt-4">
+                        <Link href={feature.learnMoreLink} className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline">
+                            Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </div>
+                  </div>
               </motion.div>
           )})}
         </div>
