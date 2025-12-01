@@ -1,5 +1,4 @@
 
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, WelcomeLink, TopAuthor, CommunityPost } from '@/lib/types';
 import {
   FlaskConical,
@@ -1228,5 +1227,4 @@ export const topAuthors: TopAuthor[] = [
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
 
-    
     
