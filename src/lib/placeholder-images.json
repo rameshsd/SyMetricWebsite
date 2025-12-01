@@ -607,12 +607,6 @@
       "imageHint": "business solutions"
     },
     {
-      "id": "why-us-modular",
-      "description": "A diagram showing modular components integrating seamlessly.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Modularized-and-Integrated-Experience.jpg",
-      "imageHint": "partner support"
-    },
-    {
       "id": "why-us-intuitive",
       "description": "A user interacting with a clean and simple interface on a tablet.",
       "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Simple-and-Intuitive-User-Interface.jpg",
@@ -833,6 +827,12 @@
       "description": "Abstract visualization of a randomization process in a clinical trial, showing branching paths and data points.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1crm2TZ73mXMl9XFEu-DGBntRSN7Jrev7",
       "imageHint": "randomization process"
+    },
+    {
+      "id": "why-us-modular",
+      "description": "A diagram showing modular components integrating seamlessly.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1cPm3DONTG4URdBYXZJfji8iMZmzDkLyA",
+      "imageHint": "modular components"
     }
   ]
 }
