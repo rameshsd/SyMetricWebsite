@@ -42,11 +42,13 @@ export const IdentityAccessIcon = ({ className }: IconProps) => (
 // ====================================================
 export const OrganizationIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-    <path d="M12 2v20" stroke="${SECONDARY_COLOR}" />
-    <path d="M2 12h20" stroke="${SECONDARY_COLOR}" />
-    <path d="M12 2a10 10 0 00-3.7 19.4" stroke="${SECONDARY_COLOR}" />
-    <path d="M12 2a10 10 0 013.7 19.4" stroke="${SECONDARY_COLOR}" />
+    <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18" />
+    <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke="${SECONDARY_COLOR}" />
+    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" stroke="${SECONDARY_COLOR}" />
+    <path d="M10 6h4" stroke="${SECONDARY_COLOR}" />
+    <path d="M10 10h4" stroke="${SECONDARY_COLOR}" />
+    <path d="M10 14h4" stroke="${SECONDARY_COLOR}" />
+    <path d="M10 18h4" stroke="${SECONDARY_COLOR}" />
   </svg>`} />
 );
 
@@ -154,11 +156,13 @@ export const ReportsIcon = ({ className }: IconProps) => (
 // 12. Digital Learning
 // ====================================================
 export const DigitalLearningIcon = ({ className }: IconProps) => (
-  <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-    <path d="M6.5 2H20v15H6.5A2.5 2.5 0 0 1 4 14.5V4A2 2 0 0 1 6 2z" />
-    <path d="M12 12V6" stroke="${SECONDARY_COLOR}" />
-    <path d="m15 9-3-3-3 3" stroke="${SECONDARY_COLOR}" />
+    <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
+    <rect x="3" y="4" width="18" height="12" rx="2" />
+    <path d="M21 16v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2" />
+    <path d="M12 12V8" stroke="${SECONDARY_COLOR}" />
+    <path d="M10 8h4" stroke="${SECONDARY_COLOR}" />
+    <path d="M7 2v2" stroke="${SECONDARY_COLOR}" />
+    <path d="M17 2v2" stroke="${SECONDARY_COLOR}" />
   </svg>`} />
 );
 
@@ -167,11 +171,12 @@ export const DigitalLearningIcon = ({ className }: IconProps) => (
 // ====================================================
 export const DataServicesIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
-    <path d="M12 8V4H8" />
-    <rect x="4" y="4" width="16" height="16" rx="2" />
-    <path d="M8 12h4" />
-    <path d="M12 16h-4" />
-    <path d="M16 12h4v4" />
+    <path d="M12 8v4m0 0v4m0-4h4m-4 0H8" />
+    <path d="M20.2 7.8l-1.4-1.4" stroke="${SECONDARY_COLOR}" />
+    <path d="M3.8 17.2l-1.4-1.4" stroke="${SECONDARY_COLOR}" />
+    <path d="M17.2 20.2l-1.4-1.4" stroke="${SECONDARY_COLOR}" />
+    <path d="M8.2 5.8l-1.4-1.4" stroke="${SECONDARY_COLOR}" />
+    <circle cx="12" cy="12" r="10" />
   </svg>`} />
 );
 
@@ -191,7 +196,7 @@ export const SampleManagementIcon = ({ className }: IconProps) => (
 // 15. Label Management
 // ====================================================
 export const LabelManagementIcon = ({ className }: IconProps) => (
-  <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
+    <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
     <line x1="7" y1="7" x2="7.01" y2="7" stroke="${SECONDARY_COLOR}" stroke-width="2.5" />
   </svg>`} />
@@ -208,4 +213,5 @@ export const HelpSupportIcon = ({ className }: IconProps) => (
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>`} />
 );
+
 
