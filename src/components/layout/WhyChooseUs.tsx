@@ -14,16 +14,19 @@ import { Button } from "../ui/button";
 export function WhyChooseUs() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
+  // We'll select the first 3 items to match the new design.
+  const featuredItems = whyChooseUsFeatures.slice(0, 3);
+
   return (
     <section ref={ref} className="bg-background">
       <div className="container">
         <SectionTitle
-          title="Why Choose Us?"
-          description="Discover why SyMetric stands apart — our clinical trial solutions blend intelligence, accuracy, and innovation to simplify complex workflows and empower research success."
+          title="Why Choose SyMetric?"
+          description="Accelerate success with our extensive clinical trial ecosystem."
         />
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {whyChooseUsFeatures.map((feature, index) => {
+          {featuredItems.map((feature, index) => {
             const image = PlaceHolderImages.find(p => p.id === feature.imageId);
             return (
               <motion.div
