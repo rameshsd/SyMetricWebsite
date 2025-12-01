@@ -50,11 +50,6 @@ export function WhyChooseUs() {
                   <div className="flex-grow flex flex-col">
                       <h3 className="text-xl font-bold">{feature.title}</h3>
                       <p className="text-muted-foreground text-sm mt-2 flex-grow">{feature.description}</p>
-                      <div className="mt-4">
-                        <Link href={feature.learnMoreLink} className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:underline">
-                            Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                      </div>
                   </div>
               </motion.div>
           )})}
