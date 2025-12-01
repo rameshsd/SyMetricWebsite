@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -29,7 +30,7 @@ export function PlatformToolsSection() {
 
               {/* Icon */}
               <div className="p-3 rounded-xl text-primary group-hover:bg-primary/5 transition mb-4">
-                <tool.icon className="h-12 w-12" />
+                <tool.icon className="h-16 w-16" />
               </div>
 
               {/* Text */}
