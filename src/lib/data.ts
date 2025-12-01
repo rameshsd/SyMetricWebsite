@@ -804,7 +804,42 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
         description: 'An easy-to-use interface that reduces training time and increases user adoption.',
         imageId: 'why-us-intuitive',
         learnMoreLink: '#'
-    }
+    },
+    {
+        id: 'sso',
+        title: 'Single Sign-In Feature',
+        description: 'Access all platform tools with a single, secure login, simplifying user management.',
+        imageId: 'why-us-sso',
+        learnMoreLink: '#'
+    },
+    {
+        id: 'reusable-forms',
+        title: 'Reusable Forms',
+        description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
+        imageId: 'why-us-reusable',
+        learnMoreLink: '#'
+    },
+    {
+        id: 'compliant',
+        title: 'Security Compliant',
+        description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
+        imageId: 'why-us-compliant',
+        learnMoreLink: '#'
+    },
+    {
+        id: 'tracking',
+        title: 'Real-Time Tracking and Business Intelligence',
+        description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
+        imageId: 'why-us-tracking',
+        learnMoreLink: '#'
+    },
+    {
+        id: 'support',
+        title: '24x7 Dedicated Technical Support',
+        description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
+        imageId: 'why-us-support',
+        learnMoreLink: '#'
+    },
 ];
 
 export const platformFeatures: PlatformFeature[] = [
