@@ -28,7 +28,7 @@ export function PlatformToolsSection() {
             >
 
               {/* Icon */}
-              <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/20 transition mb-4">
+              <div className="p-3 rounded-xl text-primary group-hover:bg-primary/5 transition mb-4">
                 <tool.icon className="h-12 w-12" />
               </div>
 
