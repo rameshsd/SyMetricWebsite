@@ -1,6 +1,6 @@
 
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -755,88 +755,111 @@ export const platformUsers = [
   },
 ];
 
-export const researchIntegrateAnalyzeContent = {
-  platformFeatures: [
-    { 
+export const researchIntegrateAnalyzeContent: {
+  mainConcepts: ResearchIntegrateAnalyzeFeature[],
+  platformFeatures: ResearchIntegrateAnalyzeFeature[]
+} = {
+  mainConcepts: [
+    {
       title: "Research",
       description: "Our platform provides a unified, end-to-end solution for managing your trials with maximum efficiency.",
-      icon: Search,
+      icon: Rocket,
+      link: "/solutions/clinical-trial-platform"
+    },
+    {
+      title: "Integrate",
+      description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
+      icon: TrendingUp,
+      link: "/solutions/trial-analytics"
+    },
+    {
+      title: "Analyze",
+      description: "Our dedicated team provides expert support to ensure your success at every step.",
+      icon: Compass,
+      link: "/contact"
+    }
+  ],
+  platformFeatures: [
+    {
+      title: "Clinical Trial Platform",
+      description: "Our platform provides a unified, end-to-end solution for managing your trials with maximum efficiency.",
+      icon: Rocket,
       link: "/solutions/clinical-trial-platform",
       linkText: "Explore Platform"
     },
-    { 
-      title: "Integrate",
+    {
+      title: "Trial Analytics",
       description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
-      icon: Combine,
+      icon: TrendingUp,
       link: "/solutions/trial-analytics",
       linkText: "Explore Analytics"
     },
-    { 
-      title: "Analyze",
+    {
+      title: "Aiding You in Your Journey",
       description: "Our dedicated team provides expert support to ensure your success at every step.",
-      icon: BarChart,
+      icon: Compass,
       link: "/contact",
       linkText: "Explore Support"
-    },
+    }
   ]
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     {
         id: 'flexible-customizable',
+        icon: Settings,
         title: 'Flexible and Customizable',
         description: 'Highly adaptable to your specific research study protocols and unique workflows.',
-        imageId: 'why-us-flexible',
-        learnMoreLink: '#'
+        imageId: 'why-us-flexible'
     },
     {
         id: 'modular-integrated',
+        icon: Combine,
         title: 'Modularized and Integrated',
         description: 'A modularized experience that allows seamless integration and scalability for your trials.',
-        imageId: 'why-us-modular',
-        learnMoreLink: '#'
+        imageId: 'why-us-modular'
     },
     {
         id: 'simple-intuitive',
+        icon: MousePointerClick,
         title: 'Simple and Intuitive User Interface',
         description: 'An easy-to-use interface that reduces training time and increases user adoption.',
-        imageId: 'why-us-intuitive',
-        learnMoreLink: '#'
+        imageId: 'why-us-intuitive'
     },
     {
         id: 'sso',
+        icon: Fingerprint,
         title: 'Single Sign-In Feature',
         description: 'Access all platform tools with a single, secure login, simplifying user management.',
-        imageId: 'why-us-sso',
-        learnMoreLink: '#'
+        imageId: 'why-us-sso'
     },
     {
         id: 'reusable-forms',
+        icon: Files,
         title: 'Reusable Forms',
         description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
-        imageId: 'why-us-reusable',
-        learnMoreLink: '#'
+        imageId: 'why-us-reusable'
     },
     {
         id: 'compliant',
+        icon: ShieldCheck,
         title: 'Security Compliant',
         description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
-        imageId: 'why-us-compliant',
-        learnMoreLink: '#'
+        imageId: 'why-us-compliant'
     },
     {
         id: 'tracking',
+        icon: BarChart,
         title: 'Real-Time Tracking and Business Intelligence',
         description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
-        imageId: 'why-us-tracking',
-        learnMoreLink: '#'
+        imageId: 'why-us-tracking'
     },
     {
         id: 'support',
+        icon: LifeBuoy,
         title: '24x7 Dedicated Technical Support',
         description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
-        imageId: 'why-us-support',
-        learnMoreLink: '#'
+        imageId: 'why-us-support'
     },
 ];
 

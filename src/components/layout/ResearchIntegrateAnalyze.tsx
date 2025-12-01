@@ -44,20 +44,19 @@ export function ResearchIntegrateAnalyze() {
                         <div
                             key={item.title}
                             className={cn(
-                                "flex flex-col items-start text-left gap-2 opacity-0",
+                                "flex flex-col items-center text-center gap-4 opacity-0",
                                 isInView && "animate-fade-in-up"
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}
                         >
                             <div className="flex justify-center items-center mb-4">
-                                <div className="p-3 bg-primary/10 rounded-lg">
-                                    <item.icon className="h-8 w-8 text-primary" />
+                                <div className="p-4 bg-primary/10 rounded-full">
+                                    <item.icon className="h-10 w-10 text-primary" />
                                 </div>
                             </div>
                             <div>
-                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SYMETRIC APPLICATION</p>
-                                <h3 className="font-bold text-lg mt-1">{item.title}</h3>
-                                <p className="text-muted-foreground text-sm mt-2">{item.description}</p>
+                                <h3 className="font-bold text-xl mt-1">{item.title}</h3>
+                                <p className="text-muted-foreground mt-2">{item.description}</p>
                             </div>
                             {item.link && (
                                 <Link href={item.link} className="flex items-center text-sm text-primary font-semibold mt-4">
