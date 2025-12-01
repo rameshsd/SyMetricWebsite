@@ -15,7 +15,7 @@ export default function IndustriesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'industries-hero');
     return (
         <>
-            <section className="bg-secondary/50 py-0 px-0">
+            <section className="bg-background py-0 px-0">
                 <div className="container mx-auto px-0">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="py-20 px-4 sm:px-6 lg:px-8">
