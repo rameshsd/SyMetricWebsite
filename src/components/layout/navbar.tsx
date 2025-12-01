@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut, MessageSquare } from 'lucide-react';
+import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut, MessageSquare, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -130,6 +130,7 @@ function UserNav() {
   }
 
   if (user) {
+    const isAdmin = user.email === 'rameshdodamani22@gmail.com';
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -150,6 +151,14 @@ function UserNav() {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
+          {isAdmin && (
+            <DropdownMenuItem asChild>
+              <Link href="/admin">
+                <Shield className="mr-2 h-4 w-4" />
+                <span>Admin</span>
+              </Link>
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem onClick={handleSignOut}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
