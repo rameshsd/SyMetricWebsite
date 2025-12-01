@@ -1,3 +1,4 @@
+
 "use client";
 
 import { whyChooseUsFeatures } from "@/lib/data";
@@ -6,9 +7,7 @@ import { Card, CardContent } from "../ui/card";
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 
 export function WhyChooseUs() {
@@ -27,40 +26,28 @@ export function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {whyChooseUsFeatures.map((feature, index) => {
-            const image = PlaceHolderImages.find(p => p.id === feature.imageId);
-            return (
-                <motion.div
-                key={feature.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                    <Card className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
-                        {image && (
-                        <div className="relative w-full h-48 overflow-hidden">
-                            <Image
-                                src={image.imageUrl}
-                                alt={feature.title}
-                                fill
-                                style={{ objectFit: 'cover' }}
-                                className="transition-transform duration-500 group-hover:scale-105"
-                                data-ai-hint={image.imageHint}
-                            />
-                        </div>
-                        )}
-                        <CardContent className="p-6 flex-grow flex flex-col">
-                            <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                            <p className="text-muted-foreground text-sm flex-grow">{feature.description}</p>
-                            <Link href={feature.learnMoreLink} className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">
-                                {feature.linkText} <ArrowRight className="h-4 w-4" />
-                            </Link>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-            )
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {whyChooseUsFeatures.map((feature, index) => (
+              <motion.div
+              key={feature.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                  <Card className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl bg-transparent border-none shadow-none">
+                      <CardContent className="p-0 flex-grow flex flex-col">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4">
+                              <feature.icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                          <p className="text-muted-foreground text-sm flex-grow">{feature.description}</p>
+                          <Link href={feature.learnMoreLink} className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">
+                              <ArrowRight className="h-4 w-4" />
+                          </Link>
+                      </CardContent>
+                  </Card>
+              </motion.div>
+          ))}
         </div>
       </div>
     </section>

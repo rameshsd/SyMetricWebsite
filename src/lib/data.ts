@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, WelcomeLink, TopAuthor, CommunityPost } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -47,6 +47,10 @@ import {
   MessageCircle,
   Fingerprint,
   MousePointerClick,
+  Files,
+  ChevronsRight,
+  LifeBuoy as LifeBuoyIcon,
+  BarChart as BarChartIcon
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -313,7 +317,7 @@ export const leadership: LeadershipMember[] = [
     name: 'Uma Janapareddy',
     role: 'Founder and Managing Director',
     bio: [
-      'An entrepreneur with over 20 years experience in establishing and managing multiple business entities in various fields such as Life Sciences, Healthcare, and Social Enterprise, Uma started SyMetric in 2012. She plays a seminal role in all functions — from strategic decision-making to business operations. Under her leadership, SyMetric has expanded to US, Europe, and Latin America besides forging strong partnerships with Pharma Companies, CROs, and Technology Companies such as Microsoft, SAP, Tenthpin Management Consultants, and MINT Medical. She has been at the helm of Ladies Circle India (LCI) and is a member of several reputed organizations — Anthroposophical Medical Society of India, HIMSS India Chapter, 5HT Germany, NASSCOM, and SAP Industry Consortium for Life sciences.'
+      'An entrepreneur with over 20 years experience in establishing and managing multiple business entities in various fields such as Life Sciences, Healthcare, and Social Enterprise, Uma started SyMetric in 2012. She plays a seminal role in all functions — from strategic decision-making to business operations. Under her leadership, SyMetric has expanded to US, Europe, and Latin America besides forging strong partnerships with Pharma Companies, CROs, and Technology Companies such as Microsoft, SAP, and MINT Medical. She has been at the helm of Ladies Circle India (LCI) and is a member of several reputed organizations — Anthroposophical Medical Society of India, HIMSS India Chapter, 5HT Germany, NASSCOM, and SAP Industry Consortium for Life sciences.'
     ],
     imageId: 'leadership-1',
     linkedin: 'https://www.linkedin.com/in/uma-janapareddy-9b169b13'
@@ -601,7 +605,7 @@ export const featureGridItems: FeatureGridItem[] = [
     },
     { 
         icon: LabIcon, 
-        title: 'Lab Management',
+        label: 'Lab Management',
         description: 'Manage lab data, normal ranges, and sample tracking with seamless integration.',
         link: '#' 
     },
@@ -779,30 +783,62 @@ export const researchIntegrateAnalyzeContent = {
 };
 
 export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
-  {
-    id: 'flexible-customizable',
-    title: 'Flexible and Customizable',
-    description: 'Highly adaptable to your specific research study protocols and unique workflows.',
-    imageId: 'why-us-flexible',
-    linkText: 'Explore solutions',
-    learnMoreLink: '/solutions'
-  },
-  {
-    id: 'modular-integrated',
-    title: 'Modularized and Integrated',
-    description: 'A modularized experience that allows seamless integration and scalability for your trials.',
-    imageId: 'why-us-modular',
-    linkText: 'Discover potential partners',
-    learnMoreLink: '#'
-  },
-  {
-    id: 'simple-intuitive',
-    title: 'Simple and Intuitive User Interface',
-    description: 'An easy-to-use interface that reduces training time and increases user adoption.',
-    imageId: 'why-us-intuitive',
-    linkText: 'Partner with us',
-    learnMoreLink: '#'
-  }
+    {
+        id: 'flexible-customizable',
+        title: 'Flexible and Customizable',
+        description: 'Highly adaptable to your specific research study protocols and unique workflows.',
+        icon: Settings,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'modular-integrated',
+        title: 'Modularized and Integrated',
+        description: 'A modularized experience that allows seamless integration and scalability for your trials.',
+        icon: Combine,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'simple-intuitive',
+        title: 'Simple and Intuitive User Interface',
+        description: 'An easy-to-use interface that reduces training time and increases user adoption.',
+        icon: MousePointerClick,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'sso',
+        title: 'Single Sign-In Feature',
+        description: 'Access all platform tools with a single, secure login, simplifying user management.',
+        icon: Fingerprint,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'reusable-forms',
+        title: 'Reusable Forms',
+        description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
+        icon: Files,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'compliant',
+        title: 'Security Compliant',
+        description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
+        icon: ShieldCheck,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'tracking',
+        title: 'Real-Time Tracking and Business Intelligence',
+        description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
+        icon: BarChartIcon,
+        learnMoreLink: '#'
+    },
+    {
+        id: 'support',
+        title: '24x7 Dedicated Technical Support',
+        description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
+        icon: LifeBuoyIcon,
+        learnMoreLink: '#'
+    },
 ];
 
 export const companyInfo: CompanyInfo = {
