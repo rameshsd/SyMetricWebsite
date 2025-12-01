@@ -783,49 +783,25 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     id: 'flexible-customizable',
     title: 'Flexible and Customizable',
     description: 'Highly adaptable to your specific research study protocols and unique workflows.',
-    icon: Settings
+    imageId: 'why-us-flexible',
+    linkText: 'Explore solutions',
+    learnMoreLink: '/solutions'
   },
   {
     id: 'modular-integrated',
     title: 'Modularized and Integrated',
     description: 'A modularized experience that allows seamless integration and scalability for your trials.',
-    icon: Combine
+    imageId: 'why-us-modular',
+    linkText: 'Discover potential partners',
+    learnMoreLink: '#'
   },
   {
     id: 'simple-intuitive',
     title: 'Simple and Intuitive User Interface',
     description: 'An easy-to-use interface that reduces training time and increases user adoption.',
-    icon: MousePointerClick
-  },
-  {
-    id: 'sso',
-    title: 'Single Sign-In Feature',
-    description: 'Access all platform tools with a single, secure login, simplifying user management.',
-    icon: Fingerprint
-  },
-  {
-    id: 'reusable-forms',
-    title: 'Reusable Forms',
-    description: 'Save time and ensure consistency by creating and reusing forms and business rules across studies.',
-    icon: Archive
-  },
-  {
-    id: 'security-compliant',
-    title: 'Security Compliant',
-    description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
-    icon: ShieldCheck
-  },
-  {
-    id: 'real-time-tracking',
-    title: 'Real-Time Tracking and Business Intelligence',
-    description: 'Gain instant visibility into trial progress with powerful real-time dashboards and analytics.',
-    icon: BarChart
-  },
-  {
-    id: 'support',
-    title: '24x7 Dedicated Technical Support',
-    description: 'Our expert technical support team is always available to ensure your trials run smoothly.',
-    icon: Headset
+    imageId: 'why-us-intuitive',
+    linkText: 'Partner with us',
+    learnMoreLink: '#'
   }
 ];
 

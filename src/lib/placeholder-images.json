@@ -603,20 +603,20 @@
     {
       "id": "why-us-flexible",
       "description": "A scientist working in a modern laboratory with advanced equipment.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1U_maY4P_t0z9_1Qp6Am0N7QS4hI9QKFN",
-      "imageHint": "scientist laboratory"
+      "imageUrl": "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "business solutions"
     },
     {
       "id": "why-us-modular",
       "description": "A diagram showing modular components integrating seamlessly.",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Modularized-and-Integrated.jpg",
-      "imageHint": "modular integration"
+      "imageUrl": "https://images.unsplash.com/photo-1556740738-b6a63e2775d2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "partner support"
     },
     {
       "id": "why-us-intuitive",
       "description": "A user interacting with a clean and simple interface on a tablet.",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Simple-and-Intuitive-User-Interface.jpg",
-      "imageHint": "intuitive interface"
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "business partner"
     },
     {
       "id": "why-us-sso",
