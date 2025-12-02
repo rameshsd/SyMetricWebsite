@@ -37,7 +37,7 @@ export function RevolutionizingTrials() {
   const image = PlaceHolderImages.find((img) => img.id === 'revolutionizing-trials');
 
   return (
-    <section className="w-full bg-background py-20">
+    <section className="w-full bg-subtle-blue py-20">
       <div className="container">
         <div className="text-left mb-12">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">HOW IT WORKS</p>
