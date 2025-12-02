@@ -119,7 +119,12 @@ export function PageHeader({
                       href={item.href}
                       onClick={(e) => {
                         e.preventDefault();
-                        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                        const element = document.querySelector(item.href);
+                        if (element) {
+                            const yOffset = -80; // height of the sticky header
+                            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }
                         setActiveSection(item.href);
                         setMobileNavOpen(false);
                       }}
@@ -154,10 +159,12 @@ export function PageHeader({
         <div className="container">
           <div className="flex items-baseline justify-between">
             <div className="flex items-baseline gap-x-6">
-                <h2 className="text-xl font-bold text-foreground whitespace-nowrap py-3">
-                    {title}
-                </h2>
-                {secondaryNav && (
+                {showTitle &&
+                  <h2 className="text-xl font-bold text-foreground whitespace-nowrap py-3">
+                      {title}
+                  </h2>
+                }
+                {secondaryNav && showTitle && (
                     <div className="border-l h-6"></div>
                 )}
             </div>
