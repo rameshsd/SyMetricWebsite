@@ -3,7 +3,6 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { SectionTitle } from '../shared/section-title';
 import { PlayCircle } from 'lucide-react';
 
 const featurePoints = [
@@ -27,12 +26,7 @@ export function RevolutionizingTrialsSection() {
     return (
         <section className="bg-secondary/50">
             <div className="container">
-                <SectionTitle 
-                    title="Revolutionizing Clinical Trials With Innovation"
-                    description="At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity. We offer modularized solutions for Pharma Companies, Contract Research Organizations, and Academia. You can integrate your processes with our user-friendly applications or choose from comprehensive modules for every stage of your trial. And all this comes to you, complete with Study Configurations, in a matter of three to four weeks. So take a big leap with SyMetric!"
-                />
-
-                <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="relative aspect-video rounded-2xl overflow-hidden group">
                         {videoThumbnail && (
                             <Image 
@@ -48,6 +42,10 @@ export function RevolutionizingTrialsSection() {
                         </div>
                     </div>
                     <div className="space-y-8">
+                         <div>
+                            <h2 className="text-3xl font-bold tracking-tight text-foreground">Revolutionizing Clinical Trials With Innovation</h2>
+                            <p className="mt-4 text-muted-foreground">At SyMetric, we help you make the shift from traditional trial models to agile, patient-centric processes driven by our unified Clinical Trial Platform. With us, you can use the power of technology to automate and simplify project management in clinical trials and improve your productivity. We offer modularized solutions for Pharma Companies, Contract Research Organizations, and Academia. You can integrate your processes with our user-friendly applications or choose from comprehensive modules for every stage of your trial. And all this comes to you, complete with Study Configurations, in a matter of three to four weeks. So take a big leap with SyMetric!</p>
+                        </div>
                         {featurePoints.map(point => (
                             <div key={point.title}>
                                 <h3 className="font-bold text-lg text-foreground">{point.title}</h3>
