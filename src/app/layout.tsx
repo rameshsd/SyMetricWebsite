@@ -35,7 +35,7 @@ export default function RootLayout({
             <AnalyticsTracker />
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
-              <main>{children}</main>
+              {children}
               <Footer />
             </div>
             <Toaster />
