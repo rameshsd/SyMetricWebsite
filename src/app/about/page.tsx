@@ -108,7 +108,7 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div className="relative">
-                    <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                    <Accordion type="multiple" defaultValue={["item-1", "item-2"]} className="w-full">
                         <AccordionItem value="item-1" className="border-b-0">
                             <div className="flex gap-4">
                                 <div className="pt-4">
