@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -9,6 +8,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const features = [
     {
@@ -41,9 +43,9 @@ export function RevolutionizingTrials() {
       <div className="container">
         <div className="text-left mb-12">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">HOW IT WORKS</p>
-            <h2 className="text-4xl font-bold tracking-tight mt-2">Your clinical trials just got an upgrade</h2>
+            <h2 className="text-4xl font-bold tracking-tight mt-2">Revolutionizing Clinical Trials</h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="relative">
                 <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
                     {features.map((feature, index) => (
@@ -64,6 +66,13 @@ export function RevolutionizingTrials() {
                          </AccordionItem>
                     ))}
                 </Accordion>
+                <div className="mt-8">
+                    <Button asChild>
+                        <Link href="/about">
+                            Know More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                    </Button>
+                </div>
             </div>
             <div className="relative flex items-center justify-center">
                 <div className="relative w-full aspect-video">
