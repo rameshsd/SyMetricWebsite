@@ -101,38 +101,38 @@ export default function AboutPage() {
                 Our vision and mission drive everything we do.
               </p>
             </div>
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative aspect-[4/3] max-w-lg mx-auto">
-                {strategyImage && (
-                  <Image
-                    src={strategyImage.imageUrl}
-                    alt={strategyImage.description}
-                    data-ai-hint={strategyImage.imageHint}
-                    fill
-                    className=""
-                  />
-                )}
-              </div>
-              <div className="space-y-8">
-                <StrategyCard 
-                  title="Vision"
-                  description={
-                    <>
-                      <p className="text-lg font-semibold text-foreground">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
-                      <p>We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
-                    </>
-                  }
-                />
-                 <StrategyCard 
-                  title="Mission"
-                  description={
-                    <>
-                      <p className="text-lg font-semibold text-foreground">To transform the drug development landscape.</p>
-                      <p>The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
-                    </>
-                  }
-                />
-              </div>
+            <div className="max-w-4xl mx-auto">
+                <div className="relative aspect-video max-w-3xl mx-auto mb-16">
+                    {strategyImage && (
+                    <Image
+                        src={strategyImage.imageUrl}
+                        alt={strategyImage.description}
+                        data-ai-hint={strategyImage.imageHint}
+                        fill
+                        className="rounded-xl shadow-lg"
+                    />
+                    )}
+                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <StrategyCard 
+                        title="Vision"
+                        description={
+                            <>
+                            <p className="text-lg font-semibold text-foreground">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
+                            <p>We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
+                            </>
+                        }
+                    />
+                    <StrategyCard 
+                        title="Mission"
+                        description={
+                            <>
+                            <p className="text-lg font-semibold text-foreground">To transform the drug development landscape.</p>
+                            <p>The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
+                            </>
+                        }
+                    />
+                </div>
             </div>
           </div>
         </section>
