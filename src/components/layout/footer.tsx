@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -8,12 +9,9 @@ import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const quickLinks = [
-  { name: 'SyMetric Trust Center', href: '#' },
   { name: 'Find a solution', href: '/solutions' },
   { name: 'Industries', href: '/industries' },
-  { name: 'Find a partner', href: '#' },
-  { name: 'Trials and demos', href: '#' },
-  { name: 'Find services', href: '#' },
+  { name: 'Find services', href: '/services' },
 ];
 
 const trendingLinks = [
@@ -27,8 +25,6 @@ const trendingLinks = [
 
 const aboutSyMetricLinks = [
   { name: 'Company information', href: '/about' },
-  { name: 'Worldwide directory', href: '#' },
-  { name: 'Investor Relations', href: '#' },
   { name: 'Careers', href: '/careers' },
   { name: 'News and press', href: '#' },
   { name: 'Events', href: '#' },
