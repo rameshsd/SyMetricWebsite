@@ -67,7 +67,6 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: { name: stri
 
 
 export function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -214,7 +213,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
           <div className="text-xs text-muted-foreground">
-            {isClient ? `© ${year} SyMetric SE or a SyMetric affiliate company. All rights reserved.` : <span>&nbsp;</span>}
+            {isClient ? `© ${new Date().getFullYear()} SyMetric SE or a SyMetric affiliate company. All rights reserved.` : <span>&nbsp;</span>}
           </div>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
