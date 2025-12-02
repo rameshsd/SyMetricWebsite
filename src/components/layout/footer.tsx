@@ -16,15 +16,6 @@ const quickLinks = [
   { name: 'Careers', href: '/careers'},
 ];
 
-const trendingLinks = [
-  { name: 'SyMetric TechEd', href: '#' },
-  { name: 'SyMetric Business Suite', href: '#' },
-  { name: 'SyMetric Business Data Cloud', href: '#' },
-  { name: 'SyMetric Business AI', href: '#' },
-  { name: 'Sustainability', href: '#' },
-  { name: 'Partner ecosystem', href: '#' },
-];
-
 const aboutSyMetricLinks = [
   { name: 'Company information', href: '/about' },
   { name: 'Careers', href: '/careers' },
@@ -115,7 +106,6 @@ export function Footer() {
                         </div>
                     </div>
                     <FooterLinkColumn title="Quick links" links={quickLinks} />
-                    <FooterLinkColumn title="Trending" links={trendingLinks} />
                     <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
                     <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
                 </div>
@@ -158,21 +148,6 @@ export function Footer() {
                     <AccordionContent>
                         <ul className="space-y-2 pl-8">
                         {quickLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
-                        ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="trending">
-                    <AccordionTrigger>
-                         <div className="flex items-center gap-4">
-                            <ChevronRight className="h-4 w-4" />
-                            <span>Trending</span>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="space-y-2 pl-8">
-                        {trendingLinks.map((link) => (
                             <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
                         ))}
                         </ul>
