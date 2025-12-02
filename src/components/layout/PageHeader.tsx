@@ -1,3 +1,4 @@
+
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -57,11 +58,12 @@ export function PageHeader({
 
       if (secondaryNav) {
         let currentSectionId = '';
+        const offset = 120; // Adjusted offset for sticky header
+        
         for (const navItem of secondaryNav) {
           const element = document.querySelector(navItem.href);
           if (element) {
             const rect = element.getBoundingClientRect();
-            const offset = 80; // Adjusted offset for sticky header
             if (rect.top <= offset && rect.bottom >= offset) {
               currentSectionId = navItem.href;
               break;
@@ -75,7 +77,7 @@ export function PageHeader({
                 const element = document.querySelector(navItem.href);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    const distance = Math.abs(rect.top - 80);
+                    const distance = Math.abs(rect.top - offset);
                     if (distance < closest.distance) {
                         closest = {id: navItem.href, distance: distance};
                     }
@@ -99,7 +101,10 @@ export function PageHeader({
   return (
     <>
       {/* Mobile Header */}
-       <div className="md:hidden sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b">
+       <div className={cn(
+          "md:hidden sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b transition-transform duration-300",
+           isHidden ? '-translate-y-full' : 'translate-y-0'
+        )}>
          {secondaryNav && secondaryNav.length > 0 ? (
             <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
               <DropdownMenuTrigger asChild>
