@@ -2,7 +2,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronDown } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
@@ -35,11 +35,11 @@ export function PageHeader({
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 10);
       
-      if (currentScrollY > 80) {
+      if (currentScrollY > 150) { // Start hide/show behavior after scrolling down a bit
         if (currentScrollY > lastScrollY.current) {
-          setIsHidden(true);
+          setIsHidden(true); // Scrolling down
         } else {
-          setIsHidden(false);
+          setIsHidden(false); // Scrolling up
         }
       } else {
         setIsHidden(false);
@@ -49,19 +49,36 @@ export function PageHeader({
 
       // Active section highlighting
       if (secondaryNav) {
-        let currentSection = '';
+        let currentSectionId = '';
         for (const navItem of secondaryNav) {
           const element = document.querySelector(navItem.href);
           if (element) {
             const rect = element.getBoundingClientRect();
+            // A section is considered active if its top is within the top 150px of the viewport
             if (rect.top <= 150 && rect.bottom >= 150) {
-              currentSection = navItem.href;
+              currentSectionId = navItem.href;
               break;
             }
           }
         }
-        if (currentSection && currentSection !== activeSection) {
-          setActiveSection(currentSection);
+        // If no section is in the sweet spot, find the one closest to the top
+        if (!currentSectionId) {
+             let closest = {id: '', distance: Infinity};
+             for (const navItem of secondaryNav) {
+                const element = document.querySelector(navItem.href);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    const distance = Math.abs(rect.top - 150);
+                    if (distance < closest.distance) {
+                        closest = {id: navItem.href, distance: distance};
+                    }
+                }
+             }
+             currentSectionId = closest.id;
+        }
+
+        if (currentSectionId && currentSectionId !== activeSection) {
+          setActiveSection(currentSectionId);
         }
       }
     };
@@ -70,11 +87,9 @@ export function PageHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [secondaryNav, activeSection]);
   
-  const currentActiveItem = secondaryNav?.find(item => item.href === activeSection) || secondaryNav?.[0];
-
   return (
     <>
-      {/* Mobile Header - Always visible on mobile, not sticky */}
+      {/* Mobile Header - Per previous request */}
       <div className="container md:hidden py-4 border-b">
         {breadcrumb && (
           <Link href={breadcrumb.href} className="flex items-center text-sm text-muted-foreground hover:text-primary mb-2">
@@ -89,6 +104,11 @@ export function PageHeader({
                     <Link
                         key={item.label}
                         href={item.href}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                            setActiveSection(item.href);
+                        }}
                         className={cn(
                             "text-muted-foreground border-l-2 pl-3 py-1 text-sm font-medium",
                             activeSection === item.href ? "border-primary text-primary" : "border-border"
@@ -101,39 +121,49 @@ export function PageHeader({
         )}
       </div>
 
-      {/* Desktop Header - Sticky */}
+      {/* Desktop Header - NEW STICKY DESIGN */}
       <div
         className={cn(
           "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300 hidden md:block",
-          isScrolled && "shadow-sm",
           isHidden ? '-translate-y-full' : 'translate-y-0'
         )}
       >
         <div className="container">
-          <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2 py-3">
-             <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
-                {showTitle ? title : currentActiveItem?.label}
-            </h2>
-            {secondaryNav && (
-              <nav className="flex items-center gap-x-6 flex-wrap" aria-label="Secondary">
-                {secondaryNav.map((tab, index) => (
-                  <div key={tab.label} className="flex items-center space-x-6">
-                      {index > 0 && <span className="text-muted-foreground/50">|</span>}
-                      <Link
-                        href={tab.href}
-                        className={cn(
-                            "whitespace-nowrap text-sm font-medium transition-colors",
-                            activeSection === tab.href ? "text-primary font-bold" : "text-muted-foreground hover:text-primary"
-                        )}
-                      >
-                        {tab.label}
-                      </Link>
-                  </div>
-                ))}
-              </nav>
-            )}
+          <div className="flex items-baseline justify-between">
+            <div className="flex items-baseline gap-x-6">
+                <h2 className="text-xl font-bold text-foreground whitespace-nowrap py-3">
+                    {title}
+                </h2>
+                {secondaryNav && (
+                    <div className="border-l h-6"></div>
+                )}
+            </div>
           </div>
         </div>
+         {secondaryNav && (
+            <nav className="container flex items-center gap-x-6 -mt-2" aria-label="Secondary">
+                {secondaryNav.map((tab) => (
+                  <Link
+                    key={tab.label}
+                    href={tab.href}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector(tab.href)?.scrollIntoView({ behavior: 'smooth' });
+                        setActiveSection(tab.href);
+                    }}
+                    className={cn(
+                        "relative whitespace-nowrap py-3 text-sm font-medium transition-colors",
+                        activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+                    )}
+                  >
+                    {tab.label}
+                    {activeSection === tab.href && (
+                        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
+                    )}
+                  </Link>
+                ))}
+            </nav>
+        )}
       </div>
     </>
   );
