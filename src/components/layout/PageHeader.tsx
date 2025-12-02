@@ -2,10 +2,17 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronLeft, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 
 type PageHeaderProps = {
   title: string;
@@ -20,8 +27,6 @@ type PageHeaderProps = {
   showTitle?: boolean;
 };
 
-const INITIAL_VISIBLE_MOBILE_NAV = 4;
-
 export function PageHeader({
   title,
   breadcrumb,
@@ -32,18 +37,18 @@ export function PageHeader({
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
-  const [mobileNavExpanded, setMobileNavExpanded] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setIsScrolled(currentScrollY > 10);
       
-      if (currentScrollY > 150) { // Start hide/show behavior after scrolling down a bit
+      if (currentScrollY > 150) {
         if (currentScrollY > lastScrollY.current) {
-          setIsHidden(true); // Scrolling down
+          setIsHidden(true); 
         } else {
-          setIsHidden(false); // Scrolling up
+          setIsHidden(false);
         }
       } else {
         setIsHidden(false);
@@ -51,28 +56,27 @@ export function PageHeader({
 
       lastScrollY.current = currentScrollY;
 
-      // Active section highlighting
       if (secondaryNav) {
         let currentSectionId = '';
         for (const navItem of secondaryNav) {
           const element = document.querySelector(navItem.href);
           if (element) {
             const rect = element.getBoundingClientRect();
-            // A section is considered active if its top is within the top 150px of the viewport
-            if (rect.top <= 150 && rect.bottom >= 150) {
+            const offset = 80;
+            if (rect.top <= offset && rect.bottom >= offset) {
               currentSectionId = navItem.href;
               break;
             }
           }
         }
-        // If no section is in the sweet spot, find the one closest to the top
+        
         if (!currentSectionId) {
              let closest = {id: '', distance: Infinity};
              for (const navItem of secondaryNav) {
                 const element = document.querySelector(navItem.href);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    const distance = Math.abs(rect.top - 150);
+                    const distance = Math.abs(rect.top - 80);
                     if (distance < closest.distance) {
                         closest = {id: navItem.href, distance: distance};
                     }
@@ -91,52 +95,53 @@ export function PageHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [secondaryNav, activeSection]);
   
-  const visibleNavItems = mobileNavExpanded ? secondaryNav : secondaryNav?.slice(0, INITIAL_VISIBLE_MOBILE_NAV);
+  const activeSectionLabel = secondaryNav?.find(item => item.href === activeSection)?.label || 'Overview';
   
   return (
     <>
       {/* Mobile Header */}
-      <div className="container md:hidden py-4 border-b">
-        {breadcrumb && (
-          <Link href={breadcrumb.href} className="flex items-center text-sm text-muted-foreground hover:text-primary mb-2">
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            {breadcrumb.label}
-          </Link>
-        )}
-        <h1 className="text-3xl font-bold">{title}</h1>
-        {secondaryNav && (
-          <>
-            <nav className="grid grid-cols-2 gap-x-6 gap-y-2 mt-4">
-                {visibleNavItems && visibleNavItems.map((item) => (
+       <div className="md:hidden sticky top-16 z-30 bg-background/95 backdrop-blur-sm border-b">
+         {secondaryNav && secondaryNav.length > 0 ? (
+            <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center justify-between w-full p-4 text-left">
+                  <div>
+                    <h1 className="text-lg font-bold">{title}</h1>
+                    <p className="text-sm text-muted-foreground">{activeSectionLabel}</p>
+                  </div>
+                  <ChevronDown className={cn("h-5 w-5 transition-transform", mobileNavOpen && "rotate-180")} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-[calc(100vw-2rem)]">
+                {secondaryNav.map((item) => (
+                  <DropdownMenuItem key={item.label} asChild>
                     <Link
-                        key={item.label}
-                        href={item.href}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                            setActiveSection(item.href);
-                        }}
-                        className={cn(
-                            "text-muted-foreground border-l-2 pl-3 py-1 text-sm font-medium",
-                            activeSection === item.href ? "border-primary text-primary" : "border-border"
-                        )}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                        setActiveSection(item.href);
+                        setMobileNavOpen(false);
+                      }}
+                      className={cn(activeSection === item.href && "font-bold text-primary")}
                     >
-                        {item.label}
+                      {item.label}
                     </Link>
+                  </DropdownMenuItem>
                 ))}
-            </nav>
-            {secondaryNav.length > INITIAL_VISIBLE_MOBILE_NAV && (
-              <Button 
-                variant="link" 
-                className="p-0 h-auto mt-4 text-primary"
-                onClick={() => setMobileNavExpanded(!mobileNavExpanded)}
-              >
-                {mobileNavExpanded ? 'View Less' : 'View More'}
-                {mobileNavExpanded ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
-              </Button>
-            )}
-          </>
-        )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+         ) : (
+            <div className="container py-4">
+                 {breadcrumb && (
+                    <Link href={breadcrumb.href} className="flex items-center text-sm text-muted-foreground hover:text-primary mb-2">
+                        <ChevronLeft className="h-4 w-4 mr-1" />
+                        {breadcrumb.label}
+                    </Link>
+                )}
+                <h1 className="text-3xl font-bold">{title}</h1>
+            </div>
+         )}
       </div>
 
       {/* Desktop Header */}
@@ -166,7 +171,12 @@ export function PageHeader({
                     href={tab.href}
                     onClick={(e) => {
                         e.preventDefault();
-                        document.querySelector(tab.href)?.scrollIntoView({ behavior: 'smooth' });
+                        const element = document.querySelector(tab.href);
+                        if (element) {
+                            const yOffset = -80;
+                            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }
                         setActiveSection(tab.href);
                     }}
                     className={cn(
