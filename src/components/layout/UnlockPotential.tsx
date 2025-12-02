@@ -5,14 +5,17 @@ import { unlockPotentialItems } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import Link from 'next/link';
+import { SectionTitle } from '../shared/section-title';
 
 export function UnlockPotential() {
     return (
-        <section className="bg-secondary/30">
+        <section className="py-16 bg-secondary/30">
             <div className="container">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold tracking-tight">Unlock the full potential of your AI, data, and applications with Business Technology Platform</h2>
-                </div>
+                <SectionTitle 
+                    title="Unlock the full potential of your AI, data, and applications"
+                    description="Our Business Technology Platform provides the foundation for innovation and agility."
+                    className="mb-16"
+                />
                 <div className="grid md:grid-cols-3 gap-10">
                     {unlockPotentialItems.map(item => {
                         const image = PlaceHolderImages.find(p => p.id === item.imageId);
@@ -42,4 +45,3 @@ export function UnlockPotential() {
         </section>
     )
 }
-
