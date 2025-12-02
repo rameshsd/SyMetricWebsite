@@ -48,6 +48,8 @@ export default function Home() {
         <ResearchIntegrateAnalyze />
         <PlatformFeatures />
         <AchievementsSection />
+        
+        <CustomerSuccess />
 
         <section className="w-full bg-secondary/30 py-16">
           <div className="container">
@@ -127,8 +129,6 @@ export default function Home() {
             )}
           </div>
         </section>
-
-        <CustomerSuccess />
 
       </main>
     </div>
