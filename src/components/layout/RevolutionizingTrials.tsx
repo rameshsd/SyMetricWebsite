@@ -43,7 +43,7 @@ export function RevolutionizingTrials() {
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">HOW IT WORKS</p>
             <h2 className="text-4xl font-bold tracking-tight mt-2">Your clinical trials just got an upgrade</h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="relative">
                 <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
                     {features.map((feature, index) => (
@@ -65,8 +65,8 @@ export function RevolutionizingTrials() {
                     ))}
                 </Accordion>
             </div>
-            <div className="relative p-4 flex items-center justify-center">
-                <div className="relative w-full aspect-[4/3] max-w-lg">
+            <div className="relative flex items-center justify-center">
+                <div className="relative w-full aspect-video">
                     {image && (
                     <Image
                         src={image.imageUrl}
