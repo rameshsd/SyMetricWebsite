@@ -99,7 +99,7 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-secondary/50 py-16">
+        <section id="our-strategy" className="bg-subtle-blue py-16">
           <div className="container">
             <div className="text-left mb-12">
                 <p className="text-sm font-semibold text-primary uppercase tracking-wider">OUR APPROACH</p>
