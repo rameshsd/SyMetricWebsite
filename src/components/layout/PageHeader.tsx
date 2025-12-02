@@ -2,9 +2,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { Button } from "../ui/button";
 
 type PageHeaderProps = {
   title: string;
@@ -19,6 +20,8 @@ type PageHeaderProps = {
   showTitle?: boolean;
 };
 
+const INITIAL_VISIBLE_MOBILE_NAV = 4;
+
 export function PageHeader({
   title,
   breadcrumb,
@@ -29,6 +32,7 @@ export function PageHeader({
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
+  const [mobileNavExpanded, setMobileNavExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,9 +91,11 @@ export function PageHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [secondaryNav, activeSection]);
   
+  const visibleNavItems = mobileNavExpanded ? secondaryNav : secondaryNav?.slice(0, INITIAL_VISIBLE_MOBILE_NAV);
+  
   return (
     <>
-      {/* Mobile Header - Per previous request */}
+      {/* Mobile Header */}
       <div className="container md:hidden py-4 border-b">
         {breadcrumb && (
           <Link href={breadcrumb.href} className="flex items-center text-sm text-muted-foreground hover:text-primary mb-2">
@@ -99,8 +105,9 @@ export function PageHeader({
         )}
         <h1 className="text-3xl font-bold">{title}</h1>
         {secondaryNav && (
+          <>
             <nav className="grid grid-cols-2 gap-x-6 gap-y-2 mt-4">
-                {secondaryNav.map((item) => (
+                {visibleNavItems && visibleNavItems.map((item) => (
                     <Link
                         key={item.label}
                         href={item.href}
@@ -118,10 +125,21 @@ export function PageHeader({
                     </Link>
                 ))}
             </nav>
+            {secondaryNav.length > INITIAL_VISIBLE_MOBILE_NAV && (
+              <Button 
+                variant="link" 
+                className="p-0 h-auto mt-4 text-primary"
+                onClick={() => setMobileNavExpanded(!mobileNavExpanded)}
+              >
+                {mobileNavExpanded ? 'View Less' : 'View More'}
+                {mobileNavExpanded ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
+              </Button>
+            )}
+          </>
         )}
       </div>
 
-      {/* Desktop Header - NEW STICKY DESIGN */}
+      {/* Desktop Header */}
       <div
         className={cn(
           "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300 hidden md:block",
