@@ -212,7 +212,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
-          <p className="text-xs text-muted-foreground">&copy; {year} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>
+          {isClient && <p className="text-xs text-muted-foreground">&copy; {year} SyMetric SE or a SyMetric affiliate company. All rights reserved.</p>}
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
               <a key={link.name} href={link.href} className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
