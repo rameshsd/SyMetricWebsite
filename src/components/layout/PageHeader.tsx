@@ -1,4 +1,3 @@
-
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -62,7 +61,7 @@ export function PageHeader({
           const element = document.querySelector(navItem.href);
           if (element) {
             const rect = element.getBoundingClientRect();
-            const offset = 80;
+            const offset = 80; // Adjusted offset for sticky header
             if (rect.top <= offset && rect.bottom >= offset) {
               currentSectionId = navItem.href;
               break;
@@ -100,7 +99,7 @@ export function PageHeader({
   return (
     <>
       {/* Mobile Header */}
-       <div className="md:hidden sticky top-16 z-30 bg-background/95 backdrop-blur-sm border-b">
+       <div className="md:hidden sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b">
          {secondaryNav && secondaryNav.length > 0 ? (
             <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
               <DropdownMenuTrigger asChild>
@@ -112,7 +111,7 @@ export function PageHeader({
                   <ChevronDown className={cn("h-5 w-5 transition-transform", mobileNavOpen && "rotate-180")} />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[calc(100vw-2rem)]">
+              <DropdownMenuContent align="start" className="w-[calc(100vw-2rem)]">
                 {secondaryNav.map((item) => (
                   <DropdownMenuItem key={item.label} asChild>
                     <Link
