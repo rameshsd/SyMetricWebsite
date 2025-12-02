@@ -93,7 +93,7 @@
     {
       "id": "logo-apex-clinical",
       "description": "Apex Clinical Logo",
-      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8MTc2MDg2MjgwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580032526421-9a6acf2eb275?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZXR0ZXIlMjBsb2dvfGVufDB8fHx8fDE3NjA4NjI4MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "letter logo"
     },
     {
@@ -164,9 +164,9 @@
     },
     {
       "id": "hero-carousel-1",
-      "description": "Clinical trial platform",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/Banner1-1.jpg",
-      "imageHint": "clinical trial"
+      "description": "Doctor holding a futuristic medical data interface.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1FkaA32KlowWHdYmfxNJGOxGQC-0ZwZwf",
+      "imageHint": "doctor data"
     },
     {
       "id": "hero-carousel-2",
@@ -699,7 +699,7 @@
     {
       "id": "service-tab-support",
       "description": "Customer support agent with a headset.",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "customer support"
     },
     {
@@ -778,7 +778,7 @@
       "id": "financial-dashboard",
       "description": "A financial dashboard showing charts and graphs.",
       "imageHint": "financial data dashboard",
-      "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib=rb-4.1.0&q=80&w=1080"
+      "imageUrl": "https://images.unsplash.com/photo-1642485352063-e71dd651493b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXNoYm9hcmQlMjBjaGFydHN8ZW58MHx8fHwxNzYwODQ5ODExfDA&ixlib-rb-4.1.0&q=80&w=1080"
     },
     {
       "id": "cdm-hero",
