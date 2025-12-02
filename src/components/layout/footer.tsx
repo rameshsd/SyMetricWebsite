@@ -72,7 +72,6 @@ export function Footer() {
 
   useEffect(() => {
     setIsClient(true);
-    setYear(new Date().getFullYear());
   }, []);
 
   const scrollToTop = () => {
