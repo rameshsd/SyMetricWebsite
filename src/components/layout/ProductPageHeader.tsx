@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -65,10 +66,9 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
         <div className="container">
           <div className="py-4">
             <div className="flex items-center text-sm text-muted-foreground mb-2">
-              <Link href="/solutions" className="hover:text-primary flex items-center">
-                <ChevronRight className="h-4 w-4 transform rotate-180" />
-                All products
-              </Link>
+               <Link href="/solutions" className="flex items-center text-sm text-muted-foreground hover:text-primary">
+                    <ChevronDown className="h-4 w-4 mr-1" /> / All products
+                </Link>
             </div>
 
             <h1 className="text-2xl font-bold text-foreground">{productName}</h1>
