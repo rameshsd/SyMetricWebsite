@@ -99,14 +99,14 @@ export default function AboutPage() {
           <RevolutionizingTrialsSection />
         </div>
 
-        <section id="our-strategy" className="bg-blue-100/50 py-20">
+        <section id="our-strategy" className="bg-blue-100/50 py-16">
           <div className="container">
             <div className="text-left mb-12">
                 <p className="text-sm font-semibold text-primary uppercase tracking-wider">OUR APPROACH</p>
                 <h2 className="text-4xl font-bold tracking-tight mt-2">Our Strategy</h2>
                  <p className="mt-2 text-muted-foreground">Our vision and mission drive everything we do.</p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div className="relative">
                     <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
                         <AccordionItem value="item-1" className="border-b-0">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                                     <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
                                         Vision
                                     </AccordionTrigger>
-                                    <AccordionContent className="pb-8 pr-4">
+                                    <AccordionContent className="pb-6 pr-4">
                                         <p className="text-lg font-semibold text-foreground">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
                                         <p className="text-muted-foreground mt-2">We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
                                     </AccordionContent>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                                     <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
                                         Mission
                                     </AccordionTrigger>
-                                    <AccordionContent className="pb-8 pr-4">
+                                    <AccordionContent className="pb-6 pr-4">
                                        <p className="text-lg font-semibold text-foreground">To transform the drug development landscape.</p>
                                        <p className="text-muted-foreground mt-2">The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
                                     </AccordionContent>
