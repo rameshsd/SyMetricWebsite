@@ -183,7 +183,7 @@ export function PageHeader({
                               setActiveSection(tab.href);
                           }}
                           className={cn(
-                              "relative whitespace-nowrap py-4 text-sm font-medium transition-colors",
+                              "relative whitespace-nowrap py-5 text-sm font-medium transition-colors",
                               activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
                           )}
                       >
