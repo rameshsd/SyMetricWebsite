@@ -156,7 +156,7 @@ export function PageHeader({
           isHidden ? '-translate-y-full' : 'translate-y-0'
         )}
       >
-        <div className="container flex items-center justify-between">
+        <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center gap-x-6">
               {showTitle &&
                 <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
@@ -183,7 +183,7 @@ export function PageHeader({
                               setActiveSection(tab.href);
                           }}
                           className={cn(
-                              "relative whitespace-nowrap py-3 text-sm font-medium transition-colors",
+                              "relative whitespace-nowrap py-4 text-sm font-medium transition-colors",
                               activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
                           )}
                       >
