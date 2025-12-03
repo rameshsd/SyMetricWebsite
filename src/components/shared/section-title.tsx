@@ -1,3 +1,4 @@
+
 'use client';
 import { useInView } from '@/hooks/use-in-view';
 import { cn } from '@/lib/utils';
@@ -5,23 +6,27 @@ import { cn } from '@/lib/utils';
 interface SectionTitleProps {
   title: string;
   description?: string;
+  eyebrow?: string;
   className?: string;
 }
 
-export function SectionTitle({ title, description, className }: SectionTitleProps) {
+export function SectionTitle({ title, description, eyebrow, className }: SectionTitleProps) {
   const [ref, isInView] = useInView({ triggerOnce: true });
 
   return (
     <div
       ref={ref}
       className={cn(
-        'mx-auto max-w-3xl text-center opacity-0',
+        'max-w-3xl text-left opacity-0',
         isInView && 'animate-fade-in-up',
         className
       )}
     >
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-      {description && <p className="mt-4 text-lg text-muted-foreground">{description}</p>}
+      {eyebrow && (
+         <p className="text-sm font-semibold text-primary uppercase tracking-wider">{eyebrow}</p>
+      )}
+      <h2 className={cn("text-4xl font-bold tracking-tight", eyebrow && "mt-2")}>{title}</h2>
+      {description && <p className="mt-2 text-muted-foreground">{description}</p>}
     </div>
   );
 }

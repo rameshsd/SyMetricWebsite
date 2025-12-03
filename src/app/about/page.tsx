@@ -12,7 +12,6 @@ import CtpPieChart from '@/components/about/CtpPieChart';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 import { SectionTitle } from '@/components/shared/section-title';
 import { ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Accordion,
   AccordionContent,
@@ -25,14 +24,6 @@ export const metadata = {
   title: 'About Us - SyMetric',
   description: 'Learn about the history, mission, and team behind SyMetric.',
 };
-
-const StrategyCard = ({ title, description }: { title: string, description: React.ReactNode }) => (
-  <Card className="bg-background/80 dark:bg-blue-900/50 p-8 rounded-2xl border-white/20 shadow-sm text-foreground">
-    <div className="w-12 h-1.5 bg-primary rounded-full mb-4" />
-    <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
-    <div className="text-muted-foreground space-y-3">{description}</div>
-  </Card>
-);
 
 export default function AboutPage() {
   const secondaryNav = [
@@ -90,10 +81,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <div id="overview">
-          <SectionTitle title="Company Overview" className='pt-20'/>
+        <section id="overview">
+          <SectionTitle title="Company Overview" className='pt-20 container' />
           <CompanyFacts />
-        </div>
+        </section>
         
         <div id="innovation">
           <RevolutionizingTrialsSection />
@@ -101,11 +92,12 @@ export default function AboutPage() {
 
         <section id="our-strategy" className="bg-subtle-blue py-16">
           <div className="container">
-            <div className="text-left mb-12">
-                <p className="text-sm font-semibold text-primary uppercase tracking-wider">OUR APPROACH</p>
-                <h2 className="text-4xl font-bold tracking-tight mt-2">Our Strategy</h2>
-                 <p className="mt-2 text-muted-foreground">Our vision and mission drive everything we do.</p>
-            </div>
+            <SectionTitle
+                eyebrow="Our Approach"
+                title="Our Strategy"
+                description="Our vision and mission drive everything we do."
+                className="mb-12"
+             />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div className="relative">
                     <Accordion type="multiple" defaultValue={["item-1", "item-2"]} className="w-full">
@@ -163,7 +155,7 @@ export default function AboutPage() {
         <CtpPieChart />
         
         <div id="our-story">
-          <SectionTitle title="Our Story" className='pt-20' />
+          <SectionTitle title="Our Story" className='pt-20 container' />
           <LeadershipSection />
           <GrowthStoryTimeline />
         </div>
@@ -171,7 +163,7 @@ export default function AboutPage() {
         <section id="sponsorships" className="bg-background">
           <div className="container">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl font-bold tracking-tight mb-12">Global Sponsorships</h2>
+              <SectionTitle title="Global Sponsorships" className="mb-12"/>
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                   {sponsorshipImage && (
@@ -200,7 +192,7 @@ export default function AboutPage() {
         </section>
 
         <section id="equality" className="bg-secondary/50">
-          <div className="container text-center">
+          <div className="container">
             <SectionTitle title="Equality and Inclusion" description="This is a placeholder for the Equality and Inclusion section." />
           </div>
         </section>
