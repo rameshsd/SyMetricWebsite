@@ -1,4 +1,3 @@
-
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -33,7 +32,6 @@ export function PageHeader({
   secondaryNav,
   showTitle = true,
 }: PageHeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
@@ -42,9 +40,8 @@ export function PageHeader({
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 10);
       
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+      if (currentScrollY > lastScrollY.current && currentScrollY > 150) {
         setIsHidden(true); 
       } else {
         setIsHidden(false);
@@ -95,12 +92,13 @@ export function PageHeader({
   const activeSectionLabel = secondaryNav?.find(item => item.href === activeSection)?.label || 'Overview';
   
   return (
-    <>
+    <div className={cn(
+        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300",
+        isHidden ? '-translate-y-full' : 'translate-y-0'
+      )}>
+
       {/* Mobile Header */}
-       <div className={cn(
-          "md:hidden sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b transition-transform duration-300",
-           isHidden ? '-translate-y-full' : 'translate-y-0'
-        )}>
+       <div className="md:hidden">
          {secondaryNav && secondaryNav.length > 0 ? (
             <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
               <DropdownMenuTrigger asChild>
@@ -150,12 +148,7 @@ export function PageHeader({
       </div>
 
       {/* Desktop Header */}
-      <div
-        className={cn(
-          "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300 hidden md:block",
-          isHidden ? '-translate-y-full' : 'translate-y-0'
-        )}
-      >
+      <div className="hidden md:block">
         <div className="container flex h-14 items-center justify-between">
           <div className="flex items-center gap-x-6">
               {showTitle &&
@@ -198,6 +191,6 @@ export function PageHeader({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
