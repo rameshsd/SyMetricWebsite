@@ -156,47 +156,45 @@ export function PageHeader({
           isHidden ? '-translate-y-full' : 'translate-y-0'
         )}
       >
-        <div className="container">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-x-6">
-                {showTitle &&
-                  <h2 className="text-xl font-bold text-foreground whitespace-nowrap py-3">
-                      {title}
-                  </h2>
-                }
-                {secondaryNav && showTitle && (
-                    <div className="border-l h-6"></div>
-                )}
-                 {secondaryNav && (
-                    <nav className="flex items-center gap-x-6" aria-label="Secondary">
-                        {secondaryNav.map((tab) => (
-                        <Link
-                            key={tab.label}
-                            href={tab.href}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                const element = document.querySelector(tab.href);
-                                if (element) {
-                                    const yOffset = -80;
-                                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                                    window.scrollTo({top: y, behavior: 'smooth'});
-                                }
-                                setActiveSection(tab.href);
-                            }}
-                            className={cn(
-                                "relative whitespace-nowrap py-3 text-sm font-medium transition-colors",
-                                activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
-                            )}
-                        >
-                            {tab.label}
-                            {activeSection === tab.href && (
-                                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
-                            )}
-                        </Link>
-                        ))}
-                    </nav>
-                )}
-            </div>
+        <div className="container flex items-center justify-between">
+          <div className="flex items-center gap-x-6">
+              {showTitle &&
+                <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
+                    {title}
+                </h2>
+              }
+              {secondaryNav && showTitle && (
+                  <div className="border-l h-6"></div>
+              )}
+               {secondaryNav && (
+                  <nav className="flex items-center gap-x-6" aria-label="Secondary">
+                      {secondaryNav.map((tab) => (
+                      <Link
+                          key={tab.label}
+                          href={tab.href}
+                          onClick={(e) => {
+                              e.preventDefault();
+                              const element = document.querySelector(tab.href);
+                              if (element) {
+                                  const yOffset = -80;
+                                  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                                  window.scrollTo({top: y, behavior: 'smooth'});
+                              }
+                              setActiveSection(tab.href);
+                          }}
+                          className={cn(
+                              "relative whitespace-nowrap py-3 text-sm font-medium transition-colors",
+                              activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+                          )}
+                      >
+                          {tab.label}
+                          {activeSection === tab.href && (
+                              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
+                          )}
+                      </Link>
+                      ))}
+                  </nav>
+              )}
           </div>
         </div>
       </div>
