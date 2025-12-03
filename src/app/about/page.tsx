@@ -82,7 +82,9 @@ export default function AboutPage() {
         </section>
 
         <section id="overview">
-          <SectionTitle title="Company Overview" className='pt-20 container' />
+          <div className="container">
+            <SectionTitle title="Company Overview" className='pt-20' />
+          </div>
           <CompanyFacts />
         </section>
         
@@ -155,7 +157,7 @@ export default function AboutPage() {
         <CtpPieChart />
         
         <div id="our-story">
-          <SectionTitle title="Our Story" className='pt-20 container' />
+          <SectionTitle title="Our Story" className='pt-20 container text-center mx-auto' />
           <LeadershipSection />
           <GrowthStoryTimeline />
         </div>
