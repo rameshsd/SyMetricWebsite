@@ -26,20 +26,18 @@ function JobDetailsDialog({ job, children }: { job: JobOpening; children: React.
             <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
                     <DialogTitle className="text-2xl">{job.title}</DialogTitle>
-                    <DialogDescription>
-                        <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
-                            <div className="flex items-center gap-2">
-                                <Briefcase className="h-4 w-4" />
-                                <span>{job.department}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <MapPin className="h-4 w-4" />
-                                <span>{job.location}</span>
-                            </div>
+                    <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
+                        <div className="flex items-center gap-2">
+                            <Briefcase className="h-4 w-4" />
+                            <span>{job.department}</span>
                         </div>
-                    </DialogDescription>
+                        <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4" />
+                            <span>{job.location}</span>
+                        </div>
+                    </div>
                 </DialogHeader>
-                <div className="prose dark:prose-invert prose-sm max-w-none">
+                <div className="prose dark:prose-invert prose-sm max-w-none pt-4">
                     <ReactMarkdown>{job.fullDescription}</ReactMarkdown>
                 </div>
                 <div className="pt-4 flex justify-end">
