@@ -2,7 +2,7 @@
 'use client';
 
 import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking } from '@/firebase';
-import { collection, serverTimestamp } from 'firebase/firestore';
+import { collection, serverTimestamp, query, orderBy } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -15,6 +15,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { useToast } from '@/hooks/use-toast';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const pageSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters.'),
@@ -22,7 +23,7 @@ const pageSchema = z.object({
   content: z.string().min(10, 'Content must be at least 10 characters.'),
 });
 
-function CreatePageForm() {
+function CreatePageForm({ onPageCreated }: { onPageCreated: () => void }) {
   const firestore = useFirestore();
   const { toast } = useToast();
 
@@ -42,6 +43,7 @@ function CreatePageForm() {
       });
       toast({ title: 'Page created successfully!' });
       form.reset();
+      onPageCreated();
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -109,9 +111,9 @@ function CreatePageForm() {
   );
 }
 
-function PagesList() {
+function PagesList({ forceRerender }: { forceRerender: number }) {
     const firestore = useFirestore();
-    const pagesQuery = useMemoFirebase(() => firestore ? collection(firestore, 'pages') : null, [firestore]);
+    const pagesQuery = useMemoFirebase(() => firestore ? query(collection(firestore, 'pages'), orderBy('createdAt', 'desc')) : null, [firestore, forceRerender]);
     const { data: pages, isLoading } = useCollection(pagesQuery);
 
     return (
@@ -124,15 +126,21 @@ function PagesList() {
                     <TableHeader>
                         <TableRow>
                             <TableHead>Title</TableHead>
-                            <TableHead>Slug</TableHead>
+                            <TableHead>URL Path</TableHead>
                             <TableHead>Actions</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {isLoading && <TableRow><TableCell colSpan={3}>Loading...</TableCell></TableRow>}
+                        {isLoading && Array.from({length: 3}).map((_, i) => (
+                          <TableRow key={i}>
+                            <TableCell><Skeleton className="h-5 w-3/4" /></TableCell>
+                            <TableCell><Skeleton className="h-5 w-full" /></TableCell>
+                            <TableCell><Skeleton className="h-5 w-12" /></TableCell>
+                          </TableRow>
+                        ))}
                         {pages && pages.map(page => (
                             <TableRow key={page.id}>
-                                <TableCell>{page.title}</TableCell>
+                                <TableCell className="font-medium">{page.title}</TableCell>
                                 <TableCell>/pages/{page.slug}</TableCell>
                                 <TableCell>
                                     <Button variant="link" asChild>
@@ -141,6 +149,11 @@ function PagesList() {
                                 </TableCell>
                             </TableRow>
                         ))}
+                        {!isLoading && pages?.length === 0 && (
+                          <TableRow>
+                            <TableCell colSpan={3} className="h-24 text-center">No pages created yet.</TableCell>
+                          </TableRow>
+                        )}
                     </TableBody>
                 </Table>
             </CardContent>
@@ -149,12 +162,14 @@ function PagesList() {
 }
 
 export default function PagesAdminPage() {
+  const [rerenderCount, setRerenderCount] = React.useState(0);
+
   return (
     <div className="space-y-8">
       <SectionTitle title="Manage Pages" description="Create and manage dynamic pages for your website." />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <CreatePageForm />
-        <PagesList />
+        <CreatePageForm onPageCreated={() => setRerenderCount(c => c + 1)} />
+        <PagesList forceRerender={rerenderCount} />
       </div>
     </div>
   );

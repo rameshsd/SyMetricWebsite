@@ -31,7 +31,7 @@ service cloud.firestore {
 
     match /pages/{pageId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, update, delete: if isAdmin();
     }
 
     match /pageContent/{pageId} {
