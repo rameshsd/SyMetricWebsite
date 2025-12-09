@@ -4,6 +4,7 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { companyValues, employeeBenefits } from '@/lib/data';
@@ -16,6 +17,38 @@ import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import type { JobOpening } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
+import ReactMarkdown from 'react-markdown';
+
+function JobDetailsDialog({ job, children }: { job: JobOpening; children: React.ReactNode }) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>{children}</DialogTrigger>
+            <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-y-auto">
+                <DialogHeader>
+                    <DialogTitle className="text-2xl">{job.title}</DialogTitle>
+                    <DialogDescription>
+                        <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
+                            <div className="flex items-center gap-2">
+                                <Briefcase className="h-4 w-4" />
+                                <span>{job.department}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <MapPin className="h-4 w-4" />
+                                <span>{job.location}</span>
+                            </div>
+                        </div>
+                    </DialogDescription>
+                </DialogHeader>
+                <div className="prose dark:prose-invert prose-sm max-w-none">
+                    <ReactMarkdown>{job.fullDescription}</ReactMarkdown>
+                </div>
+                <div className="pt-4 flex justify-end">
+                    <ApplyForm job={job} />
+                </div>
+            </DialogContent>
+        </Dialog>
+    )
+}
 
 function OpenPositions({ searchTerm, department, location }: { searchTerm: string; department: string; location: string }) {
     const firestore = useFirestore();
@@ -65,27 +98,29 @@ function OpenPositions({ searchTerm, department, location }: { searchTerm: strin
         <div id="open-positions">
             <div className="mt-16 max-w-4xl mx-auto space-y-6">
                 {filteredJobs.map((job) => (
-                    <Card key={job.id} className="hover:shadow-lg transition-shadow">
-                        <CardHeader>
-                            <CardTitle className="text-xl">{job.title}</CardTitle>
-                            <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
-                                <div className="flex items-center gap-2">
-                                    <Briefcase className="h-4 w-4" />
-                                    <span>{job.department}</span>
+                    <JobDetailsDialog key={job.id} job={job}>
+                        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                            <CardHeader>
+                                <CardTitle className="text-xl">{job.title}</CardTitle>
+                                <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
+                                    <div className="flex items-center gap-2">
+                                        <Briefcase className="h-4 w-4" />
+                                        <span>{job.department}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="h-4 w-4" />
+                                        <span>{job.location}</span>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="h-4 w-4" />
-                                    <span>{job.location}</span>
-                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription>{job.shortDescription}</CardDescription>
+                            </CardContent>
+                            <div className="p-6 pt-0">
+                                <Button variant="link" className="p-0">View Details &rarr;</Button>
                             </div>
-                        </CardHeader>
-                        <CardContent>
-                            <CardDescription>{job.shortDescription}</CardDescription>
-                        </CardContent>
-                        <div className="p-6 pt-0">
-                             <ApplyForm job={job}/>
-                        </div>
-                    </Card>
+                        </Card>
+                    </JobDetailsDialog>
                 ))}
             </div>
         </div>
