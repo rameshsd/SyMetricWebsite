@@ -1,17 +1,84 @@
 
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { jobOpenings, companyValues, employeeBenefits } from '@/lib/data';
+import { companyValues, employeeBenefits } from '@/lib/data';
 import { CheckCircle, MapPin, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 import { ApplyForm } from '@/components/careers/ApplyForm';
 import { SectionTitle } from '@/components/shared/section-title';
 import { CareersHeroGraphic } from '@/components/careers/CareersHeroGraphic';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import type { JobOpening } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
-export const metadata = {
-    title: 'Careers - SyMetric',
-    description: 'Join our team and help us revolutionize clinical trials.',
-};
+function OpenPositions() {
+    const firestore = useFirestore();
+    const jobsQuery = useMemoFirebase(() => 
+        firestore 
+            ? query(collection(firestore, 'jobOpenings'), where('status', '==', 'Open')) 
+            : null, 
+        [firestore]
+    );
+    const { data: jobOpenings, isLoading } = useCollection<JobOpening>(jobsQuery);
+
+    if (isLoading) {
+        return (
+            <div className="mt-16 max-w-4xl mx-auto space-y-6">
+                <Skeleton className="h-48 w-full rounded-2xl" />
+                <Skeleton className="h-48 w-full rounded-2xl" />
+            </div>
+        );
+    }
+
+    if (!jobOpenings || jobOpenings.length === 0) {
+        return (
+             <div className="mt-16 max-w-4xl mx-auto text-center">
+                <SectionTitle
+                    title="No Current Openings"
+                    description="We are not actively hiring at the moment, but we are always interested in talented individuals. Please check back later!"
+                />
+            </div>
+        )
+    }
+
+    return (
+        <div id="open-positions">
+            <SectionTitle
+                title="Current Openings"
+                description="Find your next opportunity and grow with us. We are always looking for talented individuals to join our team."
+            />
+            <div className="mt-16 max-w-4xl mx-auto space-y-6">
+                {jobOpenings.map((job) => (
+                    <Card key={job.id} className="hover:shadow-lg transition-shadow">
+                        <CardHeader>
+                            <CardTitle className="text-xl">{job.title}</CardTitle>
+                            <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
+                                <div className="flex items-center gap-2">
+                                    <Briefcase className="h-4 w-4" />
+                                    <span>{job.department}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <MapPin className="h-4 w-4" />
+                                    <span>{job.location}</span>
+                                </div>
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                            <CardDescription>{job.shortDescription}</CardDescription>
+                        </CardContent>
+                        <div className="p-6 pt-0">
+                             <ApplyForm job={job}/>
+                        </div>
+                    </Card>
+                ))}
+            </div>
+        </div>
+    )
+}
+
 
 export default function CareersPage() {
 
@@ -80,37 +147,9 @@ export default function CareersPage() {
                 </div>
             </section>
 
-            <section id="open-positions">
+            <section>
                 <div className="container">
-                    <SectionTitle
-                        title="Current Openings"
-                        description="Find your next opportunity and grow with us. We are always looking for talented individuals to join our team."
-                    />
-                    <div className="mt-16 max-w-4xl mx-auto space-y-6">
-                        {jobOpenings.map((job) => (
-                            <Card key={job.id} className="hover:shadow-lg transition-shadow">
-                                <CardHeader>
-                                    <CardTitle className="text-xl">{job.title}</CardTitle>
-                                    <div className="flex items-center gap-6 text-sm text-muted-foreground pt-2">
-                                        <div className="flex items-center gap-2">
-                                            <Briefcase className="h-4 w-4" />
-                                            <span>{job.department}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <MapPin className="h-4 w-4" />
-                                            <span>{job.location}</span>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardDescription>{job.shortDescription}</CardDescription>
-                                </CardContent>
-                                <div className="p-6 pt-0">
-                                     <ApplyForm job={job}/>
-                                </div>
-                            </Card>
-                        ))}
-                    </div>
+                    <OpenPositions />
                 </div>
             </section>
         </div>

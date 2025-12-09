@@ -12,17 +12,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import type { JobOpening } from '@/lib/types';
+import { useFirestore, addDocumentNonBlocking } from '@/firebase';
+import { collection, serverTimestamp } from 'firebase/firestore';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
-  resume: z.any().refine(files => files?.length === 1, 'Resume is required.'),
+  resumeUrl: z.string().url({ message: 'Please provide a valid link to your resume (e.g., Google Drive, Dropbox).' }),
   coverLetter: z.string().optional(),
 });
 
 export function ApplyForm({ job }: { job: JobOpening }) {
     const { toast } = useToast();
+    const firestore = useFirestore();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -32,18 +35,26 @@ export function ApplyForm({ job }: { job: JobOpening }) {
       name: '',
       email: '',
       phone: '',
+      resumeUrl: '',
       coverLetter: '',
     },
   });
-  
-  const fileRef = form.register("resume");
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!firestore) {
+        toast({ variant: 'destructive', title: 'Database connection failed.' });
+        return;
+    }
     setIsSubmitting(true);
-    console.log({ ...values, resume: values.resume[0].name });
-
-    // Simulate API call for application submission
-    setTimeout(() => {
+    
+    try {
+        const applicationsCollection = collection(firestore, 'jobApplications');
+        await addDocumentNonBlocking(applicationsCollection, {
+            ...values,
+            jobId: job.id,
+            submittedAt: serverTimestamp(),
+        });
+        
         setIsSubmitting(false);
         setIsOpen(false);
         toast({
@@ -51,7 +62,15 @@ export function ApplyForm({ job }: { job: JobOpening }) {
             description: `Your application for the ${job.title} position has been submitted.`,
         });
         form.reset();
-    }, 1500);
+
+    } catch (error) {
+        setIsSubmitting(false);
+        toast({
+            variant: 'destructive',
+            title: "Submission Failed",
+            description: (error as Error).message,
+        });
+    }
   }
 
   return (
@@ -110,13 +129,14 @@ export function ApplyForm({ job }: { job: JobOpening }) {
               />
                <FormField
                 control={form.control}
-                name="resume"
+                name="resumeUrl"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Resume</FormLabel>
+                    <FormLabel>Resume URL</FormLabel>
                     <FormControl>
-                      <Input type="file" accept=".pdf,.doc,.docx" {...fileRef} />
+                      <Input placeholder="https://link-to-your-resume.com" {...field} />
                     </FormControl>
+                     <p className="text-xs text-muted-foreground pt-1">Please provide a public link to your resume (e.g., Google Drive, Dropbox, LinkedIn profile).</p>
                     <FormMessage />
                   </FormItem>
                 )}

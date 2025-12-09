@@ -165,6 +165,19 @@ export type JobOpening = {
   location: string;
   shortDescription: string;
   fullDescription: string;
+  status: 'Open' | 'Closed';
+  createdAt: Timestamp;
+};
+
+export type JobApplication = {
+  id: string;
+  jobId: string;
+  name: string;
+  email: string;
+  phone: string;
+  resumeUrl: string;
+  coverLetter?: string;
+  submittedAt: Timestamp;
 };
 
 export type CompanyValue = {

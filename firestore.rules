@@ -38,5 +38,15 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    match /jobOpenings/{jobId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /jobApplications/{applicationId} {
+      allow create: if true;
+      allow read: if isAdmin();
+    }
   }
 }

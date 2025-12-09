@@ -179,6 +179,38 @@
             "content": { "type": "object", "description": "A JSON object holding the structured content for the page." }
         },
         "required": ["pageId", "content"]
+    },
+    "JobOpening": {
+        "title": "Job Opening",
+        "type": "object",
+        "description": "Represents a single job posting on the careers page.",
+        "properties": {
+            "id": { "type": "string", "description": "Unique identifier for the job opening." },
+            "title": { "type": "string", "description": "The title of the job." },
+            "department": { "type": "string", "description": "The department the job belongs to." },
+            "location": { "type": "string", "description": "The location/office for the job." },
+            "shortDescription": { "type": "string", "description": "A brief summary of the role." },
+            "fullDescription": { "type": "string", "description": "The complete, detailed description of the role." },
+            "status": { "type": "string", "enum": ["Open", "Closed"], "description": "The current status of the job posting." },
+            "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the job was posted." }
+        },
+        "required": ["id", "title", "department", "location", "shortDescription", "fullDescription", "status", "createdAt"]
+    },
+    "JobApplication": {
+        "title": "Job Application",
+        "type": "object",
+        "description": "Represents an application submitted by a candidate for a job opening.",
+        "properties": {
+            "id": { "type": "string", "description": "Unique identifier for the application." },
+            "jobId": { "type": "string", "description": "The ID of the JobOpening being applied for." },
+            "name": { "type": "string", "description": "The full name of the applicant." },
+            "email": { "type": "string", "format": "email", "description": "The email address of the applicant." },
+            "phone": { "type": "string", "description": "The phone number of the applicant." },
+            "resumeUrl": { "type": "string", "format": "uri", "description": "A URL pointing to the applicant's resume." },
+            "coverLetter": { "type": "string", "description": "The applicant's cover letter text." },
+            "submittedAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the application was submitted." }
+        },
+        "required": ["id", "jobId", "name", "email", "phone", "resumeUrl", "submittedAt"]
     }
   },
   "auth": {
@@ -295,8 +327,26 @@
                 }
             ]
         }
+      },
+      {
+          "path": "/jobOpenings/{jobId}",
+          "definition": {
+              "entityName": "JobOpening",
+              "schema": { "$ref": "#/backend/entities/JobOpening" },
+              "description": "Stores job postings for the careers page. 'jobId' is the unique ID for each job.",
+              "params": [ { "name": "jobId", "description": "Unique identifier for the job opening." } ]
+          }
+      },
+      {
+          "path": "/jobApplications/{applicationId}",
+          "definition": {
+              "entityName": "JobApplication",
+              "schema": { "$ref": "#/backend/entities/JobApplication" },
+              "description": "Stores applications submitted by candidates. 'applicationId' is the unique ID for each application.",
+              "params": [ { "name": "applicationId", "description": "Unique identifier for the job application." } ]
+          }
       }
     ],
-    "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations."
+    "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations. The addition of jobOpenings and jobApplications collections supports the new dynamic careers functionality."
   }
 }

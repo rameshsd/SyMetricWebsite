@@ -11,7 +11,9 @@ import {
   Calendar,
   Mail,
   MessageSquare,
-  Users
+  Users,
+  Briefcase,
+  FileText
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
@@ -36,6 +38,8 @@ const toolsNav = [
 
 const managementNav = [
     { name: 'Users', href: '/admin/users', icon: Users },
+    { name: 'Jobs', href: '/admin/jobs', icon: Briefcase },
+    { name: 'Applications', href: '/admin/applications', icon: FileText },
 ]
 
 const NavLink = ({ href, icon: Icon, name }: { href: string; icon: React.ElementType; name: string;}) => {
