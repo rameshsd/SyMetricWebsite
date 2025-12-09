@@ -17,6 +17,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import type { JobOpening } from '@/lib/types';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { rephraseJobDescription } from '@/ai/flows/rephrase-job-description';
+import { Wand2, Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 const jobSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters.'),
@@ -30,6 +33,7 @@ const jobSchema = z.object({
 function CreateJobForm() {
   const firestore = useFirestore();
   const { toast } = useToast();
+  const [isRephrasing, setIsRephrasing] = useState(false);
 
   const form = useForm<z.infer<typeof jobSchema>>({
     resolver: zodResolver(jobSchema),
@@ -42,6 +46,32 @@ function CreateJobForm() {
       status: 'Open',
     },
   });
+
+  const handleRephrase = async () => {
+    const description = form.getValues('fullDescription');
+    if (!description) {
+        toast({
+            variant: 'destructive',
+            title: 'No description to rephrase',
+            description: 'Please enter a description first.',
+        });
+        return;
+    }
+    setIsRephrasing(true);
+    try {
+        const result = await rephraseJobDescription({ text: description });
+        form.setValue('fullDescription', result.rephrasedText);
+        toast({ title: 'Description rephrased successfully!' });
+    } catch (error) {
+        toast({
+            variant: 'destructive',
+            title: 'AI Rephrasing Failed',
+            description: (error as Error).message || 'Could not rephrase the text.',
+        });
+    } finally {
+        setIsRephrasing(false);
+    }
+  };
 
   const onSubmit = async (values: z.infer<typeof jobSchema>) => {
     if (!firestore) return;
@@ -86,7 +116,19 @@ function CreateJobForm() {
                 <FormItem><FormLabel>Short Description</FormLabel><FormControl><Textarea placeholder="A brief summary of the role..." rows={2} {...field} /></FormControl><FormMessage /></FormItem>
             )}/>
             <FormField control={form.control} name="fullDescription" render={({ field }) => (
-                <FormItem><FormLabel>Full Description</FormLabel><FormControl><Textarea placeholder="Detailed description of responsibilities and qualifications..." rows={6} {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem>
+                    <div className="flex items-center justify-between">
+                        <FormLabel>Full Description</FormLabel>
+                        <Button type="button" variant="ghost" size="sm" onClick={handleRephrase} disabled={isRephrasing}>
+                            {isRephrasing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />}
+                            {isRephrasing ? 'Rephrasing...' : 'Rephrase with AI'}
+                        </Button>
+                    </div>
+                    <FormControl>
+                        <Textarea placeholder="Detailed description of responsibilities and qualifications... You can use Markdown for formatting." rows={10} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                </FormItem>
             )}/>
             <FormField control={form.control} name="status" render={({ field }) => (
                 <FormItem><FormLabel>Status</FormLabel>
@@ -160,3 +202,4 @@ export default function JobsAdminPage() {
     </div>
   );
 }
+    
