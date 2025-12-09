@@ -180,6 +180,16 @@ export type JobApplication = {
   submittedAt: Timestamp;
 };
 
+export type NewsItem = {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  content: string;
+  imageUrl: string;
+  publishDate: Timestamp;
+};
+
 export type CompanyValue = {
   icon: LucideIcon;
   title: string;

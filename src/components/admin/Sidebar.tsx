@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -13,7 +14,8 @@ import {
   MessageSquare,
   Users,
   Briefcase,
-  FileText
+  FileText,
+  Newspaper
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
@@ -28,6 +30,7 @@ const mainNav = [
 const contentNav = [
   { name: 'Pages', href: '/admin/pages', icon: File },
   { name: 'Content Editor', href: '/admin/content', icon: Edit },
+  { name: 'News', href: '/admin/news', icon: Newspaper },
 ];
 
 const toolsNav = [

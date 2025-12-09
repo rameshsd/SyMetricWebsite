@@ -211,6 +211,21 @@
             "submittedAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the application was submitted." }
         },
         "required": ["id", "jobId", "name", "email", "phone", "resumeUrl", "submittedAt"]
+    },
+    "NewsItem": {
+      "title": "News Item",
+      "type": "object",
+      "description": "Represents a single news article or press release.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the news item." },
+        "title": { "type": "string", "description": "The title of the news article." },
+        "slug": { "type": "string", "description": "URL-friendly slug for the article." },
+        "category": { "type": "string", "description": "The category of the news (e.g., 'Press Release', 'Event')." },
+        "content": { "type": "string", "description": "The full content of the news article, can be markdown." },
+        "imageUrl": { "type": "string", "format": "uri", "description": "URL for the main image of the article." },
+        "publishDate": { "type": "string", "format": "date-time", "description": "The date the article was published." }
+      },
+      "required": ["id", "title", "slug", "category", "content", "publishDate"]
     }
   },
   "auth": {
@@ -345,6 +360,15 @@
               "description": "Stores applications submitted by candidates. 'applicationId' is the unique ID for each application.",
               "params": [ { "name": "applicationId", "description": "Unique identifier for the job application." } ]
           }
+      },
+      {
+        "path": "/newsItems/{newsItemId}",
+        "definition": {
+          "entityName": "NewsItem",
+          "schema": { "$ref": "#/backend/entities/NewsItem" },
+          "description": "Stores news articles and press releases. 'newsItemId' is the unique ID for each item.",
+          "params": [ { "name": "newsItemId", "description": "Unique identifier for the news item." } ]
+        }
       }
     ],
     "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations. The addition of jobOpenings and jobApplications collections supports the new dynamic careers functionality."
