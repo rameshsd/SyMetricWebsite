@@ -1,10 +1,13 @@
 
 'use client';
 
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { companyValues, employeeBenefits } from '@/lib/data';
-import { CheckCircle, MapPin, Briefcase } from 'lucide-react';
+import { CheckCircle, MapPin, Briefcase, Search } from 'lucide-react';
 import Link from 'next/link';
 import { ApplyForm } from '@/components/careers/ApplyForm';
 import { SectionTitle } from '@/components/shared/section-title';
@@ -14,7 +17,7 @@ import { collection, query, where } from 'firebase/firestore';
 import type { JobOpening } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
-function OpenPositions() {
+function OpenPositions({ searchTerm, department, location }: { searchTerm: string; department: string; location: string }) {
     const firestore = useFirestore();
     const jobsQuery = useMemoFirebase(() => 
         firestore 
@@ -23,6 +26,22 @@ function OpenPositions() {
         [firestore]
     );
     const { data: jobOpenings, isLoading } = useCollection<JobOpening>(jobsQuery);
+
+    const filteredJobs = useMemo(() => {
+        if (!jobOpenings) return [];
+        return jobOpenings.filter(job => {
+            const searchTermMatch = searchTerm.toLowerCase() 
+                ? job.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  job.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  job.fullDescription.toLowerCase().includes(searchTerm.toLowerCase())
+                : true;
+            
+            const departmentMatch = department ? job.department === department : true;
+            const locationMatch = location ? job.location === location : true;
+            
+            return searchTermMatch && departmentMatch && locationMatch;
+        });
+    }, [jobOpenings, searchTerm, department, location]);
 
     if (isLoading) {
         return (
@@ -33,25 +52,19 @@ function OpenPositions() {
         );
     }
 
-    if (!jobOpenings || jobOpenings.length === 0) {
+    if (!jobOpenings || filteredJobs.length === 0) {
         return (
-             <div className="mt-16 max-w-4xl mx-auto text-center">
-                <SectionTitle
-                    title="No Current Openings"
-                    description="We are not actively hiring at the moment, but we are always interested in talented individuals. Please check back later!"
-                />
+             <div className="mt-16 max-w-4xl mx-auto text-center py-16">
+                <h3 className="text-2xl font-bold">No Matching Openings</h3>
+                <p className="text-muted-foreground mt-2">We couldn't find any jobs matching your criteria. Try adjusting your search or check back later!</p>
             </div>
         )
     }
 
     return (
         <div id="open-positions">
-            <SectionTitle
-                title="Current Openings"
-                description="Find your next opportunity and grow with us. We are always looking for talented individuals to join our team."
-            />
             <div className="mt-16 max-w-4xl mx-auto space-y-6">
-                {jobOpenings.map((job) => (
+                {filteredJobs.map((job) => (
                     <Card key={job.id} className="hover:shadow-lg transition-shadow">
                         <CardHeader>
                             <CardTitle className="text-xl">{job.title}</CardTitle>
@@ -79,8 +92,30 @@ function OpenPositions() {
     )
 }
 
-
 export default function CareersPage() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [department, setDepartment] = useState('');
+    const [location, setLocation] = useState('');
+
+    const firestore = useFirestore();
+    const jobsQuery = useMemoFirebase(() => 
+        firestore 
+            ? query(collection(firestore, 'jobOpenings'), where('status', '==', 'Open')) 
+            : null, 
+        [firestore]
+    );
+    const { data: jobOpenings } = useCollection<JobOpening>(jobsQuery);
+    
+    const uniqueDepartments = useMemo(() => {
+        if (!jobOpenings) return [];
+        return [...new Set(jobOpenings.map(job => job.department))];
+    }, [jobOpenings]);
+
+    const uniqueLocations = useMemo(() => {
+        if (!jobOpenings) return [];
+        return [...new Set(jobOpenings.map(job => job.location))];
+    }, [jobOpenings]);
+
 
     return (
         <div className="bg-background">
@@ -102,6 +137,44 @@ export default function CareersPage() {
                            <CareersHeroGraphic />
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section>
+                <div className="container">
+                    <SectionTitle
+                        title="Current Openings"
+                        description="Find your next opportunity and grow with us. We are always looking for talented individuals to join our team."
+                    />
+                    <div className="mt-8 max-w-4xl mx-auto p-6 bg-secondary/50 rounded-2xl">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="relative md:col-span-3">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                <Input 
+                                    placeholder="Search by keyword, role, or skill" 
+                                    className="pl-10" 
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                            </div>
+                            <Select value={department} onValueChange={setDepartment}>
+                                <SelectTrigger><SelectValue placeholder="All Departments" /></SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="">All Departments</SelectItem>
+                                    {uniqueDepartments.map(dept => <SelectItem key={dept} value={dept}>{dept}</SelectItem>)}
+                                </SelectContent>
+                            </Select>
+                            <Select value={location} onValueChange={setLocation}>
+                                <SelectTrigger><SelectValue placeholder="All Locations" /></SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="">All Locations</SelectItem>
+                                    {uniqueLocations.map(loc => <SelectItem key={loc} value={loc}>{loc}</SelectItem>)}
+                                </SelectContent>
+                            </Select>
+                            <Button className="md:col-span-1" onClick={() => { setSearchTerm(''); setDepartment(''); setLocation(''); }}>Clear Filters</Button>
+                        </div>
+                    </div>
+                    <OpenPositions searchTerm={searchTerm} department={department} location={location} />
                 </div>
             </section>
 
@@ -144,12 +217,6 @@ export default function CareersPage() {
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            <section>
-                <div className="container">
-                    <OpenPositions />
                 </div>
             </section>
         </div>
