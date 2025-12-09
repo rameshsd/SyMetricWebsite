@@ -36,8 +36,8 @@ function OpenPositions({ searchTerm, department, location }: { searchTerm: strin
                   job.fullDescription.toLowerCase().includes(searchTerm.toLowerCase())
                 : true;
             
-            const departmentMatch = department ? job.department === department : true;
-            const locationMatch = location ? job.location === location : true;
+            const departmentMatch = department && department !== 'all' ? job.department === department : true;
+            const locationMatch = location && location !== 'all' ? job.location === location : true;
             
             return searchTermMatch && departmentMatch && locationMatch;
         });
@@ -94,8 +94,8 @@ function OpenPositions({ searchTerm, department, location }: { searchTerm: strin
 
 export default function CareersPage() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [department, setDepartment] = useState('');
-    const [location, setLocation] = useState('');
+    const [department, setDepartment] = useState('all');
+    const [location, setLocation] = useState('all');
 
     const firestore = useFirestore();
     const jobsQuery = useMemoFirebase(() => 
@@ -160,18 +160,18 @@ export default function CareersPage() {
                             <Select value={department} onValueChange={setDepartment}>
                                 <SelectTrigger><SelectValue placeholder="All Departments" /></SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="">All Departments</SelectItem>
+                                    <SelectItem value="all">All Departments</SelectItem>
                                     {uniqueDepartments.map(dept => <SelectItem key={dept} value={dept}>{dept}</SelectItem>)}
                                 </SelectContent>
                             </Select>
                             <Select value={location} onValueChange={setLocation}>
                                 <SelectTrigger><SelectValue placeholder="All Locations" /></SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="">All Locations</SelectItem>
+                                    <SelectItem value="all">All Locations</SelectItem>
                                     {uniqueLocations.map(loc => <SelectItem key={loc} value={loc}>{loc}</SelectItem>)}
                                 </SelectContent>
                             </Select>
-                            <Button className="md:col-span-1" onClick={() => { setSearchTerm(''); setDepartment(''); setLocation(''); }}>Clear Filters</Button>
+                            <Button className="md:col-span-1" onClick={() => { setSearchTerm(''); setDepartment('all'); setLocation('all'); }}>Clear Filters</Button>
                         </div>
                     </div>
                     <OpenPositions searchTerm={searchTerm} department={department} location={location} />
