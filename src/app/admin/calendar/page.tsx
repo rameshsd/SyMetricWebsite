@@ -5,7 +5,7 @@ import { useState, useMemo, Fragment } from 'react';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Clock, Loader2, Plus, Share } from 'lucide-react';
+import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Clock, Loader2, Plus, Share, Link as LinkIcon, Copy } from 'lucide-react';
 import { format, addDays, startOfWeek, eachDayOfInterval, endOfWeek, isSameDay, isToday } from 'date-fns';
 
 import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking } from '@/firebase';
@@ -31,6 +31,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link';
+
 
 const eventSchema = z.object({
   title: z.string().min(2, 'Title is required.'),
@@ -159,6 +161,50 @@ function AddEventForm({ onEventAdded }: { onEventAdded: () => void }) {
     )
 }
 
+function EventPopover({ event }: { event: CalendarEvent }) {
+    const { toast } = useToast();
+    const schedulingLink = `${window.location.origin}/schedule/${event.id}`;
+    
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(schedulingLink);
+        toast({ title: "Link Copied!", description: "Scheduling link has been copied to your clipboard." });
+    };
+
+    return (
+        <Popover>
+            <PopoverTrigger asChild>
+                <a href="#" className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100">
+                    <p className="order-1 font-semibold text-blue-700">{event.title}</p>
+                    <p className="text-blue-500 group-hover:text-blue-700">
+                        <time dateTime={(event.start as Date).toISOString()}>{format(event.start as Date, 'p')}</time>
+                    </p>
+                </a>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+                <div className="grid gap-4">
+                    <div className="space-y-2">
+                        <h4 className="font-medium leading-none">{event.title}</h4>
+                        <p className="text-sm text-muted-foreground">
+                            {format(event.start as Date, 'PPp')} - {format(event.end as Date, 'p')}
+                        </p>
+                         {event.description && <p className="text-sm text-muted-foreground">{event.description}</p>}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Button variant="outline" size="sm" asChild>
+                            <Link href={schedulingLink} target="_blank">
+                                <LinkIcon className="mr-2 h-4 w-4"/> View Public Page
+                            </Link>
+                        </Button>
+                        <Button size="sm" onClick={copyToClipboard}>
+                           <Copy className="mr-2 h-4 w-4" /> Copy Link
+                        </Button>
+                    </div>
+                </div>
+            </PopoverContent>
+        </Popover>
+    )
+}
+
 export default function CalendarPage() {
     const firestore = useFirestore();
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -169,12 +215,10 @@ export default function CalendarPage() {
 
     const eventsQuery = useMemoFirebase(
         () => firestore ? query(collection(firestore, 'calendarEvents'), orderBy('start', 'asc')) : null,
-        [firestore]
+        [firestore, forceRerender]
     );
 
-    const { data: eventsData, isLoading } = useCollection<CalendarEvent>(eventsQuery, {
-      enabled: !!firestore
-    });
+    const { data: eventsData, isLoading } = useCollection<CalendarEvent>(eventsQuery);
     
     const events = useMemo(() => {
         return eventsData?.map(e => ({
@@ -187,10 +231,10 @@ export default function CalendarPage() {
     const hours = Array.from({ length: 12 }, (_, i) => i + 8); // 8 AM to 7 PM
 
     const getEventPosition = (event: CalendarEvent) => {
-        const startHour = event.start.getHours();
-        const startMinutes = event.start.getMinutes();
-        const endHour = event.end.getHours();
-        const endMinutes = event.end.getMinutes();
+        const startHour = (event.start as Date).getHours();
+        const startMinutes = (event.start as Date).getMinutes();
+        const endHour = (event.end as Date).getHours();
+        const endMinutes = (event.end as Date).getMinutes();
 
         const top = ((startHour - 8) * 60 + startMinutes) / (12 * 60) * 100;
         const duration = ((endHour * 60 + endMinutes) - (startHour * 60 + startMinutes));
@@ -267,17 +311,12 @@ export default function CalendarPage() {
                             <ol className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8" style={{ gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto' }}>
                                 {isLoading && <div className="col-span-full row-span-full flex items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}
                                 {events.filter(e => e.start >= weekStart && e.end <= endOfWeek(currentDate, { weekStartsOn: 1 })).map(event => {
-                                    const startDayIndex = (event.start.getDay() + 6) % 7; // Monday is 0
+                                    const startDayIndex = ((event.start as Date).getDay() + 6) % 7; // Monday is 0
                                     const eventPos = getEventPosition(event);
 
                                     return (
                                         <li key={event.id} className="relative mt-px flex" style={{ gridColumnStart: startDayIndex + 1, top: eventPos.top, height: eventPos.height }}>
-                                            <a href="#" className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100">
-                                                <p className="order-1 font-semibold text-blue-700">{event.title}</p>
-                                                <p className="text-blue-500 group-hover:text-blue-700">
-                                                    <time dateTime={event.start.toISOString()}>{format(event.start, 'p')}</time>
-                                                </p>
-                                            </a>
+                                            <EventPopover event={event} />
                                         </li>
                                     )
                                 })}
@@ -289,4 +328,3 @@ export default function CalendarPage() {
         </div>
     );
 }
-

@@ -55,7 +55,8 @@ service cloud.firestore {
     }
     
     match /calendarEvents/{eventId} {
-        allow read, write: if isAdmin();
+        allow read: if true;
+        allow write: if isAdmin();
     }
   }
 }
