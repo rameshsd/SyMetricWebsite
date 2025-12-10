@@ -226,6 +226,21 @@
         "publishDate": { "type": "string", "format": "date-time", "description": "The date the article was published." }
       },
       "required": ["id", "title", "slug", "category", "content", "publishDate"]
+    },
+    "CalendarEvent": {
+      "title": "Calendar Event",
+      "type": "object",
+      "description": "Represents an event on the admin calendar.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the event." },
+        "title": { "type": "string", "description": "The title of the event." },
+        "start": { "type": "string", "format": "date-time", "description": "Start date and time of the event." },
+        "end": { "type": "string", "format": "date-time", "description": "End date and time of the event." },
+        "allDay": { "type": "boolean", "description": "Whether the event is an all-day event." },
+        "description": { "type": "string", "description": "A description or notes for the event." },
+        "color": { "type": "string", "description": "A color to represent the event on the calendar." }
+      },
+      "required": ["id", "title", "start", "end", "allDay"]
     }
   },
   "auth": {
@@ -369,8 +384,19 @@
           "description": "Stores news articles and press releases. 'newsItemId' is the unique ID for each item.",
           "params": [ { "name": "newsItemId", "description": "Unique identifier for the news item." } ]
         }
+      },
+      {
+        "path": "/calendarEvents/{eventId}",
+        "definition": {
+          "entityName": "CalendarEvent",
+          "schema": { "$ref": "#/backend/entities/CalendarEvent" },
+          "description": "Stores events for the admin calendar. 'eventId' is the unique ID for each event.",
+          "params": [ { "name": "eventId", "description": "Unique identifier for the calendar event." } ]
+        }
       }
     ],
     "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations. The addition of jobOpenings and jobApplications collections supports the new dynamic careers functionality."
   }
 }
+
+    

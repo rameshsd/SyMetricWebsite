@@ -295,3 +295,15 @@ export type PlatformFeature = {
     link: string;
     linkText: string;
 };
+
+export type CalendarEvent = {
+  id: string;
+  title: string;
+  start: Date | Timestamp;
+  end: Date | Timestamp;
+  allDay: boolean;
+  description?: string;
+  color?: string;
+};
+
+    
