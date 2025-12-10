@@ -4,16 +4,15 @@
 import { useState } from 'react';
 import { useParams, notFound } from 'next/navigation';
 import { useFirestore, useDoc, useMemoFirebase } from '@/firebase';
-import { doc, Timestamp } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import type { CalendarEvent } from '@/lib/types';
-import { add, format, eachMinuteOfInterval, isBefore, startOfDay, addDays, getHours } from 'date-fns';
+import { format, eachMinuteOfInterval, isBefore, startOfDay, addDays, getHours } from 'date-fns';
 
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Clock, Video, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Clock, Video } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 function EventDetailsSkeleton() {
@@ -47,10 +46,16 @@ export default function ScheduleEventPage() {
     const { toast } = useToast();
 
     const eventDocRef = useMemoFirebase(() => firestore ? doc(firestore, 'calendarEvents', eventId) : null, [firestore, eventId]);
-    const { data: event, isLoading: isEventLoading } = useDoc<CalendarEvent>(eventDocRef);
+    const { data: eventData, isLoading: isEventLoading } = useDoc<CalendarEvent>(eventDocRef);
     
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [selectedTime, setSelectedTime] = useState<Date | null>(null);
+
+    const event = eventData ? {
+        ...eventData,
+        start: (eventData.start as any).toDate ? (eventData.start as any).toDate() : new Date(eventData.start),
+        end: (eventData.end as any).toDate ? (eventData.end as any).toDate() : new Date(eventData.end),
+    } : null;
 
     if (isEventLoading) {
         return (
@@ -69,9 +74,7 @@ export default function ScheduleEventPage() {
         notFound();
     }
     
-    const eventStart = (event.start as Timestamp).toDate();
-    const eventEnd = (event.end as Timestamp).toDate();
-    const duration = (eventEnd.getTime() - eventStart.getTime()) / (1000 * 60);
+    const duration = (event.end.getTime() - event.start.getTime()) / (1000 * 60);
 
     // Generate time slots
     const timeSlots = selectedDate
@@ -162,4 +165,3 @@ export default function ScheduleEventPage() {
         </div>
     );
 }
-
