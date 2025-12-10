@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,51 +36,38 @@ export function PageHeader({
   const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      if (currentScrollY > lastScrollY.current && currentScrollY > 150) {
+      // Hide or show the header based on scroll direction
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // 80 is main header height
         setIsHidden(true); 
       } else {
         setIsHidden(false);
       }
-
       lastScrollY.current = currentScrollY;
 
+      // Update active section based on scroll position
       if (secondaryNav) {
-        let currentSectionId = '';
-        const offset = 120; // Adjusted offset for sticky header
+        const offset = (headerRef.current?.offsetHeight || 0) + 80 + 24; // main nav + this header + buffer
         
-        for (const navItem of secondaryNav) {
-          const element = document.querySelector(navItem.href);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= offset && rect.bottom >= offset) {
-              currentSectionId = navItem.href;
-              break;
-            }
-          }
-        }
-        
-        if (!currentSectionId) {
-             let closest = {id: '', distance: Infinity};
-             for (const navItem of secondaryNav) {
-                const element = document.querySelector(navItem.href);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    const distance = Math.abs(rect.top - offset);
-                    if (distance < closest.distance) {
-                        closest = {id: navItem.href, distance: distance};
-                    }
-                }
-             }
-             currentSectionId = closest.id;
-        }
+        const sectionPositions = secondaryNav.map(item => {
+          const el = document.querySelector(item.href);
+          return { id: item.href, top: el ? el.getBoundingClientRect().top + window.scrollY : -Infinity };
+        });
 
-        if (currentSectionId && currentSectionId !== activeSection) {
-          setActiveSection(currentSectionId);
+        const currentSection = sectionPositions.reduce((prev, curr) => {
+            if (curr.top <= window.scrollY + offset && curr.top > (prev.top > -Infinity ? prev.top : -Infinity)) {
+              return curr;
+            }
+            return prev;
+        }, { id: '', top: -Infinity });
+
+        if (currentSection.id && currentSection.id !== activeSection) {
+          setActiveSection(currentSection.id);
         }
       }
     };
@@ -90,105 +76,91 @@ export function PageHeader({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [secondaryNav, activeSection]);
   
-  const activeSectionLabel = secondaryNav?.find(item => item.href === activeSection)?.label || 'Overview';
+  const activeSectionLabel = secondaryNav?.find(item => item.href === activeSection)?.label || title;
   
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+          const yOffset = -((headerRef.current?.offsetHeight || 0) + 80);
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({top: y, behavior: 'smooth'});
+      }
+      setActiveSection(href);
+      setMobileNavOpen(false);
+  };
+
   return (
-    <div className={cn(
-        "sticky top-16 z-30 bg-background/95 backdrop-blur-lg border-b transition-transform duration-300",
-        isHidden ? '-translate-y-full' : 'translate-y-0'
+    <div
+        ref={headerRef}
+        className={cn(
+            "sticky z-30 border-b bg-background/95 backdrop-blur-lg transition-transform duration-300",
+            isHidden ? '-translate-y-full' : 'translate-y-0',
+            // Sets top position based on main nav height
+            "top-16" 
       )}>
 
-      {/* Mobile Header */}
-       <div className="md:hidden">
-         {secondaryNav && secondaryNav.length > 0 ? (
-            <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-              <DropdownMenuTrigger asChild>
-                <button className="flex items-center justify-between w-full p-4 text-left">
-                  <div>
-                    <h1 className="text-lg font-bold">{title}</h1>
-                    <p className="text-sm text-muted-foreground">{activeSectionLabel}</p>
-                  </div>
-                  <ChevronDown className={cn("h-5 w-5 transition-transform", mobileNavOpen && "rotate-180")} />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[calc(100vw-2rem)]">
-                {secondaryNav.map((item) => (
-                  <DropdownMenuItem key={item.label} asChild>
-                    <Link
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const element = document.querySelector(item.href);
-                        if (element) {
-                            const yOffset = -80; // height of the sticky header
-                            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                            window.scrollTo({top: y, behavior: 'smooth'});
-                        }
-                        setActiveSection(item.href);
-                        setMobileNavOpen(false);
-                      }}
-                      className={cn(activeSection === item.href && "font-bold text-primary")}
-                    >
-                      {item.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-         ) : (
-            <div className="container py-4">
-                 {breadcrumb && (
-                    <Link href={breadcrumb.href} className="flex items-center text-sm text-muted-foreground hover:text-primary mb-2">
-                        <ChevronLeft className="h-4 w-4 mr-1" />
+        <div className="container">
+            {/* Breadcrumb */}
+            {breadcrumb && (
+                <div className="pt-4 pb-2 text-sm text-muted-foreground">
+                    <Link href={breadcrumb.href} className="hover:text-primary">
                         {breadcrumb.label}
                     </Link>
-                )}
+                </div>
+            )}
+
+            {/* Title */}
+            <div className={cn("flex items-center justify-between", breadcrumb ? "pb-4" : "py-4")}>
                 <h1 className="text-3xl font-bold">{title}</h1>
             </div>
-         )}
-      </div>
 
-      {/* Desktop Header */}
-      <div className="hidden md:block container">
-        <div className="flex h-14 items-center justify-between">
-          <div className="flex items-center gap-x-6">
-              {showTitle && !secondaryNav && (
-                <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
-                    {title}
-                </h2>
-              )}
-              {secondaryNav && (
-                  <nav className="flex items-center gap-x-6" aria-label="Secondary">
-                      {secondaryNav.map((tab) => (
-                      <Link
-                          key={tab.label}
-                          href={tab.href}
-                          onClick={(e) => {
-                              e.preventDefault();
-                              const element = document.querySelector(tab.href);
-                              if (element) {
-                                  const yOffset = -80;
-                                  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                                  window.scrollTo({top: y, behavior: 'smooth'});
-                              }
-                              setActiveSection(tab.href);
-                          }}
-                          className={cn(
-                              "relative whitespace-nowrap py-4 text-sm font-medium transition-colors",
-                              activeSection === tab.href ? "text-primary" : "text-muted-foreground hover:text-primary"
-                          )}
-                      >
-                          {tab.label}
-                          {activeSection === tab.href && (
-                              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"></div>
-                          )}
-                      </Link>
-                      ))}
-                  </nav>
-              )}
-          </div>
+            {/* Mobile Dropdown Nav */}
+            <div className="md:hidden">
+                {secondaryNav && secondaryNav.length > 0 && (
+                <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+                <DropdownMenuTrigger asChild>
+                    <button className="flex items-center justify-between w-full pb-3 text-left">
+                        <span className="text-lg font-semibold text-primary">{activeSectionLabel}</span>
+                        <ChevronDown className={cn("h-5 w-5 text-primary transition-transform", mobileNavOpen && "rotate-180")} />
+                    </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-[calc(100vw-2rem)]">
+                    {secondaryNav.map((item) => (
+                    <DropdownMenuItem key={item.label} asChild>
+                        <Link
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={cn("font-medium", activeSection === item.href && "text-primary")}
+                        >
+                        {item.label}
+                        </Link>
+                    </DropdownMenuItem>
+                    ))}
+                </DropdownMenuContent>
+                </DropdownMenu>
+                )}
+            </div>
+
+            {/* Desktop Nav */}
+            {secondaryNav && (
+                <nav className="hidden md:flex items-center gap-x-8 -mb-px" aria-label="Secondary">
+                    {secondaryNav.map((tab) => (
+                    <Link
+                        key={tab.label}
+                        href={tab.href}
+                        onClick={(e) => handleNavClick(e, tab.href)}
+                        className={cn(
+                            "relative whitespace-nowrap py-3 text-sm font-medium transition-colors border-b-2",
+                            activeSection === tab.href ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+                        )}
+                    >
+                        {tab.label}
+                    </Link>
+                    ))}
+                </nav>
+            )}
         </div>
-      </div>
     </div>
   );
 }
