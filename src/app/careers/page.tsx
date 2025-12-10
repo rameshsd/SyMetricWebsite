@@ -156,7 +156,7 @@ export default function CareersPage() {
 
     return (
         <div className="bg-background">
-            <section style={{backgroundColor: '#abdbe3'}} className="py-20 md:py-32">
+            <section style={{backgroundColor: '#d8ecf0'}} className="py-20 md:py-32">
                 <div className="container">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
