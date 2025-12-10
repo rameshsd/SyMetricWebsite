@@ -164,7 +164,7 @@ function AddEventForm({ onEventAdded }: { onEventAdded: () => void }) {
 
 function EventPopover({ event }: { event: CalendarEvent }) {
     const { toast } = useToast();
-    const [schedulingLink, setSchedulingLink] = useState('');
+    const [schedulingLink, setSchedulingLink] = React.useState('');
 
     React.useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -180,7 +180,7 @@ function EventPopover({ event }: { event: CalendarEvent }) {
     };
 
     const duration = event.start && event.end
-        ? ((event.end as Timestamp).toMillis() - (event.start as Timestamp).toMillis()) / (1000 * 60)
+        ? (((event.end as Date).getTime() - (event.start as Date).getTime()) / (1000 * 60))
         : 0;
 
     return (
@@ -189,7 +189,7 @@ function EventPopover({ event }: { event: CalendarEvent }) {
                 <div className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100 cursor-pointer">
                     <p className="order-1 font-semibold text-blue-700">{event.title}</p>
                     <p className="text-blue-500 group-hover:text-blue-700">
-                        {event.start && <time dateTime={(event.start as Timestamp).toDate().toISOString()}>{format((event.start as Timestamp).toDate(), 'p')}</time>}
+                        {event.start && <time dateTime={(event.start as Date).toISOString()}>{format((event.start as Date), 'p')}</time>}
                     </p>
                 </div>
             </PopoverTrigger>
