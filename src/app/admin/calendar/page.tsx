@@ -1,12 +1,12 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Fragment } from 'react';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Calendar as CalendarIcon, Loader2, Plus, Share } from 'lucide-react';
-import { format } from 'date-fns';
+import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, Clock, Loader2, Plus, Share } from 'lucide-react';
+import { format, addDays, startOfWeek, eachDayOfInterval, endOfWeek, isSameDay, isToday } from 'date-fns';
 
 import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking } from '@/firebase';
 import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
@@ -14,10 +14,7 @@ import type { CalendarEvent } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 
 import { Calendar } from '@/components/ui/calendar';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { SectionTitle } from '@/components/shared/section-title';
-import { Badge } from '@/components/ui/badge';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -34,14 +31,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
-
-const eventColors: Record<string, { bg: string, text: string }> = {
-    blue: { bg: 'bg-blue-500', text: 'text-blue-500' },
-    green: { bg: 'bg-green-500', text: 'text-green-500' },
-    purple: { bg: 'bg-purple-500', text: 'text-purple-500' },
-    red: { bg: 'bg-red-500', text: 'text-red-500' },
-    orange: { bg: 'bg-orange-500', text: 'text-orange-500' },
-};
 
 const eventSchema = z.object({
   title: z.string().min(2, 'Title is required.'),
@@ -74,7 +63,7 @@ function AddEventForm({ onEventAdded }: { onEventAdded: () => void }) {
         try {
             await addDocumentNonBlocking(collection(firestore, 'calendarEvents'), {
                 ...values,
-                allDay: false, // You can add logic for this if needed
+                allDay: false, 
             });
             toast({ title: 'Event Created Successfully' });
             onEventAdded();
@@ -170,19 +159,23 @@ function AddEventForm({ onEventAdded }: { onEventAdded: () => void }) {
     )
 }
 
-
 export default function CalendarPage() {
     const firestore = useFirestore();
-    const [date, setDate] = useState<Date | undefined>(new Date());
-    const [_, setForceRerender] = useState(0);
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [forceRerender, setForceRerender] = useState(0);
+
+    const weekStart = startOfWeek(currentDate, { weekStartsOn: 1 });
+    const weekDays = eachDayOfInterval({ start: weekStart, end: endOfWeek(currentDate, { weekStartsOn: 1 }) });
 
     const eventsQuery = useMemoFirebase(
         () => firestore ? query(collection(firestore, 'calendarEvents'), orderBy('start', 'asc')) : null,
         [firestore]
     );
 
-    const { data: eventsData, isLoading } = useCollection<CalendarEvent>(eventsQuery);
-
+    const { data: eventsData, isLoading } = useCollection<CalendarEvent>(eventsQuery, {
+      enabled: !!firestore
+    });
+    
     const events = useMemo(() => {
         return eventsData?.map(e => ({
             ...e,
@@ -191,88 +184,109 @@ export default function CalendarPage() {
         })) || [];
     }, [eventsData]);
 
-    const upcomingEvents = useMemo(() => {
-        const now = new Date();
-        return events.filter(e => e.start >= now).slice(0, 5);
-    }, [events]);
+    const hours = Array.from({ length: 12 }, (_, i) => i + 8); // 8 AM to 7 PM
 
+    const getEventPosition = (event: CalendarEvent) => {
+        const startHour = event.start.getHours();
+        const startMinutes = event.start.getMinutes();
+        const endHour = event.end.getHours();
+        const endMinutes = event.end.getMinutes();
+
+        const top = ((startHour - 8) * 60 + startMinutes) / (12 * 60) * 100;
+        const duration = ((endHour * 60 + endMinutes) - (startHour * 60 + startMinutes));
+        const height = (duration / (12 * 60)) * 100;
+
+        return { top: `${top}%`, height: `${height}%` };
+    };
+    
     return (
-        <div className="space-y-8">
-            <div className="flex justify-between items-center">
-              <SectionTitle title="Calendar" description="Manage your schedule and events." />
-              <AddEventForm onEventAdded={() => setForceRerender(c => c + 1)} />
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2">
-                    <Card>
-                        <CardContent className="p-0">
-                            {isLoading ? <Skeleton className="h-[400px] w-full" /> : 
-                            <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                                className="p-0"
-                                classNames={{
-                                    root: 'w-full',
-                                    months: 'flex-1',
-                                    month: 'w-full',
-                                    table: 'w-full border-collapse',
-                                    head_row: 'flex',
-                                    head_cell: 'w-full text-center text-muted-foreground text-sm pb-2',
-                                    row: 'flex w-full mt-2',
-                                    cell: 'h-24 w-full text-center text-sm p-1 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
-                                    day: cn(buttonVariants({ variant: "ghost" }), "h-9 w-9 p-0 font-normal aria-selected:opacity-100"),
-                                }}
-                                components={{
-                                    DayContent: ({ date }) => {
-                                        const dayEvents = events.filter(e => format(e.start, 'yyyy-MM-dd') === format(date, 'yyyy-MM-dd'));
-                                        return (
-                                            <div className="relative h-full w-full flex flex-col items-center justify-start p-1">
-                                                <time dateTime={date.toISOString()}>{date.getDate()}</time>
-                                                <div className="flex flex-col items-start w-full gap-1 mt-1 overflow-hidden">
-                                                {dayEvents.map(event => (
-                                                    <Badge key={event.id} className={cn('w-full truncate text-xs', event.color && eventColors[event.color]?.bg)}>
-                                                        {event.title}
-                                                    </Badge>
-                                                ))}
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-                                }}
-                            />
-                           }
-                        </CardContent>
-                    </Card>
+        <div className="flex h-full flex-col">
+            <header className="flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
+                <div className="flex items-center gap-4">
+                    <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <span className="hidden md:inline">Calendar</span>
+                    </h1>
+                     <AddEventForm onEventAdded={() => setForceRerender(c => c + 1)} />
                 </div>
-                <div>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Upcoming Events</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                             {isLoading && Array.from({length: 3}).map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}
-                             {!isLoading && upcomingEvents.length === 0 && <p className="text-muted-foreground text-sm">No upcoming events.</p>}
-                            {upcomingEvents.map(event => (
-                                <div key={event.id} className="flex items-center gap-4 group">
-                                    <div className="flex flex-col text-sm items-center">
-                                        <span className="font-bold">{format(event.start, 'MMM')}</span>
-                                        <span>{event.start.getDate()}</span>
+                <div className="flex items-center">
+                    <div className="flex items-center rounded-md shadow-sm md:items-stretch">
+                        <Button variant="ghost" size="icon" onClick={() => setCurrentDate(addDays(currentDate, -7))}>
+                            <ChevronLeft className="h-5 w-5" />
+                        </Button>
+                        <Button variant="ghost" onClick={() => setCurrentDate(new Date())}>Today</Button>
+                        <Button variant="ghost" size="icon" onClick={() => setCurrentDate(addDays(currentDate, 7))}>
+                            <ChevronRight className="h-5 w-5" />
+                        </Button>
+                    </div>
+                    <div className="hidden md:ml-4 md:flex md:items-center">
+                       <h2 className="text-lg font-semibold text-gray-900 dark:text-white ml-4">
+                            {format(currentDate, 'MMMM yyyy')}
+                        </h2>
+                    </div>
+                </div>
+            </header>
+            <div className="flex flex-auto overflow-hidden bg-white dark:bg-background">
+                <div className="flex flex-auto flex-col">
+                    <div className="grid flex-none grid-cols-7 text-xs font-semibold leading-6 text-gray-700 dark:text-gray-300">
+                        {weekDays.map(day => (
+                            <div key={day.toISOString()} className="flex justify-center p-3">
+                                <span>{format(day, 'EEE')}</span>
+                                <span className={cn("ml-1.5 flex h-6 w-6 items-center justify-center rounded-full text-base font-semibold", isToday(day) && "bg-primary text-primary-foreground")}>
+                                    {format(day, 'd')}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex flex-auto">
+                        <div className="grid flex-auto grid-cols-1 grid-rows-1">
+                            {/* Horizontal lines */}
+                            <div className="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100 dark:divide-gray-700" style={{ gridTemplateRows: 'repeat(12, minmax(3.5rem, 1fr))' }}>
+                                <div className="row-end-1 h-7"></div>
+                                {hours.map(hour => (
+                                    <div key={hour}>
+                                        <div className="sticky left-0 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                            {format(new Date(0, 0, 0, hour), 'h a')}
+                                        </div>
                                     </div>
-                                    <div className={cn('w-1 h-10 rounded-full', event.color && eventColors[event.color]?.bg)} />
-                                    <div className="flex-1">
-                                        <p className="font-semibold">{event.title}</p>
-                                        <p className="text-xs text-muted-foreground">{format(event.start, 'p')}</p>
-                                    </div>
-                                    <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100">
-                                        <Share className="h-4 w-4" />
-                                    </Button>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
+                                ))}
+                            </div>
+
+                            {/* Vertical lines */}
+                            <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 dark:divide-gray-700 sm:grid">
+                                <div className="col-start-1 row-span-full" />
+                                <div className="col-start-2 row-span-full" />
+                                <div className="col-start-3 row-span-full" />
+                                <div className="col-start-4 row-span-full" />
+                                <div className="col-start-5 row-span-full" />
+                                <div className="col-start-6 row-span-full" />
+                                <div className="col-start-7 row-span-full" />
+                                <div className="col-start-8 row-span-full w-8" />
+                            </div>
+
+                            {/* Events */}
+                            <ol className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8" style={{ gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto' }}>
+                                {isLoading && <div className="col-span-full row-span-full flex items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}
+                                {events.filter(e => e.start >= weekStart && e.end <= endOfWeek(currentDate, { weekStartsOn: 1 })).map(event => {
+                                    const startDayIndex = (event.start.getDay() + 6) % 7; // Monday is 0
+                                    const eventPos = getEventPosition(event);
+
+                                    return (
+                                        <li key={event.id} className="relative mt-px flex" style={{ gridColumnStart: startDayIndex + 1, top: eventPos.top, height: eventPos.height }}>
+                                            <a href="#" className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100">
+                                                <p className="order-1 font-semibold text-blue-700">{event.title}</p>
+                                                <p className="text-blue-500 group-hover:text-blue-700">
+                                                    <time dateTime={event.start.toISOString()}>{format(event.start, 'p')}</time>
+                                                </p>
+                                            </a>
+                                        </li>
+                                    )
+                                })}
+                            </ol>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
