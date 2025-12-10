@@ -67,7 +67,7 @@ export const toolsData = [
         icon: SubjectIcon, 
         label: 'Subject Management',
         description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
-        link: '#' 
+        link: '/solutions/subject-management' 
     },
     { 
         id: 'data',
