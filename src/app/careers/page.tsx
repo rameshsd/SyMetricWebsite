@@ -17,6 +17,8 @@ import { collection, query, where } from 'firebase/firestore';
 import type { JobOpening } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 function JobDetailsDialog({ job, children }: { job: JobOpening; children: React.ReactNode }) {
     return (
@@ -147,6 +149,8 @@ export default function CareersPage() {
         if (!jobOpenings) return [];
         return [...new Set(jobOpenings.map(job => job.location))];
     }, [jobOpenings]);
+    
+    const heroImage = PlaceHolderImages.find(p => p.id === 'careers-hero');
 
 
     return (
@@ -166,7 +170,16 @@ export default function CareersPage() {
                             </Button>
                         </div>
                         <div className="relative h-[400px] flex items-center justify-center">
-                           <CareersHeroGraphic />
+                            {heroImage && (
+                                <Image
+                                    src={heroImage.imageUrl}
+                                    alt={heroImage.description}
+                                    data-ai-hint={heroImage.imageHint}
+                                    width={600}
+                                    height={400}
+                                    className="object-cover rounded-lg"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
@@ -254,4 +267,3 @@ export default function CareersPage() {
         </div>
     );
 }
-    
