@@ -149,18 +149,15 @@ export function PageHeader({
       </div>
 
       {/* Desktop Header */}
-      <div className="hidden md:block">
-        <div className="container flex h-14 items-center justify-between">
+      <div className="hidden md:block container">
+        <div className="flex h-14 items-center justify-between">
           <div className="flex items-center gap-x-6">
-              {showTitle &&
+              {showTitle && !secondaryNav && (
                 <h2 className="text-xl font-bold text-foreground whitespace-nowrap">
                     {title}
                 </h2>
-              }
-              {secondaryNav && showTitle && (
-                  <div className="border-l h-6"></div>
               )}
-               {secondaryNav && (
+              {secondaryNav && (
                   <nav className="flex items-center gap-x-6" aria-label="Secondary">
                       {secondaryNav.map((tab) => (
                       <Link
