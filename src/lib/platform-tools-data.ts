@@ -1,4 +1,5 @@
 
+
 import { 
     DataManagementIcon,
     DataServicesIcon,
@@ -52,7 +53,7 @@ export const toolsData = [
         icon: SiteIcon, 
         label: 'Site Management',
         description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
-        link: '#' 
+        link: '/solutions/site-management' 
     },
     { 
         id: 'supplies',
