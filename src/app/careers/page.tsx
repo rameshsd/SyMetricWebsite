@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -155,7 +156,7 @@ export default function CareersPage() {
 
     return (
         <div className="bg-background">
-            <section className="bg-blue-100/50 dark:bg-blue-900/10 py-20 md:py-32">
+            <section style={{backgroundColor: '#abdbe3'}} className="py-20 md:py-32">
                 <div className="container">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
