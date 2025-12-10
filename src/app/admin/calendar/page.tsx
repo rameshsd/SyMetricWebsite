@@ -163,40 +163,58 @@ function AddEventForm({ onEventAdded }: { onEventAdded: () => void }) {
 
 function EventPopover({ event }: { event: CalendarEvent }) {
     const { toast } = useToast();
-    const schedulingLink = `${window.location.origin}/schedule/${event.id}`;
-    
+    const [schedulingLink, setSchedulingLink] = useState('');
+
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setSchedulingLink(`${window.location.origin}/schedule/${event.id}`);
+        }
+    }, [event.id]);
+
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(schedulingLink);
-        toast({ title: "Link Copied!", description: "Scheduling link has been copied to your clipboard." });
+        if (schedulingLink) {
+            navigator.clipboard.writeText(schedulingLink);
+            toast({ title: "Link Copied!", description: "Scheduling link has been copied to your clipboard." });
+        }
     };
+
+    const duration = event.start && event.end
+        ? ((event.end as Timestamp).toMillis() - (event.start as Timestamp).toMillis()) / (1000 * 60)
+        : 0;
 
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <a href="#" className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100">
+                <div className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100 cursor-pointer">
                     <p className="order-1 font-semibold text-blue-700">{event.title}</p>
                     <p className="text-blue-500 group-hover:text-blue-700">
-                        <time dateTime={(event.start as Date).toISOString()}>{format(event.start as Date, 'p')}</time>
+                        {event.start && <time dateTime={(event.start as Timestamp).toDate().toISOString()}>{format((event.start as Timestamp).toDate(), 'p')}</time>}
                     </p>
-                </a>
+                </div>
             </PopoverTrigger>
-            <PopoverContent className="w-80">
-                <div className="grid gap-4">
-                    <div className="space-y-2">
-                        <h4 className="font-medium leading-none">{event.title}</h4>
-                        <p className="text-sm text-muted-foreground">
-                            {format(event.start as Date, 'PPp')} - {format(event.end as Date, 'p')}
-                        </p>
-                         {event.description && <p className="text-sm text-muted-foreground">{event.description}</p>}
+            <PopoverContent className="w-96 p-0" align="start">
+                <div className="grid grid-cols-3">
+                    <div className="col-span-1 p-6 border-r">
+                         <h3 className="font-bold">{event.title}</h3>
+                         <p className="text-sm text-muted-foreground mt-2">{event.description}</p>
+                         <div className="flex items-center gap-2 mt-4 text-sm">
+                            <Clock className="h-4 w-4 text-muted-foreground"/>
+                            <span>{duration} min</span>
+                         </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <Button variant="outline" size="sm" asChild>
+                     <div className="col-span-2 p-6">
+                        <h4 className="font-semibold text-sm">Share This Event</h4>
+                        <p className="text-xs text-muted-foreground mt-1">Copy the link below to share your public booking page.</p>
+                        <div className="flex items-center gap-2 mt-4">
+                            <Input value={schedulingLink} readOnly className="h-9"/>
+                            <Button size="sm" onClick={copyToClipboard} disabled={!schedulingLink}>
+                               <Copy className="mr-2 h-4 w-4" /> Copy
+                            </Button>
+                        </div>
+                        <Button variant="outline" size="sm" asChild className="mt-2 w-full">
                             <Link href={schedulingLink} target="_blank">
                                 <LinkIcon className="mr-2 h-4 w-4"/> View Public Page
                             </Link>
-                        </Button>
-                        <Button size="sm" onClick={copyToClipboard}>
-                           <Copy className="mr-2 h-4 w-4" /> Copy Link
                         </Button>
                     </div>
                 </div>
