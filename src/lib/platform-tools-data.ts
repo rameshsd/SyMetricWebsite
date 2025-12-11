@@ -25,7 +25,7 @@ export const toolsData = [
         icon: IdentityAccessIcon, 
         label: 'Identity and Access Management',
         description: 'Role-Based Access Control and Self-Service Account Management.',
-        link: '#' 
+        link: '/solutions/identity-and-access-management' 
     },
     { 
         id: 'org',

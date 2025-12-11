@@ -283,6 +283,20 @@ export const solutions: Solution[] = [
     image: 'solution-sm',
     backgroundColor: '#f0fdf4'
   },
+  {
+    id: 'iam',
+    name: 'Identity & Access Management',
+    slug: 'identity-and-access-management',
+    hero: {
+        title: 'Identity & Access Management (IAM)',
+        subtitle: 'Centralized access control, security governance, and user lifecycle management for clinical trials.'
+    },
+    description: 'Secure, centralized control over users, roles, and permissions across all studies and organizations.',
+    longDescription: 'The IAM module provides a robust, secure, and fully governed environment for managing users, roles, permissions, and authentication across all customers, studies, and organizations.',
+    icon: IdentityAccessIcon,
+    image: 'iam-hero',
+    backgroundColor: '#f0f9ff'
+  }
 ];
 
 export const industries: Industry[] = [
