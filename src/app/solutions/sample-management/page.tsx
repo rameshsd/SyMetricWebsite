@@ -22,6 +22,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export const metadata: Metadata = {
   title: 'Sample Management System - SyMetric',
@@ -93,30 +94,72 @@ const capabilities: { icon: LucideIcon; title: string; description: string, link
 
 const ConclusionSection = () => {
     const conclusionImage = PlaceHolderImages.find(p => p.id === 'about-hero');
+    const summaryPoints = [
+        {
+            id: 'item-1',
+            title: 'Accuracy and Compliance',
+            description: 'Ensure accuracy, compliance, and traceability across all study sites for every step of the sample lifecycle.'
+        },
+        {
+            id: 'item-2',
+            title: 'End-to-End Control',
+            description: 'From defining sample types to generating labels, managing shipments, and tracking status transitions.'
+        },
+        {
+            id: 'item-3',
+            title: 'Complex Workflow Support',
+            description: 'The module is built to support complex clinical workflows with precision and automation.'
+        }
+    ];
 
     return (
         <section className="bg-secondary/50">
             <div className="container">
-                <div className="bg-background p-8 rounded-2xl shadow-lg border">
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                        <div className="space-y-6">
-                            <p className="text-sm font-semibold text-primary">Conclusion</p>
-                            <h2 className="text-4xl font-bold tracking-tight">Complete Control Over Your Sample Lifecycle</h2>
-                            <p className="text-muted-foreground">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
+                <div className="text-left mb-12">
+                    <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
+                    <h2 className="text-4xl font-bold tracking-tight mt-2">Complete Control Over Your Sample Lifecycle</h2>
+                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div className="relative">
+                        <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                            {summaryPoints.map((point) => (
+                                 <AccordionItem value={point.id} key={point.id} className="border-b-0">
+                                    <div className="flex gap-4">
+                                        <div className="pt-4">
+                                            <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                                        </div>
+                                        <div className="flex-1">
+                                            <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                                                {point.title}
+                                            </AccordionTrigger>
+                                            <AccordionContent className="pb-8 pr-4">
+                                                <p className="text-muted-foreground">{point.description}</p>
+                                            </AccordionContent>
+                                        </div>
+                                    </div>
+                                 </AccordionItem>
+                            ))}
+                        </Accordion>
+                        <div className="mt-8">
                             <Button asChild>
-                                <Link href="/contact">Get Started</Link>
+                                <Link href="/contact">
+                                    Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
                             </Button>
                         </div>
-                        <div className="relative h-80 rounded-lg overflow-hidden">
-                           {conclusionImage && (
-                                <Image
-                                    src={conclusionImage.imageUrl}
-                                    alt="Professional working on a tablet"
-                                    fill
-                                    className="object-cover"
-                                    data-ai-hint={conclusionImage.imageHint}
-                                />
-                           )}
+                    </div>
+                    <div className="relative flex items-center justify-center">
+                        <div className="relative w-full aspect-video">
+                            {conclusionImage && (
+                            <Image
+                                src={conclusionImage.imageUrl}
+                                alt="Professional working on a tablet"
+                                fill
+                                className="rounded-2xl object-cover shadow-lg"
+                                data-ai-hint={conclusionImage.imageHint}
+                            />
+                            )}
                         </div>
                     </div>
                 </div>
