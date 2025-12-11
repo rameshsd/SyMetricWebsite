@@ -275,8 +275,8 @@ export const solutions: Solution[] = [
     name: 'Site Management',
     slug: 'site-management',
     hero: {
-        title: 'Clinical Site Management',
-        subtitle: 'Empower clinical sites with tools for efficient trial execution, from patient recruitment to financial management and remote monitoring.'
+        title: 'Centralized Control of Sites Across Global Clinical Trials',
+        subtitle: 'The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study.'
     },
     description: 'Empower clinical sites with tools for efficient trial execution and monitoring.',
     longDescription: 'Our Site Management solutions provide clinical research sites with the tools they need to operate efficiently. From patient recruitment and scheduling to financial management and remote monitoring, we help sites focus on what matters most: patient care.',
@@ -289,8 +289,8 @@ export const solutions: Solution[] = [
     name: 'Identity & Access Management',
     slug: 'identity-and-access-management',
     hero: {
-        title: 'Identity & Access Management (IAM)',
-        subtitle: 'Centralized access control, security governance, and user lifecycle management for clinical trials.'
+        title: 'Identity & Access Management (IAM) Module',
+        subtitle: 'Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials.'
     },
     description: 'Secure, centralized control over users, roles, and permissions across all studies and organizations.',
     longDescription: 'The IAM module provides a robust, secure, and fully governed environment for managing users, roles, permissions, and authentication across all customers, studies, and organizations.',
@@ -303,7 +303,7 @@ export const solutions: Solution[] = [
     name: 'Clinical Supplies Management',
     slug: 'clinical-supplies-management',
     hero: {
-        title: 'Clinical Supplies Management',
+        title: 'Clinical Supplies Management Module',
         subtitle: 'End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials.'
     },
     description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
@@ -317,7 +317,7 @@ export const solutions: Solution[] = [
     name: 'Data Management',
     slug: 'data-management',
     hero: {
-        title: 'Data Management',
+        title: 'Data Management Module',
         subtitle: 'End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials.'
     },
     description: 'A unified ecosystem to design CRFs, collect subject data, validate accuracy, and manage queries.',
@@ -359,7 +359,7 @@ export const solutions: Solution[] = [
     name: 'Lab Management',
     slug: 'lab-management',
     hero: {
-        title: 'Lab Data Management',
+        title: 'Lab Data Management Module',
         subtitle: 'End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials.'
     },
     description: 'Unified lab setup, reference ranges, and data uploads to ensure standardized and validated lab results.',
@@ -373,7 +373,7 @@ export const solutions: Solution[] = [
     name: 'Data Services',
     slug: 'data-services',
     hero: {
-        title: 'Data Services & Integration',
+        title: 'Data Services (API & Integration Management)',
         subtitle: 'Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer.'
     },
     description: 'Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.',
@@ -395,6 +395,48 @@ export const solutions: Solution[] = [
     icon: Package,
     image: 'sample-management-hero',
     backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'label-management',
+    name: 'Label Management',
+    slug: 'label-management',
+    hero: {
+      title: 'Label Management',
+      subtitle: 'A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials.',
+    },
+    description: 'A complete end-to-end module for defining, generating, and verifying labels for subjects and samples.',
+    longDescription: 'The Label Management system ensures accuracy, consistency, and compliance across all labeling workflows.',
+    icon: LabelManagementIcon,
+    image: 'label-management-hero',
+    backgroundColor: '#f0f9ff',
+  },
+  {
+    id: 'subject-management',
+    name: 'Subject Management',
+    slug: 'subject-management',
+    hero: {
+        title: 'Subject Management Module',
+        subtitle: 'End-to-end control of subject lifecycle from screening to study completion.'
+    },
+    description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
+    longDescription: 'The Subject Management module provides a comprehensive and compliant framework to manage every stage of a subject’s journey in a clinical trial, ensuring accuracy, regulatory integrity, and consistent application of study protocols.',
+    icon: SubjectIcon,
+    image: 'subject-management-hero',
+    backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'help-and-support',
+    name: 'Help & Support',
+    slug: 'help-and-support',
+    hero: {
+      title: 'Help & Support',
+      subtitle: 'Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform.',
+    },
+    description: 'Instant assistance, guided learning, and efficient issue resolution for a seamless user experience.',
+    longDescription: 'Our Help & Support module ensures that every user receives the right guidance—whether they need step-by-step instructions, technical support, or help correcting critical data.',
+    icon: HelpSupportIcon,
+    image: 'help-support-hero',
+    backgroundColor: '#f0f9ff',
   },
 ];
 

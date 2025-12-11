@@ -123,7 +123,7 @@ export const toolsData = [
         icon: LabelManagementIcon, 
         label: 'Label Management',
         description: 'Ensure compliance and accuracy with integrated tools for creating and managing drug labels.',
-        link: '#',
+        link: '/solutions/label-management',
     },
     { 
         id: 'support',

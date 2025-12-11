@@ -899,6 +899,12 @@
       "description": "A customer service representative smiling and wearing a headset.",
       "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "customer support"
+    },
+    {
+      "id": "label-management-hero",
+      "description": "A close-up of a barcode being scanned, representing label management and verification.",
+      "imageUrl": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXJjb2RlJTIwc2Nhbm5pbmd8ZW58MHx8fHwxNzYxMDM4MTAxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "barcode scanning"
     }
   ]
 }
