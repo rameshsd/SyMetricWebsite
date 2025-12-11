@@ -51,7 +51,8 @@ import {
   Files,
   ChevronsRight,
   LifeBuoy as LifeBuoyIcon,
-  BarChart as BarChartIcon
+  BarChart as BarChartIcon,
+  Package,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -295,6 +296,20 @@ export const solutions: Solution[] = [
     longDescription: 'The IAM module provides a robust, secure, and fully governed environment for managing users, roles, permissions, and authentication across all customers, studies, and organizations.',
     icon: IdentityAccessIcon,
     image: 'iam-hero',
+    backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'csm',
+    name: 'Clinical Supplies Management',
+    slug: 'clinical-supplies-management',
+    hero: {
+        title: 'Clinical Supplies Management',
+        subtitle: 'End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials.'
+    },
+    description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
+    longDescription: 'The Clinical Supplies Management module delivers a powerful, fully compliant system for handling Investigational Products across the entire clinical supply chain.',
+    icon: Package,
+    image: 'clinical-supplies-hero',
     backgroundColor: '#f0f9ff'
   }
 ];

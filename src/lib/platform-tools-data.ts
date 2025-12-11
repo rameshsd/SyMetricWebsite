@@ -60,7 +60,7 @@ export const toolsData = [
         icon: SuppliesIcon, 
         label: 'Clinical Supplies Management',
         description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
-        link: '#' 
+        link: '/solutions/clinical-supplies-management' 
     },
     { 
         id: 'subject',
