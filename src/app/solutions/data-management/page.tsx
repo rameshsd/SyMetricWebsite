@@ -2,8 +2,14 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Library, Edit3, CheckSquare, DatabaseZap, Search, GitPullRequest, Lock, Share2, FileCheck2, UserCheck, Shield, FileOutput } from 'lucide-react';
+import { Library, Edit3, CheckSquare, DatabaseZap, Search, GitPullRequest, Lock, Share2, FileCheck2, UserCheck, Shield, FileOutput, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
 
 export const metadata: Metadata = {
   title: 'Data Management - SyMetric',
@@ -63,7 +69,31 @@ const capabilities = [
     },
 ];
 
+const summaryPoints = [
+    {
+        id: "item-1",
+        title: "High-Quality, Audit-Ready Data",
+        description: "Ensure your data is compliant, validated, and ready for regulatory submission at any stage of the trial."
+    },
+    {
+        id: "item-2",
+        title: "Efficient Workflows",
+        description: "Automate manual tasks and streamline processes for CRAs, Investigators, and Data Managers, saving time and reducing errors."
+    },
+    {
+        id: "item-3",
+        title: "Complete Ecosystem",
+        description: "From CRF design and data collection to validation, discrepancy management, and data export, our module covers the entire data lifecycle."
+    },
+    {
+        id: "item-4",
+        title: "Configurable and Compliant",
+        description: "A fully configurable environment that adheres to industry standards, providing a robust foundation for your clinical data handling."
+    }
+];
+
 export default function DataManagementPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'revolutionizing-trials');
 
     return (
         <div>
@@ -81,8 +111,8 @@ export default function DataManagementPage() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               <div className="p-3 rounded-xl text-primary bg-primary/10 group-hover:bg-primary/10 transition mb-4">
+                                    <cap.icon className="h-16 w-16" strokeWidth={2.5} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
@@ -95,9 +125,54 @@ export default function DataManagementPage() {
             </section>
 
              <section className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
-                     <p className="text-lg text-muted-foreground">The Data Management module offers a complete, compliant, and configurable ecosystem for electronic clinical data handling—from CRF design to data collection, validation, SDV, discrepancy management, review, signatures, freezing, locking, and data export. It ensures high-quality, audit-ready data and efficient workflows for CRAs, Investigators, and Data Managers.</p>
+                <div className="container">
+                    <div className="text-left mb-12">
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">A Complete and Compliant Ecosystem</h2>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="relative">
+                            <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                                {summaryPoints.map((point) => (
+                                     <AccordionItem value={point.id} key={point.id} className="border-b-0">
+                                        <div className="flex gap-4">
+                                            <div className="pt-4">
+                                                <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                                                    {point.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent className="pb-8 pr-4">
+                                                    <p className="text-muted-foreground">{point.description}</p>
+                                                </AccordionContent>
+                                            </div>
+                                        </div>
+                                     </AccordionItem>
+                                ))}
+                            </Accordion>
+                            <div className="mt-8">
+                                <Button asChild>
+                                    <Link href="/contact">
+                                        Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="relative flex items-center justify-center">
+                            <div className="relative w-full aspect-video">
+                                {summaryImage && (
+                                <Image
+                                    src={summaryImage.imageUrl}
+                                    alt={summaryImage.description}
+                                    data-ai-hint={summaryImage.imageHint}
+                                    fill
+                                    className="rounded-2xl object-cover shadow-lg"
+                                />
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
