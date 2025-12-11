@@ -21,6 +21,7 @@ import {
     ShieldCheck,
     Repeat
 } from 'lucide-react';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -95,22 +96,8 @@ export default function ClinicalSuppliesManagementPage() {
 
     return (
         <div>
-            <PageHeader title="Clinical Supplies Management" breadcrumb={{ href: '/solutions', label: 'Solutions' }} />
+            <SyMetricBusinessAI />
             
-            <section className="bg-secondary/50 py-20">
-                <div className="container grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl font-bold tracking-tight">End-to-End Control of Clinical Supplies</h1>
-                        <p className="text-lg text-muted-foreground">The Clinical Supplies Management module delivers a powerful, fully compliant system for handling Investigational Products (IP) across sponsors, depots, warehouses, sites, and retention facilities. It consolidates configuration, inventory tracking, shipments, expiry controls, and more into a unified, audit-ready platform.</p>
-                    </div>
-                    {heroImage && (
-                        <div className="relative h-80 rounded-2xl overflow-hidden">
-                            <Image src={heroImage.imageUrl} alt={heroImage.description} data-ai-hint={heroImage.imageHint} fill className="object-cover" />
-                        </div>
-                    )}
-                </div>
-            </section>
-
             <section>
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-16">Key Capabilities</h2>

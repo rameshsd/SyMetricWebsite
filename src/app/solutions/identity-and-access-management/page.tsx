@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Lock, User, UserCheck, Key, Bell, Trash2, Edit, Send } from 'lucide-react';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -58,23 +59,8 @@ export default function IamPage() {
 
     return (
         <div>
-            <PageHeader title="Identity & Access Management" breadcrumb={{ href: '/solutions', label: 'Solutions' }} />
+            <SyMetricBusinessAI />
             
-            <section className="bg-secondary/50 py-20">
-                <div className="container grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl font-bold tracking-tight">Centralized Access Control, Security Governance, and User Lifecycle Management</h1>
-                        <p className="text-lg text-muted-foreground">The Identity & Access Management (IAM) module provides a robust, secure, and fully governed environment for managing users, roles, permissions, and authentication across all customers, studies, and organizations.</p>
-                        <p className="text-muted-foreground">Built for enterprise-scale, multi-tenant clinical trial systems, IAM ensures strong security, precise access control, complete auditability, and seamless administration.</p>
-                    </div>
-                    {heroImage && (
-                        <div className="relative h-80 rounded-2xl overflow-hidden">
-                            <Image src={heroImage.imageUrl} alt={heroImage.description} data-ai-hint={heroImage.imageHint} fill className="object-cover" />
-                        </div>
-                    )}
-                </div>
-            </section>
-
             <section>
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-16">Core Capabilities</h2>

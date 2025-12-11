@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -67,22 +68,8 @@ export default function SiteManagementPage() {
 
     return (
         <div>
-            <PageHeader title="Site Management" breadcrumb={{ href: '/solutions', label: 'Solutions' }} />
+            <SyMetricBusinessAI />
             
-            <section className="bg-secondary/50 py-20">
-                <div className="container grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl font-bold tracking-tight">Centralized Control of Sites Across Global Clinical Trials</h1>
-                        <p className="text-lg text-muted-foreground">The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study. Designed for multi-country operations, it ensures each site follows study-specific rules, operational parameters, compliance requirements, and access controls—supporting seamless subject recruitment, inventory flow, and site performance oversight.</p>
-                    </div>
-                    {heroImage && (
-                        <div className="relative h-80 rounded-2xl overflow-hidden">
-                            <Image src={heroImage.imageUrl} alt={heroImage.description} data-ai-hint={heroImage.imageHint} fill className="object-cover" />
-                        </div>
-                    )}
-                </div>
-            </section>
-
             <section>
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-12">Key Capabilities</h2>

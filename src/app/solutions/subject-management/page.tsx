@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplets, FlaskConical, CircleDot, GitBranch, Repeat, Shield, UserCheck, UserX, Bot, Wand } from 'lucide-react';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -79,23 +80,8 @@ export default function SubjectManagementPage() {
 
     return (
         <div>
-            <PageHeader title="Subject Management" breadcrumb={{ href: '/solutions', label: 'Solutions' }} />
+            <SyMetricBusinessAI />
             
-            <section className="bg-secondary/50 py-20">
-                <div className="container grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl font-bold tracking-tight">End-to-End Control of Subject Lifecycle</h1>
-                        <p className="text-lg text-muted-foreground">The Subject Management module provides a comprehensive and compliant framework to manage every stage of a subject’s journey in a clinical trial. From configuration of eligibility rules to screening, enrolment, randomization, dispensing, visits, withdrawal, and completion—the module ensures accuracy, regulatory integrity, and consistent application of study protocols across all sites.</p>
-                         <p className="text-muted-foreground">Built for global, multi-site studies, the module supports advanced stratification, treatment arm balancing, and complete audit trails, ensuring clean data and streamlined clinical execution.</p>
-                    </div>
-                    {heroImage && (
-                        <div className="relative h-80 rounded-2xl overflow-hidden">
-                            <Image src={heroImage.imageUrl} alt={heroImage.description} data-ai-hint={heroImage.imageHint} fill className="object-cover" />
-                        </div>
-                    )}
-                </div>
-            </section>
-
             <section>
                 <div className="container">
                     <h2 className="text-3xl font-bold text-center mb-16">Key Capabilities</h2>
