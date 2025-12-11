@@ -16,6 +16,7 @@ import {
     Archive,
     type LucideIcon
 } from 'lucide-react';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export const metadata: Metadata = {
   title: 'Sample Management System - SyMetric',
@@ -71,7 +72,7 @@ const capabilities: { icon: LucideIcon; title: string; description: string }[] =
     {
         icon: Bell,
         title: "Notifications",
-        description: "Centralized notification system to keep users updated on all sample-related activities via system alerts and email."
+        description: "Centralized notification system to keep users updated on all sample-related activities via system alerts and mail."
     },
 ];
 
@@ -86,21 +87,20 @@ export default function SampleManagementPage() {
             
             <section>
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-16">Key Capabilities</h2>
+                    <SectionTitle
+                        title="Key Capabilities"
+                        className="mb-16 text-center"
+                    />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col">
-                               <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <cap.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <CardTitle className="text-lg">{cap.title}</CardTitle>
-                                   </div>
-                               </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
-                                  <p className="text-muted-foreground text-sm">{cap.description}</p>
-                               </CardContent>
+                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex items-start gap-6">
+                               <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mt-1">
+                                    <cap.icon className="w-8 h-8 text-primary" strokeWidth={2} />
+                               </div>
+                               <div>
+                                  <h3 className="font-bold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                               </div>
                            </Card>
                         ))}
                     </div>
