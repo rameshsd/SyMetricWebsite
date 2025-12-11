@@ -6,19 +6,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-export function SyMetricBusinessAI() {
+interface SyMetricBusinessAIProps {
+  title: string;
+  subtitle: string;
+}
+
+export function SyMetricBusinessAI({ title, subtitle }: SyMetricBusinessAIProps) {
   const businessAIImage = PlaceHolderImages.find(p => p.id === 'business-ai-hero');
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff]">
+    <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff] dark:bg-card">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[400px]">
           <div className="space-y-6">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-black">
-              SyMetric Business AI
+              {title}
             </h1>
             <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
-              Create transformative impact with the most powerful AI and agents fuelled by the context of all your business data.
+              {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>

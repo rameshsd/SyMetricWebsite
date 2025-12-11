@@ -1,11 +1,8 @@
 
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Lock, User, UserCheck, Key, Bell, Trash2, Edit, Send } from 'lucide-react';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -55,11 +52,12 @@ const features = [
 ];
 
 export default function IamPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'iam-hero');
-
     return (
         <div>
-            <SyMetricBusinessAI />
+            <SyMetricBusinessAI
+              title="Identity & Access Management (IAM) Module"
+              subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
+            />
             
             <section>
                 <div className="container">

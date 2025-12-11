@@ -1,8 +1,6 @@
 
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
     Package,
@@ -21,7 +19,6 @@ import {
     ShieldCheck,
     Repeat
 } from 'lucide-react';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -92,11 +89,13 @@ const capabilities = [
 ];
 
 export default function ClinicalSuppliesManagementPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'clinical-supplies-hero');
 
     return (
         <div>
-            <SyMetricBusinessAI />
+            <SyMetricBusinessAI 
+              title="Clinical Supplies Management Module"
+              subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
+            />
             
             <section>
                 <div className="container">

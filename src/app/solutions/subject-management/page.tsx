@@ -1,11 +1,8 @@
 
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplets, FlaskConical, CircleDot, GitBranch, Repeat, Shield, UserCheck, UserX, Bot, Wand } from 'lucide-react';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -76,11 +73,13 @@ const capabilities = [
 ];
 
 export default function SubjectManagementPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'subject-management-hero');
 
     return (
         <div>
-            <SyMetricBusinessAI />
+            <SyMetricBusinessAI 
+              title="Subject Management Module"
+              subtitle="End-to-end control of subject lifecycle from screening to study completion."
+            />
             
             <section>
                 <div className="container">

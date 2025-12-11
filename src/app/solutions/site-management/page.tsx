@@ -1,11 +1,8 @@
 
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -64,11 +61,13 @@ const benefits = [
 
 
 export default function SiteManagementPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'site-management-hero');
 
     return (
         <div>
-            <SyMetricBusinessAI />
+            <SyMetricBusinessAI 
+              title="Centralized Control of Sites Across Global Clinical Trials"
+              subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
+            />
             
             <section>
                 <div className="container">
