@@ -93,9 +93,9 @@ export default function SampleManagementPage() {
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex items-start gap-6">
-                               <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mt-1">
-                                    <cap.icon className="w-8 h-8 text-primary" strokeWidth={2} />
+                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col items-start text-left">
+                               <div className="flex-shrink-0 w-20 h-20 rounded-lg bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mb-4">
+                                    <cap.icon className="w-10 h-10 text-blue-600 dark:text-blue-400" strokeWidth={2} />
                                </div>
                                <div>
                                   <h3 className="font-bold text-lg">{cap.title}</h3>
