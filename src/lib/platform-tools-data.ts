@@ -130,6 +130,6 @@ export const toolsData = [
         icon: HelpSupportIcon, 
         label: 'Help and Support',
         description: 'Access our dedicated support team and comprehensive knowledge base 24/7.',
-        link: '#' 
+        link: '/solutions/help-and-support' 
     },
 ];
