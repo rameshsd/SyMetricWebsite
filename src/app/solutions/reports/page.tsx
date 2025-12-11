@@ -24,7 +24,8 @@ import {
   Beaker,
   Settings,
   Headset,
-  LucideIcon
+  LucideIcon,
+  CheckCircle,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -96,8 +97,10 @@ export default function ReportsModulePage() {
                             <AccordionItem value={`item-${index}`} key={category.title}>
                                 <AccordionTrigger>
                                     <div className="flex items-center gap-3">
-                                        <category.icon className="h-5 w-5 text-primary" />
-                                        <span className="font-semibold">{category.title}</span>
+                                        <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/20">
+                                            <category.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" strokeWidth={2.5}/>
+                                        </div>
+                                        <span className="font-semibold text-lg">{category.title}</span>
                                     </div>
                                 </AccordionTrigger>
                                 <AccordionContent>
@@ -122,11 +125,3 @@ export default function ReportsModulePage() {
         </div>
     );
 }
-
-// Dummy icon for CheckCircle since it's not in lucide-react by default in this context
-const CheckCircle = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-    <polyline points="22 4 12 14.01 9 11.01" />
-  </svg>
-);

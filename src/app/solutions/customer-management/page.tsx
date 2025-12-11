@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Users, FileText, LayoutGrid, Lock, CheckCircle, LucideIcon } from 'lucide-react';
+import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon } from 'lucide-react';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -71,16 +71,14 @@ export default function CustomerManagementPage() {
                     />
                     <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                         {features.map(feature => (
-                           <Card key={feature.title} className="bg-card p-6 rounded-lg border flex flex-col">
+                           <Card key={feature.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <feature.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               </div>
                                <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <feature.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <CardTitle className="text-lg">{feature.title}</CardTitle>
-                                   </div>
+                                  <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
                                </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
+                               <CardContent className="p-0 mt-2 flex-grow">
                                   <p className="text-muted-foreground text-sm">{feature.description}</p>
                                    <ul className="mt-4 space-y-2 text-sm">
                                         {feature.details.map((detail, index) => (

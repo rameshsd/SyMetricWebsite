@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Lock, User, UserCheck, Key, Bell, Trash2, Edit, Send } from 'lucide-react';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -61,21 +62,20 @@ export default function IamPage() {
             
             <section>
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-16">Core Capabilities</h2>
+                    <SectionTitle
+                        title="Core Capabilities"
+                        className="mb-16 text-center"
+                    />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col">
-                               <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <cap.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <CardTitle className="text-lg">{cap.title}</CardTitle>
-                                   </div>
-                               </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
-                                  <p className="text-muted-foreground text-sm">{cap.description}</p>
-                               </CardContent>
+                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               </div>
+                               <div className="flex-grow">
+                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                               </div>
                            </Card>
                         ))}
                     </div>
@@ -84,7 +84,7 @@ export default function IamPage() {
 
             <section className="bg-secondary/50">
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-12">Detailed Features</h2>
+                    <SectionTitle title="Detailed Features" className="mb-12 text-center" />
                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {features.map((feature, index) => (
                             <div key={index} className="flex items-start gap-4">
@@ -103,8 +103,10 @@ export default function IamPage() {
 
              <section>
                 <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">Enterprise-Grade Security and Governance</h2>
-                     <p className="text-lg text-muted-foreground">The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments. With robust user lifecycle management, configurable roles, advanced auditing, and strong credential workflows, IAM forms the backbone of secure operations in regulated clinical systems.</p>
+                     <SectionTitle
+                        title="Enterprise-Grade Security and Governance"
+                        description="The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments. With robust user lifecycle management, configurable roles, advanced auditing, and strong credential workflows, IAM forms the backbone of secure operations in regulated clinical systems."
+                     />
                 </div>
             </section>
         </div>

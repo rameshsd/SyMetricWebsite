@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Layers, HardDrive, FileUp, CheckCircle, Database, Users, Shield, GitBranch } from 'lucide-react';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
@@ -53,24 +54,21 @@ export default function LabDataManagementPage() {
             
             <section>
                 <div className="container">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl font-bold tracking-tight">Key Capabilities</h2>
-                        <p className="mt-2 text-muted-foreground">The module ensures all lab results are standardized, validated, and fully traceable.</p>
-                    </div>
+                    <SectionTitle
+                        title="Key Capabilities"
+                        description="The module ensures all lab results are standardized, validated, and fully traceable."
+                        className="mb-16 text-center"
+                    />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col">
-                               <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <cap.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <CardTitle className="text-lg">{cap.title}</CardTitle>
-                                   </div>
-                               </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
-                                  <p className="text-muted-foreground text-sm">{cap.description}</p>
-                               </CardContent>
+                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               </div>
+                               <div className="flex-grow">
+                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                               </div>
                            </Card>
                         ))}
                     </div>

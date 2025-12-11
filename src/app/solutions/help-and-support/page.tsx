@@ -49,20 +49,16 @@ export default function HelpSupportPage() {
                         description="Our Help & Support module ensures users have the right tools at the right time."
                         className="mb-16"
                     />
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div className="grid md:grid-cols-2 gap-8">
                         {capabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col">
-                               <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <cap.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                      <CardTitle className="text-lg">{cap.title}</CardTitle>
-                                   </div>
-                               </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
-                                  <p className="text-muted-foreground text-sm">{cap.description}</p>
-                               </CardContent>
+                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               </div>
+                               <div className="flex-grow">
+                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                               </div>
                            </Card>
                         ))}
                     </div>

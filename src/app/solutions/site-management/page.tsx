@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -71,17 +72,20 @@ export default function SiteManagementPage() {
             
             <section>
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-12">Key Capabilities</h2>
+                    <SectionTitle title="Key Capabilities" className="mb-12 text-center" />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {capabilities.map(cap => (
-                            <Card key={cap.title} className="bg-card p-6 rounded-lg border-t-4 border-t-primary">
-                                <CardHeader className="p-0">
-                                  <CardTitle className="text-xl">{cap.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent className="p-0 mt-4">
-                                  <p className="text-muted-foreground">{cap.description}</p>
-                                </CardContent>
-                            </Card>
+                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <div className="h-16 w-16 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hospital"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M14 18V9a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v9"/><path d="M18 14h-4"/><path d="M16 12v4"/><path d="M22 18h-2a2 2 0 0 0-2 2v2H6v-2a2 2 0 0 0-2-2H2"/></svg>
+                                    </div>
+                                </div>
+                                <div className="flex-grow">
+                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                                </div>
+                           </Card>
                         ))}
                     </div>
                 </div>
@@ -89,15 +93,15 @@ export default function SiteManagementPage() {
 
             <section className="bg-secondary/50">
                 <div className="container">
-                    <h2 className="text-3xl font-bold text-center mb-12">Benefits of the Site Management Module</h2>
+                    <SectionTitle title="Benefits of the Site Management Module" className="mb-12 text-center" />
                      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {benefits.map(benefit => (
-                            <div key={benefit.title} className="flex items-start gap-4">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                    <benefit.icon className="w-6 h-6 text-primary" />
+                            <div key={benefit.title} className="flex items-start gap-4 group">
+                                <div className="flex-shrink-0 p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20">
+                                    <benefit.icon className="w-16 h-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold">{benefit.title}</h3>
+                                    <h3 className="text-lg font-bold group-hover:text-primary">{benefit.title}</h3>
                                     <p className="text-muted-foreground mt-1">{benefit.description}</p>
                                 </div>
                             </div>

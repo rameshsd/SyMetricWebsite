@@ -91,12 +91,12 @@ interface DetailCardProps {
 }
 
 const DetailCard = ({ icon: Icon, title, description }: DetailCardProps) => (
-    <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Icon className="w-6 h-6 text-primary" />
+    <div className="flex items-start gap-4 group">
+        <div className="flex-shrink-0 p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20">
+            <Icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
         </div>
         <div>
-            <h3 className="text-lg font-bold">{title}</h3>
+            <h3 className="text-lg font-bold group-hover:text-primary">{title}</h3>
             <p className="text-muted-foreground mt-1">{description}</p>
         </div>
     </div>
@@ -120,18 +120,14 @@ export default function DataServicesPage() {
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {coreCapabilities.map(cap => (
-                           <Card key={cap.title} className="bg-card p-6 rounded-lg border flex flex-col">
-                               <CardHeader className="p-0">
-                                   <div className="flex items-center gap-4">
-                                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                         <cap.icon className="w-6 h-6 text-primary" />
-                                      </div>
-                                   </div>
-                               </CardHeader>
-                               <CardContent className="p-0 mt-4 flex-grow">
-                                  <h3 className="font-bold text-lg">{cap.title}</h3>
-                                  <p className="text-muted-foreground text-sm mt-2">{cap.description}</p>
-                               </CardContent>
+                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                               </div>
+                               <div className="flex-grow">
+                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                               </div>
                            </Card>
                         ))}
                     </div>
@@ -163,7 +159,7 @@ export default function DataServicesPage() {
                         description="Our integration with SAP ICSM supports complete supply chain automation through a series of bi-directional API calls."
                         className="mb-16"
                     />
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
                         {sapFlows.map(flow => (
                              <DetailCard key={flow.title} icon={flow.icon} title={flow.title} description={flow.description} />
                         ))}
