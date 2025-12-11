@@ -929,6 +929,12 @@
       "description": "Two scientists reviewing data on a computer screen in a modern laboratory.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1Rc9NAYNz4HIu6-WYkOAq2l91H5SH_mw6",
       "imageHint": "scientists data"
+    },
+    {
+      "id": "clinical-supplies-summary",
+      "description": "A scientist organizing clinical supply boxes in a controlled storage environment.",
+      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clinical supply boxes"
     }
   ]
 }

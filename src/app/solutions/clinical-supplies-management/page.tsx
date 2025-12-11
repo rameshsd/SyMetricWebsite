@@ -1,7 +1,7 @@
 
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import {
     Package,
     Settings,
@@ -17,9 +17,15 @@ import {
     Users,
     FlaskConical,
     ShieldCheck,
-    Repeat
+    Repeat,
+    ArrowRight
 } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -89,7 +95,31 @@ const capabilities = [
     },
 ];
 
+const missionCriticalFeatures = [
+    {
+        value: "item-1",
+        title: "Prevent Stockouts",
+        description: "Ensure zero stockouts with automated resupply triggers, real-time inventory visibility, and predictive stock management, guaranteeing that sites always have the necessary supplies."
+    },
+    {
+        value: "item-2",
+        title: "Ensure Protocol-Aligned Dispensing",
+        description: "Maintain strict adherence to study protocols with configurable rules for dose titration, subject-specific kit reservations, and dispensing restrictions based on expiry dates."
+    },
+    {
+        value: "item-3",
+        title: "Achieve Full Regulatory Compliance",
+        description: "Support 21 CFR Part 11 and ICH-GCP guidelines with complete audit trails, secure e-signatures, and rigorous temperature monitoring for cold-chain shipments."
+    },
+    {
+        value: "item-4",
+        title: "Streamline Warehouse-to-Site Operations",
+        description: "Optimize logistics with automated shipment workflows, real-time tracking from dispatch to receipt, and efficient management of both central and local site inventories."
+    }
+];
+
 export default function ClinicalSuppliesManagementPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'clinical-supplies-summary');
 
     return (
         <div>
@@ -121,9 +151,54 @@ export default function ClinicalSuppliesManagementPage() {
             </section>
 
              <section className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">A Mission-Critical Module</h2>
-                     <p className="text-lg text-muted-foreground">The Clinical Supplies Management module ensures zero stockouts, protocol-aligned dispensing, regulatory compliance, and efficient warehouse-to-site operations for safe, compliant, and uninterrupted clinical trial execution.</p>
+                <div className="container">
+                    <div className="text-left mb-12">
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">A Mission-Critical Module</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">Ensure Safe, Compliant, and Uninterrupted Trial Execution</h2>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="relative">
+                            <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                                {missionCriticalFeatures.map((feature) => (
+                                     <AccordionItem value={feature.value} key={feature.value} className="border-b-0">
+                                        <div className="flex gap-4">
+                                            <div className="pt-4">
+                                                <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                                                    {feature.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent className="pb-8 pr-4">
+                                                    <p className="text-muted-foreground">{feature.description}</p>
+                                                </AccordionContent>
+                                            </div>
+                                        </div>
+                                     </AccordionItem>
+                                ))}
+                            </Accordion>
+                            <div className="mt-8">
+                                <Button asChild>
+                                    <Link href="/contact">
+                                        Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="relative flex items-center justify-center">
+                            <div className="relative w-full aspect-video">
+                                {summaryImage && (
+                                <Image
+                                    src={summaryImage.imageUrl}
+                                    alt={summaryImage.description}
+                                    data-ai-hint={summaryImage.imageHint}
+                                    fill
+                                    className="rounded-2xl object-cover shadow-lg"
+                                />
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
