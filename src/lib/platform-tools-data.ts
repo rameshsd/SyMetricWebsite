@@ -31,7 +31,7 @@ export const toolsData = [
         icon: OrganizationIcon, 
         label: 'Organization Management',
         description: 'Manage all organizations participating in your trials from a central location.',
-        link: '#' 
+        link: '/solutions/organization-management' 
     },
     { 
         id: 'customer',
