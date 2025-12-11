@@ -857,6 +857,12 @@
       "description": "An organized inventory of clinical trial supplies in a warehouse.",
       "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "clinical supplies inventory"
+    },
+    {
+      "id": "data-management-hero",
+      "description": "A dashboard displaying various charts and graphs for data management.",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analytics dashboard"
     }
   ]
 }

@@ -74,7 +74,7 @@ export const toolsData = [
         icon: DataManagementIcon, 
         label: 'Data Management',
         description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
-        link: '#' 
+        link: '/solutions/data-management' 
     },
     { 
         id: 'lab',
