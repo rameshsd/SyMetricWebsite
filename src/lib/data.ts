@@ -368,6 +368,20 @@ export const solutions: Solution[] = [
     image: 'lab-management-hero',
     backgroundColor: '#f0f9ff'
   },
+  {
+    id: 'ds',
+    name: 'Data Services',
+    slug: 'data-services',
+    hero: {
+        title: 'Data Services & Integration',
+        subtitle: 'Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer.'
+    },
+    description: 'Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.',
+    longDescription: 'Our Data Services module provides a powerful, flexible, and fully configurable integration framework that enables secure, real-time communication between SyMetric and external clinical platforms.',
+    icon: DataServicesIcon,
+    image: 'data-services-hero',
+    backgroundColor: '#f0f9ff'
+  },
 ];
 
 export const industries: Industry[] = [

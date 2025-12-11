@@ -109,7 +109,7 @@ export const toolsData = [
         icon: DataServicesIcon,
         label: 'Data Services',
         description: 'Custom data exports, integrations, and reporting services to meet unique needs.',
-        link: '#'
+        link: '/solutions/data-services'
     },
     { 
         id: 'sample',
