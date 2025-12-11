@@ -20,6 +20,8 @@ import {
 import { SectionTitle } from '@/components/shared/section-title';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Sample Management System - SyMetric',
@@ -89,6 +91,40 @@ const capabilities: { icon: LucideIcon; title: string; description: string, link
     },
 ];
 
+const ConclusionSection = () => {
+    const conclusionImage = PlaceHolderImages.find(p => p.id === 'about-hero');
+
+    return (
+        <section className="bg-secondary/50">
+            <div className="container">
+                <div className="bg-background p-8 rounded-2xl shadow-lg border">
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        <div className="space-y-6">
+                            <p className="text-sm font-semibold text-primary">Conclusion</p>
+                            <h2 className="text-4xl font-bold tracking-tight">Complete Control Over Your Sample Lifecycle</h2>
+                            <p className="text-muted-foreground">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
+                            <Button asChild>
+                                <Link href="/contact">Get Started</Link>
+                            </Button>
+                        </div>
+                        <div className="relative h-80 rounded-lg overflow-hidden">
+                           {conclusionImage && (
+                                <Image
+                                    src={conclusionImage.imageUrl}
+                                    alt="Professional working on a tablet"
+                                    fill
+                                    className="object-cover"
+                                    data-ai-hint={conclusionImage.imageHint}
+                                />
+                           )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
 export default function SampleManagementPage() {
 
     return (
@@ -109,7 +145,7 @@ export default function SampleManagementPage() {
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
@@ -121,12 +157,7 @@ export default function SampleManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
-                     <p className="text-lg text-muted-foreground">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
-                </div>
-            </section>
+             <ConclusionSection />
         </div>
     );
 }
