@@ -627,19 +627,19 @@
     {
       "id": "platform-pharma",
       "description": "Pharmaceutical lab with scientist",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/pharma-companies.jpg",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2017/07/pharma-companies.jpg",
       "imageHint": "pharma lab"
     },
     {
       "id": "platform-cro",
       "description": "Team of researchers collaborating",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/Contract-Research-Organizations-CROs.jpg",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2017/07/Contract-Research-Organizations-CROs.jpg",
       "imageHint": "research team"
     },
     {
       "id": "platform-academia",
       "description": "University building",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/07/Academia-Hospitals-and-Universities.jpg",
+      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2017/07/Academia-Hospitals-and-Universities.jpg",
       "imageHint": "university building"
     },
     {
@@ -861,13 +861,13 @@
     {
       "id": "data-management-hero",
       "description": "A dashboard displaying various charts and graphs for data management.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analytics dashboard"
     },
     {
       "id": "study-management-hero",
       "description": "A person organizing a complex flowchart, representing study management.",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study planning"
     },
     {
@@ -947,6 +947,12 @@
       "description": "A secure data center with glowing server racks, representing enterprise-grade security.",
       "imageUrl": "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzZWN1cmUlMjBkYXRhJTIwY2VudGVyfGVufDB8fHx8MTc2MTEyMTQxMnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "secure data center"
+    },
+    {
+      "id": "sample-management-hero-2",
+      "description": "A dynamic image showing laboratory samples being processed with digital overlays, representing advanced sample management.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1_Qmd_CLbchnoyzLilZTKgOTcZJTJwvcI",
+      "imageHint": "sample management digital"
     }
   ]
 }

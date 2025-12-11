@@ -9,10 +9,11 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 interface SyMetricBusinessAIProps {
   title: string;
   subtitle: string;
+  heroImageId?: string;
 }
 
-export function SyMetricBusinessAI({ title, subtitle }: SyMetricBusinessAIProps) {
-  const businessAIImage = PlaceHolderImages.find(p => p.id === 'business-ai-hero');
+export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai-hero' }: SyMetricBusinessAIProps) {
+  const heroImage = PlaceHolderImages.find(p => p.id === heroImageId);
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff] dark:bg-card">
@@ -35,11 +36,11 @@ export function SyMetricBusinessAI({ title, subtitle }: SyMetricBusinessAIProps)
             </div>
           </div>
           <div className="relative h-[300px] lg:h-full w-full">
-            {businessAIImage && (
+            {heroImage && (
               <Image
-                src={businessAIImage.imageUrl}
-                alt={businessAIImage.description}
-                data-ai-hint={businessAIImage.imageHint}
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                data-ai-hint={heroImage.imageHint}
                 fill
                 className="rounded-lg object-contain"
               />

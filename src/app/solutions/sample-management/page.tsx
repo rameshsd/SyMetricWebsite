@@ -96,6 +96,7 @@ export default function SampleManagementPage() {
             <SyMetricBusinessAI 
               title="Sample Management System"
               subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
+              heroImageId="sample-management-hero-2"
             />
             
             <section>
@@ -108,7 +109,7 @@ export default function SampleManagementPage() {
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                    <cap.icon className="h-24 w-24 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
