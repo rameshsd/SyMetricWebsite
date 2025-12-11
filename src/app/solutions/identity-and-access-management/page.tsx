@@ -81,6 +81,7 @@ export default function IamPage() {
             <SyMetricBusinessAI
               title="Identity & Access Management (IAM) Module"
               subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
+              heroImageId="iam-hero"
             />
             
             <section>
@@ -112,7 +113,7 @@ export default function IamPage() {
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Enterprise-Grade Security and Governance</p>
                         <h2 className="text-4xl font-bold tracking-tight mt-2">The Backbone of Secure Clinical Operations</h2>
-                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments.</p>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments. With robust user lifecycle management, configurable roles, advanced auditing, and strong credential workflows, IAM forms the backbone of secure operations in regulated clinical systems.</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="relative">
