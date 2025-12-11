@@ -46,7 +46,7 @@ export const toolsData = [
         icon: StudyIcon, 
         label: 'Study Management',
         description: 'Define, configure, and oversee all aspects of your clinical studies.',
-        link: '#' 
+        link: '/solutions/study-management' 
     },
     { 
         id: 'site',
@@ -81,14 +81,14 @@ export const toolsData = [
         icon: LabIcon, 
         label: 'Lab Management',
         description: 'Manage lab data, normal ranges, and sample tracking with seamless integration.',
-        link: '#' 
+        link: '/solutions/lab-management' 
     },
     { 
         id: 'coding',
         icon: MedicalCodingIcon, 
         label: 'Medical Coding',
         description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
-        link: '#',
+        link: '/solutions/medical-coding',
     },
     { 
         id: 'reports',

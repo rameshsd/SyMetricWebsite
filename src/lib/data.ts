@@ -311,7 +311,63 @@ export const solutions: Solution[] = [
     icon: Package,
     image: 'clinical-supplies-hero',
     backgroundColor: '#f0f9ff'
-  }
+  },
+  {
+    id: 'dm',
+    name: 'Data Management',
+    slug: 'data-management',
+    hero: {
+        title: 'Data Management',
+        subtitle: 'End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials.'
+    },
+    description: 'A unified ecosystem to design CRFs, collect subject data, validate accuracy, and manage queries.',
+    longDescription: 'The Data Management module provides a unified ecosystem to design CRFs, collect subject data, validate accuracy, manage queries/discrepancies, audit changes, freeze/lock data, and export final cleaned datasets.',
+    icon: DataManagementIcon,
+    image: 'data-management-hero',
+    backgroundColor: '#f0f9ff'
+  },
+   {
+    id: 'sm',
+    name: 'Study Management',
+    slug: 'study-management',
+    hero: {
+        title: 'Study Management',
+        subtitle: 'Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure.'
+    },
+    description: 'The control center of your clinical trial platform, ensuring consistent execution across all sites.',
+    longDescription: 'The Study Management module acts as the control center of your clinical trial platform. It provides a single source of truth for all study metadata, configurations, visit schedules, treatment arms, and versioned study builds.',
+    icon: StudyIcon,
+    image: 'study-management-hero',
+    backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'mc',
+    name: 'Medical Coding',
+    slug: 'medical-coding',
+    hero: {
+        title: 'Medical Coding',
+        subtitle: 'Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management.'
+    },
+    description: 'Standardize clinical terms using globally accepted dictionaries like MedDRA and WHO-Drug.',
+    longDescription: 'The Medical Coding module ensures that all verbatim terms recorded in clinical case report forms (CRFs) are standardized using globally accepted dictionaries, with tools for efficient coding, review, and discrepancy resolution.',
+    icon: MedicalCodingIcon,
+    image: 'medical-coding-hero',
+    backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'lab',
+    name: 'Lab Management',
+    slug: 'lab-management',
+    hero: {
+        title: 'Lab Data Management',
+        subtitle: 'End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials.'
+    },
+    description: 'Unified lab setup, reference ranges, and data uploads to ensure standardized and validated lab results.',
+    longDescription: 'The Lab Data Management module unifies lab setup, reference ranges, and data uploads, ensuring all lab results are standardized, validated, and fully traceable.',
+    icon: LabIcon,
+    image: 'lab-management-hero',
+    backgroundColor: '#f0f9ff'
+  },
 ];
 
 export const industries: Industry[] = [
