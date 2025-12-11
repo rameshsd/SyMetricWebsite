@@ -3,8 +3,13 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon } from 'lucide-react';
+import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon, ArrowRight } from 'lucide-react';
 import React from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Customer Management - SyMetric',
@@ -45,15 +50,36 @@ const features: { icon: LucideIcon; title: string; description: string; details:
 ];
 
 const summaryPoints = [
-    "Secure administration of sponsor/CRO profiles",
-    "Contract-compliant limits on users & studies",
-    "Centralized customer metadata",
-    "Restricted visibility for SyMetric internal teams",
-    "Controlled scalability and governance"
+    {
+        id: "item-1",
+        title: "Secure administration of sponsor/CRO profiles",
+        description: "Maintain secure and detailed profiles for every sponsor and CRO, with access restricted to authorized internal teams."
+    },
+    {
+        id: "item-2",
+        title: "Contract-compliant limits on users & studies",
+        description: "Enforce contractual limits for user accounts and study creation automatically, ensuring compliance with licensing and subscription plans."
+    },
+    {
+        id: "item-3",
+        title: "Centralized customer metadata",
+        description: "Create a single source of truth for all customer-related information, simplifying management and reducing data redundancy."
+    },
+    {
+        id: "item-4",
+        title: "Restricted visibility for SyMetric internal teams",
+        description: "Ensure customer data confidentiality with strict, role-based access controls for your internal administrative teams."
+    },
+     {
+        id: "item-5",
+        title: "Controlled scalability and governance",
+        description: "Govern the growth and scalability of customer operations on the platform by setting clear boundaries for resource utilization."
+    }
 ];
 
 
 export default function CustomerManagementPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'organization-summary-image');
 
     return (
         <div>
@@ -76,7 +102,7 @@ export default function CustomerManagementPage() {
                                     <feature.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
                                </div>
                                <CardHeader className="p-0">
-                                  <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
+                                   <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
                                </CardHeader>
                                <CardContent className="p-0 mt-2 flex-grow">
                                   <p className="text-muted-foreground text-sm">{feature.description}</p>
@@ -96,19 +122,54 @@ export default function CustomerManagementPage() {
             </section>
 
              <section className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <SectionTitle
-                        title="Summary"
-                        description="The Customer Management module is the administrative backbone for managing sponsor and CRO accounts. It provides essential controls for enforcing contractual limits, securing customer data, and ensuring a governed, scalable multi-tenant environment."
-                        className="mb-12"
-                    />
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                        {summaryPoints.map((point, index) => (
-                            <div key={index} className="flex items-center gap-3 bg-background p-3 rounded-lg border">
-                                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                <span className="font-medium text-foreground">{point}</span>
+                <div className="container">
+                    <div className="text-left mb-12">
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Administrative Backbone</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">Centralized Governance and Control</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Customer Management module is the administrative backbone for managing sponsor and CRO accounts. It provides essential controls for enforcing contractual limits, securing customer data, and ensuring a governed, scalable multi-tenant environment.</p>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="relative">
+                            <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                                {summaryPoints.map((point) => (
+                                     <AccordionItem value={point.id} key={point.id} className="border-b-0">
+                                        <div className="flex gap-4">
+                                            <div className="pt-4">
+                                                <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                                                    {point.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent className="pb-8 pr-4">
+                                                    <p className="text-muted-foreground">{point.description}</p>
+                                                </AccordionContent>
+                                            </div>
+                                        </div>
+                                     </AccordionItem>
+                                ))}
+                            </Accordion>
+                            <div className="mt-8">
+                                <Button asChild>
+                                    <Link href="/contact">
+                                        Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
                             </div>
-                        ))}
+                        </div>
+                        <div className="relative flex items-center justify-center">
+                            <div className="relative w-full aspect-video">
+                                {summaryImage && (
+                                <Image
+                                    src={summaryImage.imageUrl}
+                                    alt={summaryImage.description}
+                                    data-ai-hint={summaryImage.imageHint}
+                                    fill
+                                    className="rounded-2xl object-cover shadow-lg"
+                                />
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
