@@ -114,12 +114,6 @@ export default function SampleManagementPage() {
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
                                   <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
                                </div>
-                               <Button variant="link" asChild className="p-0 h-auto mt-4 text-sm font-semibold text-primary">
-                                   <Link href={cap.link}>
-                                       Explore {cap.title.toLowerCase()}
-                                       <ArrowRight className="ml-2 h-4 w-4" />
-                                   </Link>
-                               </Button>
                            </Card>
                         ))}
                     </div>
