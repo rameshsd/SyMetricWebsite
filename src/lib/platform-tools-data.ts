@@ -1,5 +1,4 @@
 
-
 import { 
     DataManagementIcon,
     DataServicesIcon,
@@ -95,7 +94,7 @@ export const toolsData = [
         icon: ReportsIcon, 
         label: 'Reports',
         description: 'Generate insightful reports and visualizations for real-time trial oversight.',
-        link: '#' 
+        link: '/solutions/reports' 
     },
     { 
         id: 'learning',
