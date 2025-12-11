@@ -116,7 +116,7 @@ export const toolsData = [
         icon: SampleManagementIcon, 
         label: 'Sample Management',
         description: 'Track the entire lifecycle of biological samples, from collection to storage and analysis.',
-        link: '#' 
+        link: '/solutions/sample-management' 
     },
     { 
         id: 'label',

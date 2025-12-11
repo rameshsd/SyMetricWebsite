@@ -271,7 +271,7 @@ export const solutions: Solution[] = [
     backgroundColor: '#fdf4ff'
   },
   {
-    id: 'sm',
+    id: 'site-management',
     name: 'Site Management',
     slug: 'site-management',
     hero: {
@@ -327,7 +327,7 @@ export const solutions: Solution[] = [
     backgroundColor: '#f0f9ff'
   },
    {
-    id: 'sm',
+    id: 'study-management',
     name: 'Study Management',
     slug: 'study-management',
     hero: {
@@ -380,6 +380,20 @@ export const solutions: Solution[] = [
     longDescription: 'Our Data Services module provides a powerful, flexible, and fully configurable integration framework that enables secure, real-time communication between SyMetric and external clinical platforms.',
     icon: DataServicesIcon,
     image: 'data-services-hero',
+    backgroundColor: '#f0f9ff'
+  },
+  {
+    id: 'sample-management',
+    name: 'Sample Management',
+    slug: 'sample-management',
+    hero: {
+        title: 'Sample Management System',
+        subtitle: 'A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis.'
+    },
+    description: 'Manage the lifecycle of clinical samples with full traceability and compliance.',
+    longDescription: 'With deep configurability, automated tracking, and audit-ready controls, it ensures sample integrity, compliance, and full traceability throughout the study.',
+    icon: Package,
+    image: 'sample-management-hero',
     backgroundColor: '#f0f9ff'
   },
 ];
