@@ -687,7 +687,7 @@
     {
       "id": "service-tab-migration",
       "description": "Abstract data migration from one server to another.",
-      "imageUrl": "https://images.unsplash.com/photo-1590959651373-a3db0f38a9b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXRhJTIwbWlncmF0aW9ufGVufDB8fHx8MTc2MDg2MjY1OHww&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1590959651373-a3db0f38a9b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXRhJTIwbWlncmF0aW9ufGVufDB8fHx8MTc2MDg2MjY1OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data migration"
     },
     {
@@ -855,19 +855,19 @@
     {
       "id": "clinical-supplies-hero",
       "description": "An organized inventory of clinical trial supplies in a warehouse.",
-      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "clinical supplies inventory"
     },
     {
       "id": "data-management-hero",
       "description": "A dashboard displaying various charts and graphs for data management.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analytics dashboard"
     },
     {
       "id": "study-management-hero",
       "description": "A person organizing a complex flowchart, representing study management.",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study planning"
     },
     {
@@ -931,10 +931,22 @@
       "imageHint": "scientists data"
     },
     {
+      "id": "customer-management-summary-image",
+      "description": "A diverse group of professionals in a meeting, representing customer management.",
+      "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHJlbGF0aW9uc2hpcCUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzYxMTAyNTA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "customer management"
+    },
+    {
       "id": "clinical-supplies-summary",
       "description": "A scientist organizing clinical supply boxes in a controlled storage environment.",
-      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxjbGluaWNhbCUyMHN1cHBsaWVzfGVufDB8fHx8MTc2MDgzNTM1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "clinical supply boxes"
+    },
+    {
+      "id": "iam-summary",
+      "description": "A secure data center with glowing server racks, representing enterprise-grade security.",
+      "imageUrl": "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzZWN1cmUlMjBkYXRhJTIwY2VudGVyfGVufDB8fHx8MTc2MTEyMTQxMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "secure data center"
     }
   ]
 }

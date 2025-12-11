@@ -1,9 +1,15 @@
 
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Users, Lock, User, UserCheck, Key, Bell, Trash2, Edit, Send } from 'lucide-react';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Shield, Users, Lock, User, UserCheck, Key } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -44,15 +50,31 @@ const capabilities = [
 ];
 
 const features = [
-    { title: "Role Definition & Configuration", description: "Create roles at System, Customer, or Study scopes with granular permissions." },
-    { title: "Multiple Role Assignment", description: "Assign users multiple roles across different organizations and studies for flexible access modeling." },
-    { title: "Secure User Onboarding", description: "A controlled process with email validation, automatic notifications, and auditable actions." },
-    { title: "Credential & Account Management", description: "Includes password reset, PIN reset, and self-service recovery options." },
-    { title: "Notification Preferences", description: "Users can manage email alerts for specific transactions, with all notifications centrally stored." },
-    { title: "Full Lifecycle Control", description: "Securely edit, block, unblock, and delete users and profiles with mandatory reason capture and PIN authentication." },
+    { 
+        value: "item-1",
+        title: "Robust User Lifecycle Management", 
+        description: "Manage users from onboarding and profile assignment to blocking and credential resets with a secure, multi-tenant framework." 
+    },
+    { 
+        value: "item-2",
+        title: "Configurable Roles & Granular Permissions", 
+        description: "Define, configure, and govern roles at System, Customer, or Study levels with fine-grained permissions and access restrictions." 
+    },
+    { 
+        value: "item-3",
+        title: "Advanced Auditing", 
+        description: "Maintain a full, unalterable audit trail for every critical action, including role changes, user updates, and access assignments, ensuring full traceability." 
+    },
+    { 
+        value: "item-4",
+        title: "Strong Credential Workflows", 
+        description: "Enforce unique user identity and manage credentials securely with features like self-service password/PIN recovery and multi-factor authentication support." 
+    },
 ];
 
 export default function IamPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'iam-summary');
+
     return (
         <div>
             <SyMetricBusinessAI
@@ -70,7 +92,7 @@ export default function IamPage() {
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
@@ -81,32 +103,57 @@ export default function IamPage() {
                     </div>
                 </div>
             </section>
-
+            
             <section className="bg-secondary/50">
                 <div className="container">
-                    <SectionTitle title="Detailed Features" className="mb-12 text-center" />
-                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {features.map((feature, index) => (
-                            <div key={index} className="flex items-start gap-4">
-                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-1">
-                                    <span className="font-bold text-primary">{index + 1}</span>
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-bold">{feature.title}</h3>
-                                    <p className="text-muted-foreground mt-1 text-sm">{feature.description}</p>
-                                </div>
-                            </div>
-                        ))}
+                    <div className="text-left mb-12">
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Enterprise-Grade Security and Governance</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">The Backbone of Secure Clinical Operations</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments.</p>
                     </div>
-                </div>
-            </section>
-
-             <section>
-                <div className="container max-w-3xl mx-auto text-center">
-                     <SectionTitle
-                        title="Enterprise-Grade Security and Governance"
-                        description="The Identity & Access Management module ensures enterprise-grade security, strict compliance, and precise governance across multi-tenant, multi-study clinical environments. With robust user lifecycle management, configurable roles, advanced auditing, and strong credential workflows, IAM forms the backbone of secure operations in regulated clinical systems."
-                     />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="relative">
+                            <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
+                                {features.map((feature) => (
+                                     <AccordionItem value={feature.value} key={feature.value} className="border-b-0">
+                                        <div className="flex gap-4">
+                                            <div className="pt-4">
+                                                <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                                            </div>
+                                            <div className="flex-1">
+                                                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                                                    {feature.title}
+                                                </AccordionTrigger>
+                                                <AccordionContent className="pb-8 pr-4">
+                                                    <p className="text-muted-foreground">{feature.description}</p>
+                                                </AccordionContent>
+                                            </div>
+                                        </div>
+                                     </AccordionItem>
+                                ))}
+                            </Accordion>
+                            <div className="mt-8">
+                                <Button asChild>
+                                    <Link href="/contact">
+                                        Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="relative flex items-center justify-center">
+                            <div className="relative w-full aspect-video">
+                                {summaryImage && (
+                                <Image
+                                    src={summaryImage.imageUrl}
+                                    alt={summaryImage.description}
+                                    data-ai-hint={summaryImage.imageHint}
+                                    fill
+                                    className="rounded-2xl object-cover shadow-lg"
+                                />
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
