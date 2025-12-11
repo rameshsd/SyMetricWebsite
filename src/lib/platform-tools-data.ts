@@ -38,7 +38,7 @@ export const toolsData = [
         icon: CustomerManagementIcon,
         label: 'Customer Management',
         description: 'Manage relationships and data for sponsors and CROs.',
-        link: '#' 
+        link: '/solutions/customer-management' 
     },
     { 
         id: 'study',
