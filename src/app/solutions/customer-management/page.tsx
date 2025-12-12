@@ -79,13 +79,14 @@ const summaryPoints = [
 
 
 export default function CustomerManagementPage() {
-    const summaryImage = PlaceHolderImages.find(p => p.id === 'organization-summary-image');
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'customer-management-summary-image');
 
     return (
         <div>
             <SyMetricBusinessAI 
               title="Customer Management"
               subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
+              heroImageId="customer-management-hero"
             />
             
             <section>
@@ -124,9 +125,8 @@ export default function CustomerManagementPage() {
              <section className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
-                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Administrative Backbone</p>
-                        <h2 className="text-4xl font-bold tracking-tight mt-2">Centralized Governance and Control</h2>
-                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Customer Management module is the administrative backbone for managing sponsor and CRO accounts. It provides essential controls for enforcing contractual limits, securing customer data, and ensuring a governed, scalable multi-tenant environment.</p>
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Summary</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">Administrative Backbone for Multi-Tenant Governance</h2>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="relative">
