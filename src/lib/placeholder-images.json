@@ -123,7 +123,7 @@
     {
       "id": "resource-4",
       "description": "Patient centricity",
-      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "doctor patient"
     },
     {
@@ -147,7 +147,7 @@
     {
       "id": "resources-hero",
       "description": "Person reading on a tablet",
-      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8fDE3NjA4MDA5NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1635363401491-254553d7aa5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwdGFibGV0fGVufDB8fHx8fDE3NjA4MDA5NjN8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "reading tablet"
     },
     {
@@ -159,7 +159,7 @@
     {
       "id": "map-placeholder",
       "description": "Map of a city for HQ location",
-      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1730317195705-8a265a59ed1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8fDE3NjA4NTk0NDZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "city map"
     },
     {
@@ -225,7 +225,7 @@
     {
       "id": "sap-business-applications-hero",
       "description": "Woman looking at her phone with business app UIs floating",
-      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1600880292210-f79b3c469b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHdvbWFuJTIwb24lMjBwaG9uZXxlbnwwfHx8fDE3NjA5NDk5NTl8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "business woman phone"
     },
     {
@@ -873,7 +873,7 @@
     {
       "id": "medical-coding-hero",
       "description": "A medical professional analyzing data on a computer screen, representing medical coding.",
-      "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "medical data"
     },
     {
@@ -921,7 +921,7 @@
     {
       "id": "organization-management-hero",
       "description": "A diagram of an organizational chart, representing structure and hierarchy.",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1mMxemeixUcDDabCCqXS_TyQMakiM2hUP",
       "imageHint": "organization chart"
     },
     {

@@ -94,6 +94,7 @@ export default function OrganizationManagementPage() {
             <SyMetricBusinessAI 
               title="Organization Management"
               subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
+              heroImageId="organization-management-hero"
             />
             
             <section>
@@ -132,7 +133,7 @@ export default function OrganizationManagementPage() {
              <section className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
-                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">How it Works</p>
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Summary</p>
                         <h2 className="text-4xl font-bold tracking-tight mt-2">Administrative Backbone for Trial Governance</h2>
                         <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Organization Management module provides the administrative backbone for governing all entities in the clinical trial ecosystem, ensuring structured, secure, and efficient operations.</p>
                     </div>
