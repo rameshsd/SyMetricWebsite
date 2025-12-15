@@ -53,7 +53,7 @@ export function GrowthStoryTimeline() {
                 </div>
                 {visibleCount < sortedTimeline.length && (
                      <div className="text-center mt-8">
-                        <Button variant="outline" onClick={handleViewMore} className="text-white border-white/50 hover:bg-white/10 hover:text-white">View More</Button>
+                        <Button variant="outline" onClick={handleViewMore} className="bg-transparent border-white text-white hover:bg-white hover:text-primary">View More</Button>
                     </div>
                 )}
             </div>
