@@ -48,9 +48,13 @@ const capabilities = [
 export default function LabDataManagementPage() {
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
-        { label: 'Key Capabilities', href: '#capabilities' },
-        { label: 'Conclusion', href: '#conclusion' },
+        { label: 'AI solutions', href: '#' },
+        { label: 'AI business resources', href: '#' },
+        { label: 'Trustworthy AI', href: '#' },
+        { label: 'News and insights', href: '#' },
+        { label: 'AI in practice', href: '#' },
+        { label: 'Customer stories', href: '#' },
+        { label: 'FAQ', href: '#' },
     ];
 
     return (

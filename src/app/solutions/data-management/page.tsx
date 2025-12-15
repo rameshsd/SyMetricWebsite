@@ -98,9 +98,13 @@ export default function DataManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'revolutionizing-trials');
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
-        { label: 'Key Capabilities', href: '#capabilities' },
-        { label: 'Summary', href: '#summary' },
+        { label: 'AI solutions', href: '#' },
+        { label: 'AI business resources', href: '#' },
+        { label: 'Trustworthy AI', href: '#' },
+        { label: 'News and insights', href: '#' },
+        { label: 'AI in practice', href: '#' },
+        { label: 'Customer stories', href: '#' },
+        { label: 'FAQ', href: '#' },
     ];
 
     return (

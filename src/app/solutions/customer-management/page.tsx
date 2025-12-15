@@ -85,9 +85,13 @@ export default function CustomerManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'customer-management-summary-image');
     
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
-        { label: 'Key Features', href: '#features' },
-        { label: 'Summary', href: '#summary' },
+        { label: 'AI solutions', href: '#' },
+        { label: 'AI business resources', href: '#' },
+        { label: 'Trustworthy AI', href: '#' },
+        { label: 'News and insights', href: '#' },
+        { label: 'AI in practice', href: '#' },
+        { label: 'Customer stories', href: '#' },
+        { label: 'FAQ', href: '#' },
     ];
 
     return (

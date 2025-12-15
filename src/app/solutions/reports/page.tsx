@@ -62,9 +62,13 @@ const reportCategories: { icon: LucideIcon; title: string; reports: string[] }[]
 export default function ReportsModulePage() {
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
-        { label: 'Capabilities', href: '#capabilities' },
-        { label: 'Report Categories', href: '#report-categories' },
+        { label: 'AI solutions', href: '#' },
+        { label: 'AI business resources', href: '#' },
+        { label: 'Trustworthy AI', href: '#' },
+        { label: 'News and insights', href: '#' },
+        { label: 'AI in practice', href: '#' },
+        { label: 'Customer stories', href: '#' },
+        { label: 'FAQ', href: '#' },
     ];
 
     return (
