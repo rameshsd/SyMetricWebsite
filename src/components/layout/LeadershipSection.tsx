@@ -16,7 +16,7 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
   const bioPreview = member.bio[0].slice(0, 150);
 
   return (
-    <Card className="flex flex-col bg-subtle-blue p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full text-center">
+    <Card className="flex flex-col bg-secondary/50 p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full text-center">
       <div className="relative self-center w-24 h-24 mb-4">
         {image && (
           <Image
