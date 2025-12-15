@@ -152,11 +152,12 @@ export default function AboutPage() {
         
         <CtpPieChart />
         
-        <div id="our-story" className="bg-secondary/50 pt-20">
+        <div id="our-story" className="bg-primary text-primary-foreground pt-20">
           <div className="container">
              <SectionTitle 
                 title="Our Story"
                 description="A Stellar Journey Led by…"
+                className="text-primary-foreground"
              />
           </div>
           <LeadershipSection />
