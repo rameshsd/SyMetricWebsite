@@ -680,7 +680,7 @@ export const growthTimeline = [
     year: '2012',
     events: ['Founded in Bangalore, India'],
   },
-].sort((a, b) => parseInt(b.year) - parseInt(a.year));
+];
 
 
 export const homepageContent = {
@@ -1048,10 +1048,10 @@ export const platformFeatures: PlatformFeature[] = [
 
 export const companyInfo: CompanyInfo = {
     facts: {
-      founded: '1972',
-      employees: '107,415',
-      countries: '130+',
-      customers: '440,000'
+      founded: '2012',
+      employees: '50+',
+      countries: '3+',
+      customers: '100+'
     }
 };
 
@@ -1840,3 +1840,5 @@ export const aiFaqItems: FAQItem[] = [
         'Joule is a natural language, generative AI copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
     },
 ];
+
+    

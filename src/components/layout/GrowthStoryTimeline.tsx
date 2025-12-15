@@ -1,7 +1,8 @@
 
+
 "use client";
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { growthTimeline } from '@/lib/data';
 import { SectionTitle } from '@/components/shared/section-title';
 import { cn } from '@/lib/utils';
@@ -14,11 +15,15 @@ export function GrowthStoryTimeline() {
     const [ref, isInView] = useInView({ triggerOnce: true });
     const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_ITEMS);
 
+    const sortedTimeline = useMemo(() => {
+        return [...growthTimeline].sort((a, b) => parseInt(b.year) - parseInt(a.year));
+    }, []);
+
     const handleViewMore = () => {
-        setVisibleCount(growthTimeline.length);
+        setVisibleCount(sortedTimeline.length);
     };
 
-    const visibleItems = growthTimeline.slice(0, visibleCount);
+    const visibleItems = sortedTimeline.slice(0, visibleCount);
 
     return (
         <section id="growth-story" className="bg-sap-gradient text-primary-foreground">
@@ -46,7 +51,7 @@ export function GrowthStoryTimeline() {
                         </div>
                     ))}
                 </div>
-                {visibleCount < growthTimeline.length && (
+                {visibleCount < sortedTimeline.length && (
                      <div className="text-center mt-8">
                         <Button variant="outline" onClick={handleViewMore} className="text-white border-white/50 hover:bg-white/10 hover:text-white">View More</Button>
                     </div>
@@ -55,3 +60,5 @@ export function GrowthStoryTimeline() {
         </section>
     );
 }
+
+    
