@@ -8,62 +8,60 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Linkedin, ArrowLeft, ArrowRight } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../ui/carousel';
+import { Linkedin } from 'lucide-react';
 
 const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
   const image = PlaceHolderImages.find((p) => p.id === member.imageId);
   const [isExpanded, setIsExpanded] = useState(false);
+  const bioPreview = member.bio[0].slice(0, 150);
 
   return (
-    <Card className="relative group overflow-hidden rounded-2xl h-[500px] w-full max-w-sm mx-auto">
+    <Card className="flex flex-col bg-background p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full">
+      <div className="relative w-full h-48 mb-4">
         {image && (
-            <Image
+          <Image
             src={image.imageUrl}
             alt={member.name}
             fill
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            />
+            className="object-cover rounded-lg"
+          />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-        <CardContent className="relative h-full flex flex-col justify-end p-6 text-white">
-            <h3 className="text-2xl font-bold">{member.name}</h3>
-            <p className="text-white/80 font-medium">{member.role}</p>
-        </CardContent>
-
-         {member.linkedin && (
-          <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 z-10">
-            <div className="h-9 w-9 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-              <Linkedin className="h-5 w-5" />
+        {member.linkedin && (
+          <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 z-10">
+            <div className="h-8 w-8 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors">
+              <Linkedin className="h-4 w-4" />
             </div>
           </Link>
         )}
+      </div>
+      
+      <CardContent className="p-0 flex-grow flex flex-col">
+        <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
+        <p className="text-primary font-semibold text-sm mb-3">{member.role}</p>
+        <p className="text-muted-foreground text-sm flex-grow">
+          {isExpanded ? member.bio.join(' ') : `${bioPreview}...`}
+        </p>
+        <Button
+          variant="link"
+          className="p-0 h-auto text-sm mt-3 self-start"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? 'Read Less' : 'Read More'}
+        </Button>
+      </CardContent>
     </Card>
   );
 };
 
 export function LeadershipSection() {
   return (
-    <section id="leadership" className="pt-20">
+    <section id="leadership" className="pt-16 pb-20">
       <div className="container">
-        <Carousel 
-            opts={{
-                align: "start",
-                loop: true,
-            }}
-            className="w-full"
-        >
-            <CarouselContent className="-ml-4">
-                {leadership.map((member) => (
-                    <CarouselItem key={member.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                         <LeadershipCard member={member} />
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-white bg-white/10 hover:bg-white/20 border-white/20" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-white bg-white/10 hover:bg-white/20 border-white/20" />
-        </Carousel>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {leadership.map((member) => (
+                <LeadershipCard key={member.id} member={member} />
+            ))}
+        </div>
       </div>
     </section>
   );
