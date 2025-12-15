@@ -6,7 +6,7 @@ import { GrowthStoryTimeline } from '@/components/layout/GrowthStoryTimeline';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { CompanyFacts } from '@/components/layout/CompanyFacts';
+import { CompanyOverview } from '@/components/layout/CompanyOverview';
 import Link from 'next/link';
 import CtpPieChart from '@/components/about/CtpPieChart';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
@@ -83,7 +83,7 @@ export default function AboutPage() {
 
         <section id="overview" className="bg-secondary/30">
           <div className="container">
-            <CompanyFacts />
+            <CompanyOverview />
           </div>
         </section>
         
