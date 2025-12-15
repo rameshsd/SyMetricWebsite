@@ -16,8 +16,8 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
   const bioPreview = member.bio[0].slice(0, 150);
 
   return (
-    <Card className="flex flex-col bg-background p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full text-center">
-      <div className="relative self-center w-32 h-32 mb-4">
+    <Card className="flex flex-col bg-subtle-blue p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full text-center">
+      <div className="relative self-center w-24 h-24 mb-4">
         {image && (
           <Image
             src={image.imageUrl}
@@ -25,13 +25,6 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
             fill
             className="object-cover rounded-full"
           />
-        )}
-        {member.linkedin && (
-          <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute bottom-0 right-0 z-10">
-            <div className="h-8 w-8 bg-gray-900/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-gray-700/80 transition-colors">
-              <Linkedin className="h-4 w-4" />
-            </div>
-          </Link>
         )}
       </div>
       
@@ -41,13 +34,20 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
         <p className="text-muted-foreground text-sm flex-grow text-left">
           {isExpanded ? member.bio.join(' ') : `${bioPreview}...`}
         </p>
-        <Button
-          variant="link"
-          className="p-0 h-auto text-sm mt-3 self-start"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? 'Read Less' : 'Read More'}
-        </Button>
+        <div className="flex justify-between items-center mt-4">
+            <Button
+              variant="link"
+              className="p-0 h-auto text-sm"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </Button>
+            {member.linkedin && (
+              <Link href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary" />
+              </Link>
+            )}
+        </div>
       </CardContent>
     </Card>
   );
