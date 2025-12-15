@@ -39,21 +39,6 @@ export function CompanyFacts() {
                     <FactItem value={facts.customers} label="Successful Trials" />
                 </div>
             )
-        },
-        {
-            value: "locations",
-            title: "Worldwide Locations",
-            content: <p className="text-muted-foreground py-4">We have a global presence, serving clients in the US, Europe, Latin America, and India.</p>
-        },
-        {
-            value: "faqs",
-            title: "FAQs",
-            content: <p className="text-muted-foreground py-4">Please visit our support page for frequently asked questions about our company and products.</p>
-        },
-        {
-            value: "report",
-            title: "Integrated Report",
-            content: <p className="text-muted-foreground py-4">Our latest integrated annual report detailing our financial, social, and environmental performance is available upon request.</p>
         }
     ]
 
