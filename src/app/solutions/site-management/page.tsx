@@ -4,36 +4,78 @@ import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
   description: 'Centralized control of sites across global clinical trials.',
 };
 
-const capabilities = [
+const capabilities: { title: string; description: string; icon: React.ReactNode }[] = [
     {
         title: "Multi-Regional Site Governance",
-        description: "The module ensures each site is aligned with study-specific operational parameters, local regulatory needs, and recruitment expectations, ensuring accurate configuration across multiple protocols."
+        description: "The module ensures each site is aligned with study-specific operational parameters, local regulatory needs, and recruitment expectations, ensuring accurate configuration across multiple protocols.",
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+        ),
     },
     {
         title: "Study-Specific Site Configuration",
-        description: "Define operational metadata for each site, including subject recruitment targets, logistics rules, and stock management to enable precise planning and prevent stock-outs."
+        description: "Define operational metadata for each site, including subject recruitment targets, logistics rules, and stock management to enable precise planning and prevent stock-outs.",
+        icon: (
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <path d="M12 18v-6" />
+                <path d="M9 15h6" />
+            </svg>
+        )
     },
     {
         title: "Access Control & Role-Based Site Visibility",
-        description: "Supports fine-grained, role-based restrictions, ensuring users from CROs or site teams access only the sites relevant to their responsibilities, enhancing data privacy and operational control."
+        description: "Supports fine-grained, role-based restrictions, ensuring users from CROs or site teams access only the sites relevant to their responsibilities, enhancing data privacy and operational control.",
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="10" r="3" />
+                <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+            </svg>
+        )
     },
     {
         title: "GDPR-Sensitive Site Handling",
-        description: "For EU-region sites, the system supports GDPR-compliant configurations by restricting sensitive subject fields and ensuring study teams collect only permissible metadata."
+        description: "For EU-region sites, the system supports GDPR-compliant configurations by restricting sensitive subject fields and ensuring study teams collect only permissible metadata.",
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+        )
     },
     {
         title: "Dynamic Site Status & Workflow Control",
-        description: "Every site operates under clearly defined statuses (Active, Inactive). Status changes trigger automated notifications to all authorized users, ensuring operational transparency."
+        description: "Every site operates under clearly defined statuses (Active, Inactive). Status changes trigger automated notifications to all authorized users, ensuring operational transparency.",
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21.5 2v6h-6" />
+                <path d="M2.5 22v-6h6" />
+                <path d="M2 11.5a10 10 0 0 1 18.8-4.3" />
+                <path d="M22 12.5a10 10 0 0 1-18.8 4.3" />
+            </svg>
+        )
     },
     {
         title: "Lab Integration & Local Lab Associations",
-        description: "Supports associating local labs with a site, ensuring accurate sample routing, clear responsibility allocation, and smooth logistics integration for seamless operations."
+        description: "Supports associating local labs with a site, ensuring accurate sample routing, clear responsibility allocation, and smooth logistics integration for seamless operations.",
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <path d="m14 10-2 2-2-2" />
+            </svg>
+        )
     }
 ];
 
@@ -78,7 +120,7 @@ export default function SiteManagementPage() {
                             <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                 <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
                                     <div className="h-16 w-16 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hospital"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M14 18V9a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v9"/><path d="M18 14h-4"/><path d="M16 12v4"/><path d="M22 18h-2a2 2 0 0 0-2 2v2H6v-2a2 2 0 0 0-2-2H2"/></svg>
+                                      {cap.icon}
                                     </div>
                                 </div>
                                 <div className="flex-grow">
