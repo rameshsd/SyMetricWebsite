@@ -60,15 +60,15 @@ export default function CtpPieChart(): JSX.Element {
   return (
     <section className="bg-secondary/50">
         <div className="container">
-            <SectionTitle title="Every day, organizations around the world trust SyMetric CTP" className="mb-16 !max-w-full" />
-            <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <SectionTitle title="Every day, organizations around the world trust SyMetric CTP" className="mb-12" />
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                     <p className="text-lg text-muted-foreground">
                         Our clinical trial platform is built on a strong, reliable, and secure foundation. Global cloud delivery services protect you from external threats, help you collect and process personal data lawfully, and enable you to meet regulatory and compliance requirements.
                     </p>
                 </div>
 
-                <div className="relative w-full max-w-[500px] mx-auto min-h-[500px]">
+                <div className="relative w-full max-w-[500px] mx-auto min-h-[400px]">
                     {/* SVG Diagram */}
                     <div className="absolute inset-0 flex items-center justify-center">
                         <svg viewBox="0 0 600 600" className="w-full h-full" role="img" aria-label="SyMetric CTP pie chart">
