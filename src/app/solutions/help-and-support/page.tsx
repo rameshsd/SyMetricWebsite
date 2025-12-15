@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
 import { BookOpen, Edit, LifeBuoy, GraduationCap } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Help & Support - SyMetric',
@@ -42,7 +43,7 @@ export default function HelpSupportPage() {
               title="Help & Support"
               subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

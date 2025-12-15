@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { DetailedIamFeatures } from '@/components/solutions/DetailedIamFeatures';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -84,7 +85,7 @@ export default function IamPage() {
               subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
               heroImageId="iam-hero"
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

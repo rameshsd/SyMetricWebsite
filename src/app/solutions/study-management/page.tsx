@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 
 export const metadata: Metadata = {
@@ -84,7 +85,7 @@ export default function StudyManagementPage() {
               title="Study Management"
               subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
             />
-
+            <AISubmenu />
             <AskAISection />
 
             <section>

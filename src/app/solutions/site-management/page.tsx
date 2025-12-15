@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -161,7 +162,7 @@ export default function SiteManagementPage() {
               title="Centralized Control of Sites Across Global Clinical Trials"
               subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

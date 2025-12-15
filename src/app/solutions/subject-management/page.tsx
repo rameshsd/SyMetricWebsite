@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplets, FlaskConical, CircleDot, GitBranch, Repeat, Shield, UserCheck, UserX, Bot, Wand } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -82,7 +83,7 @@ export default function SubjectManagementPage() {
               title="Subject Management Module"
               subtitle="End-to-end control of subject lifecycle from screening to study completion."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

@@ -1,7 +1,7 @@
 
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Library, Edit3, CheckSquare, DatabaseZap, Search, GitPullRequest, Lock, Share2, FileCheck2, UserCheck, Shield, FileOutput, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -10,6 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 
 export const metadata: Metadata = {
@@ -102,7 +103,7 @@ export default function DataManagementPage() {
               title="Data Management Module"
               subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

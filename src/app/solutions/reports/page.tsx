@@ -28,6 +28,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Reports Module - SyMetric',
@@ -65,7 +66,7 @@ export default function ReportsModulePage() {
               title="Reports Module"
               subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

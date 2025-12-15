@@ -2,6 +2,7 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Digital Learning - SyMetric',
@@ -15,7 +16,7 @@ export default function DigitalLearningPage() {
               title="Digital Learning"
               subtitle="Empowering users with role-based training modules, interactive content, and automated certification to ensure platform proficiency and compliance."
             />
-            
+            <AISubmenu />
             <AskAISection />
             
             {/* Add more sections here */}

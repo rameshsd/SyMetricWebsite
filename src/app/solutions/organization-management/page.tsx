@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 
 export const metadata: Metadata = {
@@ -97,7 +98,7 @@ export default function OrganizationManagementPage() {
               subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
               heroImageId="organization-management-hero"
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

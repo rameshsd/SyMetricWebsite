@@ -27,6 +27,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -128,7 +129,7 @@ export default function ClinicalSuppliesManagementPage() {
               title="Clinical Supplies Management Module"
               subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

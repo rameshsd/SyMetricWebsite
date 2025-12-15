@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
 import { LayoutGrid, ClipboardList, QrCode, GitPullRequest, Settings, ScanEye, type LucideIcon } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Label Management - SyMetric',
@@ -52,7 +53,7 @@ export default function LabelManagementPage() {
               title="Label Management"
               subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

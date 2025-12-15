@@ -11,6 +11,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Customer Management - SyMetric',
@@ -89,7 +90,7 @@ export default function CustomerManagementPage() {
               subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
               heroImageId="customer-management-hero"
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

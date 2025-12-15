@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { ReactNode } from 'react';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
   title: 'Data Services & Integration - SyMetric',
@@ -111,7 +112,7 @@ export default function DataServicesPage() {
               title="Data Services (API & Integration Management)"
               subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
             />
-            
+            <AISubmenu />
             <AskAISection />
 
             <section>

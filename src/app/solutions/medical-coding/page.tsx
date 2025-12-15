@@ -10,6 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
+import { AISubmenu } from '@/components/solutions/AI-submenu';
 
 export const metadata: Metadata = {
     title: 'Medical Coding - SyMetric',
@@ -76,7 +77,7 @@ export default function MedicalCodingPage() {
               title="Medical Coding"
               subtitle="Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management."
             />
-
+            <AISubmenu />
             <AskAISection />
 
             <section>
