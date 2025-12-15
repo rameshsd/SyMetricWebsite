@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -40,8 +39,9 @@ export default function CtpPieChart(): JSX.Element {
   return (
     <section className="bg-secondary/50">
         <div className="container">
-             <div className="max-w-4xl mx-auto text-center mb-16">
-                <h2 className="text-4xl font-bold tracking-tighter">
+             <div className="max-w-4xl mx-auto mb-16">
+                <h2 className="text-4xl font-bold tracking-tight relative pl-4">
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
                     Every day, organizations around the world trust SyMetric CTP
                 </h2>
             </div>
