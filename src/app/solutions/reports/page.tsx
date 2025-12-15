@@ -62,13 +62,13 @@ const reportCategories: { icon: LucideIcon; title: string; reports: string[] }[]
 export default function ReportsModulePage() {
 
     const secondaryNav = [
-        { label: 'AI solutions', href: '#' },
-        { label: 'AI business resources', href: '#' },
-        { label: 'Trustworthy AI', href: '#' },
-        { label: 'News and insights', href: '#' },
-        { label: 'AI in practice', href: '#' },
-        { label: 'Customer stories', href: '#' },
-        { label: 'FAQ', href: '#' },
+        { label: 'AI solutions', href: '#ai-solutions' },
+        { label: 'AI business resources', href: '#ai-resources' },
+        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
+        { label: 'News and insights', href: '#news-insights' },
+        { label: 'AI in practice', href: '#ai-practice' },
+        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'FAQ', href: '#faq' },
     ];
 
     return (

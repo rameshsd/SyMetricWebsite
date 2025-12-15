@@ -59,7 +59,7 @@ export function PageHeader({
         const offset = (headerRef.current?.offsetHeight || 0) + 80 + 24; 
         
         const sectionPositions = secondaryNav.map(item => {
-          const el = document.querySelector(item.href);
+          const el = item.href.length > 1 ? document.querySelector(item.href) : null;
           return { id: item.href, top: el ? el.getBoundingClientRect().top + window.scrollY : -Infinity };
         });
 
@@ -83,6 +83,11 @@ export function PageHeader({
   const activeSectionLabel = secondaryNav?.find(item => item.href === activeSection)?.label || title;
   
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (href.length <= 1) {
+        e.preventDefault();
+        setMobileNavOpen(false);
+        return;
+      }
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
