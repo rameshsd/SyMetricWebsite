@@ -4,13 +4,12 @@ import Image from 'next/image';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon, ArrowRight } from 'lucide-react';
+import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon, ArrowRight, MessageSquare } from 'lucide-react';
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { customerManagementFaq } from '@/lib/data';
@@ -87,7 +86,6 @@ export default function CustomerManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'customer-management-summary-image');
     
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
         { label: 'Features', href: '#features' },
         { label: 'Summary', href: '#summary' },
         { label: 'FAQ', href: '#faq' },
@@ -102,7 +100,19 @@ export default function CustomerManagementPage() {
             />
             <PageHeader title="Customer Management" secondaryNav={secondaryNav} />
             <div id="overview">
-                <AskAISection />
+                 <section className="bg-diagram-violet text-white">
+                    <div className="container">
+                        <div className="flex items-start gap-6">
+                            <div className="p-3 bg-white/20 rounded-lg">
+                                <MessageSquare className="h-8 w-8 text-white" />
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
+                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="features">
                     <div className="container">

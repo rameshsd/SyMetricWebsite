@@ -3,8 +3,7 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
-import { BookOpen, Edit, LifeBuoy, GraduationCap } from 'lucide-react';
-import { AskAISection } from '@/components/shared/AskAISection';
+import { BookOpen, Edit, LifeBuoy, GraduationCap, MessageSquare } from 'lucide-react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { helpAndSupportFaq } from '@/lib/data';
@@ -40,7 +39,6 @@ const capabilities = [
 export default function HelpSupportPage() {
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
         { label: 'Features', href: '#features' },
         { label: 'Conclusion', href: '#conclusion' },
         { label: 'FAQ', href: '#faq' },
@@ -55,7 +53,19 @@ export default function HelpSupportPage() {
             />
             <PageHeader title="Help & Support" secondaryNav={secondaryNav} />
             <div id="overview">
-                <AskAISection />
+                 <section className="bg-diagram-violet text-white">
+                    <div className="container">
+                        <div className="flex items-start gap-6">
+                            <div className="p-3 bg-white/20 rounded-lg">
+                                <MessageSquare className="h-8 w-8 text-white" />
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
+                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="features">
                     <div className="container">

@@ -2,14 +2,13 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, Check, FileCheck, Search, Shield, ArrowRight } from 'lucide-react';
+import { BookOpen, Check, FileCheck, Search, Shield, ArrowRight, MessageSquare } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { medicalCodingFaq } from '@/lib/data';
@@ -74,7 +73,6 @@ export default function MedicalCodingPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'edc-coding');
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
         { label: 'Capabilities', href: '#capabilities' },
         { label: 'Summary', href: '#summary' },
         { label: 'FAQ', href: '#faq' },
@@ -89,7 +87,19 @@ export default function MedicalCodingPage() {
             />
             <PageHeader title="Medical Coding" secondaryNav={secondaryNav} />
             <div id="overview">
-                <AskAISection />
+                 <section className="bg-diagram-violet text-white">
+                    <div className="container">
+                        <div className="flex items-start gap-6">
+                            <div className="p-3 bg-white/20 rounded-lg">
+                                <MessageSquare className="h-8 w-8 text-white" />
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
+                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="capabilities">
                     <div className="container">

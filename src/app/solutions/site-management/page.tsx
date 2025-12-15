@@ -2,14 +2,13 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
+import { CheckCircle, ShieldCheck, Lock, FileCheck, MessageSquare } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { siteManagementFaq } from '@/lib/data';
@@ -160,7 +159,6 @@ const PurposeSection = () => {
 export default function SiteManagementPage() {
 
     const secondaryNav = [
-        { label: 'Overview', href: '#overview' },
         { label: 'Capabilities', href: '#capabilities' },
         { label: 'Benefits', href: '#benefits' },
         { label: 'Purpose', href: '#purpose' },
@@ -176,7 +174,19 @@ export default function SiteManagementPage() {
             />
             <PageHeader title="Site Management" secondaryNav={secondaryNav} />
             <div id="overview">
-                <AskAISection />
+                 <section className="bg-diagram-violet text-white">
+                    <div className="container">
+                        <div className="flex items-start gap-6">
+                            <div className="p-3 bg-white/20 rounded-lg">
+                                <MessageSquare className="h-8 w-8 text-white" />
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
+                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="capabilities">
                     <div className="container">
