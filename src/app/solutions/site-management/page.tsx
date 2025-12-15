@@ -157,13 +157,9 @@ const PurposeSection = () => {
 export default function SiteManagementPage() {
 
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Benefits', href: '#benefits' },
+        { label: 'Purpose', href: '#purpose' },
     ];
 
     return (
