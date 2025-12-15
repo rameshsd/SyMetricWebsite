@@ -2,95 +2,95 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Users, Lock, User, UserCheck, Key } from 'lucide-react';
+import { FileCog, GitBranch, Shield, Eye, FileUp, Settings, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { DetailedIamFeatures } from '@/components/solutions/DetailedIamFeatures';
 import { AskAISection } from '@/components/shared/AskAISection';
 
+
 export const metadata: Metadata = {
-  title: 'Identity & Access Management - SyMetric',
-  description: 'Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials.',
+  title: 'Study Management - SyMetric',
+  description: 'Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure.',
 };
 
 const capabilities = [
     {
-        title: "IAM Overview",
-        description: "Unified dashboard with visibility into users, roles, sign-in activity, and security trends to detect anomalies early.",
-        icon: Shield
+        icon: FileCog,
+        title: "Study Definition & Configuration",
+        description: "Define study protocols, treatment arms, visit schedules, and operational parameters in a centralized, version-controlled environment."
     },
     {
-        title: "Role Management",
-        description: "Define, configure, and govern roles at System, Customer, or Study levels with granular permissions and access restrictions.",
-        icon: Users
+        icon: Settings,
+        title: "Study-Level Administration",
+        description: "Configure system-wide settings for notifications, medical dictionaries, and user roles on a per-study basis."
     },
     {
-        title: "User Lifecycle Management",
-        description: "A secure, multi-tenant framework for managing users from onboarding and profile assignment to blocking and credential resets.",
-        icon: User
+        icon: GitBranch,
+        title: "Study Version Management",
+        description: "Manage multiple versions of a study build, ensuring a smooth transition for protocol amendments with full audit trails."
     },
     {
-        title: "Secure Authentication",
-        description: "Enforce unique user identity, manage credentials with self-service recovery, and support multiple identity providers.",
-        icon: Lock
+        icon: Shield,
+        title: "Governance & Access Control",
+        description: "Link studies to specific customers (Sponsors/CROs), ensuring strict data segregation and controlled user access."
     },
     {
-        title: "Multi-Profile Architecture",
-        description: "Assign users multiple profiles, each with specific roles and permissions for different organizations or studies.",
-        icon: UserCheck
+        icon: Eye,
+        title: "Live & Training Modes",
+        description: "Operate studies in 'Live' mode for real data or 'Training' mode for UAT and user education, with clear data separation."
     },
     {
-        title: "Complete Auditability",
-        description: "Maintain a full audit trail for every action, including role changes, user updates, and access assignments.",
-        icon: Key
+        icon: FileUp,
+        title: "Metadata & Configuration Exports",
+        description: "Export comprehensive study metadata and configuration details into readable formats for documentation and archival."
+    },
+];
+
+
+const summaryPoints = [
+    {
+        id: "item-1",
+        title: "Single Source of Truth",
+        description: "Establishes a centralized, authoritative source for all study-related configurations, ensuring consistency."
+    },
+    {
+        id: "item-2",
+        title: "Protocol Amendment Agility",
+        description: "Seamlessly manage mid-study changes with robust version control, reducing downtime and ensuring a smooth transition."
+    },
+    {
+        id: "item-3",
+        title: "Enhanced Governance",
+        description: "Enforce strict access controls and data segregation between studies and customers, ensuring compliance."
+    },
+    {
+        id: "item-4",
+        title: "Reduced Redundancy",
+        description: "Promote reusability of configurations across studies, saving time and minimizing setup errors."
     }
 ];
 
-const features = [
-    { 
-        value: "item-1",
-        title: "Robust User Lifecycle Management", 
-        description: "Manage users from onboarding and profile assignment to blocking and credential resets with a secure, multi-tenant framework." 
-    },
-    { 
-        value: "item-2",
-        title: "Configurable Roles & Granular Permissions", 
-        description: "Define, configure, and govern roles at System, Customer, or Study levels with fine-grained permissions and access restrictions." 
-    },
-    { 
-        value: "item-3",
-        title: "Advanced Auditing", 
-        description: "Maintain a full, unalterable audit trail for every critical action, including role changes, user updates, and access assignments, ensuring full traceability." 
-    },
-    { 
-        value: "item-4",
-        title: "Strong Credential Workflows", 
-        description: "Enforce unique user identity and manage credentials securely with features like self-service password/PIN recovery and multi-factor authentication support." 
-    },
-];
 
-export default function IamPage() {
-    const summaryImage = PlaceHolderImages.find(p => p.id === 'iam-summary');
+export default function StudyManagementPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'study-management-hero');
 
     return (
         <div>
-            <SyMetricBusinessAI
-              title="Identity & Access Management (IAM) Module"
-              subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
-              heroImageId="iam-hero"
+            <SyMetricBusinessAI 
+              title="Study Management"
+              subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
             />
-            
+
             <AskAISection />
 
             <section>
                 <div className="container">
-                    <SectionTitle
-                        title="Core Capabilities"
+                     <SectionTitle
+                        title="Key Capabilities"
                         className="mb-16 text-center"
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -109,29 +109,27 @@ export default function IamPage() {
                 </div>
             </section>
 
-            <DetailedIamFeatures />
-            
-            <section className="bg-secondary/50">
+             <section className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
-                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Enterprise-Grade Security and Governance</p>
-                        <h2 className="text-4xl font-bold tracking-tight mt-2">The Backbone of Secure Clinical Operations</h2>
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">The Control Center for Clinical Trials</h2>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="relative">
                             <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
-                                {features.map((feature) => (
-                                     <AccordionItem value={feature.value} key={feature.value} className="border-b-0">
+                                {summaryPoints.map((point) => (
+                                     <AccordionItem value={point.id} key={point.id} className="border-b-0">
                                         <div className="flex gap-4">
                                             <div className="pt-4">
                                                 <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
                                             </div>
                                             <div className="flex-1">
                                                 <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
-                                                    {feature.title}
+                                                    {point.title}
                                                 </AccordionTrigger>
                                                 <AccordionContent className="pb-8 pr-4">
-                                                    <p className="text-muted-foreground">{feature.description}</p>
+                                                    <p className="text-muted-foreground">{point.description}</p>
                                                 </AccordionContent>
                                             </div>
                                         </div>

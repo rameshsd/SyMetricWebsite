@@ -4,6 +4,7 @@ import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplets, FlaskConical, CircleDot, GitBranch, Repeat, Shield, UserCheck, UserX, Bot, Wand } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -82,6 +83,8 @@ export default function SubjectManagementPage() {
               subtitle="End-to-end control of subject lifecycle from screening to study completion."
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle

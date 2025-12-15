@@ -4,6 +4,7 @@ import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Layers, HardDrive, FileUp, CheckCircle, Database, Users, Shield, GitBranch } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
@@ -52,6 +53,8 @@ export default function LabDataManagementPage() {
               subtitle="End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials."
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle

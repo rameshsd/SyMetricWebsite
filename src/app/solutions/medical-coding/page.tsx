@@ -2,95 +2,87 @@
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Users, Lock, User, UserCheck, Key } from 'lucide-react';
+import { BookOpen, Check, FileCheck, Search, Shield, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { DetailedIamFeatures } from '@/components/solutions/DetailedIamFeatures';
 import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
-  title: 'Identity & Access Management - SyMetric',
-  description: 'Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials.',
+    title: 'Medical Coding - SyMetric',
+    description: 'Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management.',
 };
 
 const capabilities = [
     {
-        title: "IAM Overview",
-        description: "Unified dashboard with visibility into users, roles, sign-in activity, and security trends to detect anomalies early.",
-        icon: Shield
+        icon: BookOpen,
+        title: "Medical Dictionary Management",
+        description: "Maintain multiple dictionary versions (MedDRA, WHO-DD) with centralized access control and history tracking."
     },
     {
-        title: "Role Management",
-        description: "Define, configure, and govern roles at System, Customer, or Study levels with granular permissions and access restrictions.",
-        icon: Users
+        icon: Check,
+        title: "Auto & Manual Coding",
+        description: "Configure synonym lists and leverage auto-coding for efficiency, while supporting manual coding for complex terms."
     },
     {
-        title: "User Lifecycle Management",
-        description: "A secure, multi-tenant framework for managing users from onboarding and profile assignment to blocking and credential resets.",
-        icon: User
+        icon: FileCheck,
+        title: "Coding Review & Approval",
+        description: "A two-level review workflow ensures all coded terms are verified for accuracy and consistency before approval."
     },
     {
-        title: "Secure Authentication",
-        description: "Enforce unique user identity, manage credentials with self-service recovery, and support multiple identity providers.",
-        icon: Lock
+        icon: Search,
+        title: "Discrepancy Management",
+        description: "Raise, track, and resolve coding-related queries with a fully integrated discrepancy management workflow."
     },
     {
-        title: "Multi-Profile Architecture",
-        description: "Assign users multiple profiles, each with specific roles and permissions for different organizations or studies.",
-        icon: UserCheck
-    },
-    {
-        title: "Complete Auditability",
-        description: "Maintain a full audit trail for every action, including role changes, user updates, and access assignments.",
-        icon: Key
+        icon: Shield,
+        title: "Full Compliance & Auditability",
+        description: "Complete, unalterable audit trails for every coding decision, review, and approval, ensuring regulatory compliance."
     }
 ];
 
-const features = [
-    { 
-        value: "item-1",
-        title: "Robust User Lifecycle Management", 
-        description: "Manage users from onboarding and profile assignment to blocking and credential resets with a secure, multi-tenant framework." 
+const summaryPoints = [
+    {
+        id: "item-1",
+        title: "Accuracy and Consistency",
+        description: "Ensure verbatim terms are coded uniformly across all subjects and sites, improving data quality."
     },
-    { 
-        value: "item-2",
-        title: "Configurable Roles & Granular Permissions", 
-        description: "Define, configure, and govern roles at System, Customer, or Study levels with fine-grained permissions and access restrictions." 
+    {
+        id: "item-2",
+        title: "Operational Efficiency",
+        description: "Reduce manual effort and accelerate the coding process with powerful auto-coding and synonym management."
     },
-    { 
-        value: "item-3",
-        title: "Advanced Auditing", 
-        description: "Maintain a full, unalterable audit trail for every critical action, including role changes, user updates, and access assignments, ensuring full traceability." 
+    {
+        id: "item-3",
+        title: "Regulatory Compliance",
+        description: "Maintain a complete, immutable audit trail for all coding activities, ensuring you are always inspection-ready."
     },
-    { 
-        value: "item-4",
-        title: "Strong Credential Workflows", 
-        description: "Enforce unique user identity and manage credentials securely with features like self-service password/PIN recovery and multi-factor authentication support." 
-    },
+    {
+        id: "item-4",
+        title: "Streamlined Workflows",
+        description: "Integrated review, approval, and discrepancy management workflows reduce communication overhead and speed up resolution times."
+    }
 ];
 
-export default function IamPage() {
-    const summaryImage = PlaceHolderImages.find(p => p.id === 'iam-summary');
+export default function MedicalCodingPage() {
+    const summaryImage = PlaceHolderImages.find(p => p.id === 'edc-coding');
 
     return (
         <div>
             <SyMetricBusinessAI
-              title="Identity & Access Management (IAM) Module"
-              subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
-              heroImageId="iam-hero"
+              title="Medical Coding"
+              subtitle="Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management."
             />
-            
+
             <AskAISection />
 
             <section>
                 <div className="container">
                     <SectionTitle
-                        title="Core Capabilities"
+                        title="Key Capabilities"
                         className="mb-16 text-center"
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -109,29 +101,27 @@ export default function IamPage() {
                 </div>
             </section>
 
-            <DetailedIamFeatures />
-            
-            <section className="bg-secondary/50">
+             <section className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
-                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Enterprise-Grade Security and Governance</p>
-                        <h2 className="text-4xl font-bold tracking-tight mt-2">The Backbone of Secure Clinical Operations</h2>
+                        <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
+                        <h2 className="text-4xl font-bold tracking-tight mt-2">Accurate, Compliant, and Efficient Medical Coding</h2>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="relative">
                             <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
-                                {features.map((feature) => (
-                                     <AccordionItem value={feature.value} key={feature.value} className="border-b-0">
+                                {summaryPoints.map((point) => (
+                                     <AccordionItem value={point.id} key={point.id} className="border-b-0">
                                         <div className="flex gap-4">
                                             <div className="pt-4">
                                                 <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
                                             </div>
                                             <div className="flex-1">
                                                 <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
-                                                    {feature.title}
+                                                    {point.title}
                                                 </AccordionTrigger>
                                                 <AccordionContent className="pb-8 pr-4">
-                                                    <p className="text-muted-foreground">{feature.description}</p>
+                                                    <p className="text-muted-foreground">{point.description}</p>
                                                 </AccordionContent>
                                             </div>
                                         </div>

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 
 export const metadata: Metadata = {
@@ -102,6 +103,8 @@ export default function DataManagementPage() {
               subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle

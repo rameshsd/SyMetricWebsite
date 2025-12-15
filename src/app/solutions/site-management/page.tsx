@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -161,6 +162,8 @@ export default function SiteManagementPage() {
               subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle title="Key Capabilities" className="mb-12 text-center" />

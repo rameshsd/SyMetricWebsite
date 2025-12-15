@@ -71,7 +71,7 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
-         'diagram-violet': 'hsl(262, 47%, 45%)',
+         'diagram-violet': '#5B21B6',
       },
       borderRadius: {
         lg: 'var(--radius)',

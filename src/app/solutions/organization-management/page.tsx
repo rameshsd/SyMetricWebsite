@@ -16,6 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 
 export const metadata: Metadata = {
@@ -97,6 +98,8 @@ export default function OrganizationManagementPage() {
               heroImageId="organization-management-hero"
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle

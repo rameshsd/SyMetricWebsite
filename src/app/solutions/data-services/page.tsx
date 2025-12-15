@@ -24,6 +24,7 @@ import {
     type LucideIcon,
 } from 'lucide-react';
 import { ReactNode } from 'react';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
   title: 'Data Services & Integration - SyMetric',
@@ -111,6 +112,8 @@ export default function DataServicesPage() {
               subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle

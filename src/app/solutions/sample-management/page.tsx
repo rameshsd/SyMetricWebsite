@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { AskAISection } from '@/components/shared/AskAISection';
 
 export const metadata: Metadata = {
   title: 'Sample Management System - SyMetric',
@@ -118,7 +119,6 @@ const ConclusionSection = () => {
                 <div className="text-left mb-12">
                     <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
                     <h2 className="text-4xl font-bold tracking-tight mt-2">Complete Control Over Your Sample Lifecycle</h2>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     <div className="relative">
@@ -178,6 +178,8 @@ export default function SampleManagementPage() {
               heroImageId="sample-management-hero-2"
             />
             
+            <AskAISection />
+
             <section>
                 <div className="container">
                     <SectionTitle
@@ -188,7 +190,7 @@ export default function SampleManagementPage() {
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2} />
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>
