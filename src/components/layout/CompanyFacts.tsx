@@ -1,7 +1,14 @@
 
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const FactItem = ({ value, label }: { value: string; label: string }) => (
     <div className="text-center">
@@ -17,44 +24,75 @@ export function CompanyFacts() {
       countries: '3+',
       customers: '100+'
     };
+    
+    const companyImage = PlaceHolderImages.find(p => p.id === 'about-hero');
+
+    const accordionItems = [
+        {
+            value: "fast-facts",
+            title: "Fast facts",
+            content: (
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-4">
+                    <FactItem value={facts.founded} label="Founded" />
+                    <FactItem value={facts.employees} label="Employees" />
+                    <FactItem value={facts.countries} label="Countries Served" />
+                    <FactItem value={facts.customers} label="Successful Trials" />
+                </div>
+            )
+        },
+        {
+            value: "locations",
+            title: "Worldwide Locations",
+            content: <p className="text-muted-foreground py-4">We have a global presence, serving clients in the US, Europe, Latin America, and India.</p>
+        },
+        {
+            value: "faqs",
+            title: "FAQs",
+            content: <p className="text-muted-foreground py-4">Please visit our support page for frequently asked questions about our company and products.</p>
+        },
+        {
+            value: "report",
+            title: "Integrated Report",
+            content: <p className="text-muted-foreground py-4">Our latest integrated annual report detailing our financial, social, and environmental performance is available upon request.</p>
+        }
+    ]
 
     return (
-        <section className="w-full">
-            <div className="container">
-                <div className="max-w-4xl mx-auto">
+        <div className="w-full">
+            <div className="max-w-6xl mx-auto">
+                 <div className="mb-12">
                     <h2 className="text-4xl font-bold tracking-tight mb-4">SyMetric Company Information</h2>
-                    <p className="text-muted-foreground text-lg mb-8 max-w-prose">
+                    <p className="text-muted-foreground text-lg max-w-prose">
                         SyMetric is a leader in clinical trial technology, providing an integrated platform to manage trials with accuracy and ease. Since 2012, we have been trusted by Pharma Companies, CROs, and Academic Institutions to accelerate research and improve outcomes.
                     </p>
-                    <Tabs defaultValue="fast-facts" className="w-full">
-                        <div className="overflow-x-auto scrollbar-hide">
-                            <TabsList className="inline-flex">
-                                <TabsTrigger value="fast-facts">Fast facts</TabsTrigger>
-                                <TabsTrigger value="locations">Worldwide Locations</TabsTrigger>
-                                <TabsTrigger value="faqs">FAQs</TabsTrigger>
-                                <TabsTrigger value="report">Integrated Report</TabsTrigger>
-                            </TabsList>
-                        </div>
-                        <TabsContent value="fast-facts" className="pt-10">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-                                <FactItem value={facts.founded} label="Founded" />
-                                <FactItem value={facts.employees} label="Employees" />
-                                <FactItem value={facts.countries} label="Countries Served" />
-                                <FactItem value={facts.customers} label="Successful Trials" />
-                            </div>
-                        </TabsContent>
-                        <TabsContent value="locations">
-                            <p className="text-muted-foreground p-8 text-center">We have a global presence, serving clients in the US, Europe, Latin America, and India.</p>
-                        </TabsContent>
-                        <TabsContent value="faqs">
-                             <p className="text-muted-foreground p-8 text-center">Please visit our support page for frequently asked questions.</p>
-                        </TabsContent>
-                        <TabsContent value="report">
-                             <p className="text-muted-foreground p-8 text-center">Our latest integrated report is available upon request.</p>
-                        </TabsContent>
-                    </Tabs>
+                </div>
+                <div className="grid md:grid-cols-2 gap-12 items-start">
+                    <Accordion type="single" collapsible defaultValue="fast-facts" className="w-full">
+                        {accordionItems.map((item, index) => (
+                             <AccordionItem value={item.value} key={item.value} className="border-b">
+                                <AccordionTrigger className="text-lg font-semibold hover:no-underline py-6">
+                                    {item.title}
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    {item.content}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+
+                    <div className="relative w-full aspect-square max-w-md mx-auto rounded-xl overflow-hidden">
+                        {companyImage && (
+                            <Image
+                                src={companyImage.imageUrl}
+                                alt="SyMetric Team"
+                                data-ai-hint="team collaboration"
+                                fill
+                                className="object-cover"
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }

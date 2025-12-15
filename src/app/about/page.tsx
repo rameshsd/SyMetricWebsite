@@ -81,11 +81,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section id="overview">
+        <section id="overview" className="bg-secondary/30">
           <div className="container">
-            <SectionTitle title="Company Overview" className='pt-20' />
+            <CompanyFacts />
           </div>
-          <CompanyFacts />
         </section>
         
         <div id="innovation">
