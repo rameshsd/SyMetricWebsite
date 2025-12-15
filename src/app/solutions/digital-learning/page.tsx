@@ -4,7 +4,7 @@ import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { digitalLearningFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Digital Learning - SyMetric',
@@ -18,18 +18,16 @@ export default function DigitalLearningPage() {
     ];
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Digital Learning"
-                  subtitle="Empowering users with role-based training modules, interactive content, and automated certification to ensure platform proficiency and compliance."
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Digital Learning"
+              subtitle="Empowering users with role-based training modules, interactive content, and automated certification to ensure platform proficiency and compliance."
+            />
             <PageHeader title="Digital Learning" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
                 
                 {/* Add more sections here */}
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={digitalLearningFaq} />
             </div>
         </>
     );

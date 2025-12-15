@@ -30,7 +30,7 @@ import {
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { reportsFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Reports Module - SyMetric',
@@ -72,15 +72,13 @@ export default function ReportsModulePage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Reports Module"
-                  subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
-                  heroImageId="reports-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Reports Module"
+              subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
+              heroImageId="reports-hero"
+            />
             <PageHeader title="Reports" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -140,7 +138,7 @@ export default function ReportsModulePage() {
                         />
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={reportsFaq} />
             </div>
         </>
     );

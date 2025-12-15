@@ -7,7 +7,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { subjectManagementFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -88,15 +88,13 @@ export default function SubjectManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Subject Management Module"
-                  subtitle="End-to-end control of subject lifecycle from screening to study completion."
-                  heroImageId="subject-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Subject Management Module"
+              subtitle="End-to-end control of subject lifecycle from screening to study completion."
+              heroImageId="subject-management-hero"
+            />
             <PageHeader title="Subject Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -127,7 +125,7 @@ export default function SubjectManagementPage() {
                          <p className="text-lg text-muted-foreground">The Subject Management module delivers a complete, compliant, and highly configurable ecosystem for managing subjects across the entire study lifecycle. It ensures accuracy, protocol adherence, regulatory completeness, and operational efficiency—whether your study has 20 subjects or 20,000 across multiple regions.</p>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={subjectManagementFaq} />
             </div>
         </>
     );

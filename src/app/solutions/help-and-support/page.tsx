@@ -7,7 +7,7 @@ import { BookOpen, Edit, LifeBuoy, GraduationCap } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { helpAndSupportFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Help & Support - SyMetric',
@@ -48,15 +48,13 @@ export default function HelpSupportPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Help & Support"
-                  subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
-                  heroImageId="help-support-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Help & Support"
+              subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
+              heroImageId="help-support-hero"
+            />
             <PageHeader title="Help & Support" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="features">
@@ -90,7 +88,7 @@ export default function HelpSupportPage() {
                         />
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={helpAndSupportFaq} />
             </div>
         </>
     );

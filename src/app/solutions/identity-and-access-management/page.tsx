@@ -14,7 +14,7 @@ import { DetailedIamFeatures } from '@/components/solutions/DetailedIamFeatures'
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { iamFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -89,15 +89,13 @@ export default function IamPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI
-                  title="Identity & Access Management (IAM) Module"
-                  subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
-                  heroImageId="iam-hero"
-                />
-            </div>
+            <SyMetricBusinessAI
+              title="Identity & Access Management (IAM) Module"
+              subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
+              heroImageId="iam-hero"
+            />
             <PageHeader title="Identity & Access Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -177,7 +175,7 @@ export default function IamPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={iamFaq} />
             </div>
         </>
     );

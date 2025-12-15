@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { medicalCodingFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
     title: 'Medical Coding - SyMetric',
@@ -82,15 +82,13 @@ export default function MedicalCodingPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI
-                  title="Medical Coding"
-                  subtitle="Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management."
-                  heroImageId="medical-coding-hero"
-                />
-            </div>
+            <SyMetricBusinessAI
+              title="Medical Coding"
+              subtitle="Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management."
+              heroImageId="medical-coding-hero"
+            />
             <PageHeader title="Medical Coding" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -166,7 +164,7 @@ export default function MedicalCodingPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={medicalCodingFaq} />
             </div>
         </>
     );

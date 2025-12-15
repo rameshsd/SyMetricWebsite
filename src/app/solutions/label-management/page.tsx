@@ -7,7 +7,7 @@ import { LayoutGrid, ClipboardList, QrCode, GitPullRequest, Settings, ScanEye, t
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { labelManagementFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Label Management - SyMetric',
@@ -58,15 +58,13 @@ export default function LabelManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Label Management"
-                  subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
-                  heroImageId="label-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Label Management"
+              subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
+              heroImageId="label-management-hero"
+            />
             <PageHeader title="Label Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="features">
@@ -100,7 +98,7 @@ export default function LabelManagementPage() {
                         />
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={labelManagementFaq} />
             </div>
         </>
     );

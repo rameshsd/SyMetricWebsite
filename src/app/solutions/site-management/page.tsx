@@ -12,7 +12,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { siteManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -169,15 +169,13 @@ export default function SiteManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Centralized Control of Sites Across Global Clinical Trials"
-                  subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
-                  heroImageId="site-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Centralized Control of Sites Across Global Clinical Trials"
+              subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
+              heroImageId="site-management-hero"
+            />
             <PageHeader title="Site Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -221,7 +219,7 @@ export default function SiteManagementPage() {
                 </section>
 
                  <PurposeSection />
-                 <FaqAccordion faqs={aiFaqItems} />
+                 <FaqAccordion faqs={siteManagementFaq} />
             </div>
         </>
     );

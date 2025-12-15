@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { dataManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -108,15 +108,13 @@ export default function DataManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Data Management Module"
-                  subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
-                  heroImageId="data-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Data Management Module"
+              subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
+              heroImageId="data-management-hero"
+            />
             <PageHeader title="Data Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -192,7 +190,7 @@ export default function DataManagementPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={dataManagementFaq} />
             </div>
         </>
     );

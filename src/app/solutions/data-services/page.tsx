@@ -27,7 +27,7 @@ import { ReactNode } from 'react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { dataServicesFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Data Services & Integration - SyMetric',
@@ -117,15 +117,13 @@ export default function DataServicesPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Data Services (API & Integration Management)"
-                  subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
-                  heroImageId="data-services-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Data Services (API & Integration Management)"
+              subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
+              heroImageId="data-services-hero"
+            />
             <PageHeader title="Data Services" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -192,7 +190,7 @@ export default function DataServicesPage() {
                         />
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={dataServicesFaq} />
             </div>
         </>
     );

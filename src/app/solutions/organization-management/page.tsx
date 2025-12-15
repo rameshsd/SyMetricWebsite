@@ -19,7 +19,7 @@ import { ArrowRight } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { organizationManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -102,15 +102,13 @@ export default function OrganizationManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Organization Management"
-                  subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
-                  heroImageId="organization-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Organization Management"
+              subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
+              heroImageId="organization-management-hero"
+            />
             <PageHeader title="Organization Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="features">
@@ -198,7 +196,7 @@ export default function OrganizationManagementPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={organizationManagementFaq} />
             </div>
         </>
     );

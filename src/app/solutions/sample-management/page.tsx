@@ -26,7 +26,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { sampleManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -184,15 +184,13 @@ export default function SampleManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Sample Management System"
-                  subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
-                  heroImageId="sample-management-hero-2"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Sample Management System"
+              subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
+              heroImageId="sample-management-hero-2"
+            />
             <PageHeader title="Sample Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -218,7 +216,7 @@ export default function SampleManagementPage() {
                 </section>
 
                  <ConclusionSection />
-                 <FaqAccordion faqs={aiFaqItems} />
+                 <FaqAccordion faqs={sampleManagementFaq} />
             </div>
         </>
     );

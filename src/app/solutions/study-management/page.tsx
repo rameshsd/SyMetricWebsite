@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { studyManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -90,15 +90,13 @@ export default function StudyManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Study Management"
-                  subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
-                  heroImageId="study-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Study Management"
+              subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
+              heroImageId="study-management-hero"
+            />
             <PageHeader title="Study Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -174,7 +172,7 @@ export default function StudyManagementPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={studyManagementFaq} />
             </div>
         </>
     );

@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { customerManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -95,15 +95,13 @@ export default function CustomerManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Customer Management"
-                  subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
-                  heroImageId="customer-management-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Customer Management"
+              subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
+              heroImageId="customer-management-hero"
+            />
             <PageHeader title="Customer Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="features">
@@ -191,7 +189,7 @@ export default function CustomerManagementPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={customerManagementFaq} />
             </div>
         </>
     );

@@ -29,7 +29,7 @@ import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
-import { aiFaqItems } from '@/lib/data';
+import { clinicalSuppliesFaq } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -134,15 +134,13 @@ export default function ClinicalSuppliesManagementPage() {
 
     return (
         <>
-            <div id="overview">
-                <SyMetricBusinessAI 
-                  title="Clinical Supplies Management Module"
-                  subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
-                  heroImageId="clinical-supplies-hero"
-                />
-            </div>
+            <SyMetricBusinessAI 
+              title="Clinical Supplies Management Module"
+              subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
+              heroImageId="clinical-supplies-hero"
+            />
             <PageHeader title="Clinical Supplies Management" secondaryNav={secondaryNav} />
-            <div>
+            <div id="overview">
                 <AskAISection />
 
                 <section id="capabilities">
@@ -218,7 +216,7 @@ export default function ClinicalSuppliesManagementPage() {
                         </div>
                     </div>
                 </section>
-                <FaqAccordion faqs={aiFaqItems} />
+                <FaqAccordion faqs={clinicalSuppliesFaq} />
             </div>
         </>
     );
