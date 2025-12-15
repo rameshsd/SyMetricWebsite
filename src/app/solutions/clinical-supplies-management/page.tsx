@@ -135,6 +135,7 @@ export default function ClinicalSuppliesManagementPage() {
                 <SyMetricBusinessAI 
                   title="Clinical Supplies Management Module"
                   subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
+                  heroImageId="clinical-supplies-hero"
                 />
             </div>
             <PageHeader title="Clinical Supplies Management" secondaryNav={secondaryNav} />

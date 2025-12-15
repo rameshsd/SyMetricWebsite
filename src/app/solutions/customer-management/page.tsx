@@ -1,21 +1,22 @@
 
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Users, FileText, LayoutGrid, CheckCircle, LucideIcon, ArrowRight } from 'lucide-react';
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
 
+
 export const metadata: Metadata = {
   title: 'Customer Management - SyMetric',
-  description: 'Centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations.',
+  description: 'A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations.',
 };
 
 const features: { icon: LucideIcon; title: string; description: string; details: string[] }[] = [
@@ -139,6 +140,7 @@ export default function CustomerManagementPage() {
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Summary</p>
                         <h2 className="text-4xl font-bold tracking-tight mt-2">Administrative Backbone for Multi-Tenant Governance</h2>
+                        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Organization Management module provides the administrative backbone for governing all entities in the clinical trial ecosystem, ensuring structured, secure, and efficient operations.</p>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         <div className="relative">

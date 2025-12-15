@@ -89,6 +89,7 @@ export default function SubjectManagementPage() {
                 <SyMetricBusinessAI 
                   title="Subject Management Module"
                   subtitle="End-to-end control of subject lifecycle from screening to study completion."
+                  heroImageId="subject-management-hero"
                 />
             </div>
             <PageHeader title="Subject Management" secondaryNav={secondaryNav} />

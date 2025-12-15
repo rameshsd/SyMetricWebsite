@@ -59,6 +59,7 @@ export default function LabDataManagementPage() {
                 <SyMetricBusinessAI
                   title="Lab Data Management Module"
                   subtitle="End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials."
+                  heroImageId="lab-management-hero"
                 />
             </div>
             <PageHeader title="Lab Management" secondaryNav={secondaryNav} />

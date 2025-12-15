@@ -49,6 +49,7 @@ export default function HelpSupportPage() {
                 <SyMetricBusinessAI 
                   title="Help & Support"
                   subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
+                  heroImageId="help-support-hero"
                 />
             </div>
             <PageHeader title="Help & Support" secondaryNav={secondaryNav} />

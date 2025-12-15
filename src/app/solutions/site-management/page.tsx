@@ -169,6 +169,7 @@ export default function SiteManagementPage() {
                 <SyMetricBusinessAI 
                   title="Centralized Control of Sites Across Global Clinical Trials"
                   subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
+                  heroImageId="site-management-hero"
                 />
             </div>
             <PageHeader title="Site Management" secondaryNav={secondaryNav} />

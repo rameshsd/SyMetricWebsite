@@ -118,6 +118,7 @@ export default function DataServicesPage() {
                 <SyMetricBusinessAI 
                   title="Data Services (API & Integration Management)"
                   subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
+                  heroImageId="data-services-hero"
                 />
             </div>
             <PageHeader title="Data Services" secondaryNav={secondaryNav} />

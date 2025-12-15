@@ -83,6 +83,7 @@ export default function MedicalCodingPage() {
                 <SyMetricBusinessAI
                   title="Medical Coding"
                   subtitle="Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management."
+                  heroImageId="medical-coding-hero"
                 />
             </div>
             <PageHeader title="Medical Coding" secondaryNav={secondaryNav} />

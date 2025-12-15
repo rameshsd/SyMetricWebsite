@@ -109,6 +109,7 @@ export default function DataManagementPage() {
                 <SyMetricBusinessAI 
                   title="Data Management Module"
                   subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
+                  heroImageId="data-management-hero"
                 />
             </div>
             <PageHeader title="Data Management" secondaryNav={secondaryNav} />

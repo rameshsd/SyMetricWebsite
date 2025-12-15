@@ -59,6 +59,7 @@ export default function LabelManagementPage() {
                 <SyMetricBusinessAI 
                   title="Label Management"
                   subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
+                  heroImageId="label-management-hero"
                 />
             </div>
             <PageHeader title="Label Management" secondaryNav={secondaryNav} />

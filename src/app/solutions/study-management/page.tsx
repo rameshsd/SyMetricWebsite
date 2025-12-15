@@ -91,6 +91,7 @@ export default function StudyManagementPage() {
                 <SyMetricBusinessAI 
                   title="Study Management"
                   subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
+                  heroImageId="study-management-hero"
                 />
             </div>
             <PageHeader title="Study Management" secondaryNav={secondaryNav} />
