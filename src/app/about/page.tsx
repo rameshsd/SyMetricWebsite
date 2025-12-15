@@ -33,7 +33,6 @@ export default function AboutPage() {
     { label: 'Our Growth Story', href: '#growth-story' },
     { label: 'Our strategy', href: '#our-strategy' },
     { label: 'Innovation', href: '#innovation' },
-    { label: 'Equality and inclusion', href: '#equality' },
   ];
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
@@ -158,12 +157,6 @@ export default function AboutPage() {
           <LeadershipSection />
           <GrowthStoryTimeline />
         </div>
-
-        <section id="equality" className="bg-secondary/50">
-          <div className="container">
-            <SectionTitle title="Equality and Inclusion" description="This is a placeholder for the Equality and Inclusion section." />
-          </div>
-        </section>
       </div>
     </div>
   );
