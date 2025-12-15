@@ -16,19 +16,19 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
   const bioPreview = member.bio[0].slice(0, 150);
 
   return (
-    <Card className="flex flex-col bg-background p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full">
-      <div className="relative w-full h-48 mb-4">
+    <Card className="flex flex-col bg-background p-6 rounded-2xl shadow-sm transition-shadow hover:shadow-lg h-full text-center">
+      <div className="relative self-center w-32 h-32 mb-4">
         {image && (
           <Image
             src={image.imageUrl}
             alt={member.name}
             fill
-            className="object-cover rounded-lg"
+            className="object-cover rounded-full"
           />
         )}
         {member.linkedin && (
-          <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 z-10">
-            <div className="h-8 w-8 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors">
+          <Link href={member.linkedin} target="_blank" rel="noopener noreferrer" className="absolute bottom-0 right-0 z-10">
+            <div className="h-8 w-8 bg-gray-900/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-gray-700/80 transition-colors">
               <Linkedin className="h-4 w-4" />
             </div>
           </Link>
@@ -38,7 +38,7 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
       <CardContent className="p-0 flex-grow flex flex-col">
         <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
         <p className="text-primary font-semibold text-sm mb-3">{member.role}</p>
-        <p className="text-muted-foreground text-sm flex-grow">
+        <p className="text-muted-foreground text-sm flex-grow text-left">
           {isExpanded ? member.bio.join(' ') : `${bioPreview}...`}
         </p>
         <Button
