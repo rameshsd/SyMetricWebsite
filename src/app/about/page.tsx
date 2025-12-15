@@ -152,7 +152,7 @@ export default function AboutPage() {
         
         <CtpPieChart />
         
-        <div id="our-story" className="bg-background pt-20">
+        <div id="our-story" className="bg-subtle-blue pt-20">
           <div className="container">
              <SectionTitle 
                 title="Our Story"
