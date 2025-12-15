@@ -1448,5 +1448,374 @@ export const topAuthors: TopAuthor[] = [
     { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
+    
+export const clinicalSuppliesFaq: FAQItem[] = [
+    {
+        question: "How does the module handle temperature excursions during shipment?",
+        answer: "The Clinical Supplies Management module supports both manual and automated temperature logging. If a temperature logger detects an excursion, an alert is automatically triggered in the system, and the affected stock's status is updated to prevent its use until a quality review is completed."
+    },
+    {
+        question: "Can the system manage both blinded and unblinded studies?",
+        answer: "Yes. The system is designed to handle both study types. For blinded trials, it maintains separate actual and blinded expiry dates, ensuring that site users only see the blinded information while supply managers can track the true expiry."
+    },
+    {
+        question: "How are stockouts prevented?",
+        answer: "Stockouts are prevented through several mechanisms: real-time inventory visibility across all locations, configurable minimum stock thresholds at each site, and automated resupply triggers that generate shipment requests when inventory falls below these thresholds."
+    },
+    {
+        question: "Is it possible to manage subject-specific dosing, such as dose titration?",
+        answer: "Absolutely. The module allows for subject-specific kit reservations and supports complex dosing schedules, including dose titration, where the dosage may change based on the subject's response during the trial."
+    },
+    {
+        question: "How does the system integrate with external warehouse management systems (WMS)?",
+        answer: "The module supports API-based integrations. It can send and receive structured data (like XML or JSON) for shipment requests, dispatch advice, and inventory updates, allowing for seamless communication with third-party WMS or other logistics platforms."
+    }
+];
+
+export const dataManagementFaq: FAQItem[] = [
+    {
+        question: "What is the Global Library and how does it help ensure consistency?",
+        answer: "The Global Library is a centralized repository for reusable study components like forms, controlled terminology (e.g., MedDRA), and variable definitions. By reusing these validated components across multiple studies, you ensure data is collected consistently, which simplifies cross-study analysis and reporting."
+    },
+    {
+        question: "How complex can the data validation rules be?",
+        answer: "The Data Validation Engine is highly powerful. You can create simple rules (e.g., range checks) as well as complex, cross-form and cross-visit edit checks. It also supports dynamic actions, such as showing or hiding fields based on other data points, and can trigger real-time notifications to users."
+    },
+    {
+        question: "Is the Source Data Verification (SDV) process customizable?",
+        answer: "Yes, the SDV module is flexible. You can configure it for full 100% SDV, a risk-based approach where only critical data points are marked for verification, or a combination. The system also supports remote SDV where monitors can review uploaded source documents."
+    },
+    {
+        question: "How does the system comply with 21 CFR Part 11 for eSignatures?",
+        answer: "The platform's eSignature functionality is fully compliant with 21 CFR Part 11. It requires users to enter their unique username and PIN for authentication. Every signature is timestamped and recorded in an unalterable audit trail. If any data on a signed form is changed, the signature is automatically revoked, and re-signing is required."
+    },
+    {
+        question: "What formats are available for data export?",
+        answer: "The Dataset & Export Engine is highly flexible. You can define custom dataset structures and export them in various formats, including CSV, Excel, and SAS. This allows you to create analysis-ready datasets tailored to the needs of your biostatisticians."
+    }
+];
+
+export const iamFaq: FAQItem[] = [
+    {
+        question: "What is the difference between a role and a profile?",
+        answer: "A role defines a set of permissions (e.g., 'CRA' can view subject data). A profile links a user to an organization or study and assigns them one or more roles within that context. A single user can have multiple profiles, allowing them to perform different functions across different studies or organizations without needing multiple accounts."
+    },
+    {
+        question: "How does the system handle password and PIN policies?",
+        answer: "The system enforces strong password and PIN policies, including complexity requirements, expiration, and history rules. Users can securely reset their own credentials through a self-service portal, and all credential-related activities are fully audited."
+    },
+    {
+        question: "Can access be restricted to specific sites or countries?",
+        answer: "Yes. Role-based access control is granular. You can create roles that grant access only to specific sites, a group of sites, or all sites within a country, ensuring users only see the data they are authorized to see."
+    },
+    {
+        question: "What happens when a user's access needs to be revoked immediately?",
+        answer: "Administrators can immediately 'Block' a user profile. This action instantly revokes all access for that user while preserving their activity history for audit purposes. The action is fully reversible and requires PIN authentication to complete."
+    },
+    {
+        question: "Is there an audit trail for changes to user roles and permissions?",
+        answer: "Yes, every change made within the IAM module is captured in a comprehensive and unalterable audit trail. This includes role creation, permission changes, user assignments, and profile updates, ensuring full traceability for regulatory compliance."
+    }
+];
+
+export const siteManagementFaq: FAQItem[] = [
+    {
+        question: "How does the module handle sites in different countries with different regulations?",
+        answer: "The Site Management module allows for region-specific configurations. For example, for sites within the EU, you can enable GDPR-compliant settings that restrict the collection of sensitive subject metadata, ensuring you meet local data privacy requirements."
+    },
+    {
+        question: "Can we set recruitment targets for each site?",
+        answer: "Yes, you can define specific subject recruitment targets for each site. The system then tracks enrollment in real-time against these targets, giving you a clear view of which sites are performing well and which may need additional support."
+    },
+    {
+        question: "What happens when a site is made 'Inactive'?",
+        answer: "When a site's status is changed to 'Inactive', all transactional activities for that site, such as subject enrollment or data entry, are automatically blocked. This provides a clear operational control to pause site activities. An automated notification is also sent to all relevant users."
+    },
+    {
+        question: "How are local labs associated with a specific site?",
+        answer: "Within the Site Management module, you can directly associate one or more local labs (which are defined in the Organization Management module) with an investigation site. This creates a formal link, ensuring that sample collection and shipping workflows are automatically routed to the correct destination."
+    },
+    {
+        question: "Is there an audit trail for changes made to site configurations?",
+        answer: "Absolutely. Every change to a site's configuration—including status changes, updates to recruitment targets, or linking/delinking of labs—is captured in a detailed, timestamped audit trail to ensure full regulatory compliance and traceability."
+    }
+];
+
+export const organizationManagementFaq: FAQItem[] = [
+    {
+        question: "What is the difference between Organization Management and Customer Management?",
+        answer: "Customer Management defines the contractual entity (Sponsor/CRO) that owns the studies. Organization Management defines all the operational entities that participate in those studies, such as investigation sites, labs, and warehouses. Every 'Organization' must be linked to a 'Customer' to ensure proper data segregation."
+    },
+    {
+        question: "Why is it important to classify organizations by type (e.g., Site, Lab, Warehouse)?",
+        answer: "Classifying organizations by type is crucial for downstream workflows. For example, only an organization classified as a 'Site' can enroll subjects, and only a 'Warehouse' can be a source for clinical supply shipments. This structured approach prevents errors and ensures operational integrity."
+    },
+    {
+        question: "Can an organization (like a hospital) act as a site for multiple different customers/sponsors?",
+        answer: "Yes. The same organization can be linked to multiple customers. However, the data for each customer's studies remains completely segregated. A user from Customer A will have no visibility into the activities of Customer B, even if they are happening at the same physical site."
+    },
+    {
+        question: "What information is stored in the Organization Directory?",
+        answer: "The directory stores essential metadata for each organization, including its official name, type (Site, Lab, etc.), physical and mailing addresses, and contact information. This creates a centralized 'master list' for all trial-related entities."
+    },
+    {
+        question: "Who can add or edit organizations in the directory?",
+        answer: "Access to manage the Organization Directory is restricted to authorized administrative roles within your team. This ensures that the master list of organizations is maintained accurately and securely, preventing unauthorized changes."
+    }
+];
+
+export const customerManagementFaq: FAQItem[] = [
+    {
+        question: "What defines a 'Customer' in the SyMetric platform?",
+        answer: "A 'Customer' is the primary contractual entity, which is typically a Sponsor or a master CRO that owns and is responsible for the clinical trials being conducted on the platform. All other entities, like studies, sites, and users, are ultimately linked to a customer."
+    },
+    {
+        question: "How are the user and study limits enforced?",
+        answer: "The limits configured in the Customer Management module are automatically enforced by the system. For instance, if a customer tries to create a new study that exceeds their contractual limit, the system will prevent the action and display an alert. The same applies to creating new user accounts."
+    },
+    {
+        question: "Is the information in the Customer Master confidential?",
+        answer: "Yes, absolutely. The Customer Master is a top-level, secure registry. All information within it is treated as highly confidential and is only accessible to a limited set of authorized super-administrators within the SyMetric internal team."
+    },
+    {
+        question: "Can a customer's profile be deactivated?",
+        answer: "Yes, a customer profile can be deactivated (soft-deleted). This action preserves all historical data for audit and compliance purposes but prevents the customer from initiating any new studies or adding new users."
+    },
+    {
+        question: "How does this module support multi-tenancy?",
+        answer: "The Customer Management module is the foundation of our multi-tenant architecture. By creating a distinct and separate record for each customer, it ensures that all data—from studies and sites to users and roles—is securely segregated. There is no data leakage or shared visibility between different customers on the platform."
+    }
+];
+
+export const medicalCodingFaq: FAQItem[] = [
+    {
+        question: "Which medical dictionaries are supported?",
+        answer: "Our Medical Coding module supports the latest versions of MedDRA (Medical Dictionary for Regulatory Activities) for adverse events and WHO-DD (WHO Drug Dictionary) for medications. We handle the regular updates of these dictionaries for you."
+    },
+    {
+        question: "How does auto-coding work?",
+        answer: "The system uses a combination of exact matches and a configurable synonym list. When a site user enters a verbatim term (e.g., 'Headache'), the system automatically searches for a match in the dictionary or synonym list. If a unique, exact match is found, it's auto-coded. If multiple matches are found, it's flagged for manual review."
+    },
+    {
+        question: "What is the review and approval workflow for coded terms?",
+        answer: "It's a two-level process. First, a 'Medical Coder' reviews auto-coded terms and manually codes any un-coded terms. Once they are done, the terms are sent to a 'Coding Reviewer' who performs a second verification. Only after the second-level approval is the coded term considered final."
+    },
+    {
+        question: "How are coding discrepancies handled?",
+        answer: "If a coder or reviewer is unsure about a verbatim term, they can raise a discrepancy (query) directly from the coding interface. This query is sent back to the clinical site to provide clarification or correct the verbatim term, ensuring the final code is as accurate as possible."
+    },
+    {
+        question: "Is it possible to see the coding history for a specific term?",
+        answer: "Yes. The system maintains a complete, 21 CFR Part 11-compliant audit trail for every verbatim term. You can view the entire history, including who coded it, when it was coded, any changes made during review, and who approved it."
+    }
+];
+
+export const studyManagementFaq: FAQItem[] = [
+    {
+        question: "How does the module handle protocol amendments?",
+        answer: "The Study Version Management feature is designed for this. You can create a new version of the study, make necessary changes to the protocol (e.g., add a visit, change a form), and then deploy it. The system manages the transition, ensuring data integrity and providing a full audit trail of all versions."
+    },
+    {
+        question: "What is the difference between 'Live' and 'Training' mode?",
+        answer: "'Live' mode is for the actual clinical trial with real patient data. 'Training' mode creates a sandboxed copy of the study configuration where users can practice data entry and workflows without affecting the live study data. This is ideal for User Acceptance Testing (UAT) and training new site staff."
+    },
+    {
+        question: "Can study configurations be reused for new trials?",
+        answer: "Yes. The platform is designed to promote reusability. You can copy an entire study build, including its forms, rules, and visit schedules, to use as a template for a new study. This saves a significant amount of time and reduces setup errors."
+    },
+    {
+        question: "How is data access controlled at the study level?",
+        answer: "Each study is linked to a specific customer (Sponsor/CRO). Users are then assigned roles within the context of that study. This ensures that a user working on 'Study A' for 'Sponsor X' has no visibility or access to the data in 'Study B', even if it's run by the same sponsor."
+    },
+    {
+        question: "What kind of metadata can be exported?",
+        answer: "You can export a comprehensive package of study metadata, which includes the full study configuration, visit schedule, CRF designs (annotated CRFs), data validation rules, and more. This is crucial for regulatory submissions and for archival purposes."
+    }
+];
+
+export const dataServicesFaq: FAQItem[] = [
+    {
+        question: "What is the primary purpose of the Data Services module?",
+        answer: "The primary purpose is to provide a centralized, secure, and configurable framework for integrating the SyMetric platform with external clinical systems, such as a Sponsor's warehouse management system (e.g., SAP ICSM) or another vendor's EDC/CTMS. It automates data exchange, eliminating manual uploads and reducing errors."
+    },
+    {
+        question: "Which authentication methods are supported for APIs?",
+        answer: "The module is highly flexible and supports multiple industry-standard authentication methods, including OAuth 2.0, API Keys, JWT (JSON Web Tokens), and Basic Authentication. All credentials and keys are stored securely with encryption at rest."
+    },
+    {
+        question: "How does the system handle API failures or downtime from an external vendor?",
+        answer: "The system has a robust error handling and auto-retry mechanism. For transient errors (like temporary network issues), it will automatically retry the API call based on a configurable schedule. For persistent failures, it will stop retrying after a certain point and trigger a notification to administrators to investigate the issue."
+    },
+    {
+        question: "Can we transform data before sending it to an external system?",
+        answer: "Yes. The data mapping and transformation engine is a core feature. You can perform field-level mapping (e.g., map 'subjectId' in SyMetric to 'participantID' in the external system), convert data types, and even reshape the entire JSON payload to match the vendor's required format."
+    },
+    {
+        question: "Is there a log of all API requests and responses?",
+        answer: "Yes, for full traceability and auditability, the module maintains a detailed log of every API request sent and every response received. This includes the full payload, HTTP status codes, and timestamps, which is invaluable for debugging and compliance."
+    }
+];
+
+export const reportsFaq: FAQItem[] = [
+    {
+        question: "Are the reports generated in real-time?",
+        answer: "Yes, all reports in the module are generated using real-time, transactional data from the platform. When you run a report, you are seeing the most up-to-date information available across all study operations."
+    },
+    {
+        question: "In what formats can I export the reports?",
+        answer: "All reports can be exported into both Microsoft Excel (.xlsx) and Adobe PDF formats, making it easy to share, archive, and perform further analysis outside of the platform."
+    },
+    {
+        question: "What is the purpose of the Audit Trail Report?",
+        answer: "The Audit Trail Report provides a comprehensive, unalterable record of all significant actions taken within the system. This includes data creation, modifications, deletions, e-signatures, and user access changes. It is a critical component for ensuring 21 CFR Part 11 compliance and being inspection-ready."
+    },
+    {
+        question: "Can I get a report on the status of all investigational products (IP) in my study?",
+        answer: "Yes. The module includes several inventory and shipment reports. The 'Inventory Status Report' gives you a real-time snapshot of stock levels at every site and warehouse, while the 'Shipment Detailed Report' tracks the full lifecycle of every shipment."
+    },
+    {
+        question: "Is it possible to track the entire lifecycle of a subject in a report?",
+        answer: "Absolutely. The 'Subject Lifecycle Report' provides a complete history for each subject, from screening and randomization to every visit, IP dispensation, and finally to study completion or withdrawal. This gives you full visibility into the subject's journey through the trial."
+    }
+];
+
+export const labManagementFaq: FAQItem[] = [
+    {
+        question: "What is the difference between a 'Central' and 'Local' lab?",
+        answer: "A 'Central Lab' is a single laboratory that processes samples for all sites in a study, ensuring consistency. A 'Local Lab' is a laboratory associated with a specific investigation site, often used for tests that require a quick turnaround. Our module can manage both types simultaneously."
+    },
+    {
+        question: "How does the system handle lab reference ranges that vary by age or gender?",
+        answer: "When setting up a lab, you can define specific normal ranges for each test parameter based on factors like age and gender. When lab results are uploaded, the system automatically compares the result to the correct range and flags any out-of-range values."
+    },
+    {
+        question: "How does the 'Lab Data Loads' feature work?",
+        answer: "This feature allows you to upload external lab data files (e.g., from a central lab's LIMS) in formats like Excel or CSV. You map the columns in your file to the corresponding fields in the subject's eCRF. The system then automatically populates the CRF, validates the data, and creates a full audit trail."
+    },
+    {
+        question: "What happens if I upload a file with data for a subject visit that already has data?",
+        answer: "The Smart Batch Uploading feature gives you control over this. You can choose to either overwrite the existing values with the new data or skip updating records that already have data, depending on your study's workflow."
+    },
+    {
+        question: "Does the system create an audit trail for lab data uploads?",
+        answer: "Yes, every piece of data loaded into a CRF via the upload feature is fully audited. The audit trail clearly indicates that the data was system-generated from an external file, who uploaded the file, and the exact date and time of the transaction, ensuring full compliance."
+    }
+];
+
+export const subjectManagementFaq: FAQItem[] = [
+    {
+        question: "How does the system prevent enrolling subjects who don't meet eligibility criteria?",
+        answer: "During the Screening and Enrolment process, the system validates subject metadata (like age and gender) against the study's pre-configured eligibility rules. If a subject does not meet the criteria, the system will prevent enrolment and flag the discrepancy."
+    },
+    {
+        question: "Can the randomization module handle complex schemes like stratification?",
+        answer: "Yes. Our randomization engine is highly robust. It supports simple, block, and stratified randomization. You can define stratification factors (e.g., age group, disease severity), and the system will ensure that treatment assignments are balanced across these strata."
+    },
+    {
+        question: "What happens if a subject misses a visit?",
+        answer: "The visit management workflow is flexible. If a subject misses a scheduled visit, site users can record it as 'Missed'. This is captured in the subject's record and audit trail. The system can be configured to either skip that visit's activities or require them to be completed at a later time, depending on the protocol."
+    },
+    {
+        question: "How is subject unblinding controlled?",
+        answer: "Unblinding is a highly restricted action. It requires specific, role-based permissions and is not available to general users. When an authorized user performs an unblinding, they must provide a mandatory reason. The action is logged in an irreversible audit trail, and notifications are sent to key study personnel."
+    },
+    {
+        question: "What is the 'Subject Replacement' feature used for?",
+        answer: "If a subject withdraws from a study, the 'Subject Replacement' feature allows you to enroll a new subject who can take the place of the withdrawn one within the randomization scheme. This is crucial for maintaining the statistical power and balance of the treatment arms, especially in studies with complex designs."
+    }
+];
+
+export const digitalLearningFaq: FAQItem[] = [
+    {
+        question: "How does role-based training work?",
+        answer: "The system allows you to create specific training curricula for each role in a study (e.g., CRA, Investigator, Data Manager). When a user with a specific role logs in, they are automatically assigned the relevant training modules, ensuring they only learn what's necessary for their tasks."
+    },
+    {
+        question: "What kind of content can be included in the training modules?",
+        answer: "Our Digital Learning module supports a variety of interactive content, including video tutorials, step-by-step guides with screenshots, downloadable documents (like SOPs), and knowledge-assessment quizzes."
+    },
+    {
+        question: "Can we track who has completed their training?",
+        answer: "Yes. The system provides a comprehensive dashboard for administrators to track the training progress of all users. You can see who has started, who is in progress, and who has successfully completed their assigned curriculum."
+    },
+    {
+        question: "Is it possible to prevent users from accessing the live study until they complete their training?",
+        answer: "Absolutely. You can configure the system to enforce a 'training prerequisite'. This means a user will not be able to access any live study data or perform any tasks until they have successfully passed all the quizzes in their assigned training modules and received their automated certificate."
+    },
+    {
+        question: "Are the training certificates official?",
+        answer: "The system generates a digital, timestamped certificate of completion for each user who passes their curriculum. This serves as a formal record for your study's training documentation and is available for review during audits."
+    }
+];
+
+export const helpAndSupportFaq: FAQItem[] = [
+    {
+        question: "What is the 'Online Help Content' feature?",
+        answer: "It's a context-aware help system. When you're on a specific page in the platform, clicking the 'Help' icon will automatically open articles and guides relevant to that page's functionality. This provides instant, targeted assistance without you having to search for it."
+    },
+    {
+        question: "How does the 'Support Requests' ticketing system work?",
+        answer: "Users can submit a support ticket directly from within the platform. The request is routed to the appropriate support team, and its status (e.g., 'New', 'In Progress', 'Resolved') is tracked. The system maintains a full history of communication, and users receive automated email notifications as their ticket is updated."
+    },
+    {
+        question: "What is the purpose of the 'Support Request Data Correction Tool'?",
+        answer: "This is a highly controlled and fully audited tool for exceptional circumstances where critical data (like a subject's stratification flag) was entered incorrectly and needs to be fixed. It requires multi-level approvals and PIN authentication, ensuring that any data correction is authorized, intentional, and fully documented for regulatory compliance."
+    },
+    {
+        question: "Is there a central place to see all my submitted tickets?",
+        answer: "Yes. Each user has a personal dashboard where they can view the status and history of all the support requests they have submitted, providing full transparency into the resolution process."
+    },
+    {
+        question: "How is the help content created and maintained?",
+        answer: "The help content is created and maintained by our team of technical writers and product experts. We regularly update the articles to reflect the latest features and best practices of the SyMetric platform."
+    }
+];
+
+export const labelManagementFaq: FAQItem[] = [
+    {
+        question: "What types of barcodes are supported for label generation?",
+        answer: "The Label Management module supports industry-standard barcode formats, including QR Codes and Code 128 linear barcodes, ensuring compatibility with a wide range of scanners and laboratory equipment."
+    },
+    {
+        question: "How are label templates created and managed?",
+        answer: "You can create and manage a library of label templates. Each template defines the layout, dimensions, and data fields (e.g., Subject ID, Visit Name, Sample Type) to be included on the label. These templates can then be reused across multiple studies for consistency."
+    },
+    {
+        question: "What is the purpose of the 'Label Request Workflow'?",
+        answer: "This workflow ensures control and traceability. A site user requests a set of labels, which then goes to an authorized approver (like a CRA or Study Manager). Only after approval are the labels made available for printing. This prevents unauthorized or incorrect label generation."
+    },
+    {
+        question: "What is 'Visual Verification' and why is it important?",
+        answer: "Visual Verification is a critical quality control step. After printing, the user is required to scan the physical label. The system then displays the printed information alongside the expected information. The user must visually confirm they match and provide a PIN-based signature to complete the verification, ensuring the physical label is 100% accurate before use."
+    },
+    {
+        question: "Can labels be generated for both subjects and samples?",
+        answer: "Yes. The system is designed to handle labeling for both. You can generate labels for subject binders or records, as well as for biological samples, including primary collection tubes (e.g., vacutainers) and their derived aliquots."
+    }
+];
+
+export const sampleManagementFaq: FAQItem[] = [
+    {
+        question: "What is the difference between 'Sample Status' and 'Sample Inventory Status'?",
+        answer: "'Sample Status' tracks the lifecycle of the sample itself (e.g., Identified, Collected, Analysed). 'Sample Inventory Status' tracks the physical state and location of the sample container (e.g., In-Site-Storage, In-Transit, At-Lab, Destroyed). Together, they provide a complete chain-of-custody."
+    },
+    {
+        question: "How does the system handle sample collection at specific visit timepoints?",
+        answer: "In the 'Sample Timepoints' configuration, you define exactly which samples need to be collected at each subject visit (e.g., 'Blood' and 'Urine' at 'Visit 2'). When a site user opens that visit for a subject, the system automatically prompts them to record the collection of those specific samples."
+    },
+    {
+        question: "Can the system manage shipments to both central and local labs?",
+        answer: "Yes. The Sample Shipments feature allows you to create shipments from a clinical site to any pre-defined destination, whether it's a central lab for the whole study or a local lab associated with that specific site."
+    },
+    {
+        question: "How are sample labels generated?",
+        answer: "The Sample Management module is fully integrated with the Label Management module. When a sample is generated or collected, you can trigger a workflow to request, approve, and print a unique, compliant barcode or QR code label for that specific sample container."
+    },
+    {
+        question: "What happens if a sample is recorded as 'Not Collected'?",
+        answer: "If a planned sample cannot be collected, the user can mark it as 'Not Collected' and must provide a reason from a pre-configured list (e.g., 'Subject Refused', 'Insufficient Quantity'). This action is captured in the audit trail, ensuring there are no gaps in the data."
+    }
+];
+
 
     
