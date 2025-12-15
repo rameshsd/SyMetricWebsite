@@ -1,7 +1,9 @@
+
 "use client";
 
 import React from "react";
-import { CheckCircle, PlusCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import { SectionTitle } from "../shared/section-title";
 
 export default function CtpPieChart(): JSX.Element {
   const arcPath = (
@@ -39,43 +41,10 @@ export default function CtpPieChart(): JSX.Element {
   return (
     <section className="bg-secondary/50">
         <div className="container">
-             <div className="max-w-4xl mx-auto mb-16">
-                <h2 className="text-4xl font-bold tracking-tight relative pl-4">
-                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
-                    Every day, organizations around the world trust SyMetric CTP
-                </h2>
+             <div className="max-w-4xl mb-16">
+                <SectionTitle title="Every day, organizations around the world trust SyMetric CTP" />
             </div>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="relative w-full flex justify-center">
-                    <svg viewBox="0 0 600 600" className="w-full max-w-[500px] h-auto" role="img" aria-label="SyMetric CTP pie chart">
-                    <defs>
-                        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                        <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000" floodOpacity="0.08" />
-                        </filter>
-                        <path id="arc-security" d={arcPath(300, 300, 160, 0, 120)} fill="none" />
-                        <path id="arc-compliance" d={arcPath(300, 300, 160, 120, 240)} fill="none" />
-                        <path id="arc-privacy" d={arcPath(300, 300, 160, 240, 360)} fill="none" />
-                    </defs>
-                    <circle cx="300" cy="300" r="260" fill="none" stroke="#2b6fd6" strokeWidth="6" strokeDasharray="1 12" opacity="0.85" />
-                    <path d={sectorPath(300, 300, 220, 0, 120)} fill="#1073f6" />
-                    <path d={sectorPath(300, 300, 220, 120, 240)} fill="#1e8bff" />
-                    <path d={sectorPath(300, 300, 220, 240, 360)} fill="#0b63d9" />
-                    <text fontSize={18} fontWeight={600} fill="#fff">
-                        <textPath href="#arc-security" startOffset="50%" textAnchor="middle">Security</textPath>
-                    </text>
-                    <text fontSize={18} fontWeight={600} fill="#fff">
-                        <textPath href="#arc-compliance" startOffset="50%" textAnchor="middle">Compliance</textPath>
-                    </text>
-                    <text fontSize={18} fontWeight={600} fill="#fff">
-                        <textPath href="#arc-privacy" startOffset="50%" textAnchor="middle">Data protection and privacy</textPath>
-                    </text>
-                    <circle cx="300" cy="300" r="95" fill="hsl(var(--card))" stroke="#cfe6ff" strokeWidth="8" filter="url(#shadow)" />
-                    <circle cx="300" cy="300" r="65" fill="#0b63d9" />
-                    <text x="300" y="275" textAnchor="middle" fontSize={24} fontWeight={700} fill="#fff">SyMetric CTP</text>
-                    <text x="300" y="305" textAnchor="middle" fontSize={12} fontWeight={600} fill="#cfe6ff">Secure foundation</text>
-                    </svg>
-                </div>
-                
                 <div className="space-y-8">
                     <p className="text-lg text-muted-foreground">
                         Our clinical trial platform is built on a strong, reliable, and secure foundation. Global cloud delivery services protect you from external threats, help you collect and process personal data lawfully, and enable you to meet regulatory and compliance requirements.
@@ -125,6 +94,35 @@ export default function CtpPieChart(): JSX.Element {
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div className="relative w-full flex justify-center">
+                    <svg viewBox="0 0 600 600" className="w-full max-w-[500px] h-auto" role="img" aria-label="SyMetric CTP pie chart">
+                    <defs>
+                        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000" floodOpacity="0.08" />
+                        </filter>
+                        <path id="arc-security" d={arcPath(300, 300, 160, 0, 120)} fill="none" />
+                        <path id="arc-compliance" d={arcPath(300, 300, 160, 120, 240)} fill="none" />
+                        <path id="arc-privacy" d={arcPath(300, 300, 160, 240, 360)} fill="none" />
+                    </defs>
+                    <circle cx="300" cy="300" r="260" fill="none" stroke="#2b6fd6" strokeWidth="6" strokeDasharray="1 12" opacity="0.85" />
+                    <path d={sectorPath(300, 300, 220, 0, 120)} fill="#1073f6" />
+                    <path d={sectorPath(300, 300, 220, 120, 240)} fill="#1e8bff" />
+                    <path d={sectorPath(300, 300, 220, 240, 360)} fill="#0b63d9" />
+                    <text fontSize={18} fontWeight={600} fill="#fff">
+                        <textPath href="#arc-security" startOffset="50%" textAnchor="middle">Security</textPath>
+                    </text>
+                    <text fontSize={18} fontWeight={600} fill="#fff">
+                        <textPath href="#arc-compliance" startOffset="50%" textAnchor="middle">Compliance</textPath>
+                    </text>
+                    <text fontSize={18} fontWeight={600} fill="#fff">
+                        <textPath href="#arc-privacy" startOffset="50%" textAnchor="middle">Data protection and privacy</textPath>
+                    </text>
+                    <circle cx="300" cy="300" r="95" fill="hsl(var(--card))" stroke="#cfe6ff" strokeWidth="8" filter="url(#shadow)" />
+                    <circle cx="300" cy="300" r="65" fill="#0b63d9" />
+                    <text x="300" y="275" textAnchor="middle" fontSize={24} fontWeight={700} fill="#fff">SyMetric CTP</text>
+                    <text x="300" y="305" textAnchor="middle" fontSize={12} fontWeight={600} fill="#cfe6ff">Secure foundation</text>
+                    </svg>
                 </div>
             </div>
         </div>
