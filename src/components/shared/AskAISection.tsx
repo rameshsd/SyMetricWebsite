@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Send, MessageSquare, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,22 +14,48 @@ export function AskAISection() {
     const [query, setQuery] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [answer, setAnswer] = useState('');
+    const [isRateLimited, setIsRateLimited] = useState(false);
+    const [countdown, setCountdown] = useState(0);
     const { toast } = useToast();
 
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        if (isRateLimited) {
+            setCountdown(10);
+            timer = setInterval(() => {
+                setCountdown(prev => {
+                    if (prev <= 1) {
+                        clearInterval(timer);
+                        setIsRateLimited(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [isRateLimited]);
+
+
     const handleAsk = async (question: string) => {
-        if (!question.trim()) return;
+        if (!question.trim() || isRateLimited) return;
 
         setIsLoading(true);
+        setIsRateLimited(true);
         setAnswer('');
         try {
             const result = await askSyMetric({ query: question });
             setAnswer(result.answer);
-        } catch (error) {
-            console.error('Error asking SyMetric AI:', error);
+        } catch (error: any) {
+            console.error('Error asking SyMetric:', error);
+            let description = 'Failed to get an answer. Please try again.';
+            if (error.message && error.message.includes('429')) {
+                description = 'You are making requests too quickly. Please wait a moment before trying again.';
+            }
             toast({
                 variant: 'destructive',
                 title: 'An error occurred',
-                description: 'Failed to get an answer. Please try again.',
+                description: description,
             });
         } finally {
             setIsLoading(false);
@@ -45,6 +71,8 @@ export function AskAISection() {
         setQuery(suggestion);
         handleAsk(suggestion);
     };
+
+    const isButtonDisabled = isLoading || isRateLimited;
 
     return (
         <section className="bg-diagram-violet text-white">
@@ -68,17 +96,22 @@ export function AskAISection() {
                                     className="h-14 bg-white/10 border-white/30 text-white placeholder:text-white/70 pl-4 pr-14 focus-visible:ring-white"
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
-                                    disabled={isLoading}
+                                    disabled={isButtonDisabled}
                                 />
-                                <Button type="submit" variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-11 w-11 text-white/80 hover:bg-white/20 hover:text-white" disabled={isLoading}>
+                                <Button type="submit" variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-11 w-11 text-white/80 hover:bg-white/20 hover:text-white" disabled={isButtonDisabled}>
                                     {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                                     <span className="sr-only">Ask</span>
                                 </Button>
                             </div>
                         </form>
-                        <div className="flex gap-3">
-                            <Button variant="outline" className="bg-transparent border-white/50 text-white/90 hover:bg-white/10 hover:text-white" onClick={() => handleSuggestionClick('How will it help my trial?')} disabled={isLoading}>How will it help my trial?</Button>
-                            <Button variant="outline" className="bg-transparent border-white/50 text-white/90 hover:bg-white/10 hover:text-white" onClick={() => handleSuggestionClick('Can I trust SyMetric?')} disabled={isLoading}>Can I trust SyMetric?</Button>
+                        <div className="flex flex-wrap gap-3">
+                            <Button variant="outline" className="bg-transparent border-white/50 text-white/90 hover:bg-white/10 hover:text-white" onClick={() => handleSuggestionClick('How will it help my trial?')} disabled={isButtonDisabled}>How will it help my trial?</Button>
+                            <Button variant="outline" className="bg-transparent border-white/50 text-white/90 hover:bg-white/10 hover:text-white" onClick={() => handleSuggestionClick('Can I trust SyMetric?')} disabled={isButtonDisabled}>Can I trust SyMetric?</Button>
+                             {isRateLimited && countdown > 0 && (
+                                <div className="flex items-center text-sm text-white/70">
+                                    Please wait {countdown}s
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
