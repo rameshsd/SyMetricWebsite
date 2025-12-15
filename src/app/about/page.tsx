@@ -33,12 +33,10 @@ export default function AboutPage() {
     { label: 'Our Growth Story', href: '#growth-story' },
     { label: 'Our strategy', href: '#our-strategy' },
     { label: 'Innovation', href: '#innovation' },
-    { label: 'Global sponsorships', href: '#sponsorships' },
     { label: 'Equality and inclusion', href: '#equality' },
   ];
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
-  const sponsorshipImage = PlaceHolderImages.find(p => p.id === 'global-sponsorships-soccer');
   const strategyImage = PlaceHolderImages.find(p => p.id === 'strategy-illustration');
 
   return (
@@ -160,37 +158,6 @@ export default function AboutPage() {
           <LeadershipSection />
           <GrowthStoryTimeline />
         </div>
-
-        <section id="sponsorships" className="bg-background">
-          <div className="container">
-            <div className="max-w-5xl mx-auto">
-              <SectionTitle title="Global Sponsorships" className="mb-12"/>
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                  {sponsorshipImage && (
-                    <Image
-                      src={sponsorshipImage.imageUrl}
-                      alt={sponsorshipImage.description}
-                      data-ai-hint={sponsorshipImage.imageHint}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-                <div className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
-                    As the leader in technology software, SAP is proud to expand our relationships within the sports and entertainment world. Partnerships with world-class teams, leagues, and properties have afforded us the ability to create technology solutions that engage fans, media, players, and coaches on another level, integrating real-time cloud-based analytics.
-                  </p>
-                  <Button variant="link" asChild className="p-0 h-auto text-primary font-semibold">
-                    <Link href="#">
-                      Explore SAP sponsorships <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section id="equality" className="bg-secondary/50">
           <div className="container">
