@@ -152,12 +152,11 @@ export default function AboutPage() {
         
         <CtpPieChart />
         
-        <div id="our-story" className="pt-20" style={{ backgroundColor: '#a4bff3' }}>
+        <div id="our-story" className="bg-subtle-blue pt-20">
           <div className="container">
              <SectionTitle 
                 title="Our Story"
                 description="A Stellar Journey Led by…"
-                className="text-gray-800"
              />
           </div>
           <LeadershipSection />
