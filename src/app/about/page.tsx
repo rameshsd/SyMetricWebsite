@@ -8,7 +8,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { CompanyOverview } from '@/components/layout/CompanyOverview';
 import Link from 'next/link';
-import { CtpPieChart } from '@/components/about/CtpPieChart';
+import CtpPieChart from '@/components/about/CtpPieChart';
 import { RevolutionizingTrialsSection } from '@/components/about/RevolutionizingTrialsSection';
 import { SectionTitle } from '@/components/shared/section-title';
 import { ArrowRight } from 'lucide-react';
