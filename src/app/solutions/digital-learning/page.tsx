@@ -17,7 +17,7 @@ export default function DigitalLearningPage() {
         { label: 'FAQ', href: '#faq' },
     ];
     return (
-        <div>
+        <>
             <div id="overview">
                 <SyMetricBusinessAI 
                   title="Digital Learning"
@@ -25,10 +25,12 @@ export default function DigitalLearningPage() {
                 />
             </div>
             <PageHeader title="Digital Learning" secondaryNav={secondaryNav} />
-            <AskAISection />
-            
-            {/* Add more sections here */}
-            <FaqAccordion faqs={aiFaqItems} />
-        </div>
+            <div>
+                <AskAISection />
+                
+                {/* Add more sections here */}
+                <FaqAccordion faqs={aiFaqItems} />
+            </div>
+        </>
     );
 }

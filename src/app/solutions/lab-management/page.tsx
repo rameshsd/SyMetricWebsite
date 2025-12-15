@@ -57,7 +57,7 @@ export default function LabDataManagementPage() {
     ];
 
     return (
-        <div>
+        <>
             <div id="overview">
                 <SyMetricBusinessAI
                   title="Lab Data Management Module"
@@ -66,38 +66,40 @@ export default function LabDataManagementPage() {
                 />
             </div>
             <PageHeader title="Lab Management" secondaryNav={secondaryNav} />
-            <AskAISection />
+            <div>
+                <AskAISection />
 
-            <section id="capabilities">
-                <div className="container">
-                    <SectionTitle
-                        title="Key Capabilities"
-                        description="The module ensures all lab results are standardized, validated, and fully traceable."
-                        className="mb-16 text-center"
-                    />
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {capabilities.map(cap => (
-                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
-                               </div>
-                               <div className="flex-grow">
-                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
-                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
-                               </div>
-                           </Card>
-                        ))}
+                <section id="capabilities">
+                    <div className="container">
+                        <SectionTitle
+                            title="Key Capabilities"
+                            description="The module ensures all lab results are standardized, validated, and fully traceable."
+                            className="mb-16 text-center"
+                        />
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {capabilities.map(cap => (
+                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                   <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                        <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                   </div>
+                                   <div className="flex-grow">
+                                      <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                      <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                                   </div>
+                               </Card>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-             <section id="conclusion" className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
-                     <p className="text-lg text-muted-foreground">The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.</p>
-                </div>
-            </section>
-            <FaqAccordion faqs={aiFaqItems} />
-        </div>
+                 <section id="conclusion" className="bg-secondary/50">
+                    <div className="container max-w-3xl mx-auto text-center">
+                         <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
+                         <p className="text-lg text-muted-foreground">The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.</p>
+                    </div>
+                </section>
+                <FaqAccordion faqs={aiFaqItems} />
+            </div>
+        </>
     );
 }

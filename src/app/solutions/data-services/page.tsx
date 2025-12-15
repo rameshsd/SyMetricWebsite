@@ -116,7 +116,7 @@ export default function DataServicesPage() {
     ];
 
     return (
-        <div>
+        <>
             <div id="overview">
                 <SyMetricBusinessAI 
                   title="Data Services (API & Integration Management)"
@@ -125,73 +125,75 @@ export default function DataServicesPage() {
                 />
             </div>
             <PageHeader title="Data Services" secondaryNav={secondaryNav} />
-            <AskAISection />
+            <div>
+                <AskAISection />
 
-            <section id="capabilities">
-                <div className="container">
-                    <SectionTitle
-                        title="Core Integration Capabilities"
-                        description="A unified framework for all clinical system integrations, designed for security, scalability, and ease of use."
-                        className="mb-16"
-                    />
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {coreCapabilities.map(cap => (
-                           <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                               <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
-                               </div>
-                               <div className="flex-grow">
-                                  <h3 className="font-semibold text-lg">{cap.title}</h3>
-                                  <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
-                               </div>
-                           </Card>
-                        ))}
+                <section id="capabilities">
+                    <div className="container">
+                        <SectionTitle
+                            title="Core Integration Capabilities"
+                            description="A unified framework for all clinical system integrations, designed for security, scalability, and ease of use."
+                            className="mb-16"
+                        />
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {coreCapabilities.map(cap => (
+                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                   <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                        <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                   </div>
+                                   <div className="flex-grow">
+                                      <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                      <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                                   </div>
+                               </Card>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-             <section id="integrations" className="bg-secondary/50">
-                <div className="container">
-                    <SectionTitle
-                        title="Supported External System Integrations"
-                        description="Ready-to-use integration templates for industry-leading clinical platforms."
-                        className="mb-12"
-                    />
-                     <div className="flex flex-wrap justify-center gap-4">
-                        {['Veeva CDMS', 'Veeva CTMS', 'Medrio EDC', 'SAP ICSM'].map(system => (
-                            <div key={system} className="flex items-center gap-2 bg-background border rounded-lg px-4 py-2">
-                                <CheckCircle className="w-5 h-5 text-green-500" />
-                                <span className="font-semibold">{system}</span>
-                            </div>
-                        ))}
+                 <section id="integrations" className="bg-secondary/50">
+                    <div className="container">
+                        <SectionTitle
+                            title="Supported External System Integrations"
+                            description="Ready-to-use integration templates for industry-leading clinical platforms."
+                            className="mb-12"
+                        />
+                         <div className="flex flex-wrap justify-center gap-4">
+                            {['Veeva CDMS', 'Veeva CTMS', 'Medrio EDC', 'SAP ICSM'].map(system => (
+                                <div key={system} className="flex items-center gap-2 bg-background border rounded-lg px-4 py-2">
+                                    <CheckCircle className="w-5 h-5 text-green-500" />
+                                    <span className="font-semibold">{system}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section id="sap-icsm-flows">
-                <div className="container">
-                    <SectionTitle
-                        title="SAP ICSM – Detailed Integration Flows"
-                        description="Our integration with SAP ICSM supports complete supply chain automation through a series of bi-directional API calls."
-                        className="mb-16"
-                    />
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-                        {sapFlows.map(flow => (
-                             <DetailCard key={flow.title} icon={flow.icon} title={flow.title} description={flow.description} />
-                        ))}
+                <section id="sap-icsm-flows">
+                    <div className="container">
+                        <SectionTitle
+                            title="SAP ICSM – Detailed Integration Flows"
+                            description="Our integration with SAP ICSM supports complete supply chain automation through a series of bi-directional API calls."
+                            className="mb-16"
+                        />
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                            {sapFlows.map(flow => (
+                                 <DetailCard key={flow.title} icon={flow.icon} title={flow.title} description={flow.description} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-             <section className="bg-secondary/50">
-                <div className="container max-w-3xl mx-auto text-center">
-                     <SectionTitle
-                        title="Conclusion"
-                        description="The Data Services module provides a comprehensive, enterprise-ready integration framework designed specifically for clinical trials. It eliminates manual data transfers, streamlines multi-system collaboration, reduces operational errors, and ensures regulatory compliance across all transactional workflows."
-                    />
-                </div>
-            </section>
-            <FaqAccordion faqs={aiFaqItems} />
-        </div>
+                 <section className="bg-secondary/50">
+                    <div className="container max-w-3xl mx-auto text-center">
+                         <SectionTitle
+                            title="Conclusion"
+                            description="The Data Services module provides a comprehensive, enterprise-ready integration framework designed specifically for clinical trials. It eliminates manual data transfers, streamlines multi-system collaboration, reduces operational errors, and ensures regulatory compliance across all transactional workflows."
+                        />
+                    </div>
+                </section>
+                <FaqAccordion faqs={aiFaqItems} />
+            </div>
+        </>
     );
 }
