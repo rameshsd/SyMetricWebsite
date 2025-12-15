@@ -72,14 +72,8 @@ const LeadershipCard = ({ member }: { member: (typeof leadership)[0] }) => {
 
 export function LeadershipSection() {
   return (
-    <section id="leadership">
+    <section id="leadership" className="pt-20">
       <div className="container">
-        <div className="mb-20 text-center mx-auto max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight relative pl-4">
-            <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
-            A Stellar Journey Led by…
-          </h2>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
           {leadership.map((member) => (
             <LeadershipCard key={member.id} member={member} />
