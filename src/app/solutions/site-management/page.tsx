@@ -5,6 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, ShieldCheck, Lock, FileCheck } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import React from 'react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -102,6 +106,51 @@ const benefits = [
     }
 ];
 
+const PurposeSection = () => {
+    const purposeImage = PlaceHolderImages.find(p => p.id === 'site-management-hero');
+    const purposePoints = [
+        "Ensures correct rules, permissions, and controls for every site.",
+        "Provides robust, centralized site-level governance.",
+        "Increases operational efficiency and reduces execution risks.",
+        "Guarantees compliance with regional and study-specific requirements."
+    ];
+    return (
+        <section>
+            <div className="container">
+                <Card className="p-8 rounded-2xl overflow-hidden grid md:grid-cols-2 gap-8 items-center bg-card">
+                    <div className="space-y-6">
+                        <p className="font-semibold text-primary">Purpose of the Module</p>
+                        <h2 className="text-3xl font-bold">The Backbone of Site-Level Governance</h2>
+                        <p className="text-muted-foreground">The Site Management module is the backbone for site-level governance in clinical trials. It ensures every participating site—regardless of region—operates with the correct rules, permissions, logistics controls, and regulatory requirements. This leads to higher operational efficiency, reduced risks, and smoother study execution.</p>
+                        <ul className="space-y-3">
+                           {purposePoints.map((point, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                    <CheckCircle className="h-5 w-5 text-green-500 mt-1 shrink-0" />
+                                    <span className="text-muted-foreground">{point}</span>
+                                </li>
+                           ))}
+                        </ul>
+                        <Button asChild>
+                            <Link href="/contact">Request a Demo</Link>
+                        </Button>
+                    </div>
+                    <div className="relative w-full aspect-video">
+                        {purposeImage && (
+                            <Image
+                                src={purposeImage.imageUrl}
+                                alt={purposeImage.description}
+                                data-ai-hint={purposeImage.imageHint}
+                                fill
+                                className="object-cover rounded-lg"
+                            />
+                        )}
+                    </div>
+                </Card>
+            </div>
+        </section>
+    );
+};
+
 
 export default function SiteManagementPage() {
 
@@ -152,12 +201,7 @@ export default function SiteManagementPage() {
                 </div>
             </section>
 
-             <section>
-                <div className="container max-w-3xl mx-auto text-center">
-                     <h2 className="text-3xl font-bold mb-4">Purpose of the Module</h2>
-                     <p className="text-lg text-muted-foreground">The Site Management module is the backbone for site-level governance in clinical trials. It ensures every participating site—regardless of region—operates with the correct rules, permissions, logistics controls, and regulatory requirements. This leads to higher operational efficiency, reduced risks, and smoother study execution.</p>
-                </div>
-            </section>
+             <PurposeSection />
         </div>
     );
 }
