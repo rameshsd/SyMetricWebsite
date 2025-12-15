@@ -1220,6 +1220,33 @@ export const faqItems: FAQItem[] = [
     answer: "Yes, the platform accurately tracks and accounts for all drugs dispensed to trial participants, ensuring precise inventory management and accountability."
   }
 ];
+
+export const aiFaqItems: FAQItem[] = [
+    {
+        question: "What is generative AI? How is it different from other types of AI?",
+        answer: "Generative AI is a type of artificial intelligence that can create new and original content, like text, images, music, and code. Unlike other types of AI that recognize patterns or make predictions based on existing data, generative AI produces new outputs. At SyMetric, we use it to automate documentation, summarize complex trial data, and assist in creating study materials."
+    },
+    {
+        question: "What is a Copilot in the context of SyMetric's platform?",
+        answer: "A Copilot is an AI-powered assistant embedded within our platform. It helps you with your daily tasks by providing suggestions, generating content, answering questions about the trial, and automating repetitive processes. For example, our 'Ask SyMetric AI' feature acts as a copilot to help you quickly find information about our solutions."
+    },
+    {
+        question: "How can AI help me improve productivity and efficiency in my daily tasks?",
+        answer: "SyMetric's AI can automate report generation, draft communications, summarize long documents, and provide instant answers to your questions about trial protocols or platform features. This frees you from time-consuming tasks, allowing you to focus on more strategic work like patient safety and data analysis, ultimately improving your productivity."
+    },
+    {
+        question: "How do I install and/or use Copilots?",
+        answer: "There's no installation needed! Our AI Copilots are built directly into the SyMetric platform. Features like 'Ask SyMetric AI' are available on our solution pages. As we roll out more AI features, they will appear seamlessly within your existing workflows to assist you."
+    },
+    {
+        question: "How does SyMetric protect my privacy and ensure confidentiality of sensitive data?",
+        answer: "Data privacy and confidentiality are our top priorities. All data processed by our AI systems is handled within our secure, compliant cloud infrastructure. We adhere to strict data protection regulations like GDPR and HIPAA. Sensitive data is anonymized where possible, and we do not use your trial data to train external AI models."
+    },
+    {
+        question: "What are the potential risks and challenges associated with implementing generative AI?",
+        answer: "The main challenges include ensuring the accuracy of AI-generated content (hallucinations), preventing biases, and maintaining data privacy. At SyMetric, we mitigate these risks through a 'human-in-the-loop' approach, where AI assists but does not replace human oversight. We use validation workflows, provide sources for generated content where applicable, and build our systems on a foundation of responsible AI principles."
+    }
+];
     
 export const jobOpenings: JobOpening[] = [
     {

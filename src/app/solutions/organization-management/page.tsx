@@ -18,6 +18,8 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -90,14 +92,11 @@ const summaryPoints = [
 
 export default function OrganizationManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'organization-summary-image');
-
+    
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Features', href: '#features' },
+        { label: 'Summary', href: '#summary' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -198,6 +197,7 @@ export default function OrganizationManagementPage() {
                     </div>
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

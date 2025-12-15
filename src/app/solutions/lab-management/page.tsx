@@ -6,6 +6,8 @@ import { Layers, HardDrive, FileUp, CheckCircle, Database, Users, Shield, GitBra
 import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
@@ -48,12 +50,9 @@ const capabilities = [
 export default function LabDataManagementPage() {
 
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Conclusion', href: '#conclusion' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -98,6 +97,7 @@ export default function LabDataManagementPage() {
                      <p className="text-lg text-muted-foreground">The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.</p>
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

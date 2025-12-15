@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 
 export const metadata: Metadata = {
@@ -85,12 +87,9 @@ export default function CustomerManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'customer-management-summary-image');
     
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Features', href: '#features' },
+        { label: 'Summary', href: '#summary' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -191,6 +190,7 @@ export default function CustomerManagementPage() {
                     </div>
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

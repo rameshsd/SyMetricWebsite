@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Digital Learning - SyMetric',
@@ -11,12 +13,7 @@ export const metadata: Metadata = {
 
 export default function DigitalLearningPage() {
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
         { label: 'FAQ', href: '#faq' },
     ];
     return (
@@ -31,6 +28,7 @@ export default function DigitalLearningPage() {
             <AskAISection />
             
             {/* Add more sections here */}
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

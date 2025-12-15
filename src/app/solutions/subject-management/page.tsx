@@ -6,6 +6,8 @@ import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplet
 import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -78,12 +80,9 @@ const capabilities = [
 export default function SubjectManagementPage() {
 
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Summary', href: '#summary' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -127,6 +126,7 @@ export default function SubjectManagementPage() {
                      <p className="text-lg text-muted-foreground">The Subject Management module delivers a complete, compliant, and highly configurable ecosystem for managing subjects across the entire study lifecycle. It ensures accuracy, protocol adherence, regulatory completeness, and operational efficiency—whether your study has 20 subjects or 20,000 across multiple regions.</p>
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

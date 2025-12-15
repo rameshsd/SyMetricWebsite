@@ -6,6 +6,8 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { LayoutGrid, ClipboardList, QrCode, GitPullRequest, Settings, ScanEye, type LucideIcon } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Label Management - SyMetric',
@@ -48,12 +50,9 @@ const capabilities: { icon: LucideIcon; title: string; description: string }[] =
 export default function LabelManagementPage() {
 
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Features', href: '#features' },
+        { label: 'Conclusion', href: '#conclusion' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -100,6 +99,7 @@ export default function LabelManagementPage() {
                     />
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }

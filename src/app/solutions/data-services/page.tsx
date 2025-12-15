@@ -26,6 +26,8 @@ import {
 import { ReactNode } from 'react';
 import { AskAISection } from '@/components/shared/AskAISection';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { FaqAccordion } from '@/components/shared/FaqAccordion';
+import { aiFaqItems } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Data Services & Integration - SyMetric',
@@ -106,12 +108,10 @@ const DetailCard = ({ icon: Icon, title, description }: DetailCardProps) => (
 
 export default function DataServicesPage() {
     const secondaryNav = [
-        { label: 'AI solutions', href: '#ai-solutions' },
-        { label: 'AI business resources', href: '#ai-resources' },
-        { label: 'Trustworthy AI', href: '#trustworthy-ai' },
-        { label: 'News and insights', href: '#news-insights' },
-        { label: 'AI in practice', href: '#ai-practice' },
-        { label: 'Customer stories', href: '#customer-stories' },
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Integrations', href: '#integrations' },
+        { label: 'SAP Flows', href: '#sap-icsm-flows' },
         { label: 'FAQ', href: '#faq' },
     ];
 
@@ -191,6 +191,7 @@ export default function DataServicesPage() {
                     />
                 </div>
             </section>
+            <FaqAccordion faqs={aiFaqItems} />
         </div>
     );
 }
