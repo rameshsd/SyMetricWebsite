@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, User, Users, Settings, Lock, Search, FileText, Activity, Droplets, FlaskConical, CircleDot, GitBranch, Repeat, Shield, UserCheck, UserX, Bot, Wand } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Subject Management - SyMetric',
@@ -77,16 +77,24 @@ const capabilities = [
 
 export default function SubjectManagementPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Capabilities', href: '#capabilities' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Subject Management Module"
-              subtitle="End-to-end control of subject lifecycle from screening to study completion."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Subject Management Module"
+                  subtitle="End-to-end control of subject lifecycle from screening to study completion."
+                />
+            </div>
+            <PageHeader title="Subject Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Key Capabilities"
@@ -108,7 +116,7 @@ export default function SubjectManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="summary" className="bg-secondary/50">
                 <div className="container max-w-3xl mx-auto text-center">
                      <h2 className="text-3xl font-bold mb-4">Summary</h2>
                      <p className="text-lg text-muted-foreground">The Subject Management module delivers a complete, compliant, and highly configurable ecosystem for managing subjects across the entire study lifecycle. It ensures accuracy, protocol adherence, regulatory completeness, and operational efficiency—whether your study has 20 subjects or 20,000 across multiple regions.</p>

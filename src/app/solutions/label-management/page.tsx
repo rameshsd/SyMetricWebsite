@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
 import { LayoutGrid, ClipboardList, QrCode, GitPullRequest, Settings, ScanEye, type LucideIcon } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Label Management - SyMetric',
@@ -47,16 +47,24 @@ const capabilities: { icon: LucideIcon; title: string; description: string }[] =
 
 export default function LabelManagementPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Features', href: '#features' },
+        { label: 'Conclusion', href: '#conclusion' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Label Management"
-              subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Label Management"
+                  subtitle="A complete end-to-end module designed to define, configure, generate, request, approve, and visually verify labels for subjects and samples in clinical trials."
+                />
+            </div>
+            <PageHeader title="Label Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="features">
                 <div className="container">
                     <SectionTitle
                         title="Key Features"
@@ -79,7 +87,7 @@ export default function LabelManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="conclusion" className="bg-secondary/50">
                 <div className="container max-w-3xl mx-auto text-center">
                      <SectionTitle
                         title="Conclusion"

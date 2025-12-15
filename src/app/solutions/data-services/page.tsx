@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 import { ReactNode } from 'react';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Data Services & Integration - SyMetric',
@@ -105,17 +105,25 @@ const DetailCard = ({ icon: Icon, title, description }: DetailCardProps) => (
 );
 
 export default function DataServicesPage() {
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Integrations', href: '#integrations' },
+        { label: 'SAP ICSM Flows', href: '#sap-icsm-flows' },
+    ];
 
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Data Services (API & Integration Management)"
-              subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Data Services (API & Integration Management)"
+                  subtitle="Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer."
+                />
+            </div>
+            <PageHeader title="Data Services" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Core Integration Capabilities"
@@ -138,7 +146,7 @@ export default function DataServicesPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="integrations" className="bg-secondary/50">
                 <div className="container">
                     <SectionTitle
                         title="Supported External System Integrations"
@@ -156,7 +164,7 @@ export default function DataServicesPage() {
                 </div>
             </section>
 
-            <section>
+            <section id="sap-icsm-flows">
                 <div className="container">
                     <SectionTitle
                         title="SAP ICSM – Detailed Integration Flows"

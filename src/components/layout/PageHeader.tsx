@@ -34,25 +34,29 @@ export function PageHeader({
 }: PageHeaderProps) {
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
-  const [activeSection, setActiveSection] = useState(secondaryNav?.[0]?.href || '');
+  const [activeSection, setActiveSection] = useState('');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (secondaryNav && secondaryNav.length > 0) {
+      setActiveSection(secondaryNav[0].href);
+    }
+  }, [secondaryNav]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Hide or show the header based on scroll direction
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { // 80 is main header height
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { 
         setIsHidden(true); 
       } else {
         setIsHidden(false);
       }
       lastScrollY.current = currentScrollY;
 
-      // Update active section based on scroll position
       if (secondaryNav) {
-        const offset = (headerRef.current?.offsetHeight || 0) + 80 + 24; // main nav + this header + buffer
+        const offset = (headerRef.current?.offsetHeight || 0) + 80 + 24; 
         
         const sectionPositions = secondaryNav.map(item => {
           const el = document.querySelector(item.href);
@@ -96,12 +100,10 @@ export function PageHeader({
         className={cn(
             "sticky z-30 border-b bg-background/95 backdrop-blur-lg transition-transform duration-300",
             isHidden ? '-translate-y-full' : 'translate-y-0',
-            // Sets top position based on main nav height
             "top-16" 
       )}>
 
         <div className="container">
-            {/* Breadcrumb */}
             {breadcrumb && (
                 <div className="pt-4 pb-2 text-sm text-muted-foreground">
                     <Link href={breadcrumb.href} className="hover:text-primary">
@@ -110,12 +112,10 @@ export function PageHeader({
                 </div>
             )}
 
-            {/* Title */}
             <div className={cn("flex items-center justify-between", breadcrumb ? "pb-4" : "py-4")}>
                 <h1 className="text-3xl font-bold">{title}</h1>
             </div>
 
-            {/* Mobile Dropdown Nav */}
             <div className="md:hidden">
                 {secondaryNav && secondaryNav.length > 0 && (
                 <DropdownMenu open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
@@ -142,7 +142,6 @@ export function PageHeader({
                 )}
             </div>
 
-            {/* Desktop Nav */}
             {secondaryNav && (
                 <nav className="hidden md:flex items-center gap-x-8 -mb-px" aria-label="Secondary">
                     {secondaryNav.map((tab) => (

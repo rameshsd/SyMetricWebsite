@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { DetailedIamFeatures } from '@/components/solutions/DetailedIamFeatures';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Identity & Access Management - SyMetric',
@@ -78,17 +78,26 @@ const features = [
 export default function IamPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'iam-summary');
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Features', href: '#features' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI
-              title="Identity & Access Management (IAM) Module"
-              subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
-              heroImageId="iam-hero"
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI
+                  title="Identity & Access Management (IAM) Module"
+                  subtitle="Centralized Access Control, Security Governance, and User Lifecycle Management for clinical trials."
+                  heroImageId="iam-hero"
+                />
+            </div>
+            <PageHeader title="Identity & Access Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Core Capabilities"
@@ -110,9 +119,11 @@ export default function IamPage() {
                 </div>
             </section>
 
-            <DetailedIamFeatures />
+            <div id="features">
+                <DetailedIamFeatures />
+            </div>
             
-            <section className="bg-secondary/50">
+            <section id="summary" className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Enterprise-Grade Security and Governance</p>

@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Site Management - SyMetric',
@@ -117,7 +117,7 @@ const PurposeSection = () => {
         "Guarantees compliance with regional and study-specific requirements."
     ];
     return (
-        <section>
+        <section id="purpose">
             <div className="container">
                 <Card className="p-8 rounded-2xl overflow-hidden grid md:grid-cols-2 gap-8 items-center bg-card">
                     <div className="space-y-6">
@@ -156,16 +156,25 @@ const PurposeSection = () => {
 
 export default function SiteManagementPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Benefits', href: '#benefits' },
+        { label: 'Purpose', href: '#purpose' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Centralized Control of Sites Across Global Clinical Trials"
-              subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Centralized Control of Sites Across Global Clinical Trials"
+                  subtitle="The Site Management module provides a unified framework to configure, govern, and monitor every site participating in a clinical study."
+                />
+            </div>
+            <PageHeader title="Site Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle title="Key Capabilities" className="mb-12 text-center" />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -186,7 +195,7 @@ export default function SiteManagementPage() {
                 </div>
             </section>
 
-            <section className="bg-secondary/50">
+            <section id="benefits" className="bg-secondary/50">
                 <div className="container">
                     <SectionTitle title="Benefits of the Site Management Module" className="mb-12 text-center" />
                      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

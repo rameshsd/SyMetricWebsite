@@ -27,7 +27,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Clinical Supplies Management - SyMetric',
@@ -123,16 +123,24 @@ const missionCriticalFeatures = [
 export default function ClinicalSuppliesManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'clinical-supplies-summary');
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Clinical Supplies Management Module"
-              subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Clinical Supplies Management Module"
+                  subtitle="End-to-end control of Investigational Products (IP), packaging, inventory, shipments, retention, and temperature management across global clinical trials."
+                />
+            </div>
+            <PageHeader title="Clinical Supplies Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                      <SectionTitle
                         title="Key Capabilities"
@@ -154,7 +162,7 @@ export default function ClinicalSuppliesManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="summary" className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">A Mission-Critical Module</p>

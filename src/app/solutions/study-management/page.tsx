@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 
 export const metadata: Metadata = {
@@ -79,16 +79,24 @@ const summaryPoints = [
 export default function StudyManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'study-management-hero');
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Study Management"
-              subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Study Management"
+                  subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
+                />
+            </div>
+            <PageHeader title="Study Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                      <SectionTitle
                         title="Key Capabilities"
@@ -110,7 +118,7 @@ export default function StudyManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="summary" className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>

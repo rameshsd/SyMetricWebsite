@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { SectionTitle } from '@/components/shared/section-title';
 import { BookOpen, Edit, LifeBuoy, GraduationCap } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Help & Support - SyMetric',
@@ -37,16 +37,24 @@ const capabilities = [
 
 export default function HelpSupportPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Features', href: '#features' },
+        { label: 'Conclusion', href: '#conclusion' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Help & Support"
-              subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Help & Support"
+                  subtitle="Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform."
+                />
+            </div>
+            <PageHeader title="Help & Support" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="features">
                 <div className="container">
                     <SectionTitle
                         title="Key Features"
@@ -69,7 +77,7 @@ export default function HelpSupportPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="conclusion" className="bg-secondary/50">
                 <div className="container max-w-3xl mx-auto text-center">
                      <SectionTitle
                         title="Conclusion"

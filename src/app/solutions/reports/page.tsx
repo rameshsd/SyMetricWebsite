@@ -28,7 +28,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Reports Module - SyMetric',
@@ -60,16 +60,25 @@ const reportCategories: { icon: LucideIcon; title: string; reports: string[] }[]
 ];
 
 export default function ReportsModulePage() {
+
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Report Categories', href: '#report-categories' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Reports Module"
-              subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Reports Module"
+                  subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
+                />
+            </div>
+            <PageHeader title="Reports" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="General Reporting Capabilities"
@@ -89,7 +98,7 @@ export default function ReportsModulePage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="report-categories" className="bg-secondary/50">
                 <div className="container max-w-4xl mx-auto">
                     <SectionTitle
                         title="Categories of Reports"

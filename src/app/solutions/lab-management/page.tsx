@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Layers, HardDrive, FileUp, CheckCircle, Database, Users, Shield, GitBranch } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
@@ -47,16 +47,24 @@ const capabilities = [
 
 export default function LabDataManagementPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Capabilities', href: '#capabilities' },
+        { label: 'Conclusion', href: '#conclusion' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI
-              title="Lab Data Management Module"
-              subtitle="End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI
+                  title="Lab Data Management Module"
+                  subtitle="End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials."
+                />
+            </div>
+            <PageHeader title="Lab Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Key Capabilities"
@@ -79,7 +87,7 @@ export default function LabDataManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="conclusion" className="bg-secondary/50">
                 <div className="container max-w-3xl mx-auto text-center">
                      <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
                      <p className="text-lg text-muted-foreground">The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.</p>

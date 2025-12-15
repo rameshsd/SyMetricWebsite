@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 
 export const metadata: Metadata = {
@@ -91,17 +91,25 @@ const summaryPoints = [
 export default function OrganizationManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'organization-summary-image');
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Features', href: '#features' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Organization Management"
-              subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
-              heroImageId="organization-management-hero"
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Organization Management"
+                  subtitle="A centralized module that defines and manages every organization involved in a clinical trial—ensuring structured oversight, accurate association with customers, and seamless study operations."
+                  heroImageId="organization-management-hero"
+                />
+            </div>
+            <PageHeader title="Organization Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="features">
                 <div className="container">
                     <SectionTitle
                         title="Key Features"
@@ -134,7 +142,7 @@ export default function OrganizationManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="summary" className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Summary</p>

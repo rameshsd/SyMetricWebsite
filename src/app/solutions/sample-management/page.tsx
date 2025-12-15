@@ -24,7 +24,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Sample Management System - SyMetric',
@@ -115,7 +115,7 @@ const ConclusionSection = () => {
     ];
 
     return (
-        <section className="bg-secondary/50">
+        <section id="conclusion" className="bg-secondary/50">
             <div className="container">
                 <div className="text-left mb-12">
                     <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
@@ -172,17 +172,25 @@ const ConclusionSection = () => {
 
 export default function SampleManagementPage() {
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Capabilities', href: '#capabilities' },
+        { label: 'Conclusion', href: '#conclusion' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Sample Management System"
-              subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
-              heroImageId="sample-management-hero-2"
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Sample Management System"
+                  subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
+                  heroImageId="sample-management-hero-2"
+                />
+            </div>
+            <PageHeader title="Sample Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Key Capabilities"
@@ -192,7 +200,7 @@ export default function SampleManagementPage() {
                         {capabilities.map(cap => (
                            <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+                                    <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2} />
                                </div>
                                <div className="flex-grow">
                                   <h3 className="font-semibold text-lg">{cap.title}</h3>

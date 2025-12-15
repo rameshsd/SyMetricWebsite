@@ -10,7 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { AskAISection } from '@/components/shared/AskAISection';
-import { AISubmenu } from '@/components/solutions/AI-submenu';
+import { PageHeader } from '@/components/layout/PageHeader';
 
 
 export const metadata: Metadata = {
@@ -97,16 +97,24 @@ const summaryPoints = [
 export default function DataManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'revolutionizing-trials');
 
+    const secondaryNav = [
+        { label: 'Overview', href: '#overview' },
+        { label: 'Key Capabilities', href: '#capabilities' },
+        { label: 'Summary', href: '#summary' },
+    ];
+
     return (
         <div>
-            <SyMetricBusinessAI 
-              title="Data Management Module"
-              subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
-            />
-            <AISubmenu />
+            <div id="overview">
+                <SyMetricBusinessAI 
+                  title="Data Management Module"
+                  subtitle="End-to-end electronic data capture, validation, discrepancy handling, SDV, and export capabilities for regulatory-compliant clinical trials."
+                />
+            </div>
+            <PageHeader title="Data Management" secondaryNav={secondaryNav} />
             <AskAISection />
 
-            <section>
+            <section id="capabilities">
                 <div className="container">
                     <SectionTitle
                         title="Key Capabilities"
@@ -128,7 +136,7 @@ export default function DataManagementPage() {
                 </div>
             </section>
 
-             <section className="bg-secondary/50">
+             <section id="summary" className="bg-secondary/50">
                 <div className="container">
                     <div className="text-left mb-12">
                         <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
