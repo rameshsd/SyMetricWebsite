@@ -160,6 +160,8 @@ export default function AboutPage() {
              />
           </div>
           <LeadershipSection />
+        </div>
+        <div id="growth-story" className="bg-sap-gradient text-primary-foreground">
           <GrowthStoryTimeline />
         </div>
       </div>
