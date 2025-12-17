@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -40,7 +39,7 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
                 <div key={capability.id} className="bg-primary/20 p-8 rounded-2xl h-full flex flex-col">
                   {Icon && (
                     <div className="flex items-center gap-4 mb-4">
-                      <Icon className="h-10 w-10 text-violet-400" />
+                      <Icon className="h-20 w-20 text-violet-400" strokeWidth={1.5} />
                       <h3 className="text-xl font-bold text-white">{capability.title}</h3>
                     </div>
                   )}
