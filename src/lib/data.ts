@@ -56,6 +56,8 @@ import {
   SearchCheck,
   AlertTriangle,
   Code2,
+  Sitemap,
+  Library,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -190,30 +192,35 @@ export const solutions: Solution[] = [
         title: 'eCRF Management',
         description: 'Success of a clinical trial depends largely on well-designed Case Report Forms. Here’s where our eCRF Management module comes in handy by helping design CRFs. It can also program real-time validation checks to operate them efficiently, enabling collection of complete, reliable, and accurate data in line with regulatory standards.',
         imageId: 'edc-ecrf',
+        iconName: 'FilePlus'
       },
       {
         id: 'sdv',
         title: 'Source Data Verification',
         description: 'A key aspect of clinical data management is the Source Data Verification (SDV) process which ensures data quality and conformance to source data. This selective feature focuses on verifying critical study data points instead of 100% SDV for all patients — saving time, effort, and costs while maintaining scientific and ethical integrity of the trial.',
         imageId: 'edc-sdv',
+        iconName: 'ShieldCheck'
       },
       {
         id: 'query-management',
         title: 'Query Management',
         description: 'Our Discrepancy Management tool helps investigation sites identify and manage data aberrations to ensure that the system captures clean and consistent data. For interim and final comprehensive analysis, the data export feature of our tool enables standard and customizable dataset exports in .CSV and .XLS formats at any time even during the study run.',
         imageId: 'edc-query',
+        iconName: 'SearchCheck'
       },
       {
         id: 'ae-sae-reporting',
         title: 'AE/SAE Reporting',
         description: 'As patient safety is the fundamental principle that lies at the core of every clinical trial, it is important that the AE/SAEs are timely reported to stakeholders and regulatory bodies and handled appropriately. Our feature that comes with automatic notifications triggered via email keeps users informed on AE/SAE reporting actions.',
         imageId: 'edc-reporting',
+        iconName: 'AlertTriangle'
       },
       {
         id: 'medical-coding',
         title: 'Medical Coding',
         description: 'Our built-in coding interface along with real-time data available from our EDC system will help you streamline your coding process. Also, our integrated coding mechanism uses standard medical dictionaries like MedDRA and WHO-Drug Global and can guarantee precise and consistent coding of verbatim terms to harmonized and standard codes.',
         imageId: 'edc-coding',
+        iconName: 'Code2'
       }
     ]
   },
@@ -223,13 +230,57 @@ export const solutions: Solution[] = [
     slug: 'ctm',
     hero: {
         title: 'Clinical Trial Management (CTM)',
-        subtitle: 'Maintain global objects including repositories of Trial Sites, Labs, Organizations, Global Data Libraries, and more.'
+        subtitle: 'Our Clinical Trial Management solution — designed to be a centralized Study Repository — has provisions for maintaining master entities and global objects that allow reusability across Clinical Trials. It forms the backbone of our Clinical Trial Platform, providing total control to System Administrators, Project Managers, and Clinical Data Managers to effectively maintain, manage, and monitor a study and operational database. We provide a set of tools that enables pharmaceutical organizations and CROs achieve speed and efficiency while implementing Software Solutions for their Clinical Trials.'
     },
     description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.',
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
     image: 'ctm-image',
-    backgroundColor: '#fffbeb'
+    backgroundColor: '#fffbeb',
+    capabilities: [
+      {
+        id: 'user-access-management',
+        title: 'Centralized User & Access Management',
+        description: 'Our centralized User Administration service enables you to manage User Identities on our Platform and allows users to log in and access Study Resources. The unified sign-on feature simplifies access to our Platform’s various tools, facilitating Conditional Access to protect, govern, and engage with internal and external users more securely. Role-Based Authorization Control allows you to define roles centrally with granular levels of permissions that support the principles of least-privilege and segregation of duties.',
+        imageId: 'tool-iam-1',
+        iconName: 'Users'
+      },
+      {
+        id: 'organization-sites-master',
+        title: 'Organization and Investigation Sites Master',
+        description: 'We help you maintain a master for all Organizations you engage with and track their involvement in different Clinical Trials. Also, you can have a centralized database that lists Warehouses, Clinical Investigation Sites, Labs, Sponsors, CROs, Retention Facilities, Statistical Service Providers, and other Vendors to avoid repetitive processes in setting up Clinical Trials.',
+        imageId: 'tool-org-1',
+        iconName: 'Sitemap'
+      },
+      {
+        id: 'unified-study-builder',
+        title: 'Unified Study Builder',
+        description: 'Our Study Builder tools come with advanced features that allow you to define and configure the various processes and workflows needed for a Clinical Trial. Completely driven by Graphical User Interfaces — you can maintain the Study for even complex clinical trial designs including recent ones such as Adaptive Trials, Umbrella Trials, and Basket Studies. The Study Builder comes with versioning management to accommodate Study Amendments and Post-Production Changes in a centralized location within the tools, allowing targeted release across the Study, centrally or to individual Sites.',
+        imageId: 'tool-study-1',
+        iconName: 'Settings'
+      },
+      {
+        id: 'global-data-libraries',
+        title: 'Global Clinical Data Libraries',
+        description: 'Our Global Clinical Data Library provides a Centralized Form Library for CRFs, CDISC Libraries for Annotations and Controlled Terminology, and a central library for maintaining the Medical Coding dictionaries from MedDRA and WHO-DD. These libraries allow Clinical Data Management teams to build a comprehensive set of objects that can be reused across Clinical Trials, thereby reducing the setup time required for each Trial. All it takes is a few clicks for these objects to be imported into the Study Data design. Additionally, SyMetric is a Gold Member at the CDISC Community.',
+        imageId: 'resource-3',
+        iconName: 'Library'
+      },
+      {
+        id: 'real-time-reporting',
+        title: 'Real-Time Reporting',
+        description: 'We have developed this function over the years based on our growing understanding of the monitoring needs of various stakeholders in Clinical Trials. As a result, this module provides the most comprehensive set of out-of-the-box reports that you can use directly to aid you in real-time monitoring of Studies and various other processes involved in a Clinical Trial.',
+        imageId: 'tool-data-svc-1',
+        iconName: 'BarChart'
+      },
+      {
+        id: 'security-compliance-manager',
+        title: 'Centralized Security and Compliance Manager',
+        description: 'We firmly believe that Security and Compliance play a very important role in digital Clinical Trial Systems. Our centralized Security and Compliance Management tool on the Clinical Trial Platform allows Customers to define policies and drive security settings across various tools and modules based on their specific internal compliance and regulatory needs. Also, it comes with central auditability of data across the platform.',
+        imageId: 'why-us-compliant',
+        iconName: 'ShieldCheck'
+      }
+    ]
   },
   {
     id: 'trial-analytics',
