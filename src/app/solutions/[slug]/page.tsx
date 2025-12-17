@@ -1,5 +1,6 @@
 
 
+
 import { solutions } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -47,7 +48,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
         breadcrumb={{ href: '/solutions', label: 'Solutions' }}
         secondaryNav={secondaryNav}
       />
-      <div>
+      <div id="overview">
         {heroImage && (
           <ProductHero 
             title={solution.hero.title}
@@ -63,7 +64,7 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
           <CapabilitiesSection capabilities={solution.capabilities} />
         </div>
         <div id="related-products">
-          <RelatedProductsSection />
+          <RelatedProductsSection relatedContent={solution.relatedContent} />
         </div>
       </div>
     </>

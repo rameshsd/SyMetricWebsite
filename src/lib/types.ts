@@ -18,7 +18,23 @@ export type SolutionCapability = {
   description: string;
   imageId: string;
   icon?: LucideIcon;
+  iconName?: string;
 }
+
+export type RelatedContent = {
+  title: string;
+  description: string;
+  featurePoints: {
+    title: string;
+    description: string;
+  }[];
+  relatedProducts: {
+    title: string;
+    description: string;
+    link: string;
+    linkText: string;
+  }[];
+};
 
 export type Solution = {
   id: string;
@@ -34,6 +50,7 @@ export type Solution = {
   image: string;
   capabilities?: SolutionCapability[];
   backgroundColor?: string;
+  relatedContent?: RelatedContent;
 };
 
 export type Industry = {

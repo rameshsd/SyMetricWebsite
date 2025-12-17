@@ -1,5 +1,6 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem } from '@/lib/types';
+
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -119,6 +120,45 @@ export const navItems: NavItem[] = [
     { name: 'Careers', href: '/careers'},
 ];
 
+const defaultRelatedContent: RelatedContent = {
+  title: "Explore Related SyMetric Solutions",
+  description: "Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.",
+  featurePoints: [
+    {
+      title: "Optimised trial operations",
+      description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
+    },
+    {
+      title: "Action-ready insights",
+      description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
+    },
+    {
+      title: "Transformative, scalable impact",
+      description: "Expand confidently by adopting new trial models that drive research forward while keeping operations secure and compliant."
+    }
+  ],
+  relatedProducts: [
+    {
+      title: "EDC (Electronic Data Capture)",
+      description: "Seamlessly integrate your trial management with our powerful EDC system to ensure data consistency and accuracy.",
+      link: "/solutions/edc",
+      linkText: "Explore EDC"
+    },
+    {
+      title: "IRT/IWRS",
+      description: "Connect your CTM with our robust randomization and supply management solution for unified trial oversight.",
+      link: "/solutions/irt-iwrs",
+      linkText: "Explore IRT/IWRS"
+    },
+    {
+      title: "Trial Analytics",
+      description: "Turn your trial data into actionable insights. Monitor progress, recruitment, and milestones in real-time.",
+      link: "/solutions/trial-analytics",
+      linkText: "Explore Analytics"
+    }
+  ]
+};
+
 export const solutions: Solution[] = [
   {
     id: 'ctp',
@@ -132,7 +172,8 @@ export const solutions: Solution[] = [
     longDescription: 'Our Clinical Trial Platform (CTP) provides a unified environment for managing all aspects of your clinical trials. From protocol development to final reporting, CTP streamlines workflows, enhances collaboration, and ensures data integrity.',
     icon: FlaskConical,
     image: 'solution-ctp',
-    backgroundColor: '#f5f3ff'
+    backgroundColor: '#f5f3ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'irt-iwrs',
@@ -171,7 +212,45 @@ export const solutions: Solution[] = [
         description: 'SyMetric Platform with robust IP supply management functionality allows drug supply manager to tightly control the supplies sent to Sites, adjust supply strategies for Sites based on the remaining treatment arms and new ratios. SyMetric Platform can enable on-demand labeling and shipping strategy, further reducing supply waste on adaptive trials, thus reducing the costs of IP in a Clinical Trial.',
         imageId: 'supply-chain'
       }
-    ]
+    ],
+    relatedContent: {
+      title: "Explore Related IRT/IWRS Solutions",
+      description: "Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.",
+      featurePoints: [
+        {
+          title: "Optimised trial operations",
+          description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
+        },
+        {
+          title: "Action-ready insights",
+          description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
+        },
+        {
+          title: "Transformative, scalable impact",
+          description: "Expand confidently by adopting new trial models that drive research forward while keeping operations secure and compliant."
+        }
+      ],
+      relatedProducts: [
+        {
+          title: "EDC (Electronic Data Capture)",
+          description: "Seamlessly integrate your randomization and supply management with our powerful EDC system to ensure data consistency and accuracy from patient entry to data lock.",
+          link: "/solutions/edc",
+          linkText: "Explore EDC"
+        },
+        {
+          title: "CTM (Clinical Trial Management)",
+          description: "Connect your site and subject activities with our CTM solution for a unified view of trial progress, resource allocation, and milestone tracking.",
+          link: "/solutions/ctm",
+          linkText: "Explore CTM"
+        },
+        {
+          title: "Trial Analytics",
+          description: "Turn your IRT/IWRS data into actionable insights. Monitor recruitment, supply levels, and randomization balance in real-time with our advanced analytics.",
+          link: "/solutions/trial-analytics",
+          linkText: "Explore Analytics"
+        }
+      ]
+    }
   },
   {
     id: 'edc',
@@ -222,7 +301,8 @@ export const solutions: Solution[] = [
         imageId: 'edc-coding',
         iconName: 'Code2'
       }
-    ]
+    ],
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'ctm',
@@ -280,7 +360,8 @@ export const solutions: Solution[] = [
         imageId: 'why-us-compliant',
         iconName: 'ShieldCheck'
       }
-    ]
+    ],
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'trial-analytics',
@@ -294,7 +375,8 @@ export const solutions: Solution[] = [
     longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
     icon: PieChart,
     image: 'trial-analytics-image',
-    backgroundColor: '#f5f3ff'
+    backgroundColor: '#f5f3ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'etmf',
@@ -308,7 +390,8 @@ export const solutions: Solution[] = [
     longDescription: 'SyMetric’s eTMF solution offers a secure, compliant, and intuitive way to manage your trial documentation. With features like automated indexing, quality checks, and real-time collaboration, it ensures your TMF is always audit-ready.',
     icon: FileText,
     image: 'solution-etmf',
-    backgroundColor: '#fef2f2'
+    backgroundColor: '#fef2f2',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'rc',
@@ -322,7 +405,8 @@ export const solutions: Solution[] = [
     longDescription: 'Stay ahead of regulatory changes and ensure compliance with global standards. Our solutions help you manage submissions, track commitments, and maintain a state of continuous compliance throughout the product lifecycle.',
     icon: ShieldCheck,
     image: 'solution-rc',
-    backgroundColor: '#fdf4ff'
+    backgroundColor: '#fdf4ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'site-management',
@@ -336,7 +420,8 @@ export const solutions: Solution[] = [
     longDescription: 'Our Site Management solutions provide clinical research sites with the tools they need to operate efficiently. From patient recruitment and scheduling to financial management and remote monitoring, we help sites focus on what matters most: patient care.',
     icon: Briefcase,
     image: 'solution-sm',
-    backgroundColor: '#f0fdf4'
+    backgroundColor: '#f0fdf4',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'iam',
@@ -350,7 +435,8 @@ export const solutions: Solution[] = [
     longDescription: 'The IAM module provides a robust, secure, and fully governed environment for managing users, roles, permissions, and authentication across all customers, studies, and organizations.',
     icon: IdentityAccessIcon,
     image: 'iam-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'csm',
@@ -364,7 +450,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Clinical Supplies Management module delivers a powerful, fully compliant system for handling Investigational Products across the entire clinical supply chain.',
     icon: Package,
     image: 'clinical-supplies-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'dm',
@@ -378,7 +465,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Data Management module provides a unified ecosystem to design CRFs, collect subject data, validate accuracy, manage queries/discrepancies, audit changes, freeze/lock data, and export final cleaned datasets.',
     icon: DataManagementIcon,
     image: 'data-management-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
    {
     id: 'study-management',
@@ -392,7 +480,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Study Management module acts as the control center of your clinical trial platform. It provides a single source of truth for all study metadata, configurations, visit schedules, treatment arms, and versioned study builds.',
     icon: StudyIcon,
     image: 'study-management-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'mc',
@@ -406,7 +495,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Medical Coding module ensures that all verbatim terms recorded in clinical case report forms (CRFs) are standardized using globally accepted dictionaries, with tools for efficient coding, review, and discrepancy resolution.',
     icon: MedicalCodingIcon,
     image: 'medical-coding-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'lab',
@@ -420,7 +510,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Lab Data Management module unifies lab setup, reference ranges, and data uploads, ensuring all lab results are standardized, validated, and fully traceable.',
     icon: LabIcon,
     image: 'lab-management-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'ds',
@@ -434,7 +525,8 @@ export const solutions: Solution[] = [
     longDescription: 'Our Data Services module provides a powerful, flexible, and fully configurable integration framework that enables secure, real-time communication between SyMetric and external clinical platforms.',
     icon: DataServicesIcon,
     image: 'data-services-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'sample-management',
@@ -448,7 +540,8 @@ export const solutions: Solution[] = [
     longDescription: 'With deep configurability, automated tracking, and audit-ready controls, it ensures sample integrity, compliance, and full traceability throughout the study.',
     icon: Package,
     image: 'sample-management-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'label-management',
@@ -463,6 +556,7 @@ export const solutions: Solution[] = [
     icon: LabelManagementIcon,
     image: 'label-management-hero',
     backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'subject-management',
@@ -476,7 +570,8 @@ export const solutions: Solution[] = [
     longDescription: 'The Subject Management module provides a comprehensive and compliant framework to manage every stage of a subject’s journey in a clinical trial, ensuring accuracy, regulatory integrity, and consistent application of study protocols.',
     icon: SubjectIcon,
     image: 'subject-management-hero',
-    backgroundColor: '#f0f9ff'
+    backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
   {
     id: 'help-and-support',
@@ -491,6 +586,7 @@ export const solutions: Solution[] = [
     icon: HelpSupportIcon,
     image: 'help-support-hero',
     backgroundColor: '#f0f9ff',
+    relatedContent: defaultRelatedContent
   },
 ];
 

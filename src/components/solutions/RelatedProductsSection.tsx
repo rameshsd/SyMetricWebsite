@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Image from 'next/image';
@@ -7,52 +8,23 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlayCircle, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '../shared/section-title';
+import type { RelatedContent } from '@/lib/types';
 
-const featurePoints = [
-    {
-        title: "Optimised trial operations",
-        description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
-    },
-    {
-        title: "Action-ready insights",
-        description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
-    },
-    {
-        title: "Transformative, scalable impact",
-        description: "Expand confidently by adopting new trial models that drive research forward while keeping operations secure and compliant."
-    }
-]
-
-const relatedProducts = [
-    {
-        title: "EDC (Electronic Data Capture)",
-        description: "Seamlessly integrate your randomization and supply management with our powerful EDC system to ensure data consistency and accuracy from patient entry to data lock.",
-        link: "/solutions/edc",
-        linkText: "Explore EDC"
-    },
-    {
-        title: "CTM (Clinical Trial Management)",
-        description: "Connect your site and subject activities with our CTM solution for a unified view of trial progress, resource allocation, and milestone tracking.",
-        link: "/solutions/ctm",
-        linkText: "Explore CTM"
-    },
-    {
-        title: "Trial Analytics",
-        description: "Turn your IRT/IWRS data into actionable insights. Monitor recruitment, supply levels, and randomization balance in real-time with our advanced analytics.",
-        link: "/solutions/trial-analytics",
-        linkText: "Explore Analytics"
-    }
-]
-
-export function RelatedProductsSection() {
+export function RelatedProductsSection({ relatedContent }: { relatedContent?: RelatedContent }) {
     const videoThumbnail = PlaceHolderImages.find(p => p.id === 'finance-driver-video');
+
+    if (!relatedContent) {
+        return null;
+    }
+
+    const { title, description, featurePoints, relatedProducts } = relatedContent;
 
     return (
         <section className="bg-secondary/50">
             <div className="container">
                 <SectionTitle 
-                    title="Explore Related IRT/IWRS Solutions"
-                    description="Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations."
+                    title={title}
+                    description={description}
                 />
 
                 <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
