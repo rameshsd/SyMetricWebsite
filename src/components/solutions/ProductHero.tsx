@@ -23,7 +23,7 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
 
   return (
     <section 
-        className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", defaultBgClass)}
+        className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", defaultBgClass, isIrtIwrs && 'bg-[#ebf8ff]')}
         style={sectionStyle}
     >
       <div className="container">
@@ -42,10 +42,10 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
               {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" asChild variant={hasDarkBg ? "secondary" : "default"}>
+              <Button size="lg" asChild variant={hasDarkBg && !isIrtIwrs ? "secondary" : "default"}>
                 <Link href="/solutions">Explore the solutions</Link>
               </Button>
-               <Button size="lg" variant="outline" className={cn(hasDarkBg && "bg-transparent border-white text-white hover:bg-white hover:text-primary")}>
+               <Button size="lg" variant="outline" className={cn(hasDarkBg && !isIrtIwrs && "bg-transparent border-white text-white hover:bg-white hover:text-primary")}>
                 <Link href="/contact">Request a demo</Link>
               </Button>
             </div>
@@ -70,5 +70,3 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
     </section>
   );
 }
-
-    
