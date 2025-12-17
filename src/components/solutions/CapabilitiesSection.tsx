@@ -5,7 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionTitle } from '../shared/section-title';
 import type { SolutionCapability } from '@/lib/types';
 import { RandomizationIcon, SubjectManagementIcon, SitesManagementIcon, ClinicalSuppliesIcon } from '../icons/solution-offering-icons';
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon, FilePlus, ShieldCheck, SearchCheck, AlertTriangle, Code2 } from 'lucide-react';
 
 type CapabilitiesSectionProps = {
   capabilities?: SolutionCapability[];
@@ -16,6 +16,11 @@ const iconMap: { [key: string]: React.FC<any> } = {
   'subject-management': SubjectManagementIcon,
   'sites-management': SitesManagementIcon,
   'clinical-supplies-management': ClinicalSuppliesIcon,
+  'ecrf-management': FilePlus,
+  'sdv': ShieldCheck,
+  'query-management': SearchCheck,
+  'ae-sae-reporting': AlertTriangle,
+  'medical-coding': Code2,
 };
 
 export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {
@@ -35,7 +40,7 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
             {capabilities.map((capability) => {
-              const Icon = capability.icon || iconMap[capability.id];
+              const Icon = iconMap[capability.id] || capability.icon;
               return (
                 <div key={capability.id} className="bg-primary/20 p-8 rounded-2xl h-full flex flex-col">
                   {Icon && (

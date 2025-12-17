@@ -17,6 +17,7 @@ export type SolutionCapability = {
   title: string;
   description: string;
   imageId: string;
+  icon?: LucideIcon;
 }
 
 export type Solution = {
