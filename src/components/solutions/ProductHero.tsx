@@ -70,3 +70,5 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
     </section>
   );
 }
+
+    

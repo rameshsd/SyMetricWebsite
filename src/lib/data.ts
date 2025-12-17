@@ -236,7 +236,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
     image: 'ctm-image',
-    backgroundColor: '#fffbeb',
+    backgroundColor: '#2463eb',
     capabilities: [
       {
         id: 'user-access-management',
@@ -1894,5 +1894,7 @@ export const aiFaqItems: FAQItem[] = [
         'Joule is a natural language, generative AI copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
     },
 ];
+
+    
 
     
