@@ -1,10 +1,12 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Microsoft, Sap } from "../icons/brand-icons";
+import { Microsoft } from "../icons/brand-icons";
 import { Cloud } from "lucide-react";
+import Image from "next/image";
 
 export function HostingOptions() {
   return (
@@ -32,8 +34,14 @@ export function HostingOptions() {
                 <CardHeader>
                     <CardTitle className="text-lg">SAP Business Technology Platform</CardTitle>
                 </CardHeader>
-                <CardContent>
-                    <Sap className="h-16 mx-auto" />
+                <CardContent className="h-16 flex items-center justify-center">
+                    <Image 
+                        src="https://symetricsystems.com/wp-content/uploads/2021/06/SAP.png"
+                        alt="SAP Logo"
+                        width={100}
+                        height={50}
+                        className="object-contain"
+                    />
                 </CardContent>
             </Card>
              <Card className="bg-white text-foreground text-center">
