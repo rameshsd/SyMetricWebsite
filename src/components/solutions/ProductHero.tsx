@@ -19,6 +19,7 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
   const sectionStyle = backgroundColor ? { backgroundColor } : {};
   const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
   const isIrtIwrs = slug === 'irt-iwrs';
+  const hasDarkBg = !!backgroundColor;
 
   return (
     <section 
@@ -28,17 +29,23 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+            <h1 className={cn(
+              "text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl",
+              hasDarkBg && "text-white"
+            )}>
               {title}
             </h1>
-            <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
+            <p className={cn(
+              "max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed",
+              hasDarkBg && "text-white/80"
+            )}>
               {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" asChild>
+              <Button size="lg" asChild variant={hasDarkBg ? "secondary" : "default"}>
                 <Link href="/solutions">Explore the solutions</Link>
               </Button>
-               <Button size="lg" variant="outline" asChild>
+               <Button size="lg" variant="outline" className={cn(hasDarkBg && "bg-transparent border-white text-white hover:bg-white hover:text-primary")}>
                 <Link href="/contact">Request a demo</Link>
               </Button>
             </div>
