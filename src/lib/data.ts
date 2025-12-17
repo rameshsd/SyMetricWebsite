@@ -185,7 +185,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: Database,
     image: 'edc-image',
-    backgroundColor: '#ebf5cb',
+    backgroundColor: '#2463eb',
     capabilities: [
       {
         id: 'ecrf-management',
