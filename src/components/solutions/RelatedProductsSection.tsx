@@ -25,22 +25,22 @@ const featurePoints = [
 
 const relatedProducts = [
     {
-        title: "IRT/IWRS",
-        description: "Developed with years of strong industry expertise and tested to deliver against the most complex Clinical Trial designs, our IRT/IWRS solution is the most comprehensive one in the market today.",
-        link: "/solutions/irt-iwrs",
-        linkText: "Find out more"
-    },
-    {
-        title: "EDC",
-        description: "The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.",
+        title: "EDC (Electronic Data Capture)",
+        description: "Seamlessly integrate your randomization and supply management with our powerful EDC system to ensure data consistency and accuracy from patient entry to data lock.",
         link: "/solutions/edc",
-        linkText: "Find out more"
+        linkText: "Explore EDC"
     },
     {
-        title: "CTM",
-        description: "The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.",
+        title: "CTM (Clinical Trial Management)",
+        description: "Connect your site and subject activities with our CTM solution for a unified view of trial progress, resource allocation, and milestone tracking.",
         link: "/solutions/ctm",
-        linkText: "Find out more"
+        linkText: "Explore CTM"
+    },
+    {
+        title: "Trial Analytics",
+        description: "Turn your IRT/IWRS data into actionable insights. Monitor recruitment, supply levels, and randomization balance in real-time with our advanced analytics.",
+        link: "/solutions/trial-analytics",
+        linkText: "Explore Analytics"
     }
 ]
 
@@ -51,7 +51,7 @@ export function RelatedProductsSection() {
         <section className="bg-secondary/50">
             <div className="container">
                 <SectionTitle 
-                    title="Explore Our Solutions"
+                    title="Explore Related IRT/IWRS Solutions"
                     description="Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations."
                 />
 
