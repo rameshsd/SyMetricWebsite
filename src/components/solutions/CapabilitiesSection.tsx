@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionTitle } from '../shared/section-title';
 import type { SolutionCapability } from '@/lib/types';
 import { RandomizationIcon, SubjectManagementIcon, SitesManagementIcon, ClinicalSuppliesIcon } from '../icons/solution-offering-icons';
+import { LucideIcon } from 'lucide-react';
 
 type CapabilitiesSectionProps = {
   capabilities?: SolutionCapability[];
@@ -34,7 +35,7 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
             {capabilities.map((capability) => {
-              const Icon = iconMap[capability.id];
+              const Icon = capability.icon || iconMap[capability.id];
               return (
                 <div key={capability.id} className="bg-primary/20 p-8 rounded-2xl h-full flex flex-col">
                   {Icon && (

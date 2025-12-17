@@ -1,5 +1,4 @@
 
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -53,6 +52,11 @@ import {
   LifeBuoy as LifeBuoyIcon,
   BarChart as BarChartIcon,
   Package,
+  FilePlus,
+  FileCheck,
+  SearchCheck,
+  AlertTriangle,
+  Code2,
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -186,31 +190,36 @@ export const solutions: Solution[] = [
         id: 'ecrf-management',
         title: 'eCRF Management',
         description: 'Success of a clinical trial depends largely on well-designed Case Report Forms. Here’s where our eCRF Management module comes in handy by helping design CRFs. It can also program real-time validation checks to operate them efficiently, enabling collection of complete, reliable, and accurate data in line with regulatory standards.',
-        imageId: 'edc-ecrf'
+        imageId: 'edc-ecrf',
+        icon: FilePlus
       },
       {
         id: 'sdv',
         title: 'Source Data Verification',
         description: 'A key aspect of clinical data management is the Source Data Verification (SDV) process which ensures data quality and conformance to source data. This selective feature focuses on verifying critical study data points instead of 100% SDV for all patients — saving time, effort, and costs while maintaining scientific and ethical integrity of the trial.',
-        imageId: 'edc-sdv'
+        imageId: 'edc-sdv',
+        icon: ShieldCheck
       },
       {
         id: 'query-management',
         title: 'Query Management',
         description: 'Our Discrepancy Management tool helps investigation sites identify and manage data aberrations to ensure that the system captures clean and consistent data. For interim and final comprehensive analysis, the data export feature of our tool enables standard and customizable dataset exports in .CSV and .XLS formats at any time even during the study run.',
-        imageId: 'edc-query'
+        imageId: 'edc-query',
+        icon: SearchCheck
       },
       {
         id: 'ae-sae-reporting',
         title: 'AE/SAE Reporting',
         description: 'As patient safety is the fundamental principle that lies at the core of every clinical trial, it is important that the AE/SAEs are timely reported to stakeholders and regulatory bodies and handled appropriately. Our feature that comes with automatic notifications triggered via email keeps users informed on AE/SAE reporting actions.',
-        imageId: 'edc-reporting'
+        imageId: 'edc-reporting',
+        icon: AlertTriangle
       },
       {
         id: 'medical-coding',
         title: 'Medical Coding',
         description: 'Our built-in coding interface along with real-time data available from our EDC system will help you streamline your coding process. Also, our integrated coding mechanism uses standard medical dictionaries like MedDRA and WHO-Drug Global and can guarantee precise and consistent coding of verbatim terms to harmonized and standard codes.',
-        imageId: 'edc-coding'
+        imageId: 'edc-coding',
+        icon: Code2
       }
     ]
   },
