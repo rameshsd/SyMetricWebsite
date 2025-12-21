@@ -142,8 +142,8 @@ const AnimatedDiagram = () => {
         style={{ top: '50%', left: '50%', x: '-50%', y: '-50%' }}
       >
         <motion.div animate={floatingAnimation(0, '4px')}>
-            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center">
-              <ShieldCheck className="w-12 h-12 text-primary" />
+            <div className="w-28 h-28 bg-primary/10 rounded-full flex items-center justify-center">
+              <ShieldCheck className="w-14 h-14 text-primary" strokeWidth={2} />
             </div>
         </motion.div>
       </motion.div>
@@ -155,8 +155,8 @@ const AnimatedDiagram = () => {
         style={{ top: '20%', left: '50%', x: '-50%', y: '-50%' }}
       >
         <motion.div animate={floatingAnimation(0.5)}>
-          <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
-            <Lock className="w-8 h-8 text-primary" />
+          <div className="w-20 h-20 bg-background border rounded-full flex items-center justify-center shadow-md">
+            <Lock className="w-10 h-10 text-primary" strokeWidth={2} />
           </div>
           <span className="font-semibold text-sm text-foreground mt-2 block text-center">Security</span>
         </motion.div>
@@ -169,8 +169,8 @@ const AnimatedDiagram = () => {
         style={{ top: '70%', left: '22%', x: '-50%', y: '-50%' }}
       >
         <motion.div animate={floatingAnimation(1)}>
-          <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
-            <FileCheck className="w-8 h-8 text-primary" />
+          <div className="w-20 h-20 bg-background border rounded-full flex items-center justify-center shadow-md">
+            <FileCheck className="w-10 h-10 text-primary" strokeWidth={2} />
           </div>
           <span className="font-semibold text-sm text-foreground mt-2 block text-center">Compliance</span>
         </motion.div>
@@ -183,8 +183,8 @@ const AnimatedDiagram = () => {
         style={{ top: '70%', left: '78%', x: '-50%', y: '-50%' }}
       >
         <motion.div animate={floatingAnimation(1.5)}>
-          <div className="w-16 h-16 bg-background border rounded-full flex items-center justify-center shadow-md">
-            <ShieldCheck className="w-8 h-8 text-primary" />
+          <div className="w-20 h-20 bg-background border rounded-full flex items-center justify-center shadow-md">
+            <ShieldCheck className="w-10 h-10 text-primary" strokeWidth={2} />
           </div>
           <span className="font-semibold text-sm text-foreground mt-2 block text-center">Data Privacy</span>
         </motion.div>
@@ -218,14 +218,14 @@ export function SecurityCompliance() {
           <div className="space-y-10">
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-foreground mb-4">Security and Compliance</h3>
-              <p className="text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Build data security from the ground up with the backing of our team of experts. We ensure that you meet regulatory requirements (Data protection laws, Good Clinical Practice guidelines, and more) through proactive compliance measures that use well-defined policies, processes, and a robust Standard Operating Procedure framework. Our methods are trusted by large Pharmaceutical Organizations, CROs, and Academic Institutions.
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-foreground mb-4">Uncompromised Commitment to Data Privacy</h3>
-              <p className="text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 We go to great lengths to ensure that you have full control over data that powers your research. When it comes to data privacy, our resolve is unmatched and we are only custodians of data that is yours.
               </p>
                <Button variant="link" asChild className="p-0 h-auto mt-4 text-primary">
