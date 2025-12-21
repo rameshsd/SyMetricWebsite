@@ -953,6 +953,12 @@
       "description": "A dynamic image showing laboratory samples being processed with digital overlays, representing advanced sample management.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1_Qmd_CLbchnoyzLilZTKgOTcZJTJwvcI",
       "imageHint": "sample management digital"
+    },
+    {
+      "id": "built-with-purpose-image",
+      "description": "Woman working on a tablet device.",
+      "imageUrl": "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHdpdGglMjB0YWJsZXR8ZW58MHx8fHwxNzYxMTI5ODMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman tablet"
     }
   ]
 }
