@@ -302,7 +302,44 @@ export const solutions: Solution[] = [
         iconName: 'Code2'
       }
     ],
-    relatedContent: defaultRelatedContent
+    relatedContent: {
+      title: "Explore Related EDC Solutions",
+      description: "Enhance your data capture capabilities by integrating with other powerful SyMetric modules.",
+      featurePoints: [
+        {
+          title: "Unified Data Flow",
+          description: "Connect EDC with IRT and CTM to create a single, seamless flow of data from patient randomization to final analysis."
+        },
+        {
+          title: "Real-time Insights",
+          description: "Feed your clean, validated EDC data directly into our Trial Analytics module to monitor trends and make proactive decisions."
+        },
+        {
+          title: "Enhanced Compliance",
+          description: "Pair EDC with our eTMF solution to automatically file data-related documentation and ensure your trial is always audit-ready."
+        }
+      ],
+      relatedProducts: [
+        {
+          title: "Medical Coding",
+          description: "Integrate MedDRA and WHO-DD coding directly into your EDC workflow for faster, more accurate term standardization.",
+          link: "/solutions/medical-coding",
+          linkText: "Explore Medical Coding"
+        },
+        {
+          title: "IRT/IWRS",
+          description: "Link subject screening and enrollment data from EDC directly to randomization and supply allocation in our IRT system.",
+          link: "/solutions/irt-iwrs",
+          linkText: "Explore IRT/IWRS"
+        },
+        {
+          title: "eTMF",
+          description: "Automatically push signed-off forms, query resolutions, and audit trails from EDC to your electronic Trial Master File.",
+          link: "/solutions/etmf",
+          linkText: "Explore eTMF"
+        }
+      ]
+    }
   },
   {
     id: 'ctm',
