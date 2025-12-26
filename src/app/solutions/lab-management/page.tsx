@@ -7,10 +7,6 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { labManagementFaq } from '@/lib/data';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
