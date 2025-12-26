@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { solutions } from '@/lib/data';
@@ -15,9 +16,10 @@ const pillars = [
     {
         icon: (props: any) => (
             <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 12H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 6L20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="7" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
+                <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
+                <path d="M21 13V3a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v10" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 7V2" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 22v-5" stroke="currentColor" strokeWidth="2"/>
             </svg>
         ),
         title: 'Accelerate',
@@ -61,19 +63,46 @@ const pillars = [
 ];
 
 export default function SolutionsPage() {
-    const heroImage = PlaceHolderImages.find(p => p.id === 'solutions-hero');
+    const heroImage = PlaceHolderImages.find(p => p.id === 'services-hero-people');
     const ctpImage = PlaceHolderImages.find(p => p.id === 'ctp-hero-image');
 
   return (
     <div>
         <ProductPageHeader productName="Solutions" solutions={solutions} />
-        <section className="bg-primary text-white py-20 px-0">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">We Provide the Solutions You Need to Run Your Clinical Trials Efficiently</h1>
-                    <p className="mt-6 text-lg text-white/80">Our integrated, cloud-based solutions transform Clinical Trials from early phase to late phase and support organizations of all types and sizes — Pharmaceutical Sponsors, Clinical Research Organizations, and Academia.</p>
+        <section className="bg-primary text-white py-0 px-0">
+          <div className="container mx-auto px-0">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="py-20 px-4 sm:px-6 lg:px-8">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                  Our Services
+                </h1>
+                <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">
+                  As Clinical Trials create large amounts of data, managing the data ensuring high-quality and accuracy can be a highly complex task. Whether you need extensive assistance or solutions to individual problems, SyMetric’s range of services meet your needs by seamlessly integrating with your existing system or helping you build a new one.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                    <Button size="lg" variant="secondary" asChild>
+                        <Link href="/contact">Request a demo</Link>
+                    </Button>
+                    <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" asChild>
+                        <Link href="/industries">View all industries</Link>
+                    </Button>
                 </div>
+              </div>
+              <div className="relative h-64 md:h-full min-h-[500px]">
+                {heroImage && (
+                  <div className="absolute inset-0 clip-path-solutions-hero">
+                    <Image
+                      src={heroImage.imageUrl}
+                      alt={heroImage.description}
+                      data-ai-hint={heroImage.imageHint}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
         </section>
 
         <section className="py-20">
@@ -96,7 +125,7 @@ export default function SolutionsPage() {
             <div className="container">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        {ctpImage && <Image src={ctpImage.imageUrl} alt="SyMetric Clinical Trial Platform" width={600} height={400} className="rounded-2xl" />}
+                        {ctpImage && <Image src={ctpImage.imageUrl} alt="SyMetric Clinical Trial Platform" width={600} height={400} className="rounded-2xl" data-ai-hint={ctpImage.imageHint} />}
                     </div>
                     <div className="space-y-4">
                         <h2 className="text-3xl font-bold">SyMetric Clinical Trial Platform</h2>
