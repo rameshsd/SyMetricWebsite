@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -204,7 +205,7 @@ export const LabelManagementIcon = ({ className }: IconProps) => (
 
 
 // ====================================================
-// 16. Help & Support
+// 16. Help &amp; Support
 // ====================================================
 export const HelpSupportIcon = ({ className }: IconProps) => (
   <RawSVG className={className} svg={`<svg ${SVG_BASE} stroke-width="2" stroke="${ICON_COLOR}" fill="none">
@@ -213,5 +214,6 @@ export const HelpSupportIcon = ({ className }: IconProps) => (
     <line x1="12" y1="17" x2="12.01" y2="17" />
   </svg>`} />
 );
+
 
 

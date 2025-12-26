@@ -267,7 +267,7 @@
     {
       "id": "hosting-providers-image",
       "description": "Cloud hosting servers",
-      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1573495782977-0172c1ba9548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMHNlcnZlcnN8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud servers"
     },
     {
@@ -279,7 +279,7 @@
     {
       "id": "data-privacy-image",
       "description": "Shield protecting data",
-      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1614064548237-02f0f3820317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data privacy"
     },
     {
@@ -495,7 +495,7 @@
     {
       "id": "edc-reporting",
       "description": "An automated email notification about an Adverse Event (AE) that has been reported.",
-      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584433144853-169dd62a8537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "alert notification"
     },
     {
@@ -861,13 +861,13 @@
     {
       "id": "data-management-hero",
       "description": "A dashboard displaying various charts and graphs for data management.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analytics dashboard"
     },
     {
       "id": "study-management-hero",
       "description": "A person organizing a complex flowchart, representing study management.",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study planning"
     },
     {
@@ -891,14 +891,8 @@
     {
       "id": "sample-management-hero",
       "description": "A laboratory technician organizing sample vials in a tray.",
-      "imageUrl": "https://images.unsplash.com/photo-1581093583449-c1a7c37a2504?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsYWJvcmF0b3J5JTIwc2FtcGxlc3xlbnwwfHx8fDE3NjA4MzU0NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1581093583449-c1a7c37a2504?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxsbGFib3JhdG9yeSUyMHNhbXBsZXN8ZW58MHx8fHwxNzYwODM1NDYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "laboratory samples"
-    },
-    {
-      "id": "help-support-hero",
-      "description": "A customer service representative smiling and wearing a headset.",
-      "imageUrl": "https://images.unsplash.com/photo-1553775282-20af80779774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzYwODYyNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "customer support"
     },
     {
       "id": "label-management-hero",
@@ -909,7 +903,7 @@
     {
       "id": "reports-hero",
       "description": "A collection of colorful charts and graphs on a digital dashboard, representing the reports module.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data dashboard reports"
     },
     {
@@ -959,6 +953,12 @@
       "description": "Woman working on a tablet device.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1LidmhC33ZhnL22sX06iwjbm7smLIEgbd",
       "imageHint": "woman tablet"
+    },
+    {
+      "id": "help-support-hero",
+      "description": "Empowering users with instant assistance, guided learning, and efficient issue resolution for a seamless experience across the platform.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16pXJYyNYnEwIYZVuHwpw-833_BoMkk_G",
+      "imageHint": "support team help"
     }
   ]
 }

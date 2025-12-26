@@ -86,7 +86,7 @@ export const toolsData = [
         id: 'coding',
         icon: MedicalCodingIcon, 
         label: 'Medical Coding',
-        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
+        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHO-Drug.',
         link: '/solutions/medical-coding',
     },
     { 
@@ -101,7 +101,7 @@ export const toolsData = [
         icon: DigitalLearningIcon, 
         label: 'Digital Learning',
         description: 'Provide training and certification for trial personnel directly on the platform.',
-        link: '#' 
+        link: '/solutions/digital-learning' 
     },
     {
         id: 'data-services',
