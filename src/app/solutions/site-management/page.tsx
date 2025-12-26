@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -111,7 +110,7 @@ const benefits = [
 ];
 
 const PurposeSection = () => {
-    const purposeImage = PlaceHolderImages.find(p => p.id === 'site-management-hero');
+    const purposeImage = PlaceHolderImages.find(p => p.id === 'site-management-purpose');
     const purposePoints = [
         "Ensures correct rules, permissions, and controls for every site.",
         "Provides robust, centralized site-level governance.",
