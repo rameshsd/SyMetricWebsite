@@ -53,7 +53,7 @@ export default function CtpPieChart(): JSX.Element {
     {
       title: 'Security',
       points: ['Highest product and operations security', 'Resilience and business continuity', 'Cyber-defense measures'],
-      position: 'md:absolute top-1/2 right-0 md:translate-x-1/2 md:-translate-y-1/2'
+      position: 'md:absolute top-1/2 right-0 md:translate-x-1/4 md:-translate-y-1/2'
     }
   ];
 
@@ -70,7 +70,7 @@ export default function CtpPieChart(): JSX.Element {
 
                 <div className="relative w-full mx-auto md:min-h-[500px] flex flex-col md:flex-row items-center justify-center gap-4">
                     {/* SVG Diagram */}
-                    <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:absolute md:inset-0 flex items-center justify-center">
+                    <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-full md:h-full flex items-center justify-center">
                         <svg viewBox="0 0 600 600" className="w-full h-full" role="img" aria-label="SyMetric CTP pie chart">
                             <defs>
                                 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
@@ -102,8 +102,8 @@ export default function CtpPieChart(): JSX.Element {
 
                     {/* Feature Points */}
                     {featurePoints.map(feature => (
-                      <div key={feature.title} className={feature.position}>
-                        <Card className="p-4 rounded-xl shadow-lg bg-background/80 backdrop-blur-sm w-56">
+                      <div key={feature.title} className={`w-full md:w-56 ${feature.position}`}>
+                        <Card className="p-4 rounded-xl shadow-lg bg-background/80 backdrop-blur-sm w-full">
                           <h4 className="font-bold text-foreground mb-2 text-base">{feature.title}</h4>
                           <ul className="space-y-2">
                             {feature.points.map(point => (
