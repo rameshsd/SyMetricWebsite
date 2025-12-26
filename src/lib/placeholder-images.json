@@ -875,6 +875,12 @@
       "description": "A scientist analyzing data on a futuristic interface in a lab.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=191QW6Q5pE-k_5cjb2xXgYc2o2d8oE0rW",
       "imageHint": "scientist data analysis"
+    },
+    {
+      "id": "conclusion-main-image",
+      "description": "A screenshot showing a notification that OneDrive is now storing important folders.",
+      "imageUrl": "https://img-c.udemycdn.com/course/750x422/3847526_5987_2.jpg",
+      "imageHint": "onedrive sync notification"
     }
   ]
 }

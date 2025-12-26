@@ -1,5 +1,4 @@
 
-
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +10,7 @@ import { labManagementFaq } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { ConclusionSection } from '@/components/solutions/lab-management/ConclusionSection';
 
 
 export const metadata: Metadata = {
@@ -50,67 +50,6 @@ const capabilities = [
         description: "Maintain complete, regulatory-grade audit trails on every lab data update, ensuring full compliance and data integrity."
     }
 ];
-
-const ConclusionSection = () => {
-    const image = PlaceHolderImages.find(p => p.id === 'lab-management-conclusion');
-    
-    const conclusionPoints = [
-        {
-            id: 'unify',
-            title: 'Unify Lab Data',
-            description: 'The Lab Data Management module unifies lab setup, reference ranges, and data uploads, ensuring all results are standardized and validated.',
-        },
-        {
-            id: 'accuracy',
-            title: 'Ensure Accuracy',
-            description: 'It delivers accurate lab-to-CRF data flow, faster decision-making, and reduced data entry errors.',
-        },
-        {
-            id: 'compliance',
-            title: 'Maintain Compliance',
-            description: 'Achieve regulatory-grade auditability for both central and site-level lab operations.',
-        }
-    ];
-
-    return (
-        <section id="conclusion" className="bg-secondary/50">
-            <div className="container">
-                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <SectionTitle
-                            eyebrow='Conclusion'
-                            title="A Unified & Compliant Lab Data Ecosystem"
-                            className="text-left !max-w-none !mb-8"
-                        />
-                        <Accordion type="single" collapsible defaultValue='unify' className="w-full">
-                           {conclusionPoints.map((point) => (
-                             <AccordionItem key={point.id} value={point.id} className="border-t">
-                                <AccordionTrigger className='py-4 text-left font-semibold text-lg hover:no-underline'>
-                                  {point.title}
-                                </AccordionTrigger>
-                                <AccordionContent className="pb-4">
-                                  <p className="text-muted-foreground">{point.description}</p>
-                                </AccordionContent>
-                              </AccordionItem>
-                           ))}
-                        </Accordion>
-                    </div>
-                     <div className="relative h-96 w-full">
-                        {image && (
-                            <Image 
-                                src={image.imageUrl}
-                                alt={image.description}
-                                data-ai-hint={image.imageHint}
-                                fill
-                                className="object-contain"
-                            />
-                        )}
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
 
 export default function LabDataManagementPage() {
 
