@@ -16,10 +16,8 @@ const pillars = [
     {
         icon: (props: any) => (
             <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
-                <path d="M21 13V3a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v10" stroke="currentColor" strokeWidth="2"/>
-                <path d="M12 7V2" stroke="currentColor" strokeWidth="2"/>
-                <path d="M12 22v-5" stroke="currentColor" strokeWidth="2"/>
+                <path d="M7 7h10v10H7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0z" stroke="currentColor" strokeWidth="2"/>
             </svg>
         ),
         title: 'Accelerate',
@@ -69,10 +67,10 @@ export default function SolutionsPage() {
   return (
     <div>
         <ProductPageHeader productName="Solutions" solutions={solutions} />
-        <section className="bg-primary text-white py-0 px-0">
-          <div className="container mx-auto px-0">
+        <section className="bg-primary text-white py-20">
+          <div className="container">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="py-20 px-4 sm:px-6 lg:px-8">
+              <div className="">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                   Our Services
                 </h1>
@@ -88,17 +86,15 @@ export default function SolutionsPage() {
                     </Button>
                 </div>
               </div>
-              <div className="relative h-64 md:h-full min-h-[500px]">
+              <div className="relative h-64 md:h-full min-h-[400px]">
                 {heroImage && (
-                  <div className="absolute inset-0 clip-path-solutions-hero">
-                    <Image
+                  <Image
                       src={heroImage.imageUrl}
                       alt={heroImage.description}
                       data-ai-hint={heroImage.imageHint}
                       fill
-                      className="object-cover"
-                    />
-                  </div>
+                      className="object-cover rounded-2xl"
+                  />
                 )}
               </div>
             </div>
