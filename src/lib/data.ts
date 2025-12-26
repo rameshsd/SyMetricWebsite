@@ -58,6 +58,10 @@ import {
   Code2,
   Library,
   Key,
+  Target,
+  FileBarChart,
+  UserCheck,
+  LayoutGrid
 } from 'lucide-react';
 import { CloudErpIcon, FinancialManagementIcon, SpendManagementIcon, SupplyChainIcon, HumanCapitalIcon, CustomerExperienceIcon } from '@/components/icons/feature-icons';
 import { PlaceHolderImages } from './placeholder-images';
@@ -2026,5 +2030,59 @@ export const aiFaqItems: FAQItem[] = [
     },
 ];
     
+export const trialAnalyticsBenefits = [
+    {
+        icon: Target,
+        title: "Make Informed Decisions",
+        description: "Trial Planners from Clinical Operations or R&D teams can make informed decisions with ease by assessing the performance of CROs, Investigation Sites and Investigators. Data is visible in graphical and tabular modes."
+    },
+    {
+        icon: TrendingUp,
+        title: "Improve the Success Rate",
+        description: "A new Trial planned with the right partners in the right location tends to have a higher success rate. A failed Trial can create huge setbacks for companies considering the magnitude of investments involved and the loss of market opportunity."
+    },
+    {
+        icon: UserCheck,
+        title: "Bring Accountability in Planning",
+        description: "Every new Trial planned in SyMetric Trial Analytics tool has a two-step approval process, bringing in more accountability and documented decision-making. Also, analytical fact sheets can be printed to substantiate the decisions."
+    },
+    {
+        icon: Database,
+        title: "Build Planning Data Repository",
+        description: "Organizations can upload the past data using a simple API interface or simply upload the data using a .csv file. They can get the data from their CROs or their country operations teams in a standard spreadsheet format and upload it into the Trial Analytics Tool."
+    },
+    {
+        icon: Clock,
+        title: "Enable Faster Planning Process",
+        description: "With us, the planning process is easier than ever. While planning a new Trial based on the Therapeutic Area and Phase of the Study, you will be taken through a simple step-by-step process, where decisions can be taken based on stakeholder’s past performance in any given country."
+    }
+];
 
+export const trialAnalyticsFeatures = [
+    {
+        icon: LayoutGrid,
+        title: "Analytical Dashboard for the Planning Entity",
+        description: "With our detailed analytical dashboard, get a 360-degree view of your performance. Our dashboards are available for CROs, Investigation Sites, and Investigators. This will help you make informed decisions while considering entities for a new trial."
+    },
+    {
+        icon: Users,
+        title: "Role-Based Access",
+        description: "SyMetric Trial Analytics comes with four clearly defined roles — Admin Role for creating the user administration, Configurator Role for uploading historical data and adding new planning entities, Planner Role for creating new plans, and an Approver Role."
+    },
+    {
+        icon: FileBarChart,
+        title: "View Comprehensive Fact Sheet for the New Plan",
+        description: "Once the planning is completed including selection of all stakeholders, the system displays the newly planned study in a simple fact sheet format. This helps you in reconfirming the plan before sending it for approval."
+    },
+    {
+        icon: PieChart,
+        title: "Graphical and Tabular Analytics View",
+        description: "All the data in the system is graphically represented which makes selection easy during the planning process and can be downloaded in printable format."
+    },
+    {
+        icon: ChevronsRight,
+        title: "Step-by-Step Trial Planning",
+        description: "You can plan the study in a sequential manner based on stakeholder analytics at every stage. Analytics pertaining to CROs, Investigation Sites, and Investigators can be viewed on a separate tab. Planners can go to each tab to view the analytics and decide to choose them for the new Trial."
+    }
+];
       

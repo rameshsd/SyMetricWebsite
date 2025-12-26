@@ -323,4 +323,16 @@ export type CalendarEvent = {
   color?: string;
 };
 
+export type TrialAnalyticsBenefit = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+};
+
+export type TrialAnalyticsFeature = {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+};
     
+
