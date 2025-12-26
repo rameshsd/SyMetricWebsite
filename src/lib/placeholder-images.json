@@ -845,6 +845,30 @@
       "description": "A diverse team collaborating in a modern office, representing the backbone of site governance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1OofiPBJh0qtD1WbQ4-sHMysps1xXNHVM",
       "imageHint": "team collaboration governance"
+    },
+    {
+      "id": "help-support-hero",
+      "description": "A friendly support person with a headset on.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16pXJYyNYnEwIYZVuHwpw-833_BoMkk_G",
+      "imageHint": "support person"
+    },
+    {
+      "id": "label-management-hero",
+      "description": "A hand holding a label with a barcode.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1A3KjB1kQRbiGT2KD8DPDZTXfM1zGg1Uy",
+      "imageHint": "barcode label"
+    },
+    {
+      "id": "subject-management-hero",
+      "description": "An abstract illustration of a person's profile with data points.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1Htv3okqHA8Yx6Bjm3nOM1AsNOQUqul2H",
+      "imageHint": "subject profile data"
+    },
+    {
+      "id": "lab-management-hero",
+      "description": "A laboratory setting with test tubes and scientific equipment.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1HPrkdxk4AospRY6EofMPZP0IGdllzvwB",
+      "imageHint": "laboratory equipment"
     }
   ]
 }
