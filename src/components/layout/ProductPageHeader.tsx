@@ -38,7 +38,6 @@ type ProductPageHeaderProps = {
 export function ProductPageHeader({ productName, solutions }: ProductPageHeaderProps) {
   const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const isSolutionsPage = pathname === "/solutions";
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -56,6 +55,8 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
     }
     return item;
   });
+  
+  const isOverviewActive = pathname === '/solutions';
 
   return (
     <div className="w-full">
@@ -121,7 +122,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                   key={tab.label}
                   href={tab.href!}
                   className={cn(
-                    isSolutionsPage && tab.label === "Overview"
+                    isOverviewActive && tab.label === "Overview"
                       ? "border-primary text-primary"
                       : "border-transparent text-muted-foreground hover:text-foreground hover:border-border",
                     "whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm"

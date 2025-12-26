@@ -27,19 +27,9 @@ const pillars = [
     {
         icon: (props: any) => (
              <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
-                <rect x="2" y="2" width="4" height="4" rx="1" stroke="currentColor" strokeWidth="2"/>
-                <rect x="18" y="2" width="4" height="4" rx="1" stroke="currentColor" strokeWidth="2"/>
-                <rect x="2" y="18" width="4" height="4" rx="1" stroke="currentColor" strokeWidth="2"/>
-                <rect x="18" y="18" width="4" height="4" rx="1" stroke="currentColor" strokeWidth="2"/>
-                <path d="M9 7V4" stroke="currentColor" strokeWidth="2"/>
-                <path d="M15 7V4" stroke="currentColor" strokeWidth="2"/>
-                <path d="M9 20V17" stroke="currentColor" strokeWidth="2"/>
-                <path d="M15 20V17" stroke="currentColor" strokeWidth="2"/>
-                <path d="M4 9H7" stroke="currentColor" strokeWidth="2"/>
-                <path d="M4 15H7" stroke="currentColor" strokeWidth="2"/>
-                <path d="M17 9H20" stroke="currentColor" strokeWidth="2"/>
-                <path d="M17 15H20" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         ),
         title: 'Integrate',
@@ -76,6 +66,7 @@ export default function SolutionsPage() {
 
   return (
     <div>
+        <ProductPageHeader productName="Solutions" solutions={solutions} />
         <section className="bg-primary text-white py-20 px-0">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-4xl mx-auto">
