@@ -524,7 +524,7 @@ export const solutions: Solution[] = [
     slug: 'medical-coding',
     hero: {
         title: 'Medical Coding',
-        subtitle: 'Automated and manual coding of clinical terms using MedDRA &amp; WHO-DD with full review, approval, and discrepancy management.'
+        subtitle: 'Automated and manual coding of clinical terms using MedDRA & WHO-DD with full review, approval, and discrepancy management.'
     },
     description: 'Standardize clinical terms using globally accepted dictionaries like MedDRA and WHO-Drug.',
     longDescription: 'The Medical Coding module ensures that all verbatim terms recorded in clinical case report forms (CRFs) are standardized using globally accepted dictionaries, with tools for efficient coding, review, and discrepancy resolution.',
@@ -539,7 +539,7 @@ export const solutions: Solution[] = [
     slug: 'lab-management',
     hero: {
         title: 'Lab Data Management Module',
-        subtitle: 'End-to-end management of central &amp; local lab configurations, reference ranges, and automated lab data imports for clinical trials.'
+        subtitle: 'End-to-end management of central & local lab configurations, reference ranges, and automated lab data imports for clinical trials.'
     },
     description: 'Unified lab setup, reference ranges, and data uploads to ensure standardized and validated lab results.',
     longDescription: 'The Lab Data Management module unifies lab setup, reference ranges, and data uploads, ensuring all lab results are standardized, validated, and fully traceable.',
@@ -553,7 +553,7 @@ export const solutions: Solution[] = [
     name: 'Data Services',
     slug: 'data-services',
     hero: {
-        title: 'Data Services (API &amp; Integration Management)',
+        title: 'Data Services (API & Integration Management)',
         subtitle: 'Seamlessly connect your clinical ecosystem with a configurable, secure, and scalable integration layer.'
     },
     description: 'Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.',
@@ -978,7 +978,7 @@ export const featureGridItems: FeatureGridItem[] = [
     { 
         icon: MedicalCodingIcon, 
         title: 'Medical Coding',
-        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHO-Drug.',
+        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
         link: '#',
     },
     { 
@@ -1494,7 +1494,7 @@ export const dataManagementFaq: FAQItem[] = [
     },
     {
         question: "What formats are available for data export?",
-        answer: "The Dataset &amp; Export Engine is highly flexible. You can define custom dataset structures and export them in various formats, including CSV, Excel, and SAS. This allows you to create analysis-ready datasets tailored to the needs of your biostatisticians."
+        answer: "The Dataset & Export Engine is highly flexible. You can define custom dataset structures and export them in various formats, including CSV, Excel, and SAS. This allows you to create analysis-ready datasets tailored to the needs of your biostatisticians."
     }
 ];
 
@@ -1879,7 +1879,7 @@ export const communityLeadersSlides: CommunityLeaderSlide[] = [
   },
   {
     title: 'Upcoming Community Events',
-    description: 'Join our upcoming webinars, Q&amp;A sessions, and virtual meetups to connect with experts and peers.',
+    description: 'Join our upcoming webinars, Q&A sessions, and virtual meetups to connect with experts and peers.',
     links: [{ text: 'View All Events', href: '#' }],
   },
 ];
@@ -1913,7 +1913,7 @@ export const recentActivity: CommunityPost[] = [
         title: 'Need ABAP expert support to solution the serial number copy from service order to sales order.',
         content: 'Hi Team,Copy line item serial number from the service order to the sales order via forward exchange(CL_CRMS4_PROC_SALESDOC_FWD). We are unable to find a solution.',
         createdAt: '2024-07-28T10:00:00Z',
-        category: 'Enterprise Resource Planning Q&amp;A',
+        category: 'Enterprise Resource Planning Q&A',
         views: 1,
         comments: 0,
         likes: 0
@@ -1928,7 +1928,7 @@ export const recentActivity: CommunityPost[] = [
         title: 'Repeated reminders and escalations',
         content: 'Hi All, GRC 12. SP24can you please suggest if and how repeated reminders and escalations after certain days is possible in PCRegardsPlaban',
         createdAt: '2024-07-28T09:30:00Z',
-        category: 'Technology Q&amp;A',
+        category: 'Technology Q&A',
         views: 19,
         comments: 0,
         likes: 0
@@ -1943,7 +1943,7 @@ export const recentActivity: CommunityPost[] = [
         title: 'How to configuration Year Wise in Fund Management',
         content: 'We are running fund management quarterly. The next plan is to run fund management yearly in the new financial year. Please suggest how to configuration year wise in Fund Management.',
         createdAt: '2024-07-28T09:00:00Z',
-        category: 'Enterprise Resource Planning Q&amp;A',
+        category: 'Enterprise Resource Planning Q&A',
         views: 22,
         comments: 0,
         likes: 0
@@ -1958,7 +1958,7 @@ export const recentActivity: CommunityPost[] = [
         title: 'How to export overload data in FBL3H',
         content: 'We are trying to export a large dataset from FBL3H but are running into performance issues and timeouts. What is the best practice for exporting large volumes of data from this transaction? Are there alternatives to direct export that might be more efficient?',
         createdAt: '2024-07-28T08:00:00Z',
-        category: 'Financials Q&amp;A',
+        category: 'Financials Q&A',
         views: 35,
         comments: 2,
         likes: 1
@@ -2025,6 +2025,4 @@ export const aiFaqItems: FAQItem[] = [
         'Joule is a natural language, generative AI copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
     },
 ];
-    
-
     
