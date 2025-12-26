@@ -1,4 +1,5 @@
 
+
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,7 @@ import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { labManagementFaq } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 
 export const metadata: Metadata = {
@@ -51,27 +53,56 @@ const capabilities = [
 
 const ConclusionSection = () => {
     const image = PlaceHolderImages.find(p => p.id === 'lab-management-conclusion');
+    
+    const conclusionPoints = [
+        {
+            id: 'unify',
+            title: 'Unify Lab Data',
+            description: 'The Lab Data Management module unifies lab setup, reference ranges, and data uploads, ensuring all results are standardized and validated.',
+        },
+        {
+            id: 'accuracy',
+            title: 'Ensure Accuracy',
+            description: 'It delivers accurate lab-to-CRF data flow, faster decision-making, and reduced data entry errors.',
+        },
+        {
+            id: 'compliance',
+            title: 'Maintain Compliance',
+            description: 'Achieve regulatory-grade auditability for both central and site-level lab operations.',
+        }
+    ];
+
     return (
         <section id="conclusion" className="bg-secondary/50">
             <div className="container">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-4">
+                 <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
                         <SectionTitle
-                            title="Conclusion"
-                            className="text-left !max-w-none !mb-0"
+                            eyebrow='Conclusion'
+                            title="A Unified & Compliant Lab Data Ecosystem"
+                            className="text-left !max-w-none !mb-8"
                         />
-                        <p className="text-lg text-muted-foreground">
-                            The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.
-                        </p>
+                        <Accordion type="single" collapsible defaultValue='unify' className="w-full">
+                           {conclusionPoints.map((point) => (
+                             <AccordionItem key={point.id} value={point.id} className="border-t">
+                                <AccordionTrigger className='py-4 text-left font-semibold text-lg hover:no-underline'>
+                                  {point.title}
+                                </AccordionTrigger>
+                                <AccordionContent className="pb-4">
+                                  <p className="text-muted-foreground">{point.description}</p>
+                                </AccordionContent>
+                              </AccordionItem>
+                           ))}
+                        </Accordion>
                     </div>
-                    <div className="relative h-80 w-full">
+                     <div className="relative h-96 w-full">
                         {image && (
                             <Image 
                                 src={image.imageUrl}
                                 alt={image.description}
                                 data-ai-hint={image.imageHint}
                                 fill
-                                className="object-cover rounded-2xl"
+                                className="object-contain"
                             />
                         )}
                     </div>
