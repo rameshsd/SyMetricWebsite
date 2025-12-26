@@ -7,6 +7,10 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { labManagementFaq } from '@/lib/data';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 export const metadata: Metadata = {
   title: 'Lab Data Management - SyMetric',
@@ -99,17 +103,16 @@ export default function LabDataManagementPage() {
                         </div>
                     </div>
                 </section>
-
-                 <section id="conclusion" className="bg-secondary/50">
+                
+                <section id="conclusion" className="bg-secondary/50">
                     <div className="container max-w-3xl mx-auto text-center">
                          <h2 className="text-3xl font-bold mb-4">Conclusion</h2>
                          <p className="text-lg text-muted-foreground">The Lab Data Management module unifies lab setup, reference ranges, and data uploads—ensuring all lab results entering your clinical database are standardized, validated, and fully traceable. It delivers accurate lab-to-CRF data flow, faster decision-making, reduced data entry errors, and regulatory-grade auditability for both central and site-level lab operations.</p>
                     </div>
                 </section>
+
                 <FaqAccordion faqs={labManagementFaq} />
             </div>
         </>
     );
 }
-
-      
