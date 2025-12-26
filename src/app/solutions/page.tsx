@@ -49,7 +49,7 @@ const pillars = [
     {
         icon: (props: any) => (
             <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M12 3v18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M3 12h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -72,10 +72,10 @@ export default function SolutionsPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                  Our Services
+                  We Provide the Solutions You Need to Run Your Clinical Trials Efficiently
                 </h1>
                 <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">
-                  As Clinical Trials create large amounts of data, managing the data ensuring high-quality and accuracy can be a highly complex task. Whether you need extensive assistance or solutions to individual problems, SyMetric’s range of services meet your needs by seamlessly integrating with your existing system or helping you build a new one.
+                  Our integrated, cloud-based solutions transform Clinical Trials from early phase to late phase and support organizations of all types and sizes — Pharmaceutical Sponsors, Clinical Research Organizations, and Academia.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-6">
                     <Button size="lg" variant="secondary" asChild>
