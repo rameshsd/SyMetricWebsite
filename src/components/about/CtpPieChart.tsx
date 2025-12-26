@@ -43,17 +43,17 @@ export default function CtpPieChart(): JSX.Element {
     {
       title: 'Compliance',
       points: ['Wide range of certifications (21 CFR Part 11, GxP)', 'Product localizations for global trials'],
-      position: 'absolute top-0 left-0 -translate-x-1/4'
+      position: 'md:absolute top-0 left-0 md:-translate-x-1/4'
     },
     {
       title: 'Data protection and privacy',
       points: ['Strong company measures (GDPR, HIPAA)', 'Global data center locations'],
-      position: 'absolute bottom-0 left-0 -translate-x-1/2'
+      position: 'md:absolute bottom-0 left-0 md:-translate-x-1/2'
     },
     {
       title: 'Security',
       points: ['Highest product and operations security', 'Resilience and business continuity', 'Cyber-defense measures'],
-      position: 'absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2'
+      position: 'md:absolute top-1/2 right-0 md:translate-x-1/2 md:-translate-y-1/2'
     }
   ];
 
@@ -68,9 +68,9 @@ export default function CtpPieChart(): JSX.Element {
                     </p>
                 </div>
 
-                <div className="relative w-full max-w-[500px] mx-auto min-h-[400px]">
+                <div className="relative w-full max-w-[500px] mx-auto min-h-[400px] md:block flex flex-col items-center gap-4">
                     {/* SVG Diagram */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative w-[400px] h-[400px] md:absolute md:inset-0 flex items-center justify-center">
                         <svg viewBox="0 0 600 600" className="w-full h-full" role="img" aria-label="SyMetric CTP pie chart">
                             <defs>
                                 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
