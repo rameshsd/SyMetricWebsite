@@ -70,6 +70,12 @@ const nextConfig: NextConfig = {
         hostname: 'drive.google.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img-c.udemycdn.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
