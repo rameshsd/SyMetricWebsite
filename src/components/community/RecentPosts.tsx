@@ -25,7 +25,7 @@ function PostItem({ post }: { post: CommunityPost }) {
 
   return (
     <Card className="p-4 sm:p-6">
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
         <div className="flex items-start gap-4">
           <Avatar className="h-10 w-10">
             <AvatarFallback className="bg-primary/20 text-primary font-bold">
@@ -35,9 +35,20 @@ function PostItem({ post }: { post: CommunityPost }) {
           <div>
             <p className="font-semibold text-foreground">{post.author.name}</p>
             <p className="text-sm text-muted-foreground">{post.author.role}</p>
+             <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 sm:hidden">
+              <div className="flex items-center gap-1">
+                <Eye className="h-4 w-4" /> {post.views}
+              </div>
+              <div className="flex items-center gap-1">
+                <MessageSquare className="h-4 w-4" /> {post.comments}
+              </div>
+              <div className="flex items-center gap-1">
+                <ThumbsUp className="h-4 w-4" /> {post.likes}
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+        <div className="hidden sm:flex items-center gap-4 text-sm text-muted-foreground flex-shrink-0">
           <div className="flex items-center gap-1">
             <Eye className="h-4 w-4" /> {post.views}
           </div>
@@ -49,7 +60,7 @@ function PostItem({ post }: { post: CommunityPost }) {
           </div>
         </div>
       </div>
-      <div className="mt-4 pl-14">
+      <div className="mt-4 sm:pl-14">
         <h3 className="text-lg font-bold hover:text-primary cursor-pointer">{post.title}</h3>
         <p className="mt-2 text-muted-foreground line-clamp-3">{post.content}</p>
         <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
