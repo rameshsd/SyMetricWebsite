@@ -837,7 +837,7 @@
     {
       "id": "site-management-hero",
       "description": "An abstract graphic representing centralized control over multiple global sites.",
-      "imageUrl": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMHByb2Nlc3N8ZW58MHx8fHwxNzYwODU5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1k0WHXquAc0dClrkxSIAdkoHp5OfTRLZB",
       "imageHint": "global network"
     },
     {
@@ -897,7 +897,7 @@
     {
       "id": "reports-hero",
       "description": "A collection of colorful charts and graphs on a digital dashboard, representing the reports module.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data dashboard reports"
     },
     {
