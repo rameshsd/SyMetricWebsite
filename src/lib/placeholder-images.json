@@ -499,12 +499,6 @@
       "imageHint": "alert notification"
     },
     {
-      "id": "edc-coding",
-      "description": "An interface for medical coding, showing verbatim terms being mapped to MedDRA dictionary codes.",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921532-719361a64639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2llbnRpc3QlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEwMTk1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "medical coding"
-    },
-    {
       "id": "news-summit",
       "description": "SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/12/new-sap-summit.jpg",
@@ -875,6 +869,12 @@
       "description": "An abstract image showing data analytics and charts.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1_9V9VwQf7X9Z9n9y7Y4jX3G8f7J6k5r4",
       "imageHint": "data analytics"
+    },
+    {
+      "id": "lab-management-conclusion",
+      "description": "A scientist analyzing data on a futuristic interface in a lab.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=191QW6Q5pE-k_5cjb2xXgYc2o2d8oE0rW",
+      "imageHint": "scientist data analysis"
     }
   ]
 }
