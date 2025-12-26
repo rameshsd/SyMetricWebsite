@@ -255,7 +255,7 @@
     {
       "id": "trial-analytics-image",
       "description": "Data analytics dashboard with charts",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analytics"
     },
     {
@@ -843,7 +843,7 @@
     {
       "id": "subject-management-hero",
       "description": "Doctor discussing with a patient.",
-      "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBwYXRpZW50fGVufDB8fHx8fDE3NjA4MDA5Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1Htv3okqHA8Yx6Bjm3nOM1AsNOQUqul2H",
       "imageHint": "doctor patient"
     },
     {
@@ -897,7 +897,7 @@
     {
       "id": "reports-hero",
       "description": "A collection of colorful charts and graphs on a digital dashboard, representing the reports module.",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxkdGF0YSUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjEwMjExOTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "data dashboard reports"
     },
     {
