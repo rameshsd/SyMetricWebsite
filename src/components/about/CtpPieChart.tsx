@@ -68,9 +68,9 @@ export default function CtpPieChart(): JSX.Element {
                     </p>
                 </div>
 
-                <div className="relative w-full max-w-[500px] mx-auto min-h-[400px] md:block flex flex-col items-center gap-4">
+                <div className="relative w-full mx-auto md:min-h-[500px] flex flex-col md:flex-row items-center justify-center gap-4">
                     {/* SVG Diagram */}
-                    <div className="relative w-[400px] h-[400px] md:absolute md:inset-0 flex items-center justify-center">
+                    <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:absolute md:inset-0 flex items-center justify-center">
                         <svg viewBox="0 0 600 600" className="w-full h-full" role="img" aria-label="SyMetric CTP pie chart">
                             <defs>
                                 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
