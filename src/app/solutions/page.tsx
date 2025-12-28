@@ -131,7 +131,7 @@ export default function SolutionsPage() {
                 <div className="text-center mb-12">
                      <h2 className="text-3xl font-bold">Featured Platform</h2>
                 </div>
-                 <Card className="p-0 overflow-hidden bg-background shadow-lg">
+                 <Card className="p-0 overflow-hidden bg-background shadow-lg rounded-2xl">
                     <div className="grid md:grid-cols-2 items-center">
                         <div className="p-8 md:p-12">
                              <p className="text-sm font-semibold text-primary">PLATFORM</p>
@@ -176,7 +176,7 @@ export default function SolutionsPage() {
                     <CarouselContent>
                         {solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug)).map(solution => (
                             <CarouselItem key={solution.id}>
-                                <Card className="overflow-hidden bg-card">
+                                <Card className="overflow-hidden bg-card rounded-2xl">
                                   <div className="grid md:grid-cols-2 items-center">
                                     <div className="p-8 md:p-12">
                                         <h3 className="text-2xl font-bold">{solution.name}</h3>
