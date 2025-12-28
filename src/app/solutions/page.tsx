@@ -11,6 +11,14 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle, Rocket, Shuffle, Database, ClipboardList, TrendingUp, Shield, Activity, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 
 const pillars = [
     {
@@ -63,6 +71,7 @@ const pillars = [
 export default function SolutionsPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'services-hero-people');
     const ctpImage = PlaceHolderImages.find(p => p.id === 'ctp-hero-image');
+    const solutionsSliderImage = PlaceHolderImages.find(p => p.id === 'solutions-slider-woman');
 
   return (
     <div>
@@ -155,22 +164,49 @@ export default function SolutionsPage() {
                 </Card>
             </div>
         </section>
-
+        
         <section className="py-20">
             <div className="container">
-                <div className="grid md:grid-cols-3 gap-8">
-                    {solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug)).map(solution => (
-                        <Card key={solution.id} className="p-6">
-                            <h3 className="text-2xl font-bold">{solution.name}</h3>
-                            <p className="text-muted-foreground mt-2">{solution.longDescription}</p>
-                            <Button variant="link" asChild className="p-0 mt-4">
-                                <Link href={`/solutions/${solution.slug}`}>Know more <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                            </Button>
-                        </Card>
-                    ))}
-                </div>
+                <Carousel
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                    <CarouselContent>
+                        {solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug)).map(solution => (
+                            <CarouselItem key={solution.id}>
+                                <Card className="overflow-hidden">
+                                  <div className="grid md:grid-cols-2 items-center">
+                                    <div className="p-8 md:p-12">
+                                        <h3 className="text-2xl font-bold">{solution.name}</h3>
+                                        <p className="text-muted-foreground mt-2">{solution.longDescription}</p>
+                                        <Button variant="link" asChild className="p-0 mt-4">
+                                            <Link href={`/solutions/${solution.slug}`}>Know more <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                        </Button>
+                                    </div>
+                                    <div className="relative h-64 md:h-full min-h-[300px]">
+                                        {solutionsSliderImage && (
+                                            <Image
+                                                src={solutionsSliderImage.imageUrl}
+                                                alt={solution.name}
+                                                fill
+                                                className="h-full w-full object-cover"
+                                                data-ai-hint={solutionsSliderImage.imageHint}
+                                            />
+                                        )}
+                                    </div>
+                                  </div>
+                                </Card>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                  <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex" />
+                  <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex" />
+                </Carousel>
             </div>
         </section>
+
 
         <section className="py-20 bg-secondary/30">
             <div className="container">

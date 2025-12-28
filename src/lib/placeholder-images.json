@@ -881,6 +881,12 @@
       "description": "A screenshot showing a notification that OneDrive is now storing important folders.",
       "imageUrl": "https://img-c.udemycdn.com/course/750x422/3847526_5987_2.jpg",
       "imageHint": "onedrive sync notification"
+    },
+    {
+      "id": "solutions-slider-woman",
+      "description": "Woman in a black top standing in front of a yellow background.",
+      "imageUrl": "https://img-c.udemycdn.com/course/750x422/3847526_5987_2.jpg",
+      "imageHint": "woman yellow background"
     }
   ]
 }
