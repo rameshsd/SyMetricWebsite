@@ -23,49 +23,24 @@ import { TrialAnalyticsFeature } from '@/components/solutions/TrialAnalyticsFeat
 
 const pillars = [
     {
-        icon: (props: any) => (
-            <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 7h10v10H7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0z" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-        ),
         title: 'Accelerate',
         subtitle: 'ACCELERATE',
         description: 'clinical trials with streamlined and transparent time-to-market solutions',
         imageId: "pillar-accelerate"
     },
     {
-        icon: (props: any) => (
-             <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 17l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
         title: 'Integrate',
         subtitle: 'INTEGRATE',
         description: 'our solutions into your existing environment, as per Life Sciences best practices',
         imageId: "pillar-integrate"
     },
     {
-        icon: (props: any) => (
-            <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-        ),
         title: 'Trust',
         subtitle: 'TRUST',
         description: 'our solutions, for they are ISO 9001, ISO 27001, ICH-GCP, 21 CFR Part 11 (USFDA), HIPAA, GDPR (EU) compliant',
         imageId: "pillar-trust"
     },
     {
-        icon: (props: any) => (
-            <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 3v18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3 12h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-        ),
         title: 'Future Proof',
         subtitle: 'FUTURE-PROOF',
         description: 'your research through continuous innovation and collaboration supported by our cutting-edge solutions',
