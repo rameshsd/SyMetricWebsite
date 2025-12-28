@@ -893,6 +893,30 @@
       "description": "A woman working at a computer in a modern office.",
       "imageUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwd29ya2luZyUyMG9uJTIwbGFwdG9wc3xlbnwwfHx8fDE3NjEwOTI3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "team working"
+    },
+    {
+      "id": "pillar-accelerate",
+      "description": "Abstract image representing speed and acceleration.",
+      "imageUrl": "https://images.unsplash.com/photo-1582266255765-fa5cf1a1d501?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdyZWVuJTIwZ3JhcGhpY3xlbnwwfHx8fDE3NjE3NjIzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract green graphic"
+    },
+    {
+      "id": "pillar-integrate",
+      "description": "Abstract image representing integration and connection.",
+      "imageUrl": "https://images.unsplash.com/photo-1634017839464-5c33923cb397?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGJsdWUlMjBncmFwaGljfGVufDB8fHx8fDE3NjE3NjIzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract blue graphic"
+    },
+    {
+      "id": "pillar-trust",
+      "description": "Image of business people in a meeting, representing trust.",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYxNzYyMzA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business meeting"
+    },
+    {
+      "id": "pillar-future-proof",
+      "description": "Futuristic technology graphic representing future-proofing.",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjE3NjIzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic technology"
     }
   ]
 }
