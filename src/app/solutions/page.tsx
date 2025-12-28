@@ -18,6 +18,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { TrialAnalyticsFeature } from '@/components/solutions/TrialAnalyticsFeature';
 
 
 const pillars = [
@@ -209,20 +210,8 @@ export default function SolutionsPage() {
             </div>
         </section>
 
-
-        <section className="py-20 bg-secondary/30">
-            <div className="container">
-                <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-bold">SyMetric Trial Analytics</h2>
-                    <h3 className="text-xl font-semibold text-primary mt-2">Analytics-Driven Clinical Trial Planning System</h3>
-                    <p className="text-muted-foreground mt-4">The solution helps Clinical Operation Teams take informed decisions while planning a new Clinical Trial using Historic Performance Analytics of stakeholders such as CROs, Investigation Sites, Investigators, and Patient Demography. This reduces Trial planning timelines significantly and enhances efficiency with reliability.</p>
-                    <p className="text-muted-foreground mt-4">Built on SAP Business Technology Platform, the system opens up various opportunities to explore the services that SAP has to offer on the Cloud. These can be integrated to deliver cutting-edge analytical abilities, while leveraging the Life Sciences Industry cloud initiatives from SAP.</p>
-                     <Button variant="link" asChild className="p-0 mt-4 text-lg">
-                        <Link href={`/solutions/trial-analytics`}>Explore more <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
-                </div>
-            </div>
-        </section>
+        <TrialAnalyticsFeature />
+        
     </div>
   );
 }

@@ -7,9 +7,9 @@
       "imageHint": "company logo"
     },
     {
-      "id": "sap-logo",
+      "id": "sap-logo-png",
       "description": "SAP Official Logo",
-      "imageUrl": "https://www.sap.com/dam/application/shared/logos/sap-logo.svg",
+      "imageUrl": "https://www.sap.com/dam/application/shared/logos/sap-logo.png",
       "imageHint": "company logo"
     },
     {
@@ -877,7 +877,7 @@
       "imageHint": "scientist data analysis"
     },
     {
-      "id": "conclusion-main-image",
+      "id": "onedrive-screenshot",
       "description": "A screenshot showing a notification that OneDrive is now storing important folders.",
       "imageUrl": "https://img-c.udemycdn.com/course/750x422/3847526_5987_2.jpg",
       "imageHint": "onedrive sync notification"
@@ -887,6 +887,12 @@
       "description": "Woman in a black top standing in front of a yellow background.",
       "imageUrl": "https://img-c.udemycdn.com/course/750x422/3847526_5987_2.jpg",
       "imageHint": "woman yellow background"
+    },
+    {
+      "id": "trial-analytics-feature-hero",
+      "description": "A woman working at a computer in a modern office.",
+      "imageUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFtJTIwd29ya2luZyUyMG9uJTIwbGFwdG9wc3xlbnwwfHx8fDE3NjEwOTI3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team working"
     }
   ]
 }
