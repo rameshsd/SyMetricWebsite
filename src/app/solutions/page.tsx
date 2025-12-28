@@ -8,7 +8,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Rocket, Shuffle, Database, ClipboardList, TrendingUp, Shield, Activity, Clock } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
@@ -80,7 +80,7 @@ export default function SolutionsPage() {
           <div className="container">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                   We Provide the Solutions You Need to Run Your Clinical Trials Efficiently
                 </h1>
                 <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">
@@ -131,16 +131,16 @@ export default function SolutionsPage() {
                 <div className="text-center mb-12">
                      <h2 className="text-3xl font-bold">Featured Platform</h2>
                 </div>
-                <Card className="p-0 overflow-hidden">
+                 <Card className="p-0 overflow-hidden bg-background shadow-lg">
                     <div className="grid md:grid-cols-2 items-center">
                         <div className="p-8 md:p-12">
                              <p className="text-sm font-semibold text-primary">PLATFORM</p>
                             <h3 className="text-2xl font-bold mt-2">SyMetric Clinical Trial Platform</h3>
                             <p className="text-muted-foreground mt-4">
-                                Built for end-to-end Clinical Trials, our Cloud-Based Platform is fully modularized, allowing you to choose the right solution that can be configured to suit your needs.
+                               Built for end-to-end Clinical Trials, our Cloud-Based Platform is fully modularized, allowing you to choose the right solution that can be configured to suit your needs.
                             </p>
                              <p className="text-muted-foreground mt-4">
-                                Designed, developed, and deployed by us, our all-encompassing set of solutions is built to work seamlessly with your existing ecosystem and processes. It covers various processes in Clinical Trials – including Study Master Management, Subject Management, Clinical Supplies Management, Data Management, and Medical Coding. With SyMetric Clinical Trial Platform, you can manage, monitor, analyze, and report with ease by configuring the solutions to your specific needs – whether you are a Pharmaceutical Sponsor, Clinical Research Organization (CRO), or from the Academia.
+                               Designed, developed, and deployed by us, our all-encompassing set of solutions is built to work seamlessly with your existing ecosystem and processes. It covers various processes in Clinical Trials – including Study Master Management, Subject Management, Clinical Supplies Management, Data Management, and Medical Coding. With SyMetric Clinical Trial Platform, you can manage, monitor, analyze, and report with ease by configuring the solutions to your specific needs – whether you are a Pharmaceutical Sponsor, Clinical Research Organization (CRO), or from the Academia.
                             </p>
                             <div className="mt-6 flex gap-4">
                                 <Button asChild>
@@ -176,13 +176,13 @@ export default function SolutionsPage() {
                     <CarouselContent>
                         {solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug)).map(solution => (
                             <CarouselItem key={solution.id}>
-                                <Card className="overflow-hidden">
+                                <Card className="overflow-hidden bg-card">
                                   <div className="grid md:grid-cols-2 items-center">
                                     <div className="p-8 md:p-12">
                                         <h3 className="text-2xl font-bold">{solution.name}</h3>
                                         <p className="text-muted-foreground mt-2">{solution.longDescription}</p>
-                                        <Button variant="link" asChild className="p-0 mt-4">
-                                            <Link href={`/solutions/${solution.slug}`}>Know more <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                        <Button asChild className="mt-6">
+                                            <Link href={`/solutions/${solution.slug}`}>Know more</Link>
                                         </Button>
                                     </div>
                                     <div className="relative h-64 md:h-full min-h-[300px]">
@@ -201,8 +201,10 @@ export default function SolutionsPage() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                  <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex" />
-                  <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden lg:flex" />
+                    <div className="flex justify-center gap-2 mt-4">
+                        <CarouselPrevious className="static translate-y-0" />
+                        <CarouselNext className="static translate-y-0" />
+                    </div>
                 </Carousel>
             </div>
         </section>
