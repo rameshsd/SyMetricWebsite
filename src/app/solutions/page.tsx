@@ -8,7 +8,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Repeat, Database, ClipboardList } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
@@ -85,12 +85,18 @@ export default function SolutionsPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {featuredSolutions.map(solution => {
-                        const Icon = solution.icon;
+                        let Icon;
+                        switch (solution.slug) {
+                            case 'irt-iwrs': Icon = Repeat; break;
+                            case 'edc': Icon = Database; break;
+                            case 'ctm': Icon = ClipboardList; break;
+                            default: Icon = solution.icon;
+                        }
                         return (
                             <Card key={solution.id} className="p-8 rounded-2xl bg-background shadow-lg transition-transform hover:-translate-y-1">
                                 <CardContent className="p-0">
                                     <div className="p-3 bg-primary/10 rounded-lg inline-block mb-4">
-                                        <Icon className="h-10 w-10 text-primary" strokeWidth={2.5} />
+                                        <Icon className="h-12 w-12 text-primary" strokeWidth={2.5} />
                                     </div>
                                     <h3 className="text-xl font-bold">{solution.name}</h3>
                                     <p className="text-muted-foreground mt-2 min-h-[120px]">{solution.longDescription}</p>
@@ -110,3 +116,4 @@ export default function SolutionsPage() {
     </div>
   );
 }
+
