@@ -903,19 +903,19 @@
     {
       "id": "pillar-integrate",
       "description": "Abstract image representing integration and connection.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-integrate-new.png",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-integrate.png",
       "imageHint": "abstract connection"
     },
     {
       "id": "pillar-trust",
       "description": "Image of business people in a meeting, representing trust.",
-      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYxNzYyMzA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-trust.png",
       "imageHint": "business meeting"
     },
     {
       "id": "pillar-future-proof",
       "description": "Futuristic technology graphic representing future-proofing.",
-      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXR1cmlzdGljJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjE3NjIzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-future-proof.png",
       "imageHint": "futuristic technology"
     }
   ]
