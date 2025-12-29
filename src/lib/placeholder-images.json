@@ -897,14 +897,14 @@
     {
       "id": "pillar-accelerate",
       "description": "Abstract image representing speed and acceleration.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=19yNcxgw-vwwNQKtONFI5NSKvG_yXxPZ9",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-accelerate.png",
       "imageHint": "abstract speed"
     },
     {
       "id": "pillar-integrate",
       "description": "Abstract image representing integration and connection.",
-      "imageUrl": "https://images.unsplash.com/photo-1634017839464-5c33923cb397?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGJsdWUlMjBncmFwaGljfGVufDB8fHx8fDE3NjE3NjIzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract blue graphic"
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/pillar-integrate-new.png",
+      "imageHint": "abstract connection"
     },
     {
       "id": "pillar-trust",
