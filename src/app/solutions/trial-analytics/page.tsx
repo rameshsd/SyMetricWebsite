@@ -62,7 +62,7 @@ export default function TrialAnalyticsPage() {
                                 <Card key={benefit.title} className="bg-secondary/50 border-none">
                                     <CardHeader>
                                         <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
-                                            <benefit.icon className="h-16 w-16 text-primary" strokeWidth={1.5}/>
+                                            <benefit.icon className="h-16 w-16 text-primary" strokeWidth={2.5}/>
                                         </div>
                                         <CardTitle>{benefit.title}</CardTitle>
                                     </CardHeader>
@@ -83,7 +83,7 @@ export default function TrialAnalyticsPage() {
                                 <Card key={feature.title} className="bg-background">
                                     <CardHeader>
                                         <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
-                                            <feature.icon className="h-16 w-16 text-primary" strokeWidth={1.5}/>
+                                            <feature.icon className="h-16 w-16 text-primary" strokeWidth={2.5}/>
                                         </div>
                                         <CardTitle>{feature.title}</CardTitle>
                                     </CardHeader>
