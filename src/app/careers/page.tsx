@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { companyValues, employeeBenefits } from '@/lib/data';
+import { companyValues, employeeBenefit } from '@/lib/data';
 import { CheckCircle, MapPin, Briefcase, Search } from 'lucide-react';
 import Link from 'next/link';
 import { ApplyForm } from '@/components/careers/ApplyForm';
@@ -253,7 +253,7 @@ export default function CareersPage() {
                         description="We invest in our team's well-being and professional growth."
                     />
                     <div className="mt-16 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {employeeBenefits.map((benefit, index) => (
+                        {employeeBenefit.map((benefit, index) => (
                             <div key={index} className="flex items-start gap-4">
                                 <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
                                 <div>
