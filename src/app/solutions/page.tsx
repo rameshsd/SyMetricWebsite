@@ -90,7 +90,7 @@ export default function SolutionsPage() {
                             <Card key={solution.id} className="p-8 rounded-2xl bg-background shadow-lg transition-transform hover:-translate-y-1">
                                 <CardContent className="p-0">
                                     <div className="p-3 bg-primary/10 rounded-lg inline-block mb-4">
-                                        <Icon className="h-6 w-6 text-primary" />
+                                        <Icon className="h-10 w-10 text-primary" strokeWidth={2.5} />
                                     </div>
                                     <h3 className="text-xl font-bold">{solution.name}</h3>
                                     <p className="text-muted-foreground mt-2 min-h-[120px]">{solution.longDescription}</p>
