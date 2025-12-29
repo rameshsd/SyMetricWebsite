@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { trialAnalyticsBenefits, trialAnalyticsFeatures } from '@/lib/data';
-import { Sap } from '@/components/icons/brand-icons';
 
 export const metadata: Metadata = {
   title: 'Trial Analytics - SyMetric',
@@ -21,7 +20,6 @@ export default function TrialAnalyticsPage() {
         { label: 'Overview', href: '#overview' },
         { label: 'Benefits', href: '#benefits' },
         { label: 'Features', href: '#features' },
-        { label: 'Get Started', href: '#get-started' },
     ];
     
     const heroImage = PlaceHolderImages.find(p => p.id === 'trial-analytics-hero');
@@ -95,16 +93,6 @@ export default function TrialAnalyticsPage() {
                                     </CardContent>
                                 </Card>
                             ))}
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="get-started">
-                    <div className="container text-center">
-                        <SectionTitle title="Get Started" className="mx-auto" />
-                        <div className="mt-8 flex justify-center gap-4">
-                            <Button size="lg">Get a demo</Button>
-                            <Button size="lg" variant="outline">Contact us for pricing</Button>
                         </div>
                     </div>
                 </section>
