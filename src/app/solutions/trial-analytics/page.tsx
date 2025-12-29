@@ -34,7 +34,6 @@ export default function TrialAnalyticsPage() {
                     <div className="container">
                         <div className="grid md:grid-cols-2 gap-10 items-center">
                             <div className="space-y-6">
-                                <Sap className="h-12" />
                                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
                                     SyMetric Trial Analytics
                                 </h1>
