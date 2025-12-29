@@ -1,14 +1,13 @@
 
 import { Metadata } from 'next';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { trialAnalyticsBenefits, trialAnalyticsFeatures } from '@/lib/data';
 import { SectionTitle } from '@/components/shared/section-title';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { trialAnalyticsBenefits, trialAnalyticsFeatures } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Trial Analytics - SyMetric',
@@ -93,6 +92,16 @@ export default function TrialAnalyticsPage() {
                                     </CardContent>
                                 </Card>
                             ))}
+                        </div>
+                    </div>
+                </section>
+                <section className="bg-secondary/50">
+                    <div className="container">
+                        <div className="text-center">
+                            <div className="flex gap-4 justify-center mt-8">
+                                <Button size="lg" asChild><Link href="/contact">Get a demo</Link></Button>
+                                <Button size="lg" variant="outline" asChild><Link href="/contact">Contact us for pricing</Link></Button>
+                            </div>
                         </div>
                     </div>
                 </section>
