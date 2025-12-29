@@ -61,8 +61,8 @@ export default function TrialAnalyticsPage() {
                             {trialAnalyticsBenefits.map(benefit => (
                                 <Card key={benefit.title} className="bg-secondary/50 border-none">
                                     <CardHeader>
-                                        <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 mb-4">
-                                            <benefit.icon className="h-8 w-8 text-primary"/>
+                                        <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
+                                            <benefit.icon className="h-16 w-16 text-primary" strokeWidth={1.5}/>
                                         </div>
                                         <CardTitle>{benefit.title}</CardTitle>
                                     </CardHeader>
@@ -82,8 +82,8 @@ export default function TrialAnalyticsPage() {
                             {trialAnalyticsFeatures.map(feature => (
                                 <Card key={feature.title} className="bg-background">
                                     <CardHeader>
-                                        <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 mb-4">
-                                            <feature.icon className="h-8 w-8 text-primary"/>
+                                        <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
+                                            <feature.icon className="h-16 w-16 text-primary" strokeWidth={1.5}/>
                                         </div>
                                         <CardTitle>{feature.title}</CardTitle>
                                     </CardHeader>

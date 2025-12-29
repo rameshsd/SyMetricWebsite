@@ -1846,7 +1846,7 @@ export const companyValues: CompanyValue[] = [
     },
 ];
 
-export const employeeBenefits: EmployeeBenefit[] = [
+export const employeeBenefit: EmployeeBenefit[] = [
     {
         title: 'Comprehensive Health Insurance',
         description: 'Full medical, dental, and vision coverage for you and your family.',
