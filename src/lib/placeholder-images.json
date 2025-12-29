@@ -230,8 +230,8 @@
     },
     {
       "id": "ctp-hero-image",
-      "description": "Abstract technology background",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1i48Hai-e1gTmccacsgQvX7hoI3EqFKOz",
+      "description": "SyMetric Clinical Trial Platform hero image",
+      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/ctp-hero-image.png",
       "imageHint": "technology background"
     },
     {
@@ -766,7 +766,7 @@
       "id": "hero-section-image",
       "description": "Futuristic technology graphic representing future-proofing.",
       "imageHint": "futuristic technology",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1ESWa84N5M2Gsz1gk87dAK-lTpFWmnjjI"
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1L36RP85YjqJBNeAJQOE3HjAi49DDgElr"
     },
     {
       "id": "financial-dashboard",
