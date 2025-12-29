@@ -153,7 +153,7 @@
     {
       "id": "contact-hero",
       "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "global network"
     },
     {
@@ -213,7 +213,7 @@
     {
       "id": "ai-infographic",
       "description": "Infographic about AI in business",
-      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbmNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8fDE3NjA4NDk4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbnNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8fDE3NjA4NDk4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "financial data"
     },
     {
@@ -867,7 +867,7 @@
     {
       "id": "trial-analytics-hero",
       "description": "An abstract image showing data analytics and charts.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1EtwIT7u9lWvnpfZl_diFdBJHe-olFBL",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1EtwIT7u9lWvnpfZl_diFdBJHe-olFBLA",
       "imageHint": "data analytics"
     },
     {
