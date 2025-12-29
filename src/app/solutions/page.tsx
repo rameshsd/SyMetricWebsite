@@ -5,7 +5,7 @@
 import { solutions } from '@/lib/data';
 import { ProductPageHeader } from '@/components/layout/ProductPageHeader';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -26,6 +26,8 @@ import { FeaturedPlatform } from '@/components/solutions/FeaturedPlatform';
 export default function SolutionsPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'services-hero-people');
     const solutionsSliderImage = PlaceHolderImages.find(p => p.id === 'solutions-slider-woman');
+
+    const featuredSolutions = solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug));
 
   return (
     <div>
@@ -74,45 +76,32 @@ export default function SolutionsPage() {
         
         <section className="py-20">
             <div className="container">
-                <Carousel
-                  opts={{
-                    align: "start",
-                  }}
-                  className="w-full"
-                >
-                    <CarouselContent>
-                        {solutions.filter(s => ['irt-iwrs', 'edc', 'ctm'].includes(s.slug)).map(solution => (
-                            <CarouselItem key={solution.id}>
-                                <Card className="overflow-hidden bg-card rounded-2xl">
-                                  <div className="grid md:grid-cols-2 items-center">
-                                    <div className="p-8 md:p-12">
-                                        <h3 className="text-2xl font-bold">{solution.name}</h3>
-                                        <p className="text-muted-foreground mt-2">{solution.longDescription}</p>
-                                        <Button asChild className="mt-6">
-                                            <Link href={`/solutions/${solution.slug}`}>Know more</Link>
-                                        </Button>
+                <div className="text-center max-w-2xl mx-auto mb-12">
+                    <p className="text-sm font-semibold text-primary uppercase">Explore our solutions</p>
+                    <h2 className="text-3xl font-bold tracking-tight mt-2">Get the info you need to stay ahead</h2>
+                    <p className="mt-4 text-muted-foreground">
+                        Learn about the benefits of our core solutions for clinical trial management.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {featuredSolutions.map(solution => {
+                        const Icon = solution.icon;
+                        return (
+                            <Card key={solution.id} className="p-8 rounded-2xl bg-background shadow-lg transition-transform hover:-translate-y-1">
+                                <CardContent className="p-0">
+                                    <div className="p-3 bg-primary/10 rounded-lg inline-block mb-4">
+                                        <Icon className="h-6 w-6 text-primary" />
                                     </div>
-                                    <div className="relative h-64 md:h-full min-h-[300px]">
-                                        {solutionsSliderImage && (
-                                            <Image
-                                                src={solutionsSliderImage.imageUrl}
-                                                alt={solution.name}
-                                                fill
-                                                className="h-full w-full object-cover"
-                                                data-ai-hint={solutionsSliderImage.imageHint}
-                                            />
-                                        )}
-                                    </div>
-                                  </div>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex justify-center gap-2 mt-4">
-                        <CarouselPrevious className="static translate-y-0" />
-                        <CarouselNext className="static translate-y-0" />
-                    </div>
-                </Carousel>
+                                    <h3 className="text-xl font-bold">{solution.name}</h3>
+                                    <p className="text-muted-foreground mt-2 min-h-[120px]">{solution.longDescription}</p>
+                                    <Button variant="link" asChild className="p-0 mt-4">
+                                        <Link href={`/solutions/${solution.slug}`}>Know more</Link>
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        )
+                    })}
+                </div>
             </div>
         </section>
 
