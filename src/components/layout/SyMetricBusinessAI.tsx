@@ -35,14 +35,14 @@ export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai
               </Button>
             </div>
           </div>
-          <div className="relative h-[300px] lg:h-full w-full">
+          <div className="relative h-[300px] lg:h-full w-full rounded-3xl overflow-hidden">
             {heroImage && (
               <Image
                 src={heroImage.imageUrl}
                 alt={heroImage.description}
                 data-ai-hint={heroImage.imageHint}
                 fill
-                className="rounded-3xl object-contain"
+                className="object-contain"
               />
             )}
           </div>
