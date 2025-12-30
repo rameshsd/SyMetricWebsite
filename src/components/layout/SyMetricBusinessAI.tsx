@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -42,7 +41,7 @@ export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai
                 alt={heroImage.description}
                 data-ai-hint={heroImage.imageHint}
                 fill
-                className="object-contain"
+                className="object-cover"
               />
             )}
           </div>
