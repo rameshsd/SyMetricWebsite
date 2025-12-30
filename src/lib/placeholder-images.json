@@ -929,6 +929,12 @@
       "description": "A centralized module that defines and manages every organization involved in a clinical trial.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1Nf21mwaRUdOhIkZYrnuRQeh8ktn6u3wC",
       "imageHint": "organization management"
+    },
+    {
+      "id": "customer-management-hero",
+      "description": "A centralized module to manage all sponsor and CRO customers.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1v0DOVU9aqgTCklvI6SYRg8hc77w9wdnu",
+      "imageHint": "customer management"
     }
   ]
 }
