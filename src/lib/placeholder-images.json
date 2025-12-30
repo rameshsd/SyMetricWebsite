@@ -917,6 +917,12 @@
       "description": "Futuristic technology graphic representing future-proofing.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1E5yL0pPMELI2gWW_O8pT2s53kA-BA2su",
       "imageHint": "futuristic technology"
+    },
+    {
+      "id": "iam-hero",
+      "description": "Abstract visualization of identity and access management.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=11hlD9EaAGAB27VqgdlTkjXMcLcyxz10l",
+      "imageHint": "identity access"
     }
   ]
 }
