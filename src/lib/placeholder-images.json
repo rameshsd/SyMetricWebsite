@@ -255,7 +255,7 @@
     {
       "id": "trial-analytics-image",
       "description": "Data analytics dashboard with charts",
-      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8fDE3NjEwMjExOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1EtwIT7u9lWvnpfZ8l_diFdBJHe-olFBL",
       "imageHint": "data analytics"
     },
     {
@@ -923,6 +923,12 @@
       "description": "Abstract visualization of identity and access management.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=11hlD9EaAGAB27VqgdlTkjXMcLcyxz10l",
       "imageHint": "identity access"
+    },
+    {
+      "id": "organization-management-hero",
+      "description": "A centralized module that defines and manages every organization involved in a clinical trial.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1Nf21mwaRUdOhIkZYrnuRQeh8ktn6u3wC",
+      "imageHint": "organization management"
     }
   ]
 }
