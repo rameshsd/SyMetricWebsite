@@ -42,7 +42,7 @@ export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai
                 alt={heroImage.description}
                 data-ai-hint={heroImage.imageHint}
                 fill
-                className="rounded-lg object-contain"
+                className="rounded-3xl object-contain"
               />
             )}
           </div>
