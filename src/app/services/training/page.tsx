@@ -91,8 +91,8 @@ export default function TrainingPage() {
                       {trainingSteps.map(step => (
                           <Card key={step.title}>
                               <CardContent className="p-6 text-center">
-                                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4">
-                                      <step.icon className="h-6 w-6 text-primary" />
+                                  <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 mb-4">
+                                      <step.icon className="h-12 w-12 text-primary" strokeWidth="2.5" />
                                   </div>
                                   <p className="text-sm font-medium">{step.title}</p>
                               </CardContent>
