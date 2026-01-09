@@ -128,8 +128,8 @@ export default function ProjectManagementPage() {
               {pmServices.map((service) => (
                 <Card key={service.title} className="flex flex-col text-center p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <CardHeader>
-                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-                      <service.icon className="h-12 w-12 text-primary" strokeWidth="2.5" />
+                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
+                      <service.icon className="h-16 w-16 text-primary" strokeWidth="2.5" />
                     </div>
                     <CardTitle className="text-xl pt-4">{service.title}</CardTitle>
                   </CardHeader>
