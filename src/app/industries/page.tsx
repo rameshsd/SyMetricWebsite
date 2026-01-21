@@ -15,8 +15,8 @@ export default function IndustriesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'industries-hero');
     return (
         <>
-            <section className="bg-primary text-primary-foreground py-0 px-0">
-                <div className="container mx-auto px-0">
+            <section className="bg-primary text-primary-foreground py-0">
+                <div className="container mx-auto">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="py-20 px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
@@ -34,7 +34,7 @@ export default function IndustriesPage() {
                         </Button>
                     </div>
                     </div>
-                    <div className="relative h-64 md:h-full min-h-[500px]">
+                    <div className="relative h-80 w-full">
                         {heroImage && (
                             <div className="absolute inset-0 rounded-2xl overflow-hidden">
                                 <Image 
