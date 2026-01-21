@@ -15,6 +15,7 @@ interface EmailDetails {
     organization?: string;
     message?: string;
     type: 'contact' | 'demo';
+    modulesOfInterest?: string[];
 }
 
 const syMetricLogoUrl = "https://symetricsystems.com/wp-content/uploads/2021/05/symetric.png";
@@ -65,6 +66,9 @@ function generateSubmissionSummary(details: EmailDetails): string {
     summaryHtml += `<tr><td>Name:</td><td>${details.name}</td></tr>`;
     if (details.company) summaryHtml += `<tr><td>Company:</td><td>${details.company}</td></tr>`;
     if (details.organization) summaryHtml += `<tr><td>Organization:</td><td>${details.organization}</td></tr>`;
+    if (details.modulesOfInterest && details.modulesOfInterest.length > 0) {
+        summaryHtml += `<tr><td>Modules of Interest:</td><td>${details.modulesOfInterest.join(', ')}</td></tr>`;
+    }
     if (details.message) summaryHtml += `<tr><td>Message:</td><td>${details.message}</td></tr>`;
     summaryHtml += '</table>';
     return summaryHtml;
@@ -79,6 +83,9 @@ function generateAdminNotificationHtml(details: EmailDetails): string {
     if (details.phone) detailsHtml += `<tr><td>Phone:</td><td>${details.phone}</td></tr>`;
     if (details.company) detailsHtml += `<tr><td>Company:</td><td>${details.company}</td></tr>`;
     if (details.organization) detailsHtml += `<tr><td>Organization:</td><td>${details.organization}</td></tr>`;
+    if (details.modulesOfInterest && details.modulesOfInterest.length > 0) {
+        detailsHtml += `<tr><td>Modules of Interest:</td><td>${details.modulesOfInterest.join(', ')}</td></tr>`;
+    }
     if (details.message) detailsHtml += `<tr><td>Message:</td><td>${details.message}</td></tr>`;
     detailsHtml += '</table>';
     
