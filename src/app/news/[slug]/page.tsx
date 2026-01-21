@@ -16,7 +16,7 @@ export default function NewsArticlePage() {
   const firestore = useFirestore();
 
   const newsQuery = useMemoFirebase(
-    () => (firestore ? query(collection(firestore, 'newsItems'), where('slug', '==', slug), limit(1)) : null),
+    () => (firestore && slug ? query(collection(firestore, 'newsItems'), where('slug', '==', slug), limit(1)) : null),
     [firestore, slug]
   );
 
@@ -24,7 +24,7 @@ export default function NewsArticlePage() {
 
   const article = articles?.[0];
 
-  if (isLoading) {
+  if (isLoading || !slug) {
     return (
       <div className="container py-20">
         <div className="max-w-4xl mx-auto">

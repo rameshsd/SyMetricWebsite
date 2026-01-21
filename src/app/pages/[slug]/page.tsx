@@ -21,7 +21,7 @@ export default function DynamicPage() {
   const { data: pages, isLoading } = useCollection(pageQuery);
   const page = pages?.[0];
 
-  if (isLoading) {
+  if (isLoading || !slug) {
     return (
       <div className="container py-20">
         <div className="max-w-4xl mx-auto space-y-6">
