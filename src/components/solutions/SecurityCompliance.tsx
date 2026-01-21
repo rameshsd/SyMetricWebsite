@@ -245,14 +245,14 @@ export function SecurityCompliance() {
 
           {/* Right Column: Animated Badges */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-             <motion.div variants={badgeVariants}><Fda21Cfr className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><IchGcp className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><GdprIcon className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><HipaaIcon className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><GmpIcon className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><Gs1Icon className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><Iso27001 className="w-full h-auto" /></motion.div>
-            <motion.div variants={badgeVariants}><Iso9001 className="w-full h-auto" /></motion.div>
+             <motion.div variants={badgeVariants}><Fda21Cfr className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><IchGcp className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><GdprIcon className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><HipaaIcon className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><GmpIcon className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Gs1Icon className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Iso27001 className="w-auto h-16 mx-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Iso9001 className="w-auto h-16 mx-auto" /></motion.div>
           </div>
         </motion.div>
       </div>
