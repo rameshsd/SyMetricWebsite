@@ -68,6 +68,9 @@ function generateSubmissionSummary(details: EmailDetails): string {
     if (details.name) summaryHtml += `<tr><td>Name:</td><td>${details.name}</td></tr>`;
     if (details.company) summaryHtml += `<tr><td>Company:</td><td>${details.company}</td></tr>`;
     if (details.organization) summaryHtml += `<tr><td>Organization:</td><td>${details.organization}</td></tr>`;
+    if (details.modulesOfInterest && details.modulesOfInterest.length > 0) {
+        summaryHtml += `<tr><td>Modules of Interest:</td><td>${details.modulesOfInterest.join(', ')}</td></tr>`;
+    }
     if (details.message) summaryHtml += `<tr><td>Message:</td><td>${details.message}</td></tr>`;
     summaryHtml += '</table>';
     return summaryHtml;
