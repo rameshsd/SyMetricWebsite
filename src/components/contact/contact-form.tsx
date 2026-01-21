@@ -17,7 +17,7 @@ import { collection, serverTimestamp } from 'firebase/firestore';
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(50, { message: 'Name must be 50 characters or less.'}),
   organization: z.string().min(2, { message: 'Organization must be at least 2 characters.' }),
-  mobile: z.string().regex(/^[0-9+-]*$/, { message: 'Please enter a valid mobile number.' }).min(10, { message: 'Mobile number must be at least 10 digits.'}),
+  phone: z.string().regex(/^[0-9+-]*$/, { message: 'Please enter a valid mobile number.' }).min(10, { message: 'Mobile number must be at least 10 digits.'}),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
@@ -32,7 +32,7 @@ export function ContactForm() {
     defaultValues: {
       name: '',
       organization: '',
-      mobile: '',
+      phone: '',
       email: '',
       message: '',
     },
@@ -51,6 +51,7 @@ export function ContactForm() {
           email: values.email,
           message: values.message,
           timestamp: serverTimestamp(),
+          phone: values.phone,
         });
       }
       
@@ -60,7 +61,7 @@ export function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...values, phone: values.mobile, type: 'contact' }),
+        body: JSON.stringify({ ...values, type: 'contact' }),
       });
 
       if (!response.ok) {
@@ -120,7 +121,7 @@ export function ContactForm() {
           />
            <FormField
             control={form.control}
-            name="mobile"
+            name="phone"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Mobile number</FormLabel>

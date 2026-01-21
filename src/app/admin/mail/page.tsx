@@ -1,16 +1,31 @@
 'use client';
-import { Archive, File, Inbox, Send, Trash2, Mail as MailIcon, Reply, CornerUpLeft, MoreVertical } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { format, formatDistanceToNow } from 'date-fns';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
+import type { ContactFormSubmission, DemoRequest } from '@/lib/types';
+import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
+
+import { Archive, File, Inbox, Send, Trash2, Mail as MailIcon, Reply, CornerUpLeft, MoreVertical, Search, Loader2, Edit, X, Paperclip } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
-import { useMemo, useState } from 'react';
-import type { ContactFormSubmission, DemoRequest } from '@/lib/types';
-import { format, formatDistanceToNow } from 'date-fns';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
+
+const composeFormSchema = z.object({
+  to: z.string().email({ message: 'Please enter a valid recipient email.' }),
+  subject: z.string().min(1, { message: 'Subject is required.' }),
+  message: z.string().min(1, { message: 'Message body cannot be empty.' }),
+});
 
 type MailItem = {
     id: string;
@@ -24,6 +39,89 @@ type MailItem = {
     timestamp: Timestamp;
     isRead: boolean;
 };
+
+function ComposeDialog() {
+    const { toast } = useToast();
+    const [isOpen, setIsOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const form = useForm<z.infer<typeof composeFormSchema>>({
+        resolver: zodResolver(composeFormSchema),
+        defaultValues: { to: '', subject: '', message: '' },
+    });
+
+    async function onSubmit(values: z.infer<typeof composeFormSchema>) {
+        setIsSubmitting(true);
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...values, type: 'direct' }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to send email.');
+            }
+
+            toast({ title: "Email Sent!", description: `Your email to ${values.to} has been sent.` });
+            setIsOpen(false);
+            form.reset();
+
+        } catch (error) {
+            toast({
+                variant: 'destructive',
+                title: 'Error Sending Email',
+                description: (error as Error).message,
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
+    return (
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+                <Button className="w-full justify-start text-base py-6">
+                    <Edit className="mr-2 h-4 w-4" /> Compose
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-2xl">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
+                        <DialogHeader>
+                            <DialogTitle>New Message</DialogTitle>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <FormField name="to" control={form.control} render={({ field }) => (
+                                <FormItem><FormControl><Input placeholder="To" {...field} className="border-0 border-b rounded-none shadow-none focus-visible:ring-0 focus-visible:border-primary" /></FormControl><FormMessage /></FormItem>
+                            )}/>
+                             <FormField name="subject" control={form.control} render={({ field }) => (
+                                <FormItem><FormControl><Input placeholder="Subject" {...field} className="border-0 border-b rounded-none shadow-none focus-visible:ring-0 focus-visible:border-primary" /></FormControl><FormMessage /></FormItem>
+                            )}/>
+                            <FormField name="message" control={form.control} render={({ field }) => (
+                                <FormItem><FormControl><Textarea placeholder="Your message..." rows={12} {...field} className="border-0 shadow-none focus-visible:ring-0" /></FormControl><FormMessage /></FormItem>
+                            )}/>
+                        </div>
+                        <DialogFooter className="justify-between">
+                            <Button type="submit" disabled={isSubmitting}>
+                                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                Send
+                            </Button>
+                             <div className="flex items-center gap-2">
+                                <TooltipProvider>
+                                    <Tooltip><TooltipTrigger asChild><Button type="button" variant="ghost" size="icon"><Paperclip className="h-5 w-5" /></Button></TooltipTrigger><TooltipContent><p>Attach file</p></TooltipContent></Tooltip>
+                                    <Tooltip><TooltipTrigger asChild><Button type="button" variant="ghost" size="icon" onClick={() => form.reset()}><Trash2 className="h-5 w-5" /></Button></TooltipTrigger><TooltipContent><p>Discard draft</p></TooltipContent></Tooltip>
+                                </TooltipProvider>
+                            </div>
+                        </DialogFooter>
+                    </form>
+                </Form>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
 
 function MailPage() {
     const firestore = useFirestore();
@@ -42,31 +140,8 @@ function MailPage() {
 
     const mails = useMemo<MailItem[]>(() => {
         const combined: MailItem[] = [];
-
-        contacts?.forEach(c => {
-            combined.push({
-                id: c.id,
-                type: 'Contact',
-                from: { name: c.name, email: c.email },
-                subject: `Contact Form: ${c.organization}`,
-                body: c.message || '',
-                timestamp: c.timestamp,
-                isRead: false,
-            });
-        });
-
-        demos?.forEach(d => {
-            combined.push({
-                id: d.id,
-                type: 'Demo Request',
-                from: { name: d.name, email: d.email },
-                subject: `Demo Request: ${d.company}`,
-                body: `A demo was requested for ${d.company}.\n\nContact Details:\nEmail: ${d.email}\nPhone: ${d.phone}`,
-                timestamp: d.createdAt,
-                isRead: false,
-            });
-        });
-
+        contacts?.forEach(c => combined.push({ id: c.id, type: 'Contact', from: { name: c.name, email: c.email }, subject: `Contact: ${c.organization || 'General Inquiry'}`, body: c.message || '', timestamp: c.timestamp, isRead: false }));
+        demos?.forEach(d => combined.push({ id: d.id, type: 'Demo Request', from: { name: d.name, email: d.email }, subject: `Demo Request: ${d.company}`, body: `A demo was requested for ${d.company}.\n\nContact Details:\nEmail: ${d.email}\nPhone: ${d.phone || 'N/A'}`, timestamp: d.createdAt, isRead: false }));
         return combined.sort((a, b) => b.timestamp.toMillis() - a.timestamp.toMillis());
     }, [contacts, demos]);
 
@@ -76,104 +151,82 @@ function MailPage() {
     return (
         <div className="h-full flex flex-col">
             <SectionTitle title="Mail" description="Your inbox for website submissions." />
-            <div className="flex-1 grid grid-cols-[250px_1fr] gap-4 mt-8 h-[calc(100vh-200px)]">
-                <div className="flex flex-col gap-2">
-                    <Button disabled>Compose</Button>
-                    <Button variant="ghost" className="justify-start gap-2 bg-primary/10 text-primary">
-                        <Inbox /> Inbox <span className="ml-auto bg-primary text-primary-foreground text-xs px-2 rounded-full">{mails.length}</span>
-                    </Button>
-                    <Button variant="ghost" className="justify-start gap-2"><Send /> Sent</Button>
-                    <Button variant="ghost" className="justify-start gap-2"><File /> Drafts</Button>
-                    <Button variant="ghost" className="justify-start gap-2"><Archive /> Archived</Button>
-                    <Button variant="ghost" className="justify-start gap-2 text-destructive hover:text-destructive"><Trash2 /> Trash</Button>
+            <div className="flex-1 grid grid-cols-[240px_1fr] xl:grid-cols-[240px_350px_1fr] gap-4 mt-8 h-[calc(100vh-200px)]">
+                {/* Left Sidebar */}
+                <div className="flex flex-col gap-2 bg-secondary/50 p-3 rounded-xl">
+                    <ComposeDialog />
+                    <nav className="mt-4 space-y-1">
+                        <Button variant="ghost" className="w-full justify-start gap-2 bg-primary/10 text-primary">
+                            <Inbox /> Inbox <span className="ml-auto bg-primary text-primary-foreground text-xs px-2 rounded-full">{mails.length}</span>
+                        </Button>
+                        <Button variant="ghost" className="w-full justify-start gap-2"><Send /> Sent</Button>
+                        <Button variant="ghost" className="w-full justify-start gap-2"><File /> Drafts</Button>
+                        <Button variant="ghost" className="w-full justify-start gap-2"><Archive /> Archived</Button>
+                        <Button variant="ghost" className="w-full justify-start gap-2 text-destructive hover:text-destructive"><Trash2 /> Trash</Button>
+                    </nav>
                 </div>
-                <div className="border rounded-lg grid grid-cols-3">
-                     <div className="col-span-1 border-r flex flex-col">
-                        <div className="p-2 border-b">
-                            <Input placeholder="Search mail..." />
-                        </div>
-                        <div className="flex-1 overflow-y-auto">
-                            {isLoading && Array.from({length: 5}).map((_, i) => (
-                                <div key={i} className="p-4 border-b space-y-2">
-                                    <div className="flex justify-between">
-                                        <Skeleton className="h-4 w-2/4" />
-                                        <Skeleton className="h-3 w-1/4" />
-                                    </div>
-                                    <Skeleton className="h-4 w-3/4" />
-                                    <Skeleton className="h-3 w-full" />
-                                </div>
-                            ))}
-                            {!isLoading && mails.map(mail => (
-                                <div 
-                                    key={mail.id} 
-                                    className={`p-4 border-b hover:bg-muted/50 cursor-pointer ${selectedMail?.id === mail.id ? 'bg-primary/5' : ''} ${!mail.isRead ? 'font-semibold' : ''}`}
-                                    onClick={() => setSelectedMail(mail)}
-                                >
-                                    <div className="flex justify-between items-start">
-                                        <p className={`text-sm ${!mail.isRead ? 'text-foreground' : 'text-muted-foreground'}`}>{mail.from.name}</p>
-                                        <p className="text-xs text-muted-foreground">{formatDistanceToNow(mail.timestamp.toDate(), { addSuffix: true })}</p>
-                                    </div>
-                                    <p className={`text-sm truncate ${!mail.isRead ? 'text-foreground' : 'text-muted-foreground'}`}>{mail.subject}</p>
-                                    <p className="text-xs text-muted-foreground truncate">{mail.body}</p>
-                                </div>
-                            ))}
-                            {!isLoading && mails.length === 0 && (
-                                <div className="flex items-center justify-center h-full text-muted-foreground text-center p-4">
-                                    <p>Your inbox is empty.</p>
-                                </div>
-                            )}
+
+                {/* Mail List */}
+                <div className="border rounded-xl flex flex-col overflow-hidden">
+                     <div className="p-3 border-b">
+                        <div className="relative">
+                           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                           <Input placeholder="Search mail..." className="pl-10" />
                         </div>
                     </div>
-                     <div className="col-span-2 flex flex-col">
-                        {selectedMail ? (
-                            <>
-                                <div className="p-4 border-b flex justify-between items-center">
-                                    <div className="flex items-center gap-4">
-                                        <Avatar>
-                                            <AvatarFallback>{selectedMail.from.name.charAt(0)}</AvatarFallback>
-                                        </Avatar>
-                                        <div>
-                                            <p className="font-semibold">{selectedMail.from.name}</p>
-                                            <a href={`mailto:${selectedMail.from.email}`} className="text-sm text-primary hover:underline">{selectedMail.from.email}</a>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <p className="text-sm text-muted-foreground">{format(selectedMail.timestamp.toDate(), "PPpp")}</p>
-                                        <TooltipProvider>
-                                            <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                     <Button variant="ghost" size="icon"><Reply className="h-4 w-4"/></Button>
-                                                </TooltipTrigger>
-                                                <TooltipContent><p>Reply</p></TooltipContent>
-                                            </Tooltip>
-                                             <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                     <Button variant="ghost" size="icon"><CornerUpLeft className="h-4 w-4"/></Button>
-                                                </TooltipTrigger>
-                                                <TooltipContent><p>Forward</p></TooltipContent>
-                                            </Tooltip>
-                                             <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                     <Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4"/></Button>
-                                                </TooltipTrigger>
-                                                <TooltipContent><p>More</p></TooltipContent>
-                                            </Tooltip>
-                                        </TooltipProvider>
-                                    </div>
+                    <div className="flex-1 overflow-y-auto">
+                        {isLoading && Array.from({length: 5}).map((_, i) => (
+                            <div key={i} className="p-4 border-b space-y-2"><Skeleton className="h-4 w-2/4" /><Skeleton className="h-4 w-3/4" /><Skeleton className="h-3 w-full" /></div>
+                        ))}
+                        {!isLoading && mails.map(mail => (
+                            <div key={mail.id} className={cn("p-4 border-b hover:bg-muted/50 cursor-pointer", selectedMail?.id === mail.id && 'bg-primary/5')} onClick={() => setSelectedMail(mail)}>
+                                <div className="flex justify-between items-start">
+                                    <p className={cn("text-sm", !mail.isRead ? 'font-semibold text-foreground' : 'text-muted-foreground')}>{mail.from.name}</p>
+                                    <p className="text-xs text-muted-foreground whitespace-nowrap">{formatDistanceToNow(mail.timestamp.toDate(), { addSuffix: true })}</p>
                                 </div>
-                                <div className="flex-1 p-6 space-y-4 overflow-y-auto">
-                                    <h1 className="text-2xl font-bold">{selectedMail.subject}</h1>
-                                    <p className="whitespace-pre-wrap">{selectedMail.body}</p>
-                                </div>
-                            </>
-                        ) : (
-                            <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
-                                <MailIcon className="h-16 w-16 mb-4" />
-                                <p>Select an item to read</p>
-                                <p className="text-sm">Nothing is selected.</p>
+                                <p className={cn("text-sm truncate", !mail.isRead ? 'font-medium text-foreground' : 'text-muted-foreground')}>{mail.subject}</p>
+                                <p className="text-xs text-muted-foreground truncate">{mail.body}</p>
                             </div>
+                        ))}
+                        {!isLoading && mails.length === 0 && (
+                            <div className="flex items-center justify-center h-full text-muted-foreground text-center p-4"><p>Your inbox is empty.</p></div>
                         )}
                     </div>
+                </div>
+
+                {/* Mail Display */}
+                 <div className="border rounded-xl flex flex-col overflow-hidden hidden xl:flex">
+                    {selectedMail ? (
+                        <>
+                            <div className="p-4 border-b flex justify-between items-center">
+                                <div>
+                                    <h2 className="text-xl font-bold">{selectedMail.subject}</h2>
+                                    <div className="flex items-center gap-2 mt-1">
+                                        <Avatar className="h-6 w-6"><AvatarFallback>{selectedMail.from.name.charAt(0)}</AvatarFallback></Avatar>
+                                        <div>
+                                            <span className="font-semibold text-sm">{selectedMail.from.name}</span>
+                                            <span className="text-xs text-muted-foreground"> &lt;{selectedMail.from.email}&gt;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                    <p className="text-sm text-muted-foreground">{format(selectedMail.timestamp.toDate(), "PPpp")}</p>
+                                    <TooltipProvider>
+                                        <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><Reply className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Reply</p></TooltipContent></Tooltip>
+                                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><CornerUpLeft className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Forward</p></TooltipContent></Tooltip>
+                                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>More</p></TooltipContent></Tooltip>
+                                    </TooltipProvider>
+                                </div>
+                            </div>
+                            <div className="flex-1 p-6 space-y-4 overflow-y-auto text-sm"><p className="whitespace-pre-wrap">{selectedMail.body}</p></div>
+                        </>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
+                            <MailIcon className="h-16 w-16 mb-4" />
+                            <p>Select an item to read</p>
+                            <p className="text-sm">Nothing is selected.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
