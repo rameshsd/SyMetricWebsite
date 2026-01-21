@@ -1,6 +1,10 @@
 
+'use client';
+
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
+import { useUser } from '@/firebase';
+import { Skeleton } from '../ui/skeleton';
 
 const tasks = [
   { text: 'Finish Dashboard Design', done: true },
@@ -9,12 +13,19 @@ const tasks = [
 ];
 
 export function TaskList() {
+  const { user, isUserLoading } = useUser();
+  const userName = user?.displayName?.split(' ')[0] || user?.email || 'User';
+
   return (
     <Card className="bg-blue-600 text-white">
       <CardContent className="p-6">
         <div className="flex items-start">
             <div className="w-2/5">
-                <h3 className="text-xl font-bold">Good Job, David!</h3>
+                {isUserLoading ? (
+                  <Skeleton className="h-7 w-32 bg-white/30" />
+                ) : (
+                  <h3 className="text-xl font-bold">Good Job, {userName}!</h3>
+                )}
                 <p className="text-sm text-blue-200 mt-1">You've finished all of your tasks for this week.</p>
             </div>
           <div className="w-3/5 pl-4">
@@ -32,3 +43,4 @@ export function TaskList() {
     </Card>
   );
 }
+
