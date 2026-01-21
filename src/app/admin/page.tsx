@@ -17,6 +17,19 @@ export default function AdminDashboard() {
   }, [firestore]);
 
   const { data: visits, isLoading: visitsLoading } = useCollection(visitsQuery);
+  
+  const usersQuery = useMemoFirebase(() => {
+    if(!firestore) return null;
+    return collection(firestore, 'users');
+  }, [firestore]);
+  const {data: users, isLoading: usersLoading} = useCollection(usersQuery);
+
+  const demoRequestsQuery = useMemoFirebase(() => {
+    if(!firestore) return null;
+    return collection(firestore, 'demoRequests');
+  }, [firestore]);
+  const {data: demoRequests, isLoading: demoRequestsLoading} = useCollection(demoRequestsQuery);
+
 
   const recentVisitsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
@@ -31,6 +44,10 @@ export default function AdminDashboard() {
 
   const pageViews = visits?.length || 0;
   const uniqueUsers = visits ? new Set(visits.map(v => v.userId)).size : 0;
+  
+  const totalUsers = users?.length || 0;
+  const totalSales = demoRequests?.length || 0;
+  const conversionRate = uniqueUsers > 0 ? ((totalSales / uniqueUsers) * 100).toFixed(2) + '%' : '0.00%';
 
   const salesData = recentVisits
     ? Array.from({ length: 30 }, (_, i) => {
@@ -69,10 +86,10 @@ export default function AdminDashboard() {
       <SalesOverview data={salesData} isLoading={recentVisitsLoading} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard title="Total Users" value="67.4k" icon={Users} variant="simple" />
-        <StatCard title="Total Sales" value="96.2k" icon={ShoppingCart} variant="simple" />
-        <StatCard title="Conversion Rate" value="6.92%" icon={UserCheck} variant="simple" />
-        <StatCard title="Avg. Session" value="16m 48s" icon={Clock} variant="simple" />
+        <StatCard title="Total Users" value={totalUsers.toLocaleString()} icon={Users} variant="simple" isLoading={usersLoading} />
+        <StatCard title="Total Sales" value={totalSales.toLocaleString()} icon={ShoppingCart} variant="simple" isLoading={demoRequestsLoading} />
+        <StatCard title="Conversion Rate" value={conversionRate} icon={UserCheck} variant="simple" isLoading={visitsLoading || demoRequestsLoading} />
+        <StatCard title="Avg. Session" value="16m 48s" icon={Clock} variant="simple" isLoading={visitsLoading} />
       </div>
     </div>
   );
