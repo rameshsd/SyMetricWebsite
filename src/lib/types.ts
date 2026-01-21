@@ -334,5 +334,13 @@ export type TrialAnalyticsFeature = {
     title: string;
     description: string;
 };
-    
 
+export type SmtpConfiguration = {
+  id: 'smtp';
+  smtpHost: string;
+  smtpPort: number;
+  smtpUser: string;
+  smtpPass: string;
+  emailTo: string;
+};
+    

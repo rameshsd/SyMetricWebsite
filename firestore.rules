@@ -58,9 +58,14 @@ service cloud.firestore {
         allow read: if true;
         allow write: if isAdmin();
     }
+
+    match /configuration/{configId} {
+        // WARNING: Allowing public read access to SMTP configuration is a major security risk.
+        // This is done to meet the requirement of a UI-only configuration without manual steps.
+        // It is strongly recommended to use environment variables instead.
+        allow read: if true; 
+        allow write: if isAdmin();
+    }
   }
 }
-
-    
-
     
