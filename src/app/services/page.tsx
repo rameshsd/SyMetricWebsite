@@ -9,7 +9,6 @@ import { ServicesTabs } from '@/components/services/ServicesTabs';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
 import { ServicesUseCases } from '@/components/services/ServicesUseCases';
-import { CustomerSuccessSection } from '@/components/layout/CustomerSuccessSection';
 import { ResourcesCarousel } from '@/components/home/resources-carousel';
 import { ServicesFAQ } from '@/components/services/ServicesFAQ';
 
@@ -23,7 +22,6 @@ const secondaryNav = [
     { label: 'Services', href: '#services' },
     { label: 'Products', href: '#products' },
     { label: 'Use cases', href: '#use-cases' },
-    { label: 'Customer stories', href: '#customer-stories' },
     { label: 'Resources', href: '#resources' },
     { label: 'Get started', href: '#get-started' },
     { label: 'FAQs', href: '#faqs' },
@@ -84,10 +82,6 @@ export default function ServicesPage() {
 
         <div id="use-cases">
             <ServicesUseCases />
-        </div>
-
-        <div id="customer-stories">
-            <CustomerSuccessSection />
         </div>
 
         <div id="resources">
