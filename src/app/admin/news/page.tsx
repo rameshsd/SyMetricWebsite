@@ -1,8 +1,9 @@
 
 'use client';
 
-import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking } from '@/firebase';
-import { collection, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import * as React from 'react';
+import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking, updateDocumentNonBlocking } from '@/firebase';
+import { collection, serverTimestamp, query, orderBy, doc } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -17,6 +18,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import type { NewsItem } from '@/lib/types';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { Loader2, Plus, Edit } from 'lucide-react';
+
 
 const newsSchema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters.'),
@@ -26,7 +31,15 @@ const newsSchema = z.object({
   imageUrl: z.string().url('Please enter a valid image URL.'),
 });
 
-function CreateNewsForm() {
+
+interface NewsEditorProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  newsItem?: NewsItem | null;
+  onSave: () => void;
+}
+
+function NewsEditor({ isOpen, setIsOpen, newsItem, onSave }: NewsEditorProps) {
   const firestore = useFirestore();
   const { toast } = useToast();
 
@@ -41,34 +54,61 @@ function CreateNewsForm() {
     },
   });
 
+  React.useEffect(() => {
+    if (isOpen) {
+      form.reset(newsItem ? {
+        title: newsItem.title,
+        slug: newsItem.slug,
+        category: newsItem.category,
+        content: newsItem.content,
+        imageUrl: newsItem.imageUrl,
+      } : {
+        title: '',
+        slug: '',
+        category: 'Press Release',
+        content: '',
+        imageUrl: '',
+      });
+    }
+  }, [newsItem, isOpen, form]);
+
   const onSubmit = async (values: z.infer<typeof newsSchema>) => {
     if (!firestore) return;
-    const newsCollection = collection(firestore, 'newsItems');
     try {
-      await addDocumentNonBlocking(newsCollection, {
-        ...values,
-        publishDate: serverTimestamp(),
-      });
-      toast({ title: 'News article created successfully!' });
-      form.reset();
+      if (newsItem?.id) {
+        const itemRef = doc(firestore, 'newsItems', newsItem.id);
+        await updateDocumentNonBlocking(itemRef, { ...values });
+        toast({ title: 'Article updated successfully!' });
+      } else {
+        const newsCollection = collection(firestore, 'newsItems');
+        await addDocumentNonBlocking(newsCollection, {
+          ...values,
+          publishDate: serverTimestamp(),
+        });
+        toast({ title: 'Article created successfully!' });
+      }
+      onSave();
+      setIsOpen(false);
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: 'Error creating article',
+        title: 'Error saving article',
         description: (error as Error).message,
       });
     }
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Create News Article</CardTitle>
-        <CardDescription>Fill out the form to add a new article to the news feed.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="max-w-3xl">
+        <DialogHeader>
+          <DialogTitle>{newsItem ? 'Edit Article' : 'Create New Article'}</DialogTitle>
+          <DialogDescription>
+            {newsItem ? 'Update the details of your news article below.' : 'Fill out the form to create a new article.'}
+          </DialogDescription>
+        </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-h-[70vh] overflow-y-auto pr-4">
             <FormField control={form.control} name="title" render={({ field }) => (
                 <FormItem><FormLabel>Title</FormLabel><FormControl><Input placeholder="SyMetric Announces New Partnership" {...field} /></FormControl><FormMessage /></FormItem>
             )}/>
@@ -86,25 +126,31 @@ function CreateNewsForm() {
             <FormField control={form.control} name="content" render={({ field }) => (
                 <FormItem><FormLabel>Content</FormLabel><FormControl><Textarea placeholder="Write your article content here. Markdown is supported." rows={10} {...field} /></FormControl><FormMessage /></FormItem>
             )}/>
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? 'Creating...' : 'Create Article'}
-            </Button>
+            <DialogFooter className="sticky bottom-0 bg-background py-4 pr-6">
+              <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
+              <Button type="submit" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {newsItem ? 'Save Changes' : 'Create Article'}
+              </Button>
+            </DialogFooter>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </DialogContent>
+    </Dialog>
   );
 }
 
-function NewsList() {
+
+function NewsList({ onEditClick, forceRerender }: { onEditClick: (item: NewsItem) => void, forceRerender: number }) {
     const firestore = useFirestore();
-    const newsQuery = useMemoFirebase(() => firestore ? query(collection(firestore, 'newsItems'), orderBy('publishDate', 'desc')) : null, [firestore]);
+    const newsQuery = useMemoFirebase(() => firestore ? query(collection(firestore, 'newsItems'), orderBy('publishDate', 'desc')) : null, [firestore, forceRerender]);
     const { data: newsItems, isLoading } = useCollection<NewsItem>(newsQuery);
 
     return (
         <Card>
             <CardHeader>
                 <CardTitle>Existing News Articles</CardTitle>
+                <CardDescription>A list of all news articles on your website.</CardDescription>
             </CardHeader>
             <CardContent>
                 <Table>
@@ -113,19 +159,30 @@ function NewsList() {
                             <TableHead>Date</TableHead>
                             <TableHead>Title</TableHead>
                             <TableHead>Category</TableHead>
-                            <TableHead>Actions</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {isLoading && <TableRow><TableCell colSpan={4} className="h-24 text-center">Loading...</TableCell></TableRow>}
+                        {isLoading && Array.from({length: 3}).map((_, i) => (
+                           <TableRow key={i}>
+                                <TableCell><Skeleton className="h-5 w-24" /></TableCell>
+                                <TableCell><Skeleton className="h-5 w-48" /></TableCell>
+                                <TableCell><Skeleton className="h-5 w-24" /></TableCell>
+                                <TableCell className="flex gap-2 justify-end"><Skeleton className="h-8 w-20" /><Skeleton className="h-8 w-20" /></TableCell>
+                            </TableRow>
+                        ))}
                         {newsItems && newsItems.map(item => (
                             <TableRow key={item.id}>
                                 <TableCell>{item.publishDate ? format(item.publishDate.toDate(), 'PP') : 'N/A'}</TableCell>
                                 <TableCell className="font-medium">{item.title}</TableCell>
                                 <TableCell>{item.category}</TableCell>
-                                <TableCell>
-                                     <Button variant="link" asChild>
+                                <TableCell className="text-right space-x-2">
+                                     <Button variant="link" size="sm" asChild>
                                         <Link href={`/news/${item.slug}`} target="_blank">View</Link>
+                                    </Button>
+                                     <Button variant="outline" size="sm" onClick={() => onEditClick(item)}>
+                                        <Edit className="mr-2 h-3 w-3" />
+                                        Edit
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -141,13 +198,42 @@ function NewsList() {
 }
 
 export default function NewsAdminPage() {
+  const [rerenderCount, setRerenderCount] = React.useState(0);
+  const [isEditorOpen, setIsEditorOpen] = React.useState(false);
+  const [selectedNewsItem, setSelectedNewsItem] = React.useState<NewsItem | null>(null);
+
+  const handleCreateClick = () => {
+    setSelectedNewsItem(null);
+    setIsEditorOpen(true);
+  };
+
+  const handleEditClick = (item: NewsItem) => {
+    setSelectedNewsItem(item);
+    setIsEditorOpen(true);
+  };
+  
+  const handleSave = () => {
+    setRerenderCount(c => c + 1);
+  };
+  
   return (
     <div className="space-y-8">
-      <SectionTitle title="Manage News Feed" description="Create and manage articles for your website's news feed." />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <CreateNewsForm />
-        <NewsList />
+       <div className="flex justify-between items-start">
+        <SectionTitle title="Manage News Feed" description="Create and manage articles for your website's news feed." />
+        <Button onClick={handleCreateClick}>
+            <Plus className="mr-2 h-4 w-4"/>
+            Create Article
+        </Button>
       </div>
+
+      <NewsList forceRerender={rerenderCount} onEditClick={handleEditClick} />
+
+      <NewsEditor 
+        isOpen={isEditorOpen}
+        setIsOpen={setIsEditorOpen}
+        newsItem={selectedNewsItem}
+        onSave={handleSave}
+      />
     </div>
   );
 }
