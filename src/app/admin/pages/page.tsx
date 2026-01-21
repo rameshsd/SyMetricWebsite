@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -29,28 +30,51 @@ const pageSchema = z.object({
 });
 
 const sampleContent = `
-# Sample Page Title
+# Our New Product: The SyMetric Accelerator
 
-This is some sample content for your new page. You can use **Markdown** to format your text.
+The SyMetric Accelerator is a revolutionary tool designed to streamline your clinical trial process from start to finish. It leverages cutting-edge AI to provide predictive analytics and automate data management tasks.
 
-## Features
+## Key Features
 
-- **Easy to edit:** Write your content using simple Markdown syntax.
-- **Live Preview:** See your changes in real-time as you type.
-- **Component-rich:** Leverage ShadCN components for a beautiful layout.
+- **AI-Powered Analytics:** Gain deep insights into your trial data with our predictive models.
+- **Automated Data Validation:** Reduce manual errors and ensure data integrity with our smart validation engine.
+- **Seamless Integration:** Connects with your existing EDC, CTMS, and IRT systems effortlessly.
+- **Real-time Monitoring:** Track site performance, patient recruitment, and key milestones on a live dashboard.
 
-### Code Example
+---
+
+## Technical Overview
+
+Integrating the Accelerator into your existing workflow is simple. Below is an example of how to initialize the SDK in your application.
+
+### Javascript Example
 
 \`\`\`javascript
-// You can even include code blocks
-function greet() {
-  console.log("Hello, world!");
-}
+import { SyMetricAccelerator } from '@symetric/accelerator-sdk';
+
+// Initialize with your project API key
+const accelerator = new SyMetricAccelerator({
+  apiKey: 'YOUR_API_KEY_HERE',
+});
+
+// Start monitoring a study
+accelerator.startMonitoring({
+  studyId: 'PROJ-001',
+  onUpdate: (insights) => {
+    console.log('New insights available:', insights);
+  },
+});
 \`\`\`
 
-> This is a blockquote. Use it to highlight important information.
+> **Note:** The Accelerator SDK is available for JavaScript, Python, and Java. Check our official documentation for more details.
 
-Learn more by visiting our [documentation](/).
+## Benefits
+
+*   **Reduce Timelines:** Cut your trial duration by up to 20% by identifying bottlenecks early.
+*   **Lower Costs:** Decrease operational overhead by automating repetitive data management tasks.
+*   **Improve Outcomes:** Enhance decision-making with data-driven insights.
+
+Ready to accelerate your research? [Contact Sales for a Demo](/contact).
 `;
 
 // --- Page Editor Component ---
@@ -100,7 +124,7 @@ function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
       if (pageData?.id) {
         // Update existing page
         const pageRef = doc(firestore, 'pages', pageData.id);
-        await updateDoc(pageRef, { ...values, updatedAt: serverTimestamp() });
+        await updateDocumentNonBlocking(pageRef, { ...values, updatedAt: serverTimestamp() });
         toast({ title: 'Page updated successfully!' });
       } else {
         // Create new page
