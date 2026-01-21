@@ -352,4 +352,13 @@ export type SmtpConfiguration = {
   smtpPass: string;
   emailTo: string;
 };
+
+export type Page = {
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  createdAt: Timestamp;
+  updatedAt?: Timestamp;
+};
     

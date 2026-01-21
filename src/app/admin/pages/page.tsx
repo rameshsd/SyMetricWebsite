@@ -1,9 +1,8 @@
-
 'use client';
 
 import * as React from 'react';
-import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking } from '@/firebase';
-import { collection, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { useFirestore, useCollection, useMemoFirebase, addDocumentNonBlocking, updateDocumentNonBlocking } from '@/firebase';
+import { collection, serverTimestamp, query, orderBy, doc } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -17,161 +16,252 @@ import { useToast } from '@/hooks/use-toast';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import ReactMarkdown from 'react-markdown';
+import { Loader2, Plus, Edit } from 'lucide-react';
+import type { Page } from '@/lib/types';
 
+// Schema for page validation
 const pageSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters.'),
   slug: z.string().min(3, 'Slug must be at least 3 characters.').regex(/^[a-z0-9-]+$/, 'Slug can only contain lowercase letters, numbers, and hyphens.'),
   content: z.string().min(10, 'Content must be at least 10 characters.'),
 });
 
-function CreatePageForm({ onPageCreated }: { onPageCreated: () => void }) {
+const sampleContent = `
+# Sample Page Title
+
+This is some sample content for your new page. You can use **Markdown** to format your text.
+
+## Features
+
+- **Easy to edit:** Write your content using simple Markdown syntax.
+- **Live Preview:** See your changes in real-time as you type.
+- **Component-rich:** Leverage ShadCN components for a beautiful layout.
+
+### Code Example
+
+\`\`\`javascript
+// You can even include code blocks
+function greet() {
+  console.log("Hello, world!");
+}
+\`\`\`
+
+> This is a blockquote. Use it to highlight important information.
+
+Learn more by visiting our [documentation](/).
+`;
+
+// --- Page Editor Component ---
+interface PageEditorProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  pageData?: Page | null;
+  onSave: () => void;
+}
+
+function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
   const firestore = useFirestore();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof pageSchema>>({
     resolver: zodResolver(pageSchema),
-    defaultValues: { title: '', slug: '', content: '' },
+    defaultValues: pageData ? {
+      title: pageData.title,
+      slug: pageData.slug,
+      content: pageData.content,
+    } : {
+      title: '',
+      slug: '',
+      content: sampleContent,
+    },
   });
+
+  React.useEffect(() => {
+    if (isOpen) {
+      form.reset(pageData ? {
+        title: pageData.title,
+        slug: pageData.slug,
+        content: pageData.content,
+      } : {
+        title: '',
+        slug: '',
+        content: sampleContent,
+      });
+    }
+  }, [pageData, isOpen, form]);
+
+  const contentValue = form.watch('content');
 
   const onSubmit = async (values: z.infer<typeof pageSchema>) => {
     if (!firestore) return;
-    const pagesCollection = collection(firestore, 'pages');
     try {
-      await addDocumentNonBlocking(pagesCollection, {
-        ...values,
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
-      });
-      toast({ title: 'Page created successfully!' });
-      form.reset();
-      onPageCreated();
+      if (pageData?.id) {
+        // Update existing page
+        const pageRef = doc(firestore, 'pages', pageData.id);
+        await updateDoc(pageRef, { ...values, updatedAt: serverTimestamp() });
+        toast({ title: 'Page updated successfully!' });
+      } else {
+        // Create new page
+        const pagesCollection = collection(firestore, 'pages');
+        await addDocumentNonBlocking(pagesCollection, {
+          ...values,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        });
+        toast({ title: 'Page created successfully!' });
+      }
+      onSave();
+      setIsOpen(false);
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: 'Error creating page',
+        title: 'Error saving page',
         description: (error as Error).message,
       });
     }
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Create a New Page</CardTitle>
-        <CardDescription>Fill out the form below to add a new page to your website.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="max-w-6xl h-[90vh] flex flex-col">
+        <DialogHeader>
+          <DialogTitle>{pageData ? 'Edit Page' : 'Create New Page'}</DialogTitle>
+          <DialogDescription>
+            {pageData ? 'Update the details of your page below.' : 'Fill out the form to create a new page. A live preview is shown on the right.'}
+          </DialogDescription>
+        </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Page Title</FormLabel>
-                  <FormControl>
-                    <Input placeholder="About Our New Service" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="slug"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Page Slug</FormLabel>
-                  <FormControl>
-                    <Input placeholder="about-our-new-service" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="content"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Page Content</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Write your page content here. You can use Markdown." rows={10} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? 'Creating...' : 'Create Page'}
-            </Button>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 overflow-y-hidden">
+            {/* Form Fields */}
+            <div className="space-y-6 overflow-y-auto pr-4">
+              <FormField control={form.control} name="title" render={({ field }) => (
+                <FormItem><FormLabel>Page Title</FormLabel><FormControl><Input placeholder="About Our New Service" {...field} /></FormControl><FormMessage /></FormItem>
+              )}/>
+              <FormField control={form.control} name="slug" render={({ field }) => (
+                <FormItem><FormLabel>Page Slug</FormLabel><FormControl><Input placeholder="about-our-new-service" {...field} /></FormControl><FormMessage /></FormItem>
+              )}/>
+              <FormField control={form.control} name="content" render={({ field }) => (
+                <FormItem><FormLabel>Page Content (Markdown)</FormLabel><FormControl><Textarea placeholder="Write your page content here..." rows={20} {...field} /></FormControl><FormMessage /></FormItem>
+              )}/>
+            </div>
+            {/* Live Preview */}
+            <div className="border rounded-lg p-6 bg-secondary/30 overflow-y-auto">
+              <h3 className="text-lg font-semibold mb-4 border-b pb-2">Live Preview</h3>
+              <div className="prose dark:prose-invert max-w-none">
+                <ReactMarkdown>{contentValue || "Start typing to see a preview..."}</ReactMarkdown>
+              </div>
+            </div>
+            <DialogFooter className="md:col-span-2">
+              <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
+              <Button type="submit" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {pageData ? 'Save Changes' : 'Create Page'}
+              </Button>
+            </DialogFooter>
           </form>
         </Form>
-      </CardContent>
-    </Card>
+      </DialogContent>
+    </Dialog>
   );
 }
 
-function PagesList({ forceRerender }: { forceRerender: number }) {
-    const firestore = useFirestore();
-    const pagesQuery = useMemoFirebase(() => firestore ? query(collection(firestore, 'pages'), orderBy('createdAt', 'desc')) : null, [firestore, forceRerender]);
-    const { data: pages, isLoading } = useCollection(pagesQuery);
 
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Existing Pages</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Title</TableHead>
-                            <TableHead>URL Path</TableHead>
-                            <TableHead>Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {isLoading && Array.from({length: 3}).map((_, i) => (
-                          <TableRow key={i}>
-                            <TableCell><Skeleton className="h-5 w-3/4" /></TableCell>
-                            <TableCell><Skeleton className="h-5 w-full" /></TableCell>
-                            <TableCell><Skeleton className="h-5 w-12" /></TableCell>
-                          </TableRow>
-                        ))}
-                        {pages && pages.map(page => (
-                            <TableRow key={page.id}>
-                                <TableCell className="font-medium">{page.title}</TableCell>
-                                <TableCell>/pages/{page.slug}</TableCell>
-                                <TableCell>
-                                    <Button variant="outline" asChild>
-                                        <Link href={`/pages/${page.slug}`} target="_blank">Preview</Link>
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                        {!isLoading && pages?.length === 0 && (
-                          <TableRow>
-                            <TableCell colSpan={3} className="h-24 text-center">No pages created yet.</TableCell>
-                          </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </CardContent>
-        </Card>
-    )
+// --- Pages List Component ---
+function PagesList({ forceRerender, onEditClick }: { forceRerender: number, onEditClick: (page: Page) => void }) {
+  const firestore = useFirestore();
+  const pagesQuery = useMemoFirebase(() => firestore ? query(collection(firestore, 'pages'), orderBy('createdAt', 'desc')) : null, [firestore, forceRerender]);
+  const { data: pages, isLoading } = useCollection<Page>(pagesQuery);
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Existing Pages</CardTitle>
+        <CardDescription>A list of all dynamically created pages on your website.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Title</TableHead>
+              <TableHead>URL Path</TableHead>
+              <TableHead>Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {isLoading && Array.from({ length: 3 }).map((_, i) => (
+              <TableRow key={i}>
+                <TableCell><Skeleton className="h-5 w-3/4" /></TableCell>
+                <TableCell><Skeleton className="h-5 w-full" /></TableCell>
+                <TableCell className="flex gap-2"><Skeleton className="h-8 w-20" /><Skeleton className="h-8 w-20" /></TableCell>
+              </TableRow>
+            ))}
+            {pages && pages.map(page => (
+              <TableRow key={page.id}>
+                <TableCell className="font-medium">{page.title}</TableCell>
+                <TableCell>/pages/{page.slug}</TableCell>
+                <TableCell className="flex gap-2">
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href={`/pages/${page.slug}`} target="_blank">Preview</Link>
+                  </Button>
+                  <Button variant="secondary" size="sm" onClick={() => onEditClick(page)}>
+                    <Edit className="mr-2 h-4 w-4"/>
+                    Edit
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+            {!isLoading && pages?.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={3} className="h-24 text-center">No pages created yet.</TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </CardContent>
+    </Card>
+  )
 }
 
+// --- Main Page Component ---
 export default function PagesAdminPage() {
   const [rerenderCount, setRerenderCount] = React.useState(0);
+  const [isEditorOpen, setIsEditorOpen] = React.useState(false);
+  const [selectedPage, setSelectedPage] = React.useState<Page | null>(null);
+
+  const handleCreateClick = () => {
+    setSelectedPage(null);
+    setIsEditorOpen(true);
+  };
+
+  const handleEditClick = (page: Page) => {
+    setSelectedPage(page);
+    setIsEditorOpen(true);
+  };
+  
+  const handleSave = () => {
+    setRerenderCount(c => c + 1);
+  };
 
   return (
     <div className="space-y-8">
-      <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, markdown-based pages for your website." />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <CreatePageForm onPageCreated={() => setRerenderCount(c => c + 1)} />
-        <PagesList forceRerender={rerenderCount} />
+      <div className="flex justify-between items-start">
+        <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, markdown-based pages for your website." />
+        <Button onClick={handleCreateClick}>
+            <Plus className="mr-2 h-4 w-4"/>
+            Create New Page
+        </Button>
       </div>
+
+      <PagesList forceRerender={rerenderCount} onEditClick={handleEditClick} />
+      
+      <PageEditor 
+        isOpen={isEditorOpen}
+        setIsOpen={setIsEditorOpen}
+        pageData={selectedPage}
+        onSave={handleSave}
+      />
     </div>
   );
 }
