@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/use-in-view";
 import { SectionTitle } from "../shared/section-title";
-import { Iso27001, Iso9001, Fda21Cfr, IchGcp } from "../icons/compliance-icons";
+import { Iso27001, Iso9001, Fda21Cfr, IchGcp, GdprIcon, GmpIcon, Gs1Icon, HipaaIcon } from "../icons/compliance-icons";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Lock, FileCheck } from "lucide-react";
@@ -217,16 +217,16 @@ export function SecurityCompliance() {
           {/* Left Column: Text Content */}
           <div className="space-y-10">
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Security and Compliance</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Security, Compliance, and Data Integrity</h3>
               <p className="text-lg text-muted-foreground">
-                Build data security from the ground up with the backing of our team of experts. We ensure that you meet regulatory requirements (Data protection laws, Good Clinical Practice guidelines, and more) through proactive compliance measures that use well-defined policies, processes, and a robust Standard Operating Procedure framework. Our methods are trusted by large Pharmaceutical Organizations, CROs, and Academic Institutions.
+                Our system design ensures full compliance with federal regulations like **21 CFR Part 11**, with a proven track record for maintaining data integrity, security, and electronic signatures. Data security is an implicit part of our product development, with security features built from the ground up, backed by our team of experts.
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-foreground mb-4">Uncompromised Commitment to Data Privacy</h3>
               <p className="text-lg text-muted-foreground">
-                We go to great lengths to ensure that you have full control over data that powers your research. When it comes to data privacy, our resolve is unmatched and we are only custodians of data that is yours.
+                We ensure you meet regulatory requirements like **GDPR** and **HIPAA** through proactive measures. Our strict data governance policies ensure the use and disclosure of PHI is well-governed, and the collection, storage, and use of personal data is always justified and consent-based.
               </p>
                <Button variant="link" asChild className="p-0 h-auto mt-4 text-primary">
                   <Link href="#">
@@ -234,22 +234,25 @@ export function SecurityCompliance() {
                   </Link>
               </Button>
             </motion.div>
+
+             <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Built on Global Standards</h3>
+              <p className="text-lg text-muted-foreground">
+                System processes are designed around **ICH-GCP** and **GMP** guidelines to ensure subject safety and product quality. Our solution is also fully compliant with **GS1** requirements, providing a common framework for identifying, capturing, and sharing data across all stakeholders.
+              </p>
+            </motion.div>
           </div>
 
           {/* Right Column: Animated Badges */}
-          <div className="grid grid-cols-2 gap-6 items-center">
-            <motion.div variants={badgeVariants}>
-                <Iso27001 className="w-full h-auto" />
-            </motion.div>
-            <motion.div variants={badgeVariants}>
-                <Iso9001 className="w-full h-auto" />
-            </motion.div>
-            <motion.div variants={badgeVariants}>
-                <Fda21Cfr className="w-full h-auto" />
-            </motion.div>
-            <motion.div variants={badgeVariants}>
-                <IchGcp className="w-full h-auto" />
-            </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+             <motion.div variants={badgeVariants}><Fda21Cfr className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><IchGcp className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><GdprIcon className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><HipaaIcon className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><GmpIcon className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Gs1Icon className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Iso27001 className="w-full h-auto" /></motion.div>
+            <motion.div variants={badgeVariants}><Iso9001 className="w-full h-auto" /></motion.div>
           </div>
         </motion.div>
       </div>

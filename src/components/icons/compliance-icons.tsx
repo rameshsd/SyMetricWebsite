@@ -26,3 +26,31 @@ export const IchGcp = ({ className }: { className?: string }) => (
         <text x="50" y="32" fontFamily="sans-serif" fontSize="16" fill="#1A202C" textAnchor="middle" fontWeight="bold">ICH-GCP</text>
     </svg>
 );
+
+export const GdprIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 100 50" fill="none">
+        <rect width="100" height="50" rx="5" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1"/>
+        <text x="50" y="32" fontFamily="sans-serif" fontSize="16" fill="#1A202C" textAnchor="middle" fontWeight="bold">GDPR</text>
+    </svg>
+);
+
+export const HipaaIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 100 50" fill="none">
+        <rect width="100" height="50" rx="5" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1"/>
+        <text x="50" y="32" fontFamily="sans-serif" fontSize="16" fill="#1A202C" textAnchor="middle" fontWeight="bold">HIPAA</text>
+    </svg>
+);
+
+export const GmpIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 100 50" fill="none">
+        <rect width="100" height="50" rx="5" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1"/>
+        <text x="50" y="32" fontFamily="sans-serif" fontSize="16" fill="#1A202C" textAnchor="middle" fontWeight="bold">GMP</text>
+    </svg>
+);
+
+export const Gs1Icon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 100 50" fill="none">
+        <rect width="100" height="50" rx="5" fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1"/>
+        <text x="50" y="32" fontFamily="sans-serif" fontSize="16" fill="#1A202C" textAnchor="middle" fontWeight="bold">GS1</text>
+    </svg>
+);

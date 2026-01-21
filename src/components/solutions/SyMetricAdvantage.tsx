@@ -1,5 +1,6 @@
+
 "use client";
-import { CheckCircle, Combine, MousePointerClick, Fingerprint, Files, ChevronsRight, BarChart, LifeBuoy } from "lucide-react";
+import { CheckCircle, Combine, MousePointerClick, Fingerprint, Files, ChevronsRight, BarChart, LifeBuoy, Zap } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import Link from "next/link";
@@ -46,6 +47,12 @@ const advantages = [
         icon: BarChart,
         title: "Real-Time Reporting",
         description: "Gain instant visibility into trial progress with powerful real-time dashboards and analytics.",
+        link: "#"
+    },
+    {
+        icon: Zap,
+        title: "Advanced Integrations",
+        description: "Integrate with wearables, medical devices, and external AI systems for image analysis using modern standards like DICOM.",
         link: "#"
     },
     {
