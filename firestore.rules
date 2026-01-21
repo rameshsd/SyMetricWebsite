@@ -29,6 +29,11 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    match /contactFormSubmissions/{submissionId} {
+        allow create: if true;
+        allow read, update, delete: if isAdmin();
+    }
+
     match /pages/{pageId} {
       allow read: if true;
       allow create, update, delete: if isAdmin();

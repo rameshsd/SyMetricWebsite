@@ -10,6 +10,9 @@ import { CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { useFirestore, addDocumentNonBlocking } from '@/firebase';
+import { collection, serverTimestamp } from 'firebase/firestore';
+
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(50, { message: 'Name must be 50 characters or less.'}),
@@ -22,6 +25,7 @@ const formSchema = z.object({
 export function ContactForm() {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const firestore = useFirestore();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,6 +42,19 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
+      // 1. Save to Firestore
+      if (firestore) {
+        const submissionsCollection = collection(firestore, 'contactFormSubmissions');
+        await addDocumentNonBlocking(submissionsCollection, {
+          name: values.name,
+          organization: values.organization,
+          email: values.email,
+          message: values.message,
+          timestamp: serverTimestamp(),
+        });
+      }
+      
+      // 2. Send email notification
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {

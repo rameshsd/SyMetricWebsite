@@ -269,7 +269,16 @@ export type DemoRequest = {
   phone: string;
   status: 'New' | 'Contacted' | 'In Progress' | 'Closed' | 'Archived';
   createdAt: Timestamp;
-}
+};
+
+export type ContactFormSubmission = {
+  id: string;
+  name: string;
+  organization: string;
+  email: string;
+  message: string;
+  timestamp: Timestamp;
+};
     
 export interface UserHookResult {
   user: FirebaseUser | null;
