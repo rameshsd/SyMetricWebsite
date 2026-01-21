@@ -84,9 +84,20 @@ export async function POST(request: Request) {
 
 
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
-  } catch (error) {
-    console.error(error);
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    return NextResponse.json({ message: 'Failed to send email. Check SMTP credentials.', error: errorMessage }, { status: 500 });
+  } catch (error: any) {
+    console.error("Email sending error:", error);
+    
+    let userMessage = 'Failed to send email. Please verify your SMTP credentials and ensure your email provider allows connections from this application.';
+
+    if (error.code === 'EAUTH') {
+        userMessage = 'SMTP Authentication failed. Please verify your email and password/app password are correct in the admin settings.';
+    } else if (error.code === 'ECONNECTION' || error.code === 'ETIMEDOUT') {
+        userMessage = 'Could not connect to the SMTP server. Please verify the SMTP Host and Port in the admin settings.';
+    } else if (error.code === 'EENVELOPE') {
+        userMessage = 'Email addresses might be invalid. Please check the "Recipient Email" in settings and the user\'s email.';
+    }
+
+    const errorMessage = error.message || 'An unknown error occurred';
+    return NextResponse.json({ message: userMessage, error: errorMessage }, { status: 500 });
   }
 }
