@@ -21,17 +21,17 @@ service cloud.firestore {
 
     match /websiteVisits/{visitId} {
       allow create: if true;
-      allow read: if isAdmin();
+      allow read, list: if isAdmin();
     }
 
     match /demoRequests/{requestId} {
       allow create: if true;
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete, list: if isAdmin();
     }
 
     match /contactFormSubmissions/{submissionId} {
         allow create: if true;
-        allow read, update, delete: if isAdmin();
+        allow read, update, delete, list: if isAdmin();
     }
 
     match /pages/{pageId} {
@@ -51,7 +51,7 @@ service cloud.firestore {
 
     match /jobApplications/{applicationId} {
       allow create: if true;
-      allow read: if isAdmin();
+      allow read, list: if isAdmin();
     }
 
     match /newsItems/{newsItemId} {
