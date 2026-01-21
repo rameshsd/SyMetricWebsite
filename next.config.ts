@@ -76,6 +76,12 @@ const nextConfig: NextConfig = {
         hostname: 'img-c.udemycdn.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.investindia.gov.in',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
