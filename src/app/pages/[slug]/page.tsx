@@ -6,7 +6,6 @@ import { collection, query, where, limit } from 'firebase/firestore';
 import { notFound, useParams } from 'next/navigation';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Skeleton } from '@/components/ui/skeleton';
-import ReactMarkdown from 'react-markdown';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 
@@ -48,21 +47,21 @@ export default function DynamicPage() {
   );
 
   const { data: pages, isLoading } = useCollection(pageQuery);
-  const page = pages?.[0];
-
-  const heroImage = page?.heroImageId ? PlaceHolderImages.find(p => p.id === page.heroImageId) : null;
-
+  
   if (isLoading) {
     return <PageSkeleton />;
   }
-  
+
   if (!pages) {
-    return <PageSkeleton />;
+     return <PageSkeleton />;
   }
 
   if (pages.length === 0) {
     notFound();
   }
+
+  const page = pages[0];
+  const heroImage = page?.heroImageId ? PlaceHolderImages.find(p => p.id === page.heroImageId) : null;
 
   return (
     <>
@@ -95,10 +94,8 @@ export default function DynamicPage() {
           <div className="max-w-4xl mx-auto py-12">
             {!page.subtitle && !heroImage && <SectionTitle title={page.title} className="mb-12" />}
             <div
-              className="prose dark:prose-invert max-w-none"
-            >
-              <ReactMarkdown>{page.content}</ReactMarkdown>
-            </div>
+              dangerouslySetInnerHTML={{ __html: page.content }}
+            />
           </div>
         </div>
       </section>

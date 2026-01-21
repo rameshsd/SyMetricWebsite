@@ -18,7 +18,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
-import ReactMarkdown from 'react-markdown';
 import { Loader2, Plus, Edit } from 'lucide-react';
 import type { Page } from '@/lib/types';
 
@@ -33,28 +32,103 @@ const pageSchema = z.object({
 });
 
 const sampleContent = `
-Our CTM solution is comprised of several powerful modules to cover every aspect of trial management.
+<style>
+  .custom-page-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 2rem;
+    color: #333;
+  }
+  .custom-header {
+    background-color: #f0f4ff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .custom-header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+  .custom-header p {
+    font-size: 1.1rem;
+    color: #5a6878;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+  }
+  .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+  }
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .custom-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .custom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+  .custom-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 0.5rem;
+  }
+  .code-block {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+  }
+</style>
 
-> ### Centralized User & Access Management
-> Our centralized User Administration service enables you to manage User Identities on our Platform. It allows users to log in and access Study Resources with a unified sign-on feature. Role-Based Authorization Control allows you to define roles centrally with granular levels of permissions.
+<div class="custom-page-container">
+  <div class="custom-header">
+    <h1>Your Custom Page Title</h1>
+    <p>This is a subtitle describing your amazing product or feature. It's fully customizable!</p>
+  </div>
 
-### Key Features
-*   **Feature One:** Description of the first key feature.
-*   **Feature Two:** Description of the second key feature.
-*   **Feature Three:** Description of the third key feature.
+  <h2 class="section-title">Key Features</h2>
+  <div class="custom-grid">
+    <div class="custom-card">
+      <h3>Feature One</h3>
+      <p>Description of the first key feature. It's revolutionary and changes everything.</p>
+    </div>
+    <div class="custom-card">
+      <h3>Feature Two</h3>
+      <p>Description of the second key feature. It builds upon the first, making it even better.</p>
+    </div>
+    <div class="custom-card">
+      <h3>Feature Three</h3>
+      <p>Description of the third key feature. This one is the cherry on top for our users.</p>
+    </div>
+  </div>
 
-### Technical Overview
-\`\`\`javascript
-function setupTrial(protocol) {
-  // Your code here to set up the trial
-  console.log('Setting up trial:', protocol.name);
-}
-\`\`\`
-
----
-
-## Explore Related Solutions
-Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.
+  <h2 class="section-title">Technical Overview</h2>
+  <div class="code-block">
+<pre><code>&lt;script&gt;
+  function setupTrial(protocol) {
+    console.log('Setting up trial:', protocol.name);
+  }
+&lt;/script&gt;</code></pre>
+  </div>
+</div>
 `;
 
 // --- Page Editor Component ---
@@ -164,7 +238,7 @@ function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
               <FormItem><FormLabel>Hero Background Color (Optional)</FormLabel><FormControl><Input placeholder="e.g., #f5f3ff or a Tailwind class" {...field} /></FormControl><FormMessage /></FormItem>
             )}/>
             <FormField control={form.control} name="content" render={({ field }) => (
-              <FormItem><FormLabel>Page Content (Markdown)</FormLabel><FormControl><Textarea placeholder="Write your page content here..." rows={20} {...field} /></FormControl><FormMessage /></FormItem>
+              <FormItem><FormLabel>Page Content (HTML & CSS)</FormLabel><FormControl><Textarea placeholder="Write your page content here..." rows={20} {...field} /></FormControl><FormMessage /></FormItem>
             )}/>
             <DialogFooter className="sticky bottom-0 bg-background py-4">
               <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
@@ -260,7 +334,7 @@ export default function PagesAdminPage() {
   return (
     <div className="space-y-8">
       <div className="flex justify-between items-start">
-        <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, markdown-based pages for your website." />
+        <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, HTML-based pages for your website." />
         <Button onClick={handleCreateClick}>
             <Plus className="mr-2 h-4 w-4"/>
             Create New Page
