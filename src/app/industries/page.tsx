@@ -27,7 +27,7 @@ export default function IndustriesPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">
                         <Button size="lg" variant="secondary" asChild>
-                            <Link href="/contact">Request a demo</Link>
+                            <Link href="/request-demo">Request a demo</Link>
                         </Button>
                         <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" asChild>
                             <Link href="/solutions">Explore solutions</Link>

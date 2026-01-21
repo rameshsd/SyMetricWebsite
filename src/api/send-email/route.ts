@@ -17,6 +17,7 @@ interface EmailDetails {
     type: 'contact' | 'demo' | 'direct';
     to?: string;
     subject?: string;
+    modulesOfInterest?: string[];
 }
 
 const syMetricLogoUrl = "https://symetricsystems.com/wp-content/uploads/2021/05/symetric.png";
@@ -82,6 +83,9 @@ function generateAdminNotificationHtml(details: EmailDetails): string {
     if (details.company) detailsHtml += `<tr><td>Company:</td><td>${details.company}</td></tr>`;
     if (details.organization) detailsHtml += `<tr><td>Organization:</td><td>${details.organization}</td></tr>`;
     if (details.message) detailsHtml += `<tr><td>Message:</td><td>${details.message}</td></tr>`;
+    if (details.modulesOfInterest && details.modulesOfInterest.length > 0) {
+        detailsHtml += `<tr><td>Modules of Interest:</td><td>${details.modulesOfInterest.join(', ')}</td></tr>`;
+    }
     detailsHtml += '</table>';
     
     const body = `

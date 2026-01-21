@@ -58,7 +58,7 @@ export default function ClinicalTrialPlatformPage() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
                             <Button size="lg" asChild>
-                                <Link href="/contact">Request a demo</Link>
+                                <Link href="/request-demo">Request a demo</Link>
                             </Button>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ export default function ClinicalTrialPlatformPage() {
                   <div className="text-center">
                       <h2 className="text-4xl font-bold mb-6">Get Started Today</h2>
                       <div className="flex gap-4 justify-center mt-8">
-                          <Button size="lg" asChild><a href="/contact">Get a demo</a></Button>
+                          <Button size="lg" asChild><a href="/request-demo">Get a demo</a></Button>
                           <Button size="lg" variant="outline" asChild><a href="/contact">Contact us for pricing</a></Button>
                       </div>
                   </div>

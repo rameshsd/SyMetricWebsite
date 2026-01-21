@@ -84,7 +84,8 @@
         "company": { "type": "string", "description": "The company the requester works for." },
         "phone": { "type": "string", "description": "Phone number of the requester." },
         "status": { "type": "string", "enum": ["New", "Contacted", "In Progress", "Closed", "Archived"], "description": "The current status of the sales lead." },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the request was submitted." }
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the request was submitted." },
+        "modulesOfInterest": { "type": "array", "items": { "type": "string" }, "description": "List of product modules the user is interested in." }
       },
       "required": ["id", "name", "email", "company", "status", "createdAt"]
     },

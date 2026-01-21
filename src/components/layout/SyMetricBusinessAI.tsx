@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -27,7 +28,7 @@ export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
-                <Link href="/contact">Request a demo</Link>
+                <Link href="/request-demo">Request a demo</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="#">Sign up for our newsletter</Link>

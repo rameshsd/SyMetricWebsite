@@ -45,8 +45,8 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
               <Button size="lg" asChild variant={hasDarkBg && !isIrtIwrs ? "secondary" : "default"}>
                 <Link href="/solutions">Explore the solutions</Link>
               </Button>
-               <Button size="lg" variant="outline" className={cn(hasDarkBg && !isIrtIwrs && "bg-transparent border-white text-white hover:bg-white hover:text-primary")}>
-                <Link href="/contact">Request a demo</Link>
+               <Button size="lg" variant="outline" className={cn(hasDarkBg && !isIrtIwrs && "bg-transparent border-white text-white hover:bg-white hover:text-primary")} asChild>
+                <Link href="/request-demo">Request a demo</Link>
               </Button>
             </div>
           </div>
