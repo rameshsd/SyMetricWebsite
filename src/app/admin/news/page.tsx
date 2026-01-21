@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SectionTitle } from '@/components/shared/section-title';
@@ -19,7 +19,7 @@ import type { NewsItem } from '@/lib/types';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription as DialogDesc, DialogFooter, DialogClose } from '@/components/ui/dialog';
 import { Loader2, Plus, Edit } from 'lucide-react';
 
 
@@ -103,9 +103,9 @@ function NewsEditor({ isOpen, setIsOpen, newsItem, onSave }: NewsEditorProps) {
       <DialogContent className="max-w-3xl">
         <DialogHeader>
           <DialogTitle>{newsItem ? 'Edit Article' : 'Create New Article'}</DialogTitle>
-          <DialogDescription>
+          <DialogDesc>
             {newsItem ? 'Update the details of your news article below.' : 'Fill out the form to create a new article.'}
-          </DialogDescription>
+          </DialogDesc>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-h-[70vh] overflow-y-auto pr-4">
@@ -121,10 +121,20 @@ function NewsEditor({ isOpen, setIsOpen, newsItem, onSave }: NewsEditorProps) {
                 )}/>
             </div>
             <FormField control={form.control} name="imageUrl" render={({ field }) => (
-                <FormItem><FormLabel>Image URL</FormLabel><FormControl><Input placeholder="https://example.com/image.jpg" {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem>
+                  <FormLabel>Image URL</FormLabel>
+                  <FormControl><Input placeholder="https://example.com/image.jpg" {...field} /></FormControl>
+                  <FormDescription>This is the main image for the article, displayed at the top.</FormDescription>
+                  <FormMessage />
+                </FormItem>
             )}/>
             <FormField control={form.control} name="content" render={({ field }) => (
-                <FormItem><FormLabel>Content</FormLabel><FormControl><Textarea placeholder="Write your article content here. Markdown is supported." rows={10} {...field} /></FormControl><FormMessage /></FormItem>
+                <FormItem>
+                  <FormLabel>Content</FormLabel>
+                  <FormControl><Textarea placeholder="Write your article content here. Markdown is supported." rows={10} {...field} /></FormControl>
+                  <FormDescription>To add multiple images in the article body, use Markdown syntax: `![alt text](image_url)`.</FormDescription>
+                  <FormMessage />
+                </FormItem>
             )}/>
             <DialogFooter className="sticky bottom-0 bg-background py-4 pr-6">
               <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
