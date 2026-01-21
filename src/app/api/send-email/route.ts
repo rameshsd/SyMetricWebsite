@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 import { initializeApp, getApp, getApps } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { firebaseConfig } from '@/firebase/config';
+import { generateAdminNotificationHtml, generateUserAcknowledgementHtml } from '@/lib/email-templates';
 
 // Initialize Firebase client SDK to read settings from Firestore
 // This approach is used to meet the user requirement of a UI-only configuration.
@@ -42,7 +43,8 @@ export async function POST(request: Request) {
         return NextResponse.json({ message: "Server is not configured to send emails. Please set SMTP configuration in the admin settings panel." }, { status: 500 });
     }
 
-    const { email, name, message, organization, phone, company, type } = await request.json();
+    const emailDetails = await request.json();
+    const { email, name, type } = emailDetails;
 
     const { smtpHost, smtpPort, smtpUser, smtpPass, emailTo } = smtpConfig as any;
 
@@ -59,42 +61,27 @@ export async function POST(request: Request) {
         pass: smtpPass,
       },
     });
-
-    let subject = '';
-    let htmlBody = '';
-
-    if (type === 'contact') {
-        subject = `New Contact Form Submission from ${name}`;
-        htmlBody = `
-            <h3>New Contact Form Submission</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Organization:</strong> ${organization}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Mobile:</strong> ${phone}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-        `;
-    } else if (type === 'demo') {
-        subject = `New Demo Request from ${name}`;
-        htmlBody = `
-            <h3>New Demo Request</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-        `;
-    } else {
-        return NextResponse.json({ message: "Invalid form type." }, { status: 400 });
-    }
-
-    const mailOptions = {
+    
+    // 1. Send notification to admin
+    const adminMailOptions = {
       from: `"SyMetric Website" <${smtpUser}>`,
       to: emailTo,
-      subject: subject,
-      html: htmlBody,
+      subject: type === 'contact' ? `New Contact Form Submission from ${name}` : `New Demo Request from ${name}`,
+      html: generateAdminNotificationHtml(emailDetails),
+    };
+    
+    await transporter.sendMail(adminMailOptions);
+
+    // 2. Send acknowledgment to user
+    const userMailOptions = {
+      from: `"SyMetric Systems" <${smtpUser}>`,
+      to: email,
+      subject: 'We have received your request',
+      html: generateUserAcknowledgementHtml(emailDetails),
     };
 
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(userMailOptions);
+
 
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
   } catch (error) {
