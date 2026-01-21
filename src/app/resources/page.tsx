@@ -52,23 +52,26 @@ export default function ResourcesPage() {
 
     return (
         <>
-            <section>
+            <section className="py-20 bg-secondary/50">
                 <div className="container">
-                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white rounded-2xl overflow-hidden">
-                        {heroImage && (
-                        <Image
-                            src={heroImage.imageUrl}
-                            alt={heroImage.description}
-                            fill
-                            className="object-cover"
-                            data-ai-hint={heroImage.imageHint}
-                        />
-                        )}
-                        <div className="absolute inset-0 bg-black/50" />
-                        <div className="relative z-10 text-center p-4">
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Insights & Resources</h1>
-                            <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Explore our collection of articles, whitepapers, and success stories to stay ahead in the world of clinical research.</p>
-                        </div>
+                    <div className="grid md:grid-cols-2 gap-10 items-center">
+                      <div className="text-left">
+                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Insights & Resources</h1>
+                        <p className="mt-4 text-lg md:text-xl text-muted-foreground">
+                          Explore our collection of articles, whitepapers, and success stories to stay ahead in the world of clinical research.
+                        </p>
+                      </div>
+                      <div className="relative h-80 w-full">
+                          {heroImage && (
+                              <Image
+                                  src={heroImage.imageUrl}
+                                  alt={heroImage.description}
+                                  data-ai-hint={heroImage.imageHint}
+                                  fill
+                                  className="object-cover rounded-2xl"
+                              />
+                          )}
+                      </div>
                     </div>
                 </div>
             </section>
