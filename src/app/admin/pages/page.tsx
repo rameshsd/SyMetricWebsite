@@ -144,8 +144,8 @@ function PagesList({ forceRerender }: { forceRerender: number }) {
                                 <TableCell className="font-medium">{page.title}</TableCell>
                                 <TableCell>/pages/{page.slug}</TableCell>
                                 <TableCell>
-                                    <Button variant="link" asChild>
-                                        <Link href={`/pages/${page.slug}`} target="_blank">View</Link>
+                                    <Button variant="outline" asChild>
+                                        <Link href={`/pages/${page.slug}`} target="_blank">Preview</Link>
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -167,7 +167,7 @@ export default function PagesAdminPage() {
 
   return (
     <div className="space-y-8">
-      <SectionTitle title="Manage Pages" description="Create and manage dynamic pages for your website." />
+      <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, markdown-based pages for your website." />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <CreatePageForm onPageCreated={() => setRerenderCount(c => c + 1)} />
         <PagesList forceRerender={rerenderCount} />

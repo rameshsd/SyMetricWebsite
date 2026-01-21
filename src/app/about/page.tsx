@@ -1,4 +1,6 @@
 
+'use client';
+
 import { companyInfo } from '@/lib/data';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { LeadershipSection } from '@/components/layout/LeadershipSection';
@@ -17,15 +19,17 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-
-
-export const metadata = {
-  title: 'About Us - SyMetric',
-  description: 'Learn about the history, mission, and team behind SyMetric.',
-};
+} from "@/components/ui/accordion";
+import { useFirestore, useDoc, useMemoFirebase } from '@/firebase';
+import { doc } from 'firebase/firestore';
+import { Skeleton } from '@/components/ui/skeleton';
+import { contentSchemas } from '@/lib/content-schemas';
 
 export default function AboutPage() {
+  const firestore = useFirestore();
+  const contentDocRef = useMemoFirebase(() => firestore ? doc(firestore, 'pageContent', 'about') : null, [firestore]);
+  const { data: pageContent, isLoading } = useDoc(contentDocRef);
+
   const secondaryNav = [
     { label: 'Company Information', href: '#company-info' },
     { label: 'Overview', href: '#overview' },
@@ -37,6 +41,13 @@ export default function AboutPage() {
 
   const heroImage = PlaceHolderImages.find(p => p.id === 'about-hero');
   const strategyImage = PlaceHolderImages.find(p => p.id === 'strategy-illustration');
+
+  const defaultContent = contentSchemas.about.fields.reduce((acc, field) => {
+    acc[field.name as keyof typeof acc] = field.defaultValue;
+    return acc;
+  }, {} as { [key: string]: string });
+
+  const content = pageContent || defaultContent;
 
   return (
     <div className="bg-background">
@@ -51,12 +62,15 @@ export default function AboutPage() {
           <div className="container">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                  Global Company Information
-                </h1>
-                <p className="max-w-lg text-lg text-primary-foreground/80">
-                  With a global network of customers, partners, employees, and thought leaders, SyMetric helps the world run better and improves people's lives.
-                </p>
+                {isLoading ? <Skeleton className="h-12 w-3/4" /> : <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">{content.heroTitle}</h1>}
+                {isLoading ? (
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-5/6" />
+                  </div>
+                ) : (
+                  <p className="max-w-lg text-lg text-primary-foreground/80">{content.heroSubtitle}</p>
+                )}
                 <Button variant="secondary" size="lg" className="bg-white text-black hover:bg-gray-200" asChild>
                   <Link href="#our-story">Learn More</Link>
                 </Button>
@@ -109,8 +123,8 @@ export default function AboutPage() {
                                         Vision
                                     </AccordionTrigger>
                                     <AccordionContent className="pb-6 pr-4">
-                                        <p className="text-lg font-semibold text-foreground">To accelerate the impact of clinical research on healthcare outcomes through digital interventions.</p>
-                                        <p className="text-muted-foreground mt-2">We are committed to building technology solutions that stimulate research for the advancement of Patient-Centric medical science. At the core of our vision lies our efforts to make clinical research less resource-intensive and more affordable.</p>
+                                        {isLoading ? <Skeleton className="h-6 w-3/4 mb-2"/> : <p className="text-lg font-semibold text-foreground">{content.visionSemiboldText}</p>}
+                                        {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full"/><Skeleton className="h-4 w-5/6"/></div> : <p className="text-muted-foreground mt-2">{content.visionDescription}</p>}
                                     </AccordionContent>
                                 </div>
                             </div>
@@ -125,8 +139,8 @@ export default function AboutPage() {
                                         Mission
                                     </AccordionTrigger>
                                     <AccordionContent className="pb-6 pr-4">
-                                       <p className="text-lg font-semibold text-foreground">To transform the drug development landscape.</p>
-                                       <p className="text-muted-foreground mt-2">The SyMetric team works persistently towards this mission by helping systems adopt innovative digital technologies that improve productivity, lower costs, and assure safety.</p>
+                                       {isLoading ? <Skeleton className="h-6 w-3/4 mb-2"/> : <p className="text-lg font-semibold text-foreground">{content.missionSemiboldText}</p>}
+                                       {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full"/><Skeleton className="h-4 w-5/6"/></div> : <p className="text-muted-foreground mt-2">{content.missionDescription}</p>}
                                     </AccordionContent>
                                 </div>
                             </div>
