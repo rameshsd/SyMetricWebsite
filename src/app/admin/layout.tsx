@@ -4,7 +4,7 @@
 import { Header } from '@/components/admin/Header';
 import { Sidebar } from '@/components/admin/Sidebar';
 import { ReactNode, useState } from 'react';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -19,6 +19,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       {/* Mobile sidebar */}
       <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
         <SheetContent side="left" className="p-0 w-64 md:hidden">
+          <SheetHeader>
+            <SheetTitle className="sr-only">Admin Navigation Menu</SheetTitle>
+          </SheetHeader>
           <Sidebar />
         </SheetContent>
       </Sheet>
