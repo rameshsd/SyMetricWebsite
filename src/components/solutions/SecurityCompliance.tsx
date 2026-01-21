@@ -244,7 +244,7 @@ export function SecurityCompliance() {
           </div>
 
           {/* Right Column: Animated Badges */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 items-center">
              <motion.div variants={badgeVariants}><Fda21Cfr className="w-auto h-20 mx-auto" /></motion.div>
             <motion.div variants={badgeVariants}><IchGcp className="w-auto h-20 mx-auto" /></motion.div>
             <motion.div variants={badgeVariants}><GdprIcon className="w-auto h-20 mx-auto" /></motion.div>
