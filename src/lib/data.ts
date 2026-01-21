@@ -1092,6 +1092,7 @@ export const latestNews: LatestNewsItem[] = [
     id: 10,
     title: 'SyMetric at GINSEP Demo Day',
     description: 'SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.',
+    link: '#',
     imageId: 'news-ginsep-demo'
   }
 ];
@@ -2086,3 +2087,5 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
+
+    
