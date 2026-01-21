@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
@@ -24,7 +23,9 @@ export default function NewsArticlePage() {
 
   const article = articles?.[0];
 
-  if (isLoading || !slug) {
+  // If the article data is still loading or the article object isn't available yet, show a skeleton.
+  // This prevents a premature 404 error.
+  if (isLoading || !article) {
     return (
       <div className="container py-20">
         <div className="max-w-4xl mx-auto">
@@ -42,10 +43,6 @@ export default function NewsArticlePage() {
         </div>
       </div>
     );
-  }
-
-  if (!article) {
-    notFound();
   }
 
   return (

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
@@ -21,7 +20,9 @@ export default function DynamicPage() {
   const { data: pages, isLoading } = useCollection(pageQuery);
   const page = pages?.[0];
 
-  if (isLoading || !slug) {
+  // If the page data is still loading or the page object isn't available yet, show a skeleton.
+  // This prevents a premature 404 error due to data propagation delays.
+  if (isLoading || !page) {
     return (
       <div className="container py-20">
         <div className="max-w-4xl mx-auto space-y-6">
@@ -36,10 +37,6 @@ export default function DynamicPage() {
         </div>
       </div>
     );
-  }
-
-  if (!page) {
-    notFound();
   }
 
   return (
