@@ -9,7 +9,6 @@ import { ServicesTabs } from '@/components/services/ServicesTabs';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { ExploreSolutions } from '@/components/solutions/ExploreSolutions';
 import { ServicesUseCases } from '@/components/services/ServicesUseCases';
-import { ResourcesCarousel } from '@/components/home/resources-carousel';
 import { ServicesFAQ } from '@/components/services/ServicesFAQ';
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ const secondaryNav = [
     { label: 'Services', href: '#services' },
     { label: 'Products', href: '#products' },
     { label: 'Use cases', href: '#use-cases' },
-    { label: 'Resources', href: '#resources' },
     { label: 'Get started', href: '#get-started' },
     { label: 'FAQs', href: '#faqs' },
   ];
@@ -82,10 +80,6 @@ export default function ServicesPage() {
 
         <div id="use-cases">
             <ServicesUseCases />
-        </div>
-
-        <div id="resources">
-            <ResourcesCarousel />
         </div>
 
         <section id="get-started" className="bg-secondary/50">
