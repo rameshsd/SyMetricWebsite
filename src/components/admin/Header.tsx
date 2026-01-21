@@ -1,3 +1,4 @@
+
 'use client';
 import {
   Search,
@@ -23,7 +24,7 @@ import { useTheme } from 'next-themes';
 import { useUser, useAuth } from '@/firebase';
 import { useRouter } from 'next/navigation';
 
-export function Header() {
+export function Header({ onMenuClick }: { onMenuClick?: () => void }) {
     const { theme, setTheme } = useTheme();
     const { user, isUserLoading } = useUser();
     const auth = useAuth();
@@ -39,17 +40,19 @@ export function Header() {
   return (
     <header className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-center">
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="w-6 h-6" />
-        </Button>
-        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+        {onMenuClick && (
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={onMenuClick}>
+              <Menu className="w-6 h-6" />
+            </Button>
+        )}
+        <div className="hidden md:flex items-center text-sm text-gray-500 dark:text-gray-400">
           <Home className="w-4 h-4 mr-2" />
           <span className="hidden md:inline">Dashboards</span>
           <ChevronRight className="w-4 h-4 mx-1" />
           <span>Analytics</span>
         </div>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 md:space-x-4">
         <Button variant="ghost" size="icon">
           <Search className="w-5 h-5" />
         </Button>

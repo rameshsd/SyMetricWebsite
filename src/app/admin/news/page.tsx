@@ -168,7 +168,7 @@ function NewsList({ onEditClick, forceRerender }: { onEditClick: (item: NewsItem
                         <TableRow>
                             <TableHead>Date</TableHead>
                             <TableHead>Title</TableHead>
-                            <TableHead>Category</TableHead>
+                            <TableHead className="hidden md:table-cell">Category</TableHead>
                             <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -177,7 +177,7 @@ function NewsList({ onEditClick, forceRerender }: { onEditClick: (item: NewsItem
                            <TableRow key={i}>
                                 <TableCell><Skeleton className="h-5 w-24" /></TableCell>
                                 <TableCell><Skeleton className="h-5 w-48" /></TableCell>
-                                <TableCell><Skeleton className="h-5 w-24" /></TableCell>
+                                <TableCell className="hidden md:table-cell"><Skeleton className="h-5 w-24" /></TableCell>
                                 <TableCell className="flex gap-2 justify-end"><Skeleton className="h-8 w-20" /><Skeleton className="h-8 w-20" /></TableCell>
                             </TableRow>
                         ))}
@@ -185,7 +185,7 @@ function NewsList({ onEditClick, forceRerender }: { onEditClick: (item: NewsItem
                             <TableRow key={item.id}>
                                 <TableCell>{item.publishDate ? format(item.publishDate.toDate(), 'PP') : 'N/A'}</TableCell>
                                 <TableCell className="font-medium">{item.title}</TableCell>
-                                <TableCell>{item.category}</TableCell>
+                                <TableCell className="hidden md:table-cell">{item.category}</TableCell>
                                 <TableCell className="text-right space-x-2">
                                      <Button variant="link" size="sm" asChild>
                                         <Link href={`/news/${item.slug}`} target="_blank">View</Link>
@@ -228,9 +228,9 @@ export default function NewsAdminPage() {
   
   return (
     <div className="space-y-8">
-       <div className="flex justify-between items-start">
+       <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         <SectionTitle title="Manage News Feed" description="Create and manage articles for your website's news feed." />
-        <Button onClick={handleCreateClick}>
+        <Button onClick={handleCreateClick} className="w-full md:w-auto">
             <Plus className="mr-2 h-4 w-4"/>
             Create Article
         </Button>

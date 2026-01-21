@@ -1,3 +1,4 @@
+
 'use client';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -9,8 +10,9 @@ import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
 import type { ContactFormSubmission, DemoRequest } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
-import { Archive, File, Inbox, Send, Trash2, Mail as MailIcon, Reply, CornerUpLeft, MoreVertical, Search, Loader2, Edit, X, Paperclip } from 'lucide-react';
+import { Archive, File, Inbox, Send, Trash2, Mail as MailIcon, Reply, CornerUpLeft, MoreVertical, Search, Loader2, Edit, X, Paperclip, ArrowLeft } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -125,6 +127,7 @@ function ComposeDialog() {
 
 function MailPage() {
     const firestore = useFirestore();
+    const isMobile = useIsMobile();
 
     const contactsQuery = useMemoFirebase(
         () => firestore ? query(collection(firestore, 'contactFormSubmissions'), orderBy('timestamp', 'desc')) : null,
@@ -148,12 +151,51 @@ function MailPage() {
     const [selectedMail, setSelectedMail] = useState<MailItem | null>(null);
     const isLoading = contactsLoading || demosLoading;
 
+    const MailDetailView = ({ mail, onBack }: { mail: MailItem, onBack: () => void }) => (
+        <div className="border rounded-xl flex flex-col overflow-hidden h-full">
+            <div className="p-4 border-b flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                    {isMobile && (
+                        <Button variant="ghost" size="icon" onClick={onBack}>
+                            <ArrowLeft className="h-5 w-5" />
+                        </Button>
+                    )}
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-bold truncate">{mail.subject}</h2>
+                    </div>
+                </div>
+                <div className="flex items-center gap-1">
+                    <TooltipProvider>
+                        <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><Reply className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Reply</p></TooltipContent></Tooltip>
+                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><CornerUpLeft className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Forward</p></TooltipContent></Tooltip>
+                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>More</p></TooltipContent></Tooltip>
+                    </TooltipProvider>
+                </div>
+            </div>
+            <div className="p-4 border-b">
+                 <div className="flex items-center gap-2 mt-1">
+                    <Avatar className="h-8 w-8"><AvatarFallback>{mail.from.name.charAt(0)}</AvatarFallback></Avatar>
+                    <div>
+                        <span className="font-semibold text-sm">{mail.from.name}</span>
+                        <span className="text-xs text-muted-foreground"> &lt;{mail.from.email}&gt;</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground ml-auto">{format(mail.timestamp.toDate(), "PPpp")}</p>
+                </div>
+            </div>
+            <div className="flex-1 p-6 space-y-4 overflow-y-auto text-sm"><p className="whitespace-pre-wrap">{mail.body}</p></div>
+        </div>
+    );
+    
+    if (isMobile && selectedMail) {
+        return <MailDetailView mail={selectedMail} onBack={() => setSelectedMail(null)} />
+    }
+
     return (
         <div className="h-full flex flex-col">
             <SectionTitle title="Mail" description="Your inbox for website submissions." />
-            <div className="flex-1 grid grid-cols-[240px_1fr] xl:grid-cols-[240px_350px_1fr] gap-4 mt-8 h-[calc(100vh-200px)]">
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-[240px_1fr] xl:grid-cols-[240px_350px_1fr] gap-4 mt-8 h-[calc(100vh-200px)]">
                 {/* Left Sidebar */}
-                <div className="flex flex-col gap-2 bg-secondary/50 p-3 rounded-xl">
+                <div className={cn("flex-col gap-2 bg-secondary/50 p-3 rounded-xl", isMobile ? 'hidden' : 'flex')}>
                     <ComposeDialog />
                     <nav className="mt-4 space-y-1">
                         <Button variant="ghost" className="w-full justify-start gap-2 bg-primary/10 text-primary">
@@ -167,7 +209,7 @@ function MailPage() {
                 </div>
 
                 {/* Mail List */}
-                <div className="border rounded-xl flex flex-col overflow-hidden">
+                <div className={cn("border rounded-xl flex flex-col overflow-hidden", isMobile && selectedMail ? 'hidden' : 'flex')}>
                      <div className="p-3 border-b">
                         <div className="relative">
                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -179,7 +221,7 @@ function MailPage() {
                             <div key={i} className="p-4 border-b space-y-2"><Skeleton className="h-4 w-2/4" /><Skeleton className="h-4 w-3/4" /><Skeleton className="h-3 w-full" /></div>
                         ))}
                         {!isLoading && mails.map(mail => (
-                            <div key={mail.id} className={cn("p-4 border-b hover:bg-muted/50 cursor-pointer", selectedMail?.id === mail.id && 'bg-primary/5')} onClick={() => setSelectedMail(mail)}>
+                            <div key={mail.id} className={cn("p-4 border-b hover:bg-muted/50 cursor-pointer", selectedMail?.id === mail.id && !isMobile && 'bg-primary/5')} onClick={() => setSelectedMail(mail)}>
                                 <div className="flex justify-between items-start">
                                     <p className={cn("text-sm", !mail.isRead ? 'font-semibold text-foreground' : 'text-muted-foreground')}>{mail.from.name}</p>
                                     <p className="text-xs text-muted-foreground whitespace-nowrap">{formatDistanceToNow(mail.timestamp.toDate(), { addSuffix: true })}</p>
@@ -195,31 +237,9 @@ function MailPage() {
                 </div>
 
                 {/* Mail Display */}
-                 <div className="border rounded-xl flex flex-col overflow-hidden hidden xl:flex">
+                 <div className="border rounded-xl flex-col overflow-hidden hidden xl:flex">
                     {selectedMail ? (
-                        <>
-                            <div className="p-4 border-b flex justify-between items-center">
-                                <div>
-                                    <h2 className="text-xl font-bold">{selectedMail.subject}</h2>
-                                    <div className="flex items-center gap-2 mt-1">
-                                        <Avatar className="h-6 w-6"><AvatarFallback>{selectedMail.from.name.charAt(0)}</AvatarFallback></Avatar>
-                                        <div>
-                                            <span className="font-semibold text-sm">{selectedMail.from.name}</span>
-                                            <span className="text-xs text-muted-foreground"> &lt;{selectedMail.from.email}&gt;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <p className="text-sm text-muted-foreground">{format(selectedMail.timestamp.toDate(), "PPpp")}</p>
-                                    <TooltipProvider>
-                                        <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><Reply className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Reply</p></TooltipContent></Tooltip>
-                                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><CornerUpLeft className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>Forward</p></TooltipContent></Tooltip>
-                                         <Tooltip><TooltipTrigger asChild><Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4"/></Button></TooltipTrigger><TooltipContent><p>More</p></TooltipContent></Tooltip>
-                                    </TooltipProvider>
-                                </div>
-                            </div>
-                            <div className="flex-1 p-6 space-y-4 overflow-y-auto text-sm"><p className="whitespace-pre-wrap">{selectedMail.body}</p></div>
-                        </>
+                        <MailDetailView mail={selectedMail} onBack={() => {}} />
                     ) : (
                         <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
                             <MailIcon className="h-16 w-16 mb-4" />
@@ -234,5 +254,3 @@ function MailPage() {
 }
 
 export default MailPage;
-
-    

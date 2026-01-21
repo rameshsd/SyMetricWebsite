@@ -272,23 +272,23 @@ function PagesList({ forceRerender, onEditClick }: { forceRerender: number, onEd
           <TableHeader>
             <TableRow>
               <TableHead>Title</TableHead>
-              <TableHead>URL Path</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead className="hidden sm:table-cell">URL Path</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {isLoading && Array.from({ length: 3 }).map((_, i) => (
               <TableRow key={i}>
                 <TableCell><Skeleton className="h-5 w-3/4" /></TableCell>
-                <TableCell><Skeleton className="h-5 w-full" /></TableCell>
-                <TableCell className="flex gap-2"><Skeleton className="h-8 w-20" /><Skeleton className="h-8 w-20" /></TableCell>
+                <TableCell className="hidden sm:table-cell"><Skeleton className="h-5 w-full" /></TableCell>
+                <TableCell className="flex gap-2 justify-end"><Skeleton className="h-8 w-20" /><Skeleton className="h-8 w-20" /></TableCell>
               </TableRow>
             ))}
             {pages && pages.map(page => (
               <TableRow key={page.id}>
                 <TableCell className="font-medium">{page.title}</TableCell>
-                <TableCell>/pages/{page.slug}</TableCell>
-                <TableCell className="flex gap-2">
+                <TableCell className="hidden sm:table-cell">/pages/{page.slug}</TableCell>
+                <TableCell className="text-right space-x-2">
                   <Button variant="outline" size="sm" asChild>
                     <Link href={`/pages/${page.slug}`} target="_blank">Preview</Link>
                   </Button>
@@ -333,9 +333,9 @@ export default function PagesAdminPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         <SectionTitle title="Manage Dynamic Pages" description="Create and manage dynamic, HTML-based pages for your website." />
-        <Button onClick={handleCreateClick}>
+        <Button onClick={handleCreateClick} className="w-full md:w-auto">
             <Plus className="mr-2 h-4 w-4"/>
             Create New Page
         </Button>

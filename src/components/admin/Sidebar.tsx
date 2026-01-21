@@ -54,7 +54,7 @@ const NavLink = ({ href, icon: Icon, name }: { href: string; icon: React.Element
                 href={href}
                 className={cn(
                 'flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700',
-                isActive ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-white' : ''
+                isActive ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-white' : 'text-gray-700 dark:text-gray-300'
                 )}
             >
                 <Icon className="w-5 h-5 mr-3" />
@@ -78,18 +78,18 @@ const NavGroup = ({ title, items }: { title: string; items: { name: string; href
 
 export function Sidebar() {
   return (
-    <aside className="w-64 flex-shrink-0 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 flex flex-col p-4 border-r border-gray-200 dark:border-gray-700">
-      <div className="flex items-center justify-center py-4">
+    <aside className="w-full h-full bg-white dark:bg-gray-800 flex flex-col">
+      <div className="flex items-center justify-center p-4 border-b border-gray-200 dark:border-gray-700">
         <Logo />
       </div>
-      <nav className="flex-1 overflow-y-auto">
+      <nav className="flex-1 overflow-y-auto p-4">
         <NavGroup title="Main" items={mainNav} />
         <NavGroup title="Content" items={contentNav} />
         <NavGroup title="Tools" items={toolsNav} />
         <NavGroup title="Management" items={managementNav} />
       </nav>
-      <div className="pt-4 mt-auto border-t border-gray-200 dark:border-gray-700">
-        <Link href="/admin/settings" className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700">
+      <div className="p-4 mt-auto border-t border-gray-200 dark:border-gray-700">
+        <Link href="/admin/settings" className="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
             <Settings className="w-5 h-5 mr-3" />
             <span>Settings</span>
         </Link>

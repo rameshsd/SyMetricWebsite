@@ -1,3 +1,4 @@
+
 'use client';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -36,14 +37,14 @@ export default function UsersPage() {
       <SectionTitle title="User Management" description="View, add, and manage user accounts and permissions." />
       <Card>
         <CardHeader>
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <CardTitle>Users</CardTitle>
                     <CardDescription>A list of all the users in your account.</CardDescription>
                 </div>
-                <div className="flex gap-2">
-                    <Input placeholder="Search users..." className="w-64" />
-                    <Button>Add User</Button>
+                <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                    <Input placeholder="Search users..." className="w-full sm:w-64" />
+                    <Button className="w-full sm:w-auto">Add User</Button>
                 </div>
             </div>
         </CardHeader>
@@ -52,9 +53,9 @@ export default function UsersPage() {
                 <TableHeader>
                 <TableRow>
                     <TableHead>Name</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
+                    <TableHead className="hidden sm:table-cell">Role</TableHead>
+                    <TableHead className="hidden sm:table-cell">Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -76,15 +77,15 @@ export default function UsersPage() {
                         </div>
                         </div>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">
                         <Badge variant={user.role === 'Admin' ? 'default' : 'secondary'}>{user.role || 'Member'}</Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">
                         <Badge variant={user.status === 'Active' ? 'outline' : 'destructive'} className={user.status === 'Active' ? 'text-green-600 border-green-600' : ''}>
                         {user.status || 'Inactive'}
                         </Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="text-right">
                         <Button variant="ghost" size="icon">
                         <MoreHorizontal className="h-4 w-4" />
                         </Button>

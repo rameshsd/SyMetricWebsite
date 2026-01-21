@@ -264,9 +264,9 @@ export default function CalendarPage() {
     
     return (
         <div className="flex h-full flex-col">
-            <header className="flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
+            <header className="flex flex-none items-center justify-between border-b border-gray-200 py-4 px-4 md:px-6">
                 <div className="flex items-center gap-4">
-                    <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h1 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">
                         <span className="hidden md:inline">Calendar</span>
                     </h1>
                      <AddEventForm onEventAdded={() => setForceRerender(c => c + 1)} />
@@ -288,8 +288,8 @@ export default function CalendarPage() {
                     </div>
                 </div>
             </header>
-            <div className="flex flex-auto overflow-hidden bg-white dark:bg-background">
-                <div className="flex flex-auto flex-col">
+            <div className="flex flex-auto overflow-auto bg-white dark:bg-background">
+                <div className="flex flex-auto flex-col min-w-[800px]">
                     <div className="grid flex-none grid-cols-7 text-xs font-semibold leading-6 text-gray-700 dark:text-gray-300">
                         {weekDays.map(day => (
                             <div key={day.toISOString()} className="flex justify-center p-3">
@@ -315,7 +315,7 @@ export default function CalendarPage() {
                             </div>
 
                             {/* Vertical lines */}
-                            <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 dark:divide-gray-700 sm:grid">
+                            <div className="col-start-1 col-end-2 row-start-1 grid grid-cols-7 grid-rows-1 divide-x divide-gray-100 dark:divide-gray-700">
                                 <div className="col-start-1 row-span-full" />
                                 <div className="col-start-2 row-span-full" />
                                 <div className="col-start-3 row-span-full" />
@@ -327,7 +327,7 @@ export default function CalendarPage() {
                             </div>
 
                             {/* Events */}
-                            <ol className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8" style={{ gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto' }}>
+                            <ol className="col-start-1 col-end-2 row-start-1 grid grid-cols-7" style={{ gridTemplateRows: '1.75rem repeat(144, minmax(0, 1fr)) auto' }}>
                                 {isLoading && <div className="col-span-full row-span-full flex items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}
                                 {events.filter(e => e.start >= weekStart && e.end <= endOfWeek(currentDate, { weekStartsOn: 1 })).map(event => {
                                     const startDayIndex = ((event.start as Date).getDay() + 6) % 7; // Monday is 0
@@ -347,5 +347,3 @@ export default function CalendarPage() {
         </div>
     );
 }
-
-    
