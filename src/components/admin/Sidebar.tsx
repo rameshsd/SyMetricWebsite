@@ -89,7 +89,7 @@ export function Sidebar() {
         <NavGroup title="Management" items={managementNav} />
       </nav>
       <div className="pt-4 mt-auto border-t border-gray-200 dark:border-gray-700">
-        <Link href="#" className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700">
+        <Link href="/admin/settings" className="flex items-center px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700">
             <Settings className="w-5 h-5 mr-3" />
             <span>Settings</span>
         </Link>

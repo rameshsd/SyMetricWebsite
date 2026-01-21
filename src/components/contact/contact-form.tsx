@@ -34,19 +34,37 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    console.log(values);
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...values, phone: values.mobile, type: 'contact' }),
+      });
 
-    // Simulate API call
-    setTimeout(() => {
-        setIsSubmitting(false);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send message.');
+      }
+
+      toast({
+          title: "Message Sent!",
+          description: "Thank you for contacting us. We'll be in touch shortly.",
+      });
+      form.reset();
+    } catch(error) {
         toast({
-            title: "Message Sent!",
-            description: "Thank you for contacting us. We'll be in touch shortly.",
+            variant: 'destructive',
+            title: "Error",
+            description: (error as Error).message || "Could not send your message.",
         });
-        form.reset();
-    }, 1500)
+    } finally {
+        setIsSubmitting(false);
+    }
   }
 
   return (

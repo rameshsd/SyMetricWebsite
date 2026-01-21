@@ -59,12 +59,31 @@ export function RequestDemoForm() {
     setIsSubmitting(true);
 
     try {
+      // 1. Save lead to Firestore
       const leadsCollection = collection(firestore, 'demoRequests');
-      await addDocumentNonBlocking(leadsCollection, {
+      addDocumentNonBlocking(leadsCollection, {
         ...values,
         status: 'New',
         createdAt: serverTimestamp(),
       });
+
+      // 2. Send email notification
+      const emailResponse = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              ...values,
+              type: 'demo'
+          })
+      });
+
+      if (!emailResponse.ok) {
+        // We still consider the overall operation a success if the DB write succeeded,
+        // but we can log the email error.
+        console.error("Failed to send demo request email.");
+      }
 
       toast({
         title: 'Demo Request Sent!',
