@@ -5,6 +5,20 @@ import { initializeApp, getApp, getApps } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { firebaseConfig } from '@/firebase/config';
 
+// --- Rate Limiting Store ---
+const rateLimitStore = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_COUNT = 10; // 10 requests per minute
+
+function getClientIp(request: Request): string {
+    const xff = request.headers.get('x-forwarded-for');
+    if (xff) {
+        return xff.split(',')[0].trim();
+    }
+    // Fallback for environments where x-forwarded-for is not present
+    return request.headers.get('host') || 'unknown'; 
+}
+
 // --- Email Templating Logic ---
 
 interface EmailDetails {
@@ -138,6 +152,20 @@ async function getSmtpConfig() {
 }
 
 export async function POST(request: Request) {
+  // --- Rate Limiting Logic ---
+  const ip = getClientIp(request);
+  const now = Date.now();
+  const timestamps = rateLimitStore.get(ip) || [];
+
+  const recentTimestamps = timestamps.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (recentTimestamps.length >= RATE_LIMIT_COUNT) {
+    return NextResponse.json({ message: 'Too many requests. Please try again later.' }, { status: 429 });
+  }
+
+  rateLimitStore.set(ip, [...recentTimestamps, now]);
+  // --- End of Rate Limiting Logic ---
+  
   try {
     const smtpConfig = await getSmtpConfig();
 
