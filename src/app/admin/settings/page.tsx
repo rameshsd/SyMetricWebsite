@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect } from 'react';
@@ -14,9 +13,8 @@ import { useToast } from '@/hooks/use-toast';
 import { useFirestore, useDoc, setDocumentNonBlocking, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
 import type { SmtpConfiguration } from '@/lib/types';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertTriangle, Info } from 'lucide-react';
 import { Alert, AlertTitle, AlertDescription as AlertDesc } from '@/components/ui/alert';
-import { AlertTriangle } from 'lucide-react';
 
 const formSchema = z.object({
   smtpHost: z.string().min(1, 'SMTP Host is required.'),
@@ -76,6 +74,17 @@ export default function SettingsPage() {
               <AlertTitle>Security Warning</AlertTitle>
               <AlertDesc>
                 Storing SMTP credentials in the database is not recommended for production environments. For maximum security, please use environment variables.
+              </AlertDesc>
+            </Alert>
+
+            <Alert className="max-w-4xl">
+              <Info className="h-4 w-4" />
+              <AlertTitle>Important: Using Gmail?</AlertTitle>
+              <AlertDesc>
+                If you are using a Gmail account, you cannot use your regular password. You must generate an &quot;App Password&quot; from your Google Account security settings. 
+                <a href="https://support.google.com/accounts/answer/185833" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline ml-1">
+                  Learn how to generate an App Password.
+                </a>
               </AlertDesc>
             </Alert>
             
