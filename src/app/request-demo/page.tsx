@@ -15,9 +15,9 @@ export default function RequestDemoPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'request-demo-hero');
     return (
         <>
-            <section className="bg-secondary/50">
+            <section style={{ backgroundColor: '#f4f7fb' }}>
                 <div className="container">
-                    <div className="grid md:grid-cols-2 gap-10 items-center">
+                    <div className="grid md:grid-cols-2 gap-10 items-center py-20">
                         <div className="text-left">
                             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Request a Personalized Demo</h1>
                             <p className="mt-4 text-lg md:text-xl text-muted-foreground">See the SyMetric platform in action. Fill out the form below, and one of our product experts will contact you to schedule a demo tailored to your needs.</p>
