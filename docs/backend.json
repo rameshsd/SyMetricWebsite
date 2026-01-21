@@ -159,16 +159,19 @@
     "Page": {
       "title": "Page",
       "type": "object",
-      "description": "Represents a dynamically created page on the website.",
+      "description": "Represents a dynamically created page on the website, with a customizable hero section.",
       "properties": {
         "id": { "type": "string", "description": "Unique identifier for the page." },
         "slug": { "type": "string", "description": "The URL-friendly slug for the page." },
-        "title": { "type": "string", "description": "The main title of the page." },
-        "content": { "type": "string", "description": "The main content of the page, can be markdown or HTML." },
+        "title": { "type": "string", "description": "The main title of the page, used in the hero section." },
+        "subtitle": { "type": "string", "description": "The subtitle or tagline displayed in the hero section." },
+        "heroImageId": { "type": "string", "description": "The ID of the hero image from placeholder-images.json." },
+        "heroBackgroundColor": { "type": "string", "description": "A hex color code for the hero section background (e.g., #f5f3ff)." },
+        "content": { "type": "string", "description": "The main content of the page, formatted in Markdown." },
         "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the page was created." },
         "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of when the page was last updated." }
       },
-      "required": ["id", "slug", "title", "content", "createdAt"]
+      "required": ["id", "slug", "title", "createdAt"]
     },
     "PageContent": {
         "title": "Page Content",

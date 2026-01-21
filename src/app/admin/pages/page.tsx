@@ -26,49 +26,35 @@ import type { Page } from '@/lib/types';
 const pageSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters.'),
   slug: z.string().min(3, 'Slug must be at least 3 characters.').regex(/^[a-z0-9-]+$/, 'Slug can only contain lowercase letters, numbers, and hyphens.'),
+  subtitle: z.string().optional(),
+  heroImageId: z.string().optional(),
+  heroBackgroundColor: z.string().optional(),
   content: z.string().min(10, 'Content must be at least 10 characters.'),
 });
 
 const sampleContent = `
-# Clinical Trial Management (CTM)
-
-Our Clinical Trial Management solution — designed to be a centralized Study Repository — has provisions for maintaining master entities and global objects that allow reusability across Clinical Trials. It forms the backbone of our Clinical Trial Platform, providing total control to System Administrators, Project Managers, and Clinical Data Managers to effectively maintain, manage, and monitor a study and operational database.
-
-[Request a Demo](/contact) | [Explore Other Solutions](/solutions)
-
----
-
-## Solution Offerings
-
 Our CTM solution is comprised of several powerful modules to cover every aspect of trial management.
 
 > ### Centralized User & Access Management
 > Our centralized User Administration service enables you to manage User Identities on our Platform. It allows users to log in and access Study Resources with a unified sign-on feature. Role-Based Authorization Control allows you to define roles centrally with granular levels of permissions.
 
-> ### Organization and Investigation Sites Master
-> We help you maintain a master for all Organizations you engage with and track their involvement in different Clinical Trials. You can have a centralized database that lists Warehouses, Clinical Investigation Sites, Labs, Sponsors, CROs, and more.
+### Key Features
+*   **Feature One:** Description of the first key feature.
+*   **Feature Two:** Description of the second key feature.
+*   **Feature Three:** Description of the third key feature.
 
-> ### Unified Study Builder
-> Our Study Builder tools come with advanced features to define and configure the processes and workflows for a Clinical Trial. It supports complex designs including Adaptive Trials, Umbrella Trials, and Basket Studies, with full version management for amendments.
-
-> ### Global Clinical Data Libraries
-> Provides a Centralized Form Library for CRFs, CDISC Libraries for Annotations and Controlled Terminology, and a central library for Medical Coding dictionaries. This reduces setup time and ensures consistency.
-
-> ### Real-Time Reporting
-> This module provides the most comprehensive set of out-of-the-box reports that you can use directly to aid you in real-time monitoring of Studies.
-
-> ### Centralized Security and Compliance Manager
-> Our centralized Security and Compliance Management tool allows Customers to define policies and drive security settings across various tools and modules.
+### Technical Overview
+\`\`\`javascript
+function setupTrial(protocol) {
+  // Your code here to set up the trial
+  console.log('Setting up trial:', protocol.name);
+}
+\`\`\`
 
 ---
 
 ## Explore Related Solutions
-
 Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.
-
-*   **EDC (Electronic Data Capture):** Seamlessly integrate your trial management with our powerful EDC system to ensure data consistency and accuracy. [Learn More &rarr;](/solutions/edc)
-*   **IRT/IWRS:** Connect your CTM with our robust randomization and supply management solution for unified trial oversight. [Learn More &rarr;](/solutions/irt-iwrs)
-*   **Trial Analytics:** Turn your trial data into actionable insights. Monitor progress, recruitment, and milestones in real-time. [Learn More &rarr;](/solutions/trial-analytics)
 `;
 
 // --- Page Editor Component ---
@@ -88,10 +74,16 @@ function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
     defaultValues: pageData ? {
       title: pageData.title,
       slug: pageData.slug,
+      subtitle: pageData.subtitle || '',
+      heroImageId: pageData.heroImageId || '',
+      heroBackgroundColor: pageData.heroBackgroundColor || '',
       content: pageData.content,
     } : {
       title: '',
       slug: '',
+      subtitle: '',
+      heroImageId: '',
+      heroBackgroundColor: '',
       content: sampleContent,
     },
   });
@@ -101,16 +93,20 @@ function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
       form.reset(pageData ? {
         title: pageData.title,
         slug: pageData.slug,
+        subtitle: pageData.subtitle || '',
+        heroImageId: pageData.heroImageId || '',
+        heroBackgroundColor: pageData.heroBackgroundColor || '',
         content: pageData.content,
       } : {
         title: '',
         slug: '',
+        subtitle: '',
+        heroImageId: '',
+        heroBackgroundColor: '',
         content: sampleContent,
       });
     }
   }, [pageData, isOpen, form]);
-
-  const contentValue = form.watch('content');
 
   const onSubmit = async (values: z.infer<typeof pageSchema>) => {
     if (!firestore) return;
@@ -143,35 +139,34 @@ function PageEditor({ isOpen, setIsOpen, pageData, onSave }: PageEditorProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-6xl h-[90vh] flex flex-col">
+      <DialogContent className="max-w-4xl h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>{pageData ? 'Edit Page' : 'Create New Page'}</DialogTitle>
           <DialogDescription>
-            {pageData ? 'Update the details of your page below.' : 'Fill out the form to create a new page. A live preview is shown on the right.'}
+            {pageData ? 'Update the details of your page below.' : 'Fill out the form to create a new page with a customizable hero.'}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 overflow-y-hidden">
-            {/* Form Fields */}
-            <div className="space-y-6 overflow-y-auto pr-4">
-              <FormField control={form.control} name="title" render={({ field }) => (
-                <FormItem><FormLabel>Page Title</FormLabel><FormControl><Input placeholder="About Our New Service" {...field} /></FormControl><FormMessage /></FormItem>
-              )}/>
-              <FormField control={form.control} name="slug" render={({ field }) => (
-                <FormItem><FormLabel>Page Slug</FormLabel><FormControl><Input placeholder="about-our-new-service" {...field} /></FormControl><FormMessage /></FormItem>
-              )}/>
-              <FormField control={form.control} name="content" render={({ field }) => (
-                <FormItem><FormLabel>Page Content (Markdown)</FormLabel><FormControl><Textarea placeholder="Write your page content here..." rows={20} {...field} /></FormControl><FormMessage /></FormItem>
-              )}/>
-            </div>
-            {/* Live Preview */}
-            <div className="border rounded-lg p-6 bg-secondary/30 overflow-y-auto">
-              <h3 className="text-lg font-semibold mb-4 border-b pb-2">Live Preview</h3>
-              <div className="prose dark:prose-invert max-w-none">
-                <ReactMarkdown>{contentValue || "Start typing to see a preview..."}</ReactMarkdown>
-              </div>
-            </div>
-            <DialogFooter className="md:col-span-2">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 overflow-y-auto pr-4 space-y-6">
+            <FormField control={form.control} name="title" render={({ field }) => (
+              <FormItem><FormLabel>Page Title (for Hero)</FormLabel><FormControl><Input placeholder="About Our New Service" {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+            <FormField control={form.control} name="slug" render={({ field }) => (
+              <FormItem><FormLabel>Page Slug</FormLabel><FormControl><Input placeholder="about-our-new-service" {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+            <FormField control={form.control} name="subtitle" render={({ field }) => (
+              <FormItem><FormLabel>Subtitle (Optional)</FormLabel><FormControl><Input placeholder="An engaging subtitle for the hero section" {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+             <FormField control={form.control} name="heroImageId" render={({ field }) => (
+              <FormItem><FormLabel>Hero Image ID (Optional)</FormLabel><FormControl><Input placeholder="e.g., 'about-hero' from placeholder-images.json" {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+             <FormField control={form.control} name="heroBackgroundColor" render={({ field }) => (
+              <FormItem><FormLabel>Hero Background Color (Optional)</FormLabel><FormControl><Input placeholder="e.g., #f5f3ff or a Tailwind class" {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+            <FormField control={form.control} name="content" render={({ field }) => (
+              <FormItem><FormLabel>Page Content (Markdown)</FormLabel><FormControl><Textarea placeholder="Write your page content here..." rows={20} {...field} /></FormControl><FormMessage /></FormItem>
+            )}/>
+            <DialogFooter className="sticky bottom-0 bg-background py-4">
               <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
               <Button type="submit" disabled={form.formState.isSubmitting}>
                 {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
