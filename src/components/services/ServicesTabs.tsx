@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -37,7 +36,7 @@ const services: ServiceTab[] = [
     description:
       'Ensure data quality and compliance with global standards using our high-quality and cost-effective Data Management services to support accurate collection, standardization, cleaning, and analysis of Study Data.',
     link: '/services/clinical-data-management',
-    imageId: 'service-tab-dm',
+    imageId: 'cdm-hero',
   },
   {
     id: 'project-management',
@@ -47,7 +46,7 @@ const services: ServiceTab[] = [
     description:
       'Manage your Clinical Trial effectively — from consulting, scoping, and monitoring to reporting and complying with regulations. We support you with all aspects of project management right from early phase to late phase Clinical Trials.',
     link: '/services/project-management',
-    imageId: 'service-tab-pm',
+    imageId: 'pm-hero',
   },
   {
     id: 'data-migration',
@@ -57,7 +56,7 @@ const services: ServiceTab[] = [
     description:
       'Migrate your data onto our Cloud Solutions with ease while ensuring that Study Data remains integrated during the migration process. You can also leverage in-depth validations, extensive data reviews, and testing across our broad spectrum of solutions.',
     link: '/services/data-migration',
-    imageId: 'service-tab-migration',
+    imageId: 'dm-hero',
   },
   {
     id: 'training',
@@ -67,7 +66,7 @@ const services: ServiceTab[] = [
     description:
       'Adopt our Platform and tools effortlessly using our comprehensive Online Training Services. Help your entire workforce get on board using tailor-made training modules that are designed for specific roles and responsibilities of a wide range of end users.',
     link: '/services/training',
-    imageId: 'service-tab-training',
+    imageId: 'training-hero',
   },
   {
     id: 'support',
@@ -77,7 +76,7 @@ const services: ServiceTab[] = [
     description:
       'Enjoy round-the-clock technical assistance and get your Operational queries answered with the fastest turnaround time. Reach us any time and fall back on a support system renowned for performance, speed, and reliability.',
     link: '/services/support',
-    imageId: 'service-tab-support',
+    imageId: 'support-hero',
   },
 ];
 
