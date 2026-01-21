@@ -8,6 +8,8 @@ import { Iso27001, Iso9001, Fda21Cfr, IchGcp, GdprIcon, GmpIcon, Gs1Icon, HipaaI
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Lock, FileCheck } from "lucide-react";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -196,6 +198,7 @@ const AnimatedDiagram = () => {
 
 export function SecurityCompliance() {
   const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const globalStandardsImage = PlaceHolderImages.find(p => p.id === 'global-standards');
 
   return (
     <section className="bg-secondary/50">
@@ -219,7 +222,7 @@ export function SecurityCompliance() {
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-bold text-foreground mb-4">Security, Compliance, and Data Integrity</h3>
               <p className="text-lg text-muted-foreground">
-                Our system design ensures full compliance with federal regulations like **21 CFR Part 11**, with a proven track record for maintaining data integrity, security, and electronic signatures. Data security is an implicit part of our product development, with security features built from the ground up, backed by our team of experts.
+                Our system design ensures full compliance with federal regulations like **21 CFR Part 11**, with a proven track record for maintaining data integrity, security, and electronic signatures as per FDA regulations. Data security is an implicit part of our product development, with security features built from the ground up, backed by our team of experts.
               </p>
             </motion.div>
 
@@ -234,13 +237,6 @@ export function SecurityCompliance() {
                   </Link>
               </Button>
             </motion.div>
-
-             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Built on Global Standards</h3>
-              <p className="text-lg text-muted-foreground">
-                System processes are designed around **ICH-GCP** and **GMP** guidelines to ensure subject safety and product quality. Our solution is also fully compliant with **GS1** requirements, providing a common framework for identifying, capturing, and sharing data across all stakeholders.
-              </p>
-            </motion.div>
           </div>
 
           {/* Right Column: Animated Badges */}
@@ -254,6 +250,35 @@ export function SecurityCompliance() {
             <motion.div variants={badgeVariants}><Iso27001 className="w-full h-auto" /></motion.div>
             <motion.div variants={badgeVariants}><Iso9001 className="w-full h-auto" /></motion.div>
           </div>
+        </motion.div>
+
+        <motion.div
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto mt-16"
+        >
+             <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Built on Global Standards</h3>
+              <p className="text-lg text-muted-foreground">
+                System processes are designed around **ICH-GCP** and **GMP** guidelines to ensure subject safety and product quality. Our solution is also fully compliant with **GS1** requirements, providing a common framework for identifying, capturing, and sharing data across all stakeholders.
+              </p>
+            </motion.div>
+
+             <motion.div variants={itemVariants}>
+              {globalStandardsImage && (
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                  <Image
+                    src={globalStandardsImage.imageUrl}
+                    alt={globalStandardsImage.description}
+                    data-ai-hint={globalStandardsImage.imageHint}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
+            </motion.div>
         </motion.div>
       </div>
     </section>
