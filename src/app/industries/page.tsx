@@ -36,7 +36,7 @@ export default function IndustriesPage() {
                     </div>
                     <div className="relative h-64 md:h-full min-h-[500px]">
                         {heroImage && (
-                            <div className="absolute inset-0 clip-path-industries-hero">
+                            <div className="absolute inset-0 rounded-2xl overflow-hidden">
                                 <Image 
                                     src={heroImage.imageUrl}
                                     alt={heroImage.description}
