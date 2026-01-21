@@ -3,11 +3,44 @@
 import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where, limit } from 'firebase/firestore';
 import { notFound, useParams } from 'next/navigation';
-import { SectionTitle } from '@/components/shared/section-title';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { Skeleton } from '@/components/ui/skeleton';
+import { NewsSidebar } from '@/components/news/NewsSidebar';
+import { Breadcrumb } from '@/components/layout/Breadcrumb';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
+function ArticleSkeleton() {
+    return (
+        <div className="container py-12">
+            <div className="grid md:grid-cols-[256px_1fr] gap-x-12 lg:gap-x-16">
+                {/* Sidebar Skeleton */}
+                <aside className="hidden md:block">
+                    <Skeleton className="h-8 w-3/4 mb-6" />
+                    <div className="space-y-4 pl-4 border-l">
+                        <Skeleton className="h-5 w-5/6" />
+                        <Skeleton className="h-5 w-full" />
+                        <Skeleton className="h-5 w-4/6" />
+                        <Skeleton className="h-5 w-5/6 mt-4" />
+                        <Skeleton className="h-5 w-full" />
+                    </div>
+                </aside>
+                {/* Main Content Skeleton */}
+                <main>
+                    <Skeleton className="h-5 w-1/2 mb-8" />
+                    <Skeleton className="h-10 w-3/4 mb-6" />
+                    <div className="space-y-4">
+                        <Skeleton className="h-5 w-full" />
+                        <Skeleton className="h-5 w-full" />
+                        <Skeleton className="h-5 w-5/6" />
+                    </div>
+                    <Skeleton className="h-48 w-full mt-8" />
+                </main>
+            </div>
+        </div>
+    );
+}
 
 export default function NewsArticlePage() {
   const params = useParams();
@@ -23,51 +56,48 @@ export default function NewsArticlePage() {
 
   const article = articles?.[0];
 
-  // If the article data is still loading or the article object isn't available yet, show a skeleton.
-  // This prevents a premature 404 error.
   if (isLoading || !article) {
-    return (
-      <div className="container py-20">
-        <div className="max-w-4xl mx-auto">
-            <Skeleton className="h-6 w-1/4 mb-2" />
-            <Skeleton className="h-12 w-3/4 mb-4" />
-            <Skeleton className="h-6 w-1/3 mb-12" />
-            <Skeleton className="w-full aspect-video rounded-lg mb-12" />
-            <div className="space-y-4">
-                <Skeleton className="h-5 w-full" />
-                <Skeleton className="h-5 w-full" />
-                <Skeleton className="h-5 w-5/6" />
-                <Skeleton className="h-5 w-full mt-4" />
-                <Skeleton className="h-5 w-3/4" />
-            </div>
-        </div>
-      </div>
-    );
+    return <ArticleSkeleton />;
   }
+  
+  const breadcrumbItems = [
+    { label: 'News', href: '/news' },
+    { label: article.category, href: '#' },
+    { label: article.title },
+  ];
 
   return (
-    <section>
+    <section className="py-12 bg-background">
       <div className="container">
-        <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
-                <p className="text-primary font-semibold">{article.category}</p>
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mt-2">{article.title}</h1>
-                <p className="text-muted-foreground mt-4">
-                    Published on {article.publishDate ? format(article.publishDate.toDate(), 'MMMM d, yyyy') : ''}
-                </p>
-            </div>
+        <div className="grid md:grid-cols-[256px_1fr] gap-x-12 lg:gap-x-16">
+          <NewsSidebar />
+          <main>
+            <Breadcrumb items={breadcrumbItems} />
+            <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mt-4">{article.title}</h1>
             
+            <Accordion type="single" collapsible className="w-full my-6">
+              <AccordionItem value="item-1" className="border-t">
+                <AccordionTrigger className="font-semibold text-sm hover:no-underline py-2">Applies To</AccordionTrigger>
+                <AccordionContent>
+                  SyMetric Platform users and visitors interested in {article.category}.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            
+            <p className="text-sm text-muted-foreground mb-8">
+                Published on {article.publishDate ? format(article.publishDate.toDate(), 'MMMM d, yyyy') : ''}
+            </p>
+
             {article.imageUrl && (
-                 <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-12">
+                 <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-12 shadow-md">
                     <Image src={article.imageUrl} alt={article.title} fill className="object-cover" />
                  </div>
             )}
 
-          <div
-            className="prose dark:prose-invert max-w-none"
-          >
-            <ReactMarkdown>{article.content}</ReactMarkdown>
-          </div>
+            <div className="prose dark:prose-invert max-w-none">
+                <ReactMarkdown>{article.content}</ReactMarkdown>
+            </div>
+          </main>
         </div>
       </div>
     </section>
