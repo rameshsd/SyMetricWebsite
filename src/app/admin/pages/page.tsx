@@ -30,51 +30,45 @@ const pageSchema = z.object({
 });
 
 const sampleContent = `
-# Our New Product: The SyMetric Accelerator
+# Clinical Trial Management (CTM)
 
-The SyMetric Accelerator is a revolutionary tool designed to streamline your clinical trial process from start to finish. It leverages cutting-edge AI to provide predictive analytics and automate data management tasks.
+Our Clinical Trial Management solution — designed to be a centralized Study Repository — has provisions for maintaining master entities and global objects that allow reusability across Clinical Trials. It forms the backbone of our Clinical Trial Platform, providing total control to System Administrators, Project Managers, and Clinical Data Managers to effectively maintain, manage, and monitor a study and operational database.
 
-## Key Features
-
-- **AI-Powered Analytics:** Gain deep insights into your trial data with our predictive models.
-- **Automated Data Validation:** Reduce manual errors and ensure data integrity with our smart validation engine.
-- **Seamless Integration:** Connects with your existing EDC, CTMS, and IRT systems effortlessly.
-- **Real-time Monitoring:** Track site performance, patient recruitment, and key milestones on a live dashboard.
+[Request a Demo](/contact) | [Explore Other Solutions](/solutions)
 
 ---
 
-## Technical Overview
+## Solution Offerings
 
-Integrating the Accelerator into your existing workflow is simple. Below is an example of how to initialize the SDK in your application.
+Our CTM solution is comprised of several powerful modules to cover every aspect of trial management.
 
-### Javascript Example
+> ### Centralized User & Access Management
+> Our centralized User Administration service enables you to manage User Identities on our Platform. It allows users to log in and access Study Resources with a unified sign-on feature. Role-Based Authorization Control allows you to define roles centrally with granular levels of permissions.
 
-\`\`\`javascript
-import { SyMetricAccelerator } from '@symetric/accelerator-sdk';
+> ### Organization and Investigation Sites Master
+> We help you maintain a master for all Organizations you engage with and track their involvement in different Clinical Trials. You can have a centralized database that lists Warehouses, Clinical Investigation Sites, Labs, Sponsors, CROs, and more.
 
-// Initialize with your project API key
-const accelerator = new SyMetricAccelerator({
-  apiKey: 'YOUR_API_KEY_HERE',
-});
+> ### Unified Study Builder
+> Our Study Builder tools come with advanced features to define and configure the processes and workflows for a Clinical Trial. It supports complex designs including Adaptive Trials, Umbrella Trials, and Basket Studies, with full version management for amendments.
 
-// Start monitoring a study
-accelerator.startMonitoring({
-  studyId: 'PROJ-001',
-  onUpdate: (insights) => {
-    console.log('New insights available:', insights);
-  },
-});
-\`\`\`
+> ### Global Clinical Data Libraries
+> Provides a Centralized Form Library for CRFs, CDISC Libraries for Annotations and Controlled Terminology, and a central library for Medical Coding dictionaries. This reduces setup time and ensures consistency.
 
-> **Note:** The Accelerator SDK is available for JavaScript, Python, and Java. Check our official documentation for more details.
+> ### Real-Time Reporting
+> This module provides the most comprehensive set of out-of-the-box reports that you can use directly to aid you in real-time monitoring of Studies.
 
-## Benefits
+> ### Centralized Security and Compliance Manager
+> Our centralized Security and Compliance Management tool allows Customers to define policies and drive security settings across various tools and modules.
 
-*   **Reduce Timelines:** Cut your trial duration by up to 20% by identifying bottlenecks early.
-*   **Lower Costs:** Decrease operational overhead by automating repetitive data management tasks.
-*   **Improve Outcomes:** Enhance decision-making with data-driven insights.
+---
 
-Ready to accelerate your research? [Contact Sales for a Demo](/contact).
+## Explore Related Solutions
+
+Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.
+
+*   **EDC (Electronic Data Capture):** Seamlessly integrate your trial management with our powerful EDC system to ensure data consistency and accuracy. [Learn More &rarr;](/solutions/edc)
+*   **IRT/IWRS:** Connect your CTM with our robust randomization and supply management solution for unified trial oversight. [Learn More &rarr;](/solutions/irt-iwrs)
+*   **Trial Analytics:** Turn your trial data into actionable insights. Monitor progress, recruitment, and milestones in real-time. [Learn More &rarr;](/solutions/trial-analytics)
 `;
 
 // --- Page Editor Component ---
