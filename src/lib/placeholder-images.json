@@ -57,7 +57,7 @@
     {
       "id": "leadership-3",
       "description": "Portrait of Dr. Lena Petrova",
-      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2MDgzNjQ2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8fDE3NjA4MzY0NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "resource-2",
       "description": "AI in drug discovery",
-      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2MDg0OTgxMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8fDE3NjA4NDk4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "AI brain"
     },
     {
@@ -681,7 +681,7 @@
     {
       "id": "service-tab-migration",
       "description": "Abstract data migration from one server to another.",
-      "imageUrl": "https://images.unsplash.com/photo-1590959651373-a3db0f38a9b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXRhJTIwbWlncmF0aW9ufGVufDB8fHx8MTc2MDg2MjY1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1590959651373-a3db0f38a9b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkYXRhJTIwbWlncmF0aW9ufGVufDB8fHx8fDE3NjA4NjI2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data migration"
     },
     {
@@ -935,6 +935,12 @@
       "description": "A centralized module to manage all sponsor and CRO customers.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1v0DOVU9aqgTCklvI6SYRg8hc77w9wdnu",
       "imageHint": "customer management"
+    },
+    {
+      "id": "request-demo-hero",
+      "description": "Woman on a call requesting a demo",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1GDW36X5Xt5MB27dxBpXhrvQBTnAZzcmW",
+      "imageHint": "woman call"
     }
   ]
 }
