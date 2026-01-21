@@ -1,6 +1,19 @@
 
 {
   "entities": {
+    "SmtpSettings": {
+        "title": "SMTP Settings",
+        "type": "object",
+        "description": "Stores SMTP configuration for sending emails. For security, these should be managed carefully.",
+        "properties": {
+            "smtpHost": { "type": "string", "description": "SMTP server host." },
+            "smtpPort": { "type": "number", "description": "SMTP server port." },
+            "smtpUser": { "type": "string", "description": "SMTP username." },
+            "smtpPass": { "type": "string", "description": "SMTP password or app key." },
+            "emailTo": { "type": "string", "description": "Default recipient email address." }
+        },
+        "required": ["smtpHost", "smtpPort", "smtpUser", "smtpPass", "emailTo"]
+    },
     "WebsiteVisit": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "WebsiteVisit",
@@ -393,10 +406,20 @@
           "description": "Stores events for the admin calendar. 'eventId' is the unique ID for each event.",
           "params": [ { "name": "eventId", "description": "Unique identifier for the calendar event." } ]
         }
+      },
+      {
+          "path": "/smtpSettings/{settingsId}",
+          "definition": {
+              "entityName": "SmtpSettings",
+              "schema": { "$ref": "#/backend/entities/SmtpSettings" },
+              "description": "Stores application SMTP settings. Should only be accessible by administrators.",
+              "params": [ { "name": "settingsId", "description": "Unique identifier for the settings document, e.g., 'default'." } ]
+          }
       }
     ],
     "reasoning": "This Firestore structure is designed to support the SyMetric Systems website and its data requirements, focusing on website activity tracking and content management. The structure prioritizes clarity, scalability, and security. Each data entity is stored in its own top-level collection to facilitate querying and management. Denormalization is not strictly necessary in this design as there are no complex access control requirements beyond administrative access. Security rules will primarily focus on preventing public write access and restricting read access where necessary.\n\nThe structure supports required QAPs (Queries and Presentations) by segregating data types into individual collections. This enables efficient querying of website visits, contact form submissions, resource interactions, and resource metadata. Since there is no complex authorization needed the focus is primarily on data organization and efficient querying for dashboard presentations. The addition of jobOpenings and jobApplications collections supports the new dynamic careers functionality."
   }
 }
+    
 
     

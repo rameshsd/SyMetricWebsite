@@ -1,16 +1,20 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { doc } from 'firebase/firestore';
+import { useFirestore, useDoc, setDocumentNonBlocking, useMemoFirebase } from '@/firebase';
 import { SectionTitle } from '@/components/shared/section-title';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Copy } from 'lucide-react';
+import { Loader2, AlertTriangle } from 'lucide-react';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({
   smtpHost: z.string().min(1, 'SMTP Host is required.'),
@@ -22,12 +26,20 @@ const formSchema = z.object({
 
 export default function SettingsPage() {
     const { toast } = useToast();
-    const [generatedEnv, setGeneratedEnv] = useState('');
+    const firestore = useFirestore();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const settingsDocRef = useMemoFirebase(
+      () => (firestore ? doc(firestore, 'smtpSettings', 'default') : null),
+      [firestore]
+    );
+
+    const { data: settingsData, isLoading } = useDoc(settingsDocRef);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            smtpHost: 'smtp.gmail.com',
+            smtpHost: '',
             smtpPort: 587,
             smtpUser: '',
             smtpPass: '',
@@ -35,43 +47,58 @@ export default function SettingsPage() {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        const envContent = `
-SMTP_HOST=${values.smtpHost}
-SMTP_PORT=${values.smtpPort}
-SMTP_USER=${values.smtpUser}
-SMTP_PASS=${values.smtpPass}
-EMAIL_TO=${values.emailTo}
-        `.trim();
-        setGeneratedEnv(envContent);
-        toast({
-            title: "Configuration Generated",
-            description: "Copy the environment variables below and add them to your project.",
-        })
-    }
-
-    const copyToClipboard = () => {
-        if (generatedEnv) {
-            navigator.clipboard.writeText(generatedEnv);
-            toast({ title: "Copied to clipboard!" });
+    useEffect(() => {
+        if (settingsData) {
+            form.reset(settingsData);
         }
+    }, [settingsData, form]);
+
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+      if (!firestore) return;
+      setIsSubmitting(true);
+      try {
+        await setDocumentNonBlocking(doc(firestore, 'smtpSettings', 'default'), values, { merge: true });
+        toast({
+            title: "Settings Saved",
+            description: "Your SMTP settings have been saved to the database.",
+        });
+      } catch(error) {
+         toast({
+            variant: 'destructive',
+            title: "Error Saving Settings",
+            description: (error as Error).message,
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
 
     return (
         <div className="space-y-8">
             <SectionTitle title="Email Settings" description="Configure SMTP settings for email notifications." />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <Card>
-                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}>
-                            <CardHeader>
-                                <CardTitle>SMTP Configuration</CardTitle>
-                                <CardDescription>
-                                    Enter your SMTP details below to generate the necessary environment configuration. 
-                                    For security, these settings are not saved in the database.
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
+            
+            <Alert variant="destructive" className="max-w-4xl">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Important Security Notice</AlertTitle>
+              <CardDescription>
+                Storing credentials in the database is not recommended. For production environments, it is strongly advised to use environment variables for security. The settings saved here are NOT used by the email sending function, which relies on environment variables.
+              </CardDescription>
+            </Alert>
+            
+            <Card className="max-w-2xl">
+                 <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
+                        <CardHeader>
+                            <CardTitle>SMTP Configuration</CardTitle>
+                            <CardDescription>
+                                Enter your SMTP details below. These settings will be stored in Firestore.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            {isLoading ? (
+                              <p>Loading settings...</p>
+                            ) : (
+                              <>
                                 <FormField name="smtpHost" control={form.control} render={({field}) => (
                                     <FormItem>
                                         <FormLabel>SMTP Host</FormLabel>
@@ -107,57 +134,20 @@ EMAIL_TO=${values.emailTo}
                                         <FormMessage />
                                     </FormItem>
                                 )}/>
-                            </CardContent>
-                            <CardFooter>
-                                <Button type="submit">Generate Configuration</Button>
-                            </CardFooter>
-                        </form>
-                    </Form>
-                </Card>
-                <div className="space-y-4">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Your Configuration</CardTitle>
-                             <CardDescription>
-                                After generating, copy this content into a <code>.env.local</code> file at the root of your project, then restart your server.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            {generatedEnv ? (
-                                <div>
-                                    <div className="p-4 bg-muted rounded-md text-sm text-muted-foreground font-mono whitespace-pre-wrap overflow-x-auto relative">
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            className="absolute top-2 right-2 h-7 w-7"
-                                            onClick={copyToClipboard}
-                                        >
-                                            <Copy className="h-4 w-4" />
-                                        </Button>
-                                        <code>
-                                            {generatedEnv}
-                                        </code>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="text-sm text-muted-foreground italic p-4 border-dashed border rounded-md text-center">
-                                    Fill out and submit the form to generate your environment variables.
-                                </div>
+                              </>
                             )}
                         </CardContent>
-                    </Card>
-                     <Card>
-                        <CardHeader>
-                            <CardTitle>Using Gmail?</CardTitle>
-                        </CardHeader>
-                         <CardContent>
-                             <p className="text-sm text-muted-foreground">
-                                If you are using a Gmail account, you will need to generate an "App Password" to use for the `SMTP_PASS` field. You can find instructions on how to do that in your Google Account security settings under "2-Step Verification".
-                            </p>
-                         </CardContent>
-                    </Card>
-                </div>
-            </div>
+                        <CardFooter>
+                            <Button type="submit" disabled={isSubmitting || isLoading}>
+                                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {isSubmitting ? 'Saving...' : 'Save Configuration'}
+                            </Button>
+                        </CardFooter>
+                    </form>
+                </Form>
+            </Card>
         </div>
     );
 }
+
+    
