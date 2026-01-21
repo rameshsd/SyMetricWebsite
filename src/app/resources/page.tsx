@@ -52,12 +52,12 @@ export default function ResourcesPage() {
 
     return (
         <>
-            <section className="py-20 bg-secondary/50">
+            <section className="py-20 bg-[#888cf7]">
                 <div className="container">
                     <div className="grid md:grid-cols-2 gap-10 items-center">
                       <div className="text-left">
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Insights & Resources</h1>
-                        <p className="mt-4 text-lg md:text-xl text-muted-foreground">
+                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">Insights & Resources</h1>
+                        <p className="mt-4 text-lg md:text-xl text-white/80">
                           Explore our collection of articles, whitepapers, and success stories to stay ahead in the world of clinical research.
                         </p>
                       </div>
