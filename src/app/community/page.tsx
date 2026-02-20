@@ -64,8 +64,12 @@ export default function CommunityPage() {
 
     allPosts.forEach(post => {
         if (!authors[post.authorId]) {
+            let authorName = post.author.name;
+            if (authorName && authorName.includes('@')) {
+                authorName = authorName.split('@')[0];
+            }
             authors[post.authorId] = {
-                name: post.author.name,
+                name: authorName,
                 kudos: 0,
                 role: post.author.role,
             };

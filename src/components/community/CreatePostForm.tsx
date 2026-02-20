@@ -68,11 +68,12 @@ export function CreatePostForm({ trigger, onPostCreated }: { trigger: React.Reac
     
     try {
       const postsCollection = collection(firestore, 'communityPosts');
+      const authorName = user.displayName || (user.email ? user.email.split('@')[0] : 'Anonymous');
       await addDocumentNonBlocking(postsCollection, {
         ...values,
         authorId: user.uid,
         author: {
-          name: user.displayName || user.email || 'Anonymous',
+          name: authorName,
           role: 'Member',
         },
         createdAt: serverTimestamp(),

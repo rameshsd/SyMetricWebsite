@@ -22,6 +22,12 @@ import { Skeleton } from '../ui/skeleton';
 
 function PostItem({ post }: { post: CommunityPost }) {
   const createdAt = post.createdAt instanceof Timestamp ? post.createdAt.toDate() : new Date(post.createdAt as string);
+  
+  let authorName = post.author.name;
+  if (authorName && authorName.includes('@')) {
+    authorName = authorName.split('@')[0];
+  }
+
 
   return (
     <Card className="p-4 sm:p-6">
@@ -29,11 +35,11 @@ function PostItem({ post }: { post: CommunityPost }) {
         <div className="flex items-start gap-4">
           <Avatar className="h-10 w-10">
             <AvatarFallback className="bg-primary/20 text-primary font-bold">
-              {post.author.name.charAt(0)}
+              {authorName.charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-semibold text-foreground">{post.author.name}</p>
+            <p className="font-semibold text-foreground">{authorName}</p>
             <p className="text-sm text-muted-foreground">{post.author.role}</p>
              <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 sm:hidden">
               <div className="flex items-center gap-1">
