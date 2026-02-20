@@ -1,7 +1,6 @@
-
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Carousel,
@@ -34,7 +33,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { communityLeadersSlides, welcomeLinks, topAuthors } from '@/lib/data';
+import { communityLeadersSlides, welcomeLinks } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
@@ -52,6 +51,33 @@ export default function CommunityPage() {
     firestore ? query(collection(firestore, 'communityPosts'), orderBy('createdAt', 'desc'), limit(3)) : null
   , [firestore]);
   const { data: featuredPosts, isLoading: areFeaturedPostsLoading } = useCollection<CommunityPost>(featuredPostsQuery);
+  
+  const allPostsQuery = useMemoFirebase(() =>
+    firestore ? query(collection(firestore, 'communityPosts')) : null
+  , [firestore]);
+  const { data: allPosts, isLoading: areAllPostsLoading } = useCollection<CommunityPost>(allPostsQuery);
+
+  const topAuthors = useMemo(() => {
+    if (!allPosts) return [];
+
+    const authors: { [authorId: string]: { name: string; kudos: number; role: string; } } = {};
+
+    allPosts.forEach(post => {
+        if (!authors[post.authorId]) {
+            authors[post.authorId] = {
+                name: post.author.name,
+                kudos: 0,
+                role: post.author.role,
+            };
+        }
+        authors[post.authorId].kudos += post.likes || 0;
+    });
+
+    return Object.entries(authors)
+        .map(([authorId, data]) => ({ ...data, authorId }))
+        .sort((a, b) => b.kudos - a.kudos)
+        .slice(0, 7);
+  }, [allPosts]);
 
 
   useEffect(() => {
@@ -76,6 +102,18 @@ export default function CommunityPage() {
       </CardContent>
     </Card>
   );
+  
+  const TopAuthorSkeleton = () => (
+    <li className="flex justify-between items-center w-full">
+        <div className="flex items-center gap-3 min-w-0">
+            <Skeleton className="h-9 w-9 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-24" />
+            </div>
+        </div>
+        <Skeleton className="h-5 w-10" />
+    </li>
+  )
 
   return (
     <div className="bg-background">
@@ -276,17 +314,18 @@ export default function CommunityPage() {
                 <Card className="p-4 sm:p-6 w-full overflow-hidden">
                   <h3 className="font-bold text-lg mb-4">Top Kudoed Authors</h3>
                   <ul className="space-y-4">
+                    {areAllPostsLoading && (
+                        Array.from({length: 5}).map((_, i) => <TopAuthorSkeleton key={i} />)
+                    )}
                     {topAuthors.map(author => {
-                      const avatarImg = PlaceHolderImages.find(p => p.id === author.avatarId);
                       return (
-                      <li key={author.id} className="flex justify-between items-center w-full">
+                      <li key={author.authorId} className="flex justify-between items-center w-full">
                         <div className="flex items-center gap-3 min-w-0">
-                           <Avatar className="h-9 w-9">
-                              {avatarImg ? <AvatarImage src={avatarImg.imageUrl} alt={author.name} /> : <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>}
-                           </Avatar>
+                          <Avatar className="h-9 w-9">
+                              <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
                           <div className="min-w-0">
                             <p className="font-semibold text-sm truncate">{author.name}</p>
-                             {author.sapLogo && <Image src={author.sapLogo} alt="SAP Logo" width={24} height={12} />}
                           </div>
                         </div>
 
