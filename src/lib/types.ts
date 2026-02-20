@@ -72,8 +72,8 @@ export type Resource = {
   title: string;
   slug: string;
   category: string;
-  date: string;
-  image: string;
+  publishDate: Timestamp;
+  imageId: string;
   excerpt: string;
 };
 

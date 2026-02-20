@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -735,63 +735,6 @@ export const customers: Customer[] = [
     }
 ];
 
-export const resources: Resource[] = [
-  {
-    id: '1',
-    slug: 'decentralized-clinical-trials',
-    title: 'The Rise of Decentralized Clinical Trials (DCTs)',
-    category: 'Blog',
-    date: '2023-10-26',
-    image: 'resource-1',
-    excerpt: 'Explore how technology is enabling a shift towards more patient-centric trial models.'
-  },
-  {
-    id: '2',
-    slug: 'ai-in-drug-discovery',
-    title: 'AI and Machine Learning in Drug Discovery',
-    category: 'Blog',
-    date: '2023-10-20',
-    image: 'resource-2',
-    excerpt: 'A look at how artificial intelligence is accelerating the pace of pharmaceutical innovation.'
-  },
-  {
-    id: '3',
-    slug: 'etmf-best-practices',
-    title: 'eTMF Best Practices for a Seamless Audit',
-    category: 'White Papers and Case Studies',
-    date: '2023-10-15',
-    image: 'resource-3',
-    excerpt: 'Learn how Apex Clinical leveraged SyMetric\'s eTMF to pass their regulatory audit with flying colors.'
-  },
-  {
-    id: '4',
-    slug: 'patient-centricity-in-trials',
-    title: 'Improving Patient-Centricity in Clinical Trials',
-    category: 'Blog',
-    date: '2023-10-10',
-    image: 'resource-4',
-    excerpt: 'Strategies and tools for making clinical trials more accessible and friendly for participants.'
-  },
-  {
-    id: '5',
-    slug: 'navigating-regulatory-changes',
-    title: 'Navigating the New EU Clinical Trial Regulation',
-    category: 'News and Events',
-    date: '2023-11-05',
-    image: 'contact-hero',
-    excerpt: 'An overview of the key changes and how to prepare for the new CTR 536/2014.'
-  },
-  {
-    id: '6',
-    slug: 'sa-power-networks-story',
-    title: 'SA Power Networks builds a resilient and sustainable energy future',
-    category: 'White Papers and Case Studies',
-    date: '2023-09-22',
-    image: 'logo-sa-power',
-    excerpt: 'Discover how SA Power Networks transformed their operations with SyMetric solutions.'
-  }
-];
-
 export const timeline = [
   { year: '2015', event: 'SyMetric Systems founded with a vision to digitize clinical research.' },
   { year: '2017', event: 'Launch of our flagship Clinical Trial Platform (CTP).' },
@@ -981,13 +924,13 @@ export const featureGridItems: FeatureGridItem[] = [
     },
     { 
         icon: SubjectIcon, 
-        title: 'Subject Management',
+        label: 'Subject Management',
         description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
         link: '#' 
     },
     { 
         icon: DataManagementIcon, 
-        title: 'Data Management',
+        label: 'Data Management',
         description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
         link: '#' 
     },

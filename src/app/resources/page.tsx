@@ -1,19 +1,21 @@
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { resources } from '@/lib/data';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, orderBy } from 'firebase/firestore';
+import { useMemo } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { Metadata } from 'next';
 import { SectionTitle } from '@/components/shared/section-title';
+import type { Resource } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
+import { format } from 'date-fns';
 
-export const metadata: Metadata = {
-  title: 'Resources',
-};
-
-const ResourceCard = ({ resource }: { resource: (typeof resources)[0] }) => {
-    const placeholder = PlaceHolderImages.find((p) => p.id === resource.image);
+const ResourceCard = ({ resource }: { resource: Resource }) => {
+    const placeholder = PlaceHolderImages.find((p) => p.id === resource.imageId);
+    const formattedDate = resource.publishDate ? format(resource.publishDate.toDate(), 'MMMM d, yyyy') : 'N/A';
     return (
         <Card key={resource.id} className="h-full flex flex-col group overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
             <div className="relative w-full h-48 overflow-hidden">
@@ -36,19 +38,42 @@ const ResourceCard = ({ resource }: { resource: (typeof resources)[0] }) => {
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{resource.excerpt}</p>
             </div>
-            <p className="text-xs text-muted-foreground mt-4">{resource.date}</p>
+            <p className="text-xs text-muted-foreground mt-4">{formattedDate}</p>
             </CardContent>
         </Card>
     );
 };
 
+const ResourceSkeleton = () => (
+    <Card className="h-full flex flex-col group overflow-hidden rounded-2xl">
+        <Skeleton className="w-full h-48" />
+        <CardContent className="p-8 flex-grow flex flex-col">
+            <div className="flex-grow">
+                <Skeleton className="h-5 w-1/4 mb-2" />
+                <Skeleton className="h-6 w-3/4 mb-2" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6 mt-2" />
+            </div>
+            <Skeleton className="h-4 w-1/3 mt-4" />
+        </CardContent>
+    </Card>
+)
+
 
 export default function ResourcesPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'resources-hero');
 
-    const newsAndEvents = resources.filter(r => r.category === 'News and Events');
-    const blog = resources.filter(r => r.category === 'Blog');
-    const whitePapersAndCaseStudies = resources.filter(r => r.category === 'White Papers and Case Studies');
+    const firestore = useFirestore();
+    const resourcesQuery = useMemoFirebase(
+        () => firestore ? query(collection(firestore, 'resources'), orderBy('publishDate', 'desc')) : null,
+        [firestore]
+    );
+
+    const { data: resources, isLoading } = useCollection<Resource>(resourcesQuery);
+    
+    const newsAndEvents = useMemo(() => resources?.filter(r => r.category === 'News and Events') || [], [resources]);
+    const blog = useMemo(() => resources?.filter(r => r.category === 'Blog') || [], [resources]);
+    const whitePapersAndCaseStudies = useMemo(() => resources?.filter(r => r.category === 'White Papers and Case Studies') || [], [resources]);
 
     return (
         <>
@@ -76,38 +101,46 @@ export default function ResourcesPage() {
                 </div>
             </section>
             
-            {newsAndEvents.length > 0 && (
+            {isLoading || newsAndEvents.length > 0 ? (
                  <section>
                     <div className="container">
                         <SectionTitle title="News and Events" className="mb-12" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                           {newsAndEvents.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
+                           {isLoading ? Array.from({length: 3}).map((_, i) => <ResourceSkeleton key={i} />) : newsAndEvents.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
                         </div>
                     </div>
                 </section>
-            )}
+            ) : null}
             
-            {blog.length > 0 && (
+            {isLoading || blog.length > 0 ? (
                 <section>
                     <div className="container">
                         <SectionTitle title="Blog" className="mb-12" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                           {blog.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
+                           {isLoading ? Array.from({length: 3}).map((_, i) => <ResourceSkeleton key={i} />) : blog.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
                         </div>
                     </div>
                 </section>
-            )}
+            ) : null}
 
-            {whitePapersAndCaseStudies.length > 0 && (
+            {isLoading || whitePapersAndCaseStudies.length > 0 ? (
                  <section>
                     <div className="container">
                         <SectionTitle title="White Papers and Case Studies" className="mb-12" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                           {whitePapersAndCaseStudies.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
+                           {isLoading ? Array.from({length: 3}).map((_, i) => <ResourceSkeleton key={i} />) : whitePapersAndCaseStudies.map(resource => <ResourceCard key={resource.id} resource={resource} />)}
                         </div>
                     </div>
                 </section>
-            )}
+            ) : null}
+
+             {!isLoading && resources?.length === 0 && (
+                <section>
+                    <div className="container text-center">
+                        <p className="text-muted-foreground">No resources found.</p>
+                    </div>
+                </section>
+             )}
         </>
     );
 }
