@@ -14,19 +14,50 @@ import {
 import { Eye, MessageSquare, ThumbsUp, Plus } from 'lucide-react';
 import type { CommunityPost } from '@/lib/types';
 import { formatDistanceToNow } from 'date-fns';
-import { useState, useMemo } from 'react';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy, Timestamp } from 'firebase/firestore';
+import { useState } from 'react';
+import { useCollection, useFirestore, useMemoFirebase, updateDocumentNonBlocking } from '@/firebase';
+import { collection, query, orderBy, Timestamp, doc } from 'firebase/firestore';
 import { CreatePostForm } from './CreatePostForm';
 import { Skeleton } from '../ui/skeleton';
+import { cn } from '@/lib/utils';
 
 function PostItem({ post }: { post: CommunityPost }) {
+  const firestore = useFirestore();
   const createdAt = post.createdAt instanceof Timestamp ? post.createdAt.toDate() : new Date(post.createdAt as string);
   
   let authorName = post.author.name;
   if (authorName && authorName.includes('@')) {
     authorName = authorName.split('@')[0];
   }
+  
+  const handleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!firestore) return;
+    const postRef = doc(firestore, 'communityPosts', post.id);
+    updateDocumentNonBlocking(postRef, {
+        likes: (post.likes || 0) + 1
+    });
+  };
+
+  const PostStats = ({ isMobile = false }: { isMobile?: boolean }) => (
+      <div className={cn(
+          "flex items-center gap-4 text-sm text-muted-foreground",
+          isMobile ? "mt-2 sm:hidden" : "hidden sm:flex flex-shrink-0"
+      )}>
+        <div className="flex items-center gap-1">
+          <Eye className="h-4 w-4" /> {post.views || 0}
+        </div>
+        <div className="flex items-center gap-1">
+          <MessageSquare className="h-4 w-4" /> {post.comments || 0}
+        </div>
+        <div className="flex items-center gap-1">
+          <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground hover:text-primary" onClick={handleLike}>
+            <ThumbsUp className="h-4 w-4" />
+          </Button>
+          <span>{post.likes || 0}</span>
+        </div>
+      </div>
+  );
 
 
   return (
@@ -41,30 +72,10 @@ function PostItem({ post }: { post: CommunityPost }) {
           <div>
             <p className="font-semibold text-foreground">{authorName}</p>
             <p className="text-sm text-muted-foreground">{post.author.role}</p>
-             <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 sm:hidden">
-              <div className="flex items-center gap-1">
-                <Eye className="h-4 w-4" /> {post.views}
-              </div>
-              <div className="flex items-center gap-1">
-                <MessageSquare className="h-4 w-4" /> {post.comments}
-              </div>
-              <div className="flex items-center gap-1">
-                <ThumbsUp className="h-4 w-4" /> {post.likes}
-              </div>
-            </div>
+             <PostStats isMobile />
           </div>
         </div>
-        <div className="hidden sm:flex items-center gap-4 text-sm text-muted-foreground flex-shrink-0">
-          <div className="flex items-center gap-1">
-            <Eye className="h-4 w-4" /> {post.views}
-          </div>
-          <div className="flex items-center gap-1">
-            <MessageSquare className="h-4 w-4" /> {post.comments}
-          </div>
-          <div className="flex items-center gap-1">
-            <ThumbsUp className="h-4 w-4" /> {post.likes}
-          </div>
-        </div>
+        <PostStats />
       </div>
       <div className="mt-4 sm:pl-14">
         <h3 className="text-lg font-bold hover:text-primary cursor-pointer">{post.title}</h3>
