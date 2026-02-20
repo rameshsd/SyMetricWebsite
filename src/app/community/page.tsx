@@ -57,9 +57,6 @@ export default function CommunityPage() {
   , [firestore]);
   const { data: allPosts, isLoading: areAllPostsLoading } = useCollection<CommunityPost>(allPostsQuery);
 
-  const allUsersQuery = useMemoFirebase(() => (firestore ? collection(firestore, 'users') : null), [firestore]);
-  const { data: allUsers, isLoading: areAllUsersLoading } = useCollection(allUsersQuery);
-
   const topAuthors = useMemo(() => {
     if (!allPosts) return [];
 
@@ -87,18 +84,6 @@ export default function CommunityPage() {
   }, [allPosts]);
 
   const postsCount = allPosts?.length || 0;
-  const membersCount = allUsers?.length || 0;
-  const [onlineCount, setOnlineCount] = useState(0);
-
-  useEffect(() => {
-    if (membersCount > 0) {
-      // Simulate a fluctuating online count to make it appear dynamic.
-      // A real-time online count would require a more complex presence system.
-      const baseOnline = Math.floor(membersCount / 20);
-      const fluctuation = Math.floor(Math.random() * (membersCount > 50 ? 25 : 5));
-      setOnlineCount(baseOnline + fluctuation);
-    }
-  }, [membersCount]);
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -184,14 +169,6 @@ export default function CommunityPage() {
                 <div className="flex items-center gap-2">
                   <MessageSquare className="h-4 w-4" />
                   <span>{formatStat(postsCount)} Posts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  <span>{formatStat(membersCount)} Members</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe className="h-4 w-4" />
-                  <span>{formatStat(onlineCount)} Online</span>
                 </div>
               </div>
             </div>
