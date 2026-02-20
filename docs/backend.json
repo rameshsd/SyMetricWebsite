@@ -258,6 +258,30 @@
         "emailTo": { "type": "string" }
       },
       "required": ["smtpHost", "smtpPort", "smtpUser", "smtpPass", "emailTo"]
+    },
+    "CommunityPost": {
+      "title": "Community Post",
+      "type": "object",
+      "description": "Represents a user-generated post in the community forum.",
+      "properties": {
+        "authorId": { "type": "string", "description": "The UID of the user who created the post." },
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "role": { "type": "string" }
+          }
+        },
+        "category": { "type": "string", "description": "The category of the post." },
+        "comments": { "type": "number" },
+        "content": { "type": "string", "description": "The main content of the post, can be markdown." },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "imageUrl": { "type": "string", "format": "uri", "description": "Optional URL for a feature image." },
+        "likes": { "type": "number" },
+        "title": { "type": "string", "description": "The title of the post." },
+        "views": { "type": "number" }
+      },
+      "required": ["title", "content", "category", "authorId", "author", "createdAt"]
     }
   },
   "auth": {
@@ -418,6 +442,15 @@
           "schema": { "$ref": "#/backend/entities/SmtpConfiguration" },
           "description": "Stores system configurations. `configId` is the name of the config, e.g., 'smtp'.",
           "params": [ { "name": "configId", "description": "Unique identifier for the configuration." } ]
+        }
+      },
+      {
+        "path": "/communityPosts/{postId}",
+        "definition": {
+          "entityName": "CommunityPost",
+          "schema": { "$ref": "#/backend/entities/CommunityPost" },
+          "description": "Stores user-generated posts for the community forum.",
+          "params": [ { "name": "postId", "description": "Unique identifier for the post." } ]
         }
       }
     ],

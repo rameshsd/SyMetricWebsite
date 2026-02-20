@@ -34,15 +34,25 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from '@/lib/data';
+import { communityLeadersSlides, welcomeLinks, topAuthors } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
-import { useUser } from '@/firebase';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { CreatePostForm } from '@/components/community/CreatePostForm';
+import { collection, query, orderBy, limit } from 'firebase/firestore';
+import type { CommunityPost } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CommunityPage() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
+  const firestore = useFirestore();
+
+  const featuredPostsQuery = useMemoFirebase(() =>
+    firestore ? query(collection(firestore, 'communityPosts'), orderBy('createdAt', 'desc'), limit(3)) : null
+  , [firestore]);
+  const { data: featuredPosts, isLoading: areFeaturedPostsLoading } = useCollection<CommunityPost>(featuredPostsQuery);
+
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -57,6 +67,15 @@ export default function CommunityPage() {
       </div>
     );
   }
+  
+  const FeaturedPostSkeleton = () => (
+    <Card className="group overflow-hidden rounded-2xl">
+      <Skeleton className="h-56 w-full" />
+      <CardContent className="p-6 space-y-2">
+        <Skeleton className="h-6 w-3/4" />
+      </CardContent>
+    </Card>
+  );
 
   return (
     <div className="bg-background">
@@ -175,31 +194,38 @@ export default function CommunityPage() {
             Featured Topics
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredTopics.map((topic) => {
-              const image = PlaceHolderImages.find(p => p.id === topic.imageId);
+            {areFeaturedPostsLoading && (
+                <>
+                    <FeaturedPostSkeleton />
+                    <FeaturedPostSkeleton />
+                    <FeaturedPostSkeleton />
+                </>
+            )}
+            {featuredPosts && featuredPosts.map((post) => {
+              const defaultImage = PlaceHolderImages.find(p => p.id === 'community-dev-news');
               return (
-                <Card key={topic.id} className="group overflow-hidden rounded-2xl transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <Card key={post.id} className="group overflow-hidden rounded-2xl transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <Link href="#">
-                    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
-                      {image && (
+                    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl bg-muted">
                         <Image
-                          src={image.imageUrl}
-                          alt={topic.title}
-                          fill
-                          className="object-cover"
-                          data-ai-hint={image.imageHint}
+                            src={post.imageUrl || defaultImage?.imageUrl || ''}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
                         />
-                      )}
                     </div>
                     <CardContent className="p-6">
                       <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
-                        {topic.title}
+                        {post.title}
                       </h3>
                     </CardContent>
                   </Link>
                 </Card>
               );
             })}
+             {!areFeaturedPostsLoading && featuredPosts?.length === 0 && (
+                <p className="text-muted-foreground col-span-full text-center">No featured posts available yet.</p>
+             )}
           </div>
           <div className="mt-12 text-center">
             <Button size="lg" variant="outline" asChild>

@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -1904,24 +1904,6 @@ export const communityLeadersSlides: CommunityLeaderSlide[] = [
     title: 'Upcoming Community Events',
     description: 'Join our upcoming webinars, Q&A sessions, and virtual meetups to connect with experts and peers.',
     links: [{ text: 'View All Events', href: '#' }],
-  },
-];
-
-export const featuredTopics: FeaturedTopic[] = [
-  {
-    id: 'dev-news',
-    title: 'SyMetric Developer News October 30th, 2025',
-    imageId: 'community-dev-news',
-  },
-  {
-    id: 'teched-berlin',
-    title: 'SyMetric Community Voice: TechEd in Berlin special edition!',
-    imageId: 'community-teched',
-  },
-  {
-    id: 'content-integrity',
-    title: 'Protecting the integrity of the community content',
-    imageId: 'community-integrity',
   },
 ];
 

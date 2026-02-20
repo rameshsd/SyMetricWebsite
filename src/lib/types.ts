@@ -224,12 +224,6 @@ export type CommunityLeaderSlide = {
   links: { text: string; href: string }[];
 };
 
-export type FeaturedTopic = {
-  id: string;
-  title: string;
-  imageId: string;
-};
-
 export type CommunityPost = {
     id: string;
     authorId: string;
@@ -244,6 +238,7 @@ export type CommunityPost = {
     views: number;
     comments: number;
     likes: number;
+    imageUrl?: string;
 };
 
 export type WelcomeLink = {

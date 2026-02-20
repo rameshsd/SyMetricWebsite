@@ -34,6 +34,7 @@ const formSchema = z.object({
   title: z.string().min(10, 'Title must be at least 10 characters.'),
   category: z.string().min(1, 'Please select a category.'),
   content: z.string().min(20, 'Post content must be at least 20 characters.'),
+  imageUrl: z.string().url({ message: 'Please enter a valid URL.' }).optional().or(z.literal('')),
 });
 
 export function CreatePostForm({ trigger, onPostCreated }: { trigger: React.ReactNode, onPostCreated?: () => void }) {
@@ -49,6 +50,7 @@ export function CreatePostForm({ trigger, onPostCreated }: { trigger: React.Reac
       title: '',
       category: 'General',
       content: '',
+      imageUrl: '',
     },
   });
 
@@ -112,7 +114,7 @@ export function CreatePostForm({ trigger, onPostCreated }: { trigger: React.Reac
                 Share your knowledge or ask a question. Contribute to the SyMetric community.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-6 py-6">
+            <div className="grid gap-6 py-6 max-h-[70vh] overflow-y-auto pr-4">
               <FormField
                 control={form.control}
                 name="title"
@@ -161,6 +163,19 @@ export function CreatePostForm({ trigger, onPostCreated }: { trigger: React.Reac
                         rows={10}
                         {...field}
                       />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+               <FormField
+                control={form.control}
+                name="imageUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Image URL (Optional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="https://example.com/image.jpg" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
