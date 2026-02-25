@@ -11,17 +11,17 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
+import { Pause, ChevronLeft, ChevronRight } from "lucide-react";
 
 const heroItems = [
   {
-    id: "hero-carousel-1",
-    title: "Better Data. Better Clinical Trials.",
-    subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
-    imageId: 'hero-carousel-1',
+    id: "fsd-hero",
+    title: "Full Self-Driving (Supervised)",
+    subtitle: "Available for $99/mo",
+    imageId: 'fsd-hero',
     cta1: {
-        text: "Schedule a live demo",
+        text: "Demo FSD (Supervised)",
         link: "/request-demo"
     },
     cta2: {
@@ -37,42 +37,39 @@ export function HeroSection() {
         <Carousel
         className="w-full"
         opts={{ loop: true }}
-        plugins={[Autoplay({ delay: 5000 })]}
         >
         <CarouselContent>
             {heroItems.map((item) => {
             const image = PlaceHolderImages.find((p) => p.id === item.imageId);
             return (
                 <CarouselItem key={item.id}>
-                <div className="relative h-[90vh] min-h-[700px] w-full">
+                <div className="relative h-screen min-h-[700px] w-full">
                     {image && (
                     <Image
                         src={image.imageUrl}
-                        alt={item.subtitle}
+                        alt={item.title}
                         data-ai-hint={image.imageHint}
                         fill
                         className="object-cover"
-                        priority={item.id === "hero-carousel-1"}
+                        priority
                     />
                     )}
-                    <div className="absolute inset-0 bg-black/30"></div>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-primary-foreground p-8">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-8">
                       <div className="max-w-4xl">
-                          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+                          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
                             {item.title}
                           </h1>
-                          <p className="mt-4 text-xl leading-8 md:text-2xl">
+                          <p className="mt-4 text-lg">
                             {item.subtitle}
                           </p>
                           <div className="mt-8 flex items-center justify-center gap-x-4">
-                            <Button asChild size="lg">
+                            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                               <Link href={item.cta1.link}>{item.cta1.text}</Link>
                             </Button>
-                            {item.cta2 && (
-                              <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary">
+                            <Button asChild size="lg" variant="secondary" className="bg-gray-100 text-black hover:bg-gray-200">
                                 <Link href={item.cta2.link}>{item.cta2.text}</Link>
-                              </Button>
-                            )}
+                            </Button>
                           </div>
                       </div>
                     </div>
@@ -81,17 +78,21 @@ export function HeroSection() {
             );
             })}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex bg-black/30 hover:bg-black/50 text-white border-white/50" />
-        <CarouselNext className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex bg-black/30 hover:bg-black/50 text-white border-white/50" />
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex h-12 w-12 bg-gray-800/50 hover:bg-gray-800/80 text-white border-none rounded-md">
+            <ChevronLeft className="h-6 w-6"/>
+        </CarouselPrevious>
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden sm:flex h-12 w-12 bg-gray-800/50 hover:bg-gray-800/80 text-white border-none rounded-md">
+            <ChevronRight className="h-6 w-6"/>
+        </CarouselNext>
         
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="bg-black/30 hover:bg-black/50 text-white rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+            <Button variant="ghost" size="icon" className="bg-gray-800/50 hover:bg-gray-800/80 text-white rounded-full h-10 w-10">
+                <Pause className="h-5 w-5" />
             </Button>
             <div className="flex items-center gap-2">
-                {Array.from({ length: heroItems.length }).map((_, index) => (
-                    <div key={index} className={cn("h-2 w-2 rounded-full transition-colors", index === 0 ? 'bg-white' : 'bg-white/50')}></div>
-                ))}
+                <div className="h-2 w-2 rounded-full bg-white"></div>
+                <div className="h-2 w-2 rounded-full bg-white/50"></div>
+                <div className="h-2 w-2 rounded-full bg-white/50"></div>
             </div>
         </div>
         </Carousel>
