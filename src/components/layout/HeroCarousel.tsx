@@ -1,4 +1,5 @@
-"use client";
+
+'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
@@ -30,6 +31,7 @@ export function HeroCarousel() {
   });
 
   const startTimer = useCallback(() => {
+    if (slides.length <= 1) return;
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       if (!isPaused) {
@@ -46,22 +48,26 @@ export function HeroCarousel() {
   }, [startTimer]);
 
   const goToSlide = (index: number) => {
+    if (slides.length <= 1) return;
     setCurrentSlide(index);
     startTimer();
   };
 
   const nextSlide = useCallback(() => {
+    if (slides.length <= 1) return;
     setCurrentSlide((prev) => (prev + 1) % slides.length);
     startTimer();
   }, [slides.length, startTimer]);
 
   const prevSlide = useCallback(() => {
+    if (slides.length <= 1) return;
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
     startTimer();
   }, [slides.length, startTimer]);
 
 
   const togglePause = () => {
+    if (slides.length <= 1) return;
     setIsPaused(!isPaused);
   };
 
@@ -85,7 +91,7 @@ export function HeroCarousel() {
               fill
               className={cn(
                 "object-cover",
-                index === currentSlide && "animate-ken-burns"
+                index === currentSlide && slides.length > 1 && "animate-ken-burns"
               )}
               priority={index === 0}
               data-ai-hint={slide.imageHint}
@@ -97,26 +103,25 @@ export function HeroCarousel() {
 
       <div className="relative z-30 container h-full flex flex-col justify-center items-center px-4 text-center">
         <div className="w-full max-w-4xl space-y-4">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
             {slides[currentSlide].heading}
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 font-medium drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-base text-white/80 font-medium drop-shadow-md max-w-3xl mx-auto">
             {slides[currentSlide].subheading}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <Button 
               size="lg" 
-              className="min-w-[180px] md:min-w-[240px] h-12 rounded-lg text-base font-semibold bg-primary hover:bg-primary/90 text-white shadow-xl transition-all hover:scale-105"
+              className="min-w-[240px] h-10 rounded-md text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xl transition-all"
               asChild
             >
               <Link href={slides[currentSlide].cta1.link}>{slides[currentSlide].cta1.text}</Link>
             </Button>
             <Button 
               size="lg" 
-              variant="outline"
-              className="min-w-[180px] md:min-w-[240px] h-12 rounded-lg text-base font-semibold bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white/20 shadow-xl transition-all hover:scale-105"
+              className="min-w-[240px] h-10 rounded-md text-sm font-semibold bg-gray-100 text-black hover:bg-gray-200 shadow-xl transition-all"
               asChild
             >
               <Link href={slides[currentSlide].cta2.link}>{slides[currentSlide].cta2.text}</Link>
@@ -124,45 +129,51 @@ export function HeroCarousel() {
           </div>
         </div>
       </div>
-
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-md hover:bg-white/20 transition-all group"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-md hover:bg-white/20 transition-all group"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
-      </button>
-
-      <div className="absolute bottom-8 left-8 z-40">
-        <button
-          onClick={togglePause}
-          className="p-2.5 rounded-full bg-black/40 border border-white/20 text-white hover:bg-black/60 transition-all backdrop-blur-sm"
-          aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
-        >
-          {isPaused ? <Play className="w-4 h-4 fill-current" /> : <Pause className="w-4 h-4 fill-current" />}
-        </button>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
-        {slides.map((_, index) => (
+      
+      {slides.length > 1 && (
+        <>
           <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-500",
-              index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
-            )}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-lg bg-gray-900/50 text-white hover:bg-gray-900/70 transition-all group"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-lg bg-gray-900/50 text-white hover:bg-gray-900/70 transition-all group"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="absolute bottom-8 left-8 z-40">
+            <button
+              onClick={togglePause}
+              className="p-2 rounded-md bg-black/40 text-white hover:bg-black/60 transition-all"
+              aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+            >
+              {isPaused ? <Play className="w-4 h-4 fill-current" /> : <Pause className="w-4 h-4 fill-current" />}
+            </button>
+          </div>
+
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={cn(
+                  "h-2.5 w-2.5 rounded-full transition-colors duration-300",
+                  index === currentSlide ? "bg-white" : "bg-white/40 hover:bg-white/70"
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }
+
+    
