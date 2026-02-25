@@ -1260,11 +1260,11 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     },
     {
       id: "hero-carousel-2",
-      title: "Keep Close Tabs on Your Clinical Supplies",
-      subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
-      imageId: 'hero-carousel-2',
-      cta1: { text: "Manage Supplies", link: "/solutions/clinical-supplies-management" },
-      cta2: { text: "Learn More", link: "/services" }
+      title: "Innovating the Future of Clinical Trials",
+      subtitle: "Leveraging AI and real-time data to accelerate research and improve patient outcomes.",
+      imageId: 'hero-carousel-innovation',
+      cta1: { text: "Discover Our AI", link: "/solutions" },
+      cta2: { text: "Contact Sales", link: "/contact" }
     },
     {
       id: "hero-carousel-3",
