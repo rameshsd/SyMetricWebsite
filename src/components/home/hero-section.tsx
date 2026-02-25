@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -17,17 +16,17 @@ import { cn } from "@/lib/utils";
 
 const heroItems = [
   {
-    id: "fsd-hero",
-    title: "Full Self-Driving (Supervised)",
-    subtitle: "Available for $99/mo",
-    imageId: 'fsd-hero',
+    id: "hero-carousel-1",
+    title: "Better Data. Better Clinical Trials.",
+    subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
+    imageId: 'hero-carousel-1',
     cta1: {
-        text: "Demo FSD (Supervised)",
-        link: "#"
+        text: "Schedule a live demo",
+        link: "/request-demo"
     },
     cta2: {
         text: "Learn More",
-        link: "#"
+        link: "/solutions"
     }
   }
 ];
@@ -53,7 +52,7 @@ export function HeroSection() {
                         data-ai-hint={image.imageHint}
                         fill
                         className="object-cover"
-                        priority={item.id === "fsd-hero"}
+                        priority={item.id === "hero-carousel-1"}
                     />
                     )}
                     <div className="absolute inset-0 bg-black/30"></div>
@@ -70,7 +69,7 @@ export function HeroSection() {
                               <Link href={item.cta1.link}>{item.cta1.text}</Link>
                             </Button>
                             {item.cta2 && (
-                              <Button asChild size="lg" variant="secondary" className="bg-gray-100 text-gray-900 hover:bg-gray-200">
+                              <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary">
                                 <Link href={item.cta2.link}>{item.cta2.text}</Link>
                               </Button>
                             )}
@@ -90,7 +89,7 @@ export function HeroSection() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
             </Button>
             <div className="flex items-center gap-2">
-                {Array.from({ length: 3 }).map((_, index) => (
+                {Array.from({ length: heroItems.length }).map((_, index) => (
                     <div key={index} className={cn("h-2 w-2 rounded-full transition-colors", index === 0 ? 'bg-white' : 'bg-white/50')}></div>
                 ))}
             </div>
