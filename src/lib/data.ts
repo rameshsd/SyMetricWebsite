@@ -1251,12 +1251,28 @@ export const successStories: SuccessStory[] = [
 
 export const heroCarouselItems: HeroCarouselItem[] = [
     {
-      id: "hero-carousel-fsd",
-      title: "Full Self-Driving (Supervised)",
-      subtitle: "Available for $99/mo",
-      imageId: 'fsd-hero',
-      cta1: { text: "Demo FSD (Supervised)", link: "#" },
-      cta2: { text: "Learn More", link: "#" }
+      id: "hero-carousel-1",
+      title: "Better Data. Better Clinical Trials.",
+      subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
+      imageId: 'hero-carousel-1',
+      cta1: { text: "Schedule a live demo", link: "/request-demo" },
+      cta2: { text: "Learn More", link: "/solutions" }
+    },
+    {
+      id: "hero-carousel-2",
+      title: "Keep Close Tabs on Your Clinical Supplies",
+      subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
+      imageId: 'hero-carousel-2',
+      cta1: { text: "Manage Supplies", link: "/solutions/clinical-supplies-management" },
+      cta2: { text: "Learn More", link: "/services" }
+    },
+    {
+      id: "hero-carousel-3",
+      title: "A Well-Integrated CTP",
+      subtitle: "For a bird’s-eye view of Clinical Trials",
+      imageId: 'hero-carousel-3',
+      cta1: { text: "Explore the Platform", link: "/solutions/clinical-trial-platform" },
+      cta2: { text: "See all solutions", link: "/solutions" }
     }
   ];
 
@@ -2008,5 +2024,3 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
-
-    

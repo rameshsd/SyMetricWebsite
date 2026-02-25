@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -107,21 +106,22 @@ export function HeroCarousel() {
             {slides[currentSlide].heading}
           </h1>
           
-          <p className="text-base text-white/80 font-medium drop-shadow-md max-w-3xl mx-auto">
+          <p className="text-lg text-white/80 font-medium drop-shadow-md max-w-3xl mx-auto">
             {slides[currentSlide].subheading}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
             <Button 
-              size="lg" 
-              className="min-w-[240px] h-10 rounded-md text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xl transition-all"
+              size="default" 
+              className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xl transition-all"
               asChild
             >
               <Link href={slides[currentSlide].cta1.link}>{slides[currentSlide].cta1.text}</Link>
             </Button>
             <Button 
-              size="lg" 
-              className="min-w-[240px] h-10 rounded-md text-sm font-semibold bg-gray-100 text-black hover:bg-gray-200 shadow-xl transition-all"
+              size="default" 
+              variant="secondary"
+              className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-gray-100 text-gray-900 hover:bg-gray-200 shadow-xl transition-all"
               asChild
             >
               <Link href={slides[currentSlide].cta2.link}>{slides[currentSlide].cta2.text}</Link>
@@ -134,14 +134,14 @@ export function HeroCarousel() {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-lg bg-gray-900/50 text-white hover:bg-gray-900/70 transition-all group"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-md bg-black/20 text-white/80 backdrop-blur-sm hover:bg-black/40 hover:text-white transition-all group"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-lg bg-gray-900/50 text-white hover:bg-gray-900/70 transition-all group"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-md bg-black/20 text-white/80 backdrop-blur-sm hover:bg-black/40 hover:text-white transition-all group"
             aria-label="Next slide"
           >
             <ChevronRight className="w-6 h-6" />
@@ -157,14 +157,14 @@ export function HeroCarousel() {
             </button>
           </div>
 
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3">
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={cn(
-                  "h-2.5 w-2.5 rounded-full transition-colors duration-300",
-                  index === currentSlide ? "bg-white" : "bg-white/40 hover:bg-white/70"
+                  "h-1.5 rounded-full bg-white/40 transition-all duration-500 hover:bg-white/70",
+                  index === currentSlide ? "w-6 bg-white" : "w-1.5"
                 )}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -175,5 +175,3 @@ export function HeroCarousel() {
     </section>
   );
 }
-
-    
