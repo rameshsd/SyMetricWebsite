@@ -841,12 +841,6 @@
       "imageHint": "single sign-on"
     },
     {
-      "id": "site-management-hero",
-      "description": "An abstract graphic representing centralized control over multiple global sites.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1k0WHXquAc0dClrkxSIAdkoHp5OfTRLZB",
-      "imageHint": "global network"
-    },
-    {
       "id": "site-management-purpose",
       "description": "A diverse team collaborating in a modern office, representing the backbone of site governance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1OofiPBJh0qtD1WbQ4-sHMysps1xXNHVM",
@@ -965,6 +959,12 @@
       "description": "Illustration of global standards and compliance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1z32N6n-Nb9UkyIznTpB8c9WUFYvdS-BZ",
       "imageHint": "global standards"
+    },
+    {
+      "id": "study-management-hero",
+      "description": "An abstract graphic representing centralized study management and governance.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1JL_GYZnkC-YvI5_OdSjF48EnLEIyOEhM",
+      "imageHint": "study governance"
     }
   ]
 }
