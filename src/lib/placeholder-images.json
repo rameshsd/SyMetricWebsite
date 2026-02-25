@@ -27,7 +27,7 @@
     {
       "id": "solution-etmf",
       "description": "Electronic trial master file document management",
-      "imageUrl": "https://images.unsplash.com/photo-1691458594782-2cef9a152bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZG9jdW1lbnRzJTIwZmlsZXN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1691458594782-2cef9a152bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "documents files"
     },
     {
@@ -965,6 +965,12 @@
       "description": "An abstract graphic representing centralized study management and governance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1JL_GYZnkC-YvI5_OdSjF48EnLEIyOEhM",
       "imageHint": "study governance"
+    },
+    {
+      "id": "clinical-supplies-hero",
+      "description": "An abstract image showing a network of supplies for clinical management.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1_j0ctpEDDfMqYP7aq-Sk3ZVCDNQXLm96",
+      "imageHint": "clinical supplies"
     }
   ]
 }
