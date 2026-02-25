@@ -1268,8 +1268,8 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     },
     {
       id: "hero-carousel-3",
-      title: "A Well-Integrated CTP",
-      subtitle: "For a bird’s-eye view of Clinical Trials",
+      title: "A Unified Platform for Complex Trials",
+      subtitle: "From study design to submission, get a real-time, bird's-eye view of your entire trial portfolio. Simplify complexity and accelerate outcomes.",
       imageId: 'hero-carousel-3',
       cta1: { text: "Explore the Platform", link: "/solutions/clinical-trial-platform" },
       cta2: { text: "See all solutions", link: "/solutions" }
