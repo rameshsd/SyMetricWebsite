@@ -1261,9 +1261,9 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-2",
       title: "Innovating the Future of Clinical Trials",
-      subtitle: "Leveraging AI and real-time data to accelerate research and improve patient outcomes.",
+      subtitle: "Leveraging real-time data to accelerate research and improve patient outcomes.",
       imageId: 'hero-carousel-innovation',
-      cta1: { text: "Discover Our AI", link: "/solutions" },
+      cta1: { text: "Explore Our Technology", link: "/solutions" },
       cta2: { text: "Contact Sales", link: "/contact" }
     },
     {
