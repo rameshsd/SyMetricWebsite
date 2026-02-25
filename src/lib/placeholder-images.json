@@ -7,6 +7,12 @@
       "imageHint": "company logo"
     },
     {
+      "id": "fsd-hero",
+      "description": "Interior view of a car with a self-driving interface on the screen.",
+      "imageUrl": "https://images.unsplash.com/photo-1617704548623-34047b44d2db?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "car interior"
+    },
+    {
       "id": "sap-logo-png",
       "description": "SAP Official Logo",
       "imageUrl": "https://www.sap.com/dam/application/shared/logos/sap-logo.png",

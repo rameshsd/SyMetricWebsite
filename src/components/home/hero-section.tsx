@@ -13,33 +13,21 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
 
 const heroItems = [
   {
-    id: "hero-carousel-1",
-    title: "Better Data. Better Clinical Trials.",
-    subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
-    cta: {
-        text: "Schedule a live demo",
-        link: "/contact"
-    }
-  },
-  {
-    id: "hero-carousel-2",
-    title: "Keep Close Tabs on Your Clinical Supplies",
-    subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
-    cta: {
-        text: "Contact us for a demo",
-        link: "/contact"
-    }
-  },
-  {
-    id: "hero-carousel-3",
-    title: "A Well-Integrated CTP",
-    subtitle: "For a bird’s-eye view of Clinical Trials",
-    cta: {
-        text: "Discover now",
-        link: "/solutions/clinical-trial-platform"
+    id: "fsd-hero",
+    title: "Full Self-Driving (Supervised)",
+    subtitle: "Available for $99/mo",
+    imageId: 'fsd-hero',
+    cta1: {
+        text: "Demo FSD (Supervised)",
+        link: "#"
+    },
+    cta2: {
+        text: "Learn More",
+        link: "#"
     }
   }
 ];
@@ -54,42 +42,60 @@ export function HeroSection() {
         >
         <CarouselContent>
             {heroItems.map((item) => {
-            const image = PlaceHolderImages.find((p) => p.id === item.id);
+            const image = PlaceHolderImages.find((p) => p.id === item.imageId);
             return (
                 <CarouselItem key={item.id}>
-                <div className="relative h-[85vh] min-h-[650px] w-full">
+                <div className="relative h-[90vh] min-h-[700px] w-full">
                     {image && (
                     <Image
                         src={image.imageUrl}
-                        alt={image.subtitle}
+                        alt={item.subtitle}
                         data-ai-hint={image.imageHint}
                         fill
                         className="object-cover"
-                        priority={item.id === "hero-carousel-1"}
+                        priority={item.id === "fsd-hero"}
                     />
                     )}
-                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute inset-0 bg-black/30"></div>
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-primary-foreground p-8">
-                    <div className="max-w-4xl">
-                        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl" dangerouslySetInnerHTML={{ __html: item.title }}></h1>
-                        <p className="mt-6 text-lg leading-8 md:text-xl" dangerouslySetInnerHTML={{ __html: item.subtitle }}></p>
-                        <div className="mt-10">
-                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                            <Link href={item.cta.link}>{item.cta.text}</Link>
-                        </Button>
-                        </div>
-                    </div>
+                      <div className="max-w-4xl">
+                          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+                            {item.title}
+                          </h1>
+                          <p className="mt-4 text-xl leading-8 md:text-2xl">
+                            {item.subtitle}
+                          </p>
+                          <div className="mt-8 flex items-center justify-center gap-x-4">
+                            <Button asChild size="lg">
+                              <Link href={item.cta1.link}>{item.cta1.text}</Link>
+                            </Button>
+                            {item.cta2 && (
+                              <Button asChild size="lg" variant="secondary" className="bg-gray-100 text-gray-900 hover:bg-gray-200">
+                                <Link href={item.cta2.link}>{item.cta2.text}</Link>
+                              </Button>
+                            )}
+                          </div>
+                      </div>
                     </div>
                 </div>
                 </CarouselItem>
             );
             })}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden lg:flex" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden lg:flex" />
+        <CarouselPrevious className="absolute left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex bg-black/30 hover:bg-black/50 text-white border-white/50" />
+        <CarouselNext className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex bg-black/30 hover:bg-black/50 text-white border-white/50" />
+        
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="bg-black/30 hover:bg-black/50 text-white rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+            </Button>
+            <div className="flex items-center gap-2">
+                {Array.from({ length: 3 }).map((_, index) => (
+                    <div key={index} className={cn("h-2 w-2 rounded-full transition-colors", index === 0 ? 'bg-white' : 'bg-white/50')}></div>
+                ))}
+            </div>
+        </div>
         </Carousel>
     </section>
   );
 }
-
-    
