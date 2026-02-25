@@ -971,6 +971,12 @@
       "description": "An abstract image showing a network of supplies for clinical management.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1gMns2POP3tFCK1dyUFfL3Bk8fQft-lql",
       "imageHint": "clinical supplies"
+    },
+    {
+      "id": "data-management-hero",
+      "description": "A unified ecosystem to design CRFs, collect subject data, validate accuracy, and manage queries.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1VaboidCn4_saz9LW3SeuTLGGtzsOn0Ay",
+      "imageHint": "data management"
     }
   ]
 }
