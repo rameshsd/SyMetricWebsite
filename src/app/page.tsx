@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -9,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerStories } from '@/components/layout/CustomerStories';
-import { HeroSection } from '@/components/home/hero-section';
+import { HeroCarousel } from '@/components/layout/HeroCarousel';
 import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
@@ -38,7 +37,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <main className="flex-1">
-         <HeroSection />
+         <HeroCarousel />
         <RevolutionizingTrials />
         <UnlockPotential />
         <PlatformToolsSection />

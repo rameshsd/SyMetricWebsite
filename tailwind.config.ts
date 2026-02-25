@@ -123,6 +123,14 @@ export default {
         'pulse-slow': {
           '0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
           '50%': { transform: 'scale(1.1)', opacity: '0.5' },
+        },
+        'ken-burns': {
+          '0%': {
+            transform: 'scale(1) translate(0, 0)',
+          },
+          '100%': {
+            transform: 'scale(1.1) translate(-2%, 2%)',
+          },
         }
       },
       animation: {
@@ -138,6 +146,7 @@ export default {
         'wave': 'wave 60s linear infinite',
         'wave-reverse': 'wave 60s linear infinite reverse',
         'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'ken-burns': 'ken-burns 15s ease-out infinite alternate',
       },
       backgroundImage: {
         'sap-gradient-light': 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)',

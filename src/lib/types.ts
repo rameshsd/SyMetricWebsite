@@ -11,6 +11,15 @@ export type NavItem = {
   subItems?: NavItem[];
 };
 
+export type HeroCarouselItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  imageId: string;
+  cta1: { text: string; link: string; };
+  cta2: { text: string; link: string; };
+};
+
 export type SolutionCapability = {
   id: string;
   title: string;

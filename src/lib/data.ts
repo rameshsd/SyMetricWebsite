@@ -1,5 +1,5 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -1249,36 +1249,30 @@ export const successStories: SuccessStory[] = [
 ];
 
 
-export const heroCarouselItems = [
+export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-1",
       title: "Better Data. Better Clinical Trials.",
       subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
       imageId: 'hero-carousel-1',
-      cta: {
-          text: "Schedule a live demo",
-          link: "/contact"
-      }
+      cta1: { text: "Schedule a live demo", link: "/request-demo" },
+      cta2: { text: "Learn More", link: "/solutions" }
     },
     {
       id: "hero-carousel-2",
       title: "Keep Close Tabs on Your Clinical Supplies",
       subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
       imageId: 'hero-carousel-2',
-      cta: {
-          text: "Contact us for a demo",
-          link: "/contact"
-      }
+      cta1: { text: "Explore Supplies Management", link: "/solutions/clinical-supplies-management" },
+      cta2: { text: "Contact Us", link: "/contact" }
     },
     {
       id: "hero-carousel-3",
       title: "A Well-Integrated CTP",
       subtitle: "For a bird’s-eye view of Clinical Trials",
       imageId: 'hero-carousel-3',
-      cta: {
-          text: "Discover now",
-          link: "/solutions/clinical-trial-platform"
-      }
+      cta1: { text: "Discover the Platform", link: "/solutions/clinical-trial-platform" },
+      cta2: { text: "View All Solutions", link: "/solutions" }
     }
   ];
 
