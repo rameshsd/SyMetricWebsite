@@ -166,16 +166,16 @@ export function SecureSaveSection() {
                     </div>
 
                     <TabsContent value="setup" className="mt-16">
-                        <TabContentLayout items={setupItems} imageId="lab-management-conclusion" />
+                        <TabContentLayout items={setupItems} imageId="tool-lab-2" />
                     </TabsContent>
                     <TabsContent value="integration" className="mt-16">
-                        <TabContentLayout items={integrationItems} imageId="lab-management-conclusion" />
+                        <TabContentLayout items={integrationItems} imageId="tool-data-svc-2" />
                     </TabsContent>
                     <TabsContent value="compliance" className="mt-16">
-                        <TabContentLayout items={complianceItems} imageId="lab-management-conclusion" />
+                        <TabContentLayout items={complianceItems} imageId="why-us-compliant" />
                     </TabsContent>
                      <TabsContent value="analytics" className="mt-16">
-                        <TabContentLayout items={analyticsItems} imageId="lab-management-conclusion" />
+                        <TabContentLayout items={analyticsItems} imageId="tool-data-svc-1" />
                     </TabsContent>
                 </Tabs>
             </div>
