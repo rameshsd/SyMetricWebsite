@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -19,10 +18,10 @@ const quickLinks = [
 const aboutSyMetricLinks = [
   { name: 'Company information', href: '/about' },
   { name: 'Careers', href: '/careers' },
-  { name: 'News and press', href: '#' },
-  { name: 'Events', href: '#' },
-  { name: 'Customer stories', href: '#' },
-  { name: 'Newsletter', href: '#' },
+  { name: 'News and press', href: '/news' },
+  { name: 'Events', href: '/news' },
+  { name: 'Customer stories', href: '/' },
+  { name: 'Newsletter', href: '/contact' },
 ];
 
 const siteInfoLinks = [
@@ -36,9 +35,9 @@ const siteInfoLinks = [
 ];
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: '#' },
-  { name: 'Youtube', icon: Youtube, href: '#' },
-  { name: 'Mail', icon: Mail, href: '#' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com' },
+  { name: 'Youtube', icon: Youtube, href: 'https://www.youtube.com' },
+  { name: 'Mail', icon: Mail, href: 'mailto:info@symetricsystems.com' },
 ];
 
 const FooterLinkColumn = ({ title, links }: { title: string; links: { name: string; href: string }[] }) => (
@@ -101,7 +100,7 @@ export function Footer() {
                             </div>
                             <div className="flex items-center gap-3">
                                 <MessageSquare className="h-5 w-5 text-muted-foreground"/>
-                                <Link href="#" className="text-foreground hover:text-primary">Chat now</Link>
+                                <Link href="/contact" className="text-foreground hover:text-primary">Chat now</Link>
                             </div>
                         </div>
                     </div>
@@ -132,7 +131,7 @@ export function Footer() {
                     </div>
                     <div className="flex items-center gap-3">
                         <MessageSquare className="h-5 w-5 text-muted-foreground"/>
-                        <Link href="#" className="text-foreground hover:text-primary">Chat now</Link>
+                        <Link href="/contact" className="text-foreground hover:text-primary">Chat now</Link>
                     </div>
                 </div>
             </div>
@@ -192,7 +191,7 @@ export function Footer() {
           </div>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
+              <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
                 <link.icon className="h-5 w-5" />
                 <span className="sr-only">{link.name}</span>
               </a>
