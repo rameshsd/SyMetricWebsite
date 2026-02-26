@@ -18,16 +18,6 @@ export function TechEdBanner() {
                   operating system, November 4-6, 2025.
                 </p>
               </div>
-              <Button
-                asChild
-                variant="link"
-                className="text-white hover:text-white/80 mt-2 md:mt-0 flex-shrink-0"
-              >
-                <Link href="#">
-                  <BookOpen className="mr-2" />
-                  Learn more
-                </Link>
-              </Button>
             </div>
         </div>
       </div>
