@@ -20,6 +20,7 @@ export default function DigitalLearningPage() {
             <SyMetricBusinessAI 
               title="Digital Learning"
               subtitle="Empowering users with role-based training modules, interactive content, and automated certification to ensure platform proficiency and compliance."
+              heroImageId="digital-learning-hero"
             />
             <PageHeader title="Digital Learning" secondaryNav={secondaryNav} />
             <div id="overview">
@@ -43,3 +44,5 @@ export default function DigitalLearningPage() {
         </>
     );
 }
+
+    

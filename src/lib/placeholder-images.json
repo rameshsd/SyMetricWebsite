@@ -363,7 +363,7 @@
     {
       "id": "tool-study-1",
       "description": "Screenshot of study management dashboard.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=15CDZ1wpTJ0pqfPFKHqYSL_0IKvbdtHPK",
+      "imageUrl": "https://images.unsplash.com/photo-1759984782024-ff13fd2b97b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8c3R1ZHklMjBtYW5hZ2VtZW50fGVufDB8fHx8fDE3NzIwOTYxMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study dashboard"
     },
     {
@@ -375,7 +375,7 @@
     {
       "id": "tool-site-1",
       "description": "Screenshot of clinical site management.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1PWhg6D5pEKz7FQoDNTR_lUCfdBnRupso",
+      "imageUrl": "https://images.unsplash.com/photo-1733503711060-1df31554390f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3ZWJzaXRlJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NzIwOTYwMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "site management"
     },
     {
@@ -983,6 +983,18 @@
       "description": "Abstract visualization of data integration and API connections.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
       "imageHint": "data integration api"
+    },
+    {
+      "id": "medical-coding-hero",
+      "description": "Standardize clinical terms using globally accepted dictionaries like MedDRA and WHO-Drug.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1bIXCYqU0NSyud2qFfGZqSmmzrzZkoheq",
+      "imageHint": "medical coding"
+    },
+    {
+      "id": "data-services-hero",
+      "description": "Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
+      "imageHint": "data integration"
     }
   ]
 }
