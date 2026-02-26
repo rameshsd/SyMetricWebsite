@@ -995,6 +995,30 @@
       "description": "Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
       "imageHint": "data integration"
+    },
+    {
+      "id": "site-management-hero",
+      "description": "A unified framework to configure, govern, and monitor every site participating in a clinical study.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1PWhg6D5pEKz7FQoDNTR_lUCfdBnRupso",
+      "imageHint": "site management framework"
+    },
+    {
+      "id": "reports-hero",
+      "description": "A unified reporting hub that delivers real-time, study-wide insights.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=152oY1kqz7Jc2Su_SXFkYYdtyEVYGVMDm",
+      "imageHint": "reporting hub"
+    },
+    {
+      "id": "digital-learning-hero",
+      "description": "Empowering users with role-based training modules, interactive content, and automated certification.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1sHXDOz1I3okW_ajkfvmX-LTskQTaCtIt",
+      "imageHint": "digital learning platform"
+    },
+    {
+      "id": "sample-management-hero-2",
+      "description": "A powerful, end-to-end module designed to manage the lifecycle of clinical samples.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1EIcD2liPimxcuqijrNw_WCrVrpWg3QFU",
+      "imageHint": "sample management"
     }
   ]
 }
