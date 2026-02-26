@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -25,7 +26,7 @@ const aboutSyMetricLinks = [
 ];
 
 const siteInfoLinks = [
-  { name: 'Privacy', href: '#' },
+  { name: 'Privacy', href: '/privacy-policy' },
   { name: 'Terms of use', href: '#' },
   { name: 'Legal disclosure', href: '#' },
   { name: 'Copyright', href: '#' },
