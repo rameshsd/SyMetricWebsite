@@ -1,4 +1,5 @@
 
+
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -989,7 +990,7 @@ export const latestNews: LatestNewsItem[] = [
     id: 1,
     title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
     description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
-    link: '#',
+    link: '/news/ikes-summit',
     imageId: 'news-summit',
     main: true,
   },
@@ -997,63 +998,49 @@ export const latestNews: LatestNewsItem[] = [
     id: 2,
     title: 'Navaratri Celebrations at office',
     description: 'The SyMetric team celebrated Navaratri at the office with festive decorations and activities.',
-    link: '#',
+    link: '/news/navaratri',
     imageId: 'news-navratri'
   },
   {
     id: 3,
     title: 'Independence Day Celebrations 2022',
     description: 'The team celebrated India\'s Independence Day with a flag hoisting ceremony and patriotic events.',
-    link: '#',
+    link: '/news/independence-day',
     imageId: 'news-independence'
   },
   {
     id: 4,
-    title: 'SAP Batch Release Hub for Life Sciences',
+    title: 'Batch Release Hub Announcement',
     description: 'Our partner SAP has launched Batch Release Hub for Life Sciences, an innovation for the industry.',
-    link: '#',
+    link: '/news/batch-release',
     imageId: 'news-batch-release'
-  },
-  {
-    id: 5,
-    title: 'Fun Activity at Office',
-    description: 'The SyMetric team participated in a fun team-building activity at the office to boost morale.',
-    link: '#',
-    imageId: 'news-fun-activity'
-  },
-  {
-    id: 6,
-    title: 'SyMetric at SAP Industries Live 2021',
-    description: 'SyMetric and SAP revolutionizing the Clinical Trial process to improve Patient Care',
-    link: '#',
-    imageId: 'news-industries-live'
   },
   {
     id: 7,
     title: 'SyMetric Celebrates 10 Years in the Industry',
     description: 'We are proud to celebrate a decade of innovation and customer success in the life sciences industry.',
-    link: '#',
+    link: '/news/10-years',
     imageId: 'news-10-years'
   },
   {
     id: 8,
     title: 'Strategic Partner for ICSM',
     description: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.',
-    link: '#',
+    link: '/news/icsm',
     imageId: 'news-icsm-partner'
   },
   {
     id: 9,
-    title: 'Christmas Celebrations 2021',
+    title: 'Christmas Celebrations',
     description: 'The team celebrated Christmas with a secret Santa gift exchange and festive lunch.',
-    link: '#',
+    link: '/news/christmas',
     imageId: 'news-christmas-2021'
   },
   {
     id: 10,
     title: 'SyMetric at GINSEP Demo Day',
     description: 'SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.',
-    link: '#',
+    link: '/news/ginsep',
     imageId: 'news-ginsep-demo'
   }
 ];
