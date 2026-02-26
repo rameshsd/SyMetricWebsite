@@ -39,6 +39,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { searchableData } from '@/lib/search-data';
 
 
 const ListItem = React.forwardRef<
@@ -177,11 +178,73 @@ function UserNav() {
   );
 }
 
+function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void; }) {
+  const [query, setQuery] = React.useState('');
+  const router = useRouter();
+
+  const results = React.useMemo(() => {
+    if (!query) return [];
+    return searchableData.filter(item =>
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.category.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 7);
+  }, [query]);
+
+  const handleSelect = (href: string) => {
+    router.push(href);
+    onOpenChange(false);
+  };
+
+  React.useEffect(() => {
+    if (!open) {
+      setTimeout(() => setQuery(''), 100);
+    }
+  }, [open]);
+
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-2xl p-0 top-1/4">
+        <div className="flex items-center p-4 border-b">
+          <Search className="h-5 w-5 text-muted-foreground" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search products, solutions, news..."
+            className="border-0 shadow-none focus-visible:ring-0 text-base h-auto"
+          />
+        </div>
+        {query && (
+          <div className="p-4 max-h-[400px] overflow-y-auto">
+            {results.length > 0 ? (
+              <ul className="space-y-1">
+                {results.map(item => (
+                  <li key={item.href}>
+                    <button
+                      onClick={() => handleSelect(item.href)}
+                      className="w-full text-left p-3 rounded-md hover:bg-accent"
+                    >
+                      <p className="font-semibold">{item.title}</p>
+                      <p className="text-sm text-muted-foreground">{item.category}</p>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-center text-muted-foreground py-4">No results found.</p>
+            )}
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
   const [mounted, setMounted] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   
   const pathname = usePathname();
 
@@ -332,15 +395,24 @@ export function Navbar() {
 
         <div className="flex items-center gap-x-1 ml-auto">
             <div className="hidden md:flex items-center gap-x-1">
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Search</span>
                 </Button>
                 <UserNav />
-                <Button variant="ghost" size="icon">
-                    <Globe className="h-5 w-5" />
-                    <span className="sr-only">Language</span>
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                        <Globe className="h-5 w-5" />
+                        <span className="sr-only">Language</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem>Global / English</DropdownMenuItem>
+                    <DropdownMenuItem>India / English</DropdownMenuItem>
+                    <DropdownMenuItem>Deutschland / Deutsch</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
             </div>
              <div className="flex items-center md:hidden">
                 <Sheet open={isMobileMenuOpen} onOpenChange={(open) => {
@@ -412,6 +484,7 @@ export function Navbar() {
                 </Sheet>
             </div>
         </div>
+        <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       </div>
     </header>
   );
