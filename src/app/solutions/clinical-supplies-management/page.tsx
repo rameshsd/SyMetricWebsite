@@ -1,7 +1,7 @@
 
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import {
     Package,
     Settings,
@@ -162,14 +162,14 @@ export default function ClinicalSuppliesManagementPage() {
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
-                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                   <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
-                                        <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
-                                   </div>
-                                   <div className="flex-grow">
-                                      <h3 className="font-semibold text-lg">{cap.title}</h3>
-                                      <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
-                                   </div>
+                               <Card key={cap.title} className="bg-blue-900/95 text-white p-6 rounded-2xl h-full flex flex-col hover:shadow-xl transition-shadow duration-300">
+                                   <CardHeader className="flex flex-row items-start gap-4 p-0 mb-4">
+                                        <cap.icon className="h-10 w-10 text-pink-400 flex-shrink-0" strokeWidth={2} />
+                                        <CardTitle className="text-lg font-bold text-white mt-1">{cap.title}</CardTitle>
+                                   </CardHeader>
+                                   <CardContent className="p-0 flex-grow">
+                                        <p className="text-blue-200">{cap.description}</p>
+                                   </CardContent>
                                </Card>
                             ))}
                         </div>
