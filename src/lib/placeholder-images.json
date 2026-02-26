@@ -977,6 +977,12 @@
       "description": "A unified ecosystem to design CRFs, collect subject data, validate accuracy, and manage queries.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1VaboidCn4_saz9LW3SeuTLGGtzsOn0Ay",
       "imageHint": "data management"
+    },
+    {
+      "id": "lab-data-integration",
+      "description": "Abstract visualization of data integration and API connections.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
+      "imageHint": "data integration api"
     }
   ]
 }

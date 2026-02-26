@@ -169,7 +169,7 @@ export function SecureSaveSection() {
                         <TabContentLayout items={setupItems} imageId="lab-management-conclusion" />
                     </TabsContent>
                     <TabsContent value="integration" className="mt-16">
-                        <TabContentLayout items={integrationItems} imageId="tool-data-svc-2" />
+                        <TabContentLayout items={integrationItems} imageId="lab-data-integration" />
                     </TabsContent>
                     <TabsContent value="compliance" className="mt-16">
                         <TabContentLayout items={complianceItems} imageId="why-us-compliant" />
@@ -182,3 +182,5 @@ export function SecureSaveSection() {
         </section>
     )
 }
+
+    
