@@ -4,11 +4,42 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ContactForm } from '@/components/contact/contact-form';
 import { Card } from '@/components/ui/card';
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
-import type { Metadata } from 'next';
 import { salesSpecialistHelp } from '@/lib/data';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+
+function ContactPageSkeleton() {
+    return (
+        <div className="space-y-12">
+            <section className="relative py-20 md:py-28">
+                <div className="container">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-4">
+                            <Skeleton className="h-12 w-3/4" />
+                            <Skeleton className="h-6 w-full" />
+                            <Skeleton className="h-6 w-5/6" />
+                        </div>
+                        <Skeleton className="h-80 w-full rounded-lg" />
+                    </div>
+                </div>
+            </section>
+            <section className="py-20 md:py-24">
+                <div className="container">
+                    <Skeleton className="h-96 w-full" />
+                </div>
+            </section>
+        </div>
+    );
+}
 
 export default function ContactPage() {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     const contactHeroImage = PlaceHolderImages.find(p => p.id === 'contact-hero');
 
     const fadeInVariants = {
@@ -23,6 +54,10 @@ export default function ContactPage() {
             }
         })
     };
+
+    if (!isClient) {
+        return <ContactPageSkeleton />;
+    }
 
     return (
         <div className="bg-background overflow-hidden">
