@@ -158,9 +158,9 @@
     },
     {
       "id": "contact-hero",
-      "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "global network"
+      "description": "Communication bubbles illustration",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1QYi3GNZX8tJFVVJLb9vYY_6Vw_YFT8Kw",
+      "imageHint": "communication bubbles"
     },
     {
       "id": "map-placeholder",
@@ -363,7 +363,7 @@
     {
       "id": "tool-study-1",
       "description": "Screenshot of study management dashboard.",
-      "imageUrl": "https://images.unsplash.com/photo-1759984782024-ff13fd2b97b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8c3R1ZHklMjBtYW5hZ2VtZW50fGVufDB8fHx8fDE3NzIwOTYxMTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1759984782024-ff13fd2b97b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8c3R1ZHklMjBtYW5hZ2VtZW50fGVufDB8fHx8MTc3MjA5NjExNXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study dashboard"
     },
     {
@@ -963,7 +963,7 @@
     {
       "id": "study-management-hero",
       "description": "An abstract graphic representing centralized study management and governance.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1JL_GYZnkC-YvI5_OdSjF48EnLEIyOEhM",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=15CDZ1wpTJ0pqfPFKHqYSL_0IKvbdtHPK",
       "imageHint": "study governance"
     },
     {
@@ -995,12 +995,6 @@
       "description": "Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
       "imageHint": "data integration"
-    },
-    {
-      "id": "site-management-hero",
-      "description": "A unified framework to configure, govern, and monitor every site participating in a clinical study.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1PWhg6D5pEKz7FQoDNTR_lUCfdBnRupso",
-      "imageHint": "site management framework"
     },
     {
       "id": "reports-hero",
