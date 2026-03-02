@@ -205,6 +205,10 @@ function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (op
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-2xl p-0 top-1/4">
+        <DialogHeader className="sr-only">
+            <DialogTitle>Search Site</DialogTitle>
+            <DialogDescription>Search for products, solutions, news, and more across the entire site.</DialogDescription>
+        </DialogHeader>
         <div className="flex items-center p-4 border-b">
           <Search className="h-5 w-5 text-muted-foreground" />
           <Input
