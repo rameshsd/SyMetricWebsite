@@ -101,7 +101,7 @@ export function HeroCarousel() {
         </div>
       ))}
 
-      <div className="relative z-30 container h-full flex flex-col justify-start items-center px-4 pt-40 text-center">
+      <div className="relative z-30 container h-full flex flex-col justify-start items-center px-4 pt-24 text-center">
         <div className="w-full max-w-4xl space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">
             {slides[currentSlide].heading}
