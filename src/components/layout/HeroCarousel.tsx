@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -72,7 +73,7 @@ export function HeroCarousel() {
 
   return (
     <section 
-      className="relative w-full h-[70vh] -mt-16 overflow-hidden bg-black"
+      className="relative w-full h-[56vh] -mt-16 overflow-hidden bg-black"
     >
       {/* Background Slides */}
       {slides.map((slide, index) => (
