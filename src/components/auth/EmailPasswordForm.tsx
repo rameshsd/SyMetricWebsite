@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -39,23 +38,30 @@ export function EmailPasswordForm({ onLoginSuccess }: EmailPasswordFormProps) {
     setError(null);
     setIsSubmitting(true);
     try {
+      // First, try to sign in.
       await initiateEmailSignIn(auth, values.email, values.password);
       onLoginSuccess();
     } catch (error: any) {
-        if (error instanceof FirebaseError && error.code === 'auth/user-not-found') {
-            // If user not found, try to sign them up
-            try {
-                await initiateEmailSignUp(auth, values.email, values.password);
-                onLoginSuccess();
-            } catch (signUpError: any) {
-                setError(signUpError.message || 'An unexpected error occurred during sign up.');
-            }
-        } else if (error instanceof FirebaseError && error.code === 'auth/wrong-password') {
-            setError('Wrong password. Please try again.');
+      if (error instanceof FirebaseError && error.code === 'auth/invalid-credential') {
+        // If sign-in fails with 'invalid-credential', it could be a new user.
+        // Try to sign them up.
+        try {
+          await initiateEmailSignUp(auth, values.email, values.password);
+          onLoginSuccess();
+        } catch (signUpError: any) {
+          // If sign-up fails because the email is already in use, it means the original
+          // password was wrong for an existing user.
+          if (signUpError instanceof FirebaseError && signUpError.code === 'auth/email-already-in-use') {
+            setError('Invalid credentials. Please check your email and password and try again.');
+          } else {
+            // Otherwise, show the sign-up error.
+            setError(signUpError.message || 'An unexpected error occurred during sign up.');
+          }
         }
-        else {
-            setError(error.message || 'An unexpected error occurred.');
-        }
+      } else {
+        // For any other sign-in errors, display them directly.
+        setError(error.message || 'An unexpected error occurred.');
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -54,14 +54,14 @@ export function PillarsSection() {
                     {pillars.map((pillar) => {
                         const image = PlaceHolderImages.find(p => p.id === pillar.imageId);
                         return (
-                            <Card key={pillar.title} className="bg-background/80 backdrop-blur-sm rounded-xl overflow-hidden flex flex-col group">
+                            <Card key={pillar.title} className="bg-background rounded-2xl overflow-hidden flex flex-col group border transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1">
                                 {image && (
-                                    <div className="relative h-40">
+                                    <div className="relative h-40 overflow-hidden">
                                         <Image
                                             src={image.imageUrl}
                                             alt={pillar.title}
                                             fill
-                                            className="object-cover"
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
                                             data-ai-hint={image.imageHint}
                                         />
                                     </div>
@@ -70,9 +70,6 @@ export function PillarsSection() {
                                     <p className="text-sm font-semibold text-primary">{pillar.subtitle}</p>
                                     <h3 className="text-lg font-bold mt-1">{pillar.title}</h3>
                                     <p className="text-muted-foreground mt-2 text-sm flex-grow">{pillar.description}</p>
-                                    <Button variant="ghost" className="p-0 h-auto mt-4 self-start text-primary group-hover:underline">
-                                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
                                 </div>
                             </Card>
                         )

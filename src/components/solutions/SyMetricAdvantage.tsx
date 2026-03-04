@@ -3,8 +3,6 @@
 import { CheckCircle, Combine, MousePointerClick, Fingerprint, Files, ChevronsRight, BarChart, LifeBuoy, Zap } from "lucide-react";
 import { SectionTitle } from "../shared/section-title";
 import { Card, CardContent, CardHeader } from "../ui/card";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const advantages = [
     {
@@ -81,9 +79,6 @@ export function SyMetricAdvantage() {
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <p className="text-muted-foreground">{advantage.description}</p>
-                                <Link href={advantage.link} className="flex items-center text-sm text-primary font-semibold mt-4">
-                                    Explore More <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
                             </CardContent>
                         </Card>
                     ))}

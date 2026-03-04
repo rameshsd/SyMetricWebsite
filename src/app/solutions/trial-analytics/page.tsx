@@ -41,9 +41,6 @@ export default function TrialAnalyticsPage() {
                                 <p className="text-muted-foreground">
                                     Also, the system is built on SAP Business Technology Platform, enabling you to explore various services that SAP has to offer on the Cloud. Our solution can be integrated with your system to deliver insightful analysis while leveraging cloud initiatives from SAP in Life Sciences. Here are the various sources of data that we analyze to help you plan effectively.
                                 </p>
-                                <Button variant="outline" asChild>
-                                    <Link href="#">View on SAP store</Link>
-                                </Button>
                             </div>
                             <div className="relative h-[400px] w-full">
                                 {heroImage && (

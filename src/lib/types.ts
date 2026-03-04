@@ -11,6 +11,15 @@ export type NavItem = {
   subItems?: NavItem[];
 };
 
+export type HeroCarouselItem = {
+  id: string;
+  title: string;
+  subtitle: string;
+  imageId: string;
+  cta1: { text: string; link: string; };
+  cta2: { text: string; link: string; };
+};
+
 export type SolutionCapability = {
   id: string;
   title: string;
@@ -72,8 +81,8 @@ export type Resource = {
   title: string;
   slug: string;
   category: string;
-  date: string;
-  image: string;
+  publishDate: Timestamp;
+  imageId: string;
   excerpt: string;
 };
 
@@ -224,12 +233,6 @@ export type CommunityLeaderSlide = {
   links: { text: string; href: string }[];
 };
 
-export type FeaturedTopic = {
-  id: string;
-  title: string;
-  imageId: string;
-};
-
 export type CommunityPost = {
     id: string;
     authorId: string;
@@ -244,6 +247,7 @@ export type CommunityPost = {
     views: number;
     comments: number;
     likes: number;
+    imageUrl?: string;
 };
 
 export type WelcomeLink = {

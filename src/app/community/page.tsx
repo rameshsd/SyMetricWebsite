@@ -1,7 +1,6 @@
-
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Carousel,
@@ -34,15 +33,57 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { communityLeadersSlides, featuredTopics, welcomeLinks, topAuthors } from '@/lib/data';
+import { communityLeadersSlides, welcomeLinks } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { RecentPosts } from '@/components/community/RecentPosts';
-import { useUser } from '@/firebase';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { CreatePostForm } from '@/components/community/CreatePostForm';
+import { collection, query, orderBy, limit } from 'firebase/firestore';
+import type { CommunityPost } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CommunityPage() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
+  const firestore = useFirestore();
+
+  const featuredPostsQuery = useMemoFirebase(() =>
+    firestore ? query(collection(firestore, 'communityPosts'), orderBy('createdAt', 'desc'), limit(3)) : null
+  , [firestore]);
+  const { data: featuredPosts, isLoading: areFeaturedPostsLoading } = useCollection<CommunityPost>(featuredPostsQuery);
+  
+  const allPostsQuery = useMemoFirebase(() =>
+    firestore ? query(collection(firestore, 'communityPosts')) : null
+  , [firestore]);
+  const { data: allPosts, isLoading: areAllPostsLoading } = useCollection<CommunityPost>(allPostsQuery);
+
+  const topAuthors = useMemo(() => {
+    if (!allPosts) return [];
+
+    const authors: { [authorId: string]: { name: string; kudos: number; role: string; } } = {};
+
+    allPosts.forEach(post => {
+        if (!authors[post.authorId]) {
+            let authorName = post.author.name;
+            if (authorName && authorName.includes('@')) {
+                authorName = authorName.split('@')[0];
+            }
+            authors[post.authorId] = {
+                name: authorName,
+                kudos: 0,
+                role: post.author.role,
+            };
+        }
+        authors[post.authorId].kudos += post.likes || 0;
+    });
+
+    return Object.entries(authors)
+        .map(([authorId, data]) => ({ ...data, authorId }))
+        .sort((a, b) => b.kudos - a.kudos)
+        .slice(0, 7);
+  }, [allPosts]);
+
+  const postsCount = allPosts?.length || 0;
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -57,6 +98,37 @@ export default function CommunityPage() {
       </div>
     );
   }
+  
+  const FeaturedPostSkeleton = () => (
+    <Card className="group overflow-hidden rounded-2xl">
+      <Skeleton className="h-56 w-full" />
+      <CardContent className="p-6 space-y-2">
+        <Skeleton className="h-6 w-3/4" />
+      </CardContent>
+    </Card>
+  );
+  
+  const TopAuthorSkeleton = () => (
+    <li className="flex justify-between items-center w-full">
+        <div className="flex items-center gap-3 min-w-0">
+            <Skeleton className="h-9 w-9 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-24" />
+            </div>
+        </div>
+        <Skeleton className="h-5 w-10" />
+    </li>
+  )
+
+  const formatStat = (num: number): string => {
+    if (num >= 1000000) {
+      return `${(num / 1000000).toFixed(1)}M`;
+    }
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(1)}K`;
+    }
+    return num.toString();
+  };
 
   return (
     <div className="bg-background">
@@ -96,15 +168,7 @@ export default function CommunityPage() {
               <div className="flex items-center gap-x-8 gap-y-2 flex-wrap text-sm pt-4">
                 <div className="flex items-center gap-2">
                   <MessageSquare className="h-4 w-4" />
-                  <span>2.8M Posts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  <span>1.4M Members</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe className="h-4 w-4" />
-                  <span>692K Online</span>
+                  <span>{formatStat(postsCount)} Posts</span>
                 </div>
               </div>
             </div>
@@ -175,31 +239,38 @@ export default function CommunityPage() {
             Featured Topics
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredTopics.map((topic) => {
-              const image = PlaceHolderImages.find(p => p.id === topic.imageId);
+            {areFeaturedPostsLoading && (
+                <>
+                    <FeaturedPostSkeleton />
+                    <FeaturedPostSkeleton />
+                    <FeaturedPostSkeleton />
+                </>
+            )}
+            {featuredPosts && featuredPosts.map((post) => {
+              const defaultImage = PlaceHolderImages.find(p => p.id === 'community-dev-news');
               return (
-                <Card key={topic.id} className="group overflow-hidden rounded-2xl transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <Card key={post.id} className="group overflow-hidden rounded-2xl transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <Link href="#">
-                    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl">
-                      {image && (
+                    <div className="relative h-56 w-full overflow-hidden rounded-t-2xl bg-muted">
                         <Image
-                          src={image.imageUrl}
-                          alt={topic.title}
-                          fill
-                          className="object-cover"
-                          data-ai-hint={image.imageHint}
+                            src={post.imageUrl || defaultImage?.imageUrl || ''}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
                         />
-                      )}
                     </div>
                     <CardContent className="p-6">
                       <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
-                        {topic.title}
+                        {post.title}
                       </h3>
                     </CardContent>
                   </Link>
                 </Card>
               );
             })}
+             {!areFeaturedPostsLoading && featuredPosts?.length === 0 && (
+                <p className="text-muted-foreground col-span-full text-center">No featured posts available yet.</p>
+             )}
           </div>
           <div className="mt-12 text-center">
             <Button size="lg" variant="outline" asChild>
@@ -250,17 +321,18 @@ export default function CommunityPage() {
                 <Card className="p-4 sm:p-6 w-full overflow-hidden">
                   <h3 className="font-bold text-lg mb-4">Top Kudoed Authors</h3>
                   <ul className="space-y-4">
+                    {areAllPostsLoading && (
+                        Array.from({length: 5}).map((_, i) => <TopAuthorSkeleton key={i} />)
+                    )}
                     {topAuthors.map(author => {
-                      const avatarImg = PlaceHolderImages.find(p => p.id === author.avatarId);
                       return (
-                      <li key={author.id} className="flex justify-between items-center w-full">
+                      <li key={author.authorId} className="flex justify-between items-center w-full">
                         <div className="flex items-center gap-3 min-w-0">
-                           <Avatar className="h-9 w-9">
-                              {avatarImg ? <AvatarImage src={avatarImg.imageUrl} alt={author.name} /> : <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>}
-                           </Avatar>
+                          <Avatar className="h-9 w-9">
+                              <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
+                          </Avatar>
                           <div className="min-w-0">
                             <p className="font-semibold text-sm truncate">{author.name}</p>
-                             {author.sapLogo && <Image src={author.sapLogo} alt="SAP Logo" width={24} height={12} />}
                           </div>
                         </div>
 

@@ -2,10 +2,13 @@
 
 import { notFound, useParams } from 'next/navigation';
 import Image from 'next/image';
-import { resources } from '@/lib/data';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, where, limit } from 'firebase/firestore';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
+import type { Resource } from '@/lib/types';
+import { format } from 'date-fns';
 
 function ArticleSkeleton() {
     return (
@@ -27,7 +30,20 @@ function ArticleSkeleton() {
 export default function ResourcePage() {
   const params = useParams();
   const slug = params.slug as string;
-  const resource = resources.find(r => r.slug === slug);
+  
+  const firestore = useFirestore();
+
+  const resourceQuery = useMemoFirebase(
+    () => (firestore && slug ? query(collection(firestore, 'resources'), where('slug', '==', slug), limit(1)) : null),
+    [firestore, slug]
+  );
+  
+  const { data: resourcesData, isLoading } = useCollection<Resource>(resourceQuery);
+  const resource = resourcesData?.[0];
+
+  if (isLoading) {
+    return <ArticleSkeleton />;
+  }
 
   if (!resource) {
     notFound();
@@ -39,7 +55,8 @@ export default function ResourcePage() {
     { label: resource.title },
   ];
   
-  const image = PlaceHolderImages.find(p => p.id === resource.image);
+  const image = PlaceHolderImages.find(p => p.id === resource.imageId);
+  const formattedDate = resource.publishDate ? format(resource.publishDate.toDate(), 'MMMM d, yyyy') : '';
 
   return (
     <section className="py-12 bg-background">
@@ -48,7 +65,7 @@ export default function ResourcePage() {
         <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mt-4">{resource.title}</h1>
         
         <p className="text-sm text-muted-foreground mt-4 mb-8">
-            Published on {resource.date}
+            Published on {formattedDate}
         </p>
 
         {image && (
@@ -59,7 +76,6 @@ export default function ResourcePage() {
 
         <div className="prose dark:prose-invert max-w-none">
             <p>{resource.excerpt}</p>
-            {/* Full content would go here if available */}
             <p>More content coming soon for this resource...</p>
         </div>
       </div>

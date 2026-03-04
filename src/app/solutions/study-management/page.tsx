@@ -1,6 +1,5 @@
 
 import { Metadata } from 'next';
-import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileCog, GitBranch, Shield, Eye, FileUp, Settings, ArrowRight, MessageSquare } from 'lucide-react';
 import { SectionTitle } from '@/components/shared/section-title';
@@ -78,6 +77,7 @@ const summaryPoints = [
 
 
 export default function StudyManagementPage() {
+    const heroImage = PlaceHolderImages.find(p => p.id === 'study-management-hero');
     const summaryImage = PlaceHolderImages.find(p => p.id === 'study-management-hero');
 
     const secondaryNav = [
@@ -88,11 +88,40 @@ export default function StudyManagementPage() {
 
     return (
         <>
-            <SyMetricBusinessAI 
-              title="Study Management"
-              subtitle="Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure."
-              heroImageId="study-management-hero"
-            />
+            <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff] dark:bg-card">
+              <div className="container mx-auto px-4 md:px-6">
+                <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[400px]">
+                  <div className="space-y-6">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                      Study Management
+                    </h1>
+                    <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed">
+                      Centralized setup, configuration, versioning, and governance of clinical studies from initiation to closure.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button size="lg" asChild>
+                        <Link href="/request-demo">Request a demo</Link>
+                      </Button>
+                      <Button size="lg" variant="outline" asChild>
+                        <Link href="/solutions">Explore Solutions</Link>
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="relative h-[300px] lg:h-[400px] w-full rounded-xl overflow-hidden shadow-md">
+                    {heroImage && (
+                        <Image
+                            src={heroImage.imageUrl}
+                            alt="Study Management"
+                            fill
+                            className="object-cover"
+                            data-ai-hint={heroImage.imageHint}
+                        />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </section>
+            
             <PageHeader title="Study Management" secondaryNav={secondaryNav} />
             <div id="overview">
                  <section className="bg-diagram-violet text-white">

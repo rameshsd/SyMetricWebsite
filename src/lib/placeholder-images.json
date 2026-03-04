@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "fsd-hero",
+      "description": "Interior view of a car with a self-driving interface on the screen.",
+      "imageUrl": "https://images.unsplash.com/photo-1617704548623-34047b44d2db?q=80&w=1920&auto=format&fit=crop",
+      "imageHint": "car interior"
+    },
+    {
       "id": "symetric-logo",
       "description": "SyMetric Official Logo",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2021/05/symetric.png",
@@ -21,7 +27,7 @@
     {
       "id": "solution-etmf",
       "description": "Electronic trial master file document management",
-      "imageUrl": "https://images.unsplash.com/photo-1691458594782-2cef9a152bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZG9jdW1lbnRzJTIwZmlsZXN8ZW58MHx8fHwxNzYwODY4MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1691458594782-2cef9a152bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzYxMDE5NTk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "documents files"
     },
     {
@@ -152,9 +158,9 @@
     },
     {
       "id": "contact-hero",
-      "description": "Global connections network",
-      "imageUrl": "https://images.unsplash.com/photo-1597733336794-12d05021d510?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8fDE3NjA4NjgyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "global network"
+      "description": "Communication bubbles illustration",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1QYi3GNZX8tJFVVJLb9vYY_6Vw_YFT8Kw",
+      "imageHint": "communication bubbles"
     },
     {
       "id": "map-placeholder",
@@ -176,9 +182,15 @@
     },
     {
       "id": "hero-carousel-3",
-      "description": "A Well-Integrated CTP for a bird’s-eye view of Clinical Trials",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=128OeF7pRGvWt7tcWEb3M4ptrqLNG8vKf",
-      "imageHint": "integrated CTP"
+      "description": "A unified dashboard showing clinical trial data and analytics.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1yUuT3csu6-YYnn0fr-iZc_MSNuUD4Yoa",
+      "imageHint": "data dashboard"
+    },
+    {
+      "id": "hero-carousel-innovation",
+      "description": "Abstract image of data and technology representing innovation in clinical trials.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1Rc9NAYNz4HIu6-WYkOAq2l91H5SH_mw6",
+      "imageHint": "data technology"
     },
     {
       "id": "what-is-sap",
@@ -351,7 +363,7 @@
     {
       "id": "tool-study-1",
       "description": "Screenshot of study management dashboard.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/study-1.png",
+      "imageUrl": "https://images.unsplash.com/photo-1759984782024-ff13fd2b97b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8c3R1ZHklMjBtYW5hZ2VtZW50fGVufDB8fHx8MTc3MjA5NjExNXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "study dashboard"
     },
     {
@@ -363,7 +375,7 @@
     {
       "id": "tool-site-1",
       "description": "Screenshot of clinical site management.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/site-1.png",
+      "imageUrl": "https://images.unsplash.com/photo-1733503711060-1df31554390f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3ZWJzaXRlJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NzIwOTYwMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "site management"
     },
     {
@@ -375,7 +387,7 @@
     {
       "id": "tool-supplies-1",
       "description": "Screenshot of clinical supplies inventory.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/supplies-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1EIcD2liPimxcuqijrNw_WCrVrpWg3QFU",
       "imageHint": "inventory management"
     },
     {
@@ -387,7 +399,7 @@
     {
       "id": "tool-subject-1",
       "description": "Screenshot of subject management list.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/subject-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1sHXDOz1I3okW_ajkfvmX-LTskQTaCtIt",
       "imageHint": "patient list"
     },
     {
@@ -399,7 +411,7 @@
     {
       "id": "tool-data-1",
       "description": "Screenshot of data validation rules.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1D4sATiQOADd855tPht81226JDaSUDoph",
       "imageHint": "data validation"
     },
     {
@@ -411,7 +423,7 @@
     {
       "id": "tool-lab-1",
       "description": "Screenshot of lab data import.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/lab-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1uaweXQjt4fLAhFA2TcDvQbkWqZlYAFqY",
       "imageHint": "lab data"
     },
     {
@@ -423,7 +435,7 @@
     {
       "id": "tool-coding-1",
       "description": "Screenshot of medical coding interface.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/coding-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1bIXCYqU0NSyud2qFfGZqSmmzrzZkoheq",
       "imageHint": "medical coding"
     },
     {
@@ -435,7 +447,7 @@
     {
       "id": "tool-data-svc-1",
       "description": "Screenshot of data services reporting.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/data-svc-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=152oY1kqz7Jc2Su_SXFkYYdtyEVYGVMDm",
       "imageHint": "reporting dashboard"
     },
     {
@@ -447,7 +459,7 @@
     {
       "id": "tool-learning-1",
       "description": "Screenshot of digital learning module.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/learning-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=15VHed3BvLw58CLHB9luaj2K__d-ViJU7",
       "imageHint": "e-learning course"
     },
     {
@@ -459,7 +471,7 @@
     {
       "id": "tool-support-1",
       "description": "Screenshot of help and support center.",
-      "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/support-1.png",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1I-C8D4iQxOGs38mtsfQoDiVaShYyFHML",
       "imageHint": "support center"
     },
     {
@@ -829,12 +841,6 @@
       "imageHint": "single sign-on"
     },
     {
-      "id": "site-management-hero",
-      "description": "An abstract graphic representing centralized control over multiple global sites.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1k0WHXquAc0dClrkxSIAdkoHp5OfTRLZB",
-      "imageHint": "global network"
-    },
-    {
       "id": "site-management-purpose",
       "description": "A diverse team collaborating in a modern office, representing the backbone of site governance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1OofiPBJh0qtD1WbQ4-sHMysps1xXNHVM",
@@ -872,9 +878,9 @@
     },
     {
       "id": "lab-management-conclusion",
-      "description": "A scientist analyzing data on a futuristic interface in a lab.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=191QW6Q5pE-k_5cjb2xXgYc2o2d8oE0rW",
-      "imageHint": "scientist data analysis"
+      "description": "Close-up of modern laboratory equipment.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1qwuUpUMtCStA0ESwidTBkSqG0M5A1Z58",
+      "imageHint": "lab equipment"
     },
     {
       "id": "onedrive-screenshot",
@@ -953,6 +959,60 @@
       "description": "Illustration of global standards and compliance.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1z32N6n-Nb9UkyIznTpB8c9WUFYvdS-BZ",
       "imageHint": "global standards"
+    },
+    {
+      "id": "study-management-hero",
+      "description": "An abstract graphic representing centralized study management and governance.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=15CDZ1wpTJ0pqfPFKHqYSL_0IKvbdtHPK",
+      "imageHint": "study governance"
+    },
+    {
+      "id": "clinical-supplies-hero",
+      "description": "An abstract image showing a network of supplies for clinical management.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1gMns2POP3tFCK1dyUFfL3Bk8fQft-lql",
+      "imageHint": "clinical supplies"
+    },
+    {
+      "id": "data-management-hero",
+      "description": "A unified ecosystem to design CRFs, collect subject data, validate accuracy, and manage queries.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1VaboidCn4_saz9LW3SeuTLGGtzsOn0Ay",
+      "imageHint": "data management"
+    },
+    {
+      "id": "lab-data-integration",
+      "description": "Abstract visualization of data integration and API connections.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
+      "imageHint": "data integration api"
+    },
+    {
+      "id": "medical-coding-hero",
+      "description": "Standardize clinical terms using globally accepted dictionaries like MedDRA and WHO-Drug.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1bIXCYqU0NSyud2qFfGZqSmmzrzZkoheq",
+      "imageHint": "medical coding"
+    },
+    {
+      "id": "data-services-hero",
+      "description": "Powerful and flexible integration framework for connecting SyMetric with external clinical platforms.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=16jG9nJB1AhJihfZPkNKYu7VNOF1mLDpw",
+      "imageHint": "data integration"
+    },
+    {
+      "id": "reports-hero",
+      "description": "A unified reporting hub that delivers real-time, study-wide insights.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=152oY1kqz7Jc2Su_SXFkYYdtyEVYGVMDm",
+      "imageHint": "reporting hub"
+    },
+    {
+      "id": "digital-learning-hero",
+      "description": "Empowering users with role-based training modules, interactive content, and automated certification.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1sHXDOz1I3okW_ajkfvmX-LTskQTaCtIt",
+      "imageHint": "digital learning platform"
+    },
+    {
+      "id": "sample-management-hero-2",
+      "description": "A powerful, end-to-end module designed to manage the lifecycle of clinical samples.",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1EIcD2liPimxcuqijrNw_WCrVrpWg3QFU",
+      "imageHint": "sample management"
     }
   ]
 }

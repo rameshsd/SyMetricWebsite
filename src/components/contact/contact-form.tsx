@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
@@ -88,11 +88,11 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <CardHeader>
-            <CardTitle>We Are Just a Form Away!</CardTitle>
-            <p className="text-sm text-muted-foreground">Fill in details and we will reach out to you within two business days.</p>
+        <CardHeader className="p-8 pb-4">
+            <CardTitle className="text-2xl">Get in touch</CardTitle>
+            <CardDescription>Fill in the form and we will get back to you within 2 business days.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="p-8 pt-4 space-y-4">
           <FormField
             control={form.control}
             name="name"
@@ -100,7 +100,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Your name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your name" {...field} />
+                  <Input placeholder="Enter your name" {...field} className="rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,7 +113,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Organization</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter the name of your organization" {...field} />
+                  <Input placeholder="Enter the name of your organization" {...field} className="rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -126,7 +126,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Mobile number</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your mobile number" {...field} />
+                  <Input placeholder="Enter your mobile number" {...field} className="rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -139,7 +139,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your email id" {...field} />
+                  <Input placeholder="Enter your email id" {...field} className="rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -152,15 +152,15 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>Your message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Type your message here" {...field} />
+                  <Textarea placeholder="Type your message here" {...field} className="rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </CardContent>
-        <CardFooter>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+        <CardFooter className="p-8 pt-0">
+          <Button type="submit" className="w-full rounded-xl py-3 bg-blue-600 hover:bg-blue-700 h-auto" disabled={isSubmitting}>
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>

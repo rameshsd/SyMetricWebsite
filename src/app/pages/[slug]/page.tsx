@@ -8,6 +8,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
+import DOMPurify from 'isomorphic-dompurify';
 
 function PageSkeleton() {
   return (
@@ -62,6 +63,7 @@ export default function DynamicPage() {
 
   const page = pages[0];
   const heroImage = page?.heroImageId ? PlaceHolderImages.find(p => p.id === page.heroImageId) : null;
+  const cleanContent = DOMPurify.sanitize(page.content);
 
   return (
     <>
@@ -94,7 +96,7 @@ export default function DynamicPage() {
           <div className="max-w-4xl mx-auto py-12">
             {!page.subtitle && !heroImage && <SectionTitle title={page.title} className="mb-12" />}
             <div
-              dangerouslySetInnerHTML={{ __html: page.content }}
+              dangerouslySetInnerHTML={{ __html: cleanContent }}
             />
           </div>
         </div>

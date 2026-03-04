@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect } from 'react';
@@ -6,11 +5,10 @@ import { useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { initiateGoogleSignIn, useAuth } from '@/firebase';
+import { useAuth } from '@/firebase';
 import { EmailPasswordForm } from '@/components/auth/EmailPasswordForm';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { FirebaseError } from 'firebase/app';
 
 export default function LoginPage() {
   const { user, isUserLoading } = useUser();
@@ -23,21 +21,6 @@ export default function LoginPage() {
       router.push('/community');
     }
   }, [user, isUserLoading, router]);
-
-  const handleGoogleSignIn = async () => {
-    if (auth) {
-      try {
-        await initiateGoogleSignIn(auth);
-        router.push('/community');
-      } catch (error) {
-        if (error instanceof FirebaseError && error.code === 'auth/popup-closed-by-user') {
-          // User closed the popup, do nothing.
-          return;
-        }
-        console.error("Google Sign-in failed:", error);
-      }
-    }
-  };
 
   const handleLoginSuccess = () => {
     router.push('/community');
@@ -65,10 +48,6 @@ export default function LoginPage() {
             <CardContent>
               <div className="grid gap-4">
                  <EmailPasswordForm onLoginSuccess={handleLoginSuccess} />
-                <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
-                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 23.4 172.9 61.9l-76.2 64.5C308.6 102.3 279.2 88 248 88c-73.2 0-132.3 59.2-132.3 132.3s59.1 132.3 132.3 132.3c76.9 0 111.2-51.8 115.7-77.9H248v-62h239.5c.3 12.7.6 24.9.6 37.8z"></path></svg>
-                  Login with Google
-                </Button>
               </div>
             </CardContent>
           </Card>

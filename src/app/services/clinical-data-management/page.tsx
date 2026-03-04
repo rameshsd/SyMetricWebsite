@@ -137,16 +137,14 @@ export default function ClinicalDataManagementPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {cdmServices.map((service) => (
-                <Card key={service.title} className="flex flex-col text-center p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                  <CardHeader>
-                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
-                      <service.icon className="h-16 w-16 text-primary" strokeWidth="2.5" />
-                    </div>
-                    <CardTitle className="text-xl pt-4">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p className="text-muted-foreground">{service.description}</p>
-                  </CardContent>
+                <Card key={service.title} className="bg-blue-900/95 text-white rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                    <CardHeader className="flex flex-row items-start gap-4 p-0 mb-4">
+                        <service.icon className="h-10 w-10 text-pink-400 flex-shrink-0" strokeWidth={2} />
+                        <CardTitle className="text-lg font-bold text-white mt-1">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 flex-grow">
+                        <p className="text-blue-200">{service.description}</p>
+                    </CardContent>
                 </Card>
               ))}
             </div>

@@ -15,7 +15,8 @@ import {
   Users,
   Briefcase,
   FileText,
-  Newspaper
+  Newspaper,
+  BookCopy,
 } from 'lucide-react';
 import { Logo } from '../shared/logo';
 import { cn } from '@/lib/utils';
@@ -31,6 +32,7 @@ const contentNav = [
   { name: 'Pages', href: '/admin/pages', icon: File },
   { name: 'Content Editor', href: '/admin/content', icon: Edit },
   { name: 'News', href: '/admin/news', icon: Newspaper },
+  { name: 'Resources', href: '/admin/resources', icon: BookCopy },
 ];
 
 const toolsNav = [

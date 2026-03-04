@@ -3,11 +3,31 @@
 
 import { Header } from '@/components/admin/Header';
 import { Sidebar } from '@/components/admin/Sidebar';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { useUser } from '@/firebase';
+import { useRouter } from 'next/navigation';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const { user, isUserLoading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isUserLoading) {
+      if (!user || user.email !== 'rameshdodamani22@gmail.com') {
+        router.replace('/login');
+      }
+    }
+  }, [user, isUserLoading, router]);
+
+  if (isUserLoading || !user || user.email !== 'rameshdodamani22@gmail.com') {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-background">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">

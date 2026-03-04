@@ -4,23 +4,49 @@ import { useState } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SectionTitle } from '../shared/section-title';
 import type { SolutionCapability } from '@/lib/types';
-import { RandomizationIcon, SubjectManagementIcon, SitesManagementIcon, ClinicalSuppliesIcon } from '../icons/solution-offering-icons';
-import { LucideIcon, FilePlus, ShieldCheck, SearchCheck, AlertTriangle, Code2 } from 'lucide-react';
+import {
+  Shuffle,
+  Users,
+  MapPin,
+  Package,
+  FilePlus,
+  ShieldCheck,
+  SearchCheck,
+  AlertTriangle,
+  Code2,
+  FileCode,
+  Shield,
+  Building,
+  Settings,
+  Activity,
+  Lock,
+  Database,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 type CapabilitiesSectionProps = {
   capabilities?: SolutionCapability[];
 };
 
 const iconMap: { [key: string]: React.FC<any> } = {
-  randomization: RandomizationIcon,
-  'subject-management': SubjectManagementIcon,
-  'sites-management': SitesManagementIcon,
-  'clinical-supplies-management': ClinicalSuppliesIcon,
+  // IRT
+  randomization: Shuffle,
+  'subject-management': Users,
+  'sites-management': MapPin,
+  'clinical-supplies-management': Package,
+  // EDC
   'ecrf-management': FilePlus,
   'sdv': ShieldCheck,
   'query-management': SearchCheck,
   'ae-sae-reporting': AlertTriangle,
-  'medical-coding': Code2,
+  'medical-coding': FileCode,
+  // CTM
+  'user-access-management': Shield,
+  'organization-sites-master': Building,
+  'unified-study-builder': Settings,
+  'global-data-libraries': Database,
+  'real-time-reporting': Activity,
+  'security-compliance-manager': Lock,
 };
 
 export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {
@@ -42,14 +68,12 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
             {capabilities.map((capability) => {
               const Icon = iconMap[capability.id] || capability.icon;
               return (
-                <div key={capability.id} className="bg-primary/20 p-8 rounded-2xl h-full flex flex-col">
-                  {Icon && (
-                    <div className="flex items-center gap-4 mb-4">
-                      <Icon className="h-20 w-20 text-violet-400" strokeWidth={1.5} />
-                      <h3 className="text-xl font-bold text-white">{capability.title}</h3>
+                <div key={capability.id} className="bg-blue-900/50 p-6 rounded-2xl h-full flex flex-col hover:shadow-xl transition-shadow duration-300">
+                    <div className="flex items-start gap-4 mb-4">
+                        {Icon && <Icon className="h-10 w-10 text-pink-400 flex-shrink-0" strokeWidth={2} />}
+                        <h3 className="text-lg font-bold text-white mt-1">{capability.title}</h3>
                     </div>
-                  )}
-                  <p className="text-primary-foreground/80 flex-grow">{capability.description}</p>
+                    <p className="text-blue-200 flex-grow">{capability.description}</p>
                 </div>
               )
             })}

@@ -1,5 +1,6 @@
 
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, Resource, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, FeaturedTopic, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent } from '@/lib/types';
+
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -735,63 +736,6 @@ export const customers: Customer[] = [
     }
 ];
 
-export const resources: Resource[] = [
-  {
-    id: '1',
-    slug: 'decentralized-clinical-trials',
-    title: 'The Rise of Decentralized Clinical Trials (DCTs)',
-    category: 'Blog',
-    date: '2023-10-26',
-    image: 'resource-1',
-    excerpt: 'Explore how technology is enabling a shift towards more patient-centric trial models.'
-  },
-  {
-    id: '2',
-    slug: 'ai-in-drug-discovery',
-    title: 'AI and Machine Learning in Drug Discovery',
-    category: 'Blog',
-    date: '2023-10-20',
-    image: 'resource-2',
-    excerpt: 'A look at how artificial intelligence is accelerating the pace of pharmaceutical innovation.'
-  },
-  {
-    id: '3',
-    slug: 'etmf-best-practices',
-    title: 'eTMF Best Practices for a Seamless Audit',
-    category: 'White Papers and Case Studies',
-    date: '2023-10-15',
-    image: 'resource-3',
-    excerpt: 'Learn how Apex Clinical leveraged SyMetric\'s eTMF to pass their regulatory audit with flying colors.'
-  },
-  {
-    id: '4',
-    slug: 'patient-centricity-in-trials',
-    title: 'Improving Patient-Centricity in Clinical Trials',
-    category: 'Blog',
-    date: '2023-10-10',
-    image: 'resource-4',
-    excerpt: 'Strategies and tools for making clinical trials more accessible and friendly for participants.'
-  },
-  {
-    id: '5',
-    slug: 'navigating-regulatory-changes',
-    title: 'Navigating the New EU Clinical Trial Regulation',
-    category: 'News and Events',
-    date: '2023-11-05',
-    image: 'contact-hero',
-    excerpt: 'An overview of the key changes and how to prepare for the new CTR 536/2014.'
-  },
-  {
-    id: '6',
-    slug: 'sa-power-networks-story',
-    title: 'SA Power Networks builds a resilient and sustainable energy future',
-    category: 'White Papers and Case Studies',
-    date: '2023-09-22',
-    image: 'logo-sa-power',
-    excerpt: 'Discover how SA Power Networks transformed their operations with SyMetric solutions.'
-  }
-];
-
 export const timeline = [
   { year: '2015', event: 'SyMetric Systems founded with a vision to digitize clinical research.' },
   { year: '2017', event: 'Launch of our flagship Clinical Trial Platform (CTP).' },
@@ -981,13 +925,13 @@ export const featureGridItems: FeatureGridItem[] = [
     },
     { 
         icon: SubjectIcon, 
-        title: 'Subject Management',
+        label: 'Subject Management',
         description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
         link: '#' 
     },
     { 
         icon: DataManagementIcon, 
-        title: 'Data Management',
+        label: 'Data Management',
         description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
         link: '#' 
     },
@@ -1046,7 +990,7 @@ export const latestNews: LatestNewsItem[] = [
     id: 1,
     title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
     description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
-    link: '#',
+    link: '/news/ikes-summit',
     imageId: 'news-summit',
     main: true,
   },
@@ -1054,63 +998,49 @@ export const latestNews: LatestNewsItem[] = [
     id: 2,
     title: 'Navaratri Celebrations at office',
     description: 'The SyMetric team celebrated Navaratri at the office with festive decorations and activities.',
-    link: '#',
+    link: '/news/navaratri',
     imageId: 'news-navratri'
   },
   {
     id: 3,
     title: 'Independence Day Celebrations 2022',
     description: 'The team celebrated India\'s Independence Day with a flag hoisting ceremony and patriotic events.',
-    link: '#',
+    link: '/news/independence-day',
     imageId: 'news-independence'
   },
   {
     id: 4,
-    title: 'SAP Batch Release Hub for Life Sciences',
+    title: 'Batch Release Hub Announcement',
     description: 'Our partner SAP has launched Batch Release Hub for Life Sciences, an innovation for the industry.',
-    link: '#',
+    link: '/news/batch-release',
     imageId: 'news-batch-release'
-  },
-  {
-    id: 5,
-    title: 'Fun Activity at Office',
-    description: 'The SyMetric team participated in a fun team-building activity at the office to boost morale.',
-    link: '#',
-    imageId: 'news-fun-activity'
-  },
-  {
-    id: 6,
-    title: 'SyMetric at SAP Industries Live 2021',
-    description: 'SyMetric and SAP revolutionizing the Clinical Trial process to improve Patient Care',
-    link: '#',
-    imageId: 'news-industries-live'
   },
   {
     id: 7,
     title: 'SyMetric Celebrates 10 Years in the Industry',
     description: 'We are proud to celebrate a decade of innovation and customer success in the life sciences industry.',
-    link: '#',
+    link: '/news/10-years',
     imageId: 'news-10-years'
   },
   {
     id: 8,
     title: 'Strategic Partner for ICSM',
     description: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.',
-    link: '#',
+    link: '/news/icsm',
     imageId: 'news-icsm-partner'
   },
   {
     id: 9,
-    title: 'Christmas Celebrations 2021',
+    title: 'Christmas Celebrations',
     description: 'The team celebrated Christmas with a secret Santa gift exchange and festive lunch.',
-    link: '#',
+    link: '/news/christmas',
     imageId: 'news-christmas-2021'
   },
   {
     id: 10,
     title: 'SyMetric at GINSEP Demo Day',
     description: 'SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.',
-    link: '#',
+    link: '/news/ginsep',
     imageId: 'news-ginsep-demo'
   }
 ];
@@ -1306,36 +1236,30 @@ export const successStories: SuccessStory[] = [
 ];
 
 
-export const heroCarouselItems = [
+export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-1",
       title: "Better Data. Better Clinical Trials.",
       subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
       imageId: 'hero-carousel-1',
-      cta: {
-          text: "Schedule a live demo",
-          link: "/contact"
-      }
+      cta1: { text: "Schedule a live demo", link: "/request-demo" },
+      cta2: { text: "Learn More", link: "/solutions" }
     },
     {
       id: "hero-carousel-2",
-      title: "Keep Close Tabs on Your Clinical Supplies",
-      subtitle: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
-      imageId: 'hero-carousel-2',
-      cta: {
-          text: "Contact us for a demo",
-          link: "/contact"
-      }
+      title: "Innovating the Future of Clinical Trials",
+      subtitle: "Leveraging real-time data to accelerate research and improve patient outcomes.",
+      imageId: 'hero-carousel-innovation',
+      cta1: { text: "Explore Our Technology", link: "/solutions" },
+      cta2: { text: "Contact Sales", link: "/contact" }
     },
     {
       id: "hero-carousel-3",
-      title: "A Well-Integrated CTP",
-      subtitle: "For a bird’s-eye view of Clinical Trials",
+      title: "A Unified Platform for Complex Trials",
+      subtitle: "From study design to submission, get a real-time, bird's-eye view of your entire trial portfolio. Simplify complexity and accelerate outcomes.",
       imageId: 'hero-carousel-3',
-      cta: {
-          text: "Discover now",
-          link: "/solutions/clinical-trial-platform"
-      }
+      cta1: { text: "Explore the Platform", link: "/solutions/clinical-trial-platform" },
+      cta2: { text: "See all solutions", link: "/solutions" }
     }
   ];
 
@@ -1904,24 +1828,6 @@ export const communityLeadersSlides: CommunityLeaderSlide[] = [
     title: 'Upcoming Community Events',
     description: 'Join our upcoming webinars, Q&A sessions, and virtual meetups to connect with experts and peers.',
     links: [{ text: 'View All Events', href: '#' }],
-  },
-];
-
-export const featuredTopics: FeaturedTopic[] = [
-  {
-    id: 'dev-news',
-    title: 'SyMetric Developer News October 30th, 2025',
-    imageId: 'community-dev-news',
-  },
-  {
-    id: 'teched-berlin',
-    title: 'SyMetric Community Voice: TechEd in Berlin special edition!',
-    imageId: 'community-teched',
-  },
-  {
-    id: 'content-integrity',
-    title: 'Protecting the integrity of the community content',
-    imageId: 'community-integrity',
   },
 ];
 
