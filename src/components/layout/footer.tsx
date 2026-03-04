@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -28,11 +27,6 @@ const aboutSyMetricLinks = [
 const siteInfoLinks = [
   { name: 'Privacy', href: '/privacy-policy' },
   { name: 'Terms of use', href: '/terms-of-use' },
-  { name: 'Legal disclosure', href: '#' },
-  { name: 'Copyright', href: '#' },
-  { name: 'Trademark', href: '#' },
-  { name: 'Cookie statement', href: '#' },
-  { name: 'Cookie preferences', href: '#' },
 ];
 
 const socialLinks = [
@@ -188,7 +182,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
           <div className="text-xs text-muted-foreground">
-            {isClient ? `© ${new Date().getFullYear()} SyMetric SE or a SyMetric affiliate company. All rights reserved.` : <span>&nbsp;</span>}
+            {isClient ? `© ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
           </div>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             {socialLinks.map((link) => (
