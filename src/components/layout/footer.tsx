@@ -27,7 +27,7 @@ const aboutSyMetricLinks = [
 
 const siteInfoLinks = [
   { name: 'Privacy', href: '/privacy-policy' },
-  { name: 'Terms of use', href: '#' },
+  { name: 'Terms of use', href: '/terms-of-use' },
   { name: 'Legal disclosure', href: '#' },
   { name: 'Copyright', href: '#' },
   { name: 'Trademark', href: '#' },
