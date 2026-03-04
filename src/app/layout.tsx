@@ -7,6 +7,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ThemeProvider } from '@/components/shared/theme-provider';
 import { AnalyticsTracker } from '@/components/analytics/AnalyticsTracker';
+import { CookieConsentBanner } from '@/components/shared/CookieConsentBanner';
 
 export const metadata: Metadata = {
   title: 'SyMetric - Transforming Clinical Research with Technology',
@@ -39,6 +40,7 @@ export default function RootLayout({
               <Footer />
             </div>
             <Toaster />
+            <CookieConsentBanner />
           </FirebaseClientProvider>
         </ThemeProvider>
       </body>
