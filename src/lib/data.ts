@@ -1239,7 +1239,7 @@ export const successStories: SuccessStory[] = [
 export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-1",
-      title: "Better Data. Better Clinical Trials.",
+      title: "Better Quality. Better Efficiency",
       subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
       imageId: 'hero-carousel-1',
       cta1: { text: "Schedule a live demo", link: "/request-demo" },
