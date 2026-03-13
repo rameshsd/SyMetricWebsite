@@ -1242,24 +1242,24 @@ export const heroCarouselItems: HeroCarouselItem[] = [
       title: "Better Quality. Better Efficiency",
       subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
       imageId: 'hero-carousel-1',
-      cta1: { text: "Schedule a live demo", link: "/request-demo" },
-      cta2: { text: "Learn More", link: "/solutions" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     },
     {
       id: "hero-carousel-2",
       title: "Innovating the Future of Clinical Trials",
       subtitle: "Leveraging real-time data to accelerate research and improve patient outcomes.",
       imageId: 'hero-carousel-innovation',
-      cta1: { text: "Explore Our Technology", link: "/solutions" },
-      cta2: { text: "Contact Sales", link: "/contact" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     },
     {
       id: "hero-carousel-3",
       title: "A Unified Platform for Complex Trials",
       subtitle: "From study design to submission, get a real-time, bird's-eye view of your entire trial portfolio. Simplify complexity and accelerate outcomes.",
       imageId: 'hero-carousel-3',
-      cta1: { text: "Explore the Platform", link: "/solutions/clinical-trial-platform" },
-      cta2: { text: "See all solutions", link: "/solutions" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     }
   ];
 
@@ -2011,3 +2011,5 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
+
+    
