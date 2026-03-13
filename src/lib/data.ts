@@ -944,7 +944,7 @@ export const featureGridItems: FeatureGridItem[] = [
     { 
         icon: MedicalCodingIcon, 
         title: 'Medical Coding',
-        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
+        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHO-Drug.',
         link: '#',
     },
     { 
@@ -1248,7 +1248,7 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-2",
       title: "Innovating the Future of Clinical Trials",
-      subtitle: "Leveraging real-time data to accelerate research and improve patient outcomes.",
+      subtitle: "Leveraging real-time data to accelerate research and improve participants outcomes.",
       imageId: 'hero-carousel-innovation',
       cta1: { text: "Schedule a demo", link: "/request-demo" },
       cta2: { text: "Explore More", link: "/solutions" }
