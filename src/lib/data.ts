@@ -1255,7 +1255,7 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     },
     {
       id: "hero-carousel-3",
-      title: "A Unified Platform for Complex Trials",
+      title: "Platform as a Service for Clinical Trial",
       subtitle: "From study design to submission, get a real-time, bird's-eye view of your entire trial portfolio. Simplify complexity and accelerate outcomes.",
       imageId: 'hero-carousel-3',
       cta1: { text: "Schedule a demo", link: "/request-demo" },
@@ -1268,7 +1268,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 1,
         title: "Better Data. Better Clinical Trials.",
         description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
-        linkText: "Schedule a live demo",
+        linkText: "Learn More",
         linkUrl: "/contact",
         imageId: "hero-carousel-1"
     },
@@ -1276,7 +1276,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 2,
         title: "Keep Close Tabs on Your Clinical Supplies",
         description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
-        linkText: "Contact us for a demo",
+        linkText: "Learn More",
         linkUrl: "/contact",
         imageId: "hero-carousel-2"
     },
@@ -1284,7 +1284,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 3,
         title: "A Well-Integrated CTP",
         description: "For a bird’s-eye view of Clinical Trials",
-        linkText: "Discover now",
+        linkText: "Learn More",
         linkUrl: "/solutions/clinical-trial-platform",
         imageId: "hero-carousel-3"
     }
@@ -2011,5 +2011,3 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
-
-    
