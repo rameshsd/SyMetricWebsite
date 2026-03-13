@@ -1,5 +1,4 @@
 
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -1138,8 +1137,8 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     },
     {
         id: 'compliant',
-        title: 'Security Compliant',
-        description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
+        title: 'Security & Compliance',
+        description: 'Built to meet global clinical research standards including 21 CFR Part 11, ICH-GCP, HIPAA, GDPR, ISO 27001, and SOC 2. The platform ensures secure data handling, regulatory compliance, full audit trails, and enterprise-grade protection for sensitive clinical trial information.',
         imageId: 'why-us-compliant',
         learnMoreLink: '#'
     },
@@ -2011,3 +2010,5 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
+
+    
