@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -105,7 +106,7 @@ export function RevolutionizingTrials() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <SectionTitle
             eyebrow="HOW IT WORKS"
-            title="Revolutionizing Clinical Trials"
+            title="Efficiency In the clinical trials"
             description="Our unified platform uses automation and a scalable infrastructure to streamline workflows, unify data, and accelerate every phase of your trial."
             className="!text-center !max-w-none"
           />
