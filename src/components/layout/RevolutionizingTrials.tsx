@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -75,7 +74,7 @@ const FeatureRow = ({
       >
         <div className={cn("space-y-4", reverse && "md:order-2")}>
             <div className="p-3 bg-primary/10 rounded-lg inline-block mb-2 transform transition-transform hover:scale-110 duration-300">
-                 <Icon className="w-8 h-8 text-primary" />
+                 <Icon className="w-10 h-10 text-primary" />
             </div>
             <h3 className="text-2xl font-bold">{title}</h3>
             <p className="text-muted-foreground text-lg">{description}</p>
@@ -103,24 +102,24 @@ export function RevolutionizingTrials() {
   return (
     <section className="w-full bg-gradient-to-b from-white to-slate-50 dark:from-background dark:to-gray-900/50 py-20 md:py-28">
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="max-w-6xl mx-auto">
           <SectionTitle
             eyebrow="HOW IT WORKS"
             title="Efficiency In the clinical trials"
             description="Our unified platform uses automation and a scalable infrastructure to streamline workflows, unify data, and accelerate every phase of your trial."
-            className="!text-center !max-w-none"
+            className="mb-20"
           />
-        </div>
 
-        <div className="relative space-y-24 md:space-y-32 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <FeatureRow
-              key={feature.title}
-              {...feature}
-              reverse={index % 2 !== 0}
-              isLast={index === features.length - 1}
-            />
-          ))}
+          <div className="relative space-y-24 md:space-y-32">
+            {features.map((feature, index) => (
+              <FeatureRow
+                key={feature.title}
+                {...feature}
+                reverse={index % 2 !== 0}
+                isLast={index === features.length - 1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
