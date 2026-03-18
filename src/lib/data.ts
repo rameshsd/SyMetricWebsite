@@ -1,5 +1,4 @@
 
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -944,7 +943,7 @@ export const featureGridItems: FeatureGridItem[] = [
     { 
         icon: MedicalCodingIcon, 
         title: 'Medical Coding',
-        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHODrug.',
+        description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHO-Drug.',
         link: '#',
     },
     { 
@@ -1138,8 +1137,8 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     },
     {
         id: 'compliant',
-        title: 'Security Compliant',
-        description: 'Adheres to 21 CFR Part 11 and ICH-GCP guidelines, ensuring data integrity and audit readiness.',
+        title: 'Security & Compliance',
+        description: 'Built to meet global clinical research standards including 21 CFR Part 11, ICH-GCP, HIPAA, GDPR, ISO 27001, and SOC 2. The platform ensures secure data handling, regulatory compliance, full audit trails, and enterprise-grade protection for sensitive clinical trial information.',
         imageId: 'why-us-compliant',
         learnMoreLink: '#'
     },
@@ -1239,27 +1238,27 @@ export const successStories: SuccessStory[] = [
 export const heroCarouselItems: HeroCarouselItem[] = [
     {
       id: "hero-carousel-1",
-      title: "Better Data. Better Clinical Trials.",
+      title: "Better Quality. Better Efficiency",
       subtitle: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
       imageId: 'hero-carousel-1',
-      cta1: { text: "Schedule a live demo", link: "/request-demo" },
-      cta2: { text: "Learn More", link: "/solutions" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     },
     {
       id: "hero-carousel-2",
       title: "Innovating the Future of Clinical Trials",
-      subtitle: "Leveraging real-time data to accelerate research and improve patient outcomes.",
+      subtitle: "Leveraging real-time data to accelerate research and improve participants outcomes.",
       imageId: 'hero-carousel-innovation',
-      cta1: { text: "Explore Our Technology", link: "/solutions" },
-      cta2: { text: "Contact Sales", link: "/contact" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     },
     {
       id: "hero-carousel-3",
-      title: "A Unified Platform for Complex Trials",
+      title: "Platform as a Service for Clinical Trial",
       subtitle: "From study design to submission, get a real-time, bird's-eye view of your entire trial portfolio. Simplify complexity and accelerate outcomes.",
       imageId: 'hero-carousel-3',
-      cta1: { text: "Explore the Platform", link: "/solutions/clinical-trial-platform" },
-      cta2: { text: "See all solutions", link: "/solutions" }
+      cta1: { text: "Schedule a demo", link: "/request-demo" },
+      cta2: { text: "Explore More", link: "/solutions" }
     }
   ];
 
@@ -1268,7 +1267,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 1,
         title: "Better Data. Better Clinical Trials.",
         description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
-        linkText: "Schedule a live demo",
+        linkText: "Learn More",
         linkUrl: "/contact",
         imageId: "hero-carousel-1"
     },
@@ -1276,7 +1275,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 2,
         title: "Keep Close Tabs on Your Clinical Supplies",
         description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
-        linkText: "Contact us for a demo",
+        linkText: "Learn More",
         linkUrl: "/contact",
         imageId: "hero-carousel-2"
     },
@@ -1284,7 +1283,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
         id: 3,
         title: "A Well-Integrated CTP",
         description: "For a bird’s-eye view of Clinical Trials",
-        linkText: "Discover now",
+        linkText: "Learn More",
         linkUrl: "/solutions/clinical-trial-platform",
         imageId: "hero-carousel-3"
     }
@@ -2011,3 +2010,5 @@ export const trialAnalyticsFeatures = [
     }
 ];
       
+
+    

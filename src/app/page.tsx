@@ -9,7 +9,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerStories } from '@/components/layout/CustomerStories';
 import { HeroCarousel } from '@/components/layout/HeroCarousel';
-import { AchievementsSection } from '@/components/layout/AchievementsSection';
 import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
@@ -18,7 +17,6 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { useState } from 'react';
 import { CustomerSuccess } from '@/components/home/customer-success';
 import { PlatformToolsSection } from '@/components/solutions/PlatformToolsSection';
-import { PlatformFeatures } from '@/components/layout/PlatformFeatures';
 
 
 export default function Home() {
@@ -45,8 +43,6 @@ export default function Home() {
         <WhyChooseUs />
         
         <ResearchIntegrateAnalyze />
-        <PlatformFeatures />
-        <AchievementsSection />
         
         <CustomerSuccess />
 

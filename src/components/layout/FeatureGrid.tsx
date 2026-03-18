@@ -32,7 +32,7 @@ export function FeatureGrid() {
               <div className="mt-4">
                 <Button variant="link" asChild className="p-0 h-auto font-semibold">
                     <Link href={item.link}>
-                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                        Explore More <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
               </div>

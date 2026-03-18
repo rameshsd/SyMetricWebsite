@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -27,12 +26,7 @@ const aboutSyMetricLinks = [
 
 const siteInfoLinks = [
   { name: 'Privacy', href: '/privacy-policy' },
-  { name: 'Terms of use', href: '#' },
-  { name: 'Legal disclosure', href: '#' },
-  { name: 'Copyright', href: '#' },
-  { name: 'Trademark', href: '#' },
-  { name: 'Cookie statement', href: '#' },
-  { name: 'Cookie preferences', href: '#' },
+  { name: 'Terms of use', href: '/terms-of-use' },
 ];
 
 const socialLinks = [
@@ -186,17 +180,17 @@ export function Footer() {
             </Accordion>
         </div>
 
-        <div className="mt-12 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
+        <div className="mt-12 border-t pt-8 flex flex-col items-center justify-center gap-4">
+            <div className="flex space-x-4">
+                {socialLinks.map((link) => (
+                  <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
+                    <link.icon className="h-5 w-5" />
+                    <span className="sr-only">{link.name}</span>
+                  </a>
+                ))}
+            </div>
           <div className="text-xs text-muted-foreground">
-            {isClient ? `© ${new Date().getFullYear()} SyMetric SE or a SyMetric affiliate company. All rights reserved.` : <span>&nbsp;</span>}
-          </div>
-          <div className="flex space-x-4 mt-4 sm:mt-0">
-            {socialLinks.map((link) => (
-              <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
-                <link.icon className="h-5 w-5" />
-                <span className="sr-only">{link.name}</span>
-              </a>
-            ))}
+            {isClient ? `Copyright © ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
           </div>
         </div>
       </div>

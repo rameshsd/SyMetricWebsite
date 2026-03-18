@@ -42,7 +42,7 @@ export function ResearchIntegrateAnalyze() {
                                 <item.icon className="h-10 w-10 text-primary" strokeWidth={2.5}/>
                             </div>
                             <div>
-                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Application</p>
+                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Clinical Trial Platform</p>
                                 <h3 className="font-bold text-xl mt-1">{item.title}</h3>
                                 <p className="text-muted-foreground mt-2">{item.description}</p>
                             </div>
@@ -58,3 +58,6 @@ export function ResearchIntegrateAnalyze() {
         </section>
     );
 }
+
+
+    

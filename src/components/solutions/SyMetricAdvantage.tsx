@@ -74,7 +74,7 @@ export function SyMetricAdvantage() {
                                 <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
                                     <advantage.icon className="h-12 w-12 text-primary" strokeWidth={2.5} />
                                 </div>
-                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Application</p>
+                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Clinical Trial Platform</p>
                                 <h3 className="text-xl font-bold pt-2 !m-0">{advantage.title}</h3>
                             </CardHeader>
                             <CardContent className="flex-grow">
@@ -87,3 +87,6 @@ export function SyMetricAdvantage() {
         </section>
     );
 }
+
+
+    
