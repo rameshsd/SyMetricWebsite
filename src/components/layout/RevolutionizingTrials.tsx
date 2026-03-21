@@ -35,91 +35,58 @@ const features = [
     }
 ];
 
-const FeatureRow = ({
-  icon: Icon,
-  title,
-  description,
-  imageId,
-  reverse = false,
-  isLast = false
-}: {
-  icon: LucideIcon,
-  title: string,
-  description: string,
-  imageId: string,
-  reverse?: boolean,
-  isLast?: boolean
-}) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
-  const image = PlaceHolderImages.find((img) => img.id === imageId);
-
-  const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-  };
-
-  return (
-    <div ref={ref} className="relative pl-10 md:pl-12">
-      {!isLast && <div className="absolute left-0 top-16 bottom-[-6rem] md:bottom-[-8rem] w-px bg-border -translate-x-1/2" />}
-      <div className="absolute left-0 top-4 -translate-x-1/2">
-        <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center">
-            <div className="w-2 h-2 bg-primary rounded-full" />
-        </div>
-      </div>
-      <motion.div
-        variants={variants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-        className="grid md:grid-cols-2 gap-12 md:gap-16 items-center"
-      >
-        <div className={cn("space-y-4", reverse && "md:order-2")}>
-            <div className="p-3 bg-primary/10 rounded-lg inline-block mb-2 transform transition-transform hover:scale-110 duration-300">
-                 <Icon className="w-10 h-10 text-primary" />
-            </div>
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <p className="text-muted-foreground text-lg">{description}</p>
-        </div>
-        <div className={cn("relative aspect-[4/3] max-w-md mx-auto md:w-full", reverse && "md:order-1")}>
-            {image && (
-                <div className="w-full h-full p-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl transform transition-transform hover:scale-105 duration-500 shadow-md">
-                     <Image
-                        src={image.imageUrl}
-                        alt={image.description || title}
-                        data-ai-hint={image.imageHint}
-                        fill
-                        className="object-cover rounded-2xl shadow-inner"
-                    />
-                </div>
-            )}
-        </div>
-      </motion.div>
-    </div>
-  );
-};
-
 
 export function RevolutionizingTrials() {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
   return (
     <section className="w-full bg-gradient-to-b from-white to-slate-50 dark:from-background dark:to-gray-900/50 py-20 md:py-28">
       <div className="container">
-        <div className="max-w-6xl mx-auto">
-          <SectionTitle
-            eyebrow="HOW IT WORKS"
-            title="Efficiency In the clinical trials"
-            description="Our unified platform uses automation and a scalable infrastructure to streamline workflows, unify data, and accelerate every phase of your trial."
-            className="mb-20"
-          />
+        <SectionTitle
+          eyebrow="HOW IT WORKS"
+          title="Efficiency In The Clinical Trials"
+          description="Our unified platform uses automation and a scalable infrastructure to streamline workflows, unify data, and accelerate every phase of your trial."
+          className="mb-16 text-left"
+        />
 
-          <div className="relative space-y-24 md:space-y-32">
-            {features.map((feature, index) => (
-              <FeatureRow
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {features.map((feature, index) => {
+            const image = PlaceHolderImages.find((img) => img.id === feature.imageId);
+            const Icon = feature.icon;
+            
+            return (
+              <motion.div
                 key={feature.title}
-                {...feature}
-                reverse={index % 2 !== 0}
-                isLast={index === features.length - 1}
-              />
-            ))}
-          </div>
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="bg-background rounded-2xl border shadow-sm hover:shadow-lg transition-all duration-300 group hover:-translate-y-1"
+              >
+                <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+                    <div className="sm:col-span-2 space-y-3 text-left">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                                <Icon className="w-6 h-6 text-primary" />
+                            </div>
+                            <h3 className="text-lg font-bold">{feature.title}</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    </div>
+                    <div className="relative aspect-square sm:h-full w-full max-w-[150px] sm:max-w-none mx-auto">
+                        {image && (
+                            <Image
+                                src={image.imageUrl}
+                                alt={image.description || feature.title}
+                                data-ai-hint={image.imageHint}
+                                fill
+                                className="object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                            />
+                        )}
+                    </div>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
