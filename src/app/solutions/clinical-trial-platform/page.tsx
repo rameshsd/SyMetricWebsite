@@ -33,7 +33,6 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Tools', href: '#tools' },
         { label: 'Related Products', href: '#related-products' },
         { label: 'Hosting', href: '#hosting' },
-        { label: 'Pricing', href: '#pricing' },
     ];
 
   return (
@@ -90,17 +89,6 @@ export default function ClinicalTrialPlatformPage() {
             <SyMetricAdvantage />
             <SecurityCompliance />
             
-            <section id="pricing" className="bg-secondary/50">
-                <div className="container">
-                  <div className="text-center">
-                      <h2 className="text-4xl font-bold mb-6">Get Started Today</h2>
-                      <div className="flex gap-4 justify-center mt-8">
-                          <Button size="lg" asChild><a href="/request-demo">Get a demo</a></Button>
-                          <Button size="lg" variant="outline" asChild><a href="/contact">Contact us for pricing</a></Button>
-                      </div>
-                  </div>
-                </div>
-            </section>
         </div>
     </>
   );
