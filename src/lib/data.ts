@@ -1138,7 +1138,7 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     {
         id: 'compliant',
         title: 'Security & Compliance',
-        description: 'Built to meet global clinical research standards including 21 CFR Part 11, ICH-GCP, HIPAA, GDPR, ISO 27001, and SOC 2. The platform ensures secure data handling, regulatory compliance, full audit trails, and enterprise-grade protection for sensitive clinical trial information.',
+        description: 'Adheres to 21 CFR Part 11, ICH-GCP, HIPAA, and GDPR standards, with ISO 27001–aligned security and ALCOA+ data integrity principles ensuring audit readiness and regulatory compliance.',
         imageId: 'why-us-compliant',
         learnMoreLink: '#'
     },
@@ -2011,4 +2011,5 @@ export const trialAnalyticsFeatures = [
 ];
       
 
+    
     
