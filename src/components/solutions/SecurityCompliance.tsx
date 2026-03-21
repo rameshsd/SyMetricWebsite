@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -36,8 +35,8 @@ const itemVariants = {
 
 const badgeVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-        opacity: 1, 
+    visible: {
+        opacity: 1,
         scale: 1,
         transition: { type: "spring", stiffness: 300, damping: 20 }
     },
@@ -49,7 +48,7 @@ const AnimatedDiagram = () => {
 
   const diagramContainer = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
       transition: { staggerChildren: 0.3, delayChildren: 0.2 }
     }
@@ -57,8 +56,8 @@ const AnimatedDiagram = () => {
 
   const centerIcon = {
     hidden: { scale: 0.5, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
       transition: { type: 'spring', stiffness: 260, damping: 20, delay: 0.3 }
     }
@@ -75,8 +74,8 @@ const AnimatedDiagram = () => {
 
   const lineVariant = (delay: number) => ({
       hidden: { pathLength: 0, opacity: 0 },
-      visible: { 
-          pathLength: 1, 
+      visible: {
+          pathLength: 1,
           opacity: 0.5,
           transition: { duration: 1, ease: "easeInOut", delay: delay }
       }
@@ -136,7 +135,7 @@ const AnimatedDiagram = () => {
           variants={lineVariant(1.3)}
         />
       </svg>
-      
+
       {/* Central Node */}
       <motion.div
         variants={centerIcon}
@@ -163,7 +162,7 @@ const AnimatedDiagram = () => {
           <span className="font-semibold text-sm text-foreground mt-2 block text-center">Security</span>
         </motion.div>
       </motion.div>
-      
+
       {/* Bottom-Left Node */}
       <motion.div
         variants={orbitingItem(1)}
@@ -177,7 +176,7 @@ const AnimatedDiagram = () => {
           <span className="font-semibold text-sm text-foreground mt-2 block text-center">Compliance</span>
         </motion.div>
       </motion.div>
-      
+
       {/* Bottom-Right Node */}
       <motion.div
         variants={orbitingItem(2)}
@@ -198,7 +197,6 @@ const AnimatedDiagram = () => {
 
 export function SecurityCompliance() {
   const [ref, isInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const globalStandardsImage = PlaceHolderImages.find(p => p.id === 'global-standards');
 
   return (
     <section className="bg-secondary/50">
@@ -215,32 +213,23 @@ export function SecurityCompliance() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto"
         >
           {/* Left Column: Text Content */}
-          <div className="space-y-10">
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Security, Compliance, and Data Integrity</h3>
-              <p className="text-lg text-muted-foreground">
-                Our system design ensures full compliance with federal regulations like **21 CFR Part 11**, with a proven track record for maintaining data integrity, security, and electronic signatures as per FDA regulations. Data security is an implicit part of our product development, with security features built from the ground up, backed by our team of experts.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Uncompromised Commitment to Data Privacy</h3>
-              <p className="text-lg text-muted-foreground">
-                We ensure you meet regulatory requirements like **GDPR** and **HIPAA** through proactive measures. Our strict data governance policies ensure the use and disclosure of PHI is well-governed, and the collection, storage, and use of personal data is always justified and consent-based.
-              </p>
-               <Button variant="link" asChild className="p-0 h-auto mt-4 text-primary">
-                  <Link href="#">
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl font-bold text-foreground mb-4">Comprehensive Regulatory Adherence</h3>
+            <p className="text-lg text-muted-foreground">
+              Our platform ensures full compliance with global regulatory standards including 21 CFR Part 11, ICH-GCP, GDPR, HIPAA, GMP, GS1, ISO 27001, and ISO 9001, ensuring data integrity, patient safety, and audit readiness across all clinical trial processes.
+            </p>
+             <Button variant="link" asChild className="p-0 h-auto mt-4 text-primary">
+                <Link href="/privacy-policy">
                     Read our privacy policy <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-              </Button>
-            </motion.div>
-          </div>
+                </Link>
+            </Button>
+          </motion.div>
 
           {/* Right Column: Animated Badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center">
              <motion.div variants={badgeVariants}><Fda21Cfr className="w-full h-auto" /></motion.div>
             <motion.div variants={badgeVariants}><IchGcp className="w-full h-auto" /></motion.div>
             <motion.div variants={badgeVariants}><GdprIcon className="w-full h-auto" /></motion.div>
@@ -250,35 +239,6 @@ export function SecurityCompliance() {
             <motion.div variants={badgeVariants}><Iso27001 className="w-full h-auto" /></motion.div>
             <motion.div variants={badgeVariants}><Iso9001 className="w-full h-auto" /></motion.div>
           </div>
-        </motion.div>
-
-        <motion.div
-            ref={ref}
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto mt-16"
-        >
-             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Built on Global Standards</h3>
-              <p className="text-lg text-muted-foreground">
-                System processes are designed around **ICH-GCP** and **GMP** guidelines to ensure subject safety and product quality. Our solution is also fully compliant with **GS1** requirements, providing a common framework for identifying, capturing, and sharing data across all stakeholders.
-              </p>
-            </motion.div>
-
-             <motion.div variants={itemVariants}>
-              {globalStandardsImage && (
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                  <Image
-                    src={globalStandardsImage.imageUrl}
-                    alt={globalStandardsImage.description}
-                    data-ai-hint={globalStandardsImage.imageHint}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-            </motion.div>
         </motion.div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-
 import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
 import {
   FlaskConical,
@@ -719,18 +718,18 @@ export const leadership: LeadershipMember[] = [
 
 
 export const customers: Customer[] = [
-    { 
+    {
         name: 'Dr Madhavi Prabhvalkar',
         role: 'Senior Manager, Clinical Data Management',
         company: 'Sun Pharma Advanced Research Company',
-        avatarId: 'avatar-1', 
+        avatarId: 'avatar-1',
         story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
     },
-    { 
+    {
         name: 'Director, Research and Development',
         role: 'Director, Research and Development',
         company: 'Global Pharmaceutical Company',
-        avatarId: 'avatar-2', 
+        avatarId: 'avatar-2',
         story: 'Using SyMetric IWRS, we were able to reduce the investigational product (IP) cost by at least 30% which will translate to savings of a few hundred thousand dollars. SyMetric IWRS helped us to reduce man-hours by at least 30% in IP accountability and the sponsor can check the IP status just in one click irrespective of number of sites, depots, and countries involved.'
     }
 ];
@@ -886,77 +885,77 @@ export const customerSuccessStories: CustomerSuccessStory[] = [
 ];
 
 export const featureGridItems: FeatureGridItem[] = [
-    { 
-        icon: IdentityAccessIcon, 
+    {
+        icon: IdentityAccessIcon,
         title: 'Identity and Access Management',
         description: 'Role-Based Access Control and Self-Service Account Management.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: OrganizationIcon, 
+    {
+        icon: OrganizationIcon,
         title: 'Organization Management',
         description: 'Manage all organizations participating in your trials from a central location.',
-        link: '#' 
+        link: '#'
     },
-    { 
+    {
         icon: CustomerManagementIcon,
         title: 'Customer Management',
         description: 'Manage relationships and data for sponsors and CROs.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: StudyIcon, 
+    {
+        icon: StudyIcon,
         title: 'Study Management',
         description: 'Define, configure, and oversee all aspects of your clinical studies.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: SiteIcon, 
+    {
+        icon: SiteIcon,
         title: 'Site Management',
         description: 'Streamline site activation, monitoring, and communication for efficient trial execution.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: SuppliesIcon, 
+    {
+        icon: SuppliesIcon,
         title: 'Clinical Supplies Management',
         description: 'Track and manage investigational products and trial supplies in real-time across all sites.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: SubjectIcon, 
+    {
+        icon: SubjectIcon,
         label: 'Subject Management',
         description: 'Handle subject enrollment, randomization, and tracking throughout the trial lifecycle.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: DataManagementIcon, 
+    {
+        icon: DataManagementIcon,
         label: 'Data Management',
         description: 'Ensure data quality with our EDC tools, including validation, query management, and exports.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: LabIcon, 
+    {
+        icon: LabIcon,
         label: 'Lab Management',
         description: 'Manage lab data, normal ranges, and sample tracking with seamless integration.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: MedicalCodingIcon, 
+    {
+        icon: MedicalCodingIcon,
         title: 'Medical Coding',
         description: 'Standardize medical terms with integrated coding dictionaries like MedDRA and WHO-Drug.',
         link: '#',
     },
-    { 
-        icon: ReportsIcon, 
+    {
+        icon: ReportsIcon,
         title: 'Reports',
         description: 'Generate insightful reports and visualizations for real-time trial oversight.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: DigitalLearningIcon, 
+    {
+        icon: DigitalLearningIcon,
         title: 'Digital Learning',
         description: 'Provide training and certification for trial personnel directly on the platform.',
-        link: '#' 
+        link: '#'
     },
     {
         icon: DataServicesIcon,
@@ -964,23 +963,23 @@ export const featureGridItems: FeatureGridItem[] = [
         description: 'Custom data exports, integrations, and reporting services to meet unique needs.',
         link: '#'
     },
-    { 
-        icon: SampleManagementIcon, 
+    {
+        icon: SampleManagementIcon,
         title: 'Sample Management',
         description: 'Track the entire lifecycle of biological samples, from collection to storage and analysis.',
-        link: '#' 
+        link: '#'
     },
-    { 
-        icon: LabelManagementIcon, 
+    {
+        icon: LabelManagementIcon,
         title: 'Label Management',
         description: 'Ensure compliance and accuracy with integrated tools for creating and managing drug labels.',
         link: '#',
     },
-    { 
-        icon: HelpSupportIcon, 
+    {
+        icon: HelpSupportIcon,
         title: 'Help and Support',
         description: 'Access our dedicated support team and comprehensive knowledge base 24/7.',
-        link: '#' 
+        link: '#'
     },
 ];
 
@@ -1138,7 +1137,7 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
     {
         id: 'compliant',
         title: 'Security & Compliance',
-        description: 'Adheres to 21 CFR Part 11, ICH-GCP, HIPAA, and GDPR standards, with ISO 27001–aligned security and ALCOA+ data integrity principles ensuring audit readiness and regulatory compliance.',
+        description: 'Our platform ensures full compliance with global regulatory standards including 21 CFR Part 11, ICH-GCP, GDPR, HIPAA, GMP, GS1, ISO 27001, and ISO 9001, ensuring data integrity, patient safety, and audit readiness across all clinical trial processes.',
         imageId: 'why-us-compliant',
         learnMoreLink: '#'
     },
@@ -1214,7 +1213,7 @@ export const salesSpecialistHelp = [
         description: "Information on pricing and cost optimization."
     }
 ];
-    
+
 export const successStories: SuccessStory[] = [
     {
         id: 'global-pharma',
@@ -1742,7 +1741,7 @@ export const subjectManagementFaq: FAQItem[] = [
         answer: "If a subject withdraws from a study, the 'Subject Replacement' feature allows you to enroll a new subject who can take the place of the withdrawn one within the randomization scheme. This is crucial for maintaining the statistical power and balance of the treatment arms, especially in studies with complex designs."
     }
 ];
-    
+
 export const jobOpenings: JobOpening[] = [
     {
         id: 'dev-001',
@@ -1925,7 +1924,7 @@ export const topAuthors: TopAuthor[] = [
     { id: '6', name: 'philipp_herzig', avatarId: 'avatar-1', kudos: 14, sapLogo: 'https://www.sap.com/dam/application/shared/logos/sap-logo.svg', imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-1')?.imageUrl || '' },
     { id: '7', name: 'thomas_volmering', avatarId: 'avatar-3', kudos: 12, imageUrl: PlaceHolderImages.find(p => p.id === 'avatar-3')?.imageUrl || '' },
 ];
-    
+
 export const aiFaqItems: FAQItem[] = [
     {
       question: 'What is SyMetric Business AI?',
@@ -1953,7 +1952,7 @@ export const aiFaqItems: FAQItem[] = [
         'Joule is a natural language, generative AI copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
     },
 ];
-    
+
 export const trialAnalyticsBenefits = [
     {
         icon: Target,
@@ -2009,7 +2008,3 @@ export const trialAnalyticsFeatures = [
         description: "You can plan the study in a sequential manner based on stakeholder analytics at every stage. Analytics pertaining to CROs, Investigation Sites, and Investigators can be viewed on a separate tab. Planners can go to each tab to view the analytics and decide to choose them for the new Trial."
     }
 ];
-      
-
-    
-    
