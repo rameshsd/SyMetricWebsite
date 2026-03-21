@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -123,7 +122,10 @@ export function PlatformToolsGrid() {
   const activeImage = PlaceHolderImages.find(p => p.id === activeTool.imageId);
 
   return (
-    <section className="bg-sap-gradient text-white">
+    <section 
+        className="py-20 text-white" 
+        style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #4f46e5 100%)' }}
+    >
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold tracking-tight">
