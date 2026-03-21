@@ -29,9 +29,6 @@ export default function IndustriesPage() {
                         <Button size="lg" variant="secondary" asChild>
                             <Link href="/request-demo">Request a demo</Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" asChild>
-                            <Link href="/solutions">Explore solutions</Link>
-                        </Button>
                     </div>
                     </div>
                     <div className="relative h-80 w-full">

@@ -102,9 +102,6 @@ export default function StudyManagementPage() {
                       <Button size="lg" asChild>
                         <Link href="/request-demo">Request a demo</Link>
                       </Button>
-                      <Button size="lg" variant="outline" asChild>
-                        <Link href="/solutions">Explore Solutions</Link>
-                      </Button>
                     </div>
                   </div>
                   <div className="relative h-[300px] lg:h-[400px] w-full rounded-xl overflow-hidden shadow-md">
