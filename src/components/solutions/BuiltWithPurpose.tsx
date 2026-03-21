@@ -21,7 +21,7 @@ export function BuiltWithPurpose() {
                 Our platform is built for the cloud era with modular, integrated tools that are designed to provide flexibility. Whether you are a Pharmaceutical Company, Clinical Research Organization, or an Academic Institution, our Platform can be tailored to your Study requirements, including Adaptive Trials, Umbrella Trials, Basket Studies, and Virtual Clinical Trials.
             </p>
             <Button asChild className="mt-8" size="lg">
-                <Link href="/contact">Get Started</Link>
+                <Link href="/request-demo">Request a Demo</Link>
             </Button>
           </div>
           <div className="relative h-64 md:h-full min-h-[400px]">
