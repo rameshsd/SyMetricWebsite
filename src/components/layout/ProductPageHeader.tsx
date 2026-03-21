@@ -23,7 +23,6 @@ type SecondaryNavItem = {
 const secondaryNavTemplate: SecondaryNavItem[] = [
   { label: "Overview", href: "/solutions" },
   { label: "Applications", dropdown: true, items: [] },
-  { label: "Pricing", href: "#" },
 ];
 
 type ProductPageHeaderProps = {

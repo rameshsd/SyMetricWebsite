@@ -1207,10 +1207,6 @@ export const salesSpecialistHelp = [
     {
         title: "Assistance for migrating applications and infrastructure to the cloud",
         description: "Assistance for migrating applications and infrastructure to the cloud and optimizing your environment."
-    },
-    {
-        title: "Information on pricing and cost optimization",
-        description: "Information on pricing and cost optimization."
     }
 ];
 
@@ -1940,11 +1936,6 @@ export const aiFaqItems: FAQItem[] = [
       question: 'Is Joule available today?',
       answer:
         'Joule is available in the latest editions of SyMetric solutions and is planned to be available in other solutions soon. For more information, refer to the SyMetric product roadmap.'
-    },
-    {
-      question: 'What is the pricing model for Joule?',
-      answer:
-        'Joule is included in the standard license for SyMetric cloud solutions. For more information on pricing, please contact our sales team.'
     },
     {
       question: 'How does Joule work?',

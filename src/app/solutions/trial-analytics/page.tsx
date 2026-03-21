@@ -97,7 +97,6 @@ export default function TrialAnalyticsPage() {
                         <div className="text-center">
                             <div className="flex gap-4 justify-center mt-8">
                                 <Button size="lg" asChild><Link href="/contact">Get a demo</Link></Button>
-                                <Button size="lg" variant="outline" asChild><Link href="/contact">Contact us for pricing</Link></Button>
                             </div>
                         </div>
                     </div>
