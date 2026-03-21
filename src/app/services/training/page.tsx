@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent } from '@/components/ui/card';
 import { LogIn, Library, ClipboardCheck, Award } from 'lucide-react';
 
@@ -73,8 +72,6 @@ export default function TrainingPage() {
           </div>
         </section>
         
-        <TechEdBanner />
-
         <section id="process">
           <div className="container">
               <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -119,5 +116,3 @@ export default function TrainingPage() {
     </>
   );
 }
-
-    

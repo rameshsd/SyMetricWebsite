@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   DatabaseZap,
@@ -127,8 +126,6 @@ export default function ClinicalDataManagementPage() {
             </div>
         </section>
         
-        <TechEdBanner />
-
         <section id="offerings">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-16">

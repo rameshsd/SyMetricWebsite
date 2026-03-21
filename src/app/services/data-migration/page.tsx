@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ClipboardCheck,
@@ -125,8 +124,6 @@ export default function DataMigrationPage() {
           </div>
         </section>
         
-        <TechEdBanner />
-
         <section id="process">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-16">

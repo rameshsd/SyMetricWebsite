@@ -13,7 +13,6 @@ import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
-import { TechEdBanner } from '@/components/layout/TechEdBanner';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 
@@ -68,7 +67,6 @@ export default function ClinicalTrialPlatformPage() {
                     </div>
                 </section>
             )}
-            <TechEdBanner />
 
             <div id="how-it-works">
                 <BuiltWithPurpose />
