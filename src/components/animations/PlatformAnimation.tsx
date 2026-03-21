@@ -86,7 +86,7 @@ export const PlatformAnimation = () => {
       >
         <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center pointer-events-none">
             <div className="pt-5" style={{ transform: 'scale(0.8) sm:scale(1)'}}>
-                <Node icon={Gem} label="SyMetric Platform" />
+                <Node icon={Gem} label="SyMetric Clinical Platform" />
             </div>
             <div className="absolute w-full max-w-xl" style={{top: '300px', transform: 'scale(0.8) sm:scale(1)'}}>
                 <div className="flex justify-between w-full">
