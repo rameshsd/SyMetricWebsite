@@ -1,17 +1,15 @@
 
 export const Iso27001 = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 120 60" fill="none">
-        <rect width="120" height="60" rx="6" fill="#F1F5F9" />
-        <rect x="1" y="1" width="118" height="58" rx="5" fill="white" stroke="#E2E8F0" strokeWidth="2"/>
-        <text x="60" y="35" fontFamily="sans-serif" fontSize="14" fill="#0F172A" textAnchor="middle" fontWeight="bold">ISO 27001</text>
+        <rect width="120" height="60" rx="6" fill="#0D9488" />
+        <text x="60" y="35" fontFamily="sans-serif" fontSize="14" fill="white" textAnchor="middle" fontWeight="bold">ISO 27001</text>
     </svg>
 );
 
 export const Iso9001 = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 120 60" fill="none">
-        <rect width="120" height="60" rx="6" fill="#F1F5F9" />
-        <rect x="1" y="1" width="118" height="58" rx="5" fill="white" stroke="#E2E8F0" strokeWidth="2"/>
-        <text x="60" y="35" fontFamily="sans-serif" fontSize="14" fill="#0F172A" textAnchor="middle" fontWeight="bold">ISO 9001</text>
+        <rect width="120" height="60" rx="6" fill="#475569" />
+        <text x="60" y="35" fontFamily="sans-serif" fontSize="14" fill="white" textAnchor="middle" fontWeight="bold">ISO 9001</text>
     </svg>
 );
 
