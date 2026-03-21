@@ -95,10 +95,11 @@ export function GlobalPresence() {
         </div>
 
         <div className="mt-12 max-w-5xl mx-auto">
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-2">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-2">
             {locations.map((loc) => (
-              <li key={loc.name} className="flex items-center gap-2 text-sm">
+              <li key={loc.name} className="flex items-center gap-3 text-sm">
                 <span className={`w-2 h-2 ${loc.color} rounded-full`} />
+                <span className="font-semibold text-foreground w-8">{loc.value}</span>
                 <span className="text-muted-foreground">{loc.name}</span>
               </li>
             ))}

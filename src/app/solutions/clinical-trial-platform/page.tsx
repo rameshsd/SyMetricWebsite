@@ -20,7 +20,7 @@ import { CollaborationVision } from '@/components/solutions/CollaborationVision'
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
-  description: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools.',
+  description: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools that allow you to pick and configure them according to your needs.',
 };
 
 

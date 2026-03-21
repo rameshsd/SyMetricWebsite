@@ -168,9 +168,9 @@ export const solutions: Solution[] = [
     slug: 'clinical-trial-platform',
     hero: {
       title: 'SyMetric Clinical Trial Platform',
-      subtitle: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools that allow you to pick and configure them according to your needs.'
+      subtitle: 'A unified, end-to-end solution for managing your trials with maximum efficiency.'
     },
-    description: 'An integrated platform for seamless clinical trial management from start to finish.',
+    description: 'A unified, end-to-end solution for managing your trials with maximum efficiency.',
     longDescription: 'Our Clinical Trial Platform (CTP) provides a unified environment for managing all aspects of your clinical trials. From protocol development to final reporting, CTP streamlines workflows, enhances collaboration, and ensures data integrity.',
     icon: FlaskConical,
     image: 'solution-ctp',
@@ -410,7 +410,7 @@ export const solutions: Solution[] = [
         title: 'Advanced Trial Analytics',
         subtitle: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.'
     },
-    description: 'Unlock insights with advanced analytics, visualizations, and predictive modeling.',
+    description: 'Leverage real-time data and AI to derive actionable insights and make informed decisions.',
     longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
     icon: PieChart,
     image: 'trial-analytics-image',
