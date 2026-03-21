@@ -10,7 +10,7 @@ import { labManagementFaq } from '@/lib/data';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { SecureSaveSection } from '@/components/solutions/lab-management/SecureSaveSection';
+import { ConclusionSection } from '@/components/solutions/lab-management/ConclusionSection';
 
 
 export const metadata: Metadata = {
@@ -68,15 +68,15 @@ export default function LabDataManagementPage() {
             />
             <PageHeader title="Lab Management" secondaryNav={secondaryNav} />
             <div id="overview">
-                 <section className="bg-diagram-violet text-white">
+                 <section className="bg-primary text-primary-foreground">
                     <div className="container">
                         <div className="flex items-start gap-6">
                             <div className="p-3 bg-white/20 rounded-lg">
-                                <MessageSquare className="h-8 w-8 text-white" />
+                                <MessageSquare className="h-8 w-8 text-primary-foreground" />
                             </div>
                             <div>
                                 <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
-                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
+                                <p className="text-primary-foreground/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
                             </div>
                         </div>
                     </div>
@@ -105,9 +105,7 @@ export default function LabDataManagementPage() {
                     </div>
                 </section>
                 
-                <div id="conclusion">
-                  <SecureSaveSection />
-                </div>
+                <ConclusionSection />
 
                 <FaqAccordion faqs={labManagementFaq} />
             </div>
