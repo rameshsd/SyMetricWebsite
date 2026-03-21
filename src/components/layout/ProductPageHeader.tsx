@@ -22,7 +22,7 @@ type SecondaryNavItem = {
 
 const secondaryNavTemplate: SecondaryNavItem[] = [
   { label: "Overview", href: "/solutions" },
-  { label: "Applications", dropdown: true, items: [] },
+  { label: "Modules", dropdown: true, items: [] },
 ];
 
 type ProductPageHeaderProps = {
@@ -49,7 +49,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
   }, []);
 
   const secondaryNav = secondaryNavTemplate.map((item) => {
-    if (item.dropdown && item.label === "Applications") {
+    if (item.dropdown && item.label === "Modules") {
       return { ...item, items: solutions };
     }
     return item;
@@ -112,7 +112,7 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                         </DropdownMenuItem>
                       ))
                     ) : (
-                      <DropdownMenuItem>No applications found</DropdownMenuItem>
+                      <DropdownMenuItem>No modules found</DropdownMenuItem>
                     )}
                   </DropdownMenuContent>
                 </DropdownMenu>
