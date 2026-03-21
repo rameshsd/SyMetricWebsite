@@ -32,8 +32,6 @@ export function PageHeader({
   secondaryNav,
   showTitle = true,
 }: PageHeaderProps) {
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollY = useRef(0);
   const [activeSection, setActiveSection] = useState('');
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -46,17 +44,9 @@ export function PageHeader({
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) { 
-        setIsHidden(true); 
-      } else {
-        setIsHidden(false);
-      }
-      lastScrollY.current = currentScrollY;
-
       if (secondaryNav) {
-        const offset = (headerRef.current?.offsetHeight || 0) + 80 + 24; 
+        // Offset should account for the main navbar (4rem = 64px) and the sticky PageHeader itself.
+        const offset = (headerRef.current?.offsetHeight || 0) + 64 + 24; 
         
         const sectionPositions = secondaryNav.map(item => {
           const el = item.href.length > 1 ? document.querySelector(item.href) : null;
@@ -91,7 +81,8 @@ export function PageHeader({
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
-          const yOffset = -((headerRef.current?.offsetHeight || 0) + 80);
+          // Main nav height (h-16 = 4rem = 64px) + this header's height
+          const yOffset = -((headerRef.current?.offsetHeight || 0) + 64);
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({top: y, behavior: 'smooth'});
       }
@@ -103,8 +94,7 @@ export function PageHeader({
     <div
         ref={headerRef}
         className={cn(
-            "sticky z-30 border-b bg-background/95 backdrop-blur-lg transition-transform duration-300",
-            isHidden ? '-translate-y-full' : 'translate-y-0',
+            "sticky z-30 border-b bg-background/95 backdrop-blur-lg",
             "top-16" 
       )}>
 
