@@ -159,11 +159,11 @@ export function PlatformToolsGrid() {
         style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #4f46e5 100%)' }}
     >
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold tracking-tight">
+        <div className="text-center mx-auto">
+          <h2 className="text-3xl font-bold tracking-tight">
             Support Every Stake Holder and Strengthen The Process
           </h2>
-          <p className="mt-4 text-lg text-white/80 max-w-prose mx-auto">
+          <p className="mt-4 text-lg text-white/80 mx-auto">
             A comprehensive, modular suite to power every aspect of your clinical trial.
           </p>
         </div>
