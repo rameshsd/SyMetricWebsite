@@ -22,7 +22,10 @@ import {
     Settings,
     FileText,
     type LucideIcon,
-    MessageSquare
+    MessageSquare,
+    ArrowRight,
+    ArrowLeft,
+    Repeat
 } from 'lucide-react';
 import { ReactNode } from 'react';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -94,17 +97,28 @@ interface DetailCardProps {
     description: string;
 }
 
-const DetailCard = ({ icon: Icon, title, description }: DetailCardProps) => (
-    <div className="flex items-start gap-4 group">
-        <div className="flex-shrink-0 p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
+const DetailCard = ({ icon: Icon, title, description }: DetailCardProps) => {
+    const direction = description.includes('IRT sends') ? 'right' :
+                      (description.includes('ICSM sends') || description.includes('ICSM acknowledges') || description.includes('ICSM confirms')) ? 'left' :
+                      'both';
+    const ArrowIcon = direction === 'right' ? ArrowRight : direction === 'left' ? ArrowLeft : Repeat;
+
+    return (
+        <div className="flex items-start gap-4 group">
+            <div className="flex-shrink-0 p-3 rounded-xl bg-blue-100 dark:bg-blue-900/20">
+                <Icon className="h-8 w-8 text-blue-600 dark:text-blue-400" strokeWidth={2} />
+            </div>
+            <div>
+                <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-bold group-hover:text-primary">{title}</h3>
+                    <ArrowIcon className="h-5 w-5 text-muted-foreground mt-0.5" />
+                </div>
+                <p className="text-muted-foreground mt-1 text-sm">{description}</p>
+            </div>
         </div>
-        <div>
-            <h3 className="text-lg font-bold group-hover:text-primary">{title}</h3>
-            <p className="text-muted-foreground mt-1">{description}</p>
-        </div>
-    </div>
-);
+    );
+};
+
 
 export default function DataServicesPage() {
     const secondaryNav = [
@@ -185,7 +199,7 @@ export default function DataServicesPage() {
                             description="Our integration with SAP ICSM supports complete supply chain automation through a series of bi-directional API calls."
                             className="mb-16"
                         />
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                        <div className="grid md:grid-cols-2 gap-x-8 gap-y-12">
                             {sapFlows.map(flow => (
                                  <DetailCard key={flow.title} icon={flow.icon} title={flow.title} description={flow.description} />
                             ))}
