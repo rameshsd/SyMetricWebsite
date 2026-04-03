@@ -2,10 +2,8 @@
 
 import Link from 'next/link';
 import { Logo } from '@/components/shared/logo';
-import { Facebook, Youtube, Mail, MessageSquare, Globe, ArrowUp, ChevronRight } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Facebook, Youtube, Mail, MessageSquare, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const quickLinks = [
   { name: 'Solutions', href: '/solutions' },
@@ -37,11 +35,11 @@ const socialLinks = [
 
 const FooterLinkColumn = ({ title, links }: { title: string; links: { name: string; href: string }[] }) => (
     <div>
-        <h3 className="text-sm font-bold text-foreground tracking-wide">{title}</h3>
-        <ul className="mt-4 space-y-2">
+        <h3 className="text-sm font-bold text-white tracking-wider uppercase">{title}</h3>
+        <ul className="mt-4 space-y-3">
             {links.map((link) => (
             <li key={link.name}>
-                <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
+                <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
                 {link.name}
                 </Link>
             </li>
@@ -58,140 +56,59 @@ export function Footer() {
     setIsClient(true);
   }, []);
 
-  const scrollToTop = () => {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-  
   return (
-    <footer className="bg-secondary border-t">
-      <div className="container py-8">
-        <div className="flex justify-end items-center mb-8">
-            <Button variant="ghost" size="icon" onClick={scrollToTop} className="text-muted-foreground hover:text-primary">
-                <ArrowUp className="h-5 w-5" />
-                <span className="sr-only">Back to top</span>
-            </Button>
-        </div>
-        
-        {/* Desktop Grid */}
-        <div className="hidden md:block">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid md:grid-cols-4 lg:grid-cols-6 gap-8">
-                    <div className="col-span-2">
-                        <Logo />
-                        <div className="mt-8 space-y-4 text-sm">
-                            <div className="flex items-start gap-3">
-                                <Globe className="h-5 w-5 text-muted-foreground mt-0.5"/>
-                                <div>
-                                    <p className="text-muted-foreground">India</p>
-                                    <p className="font-semibold text-foreground">+91-80-66655771 | 1-800-266-2208</p>
-                                    <Link href="#" className="text-sm text-primary underline">Or see our complete list of local country numbers</Link>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <Mail className="h-5 w-5 text-muted-foreground"/>
-                                <Link href="/contact" className="text-foreground hover:text-primary">Contact us</Link>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <MessageSquare className="h-5 w-5 text-muted-foreground"/>
-                                <Link href="/contact" className="text-foreground hover:text-primary">Chat now</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <FooterLinkColumn title="Quick links" links={quickLinks} />
-                    <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
-                    <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
+    <footer className="bg-black text-gray-400 border-t border-gray-800">
+      <div className="h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"></div>
+      <div className="container pt-16 pb-12">
+        <div className="grid grid-cols-1 gap-y-12 md:grid-cols-6 md:gap-x-8">
+            {/* Logo and Contact info */}
+            <div className="md:col-span-2">
+                <div className="w-fit">
+                    <Logo />
                 </div>
-            </div>
-        </div>
-
-
-        {/* Mobile Accordion */}
-        <div className="md:hidden">
-            <div className="mb-8">
-                <Logo />
-                <div className="mt-8 space-y-4 text-sm">
+                 <div className="mt-8 space-y-4 text-sm">
                     <div className="flex items-start gap-3">
-                        <Globe className="h-5 w-5 text-muted-foreground mt-0.5"/>
+                        <Globe className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0"/>
                         <div>
-                            <p className="text-muted-foreground">India</p>
-                            <p className="font-semibold text-foreground">+91-80-66655771 | 1-800-266-2208</p>
-                            <Link href="#" className="text-sm text-primary underline">Or see our complete list of local country numbers</Link>
+                            <p className="text-gray-500">India</p>
+                            <p className="font-semibold text-gray-300">+91-80-66655771 | 1-800-266-2208</p>
+                            <Link href="#" className="text-sm text-primary underline hover:text-primary/80">Or see our complete list of local country numbers</Link>
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
-                        <Mail className="h-5 w-5 text-muted-foreground"/>
-                        <Link href="/contact" className="text-foreground hover:text-primary">Contact us</Link>
+                        <Mail className="h-5 w-5 text-gray-500"/>
+                        <Link href="/contact" className="text-gray-300 hover:text-white">Contact us</Link>
                     </div>
                     <div className="flex items-center gap-3">
-                        <MessageSquare className="h-5 w-5 text-muted-foreground"/>
-                        <Link href="/contact" className="text-foreground hover:text-primary">Chat now</Link>
+                        <MessageSquare className="h-5 w-5 text-gray-500"/>
+                        <Link href="/contact" className="text-gray-300 hover:text-white">Chat now</Link>
                     </div>
                 </div>
             </div>
 
-            <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="quick-links">
-                    <AccordionTrigger>
-                        <div className="flex items-center gap-4">
-                            <ChevronRight className="h-4 w-4" />
-                            <span>Quick links</span>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="space-y-2 pl-8">
-                        {quickLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
-                        ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="about-symetric">
-                    <AccordionTrigger>
-                         <div className="flex items-center gap-4">
-                            <ChevronRight className="h-4 w-4" />
-                            <span>About SyMetric</span>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="space-y-2 pl-8">
-                        {aboutSyMetricLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
-                        ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                 <AccordionItem value="site-information">
-                    <AccordionTrigger>
-                         <div className="flex items-center gap-4">
-                            <ChevronRight className="h-4 w-4" />
-                            <span>Site Information</span>
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="space-y-2 pl-8">
-                        {siteInfoLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.name}</Link></li>
-                        ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-            </Accordion>
+            {/* Link Columns */}
+            <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-3 gap-8">
+                <FooterLinkColumn title="Quick links" links={quickLinks} />
+                <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
+                <FooterLinkColumn title="Site Information" links={siteInfoLinks} />
+            </div>
         </div>
-
-        <div className="mt-12 border-t pt-8 flex flex-col items-center justify-center gap-4">
-            <div className="flex space-x-4">
+      </div>
+      
+      {/* Bottom Bar */}
+      <div className="container">
+        <div className="border-t border-gray-800 py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-gray-500">
+                {isClient ? `Copyright © ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
+            </div>
+            <div className="flex space-x-5">
                 {socialLinks.map((link) => (
-                  <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary bg-white p-2 rounded-md">
+                  <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white">
                     <link.icon className="h-5 w-5" />
                     <span className="sr-only">{link.name}</span>
                   </a>
                 ))}
             </div>
-          <div className="text-xs text-muted-foreground">
-            {isClient ? `Copyright © ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
-          </div>
         </div>
       </div>
     </footer>
