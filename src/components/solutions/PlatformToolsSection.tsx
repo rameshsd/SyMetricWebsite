@@ -22,21 +22,22 @@ export function PlatformToolsSection() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {toolsData.map(tool => (
-            <Card key={tool.id} className="flex flex-col overflow-hidden bg-background rounded-2xl shadow-sm border">
-              {/* Icon as image placeholder */}
-              <div className="flex items-center justify-center h-48 bg-slate-100 dark:bg-slate-800/50 relative">
-                  <tool.icon className="h-20 w-20 text-primary" />
+            <Card key={tool.id} className="flex flex-col overflow-hidden bg-card rounded-2xl shadow-sm border-0 transition-shadow hover:shadow-lg">
+              
+              {/* This div acts as the image placeholder */}
+              <div className="flex items-center justify-center h-48 bg-muted/50 relative">
+                  <tool.icon className="h-20 w-20 text-primary/80" />
               </div>
 
-              {/* Content */}
-              <CardContent className="p-6 flex flex-col flex-grow">
+              {/* The content area */}
+              <CardContent className="p-6 flex flex-col flex-grow text-left">
                   <h3 className="text-xl font-bold text-foreground">
                       {tool.label}
                   </h3>
                   <p className="mt-2 text-muted-foreground text-sm flex-grow">
                       {tool.description}
                   </p>
-                  <Button variant="outline" asChild className="mt-6 self-start">
+                  <Button variant="outline" asChild className="mt-6 self-start rounded-full">
                       <Link href={tool.link}>
                           Learn more
                       </Link>
