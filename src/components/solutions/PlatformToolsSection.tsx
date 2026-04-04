@@ -19,33 +19,32 @@ export function PlatformToolsSection() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {toolsData.map(tool => (
-            <Card key={tool.id} className="flex flex-col overflow-hidden bg-muted rounded-2xl shadow-sm border-0 transition-shadow hover:shadow-lg">
-              
-              {/* This div acts as the image placeholder */}
-              <div className="flex items-center justify-center h-40 bg-muted relative">
-                  <tool.icon className="h-16 w-16 text-primary/80" />
-              </div>
+        <Card className="p-8 bg-background rounded-3xl shadow-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {toolsData.map(tool => (
+                <Card key={tool.id} className="flex flex-col overflow-hidden bg-muted rounded-2xl shadow-sm border-0 transition-shadow hover:shadow-lg">
+                
+                <div className="flex items-center justify-center h-40 bg-muted relative">
+                    <tool.icon className="h-16 w-16 text-primary/80" />
+                </div>
 
-              {/* The content area */}
-              <CardContent className="p-5 flex flex-col flex-grow text-left">
-                  <h3 className="text-lg font-bold text-foreground">
-                      {tool.label}
-                  </h3>
-                  <p className="mt-2 text-muted-foreground text-sm flex-grow">
-                      {tool.description}
-                  </p>
-                  <Button variant="outline" asChild className="mt-4 self-start rounded-full">
-                      <Link href={tool.link}>
-                          Learn more
-                      </Link>
-                  </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <CardContent className="p-5 flex flex-col flex-grow text-left">
+                    <h3 className="text-lg font-bold text-foreground">
+                        {tool.label}
+                    </h3>
+                    <p className="mt-2 text-muted-foreground text-sm flex-grow">
+                        {tool.description}
+                    </p>
+                    <Button variant="outline" asChild className="mt-4 self-start rounded-full">
+                        <Link href={tool.link}>
+                            Explore more
+                        </Link>
+                    </Button>
+                </CardContent>
+                </Card>
+            ))}
+            </div>
+        </Card>
       </div>
     </section>
   );
