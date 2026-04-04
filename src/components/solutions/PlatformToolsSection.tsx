@@ -19,9 +19,9 @@ export function PlatformToolsSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {toolsData.map(tool => (
-            <div key={tool.id} className="bg-subtle-blue dark:bg-blue-900/10 p-8 rounded-2xl flex flex-col text-left h-full">
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 mb-6">
-                <tool.icon className="h-8 w-8 text-primary" />
+            <div key={tool.id} className="bg-secondary p-8 rounded-2xl flex flex-col text-left h-full">
+              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-primary/10 mb-6">
+                <tool.icon className="h-10 w-10 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-foreground">{tool.label}</h3>
               <p className="text-muted-foreground mt-4 text-base flex-grow">{tool.description}</p>
