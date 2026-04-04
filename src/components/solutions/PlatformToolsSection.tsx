@@ -22,7 +22,7 @@ export function PlatformToolsSection() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {toolsData.map(tool => (
-            <Card key={tool.id} className="group flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-background border-0 rounded-2xl shadow-sm">
+            <Card key={tool.id} className="flex flex-col overflow-hidden bg-background rounded-2xl shadow-sm border">
               {/* Icon as image placeholder */}
               <div className="flex items-center justify-center h-48 bg-slate-100 dark:bg-slate-800/50 relative">
                   <tool.icon className="h-20 w-20 text-primary" />
@@ -38,7 +38,7 @@ export function PlatformToolsSection() {
                   </p>
                   <Button variant="outline" asChild className="mt-6 self-start">
                       <Link href={tool.link}>
-                          Explore More
+                          Learn more
                       </Link>
                   </Button>
               </CardContent>
