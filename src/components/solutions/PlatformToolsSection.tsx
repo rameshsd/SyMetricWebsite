@@ -22,10 +22,10 @@ export function PlatformToolsSection() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {toolsData.map(tool => (
-            <Card key={tool.id} className="flex flex-col overflow-hidden bg-card rounded-2xl shadow-sm border-0 transition-shadow hover:shadow-lg">
+            <Card key={tool.id} className="flex flex-col overflow-hidden bg-muted rounded-2xl shadow-sm border-0 transition-shadow hover:shadow-lg">
               
               {/* This div acts as the image placeholder */}
-              <div className="flex items-center justify-center h-48 bg-muted/50 relative">
+              <div className="flex items-center justify-center h-48 bg-muted relative">
                   <tool.icon className="h-20 w-20 text-primary/80" />
               </div>
 
