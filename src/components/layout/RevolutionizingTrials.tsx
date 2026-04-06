@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/use-in-view';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Rocket, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -29,50 +29,42 @@ const features = [
     }
 ];
 
+const diagramFeatures = [
+    { icon: Rocket, label: 'Accelerate Timelines', position: { top: '0', left: '50%', transform: 'translateX(-50%)' } },
+    { icon: Users, label: 'Unify Data & Teams', position: { top: '50%', right: '0', transform: 'translateY(-50%)' } },
+    { icon: ShieldCheck, label: 'Ensure Compliance', position: { bottom: '0', left: '50%', transform: 'translateX(-50%)' } },
+    { icon: TrendingUp, label: 'Scale with Confidence', position: { top: '50%', left: '0', transform: 'translateY(-50%)' } },
+];
+
 const InnovationDiagram = () => (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto aspect-square flex items-center justify-center">
-        {/* Background concentric circles */}
-        {[...Array(4)].map((_, i) => (
-            <div
-                key={i}
-                className="absolute rounded-full border border-gray-200/80 dark:border-gray-700/50"
-                style={{
-                    width: `${60 + i * 15}%`,
-                    height: `${60 + i * 15}%`,
-                    opacity: 0.8 - i * 0.2,
-                }}
-            />
-        ))}
+    <div className="relative w-full max-w-sm mx-auto aspect-square flex items-center justify-center">
+        {/* Lines */}
+        <div className="absolute w-full h-full text-gray-200 dark:text-gray-700">
+            <span className="absolute top-1/2 left-0 w-full h-px bg-current"></span>
+            <span className="absolute left-1/2 top-0 h-full w-px bg-current"></span>
+        </div>
         
-        {/* Main rotating element */}
-        <div className="absolute w-[70%] h-[70%]">
-            <motion.div
-                className="relative w-full h-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-            >
-                <div className="w-full h-full bg-gradient-to-tr from-blue-500 via-purple-500 to-sky-400 rounded-full" />
-                <span className="absolute text-white font-bold text-xs" style={{ top: '5%', left: '45%' }}>AI</span>
-                <span className="absolute text-white font-bold text-xs transform -rotate-90" style={{ top: '48%', right: '5%' }}>DATA</span>
-                <span className="absolute text-white font-bold text-xs" style={{ bottom: '5%', left: '45%' }}>APPS</span>
-            </motion.div>
+        {/* Center */}
+        <div className="relative w-32 h-32 bg-background rounded-full flex items-center justify-center text-center p-4 shadow-lg border">
+             <p className="text-sm text-muted-foreground font-semibold">Unified Automation & Scalability</p>
         </div>
 
-        {/* Moving dot */}
-        <div className="absolute w-[70%] h-[70%]">
-             <motion.div 
-                className="absolute w-full h-full"
-                animate={{ rotate: -360 }} 
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-             >
-                <div className="absolute top-[-12px] left-1/2 -translate-x-1/2 w-6 h-6 bg-white rounded-full shadow-lg border-2 border-blue-200" />
+        {/* Nodes */}
+        {diagramFeatures.map((feature, i) => (
+            <motion.div
+                key={feature.label}
+                className="absolute flex flex-col items-center gap-2"
+                style={feature.position as any}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 * i, type: 'spring' }}
+            >
+                <div className="w-16 h-16 bg-background rounded-full flex items-center justify-center shadow-md border">
+                    <feature.icon className="w-8 h-8 text-primary" />
+                </div>
+                <p className="text-xs font-semibold text-center w-20">{feature.label}</p>
             </motion.div>
-        </div>
-        
-        {/* Center circle */}
-        <div className="absolute w-36 h-36 sm:w-40 sm:h-40 bg-background rounded-full flex items-center justify-center text-center p-4 shadow-lg">
-            <p className="text-xs sm:text-sm text-muted-foreground font-medium">Apps turn intelligence into action with AI</p>
-        </div>
+        ))}
     </div>
 );
 
