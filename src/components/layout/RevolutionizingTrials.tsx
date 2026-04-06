@@ -30,43 +30,37 @@ const features = [
 ];
 
 const diagramFeatures = [
-    { icon: Rocket, label: 'Accelerate Timelines', position: { top: '0', left: '50%', transform: 'translateX(-50%)' } },
-    { icon: Users, label: 'Unify Data & Teams', position: { top: '50%', right: '0', transform: 'translateY(-50%)' } },
-    { icon: ShieldCheck, label: 'Ensure Compliance', position: { bottom: '0', left: '50%', transform: 'translateX(-50%)' } },
-    { icon: TrendingUp, label: 'Scale with Confidence', position: { top: '50%', left: '0', transform: 'translateY(-50%)' } },
+    { icon: Rocket, title: 'Accelerate Timelines', description: "From study setup to submission." },
+    { icon: Users, title: 'Unify Data & Teams', description: "Connect sponsors, CROs, and sites." },
+    { icon: ShieldCheck, title: 'Ensure Compliance', description: "Built-in 21 CFR Part 11 & ICH-GCP." },
+    { icon: TrendingUp, title: 'Scale with Confidence', description: "From single-site to global trials." },
 ];
 
-const InnovationDiagram = () => (
-    <div className="relative w-full max-w-sm mx-auto aspect-square flex items-center justify-center">
-        {/* Lines */}
-        <div className="absolute w-full h-full text-gray-200 dark:text-gray-700">
-            <span className="absolute top-1/2 left-0 w-full h-px bg-current"></span>
-            <span className="absolute left-1/2 top-0 h-full w-px bg-current"></span>
-        </div>
-        
-        {/* Center */}
-        <div className="relative w-32 h-32 bg-background rounded-full flex items-center justify-center text-center p-4 shadow-lg border">
-             <p className="text-sm text-muted-foreground font-semibold">Unified Automation & Scalability</p>
-        </div>
+const InnovationDiagram = () => {
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
-        {/* Nodes */}
-        {diagramFeatures.map((feature, i) => (
-            <motion.div
-                key={feature.label}
-                className="absolute flex flex-col items-center gap-2"
-                style={feature.position as any}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 * i, type: 'spring' }}
-            >
-                <div className="w-16 h-16 bg-background rounded-full flex items-center justify-center shadow-md border">
-                    <feature.icon className="w-8 h-8 text-primary" />
-                </div>
-                <p className="text-xs font-semibold text-center w-20">{feature.label}</p>
-            </motion.div>
-        ))}
-    </div>
-);
+    return (
+        <div ref={ref} className="space-y-8">
+            {diagramFeatures.map((feature, index) => (
+                <motion.div
+                    key={feature.title}
+                    className="flex items-start gap-6"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                    <div className="flex-shrink-0 w-16 h-16 bg-background border rounded-2xl flex items-center justify-center shadow-lg">
+                        <feature.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-bold text-foreground">{feature.title}</h4>
+                        <p className="text-muted-foreground mt-1">{feature.description}</p>
+                    </div>
+                </motion.div>
+            ))}
+        </div>
+    );
+};
 
 
 export function RevolutionizingTrials() {
@@ -84,7 +78,7 @@ export function RevolutionizingTrials() {
             <InnovationDiagram />
             <div>
                  <h3 className="text-2xl font-bold tracking-tight">Turn connection into momentum</h3>
-                 <p className="mt-2 text-muted-foreground">Bring AI, data, and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation.</p>
+                 <p className="mt-2 text-muted-foreground">Bring data and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation.</p>
 
                 <div className="mt-8 space-y-6">
                     {features.map((feature) => (
