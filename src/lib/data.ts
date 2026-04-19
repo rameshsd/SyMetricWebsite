@@ -89,16 +89,11 @@ export const navItems: NavItem[] = [
         href: '/solutions',
         subItems: [
             { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform', description: 'A unified, end-to-end solution for managing your trials with maximum efficiency.' },
-            {
-                name: 'Solutions',
-                href: '/solutions',
-                subItems: [
-                    { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
-                    { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
-                    { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
-                    { name: 'Trial Analytics', href: '/solutions/trial-analytics', description: 'Leverage real-time data and AI to derive actionable insights and make informed decisions.' },
-                ]
-            }
+            { name: 'Solutions', href: '/solutions', description: 'Integrated strategies for clinical success' },
+            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
+            { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
+            { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
+            { name: 'Trial Analytics', href: '/solutions/trial-analytics', description: 'Leverage real-time data and AI to derive actionable insights.' },
         ]
     },
     {

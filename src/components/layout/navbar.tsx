@@ -52,7 +52,7 @@ const ListItem = React.forwardRef<
         <Link
           href={href || '#'}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-primary focus:text-primary",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
         >
@@ -321,31 +321,25 @@ export function Navbar() {
                             Products
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <div className="grid md:w-[600px] p-6 lg:w-[700px] grid-cols-[1fr_1fr]">
-                                <div className="row-span-3">
-                                    <NavigationMenuLink asChild>
-                                        <Link
-                                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                        href="/solutions/clinical-trial-platform"
-                                        >
-                                        <Logo />
-                                        <div className="mt-4 mb-2 text-lg font-medium">
-                                            Clinical Trial Platform
-                                        </div>
-                                        <p className="text-sm leading-tight text-muted-foreground">
-                                            A unified, end-to-end solution for managing your trials with maximum efficiency.
-                                        </p>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </div>
-                                <div>
-                                    <h3 className="font-semibold text-lg text-foreground mb-3 px-3">
-                                        <Link href="/solutions" className="hover:text-primary transition-colors">
-                                            Solutions
-                                        </Link>
-                                    </h3>
-                                    <ul className="grid gap-3">
-                                        {item.subItems?.find(si => si.name === 'Solutions')?.subItems?.map((component) => (
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px]">
+                                {item.subItems && item.subItems.length > 0 && (
+                                    <>
+                                        <li className="row-span-3">
+                                            <NavigationMenuLink asChild>
+                                                <Link
+                                                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                                    href={item.subItems[0].href!}
+                                                >
+                                                    <div className="mb-2 mt-4 text-lg font-bold">
+                                                        {item.subItems[0].name}
+                                                    </div>
+                                                    <p className="text-sm leading-tight text-muted-foreground">
+                                                        {item.subItems[0].description}
+                                                    </p>
+                                                </Link>
+                                            </NavigationMenuLink>
+                                        </li>
+                                        {item.subItems.slice(1).map((component) => (
                                             <ListItem
                                                 key={component.name}
                                                 title={component.name}
@@ -354,9 +348,9 @@ export function Navbar() {
                                                 {component.description}
                                             </ListItem>
                                         ))}
-                                    </ul>
-                                </div>
-                            </div>
+                                    </>
+                                )}
+                            </ul>
                         </NavigationMenuContent>
                         </>
                     ) : item.name === 'Services' && item.subItems ? (
