@@ -84,33 +84,33 @@ import {
 } from '@/components/icons/feature-grid-icons';
 
 export const navItems: NavItem[] = [
-    { 
-      name: 'Products and Services', 
-      href: '/solutions',
-      subItems: [
-        {
-          name: 'Products',
-          href: '/solutions',
-          subItems: [
-            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform' },
-            { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
-            { name: 'EDC', href: '/solutions/edc' },
-            { name: 'CTM', href: '/solutions/ctm' },
-            { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
-          ]
-        },
-        {
-          name: 'Services',
-          href: '/services',
-          subItems: [
+    {
+        name: 'Products',
+        href: '/solutions',
+        subItems: [
+            { name: 'Clinical Trial Platform', href: '/solutions/clinical-trial-platform', description: 'A unified, end-to-end solution for managing your trials with maximum efficiency.' },
+            {
+                name: 'Solutions',
+                href: '/solutions',
+                subItems: [
+                    { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
+                    { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
+                    { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
+                    { name: 'Trial Analytics', href: '/solutions/trial-analytics', description: 'Leverage real-time data and AI to derive actionable insights and make informed decisions.' },
+                ]
+            }
+        ]
+    },
+    {
+        name: 'Services',
+        href: '/services',
+        subItems: [
             { name: 'Clinical Data Management', href: '/services/clinical-data-management', description: 'Ensure data quality and compliance with our high-quality Data Management services.' },
             { name: 'Project Management', href: '/services/project-management', description: 'Manage your Clinical Trial effectively from consulting to reporting.' },
             { name: 'Data Migration', href: '/services/data-migration', description: 'Migrate your data onto our Cloud Solutions with ease and integration.' },
             { name: 'Training', href: '/services/training', description: 'Adopt our Platform and tools effortlessly using our comprehensive Online Training Services.' },
             { name: 'Support', href: '/services/support', description: 'Enjoy round-the-clock technical assistance and get your Operational queries answered.' },
-          ]
-        }
-      ]
+        ]
     },
     { name: 'Industries', href: '/industries' },
     { name: 'Community', href: '/community' },

@@ -7,7 +7,7 @@ import { Menu, X, Search, User, Globe, ChevronRight, ChevronLeft, LogOut, Messag
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { navItems, solutions } from '@/lib/data';
+import { navItems } from '@/lib/data';
 import { Logo } from '@/components/shared/logo';
 import {
   NavigationMenu,
@@ -276,25 +276,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const productsAndServicesItem = navItems.find(item => item.name === 'Products and Services');
-  
-  const productsSubItem = productsAndServicesItem?.subItems?.find(item => item.name === 'Products');
-  const servicesSubItem = productsAndServicesItem?.subItems?.find(item => item.name === 'Services');
-
-  const productComponents = productsSubItem?.subItems?.map(subItem => {
-    const solution = solutions.find(s => {
-      const solutionSlug = subItem.href.split('/').pop();
-      return s.slug === solutionSlug || (s.slug === 'clinical-trial-platform' && solutionSlug === 'clinical-trial-platform');
-    });
-    return {
-      title: subItem.name,
-      href: subItem.href,
-      description: solution?.description || ''
-    }
-  });
-  
-  const serviceComponents = servicesSubItem?.subItems;
-
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setTimeout(() => setMobileSubmenuStack([]), 300);
@@ -334,63 +315,76 @@ export function Navbar() {
               <NavigationMenuList>
               {(navItems || []).map((item) => (
                   <NavigationMenuItem key={item.name}>
-                  {item.href === '/solutions' && productsAndServicesItem?.subItems ? (
-                      <>
-                      <NavigationMenuTrigger className={cn((pathname.startsWith('/solutions') || pathname.startsWith('/services')) && 'data-[state=closed]:text-primary')}>
-                          {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                         <div className="grid md:w-[600px] lg:w-[700px] grid-cols-2 gap-x-8 p-6">
-                            {productsSubItem && (
-                                <div>
-                                <h3 className="font-semibold text-lg text-foreground mb-3">
-                                    <Link href={productsSubItem.href || '#'} className="hover:text-primary transition-colors">
-                                    {productsSubItem.name}
-                                    </Link>
-                                </h3>
-                                <ul className="grid gap-3">
-                                    {(productComponents || []).map((component) => (
-                                        <ListItem
-                                        key={component.title}
-                                        title={component.title}
-                                        href={component.href!}
+                    {item.name === 'Products' && item.subItems ? (
+                        <>
+                        <NavigationMenuTrigger className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}>
+                            Products
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            <div className="grid md:w-[600px] p-6 lg:w-[700px] grid-cols-[1fr_1fr]">
+                                <div className="row-span-3">
+                                    <NavigationMenuLink asChild>
+                                        <Link
+                                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                        href="/solutions/clinical-trial-platform"
                                         >
-                                        {component.description}
+                                        <Logo />
+                                        <div className="mt-4 mb-2 text-lg font-medium">
+                                            Clinical Trial Platform
+                                        </div>
+                                        <p className="text-sm leading-tight text-muted-foreground">
+                                            A unified, end-to-end solution for managing your trials with maximum efficiency.
+                                        </p>
+                                        </Link>
+                                    </NavigationMenuLink>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-lg text-foreground mb-3 px-3">
+                                        <Link href="/solutions" className="hover:text-primary transition-colors">
+                                            Solutions
+                                        </Link>
+                                    </h3>
+                                    <ul className="grid gap-3">
+                                        {item.subItems?.find(si => si.name === 'Solutions')?.subItems?.map((component) => (
+                                            <ListItem
+                                                key={component.name}
+                                                title={component.name}
+                                                href={component.href!}
+                                            >
+                                                {component.description}
+                                            </ListItem>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </NavigationMenuContent>
+                        </>
+                    ) : item.name === 'Services' && item.subItems ? (
+                        <>
+                            <NavigationMenuTrigger className={cn(pathname.startsWith('/services') && 'data-[state=closed]:text-primary')}>
+                                Services
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                    {(item.subItems || []).map((component) => (
+                                        <ListItem
+                                            key={component.name}
+                                            title={component.name}
+                                            href={component.href!}
+                                        >
+                                            {component.description}
                                         </ListItem>
                                     ))}
                                 </ul>
-                                </div>
-                            )}
-                            {servicesSubItem && (
-                                <div>
-                                <h3 className="font-semibold text-lg text-foreground mb-3">
-                                    <Link href={servicesSubItem.href || '#'} className="hover:text-primary transition-colors">
-                                    {servicesSubItem.name}
-                                    </Link>
-                                </h3>
-                                <ul className="grid gap-3">
-                                    {(serviceComponents || []).map((component) => (
-                                        <ListItem
-                                        key={component.name}
-                                        title={component.name}
-                                        href={component.href!}
-                                        >
-                                        {component.description}
-                                        </ListItem>
-                                    ))}
-                                </ul>
-                                </div>
-                            )}
-                         </div>
-                      </NavigationMenuContent>
-                      </>
-                  ) : (
-                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), item.href && pathname.startsWith(item.href) && 'text-primary')}>
-                      <Link href={item.href || '#'}>
-                        {item.name}
-                      </Link>
-                    </NavigationMenuLink>
-                  )}
+                            </NavigationMenuContent>
+                        </>
+                    ) : (
+                        item.href && <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), item.href && pathname.startsWith(item.href) && 'text-primary')}>
+                            <Link href={item.href}>
+                            {item.name}
+                            </Link>
+                        </NavigationMenuLink>
+                    )}
                   </NavigationMenuItem>
               ))}
               </NavigationMenuList>
