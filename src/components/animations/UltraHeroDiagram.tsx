@@ -6,105 +6,123 @@ import {
 } from 'lucide-react';
 
 const modules = [
-  { icon: Repeat, title: 'IRT / IWRS', x: 10 },
-  { icon: ClipboardList, title: 'CTM', x: 30 },
-  { icon: Database, title: 'EDC', x: 50 },
-  { icon: TrendingUp, title: 'Trial Analytics', x: 70 },
-  { icon: TestTube, title: 'Sample Management', x: 90 },
+  { icon: Repeat, title: 'IRT / IWRS' },
+  { icon: ClipboardList, title: 'CTM' },
+  { icon: Database, title: 'EDC' },
+  { icon: TrendingUp, title: 'Trial Analytics' },
+  { icon: TestTube, title: 'Sample Management' },
 ];
 
 export default function UltraHeroDiagram() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  };
+
+  const pathVariants = (i: number) => ({
+    hidden: { pathLength: 0 },
+    visible: { pathLength: 1, transition: { duration: 0.8, delay: 0.5 + i * 0.1, ease: "circOut" } },
+  });
+  
+  const dotVariants = (i: number) => ({
+    hidden: { scale: 0 },
+    visible: { scale: 1, transition: { type: "spring", stiffness: 400, damping: 15, delay: 1.3 + i * 0.1 } },
+  });
+
   return (
-    <div className="relative py-24 flex flex-col items-center overflow-hidden">
-
-      {/* GLOW BACKGROUND */}
-      <div className="absolute w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full top-0"></div>
-
-      {/* CENTER NODE */}
+    <div className="relative w-full h-[400px] flex flex-col items-center justify-between">
+      
+      {/* Central Card */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 bg-white rounded-2xl px-10 py-8 shadow-2xl text-center"
+        variants={itemVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 bg-white rounded-2xl px-10 py-8 shadow-2xl text-center w-80"
       >
-        <Gem className="mx-auto mb-3 text-blue-600 animate-pulse" size={42} />
+        <Gem className="mx-auto mb-3 text-blue-600" size={42} />
         <h2 className="text-2xl font-bold">SyMetric Clinical Platform</h2>
         <p className="text-sm text-gray-500 mt-1">
           Unified. Intelligent. Compliant.
         </p>
       </motion.div>
 
-      {/* SVG CONNECTIONS */}
-      <svg className="absolute top-[180px] w-full max-w-6xl h-[200px]" viewBox="0 0 100 200" preserveAspectRatio="none">
+      {/* SVG Container for Lines */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <svg width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="none" className="overflow-visible">
+          <defs>
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#a78bfa" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+          </defs>
+          {modules.map((_, i) => {
+              const startX = 400; // center of 800
+              const startY = 136; // bottom of the top card
+              const endX = (800 / 5) * (i + 0.5); // centered above each bottom card
+              const endY = 270; // adjusted top of the bottom card area to give more space
+              const controlY = startY + (endY - startY) * 0.4;
+              return (
+                 <motion.path
+                    key={i}
+                    d={`M ${startX} ${startY} Q ${startX + (endX - startX) * 0.3} ${controlY}, ${endX} ${endY}`}
+                    stroke="url(#line-gradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    variants={pathVariants(i)}
+                    initial="hidden"
+                    animate="visible"
+                  />
+              )
+          })}
+        </svg>
+      </div>
 
-        {modules.map((m, i) => (
-          <g key={i}>
-            {/* CURVED LINE */}
-            <motion.path
-              d={`M 50 0 Q ${m.x} 120 ${m.x} 180`}
-              stroke="url(#gradient)"
-              strokeWidth="0.5"
-              fill="transparent"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: i * 0.2 }}
-            />
-
-            {/* FLOW DOT (ANIMATION) */}
-            <circle r="1.5" fill="#3b82f6">
-                <animateMotion
-                    dur="2s"
-                    begin={`${i * 0.4}s`}
-                    repeatCount="indefinite"
-                    path={`M 50 0 Q ${m.x} 120 ${m.x} 180`}
-                />
-            </circle>
-          </g>
-        ))}
-
-        <defs>
-          <linearGradient id="gradient">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#8b5cf6" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* MODULES */}
-      <div className="mt-40 grid grid-cols-2 md:grid-cols-5 gap-8 w-full max-w-6xl px-4">
-
+      {/* Module Cards */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-5 gap-6 w-full max-w-4xl"
+      >
         {modules.map((m, i) => (
           <motion.div
             key={i}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 + i * 0.1 }}
-            className="relative group"
+            variants={itemVariants}
+            className="relative flex flex-col items-center"
           >
-            {/* PULSE DOT */}
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-              <span className="flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-              </span>
-            </div>
-
-            {/* CARD */}
-            <div className="bg-white/80 backdrop-blur-md border border-white/30 p-5 rounded-xl shadow-lg text-center hover:scale-105 transition">
-
+            <motion.div 
+              className="absolute -top-5 h-3 w-3 rounded-full bg-blue-500 shadow-lg border-2 border-white"
+              variants={dotVariants(i)}
+            />
+            <div className="bg-white p-4 rounded-xl shadow-lg text-center w-full h-full flex flex-col items-center justify-center aspect-[4/3]">
               <div className="mb-3 flex justify-center">
-                <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
-                  <m.icon className="text-white" size={20} />
+                <div className="p-3 rounded-full bg-gradient-to-br from-blue-100 to-purple-100">
+                  <m.icon className="text-blue-600" size={24}/>
                 </div>
               </div>
-
-              <h3 className="text-sm font-semibold">{m.title}</h3>
-
+              <h3 className="text-sm font-semibold leading-tight">{m.title}</h3>
             </div>
           </motion.div>
         ))}
-
-      </div>
+      </motion.div>
     </div>
   );
 }
