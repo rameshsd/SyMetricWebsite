@@ -325,32 +325,27 @@ export function Navbar() {
                             Products
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                <li className="row-span-3">
-                                    <NavigationMenuLink asChild>
-                                        <Link
-                                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                            href={item.subItems[0].href!}
+                            <div className="w-[400px] p-4 md:w-[500px]">
+                                <Link href={item.subItems[0].href!} className="block select-none rounded-md bg-muted p-4 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                    <div className="text-lg font-bold">
+                                        {item.subItems[0].name}
+                                    </div>
+                                    <p className="mt-1 text-sm leading-tight text-muted-foreground">
+                                        {item.subItems[0].description}
+                                    </p>
+                                </Link>
+                                <ul className="mt-4 flex flex-col gap-1">
+                                    {item.subItems.slice(1).map((component) => (
+                                        <ListItem
+                                            key={component.name}
+                                            title={component.name}
+                                            href={component.href!}
                                         >
-                                            <div className="mb-2 mt-4 text-lg font-bold">
-                                                {item.subItems[0].name}
-                                            </div>
-                                            <p className="text-sm leading-tight text-muted-foreground">
-                                                {item.subItems[0].description}
-                                            </p>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
-                                {item.subItems.slice(1).map((component) => (
-                                    <ListItem
-                                        key={component.name}
-                                        title={component.name}
-                                        href={component.href!}
-                                    >
-                                        {component.description}
-                                    </ListItem>
-                                ))}
-                            </ul>
+                                            {component.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                            </div>
                         </NavigationMenuContent>
                         </>
                     ) : item.name === 'Services' && item.subItems ? (
