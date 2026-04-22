@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -19,7 +20,7 @@ export function PlatformToolsSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {toolsData.map(tool => (
-            <div key={tool.id} className="bg-white/5 p-8 rounded-2xl flex flex-col text-left h-full">
+            <div key={tool.id} className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl flex flex-col text-left h-full">
               <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-white/10 mb-6">
                 <tool.icon className="h-10 w-10 text-pink-400" />
               </div>
