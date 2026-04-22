@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/use-in-view';
-import { Rocket, Users, ShieldCheck, TrendingUp, ArrowDown } from 'lucide-react';
+import { Rocket, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
@@ -62,13 +62,13 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.4,
+      staggerChildren: 0.6,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -79,17 +79,44 @@ const itemVariants = {
   },
 };
 
-const pathVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
+
+const AnimatedArrow = ({ index, inView }: { index: number; inView: boolean }) => {
+  const arrowVariants = {
+    hidden: { opacity: 0, y: -10 },
     visible: {
-        pathLength: 1,
-        opacity: 1,
-        transition: {
-            duration: 0.8,
-            ease: "easeInOut"
-        }
-    }
-}
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+        delay: 0.4 + index * 0.6,
+      },
+    },
+  };
+
+  const pathVariants = (delay: number) => ({
+    hidden: { pathLength: 0 },
+    visible: { pathLength: 1, transition: { duration: 0.5, delay: delay } },
+  });
+
+  if (index === 0) {
+    return (
+      <motion.svg width="24" height="24" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
+        <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M7 13l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M7 6l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </motion.svg>
+    );
+  }
+
+  return (
+    <motion.svg width="16" height="16" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
+      <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M12 5v14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
+      <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M12 19l-4-4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
+      <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M12 19l4 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
+    </motion.svg>
+  );
+};
+
 
 export function AnimatedTimeline() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -97,15 +124,14 @@ export function AnimatedTimeline() {
   return (
     <div ref={ref} className="w-full max-w-lg mx-auto py-8">
       <motion.div
-        className="space-y-4"
+        className="space-y-0"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
       >
         {timelineItems.map((item, index) => (
           <React.Fragment key={item.title}>
-            <motion.div className="flex items-center gap-4" variants={itemVariants}>
-              {/* Icon */}
+            <motion.div className="flex items-center gap-6" variants={itemVariants}>
               <div className="relative flex-shrink-0">
                 <svg width="80" height="80" viewBox="0 0 80 80" className="-rotate-90">
                     <defs>
@@ -125,7 +151,7 @@ export function AnimatedTimeline() {
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}
                         animate={inView ? { pathLength: 1 } : {}}
-                        transition={{ duration: 1, delay: index * 0.4 }}
+                        transition={{ duration: 1, delay: index * 0.6 }}
                     />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -135,48 +161,24 @@ export function AnimatedTimeline() {
                 </div>
               </div>
 
-              {/* Connector */}
-              <motion.div className="w-8 h-px bg-border"
-                initial={{ scaleX: 0, originX: 0 }}
-                animate={inView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.4 }}
-              />
-
-              {/* Text Box */}
-              <div className={cn("flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between", item.colors.border)}>
+              <div className={cn("relative flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between overflow-hidden", item.colors.border)}>
                 <div>
                   <h3 className="font-bold text-foreground">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
-                <div className={cn("text-2xl font-bold ml-4", item.colors.text, "opacity-20")}>
+                <div className={cn("absolute -right-2 top-1/2 -translate-y-1/2 text-6xl font-bold opacity-10 select-none", item.colors.text)}>
                   {item.number}
                 </div>
               </div>
             </motion.div>
 
-            {/* Vertical Connector */}
             {index < timelineItems.length - 1 && (
-                 <motion.div className="flex justify-start ml-[39px] h-10 relative" variants={itemVariants}>
-                    <svg height="100%" width="2" className="overflow-visible">
-                        <motion.line
-                            x1="1"
-                            y1="0"
-                            x2="1"
-                            y2="40"
-                            stroke="hsl(var(--border))"
-                            strokeWidth="2"
-                            strokeDasharray="4 4"
-                            variants={pathVariants}
-                        />
-                         <motion.g
-                            initial={{ opacity: 0 }}
-                            animate={inView ? { opacity: 1 } : {}}
-                            transition={{ delay: 0.6 + index * 0.4 }}
-                         >
-                            <ArrowDown className="w-4 h-4 text-muted-foreground absolute -bottom-2 -left-1.5" />
-                        </motion.g>
-                    </svg>
-                 </motion.div>
+              <motion.div
+                  className="flex justify-start items-center h-16 ml-8"
+                  variants={itemVariants}
+              >
+                  <AnimatedArrow index={index} inView={inView} />
+              </motion.div>
             )}
           </React.Fragment>
         ))}
