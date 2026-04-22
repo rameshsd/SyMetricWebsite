@@ -109,10 +109,8 @@ const AnimatedArrow = ({ index, inView }: { index: number; inView: boolean }) =>
   }
 
   return (
-    <motion.svg width="16" height="16" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
-      <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M12 5v14" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
-      <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M12 19l-4-4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
-      <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M12 19l4 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none"/>
+    <motion.svg width="24" height="16" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
+        <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     </motion.svg>
   );
 };
