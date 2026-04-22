@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/use-in-view';
-import { ArrowRight, Rocket, Users, ShieldCheck, TrendingUp } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { InnovationDiagram } from './InnovationDiagram';
 
 const features = [
     {
@@ -28,40 +29,6 @@ const features = [
         link: '/solutions/clinical-trial-platform'
     }
 ];
-
-const diagramFeatures = [
-    { icon: Rocket, title: 'Accelerate Timelines', description: "From study setup to submission." },
-    { icon: Users, title: 'Unify Data & Teams', description: "Connect sponsors, CROs, and sites." },
-    { icon: ShieldCheck, title: 'Ensure Compliance', description: "Built-in 21 CFR Part 11 & ICH-GCP." },
-    { icon: TrendingUp, title: 'Scale with Confidence', description: "From single-site to global trials." },
-];
-
-const InnovationDiagram = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-
-    return (
-        <div ref={ref} className="space-y-8">
-            {diagramFeatures.map((feature, index) => (
-                <motion.div
-                    key={feature.title}
-                    className="flex items-start gap-6"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                    <div className="flex-shrink-0 w-16 h-16 bg-background border rounded-2xl flex items-center justify-center shadow-lg">
-                        <feature.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                        <h4 className="text-xl font-bold text-foreground">{feature.title}</h4>
-                        <p className="text-muted-foreground mt-1">{feature.description}</p>
-                    </div>
-                </motion.div>
-            ))}
-        </div>
-    );
-};
-
 
 export function RevolutionizingTrials() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
