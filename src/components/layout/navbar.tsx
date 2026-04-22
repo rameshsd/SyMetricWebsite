@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -339,6 +340,7 @@ export function Navbar() {
                                                 </Link>
                                             </NavigationMenuLink>
                                         </li>
+                                        <li className="px-3 pt-2 text-sm font-semibold text-foreground">Solutions</li>
                                         {item.subItems.slice(1).map((component) => (
                                             <ListItem
                                                 key={component.name}
