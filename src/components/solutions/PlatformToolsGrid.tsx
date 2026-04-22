@@ -156,7 +156,7 @@ export function PlatformToolsGrid() {
   return (
     <section 
         className="py-20 text-white" 
-        style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #4f46e5 100%)' }}
+        style={{ backgroundColor: 'rgb(2,3,129)' }}
     >
       <div className="container">
         <div className="text-center mx-auto">
