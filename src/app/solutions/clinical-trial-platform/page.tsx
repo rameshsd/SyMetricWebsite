@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { solutions } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { PlatformAnimation } from '@/components/animations/PlatformAnimation';
+import { PlatformDiagram } from '@/components/animations/PlatformDiagram';
 import { PlatformToolsGrid } from '@/components/solutions/PlatformToolsGrid';
 import { HostingOptions } from '@/components/solutions/HostingOptions';
 import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
@@ -61,7 +61,7 @@ export default function ClinicalTrialPlatformPage() {
                             </div>
                         </div>
                         <div className="relative w-full min-h-[520px] flex items-center justify-center">
-                            <PlatformAnimation />
+                            <PlatformDiagram />
                         </div>
                         </div>
                     </div>
