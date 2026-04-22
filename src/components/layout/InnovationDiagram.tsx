@@ -102,7 +102,7 @@ export const InnovationDiagram = () => {
                 variants={centerVariants}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             >
-                 <motion.div animate={floatingAnimation(0)}>
+                 <motion.div animate={floatingAnimation(0, '4px')}>
                     <div className="w-32 h-32 rounded-full bg-primary/10 flex items-center justify-center shadow-lg border border-primary/20">
                         <div className="text-center">
                             <p className="text-sm font-bold text-primary">SyMetric</p>
