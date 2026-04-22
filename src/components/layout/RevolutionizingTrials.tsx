@@ -5,7 +5,7 @@ import { useInView } from '@/hooks/use-in-view';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { InnovationDiagram } from './InnovationDiagram';
+import { AnimatedTimeline } from '@/components/animations/AnimatedTimeline';
 
 const features = [
     {
@@ -38,7 +38,7 @@ export function RevolutionizingTrials() {
         <section className="w-full bg-secondary/30 py-20 md:py-28">
             <div className="container">
                 <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
-                    <InnovationDiagram />
+                    <AnimatedTimeline />
                     <div>
                         <h3 className="text-2xl font-bold tracking-tight">Turn connection into momentum</h3>
                         <p className="mt-2 text-muted-foreground">Bring data and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation.</p>

@@ -10,6 +10,7 @@ const timelineItems = [
   {
     icon: Rocket,
     title: 'Accelerate Timelines',
+    description: 'From study setup to submission.',
     number: '01',
     colors: {
       gradientStart: '#3b82f6', // blue-500
@@ -21,6 +22,7 @@ const timelineItems = [
   {
     icon: Users,
     title: 'Unify Data & Teams',
+    description: 'Connect sponsors, CROs, and sites.',
     number: '02',
     colors: {
       gradientStart: '#14b8a6', // teal-500
@@ -32,6 +34,7 @@ const timelineItems = [
   {
     icon: ShieldCheck,
     title: 'Ensure Compliance',
+    description: 'Built-in 21 CFR Part 11 & ICH-GCP.',
     number: '03',
     colors: {
       gradientStart: '#8b5cf6', // violet-500
@@ -43,6 +46,7 @@ const timelineItems = [
   {
     icon: TrendingUp,
     title: 'Scale with Confidence',
+    description: 'From single-site to global trials.',
     number: '04',
     colors: {
       gradientStart: '#f97316', // orange-500
@@ -142,6 +146,7 @@ export function AnimatedTimeline() {
               <div className={cn("flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between", item.colors.border)}>
                 <div>
                   <h3 className="font-bold text-foreground">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
                 <div className={cn("text-2xl font-bold ml-4", item.colors.text, "opacity-20")}>
                   {item.number}
@@ -165,7 +170,7 @@ export function AnimatedTimeline() {
                         />
                          <motion.g
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            animate={inView ? { opacity: 1 } : {}}
                             transition={{ delay: 0.6 + index * 0.4 }}
                          >
                             <ArrowDown className="w-4 h-4 text-muted-foreground absolute -bottom-2 -left-1.5" />
