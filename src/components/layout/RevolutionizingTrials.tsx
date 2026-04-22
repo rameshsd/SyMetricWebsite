@@ -1,3 +1,4 @@
+
 'use client';
 
 import { motion } from 'framer-motion';
@@ -40,7 +41,7 @@ export function RevolutionizingTrials() {
                 <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
                     <AnimatedTimeline />
                     <div>
-                        <h3 className="text-2xl font-bold tracking-tight">Turn connection into momentum</h3>
+                        <h3 className="text-2xl font-bold tracking-tight">Efficiency In the clinical trails</h3>
                         <p className="mt-2 text-muted-foreground">Bring data and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation.</p>
 
                         <div className="mt-8 space-y-6">
