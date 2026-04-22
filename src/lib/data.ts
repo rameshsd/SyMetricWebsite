@@ -629,27 +629,67 @@ export const industries: Industry[] = [
   {
     name: 'Pharma',
     description: 'Accelerating drug development for large pharmaceutical companies.',
+    longDescription: 'We support end-to-end pharmaceutical workflows—from early research to clinical trials and regulatory submissions—ensuring compliance, data integrity, and faster time-to-market.',
+    capabilities: [
+        'Clinical trial data management',
+        'Regulatory compliance support',
+        'Drug lifecycle management',
+        'Scalable enterprise solutions'
+    ],
     icon: Beaker,
+    imageId: 'platform-pharma'
   },
   {
     name: 'Biotech',
     description: 'Innovative solutions for agile and fast-growing biotech firms.',
+    longDescription: 'We help biotech companies move quickly from discovery to commercialization with flexible, scalable, and innovation-focused digital solutions.',
+    capabilities: [
+        'Rapid research data processing',
+        'Cloud-based collaboration tools',
+        'Scalable platforms for growth',
+        'Advanced analytics and insights'
+    ],
     icon: TestTube,
+    imageId: 'why-us-flexible'
   },
   {
     name: 'Hospitals',
     description: 'Streamlining clinical research within healthcare provider settings.',
+    longDescription: 'We enable hospitals to efficiently manage clinical studies, patient data, and regulatory requirements while maintaining high standards of care.',
+    capabilities: [
+        'Patient data management',
+        'Clinical trial integration',
+        'Secure and compliant systems',
+        'Workflow automation'
+    ],
     icon: Hospital,
+    imageId: 'about-hero'
   },
   {
     name: 'CROs',
     description: 'Enhancing efficiency and collaboration for Contract Research Organizations.',
+    longDescription: 'We provide CROs with tools to manage multiple studies, streamline operations, and improve collaboration between sponsors, sites, and stakeholders.',
+    capabilities: [
+        'Multi-study management systems',
+        'Real-time collaboration tools',
+        'Data tracking and reporting',
+        'Operational efficiency optimization'
+    ],
     icon: Building,
+    imageId: 'platform-cro'
   },
   {
     name: 'Research Institutes',
     description: 'Supporting academic and independent research with powerful data tools.',
+    longDescription: 'We empower research institutes with advanced data management and analytics platforms to accelerate discovery and innovation.',
+    capabilities: [
+        'Research data organization',
+        'Advanced analytics tools',
+        'Secure collaboration environments',
+        'Customizable research platforms'
+    ],
     icon: HeartPulse,
+    imageId: 'platform-academia'
   },
 ];
 
