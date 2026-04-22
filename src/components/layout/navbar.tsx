@@ -337,7 +337,6 @@ export function Navbar() {
                                         </Link>
                                     </NavigationMenuLink>
                                 </li>
-                                <li><Link href="/solutions" className="block px-3 pt-2 text-base font-bold text-foreground hover:text-primary">Solutions</Link></li>
                                 {item.subItems.slice(1).map((component) => (
                                     <ListItem
                                         key={component.name}
