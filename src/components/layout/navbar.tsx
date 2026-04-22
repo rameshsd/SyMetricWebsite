@@ -249,6 +249,7 @@ export function Navbar() {
   const [mobileSubmenuStack, setMobileSubmenuStack] = React.useState<{items: NavItemType[], title: string}[]>([]);
   const [mounted, setMounted] = React.useState(false);
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const router = useRouter();
   
   const pathname = usePathname();
 
@@ -317,7 +318,10 @@ export function Navbar() {
                   <NavigationMenuItem key={item.name}>
                     {item.name === 'Products' && item.subItems ? (
                         <>
-                        <NavigationMenuTrigger className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}>
+                        <NavigationMenuTrigger
+                            onClick={() => router.push('/solutions')}
+                            className={cn(pathname.startsWith('/solutions') && 'data-[state=closed]:text-primary')}
+                        >
                             Products
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
