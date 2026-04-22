@@ -1,4 +1,5 @@
-import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem } from '@/lib/types';
+
+import type { NavItem, Solution, Industry, LeadershipMember, Customer, TeamMember, FeatureGridItem, LatestNewsItem, CustomerSuccessStory, WhyChooseUsFeature, CompanyInfo, SuccessStory, UnlockPotentialItem, UseCase, FAQItem, JobOpening, CompanyValue, EmployeeBenefit, CommunityLeaderSlide, CommunityPost, ResearchIntegrateAnalyzeFeature, WelcomeLink, TopAuthor, PlatformFeature, NewsItem, RelatedContent, HeroCarouselItem, ComplianceStandard } from '@/lib/types';
 import {
   FlaskConical,
   FileText,
@@ -82,6 +83,7 @@ import {
     SampleManagementIcon,
     LabelManagementIcon,
 } from '@/components/icons/feature-grid-icons';
+import { Fda21Cfr, GmpIcon, GdprIcon, Gs1Icon, HipaaIcon, IchGcp, Iso27001, Iso9001 } from '@/components/icons/compliance-icons';
 
 export const navItems: NavItem[] = [
     {
@@ -1993,4 +1995,111 @@ export const trialAnalyticsFeatures = [
         title: "Step-by-Step Trial Planning",
         description: "You can plan the study in a sequential manner based on stakeholder analytics at every stage. Analytics pertaining to CROs, Investigation Sites, and Investigators can be viewed on a separate tab. Planners can go to each tab to view the analytics and decide to choose them for the new Trial."
     }
+];
+
+export const complianceStandards: ComplianceStandard[] = [
+  {
+    id: '21cfr',
+    title: '21 CFR Part 11',
+    Icon: Fda21Cfr,
+    description: 'A regulation by the U.S. Food and Drug Administration that governs electronic records and electronic signatures.',
+    highlights: [
+      'Ensures data integrity and security',
+      'Enables legally accepted electronic signatures',
+      'Maintains detailed audit trails',
+      'Controls system access and authentication',
+    ],
+    whyItMatters: 'Essential for clinical trials, pharma software, and regulated digital systems.',
+  },
+  {
+    id: 'ich-gcp',
+    title: 'ICH-GCP',
+    Icon: IchGcp,
+    description: 'ICH-GCP (International Council for Harmonisation – Good Clinical Practice) is an international ethical and scientific quality standard for clinical trials.',
+    highlights: [
+      'Protects patient rights and safety',
+      'Ensures credible clinical data',
+      'Defines roles and responsibilities in trials',
+      'Standardizes global clinical research',
+    ],
+    whyItMatters: 'Mandatory for clinical trial systems and research platforms.',
+  },
+  {
+    id: 'gdpr',
+    title: 'GDPR',
+    Icon: GdprIcon,
+    description: 'GDPR (General Data Protection Regulation) is a data privacy law enforced in the European Union.',
+    highlights: [
+      'Strong data protection and privacy rights',
+      'User consent and transparency',
+      'Right to access and erase data',
+      'Strict breach notification rules',
+    ],
+    whyItMatters: 'Critical for handling personal data of EU citizens.',
+  },
+  {
+    id: 'hipaa',
+    title: 'HIPAA',
+    Icon: HipaaIcon,
+    description: 'HIPAA (Health Insurance Portability and Accountability Act) regulates healthcare data protection in the United States.',
+    highlights: [
+      'Protects patient health information (PHI)',
+      'Ensures secure data transmission',
+      'Defines access control policies',
+      'Requires risk assessments and safeguards',
+    ],
+    whyItMatters: 'Essential for healthcare and health-tech platforms.',
+  },
+  {
+    id: 'gmp',
+    title: 'GMP',
+    Icon: GmpIcon,
+    description: 'GMP (Good Manufacturing Practice) ensures products are consistently produced and controlled according to quality standards.',
+    highlights: [
+      'Ensures product safety and consistency',
+      'Controls manufacturing processes',
+      'Maintains hygiene and documentation',
+      'Reduces risks in production',
+    ],
+    whyItMatters: 'Critical for pharmaceutical and biotech manufacturing.',
+  },
+  {
+    id: 'gs1',
+    title: 'GS1',
+    Icon: Gs1Icon,
+    description: 'GS1 is a global organization that develops standards for business communication, including barcodes.',
+    highlights: [
+      'Enables global product identification',
+      'Supports barcode and QR code systems',
+      'Improves supply chain visibility',
+      'Ensures product traceability',
+    ],
+    whyItMatters: 'Used widely in logistics, healthcare, and retail systems.',
+  },
+  {
+    id: 'iso27001',
+    title: 'ISO 27001',
+    Icon: Iso27001,
+    description: 'ISO 27001 is an international standard for Information Security Management Systems (ISMS).',
+    highlights: [
+      'Protects sensitive information',
+      'Manages security risks',
+      'Implements access controls',
+      'Ensures continuous monitoring',
+    ],
+    whyItMatters: 'Crucial for any organization handling sensitive data.',
+  },
+  {
+    id: 'iso9001',
+    title: 'ISO 9001',
+    Icon: Iso9001,
+    description: 'ISO 9001 is a globally recognized standard for Quality Management Systems (QMS).',
+    highlights: [
+      'Focuses on customer satisfaction',
+      'Improves operational efficiency',
+      'Standardizes processes',
+      'Encourages continuous improvement',
+    ],
+    whyItMatters: 'Ensures consistent service and product quality.',
+  },
 ];
