@@ -1,4 +1,3 @@
-
 'use client';
 
 import { motion } from 'framer-motion';
@@ -36,15 +35,15 @@ export default function UltraHeroDiagram() {
       </motion.div>
 
       {/* SVG CONNECTIONS */}
-      <svg className="absolute top-[180px] w-full max-w-6xl h-[200px]">
+      <svg className="absolute top-[180px] w-full max-w-6xl h-[200px]" viewBox="0 0 100 200" preserveAspectRatio="none">
 
         {modules.map((m, i) => (
           <g key={i}>
             {/* CURVED LINE */}
             <motion.path
-              d={`M 50% 0 Q ${m.x}% 120 ${m.x}% 180`}
+              d={`M 50 0 Q ${m.x} 120 ${m.x} 180`}
               stroke="url(#gradient)"
-              strokeWidth="2"
+              strokeWidth="0.5"
               fill="transparent"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -52,20 +51,14 @@ export default function UltraHeroDiagram() {
             />
 
             {/* FLOW DOT (ANIMATION) */}
-            <motion.circle
-              r="4"
-              fill="#3b82f6"
-              initial={{ offsetDistance: "0%" }}
-              animate={{ offsetDistance: "100%" }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4
-              }}
-              style={{
-                offsetPath: `path('M 50% 0 Q ${m.x}% 120 ${m.x}% 180')`
-              }}
-            />
+            <circle r="1.5" fill="#3b82f6">
+                <animateMotion
+                    dur="2s"
+                    begin={`${i * 0.4}s`}
+                    repeatCount="indefinite"
+                    path={`M 50 0 Q ${m.x} 120 ${m.x} 180`}
+                />
+            </circle>
           </g>
         ))}
 
