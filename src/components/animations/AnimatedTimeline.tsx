@@ -99,18 +99,10 @@ const AnimatedArrow = ({ index, inView }: { index: number; inView: boolean }) =>
     visible: { pathLength: 1, transition: { duration: 0.5, delay: delay } },
   });
 
-  if (index === 0) {
-    return (
-      <motion.svg width="24" height="24" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
-        <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M7 13l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M7 6l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-      </motion.svg>
-    );
-  }
-
   return (
-    <motion.svg width="24" height="16" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
-        <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <motion.svg width="24" height="24" viewBox="0 0 24 24" variants={arrowVariants} className="text-red-500">
+      <motion.path variants={pathVariants(0.6 + index * 0.6)} d="M7 13l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      <motion.path variants={pathVariants(0.7 + index * 0.6)} d="M7 6l5 5 5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     </motion.svg>
   );
 };
