@@ -114,27 +114,49 @@ export default function UltraHeroDiagram() {
               cx="500" cy="60" r="6" fill="#a855f7" filter="url(#glow)"
               initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.1 }}
             />
-          
-          {/* Horizontal bar */}
+
+          {/* Horizontal Bar */}
           <motion.path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
             strokeWidth="3"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            vectorEffect="non-scaling-stroke"
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            style={{
+              filter: "drop-shadow(0 0 8px rgba(99,102,241,0.6))"
+            }}
+          />
+
+          {[100, 300, 500, 700, 900].map((x, i) => (
+            <motion.circle
+              key={i}
+              cx={x}
+              cy="60"
+              r="4"
+              fill="white"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1.2 + i * 0.1 }}
+            />
+          ))}
+
+          <motion.circle
+            r="3"
+            fill="#6366f1"
+            initial={{ cx: 100 }}
+            animate={{ cx: 900 }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear"
+            }}
           />
 
           {/* Vertical drops with arrows */}
           {moduleConfig.map((m, i) => (
             <g key={m.x}>
-              {/* Branching glowing dot */}
-              <motion.circle cx={m.x} cy="60" r="5" fill="#fff" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0 }} />
-              <motion.circle cx={m.x} cy="60" r="5" fill={m.color} filter="url(#glow)" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0 }}>
-                   <animate attributeName="r" values="5;7;5" dur="2s" begin={`${2.0 + i*0.2}s`} repeatCount="indefinite" />
-              </motion.circle>
-
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
