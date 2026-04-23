@@ -45,7 +45,7 @@ export default function UltraHeroDiagram() {
       </motion.div>
 
       {/* SVG CONNECTIONS */}
-      <div className="relative w-full max-w-3xl h-48 mt-[-1rem]">
+      <div className="relative w-full max-w-5xl h-48 mt-[-1rem]">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -105,17 +105,6 @@ export default function UltraHeroDiagram() {
             vectorEffect="non-scaling-stroke"
           />
           
-          {/* Central glowing dot */}
-           <motion.circle
-              cx="500" cy="60" r="6" fill="#fff"
-              initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.1 }}
-            />
-            <motion.circle
-              cx="500" cy="60" r="6" fill="#a855f7" filter="url(#glow)"
-              initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.1 }}
-            />
-
-          {/* Horizontal Bar */}
           <motion.path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
@@ -125,34 +114,28 @@ export default function UltraHeroDiagram() {
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             style={{
-              filter: "drop-shadow(0 0 8px rgba(99,102,241,0.6))"
+              filter: "drop-shadow(0 0 10px rgba(99,102,241,0.5))"
             }}
           />
 
-          {[100, 300, 500, 700, 900].map((x, i) => (
+          {moduleConfig.map((m, i) => (
             <motion.circle
               key={i}
-              cx={x}
+              cx={m.x}
               cy="60"
-              r="4"
-              fill="white"
+              r="5"
+              fill={m.color}
+              style={{ filter: `drop-shadow(0 0 8px ${m.color})` }}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 1.2 + i * 0.1 }}
             />
           ))}
+          
+           <motion.circle r="3" fill="#6366f1">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 100 60 H 900" />
+            </motion.circle>
 
-          <motion.circle
-            r="3"
-            fill="#6366f1"
-            initial={{ cx: 100 }}
-            animate={{ cx: 900 }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
 
           {/* Vertical drops with arrows */}
           {moduleConfig.map((m, i) => (
@@ -171,25 +154,16 @@ export default function UltraHeroDiagram() {
                   filter: `drop-shadow(0 0 6px ${m.color}66)`
                 }}
               />
-              <motion.circle
-                r="3"
-                cx={m.x}
-                fill={m.color}
-                initial={{ cy: 60 }}
-                animate={{ cy: 170 }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 2.2 + i * 0.3
-                }}
-              />
+              <motion.circle r="3" fill={m.color}>
+                 <animateMotion dur="1.5s" begin={`${2.2 + i * 0.3}s`} repeatCount="indefinite" path={`M ${m.x} 60 V 170`} />
+              </motion.circle>
             </g>
           ))}
         </svg>
       </div>
       
       {/* MODULES */}
-      <div className="mt-4 grid grid-cols-5 gap-x-4 md:gap-x-8 w-full max-w-3xl px-4">
+      <div className="mt-4 grid grid-cols-5 gap-x-4 md:gap-x-8 w-full max-w-5xl px-4">
         {moduleData.map((m, i) => {
           const Icon = m.icon;
           return (
