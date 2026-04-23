@@ -2,23 +2,21 @@
 
 import { motion } from 'framer-motion';
 import {
-  Gem, Repeat, ClipboardList, Database, TrendingUp, TestTube
+  Gem, Repeat, ClipboardList, Database, TrendingUp, TestTube, LucideProps
 } from 'lucide-react';
+import React from 'react';
 
-const modules = [
+const modules: { icon: React.FC<LucideProps>; title: string; }[] = [
   { icon: Repeat, title: 'IRT / IWRS' },
   { icon: ClipboardList, title: 'CTM' },
   { icon: Database, title: 'EDC' },
   { icon: TrendingUp, title: 'Trial Analytics' },
   { icon: TestTube, title: 'Sample Management' },
 ];
-// x positions for the lines corresponding to the modules
-const moduleXPositions = [10, 30, 50, 70, 90];
-
 
 export default function UltraHeroDiagram() {
   return (
-    <div className="relative py-24 flex flex-col items-center overflow-hidden">
+    <div className="relative py-16 md:py-24 flex flex-col items-center overflow-hidden w-full">
 
       {/* GLOW BACKGROUND */}
       <div className="absolute w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full top-0"></div>
@@ -38,96 +36,93 @@ export default function UltraHeroDiagram() {
       </motion.div>
 
       {/* SVG CONNECTIONS */}
-      <svg className="absolute top-[180px] w-full max-w-6xl h-[200px]">
-        <defs>
-          <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#3b82f6" />
-          </linearGradient>
-          <marker
-            id="arrow"
-            viewBox="0 0 10 10"
-            refX="5"
-            refY="5"
-            markerWidth="6"
-            markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="url(#line-gradient)" />
-          </marker>
-        </defs>
+      <div className="relative w-full max-w-3xl h-32 mt-4">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
+          <defs>
+            <marker
+              id="arrowhead-red"
+              viewBox="0 0 10 10"
+              refX="5"
+              refY="5"
+              markerWidth="6"
+              markerHeight="6"
+              orient="auto-start-reverse"
+            >
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444" />
+            </marker>
+          </defs>
 
-        {/* Main vertical stem */}
-        <motion.path
-          d="M 50% 0 V 40%"
-          stroke="url(#line-gradient)"
-          strokeWidth="2"
-          fill="transparent"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        />
-        
-        {/* Horizontal bar */}
-        <motion.path
-          d="M 10% 40% H 90%"
-          stroke="url(#line-gradient)"
-          strokeWidth="2"
-          fill="transparent"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        />
-
-        {/* Vertical drops with arrows */}
-        {moduleXPositions.map((xPos, i) => (
+          {/* Main vertical stem */}
           <motion.path
-            key={i}
-            d={`M ${xPos}% 40% V 80%`}
-            stroke="url(#line-gradient)"
-            strokeWidth="2"
-            fill="transparent"
+            d="M 500 0 V 100"
+            stroke="#EF4444"
+            strokeWidth="4"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
-            markerEnd="url(#arrow)"
+            transition={{ duration: 0.5, delay: 0.6 }}
+            vectorEffect="non-scaling-stroke"
           />
-        ))}
-      </svg>
+          
+          {/* Horizontal bar */}
+          <motion.path
+            d="M 100 100 H 900"
+            stroke="#EF4444"
+            strokeWidth="4"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            vectorEffect="non-scaling-stroke"
+          />
+
+          {/* Vertical drops with arrows */}
+          {[100, 300, 500, 700, 900].map((xPos, i) => (
+            <motion.path
+              key={i}
+              d={`M ${xPos} 100 V 180`}
+              stroke="#EF4444"
+              strokeWidth="4"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6, delay: 1.9 + i * 0.1 }}
+              markerEnd="url(#arrowhead-red)"
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
+        </svg>
+      </div>
       
       {/* MODULES */}
-      <div className="mt-40 grid grid-cols-2 md:grid-cols-5 gap-8 w-full max-w-7xl px-4">
-
-        {modules.map((m, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.5 + i * 0.1 }}
-            className="relative group"
-          >
-            {/* PULSE DOT */}
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-              <span className="flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-              </span>
-            </div>
-
-            {/* CARD */}
-            <div className="bg-white/80 backdrop-blur-md border border-white/30 p-5 rounded-xl shadow-lg text-center hover:scale-105 transition flex flex-col items-center justify-center min-h-[140px]">
-
-              <div className="mb-3 flex justify-center">
-                <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
-                  <m.icon className="text-white" size={20} />
-                </div>
+      <div className="mt-4 grid grid-cols-5 gap-x-4 md:gap-x-8 w-full max-w-3xl px-4">
+        {modules.map((m, i) => {
+          const Icon = m.icon;
+          return (
+            <motion.div
+              key={i}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 2.5 + i * 0.1 }}
+              className="relative group"
+            >
+              {/* PULSE DOT */}
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">
+                <span className="flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
               </div>
 
-              <h3 className="text-sm font-semibold leading-tight">{m.title}</h3>
-
-            </div>
-          </motion.div>
-        ))}
-
+              {/* CARD */}
+              <div className="bg-white/80 backdrop-blur-md border border-white/30 p-4 rounded-xl shadow-lg text-center hover:scale-105 transition flex flex-col items-center justify-start min-h-[120px]">
+                <div className="mb-2 flex justify-center">
+                  <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
+                    <Icon className="text-white" size={18} />
+                  </div>
+                </div>
+                <h3 className="text-xs md:text-sm font-semibold leading-tight">{m.title}</h3>
+              </div>
+            </motion.div>
+          )
+        })}
       </div>
     </div>
   );
