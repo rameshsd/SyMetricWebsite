@@ -104,7 +104,8 @@ export default function UltraHeroDiagram() {
             transition={{ duration: 0.5, delay: 0.6 }}
             vectorEffect="non-scaling-stroke"
           />
-          
+
+          {/* Horizontal line */}
           <motion.path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
@@ -117,7 +118,8 @@ export default function UltraHeroDiagram() {
               filter: "drop-shadow(0 0 10px rgba(99,102,241,0.5))"
             }}
           />
-
+          
+          {/* Glowing Nodes on horizontal line */}
           {moduleConfig.map((m, i) => (
             <motion.circle
               key={i}
@@ -131,11 +133,11 @@ export default function UltraHeroDiagram() {
               transition={{ delay: 1.2 + i * 0.1 }}
             />
           ))}
-          
-           <motion.circle r="3" fill="#6366f1">
-                <animateMotion dur="3s" repeatCount="indefinite" path="M 100 60 H 900" />
-            </motion.circle>
 
+          {/* Energy flow on horizontal line */}
+          <motion.circle r="3" fill="#6366f1">
+              <animateMotion dur="3s" repeatCount="indefinite" path="M 100 60 H 900" />
+          </motion.circle>
 
           {/* Vertical drops with arrows */}
           {moduleConfig.map((m, i) => (
@@ -154,8 +156,11 @@ export default function UltraHeroDiagram() {
                   filter: `drop-shadow(0 0 6px ${m.color}66)`
                 }}
               />
-              <motion.circle r="3" fill={m.color}>
-                 <animateMotion dur="1.5s" begin={`${2.2 + i * 0.3}s`} repeatCount="indefinite" path={`M ${m.x} 60 V 170`} />
+              <motion.circle
+                r="3"
+                fill={m.color}
+              >
+                  <animateMotion dur="1.5s" begin={`${2.2 + i * 0.3}s`} repeatCount="indefinite" path={`M ${m.x} 60 V 170`} />
               </motion.circle>
             </g>
           ))}
