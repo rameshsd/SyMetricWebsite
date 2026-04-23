@@ -6,13 +6,22 @@ import {
 } from 'lucide-react';
 import React from 'react';
 
-const modules: { icon: React.FC<LucideProps>; title: string; }[] = [
-  { icon: Repeat, title: 'IRT / IWRS' },
-  { icon: ClipboardList, title: 'CTM' },
-  { icon: Database, title: 'EDC' },
-  { icon: TrendingUp, title: 'Trial Analytics' },
-  { icon: TestTube, title: 'Sample Management' },
+const moduleData = [
+  { icon: Repeat, title: 'IRT / IWRS', color: "#2563eb" },
+  { icon: ClipboardList, title: 'CTM', color: "#14b8a6" },
+  { icon: Database, title: 'EDC', color: "#8b5cf6" },
+  { icon: TrendingUp, title: 'Trial Analytics', color: "#ec4899" },
+  { icon: TestTube, title: 'Sample Management', color: "#f97316" },
 ];
+
+const moduleConfig = [
+  { x: 100, color: "#2563eb", arrowId: "arrow-blue" },
+  { x: 300, color: "#14b8a6", arrowId: "arrow-teal" },
+  { x: 500, color: "#8b5cf6", arrowId: "arrow-purple" },
+  { x: 700, color: "#ec4899", arrowId: "arrow-pink" },
+  { x: 900, color: "#f97316", arrowId: "arrow-orange" },
+];
+
 
 export default function UltraHeroDiagram() {
   return (
@@ -36,27 +45,36 @@ export default function UltraHeroDiagram() {
       </motion.div>
 
       {/* SVG CONNECTIONS */}
-      <div className="relative w-full max-w-3xl h-32 mt-4">
+      <div className="relative w-full max-w-3xl h-48 mt-[-1rem]">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
-            <marker
-                id="arrowhead-blue"
-                viewBox="0 0 10 10"
-                refX="8"
-                refY="5"
-                markerWidth="8"
-                markerHeight="8"
-                orient="auto"
-              >
-                <path d="M 2 2 L 5 5 L 2 8" stroke="#2563eb" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M 5 2 L 8 5 L 5 8" stroke="#2563eb" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </marker>
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2563eb" />
+              <stop offset="25%" stopColor="#14b8a6" />
+              <stop offset="50%" stopColor="#8b5cf6" />
+              <stop offset="75%" stopColor="#ec4899" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+
+            {moduleConfig.map(m => (
+              <marker key={m.arrowId} id={m.arrowId} viewBox="0 0 10 12" refX="5" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 2 L 5 7 L 0 12" stroke={m.color} strokeWidth="2" fill="none" strokeLinecap="round" />
+                <path d="M 2 0 L 7 5 L 2 10" stroke={m.color} strokeWidth="2" fill="none" strokeLinecap="round" />
+              </marker>
+            ))}
+             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
           {/* Main vertical stem */}
           <motion.path
-            d="M 500 0 V 100"
-            stroke="#2563eb"
+            d="M 500 0 V 60"
+            stroke="#c084fc"
             strokeWidth="3"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -64,62 +82,74 @@ export default function UltraHeroDiagram() {
             vectorEffect="non-scaling-stroke"
           />
           
+          {/* Central glowing dot */}
+           <motion.circle
+              cx="500" cy="60" r="6" fill="#fff"
+              initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.1 }}
+            />
+            <motion.circle
+              cx="500" cy="60" r="6" fill="#a855f7" filter="url(#glow)"
+              initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.1 }}
+            />
+          
           {/* Horizontal bar */}
           <motion.path
-            d="M 100 100 H 900"
-            stroke="#2563eb"
+            d="M 100 60 H 900"
+            stroke="url(#line-gradient)"
             strokeWidth="3"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
             vectorEffect="non-scaling-stroke"
           />
 
           {/* Vertical drops with arrows */}
-          {[100, 300, 500, 700, 900].map((xPos, i) => (
-            <motion.path
-              key={i}
-              d={`M ${xPos} 100 V 180`}
-              stroke="#2563eb"
-              strokeWidth="3"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.6, delay: 1.9 + i * 0.1 }}
-              markerEnd="url(#arrowhead-blue)"
-              vectorEffect="non-scaling-stroke"
-            />
+          {moduleConfig.map((m, i) => (
+            <g key={m.x}>
+              {/* Branching glowing dot */}
+              <motion.circle cx={m.x} cy="60" r="5" fill="#fff" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0 }} />
+              <motion.circle cx={m.x} cy="60" r="5" fill={m.color} filter="url(#glow)" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0 }}>
+                   <animate attributeName="r" values="5;7;5" dur="2s" begin={`${2.0 + i*0.2}s`} repeatCount="indefinite" />
+              </motion.circle>
+
+              {/* Dotted line */}
+              <motion.path
+                d={`M ${m.x} 60 V 170`}
+                stroke={m.color}
+                strokeWidth="2.5"
+                strokeDasharray="1 8"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.8, delay: 2.0 + i * 0.1 }}
+                markerEnd={`url(#${m.arrowId})`}
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
           ))}
         </svg>
       </div>
       
       {/* MODULES */}
       <div className="mt-4 grid grid-cols-5 gap-x-4 md:gap-x-8 w-full max-w-3xl px-4">
-        {modules.map((m, i) => {
+        {moduleData.map((m, i) => {
           const Icon = m.icon;
           return (
             <motion.div
               key={i}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 2.5 + i * 0.1 }}
+              transition={{ delay: 2.8 + i * 0.1 }}
               className="relative group"
             >
-              {/* PULSE DOT */}
-              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">
-                <span className="flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                </span>
-              </div>
-
-              {/* CARD */}
               <div className="bg-white/80 backdrop-blur-md border border-white/30 p-4 rounded-xl shadow-lg text-center hover:scale-105 transition flex flex-col items-center justify-start min-h-[120px]">
                 <div className="mb-2 flex justify-center">
-                  <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
+                  <div className="p-2 rounded-full" style={{ backgroundColor: m.color }}>
                     <Icon className="text-white" size={18} />
                   </div>
                 </div>
                 <h3 className="text-xs md:text-sm font-semibold leading-tight">{m.title}</h3>
+                <div className="w-4/5 h-1 rounded-full mt-2" style={{ background: m.color }} />
               </div>
             </motion.div>
           )
