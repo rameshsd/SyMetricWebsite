@@ -6,12 +6,15 @@ import {
 } from 'lucide-react';
 
 const modules = [
-  { icon: Repeat, title: 'IRT / IWRS', x: 10 },
-  { icon: ClipboardList, title: 'CTM', x: 30 },
-  { icon: Database, title: 'EDC', x: 50 },
-  { icon: TrendingUp, title: 'Trial Analytics', x: 70 },
-  { icon: TestTube, title: 'Sample Management', x: 90 },
+  { icon: Repeat, title: 'IRT / IWRS' },
+  { icon: ClipboardList, title: 'CTM' },
+  { icon: Database, title: 'EDC' },
+  { icon: TrendingUp, title: 'Trial Analytics' },
+  { icon: TestTube, title: 'Sample Management' },
 ];
+// x positions for the lines corresponding to the modules
+const moduleXPositions = [10, 30, 50, 70, 90];
+
 
 export default function UltraHeroDiagram() {
   return (
@@ -36,43 +39,61 @@ export default function UltraHeroDiagram() {
 
       {/* SVG CONNECTIONS */}
       <svg className="absolute top-[180px] w-full max-w-6xl h-[200px]">
-
-        {modules.map((m, i) => (
-          <g key={i}>
-            {/* CURVED LINE */}
-            <motion.path
-              d={`M 50% 0 Q ${m.x}% 120 ${m.x}% 180`}
-              stroke="url(#gradient)"
-              strokeWidth="2"
-              fill="transparent"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: i * 0.2 }}
-            />
-
-            {/* FLOW DOT (ANIMATION) */}
-            <motion.circle
-              r="4"
-              fill="#3b82f6"
-            >
-              <animateMotion
-                dur="2s"
-                repeatCount="indefinite"
-                path={`M 50% 0 Q ${m.x}% 120 ${m.x}% 180`}
-                begin={`${i * 0.4}s`}
-              />
-            </motion.circle>
-          </g>
-        ))}
-
         <defs>
-          <linearGradient id="gradient">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#8b5cf6" />
+          <linearGradient id="line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#3b82f6" />
           </linearGradient>
+          <marker
+            id="arrow"
+            viewBox="0 0 10 10"
+            refX="5"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="url(#line-gradient)" />
+          </marker>
         </defs>
-      </svg>
 
+        {/* Main vertical stem */}
+        <motion.path
+          d="M 50% 0 V 40%"
+          stroke="url(#line-gradient)"
+          strokeWidth="2"
+          fill="transparent"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        />
+        
+        {/* Horizontal bar */}
+        <motion.path
+          d="M 10% 40% H 90%"
+          stroke="url(#line-gradient)"
+          strokeWidth="2"
+          fill="transparent"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        />
+
+        {/* Vertical drops with arrows */}
+        {moduleXPositions.map((xPos, i) => (
+          <motion.path
+            key={i}
+            d={`M ${xPos}% 40% V 80%`}
+            stroke="url(#line-gradient)"
+            strokeWidth="2"
+            fill="transparent"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
+            markerEnd="url(#arrow)"
+          />
+        ))}
+      </svg>
+      
       {/* MODULES */}
       <div className="mt-40 grid grid-cols-2 md:grid-cols-5 gap-8 w-full max-w-7xl px-4">
 
@@ -81,7 +102,7 @@ export default function UltraHeroDiagram() {
             key={i}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 + i * 0.1 }}
+            transition={{ delay: 1.5 + i * 0.1 }}
             className="relative group"
           >
             {/* PULSE DOT */}
