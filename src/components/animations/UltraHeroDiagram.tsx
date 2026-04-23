@@ -40,15 +40,16 @@ export default function UltraHeroDiagram() {
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
             <marker
-              id="arrowhead-blue"
-              viewBox="0 0 10 10"
-              refX="5"
-              refY="5"
-              markerWidth="5"
-              markerHeight="5"
-              orient="auto-start-reverse"
-            >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+                id="arrowhead-blue"
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="8"
+                markerHeight="8"
+                orient="auto"
+              >
+                <path d="M 2 2 L 5 5 L 2 8" stroke="#2563eb" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M 5 2 L 8 5 L 5 8" stroke="#2563eb" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
             </marker>
           </defs>
 
