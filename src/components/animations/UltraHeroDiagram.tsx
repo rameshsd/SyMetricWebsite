@@ -49,11 +49,21 @@ export default function UltraHeroDiagram() {
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#2563eb" stopOpacity="1" />
-              <stop offset="25%" stopColor="#14b8a6" stopOpacity="1" />
-              <stop offset="50%" stopColor="#8b5cf6" stopOpacity="1" />
-              <stop offset="75%" stopColor="#ec4899" stopOpacity="1" />
-              <stop offset="100%" stopColor="#f97316" stopOpacity="1" />
+                <stop offset="0%" stopColor="#2563eb">
+                    <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="25%" stopColor="#14b8a6">
+                    <animate attributeName="offset" values="0;1.25" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="50%" stopColor="#8b5cf6">
+                    <animate attributeName="offset" values="0.25;1.5" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="75%" stopColor="#ec4899">
+                    <animate attributeName="offset" values="0.5;1.75" dur="3s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="#f97316">
+                    <animate attributeName="offset" values="0.75;2" dur="3s" repeatCount="indefinite" />
+                </stop>
             </linearGradient>
 
             {moduleConfig.map(m => (
@@ -114,43 +124,31 @@ export default function UltraHeroDiagram() {
             opacity="0.6"
           />
 
-          {/* Gradient horizontal line */}
-          <motion.path
+          {/* Animated Gradient horizontal line */}
+          <path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
-            strokeWidth="4"
+            strokeWidth="5"
             strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
             style={{
-              filter: "drop-shadow(0 0 12px rgba(99,102,241,0.9))"
+              filter: "drop-shadow(0 0 10px rgba(99,102,241,0.8))"
             }}
           />
           
           {/* Glowing Nodes on horizontal line */}
           {moduleConfig.map((m, i) => (
-            <circle
-              key={i}
-              cx={m.x}
-              cy="60"
-              r="6"
-              fill="white"
+            <motion.circle
+                key={i}
+                cx={m.x}
+                cy="60"
+                r="5"
+                fill={m.color}
+                style={{ filter: `drop-shadow(0 0 8px ${m.color})` }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.2 + i * 0.1 }}
             />
           ))}
-
-          {/* Energy flow on horizontal line */}
-          <motion.circle
-            r="3"
-            fill="#6366f1"
-            initial={{ cx: 100 }}
-            animate={{ cx: 900 }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
 
           {/* Vertical drops with arrows */}
           {moduleConfig.map((m, i) => (
@@ -172,8 +170,8 @@ export default function UltraHeroDiagram() {
               <motion.circle
                 r="3"
                 fill={m.color}
-                initial={{ y: 60 }}
-                animate={{ y: 170 }}
+                initial={{ cy: 60 }}
+                animate={{ cy: 170 }}
                 transition={{
                   duration: 1.5,
                   repeat: Infinity,
