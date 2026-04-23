@@ -40,23 +40,23 @@ export default function UltraHeroDiagram() {
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
             <marker
-              id="arrowhead-red"
+              id="arrowhead-blue"
               viewBox="0 0 10 10"
               refX="5"
               refY="5"
-              markerWidth="6"
-              markerHeight="6"
+              markerWidth="5"
+              markerHeight="5"
               orient="auto-start-reverse"
             >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
             </marker>
           </defs>
 
           {/* Main vertical stem */}
           <motion.path
             d="M 500 0 V 100"
-            stroke="#EF4444"
-            strokeWidth="4"
+            stroke="#2563eb"
+            strokeWidth="3"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -66,8 +66,8 @@ export default function UltraHeroDiagram() {
           {/* Horizontal bar */}
           <motion.path
             d="M 100 100 H 900"
-            stroke="#EF4444"
-            strokeWidth="4"
+            stroke="#2563eb"
+            strokeWidth="3"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -79,12 +79,12 @@ export default function UltraHeroDiagram() {
             <motion.path
               key={i}
               d={`M ${xPos} 100 V 180`}
-              stroke="#EF4444"
-              strokeWidth="4"
+              stroke="#2563eb"
+              strokeWidth="3"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.6, delay: 1.9 + i * 0.1 }}
-              markerEnd="url(#arrowhead-red)"
+              markerEnd="url(#arrowhead-blue)"
               vectorEffect="non-scaling-stroke"
             />
           ))}
