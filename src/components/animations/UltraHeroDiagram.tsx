@@ -57,9 +57,32 @@ export default function UltraHeroDiagram() {
             </linearGradient>
 
             {moduleConfig.map(m => (
-              <marker key={m.arrowId} id={m.arrowId} viewBox="0 0 10 12" refX="5" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-                <path d="M 0 2 L 5 7 L 0 12" stroke={m.color} strokeWidth="2" fill="none" strokeLinecap="round" />
-                <path d="M 2 0 L 7 5 L 2 10" stroke={m.color} strokeWidth="2" fill="none" strokeLinecap="round" />
+              <marker
+                key={m.arrowId}
+                id={m.arrowId}
+                viewBox="0 0 20 20"
+                refX="16"
+                refY="10"
+                markerWidth="10"
+                markerHeight="10"
+                orient="auto"
+              >
+                <path
+                  d="M4 4 L10 10 L4 16"
+                  stroke={m.color}
+                  strokeWidth="2.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 4 L16 10 L10 16"
+                  stroke={m.color}
+                  strokeWidth="2.5"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </marker>
             ))}
              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -112,18 +135,31 @@ export default function UltraHeroDiagram() {
                    <animate attributeName="r" values="5;7;5" dur="2s" begin={`${2.0 + i*0.2}s`} repeatCount="indefinite" />
               </motion.circle>
 
-              {/* Dotted line */}
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
-                strokeWidth="2.5"
-                strokeDasharray="1 8"
+                strokeWidth="2"
+                strokeDasharray="2 10"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 0.8, delay: 2.0 + i * 0.1 }}
                 markerEnd={`url(#${m.arrowId})`}
-                vectorEffect="non-scaling-stroke"
+                style={{
+                  filter: `drop-shadow(0 0 6px ${m.color}66)`
+                }}
+              />
+              <motion.circle
+                r="3"
+                cx={m.x}
+                fill={m.color}
+                initial={{ cy: 60 }}
+                animate={{ cy: 170 }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: 2.2 + i * 0.3
+                }}
               />
             </g>
           ))}
