@@ -566,7 +566,7 @@
     },
     {
       "id": "news-ginsep-demo",
-      "description": "SyMetric was chosen to participate in the GINSEP Demo Day for Indian Startup Pitches.",
+      "description": "SyMetric at GINSEP Demo Day for Indian Startup Pitches.",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/01/ginsep-News.jpg",
       "imageHint": "demo day"
     },
@@ -632,9 +632,9 @@
     },
     {
       "id": "platform-pharma",
-      "description": "Pharmaceutical lab with scientist",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2017/07/pharma-companies.jpg",
-      "imageHint": "pharma lab"
+      "description": "Diagram of SyMetric Clinical Trial Platform modules",
+      "imageUrl": "https://drive.google.com/uc?export=view&id=1RCjr0-TlQIJStvNYum3InDUMBvnWlZDz",
+      "imageHint": "platform diagram"
     },
     {
       "id": "platform-cro",
