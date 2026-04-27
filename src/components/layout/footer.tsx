@@ -35,13 +35,6 @@ const siteInfoLinks = [
   { name: 'Terms of use', href: '/terms-of-use' },
 ];
 
-const trendingLinks = [
-    { name: 'SyMetric Business AI', href: '#'},
-    { name: 'Generative AI', href: '#'},
-    { name: 'Cloud ERP', href: '#'},
-    { name: 'Sustainability', href: '#'},
-]
-
 const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com' },
   { name: 'Youtube', icon: Youtube, href: 'https://www.youtube.com' },
@@ -102,9 +95,8 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className="md:col-span-4 grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="md:col-span-4 grid grid-cols-2 gap-8">
                 <FooterLinkColumn title="Quick links" links={quickLinks} />
-                <FooterLinkColumn title="Trending" links={trendingLinks} />
                 <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
             </div>
         </div>
@@ -141,18 +133,6 @@ export function Footer() {
                     <AccordionContent>
                         <ul className="pt-2 pl-4 space-y-3">
                            {quickLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-sm text-gray-400 hover:text-white">{link.name}</Link></li>
-                           ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="trending" className="border-b border-gray-800">
-                    <AccordionTrigger className="py-4 text-base font-semibold text-gray-300 hover:text-white hover:no-underline [&>svg]:text-white">
-                        Trending
-                    </AccordionTrigger>
-                    <AccordionContent>
-                         <ul className="pt-2 pl-4 space-y-3">
-                           {trendingLinks.map((link) => (
                             <li key={link.name}><Link href={link.href} className="text-sm text-gray-400 hover:text-white">{link.name}</Link></li>
                            ))}
                         </ul>
