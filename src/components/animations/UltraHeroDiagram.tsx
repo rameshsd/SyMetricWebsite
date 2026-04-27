@@ -1,4 +1,3 @@
-
 'use client';
 
 import { motion } from 'framer-motion';
@@ -47,7 +46,11 @@ export default function UltraHeroDiagram() {
 
       {/* SVG CONNECTIONS */}
       <div className="relative w-full max-w-5xl h-48 mt-[-1rem]">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200">
+        <svg 
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1000 200"
+          preserveAspectRatio="none"
+        >
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#2563eb" />
@@ -79,7 +82,8 @@ export default function UltraHeroDiagram() {
           <motion.path
             d="M 500 0 V 60"
             stroke="url(#line-gradient)"
-            strokeWidth="4"
+            strokeWidth="6"
+            strokeLinecap="round"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 0.6 }}
@@ -95,7 +99,7 @@ export default function UltraHeroDiagram() {
             animate={{ pathLength: 1 }}
             transition={{ duration: 1 }}
             style={{
-              filter: "drop-shadow(0 0 14px rgba(99,102,241,0.8))"
+              filter: "drop-shadow(0 0 16px rgba(99,102,241,1))"
             }}
           />
           
@@ -103,16 +107,10 @@ export default function UltraHeroDiagram() {
           <motion.circle
             cx="500"
             cy="60"
-            r="5"
+            r="6"
             fill="#6366f1"
-            initial={{ scale: 0 }}
-            animate={{ scale: [1, 1.3, 1] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity
-            }}
             style={{
-              filter: "drop-shadow(0 0 8px #6366f1)"
+              filter: "drop-shadow(0 0 20px #6366f1)"
             }}
           />
 
@@ -124,6 +122,7 @@ export default function UltraHeroDiagram() {
               cy="60"
               r="6"
               fill={m.color}
+              opacity={0.95}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.8 + i * 0.1 }}
@@ -136,7 +135,6 @@ export default function UltraHeroDiagram() {
           {/* VERTICAL CONNECTING LINES */}
           {moduleConfig.map((m, i) => (
             <g key={m.x}>
-              {/* Pulsing circle at top of vertical line */}
               <motion.circle
                 cx={m.x}
                 cy="60"
@@ -153,7 +151,6 @@ export default function UltraHeroDiagram() {
                   filter: `drop-shadow(0 0 10px ${m.color})`
                 }}
               />
-              {/* Updated vertical line */}
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
@@ -169,19 +166,6 @@ export default function UltraHeroDiagram() {
                 markerEnd={`url(#${m.arrowId})`}
                 style={{
                   filter: `drop-shadow(0 0 8px ${m.color})`
-                }}
-              />
-              {/* FLOWING DOT on vertical line */}
-              <motion.circle
-                r="4"
-                fill={m.color}
-                initial={{ cy: 60 }}
-                animate={{ cy: 170 }}
-                transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: i * 0.2
                 }}
               />
             </g>
@@ -217,4 +201,3 @@ export default function UltraHeroDiagram() {
     </div>
   );
 }
-
