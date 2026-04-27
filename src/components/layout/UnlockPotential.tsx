@@ -11,33 +11,30 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Card, CardContent } from '@/components/ui/card';
+import { SectionTitle } from '@/components/shared/section-title';
 
 export function UnlockPotential() {
     return (
-        <section className="py-16 bg-secondary/30">
+        <section className="py-12 md:py-16 bg-secondary/30">
             <div className="container">
-                <div className="max-w-4xl mx-auto text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                        Unlock the Potential of your clinical Study Data
-                    </h2>
-                    <p className="mt-4 text-lg text-muted-foreground">
-                        Our Clinical Trial platform provides the foundation for innovation and agility.
-                    </p>
-                </div>
+                <SectionTitle
+                    title="Unlock the Potential of your clinical Study Data"
+                    description="Our Clinical Trial platform provides the foundation for innovation and agility."
+                    className="mb-12"
+                />
 
                 <Carousel
                     opts={{
-                        align: "center",
+                        align: "start",
                         loop: true,
                     }}
-                    className="w-full -ml-4"
+                    className="w-full"
                 >
-                    <CarouselContent>
+                    <CarouselContent className="-ml-4">
                         {unlockPotentialItems.map((item) => {
                             const image = PlaceHolderImages.find(p => p.id === item.imageId);
                             return (
-                                <CarouselItem key={item.id} className="md:basis-5/6 lg:basis-3/4 pl-8">
+                                <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-3/4 pl-8">
                                     <div className="relative aspect-[16/9] md:aspect-[2.2/1] rounded-2xl overflow-hidden">
                                         {image && (
                                             <Image
