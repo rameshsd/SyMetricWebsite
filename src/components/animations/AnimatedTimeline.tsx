@@ -164,7 +164,7 @@ export function AnimatedTimeline() {
 
             {index < timelineItems.length - 1 && (
               <motion.div
-                  className="flex justify-start items-center h-16 ml-8 sm:ml-10"
+                  className="flex justify-center items-center h-16 w-16 sm:w-20"
                   variants={itemVariants}
               >
                   <AnimatedArrow index={index} inView={inView} />
