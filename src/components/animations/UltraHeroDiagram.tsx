@@ -49,21 +49,21 @@ export default function UltraHeroDiagram() {
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2563eb">
-                    <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="25%" stopColor="#14b8a6">
-                    <animate attributeName="offset" values="0;1.25" dur="3s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="50%" stopColor="#8b5cf6">
-                    <animate attributeName="offset" values="0.25;1.5" dur="3s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="75%" stopColor="#ec4899">
-                    <animate attributeName="offset" values="0.5;1.75" dur="3s" repeatCount="indefinite" />
-                </stop>
-                <stop offset="100%" stopColor="#f97316">
-                    <animate attributeName="offset" values="0.75;2" dur="3s" repeatCount="indefinite" />
-                </stop>
+              <stop offset="0%" stopColor="#2563eb">
+                <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="25%" stopColor="#14b8a6">
+                <animate attributeName="offset" values="0;1.25" dur="3s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="50%" stopColor="#8b5cf6">
+                <animate attributeName="offset" values="0.25;1.5" dur="3s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="75%" stopColor="#ec4899">
+                <animate attributeName="offset" values="0.5;1.75" dur="3s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="100%" stopColor="#f97316">
+                <animate attributeName="offset" values="0.75;2" dur="3s" repeatCount="indefinite" />
+              </stop>
             </linearGradient>
 
             {moduleConfig.map(m => (
@@ -141,9 +141,9 @@ export default function UltraHeroDiagram() {
                 key={i}
                 cx={m.x}
                 cy="60"
-                r="5"
-                fill={m.color}
-                style={{ filter: `drop-shadow(0 0 8px ${m.color})` }}
+                r="6"
+                fill="white"
+                style={{ filter: `drop-shadow(0 0 10px ${m.color})` }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.2 + i * 0.1 }}
