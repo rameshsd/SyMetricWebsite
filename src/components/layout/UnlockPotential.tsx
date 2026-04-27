@@ -1,9 +1,9 @@
 'use client';
 
-import { unlockPotentialItems } from '@/lib/data';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import Link from 'next/link';
+import { unlockPotentialItems } from '@/lib/data';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
   Carousel,
   CarouselContent,
@@ -28,16 +28,16 @@ export function UnlockPotential() {
 
                 <Carousel
                     opts={{
-                        align: "start",
+                        align: "center",
                         loop: true,
                     }}
                     className="w-full"
                 >
-                    <CarouselContent>
-                        {unlockPotentialItems.map((item, index) => {
+                    <CarouselContent className="-ml-8">
+                        {unlockPotentialItems.map((item) => {
                             const image = PlaceHolderImages.find(p => p.id === item.imageId);
                             return (
-                                <CarouselItem key={index}>
+                                <CarouselItem key={item.id} className="md:basis-5/6 lg:basis-3/4 pl-8">
                                     <div className="relative aspect-[16/9] md:aspect-[2.2/1] rounded-2xl overflow-hidden">
                                         {image && (
                                             <Image
