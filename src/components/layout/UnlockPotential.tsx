@@ -4,65 +4,91 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { unlockPotentialItems } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 import { SectionTitle } from '@/components/shared/section-title';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export function UnlockPotential() {
+    const cardData = unlockPotentialItems.slice(0, 3).map(item => {
+        const image = PlaceHolderImages.find(p => p.id === item.imageId);
+        return {
+            ...item,
+            image: image,
+        };
+    });
+
+    const [mainCard, card2, card3] = cardData;
+
     return (
-        <section className="py-12 md:py-16 bg-secondary/30">
+        <section className="py-16 md:py-24 bg-secondary/30">
             <div className="container">
                 <SectionTitle
                     title="Unlock the Potential of your clinical Study Data"
                     description="Our Clinical Trial platform provides the foundation for innovation and agility."
                     className="mb-12"
                 />
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Main Card */}
+                    {mainCard && mainCard.image && (
+                        <div className="relative aspect-video lg:aspect-auto lg:min-h-[620px] rounded-2xl overflow-hidden group">
+                            <Image 
+                                src={mainCard.image.imageUrl}
+                                alt={mainCard.title.replace(/<[^>]+>/g, '')}
+                                data-ai-hint={mainCard.image.imageHint}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                                <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: mainCard.title }}></h3>
+                                <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: mainCard.description }}></p>
+                                <Button asChild variant="secondary" className="mt-6">
+                                    <Link href={mainCard.linkUrl}>
+                                        {mainCard.linkText} <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {/* Side Cards Container */}
+                    <div className="flex flex-col gap-6">
+                        {card2 && card2.image && (
+                             <div className="relative aspect-video rounded-2xl overflow-hidden group">
+                                <Image 
+                                    src={card2.image.imageUrl}
+                                    alt={card2.title.replace(/<[^>]+>/g, '')}
+                                    data-ai-hint={card2.image.imageHint}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+                                <div className="absolute top-1/2 left-8 -translate-y-1/2 text-white">
+                                    <h3 className="text-2xl font-bold" dangerouslySetInnerHTML={{ __html: card2.title }}></h3>
+                                    <p className="mt-2 text-white/90 max-w-sm text-sm" dangerouslySetInnerHTML={{ __html: card2.description }}></p>
+                                </div>
+                            </div>
+                        )}
 
-                <Carousel
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                >
-                    <CarouselContent className="-ml-4">
-                        {unlockPotentialItems.map((item) => {
-                            const image = PlaceHolderImages.find(p => p.id === item.imageId);
-                            return (
-                                <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-3/4 pl-8">
-                                    <div className="relative aspect-[16/9] md:aspect-[2.2/1] rounded-2xl overflow-hidden">
-                                        {image && (
-                                            <Image
-                                                src={image.imageUrl}
-                                                alt={item.title.replace(/<[^>]+>/g, '')}
-                                                data-ai-hint={image.imageHint}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-                                        <div className="absolute inset-0 flex items-center p-8 md:p-12 lg:p-16">
-                                            <div className="max-w-md text-white">
-                                                <h3 className="text-3xl lg:text-4xl font-bold" dangerouslySetInnerHTML={{ __html: item.title }}></h3>
-                                                <p className="mt-4 text-white/90" dangerouslySetInnerHTML={{ __html: item.description }}></p>
-                                                <Link href={item.linkUrl} className="mt-6 inline-block font-semibold text-white hover:text-primary transition-colors">
-                                                    {item.linkText} &rarr;
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-                            )
-                        })}
-                    </CarouselContent>
-                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-white/50" />
-                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/30 hover:bg-black/50 border-white/50" />
-                </Carousel>
+                        {card3 && card3.image && (
+                             <div className="relative aspect-video rounded-2xl overflow-hidden group">
+                                <Image 
+                                    src={card3.image.imageUrl}
+                                    alt={card3.title.replace(/<[^>]+>/g, '')}
+                                    data-ai-hint={card3.image.imageHint}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+                                <div className="absolute top-1/2 left-8 -translate-y-1/2 text-white">
+                                    <h3 className="text-2xl font-bold" dangerouslySetInnerHTML={{ __html: card3.title }}></h3>
+                                    <p className="mt-2 text-white/90 max-w-sm text-sm" dangerouslySetInnerHTML={{ __html: card3.description }}></p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );
