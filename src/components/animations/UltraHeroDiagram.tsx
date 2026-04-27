@@ -47,26 +47,15 @@ export default function UltraHeroDiagram() {
       {/* SVG CONNECTIONS */}
       <div className="relative w-full max-w-5xl h-48 mt-[-1rem]">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
-
           <defs>
-            {/* 🔥 TRUE moving gradient */}
-            <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#2563eb" />
               <stop offset="25%" stopColor="#14b8a6" />
               <stop offset="50%" stopColor="#8b5cf6" />
               <stop offset="75%" stopColor="#ec4899" />
               <stop offset="100%" stopColor="#f97316" />
-              <animateTransform
-                attributeName="gradientTransform"
-                type="translate"
-                from="-1 0"
-                to="1 0"
-                dur="3s"
-                repeatCount="indefinite"
-              />
             </linearGradient>
 
-            {/* 🔥 Better arrow */}
             {moduleConfig.map(m => (
               <marker
                 key={m.arrowId}
@@ -88,24 +77,38 @@ export default function UltraHeroDiagram() {
           {/* CENTER STEM */}
           <motion.path
             d="M 500 0 V 60"
-            stroke="url(#flow-gradient)"
+            stroke="url(#line-gradient)"
             strokeWidth="4"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 0.6 }}
           />
 
-          {/* 🔥 SINGLE CLEAN HORIZONTAL LINE */}
-          <motion.path
+          {/* BASE LINE (VISIBLE ALWAYS) */}
+          <path
             d="M 100 60 H 900"
-            stroke="url(#flow-gradient)"
+            stroke="#1e293b"
             strokeWidth="5"
             strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1 }}
+            opacity="0.25"
+          />
+
+          {/* ANIMATED FLOW LINE (REAL WORKING ANIMATION) */}
+          <motion.path
+            d="M 100 60 H 900"
+            stroke="url(#line-gradient)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeDasharray="20 10"
+            initial={{ strokeDashoffset: 0 }}
+            animate={{ strokeDashoffset: -200 }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear"
+            }}
             style={{
-              filter: "drop-shadow(0 0 12px rgba(99,102,241,0.6))"
+              filter: "drop-shadow(0 0 10px rgba(99,102,241,0.8))"
             }}
           />
 
@@ -116,42 +119,31 @@ export default function UltraHeroDiagram() {
               cx={m.x}
               cy="60"
               r="6"
-              fill={m.color}
+              fill="white"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.8 + i * 0.1 }}
             />
           ))}
 
-          {/* 🔥 IMPROVED CONNECTING LINES */}
+          {/* IMPROVED CONNECTING LINES */}
           {moduleConfig.map((m, i) => (
             <g key={m.x}>
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
                 strokeWidth="3"
-                strokeDasharray="6 6"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.8, delay: 1.2 + i * 0.1 }}
-                markerEnd={`url(#${m.arrowId})`}
-                style={{
-                  filter: `drop-shadow(0 0 8px ${m.color})`
-                }}
-              />
-
-              {/* 🔥 FLOWING DOT */}
-              <motion.circle
-                r="4"
-                fill={m.color}
-                initial={{ cy: 60 }}
-                animate={{ cy: 170 }}
+                strokeDasharray="10 6"
+                strokeDashoffset={0}
+                animate={{ strokeDashoffset: -40 }}
                 transition={{
                   duration: 1.2,
                   repeat: Infinity,
-                  ease: "linear",
-                  delay: i * 0.2
+                  ease: "linear"
+                }}
+                markerEnd={`url(#${m.arrowId})`}
+                style={{
+                  filter: `drop-shadow(0 0 8px ${m.color})`
                 }}
               />
             </g>
