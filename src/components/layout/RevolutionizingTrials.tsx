@@ -35,7 +35,7 @@ export function RevolutionizingTrials() {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
     
     return (
-        <section className="w-full bg-secondary/30 py-20 md:py-28">
+        <section className="w-full bg-secondary/30 py-16">
             <div className="container">
                 <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="flex flex-col items-center md:items-start">

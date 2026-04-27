@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function PlatformToolsSection() {
   return (
-    <section className="py-20" style={{ backgroundColor: 'rgb(2,3,129)' }}>
+    <section className="py-16" style={{ backgroundColor: 'rgb(2,3,129)' }}>
       <div className="container">
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">

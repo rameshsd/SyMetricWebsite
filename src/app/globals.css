@@ -106,7 +106,7 @@
         @apply max-w-[88rem] mx-auto px-4;
     }
     section {
-        @apply py-20;
+        @apply py-16;
     }
     .bg-sap-gradient {
         background-color: #00073D;

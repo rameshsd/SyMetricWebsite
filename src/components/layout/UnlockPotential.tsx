@@ -15,9 +15,9 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export function UnlockPotential() {
     return (
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-16 bg-secondary/30">
             <div className="container">
-                <div className="max-w-4xl mx-auto text-center mb-16">
+                <div className="max-w-4xl mx-auto text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
                         Unlock the Potential of your clinical Study Data
                     </h2>
@@ -31,9 +31,9 @@ export function UnlockPotential() {
                         align: "center",
                         loop: true,
                     }}
-                    className="w-full"
+                    className="w-full -ml-4"
                 >
-                    <CarouselContent className="-ml-8">
+                    <CarouselContent>
                         {unlockPotentialItems.map((item) => {
                             const image = PlaceHolderImages.find(p => p.id === item.imageId);
                             return (
