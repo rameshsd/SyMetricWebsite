@@ -47,135 +47,111 @@ export default function UltraHeroDiagram() {
       {/* SVG CONNECTIONS */}
       <div className="relative w-full max-w-5xl h-48 mt-[-1rem]">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
+
           <defs>
-            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#2563eb">
-                <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="25%" stopColor="#14b8a6">
-                <animate attributeName="offset" values="0;1.25" dur="3s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="50%" stopColor="#8b5cf6">
-                <animate attributeName="offset" values="0.25;1.5" dur="3s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="75%" stopColor="#ec4899">
-                <animate attributeName="offset" values="0.5;1.75" dur="3s" repeatCount="indefinite" />
-              </stop>
-              <stop offset="100%" stopColor="#f97316">
-                <animate attributeName="offset" values="0.75;2" dur="3s" repeatCount="indefinite" />
-              </stop>
+            {/* 🔥 TRUE moving gradient */}
+            <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2563eb" />
+              <stop offset="25%" stopColor="#14b8a6" />
+              <stop offset="50%" stopColor="#8b5cf6" />
+              <stop offset="75%" stopColor="#ec4899" />
+              <stop offset="100%" stopColor="#f97316" />
+              <animateTransform
+                attributeName="gradientTransform"
+                type="translate"
+                from="-1 0"
+                to="1 0"
+                dur="3s"
+                repeatCount="indefinite"
+              />
             </linearGradient>
 
+            {/* 🔥 Better arrow */}
             {moduleConfig.map(m => (
               <marker
                 key={m.arrowId}
                 id={m.arrowId}
-                viewBox="0 0 20 20"
-                refX="16"
-                refY="10"
-                markerWidth="10"
-                markerHeight="10"
+                markerWidth="8"
+                markerHeight="8"
+                refX="6"
+                refY="4"
                 orient="auto"
               >
                 <path
-                  d="M4 4 L10 10 L4 16"
-                  stroke={m.color}
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 4 L16 10 L10 16"
-                  stroke={m.color}
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  d="M0,0 L8,4 L0,8 Z"
+                  fill={m.color}
                 />
               </marker>
             ))}
-             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
           </defs>
 
-          {/* Main vertical stem */}
+          {/* CENTER STEM */}
           <motion.path
             d="M 500 0 V 60"
-            stroke="#c084fc"
-            strokeWidth="3"
+            stroke="url(#flow-gradient)"
+            strokeWidth="4"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            vectorEffect="non-scaling-stroke"
+            transition={{ duration: 0.6 }}
           />
 
-          {/* Base solid line for visibility */}
-          <path
+          {/* 🔥 SINGLE CLEAN HORIZONTAL LINE */}
+          <motion.path
             d="M 100 60 H 900"
-            stroke="#c7d2fe"
-            strokeWidth="4"
-            strokeLinecap="round"
-            opacity="0.6"
-          />
-
-          {/* Animated Gradient horizontal line */}
-          <path
-            d="M 100 60 H 900"
-            stroke="url(#line-gradient)"
+            stroke="url(#flow-gradient)"
             strokeWidth="5"
             strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1 }}
             style={{
-              filter: "drop-shadow(0 0 10px rgba(99,102,241,0.8))"
+              filter: "drop-shadow(0 0 12px rgba(99,102,241,0.6))"
             }}
           />
-          
-          {/* Glowing Nodes on horizontal line */}
+
+          {/* NODES */}
           {moduleConfig.map((m, i) => (
             <motion.circle
-                key={i}
-                cx={m.x}
-                cy="60"
-                r="6"
-                fill="white"
-                style={{ filter: `drop-shadow(0 0 10px ${m.color})` }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.2 + i * 0.1 }}
+              key={i}
+              cx={m.x}
+              cy="60"
+              r="6"
+              fill={m.color}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.8 + i * 0.1 }}
             />
           ))}
 
-          {/* Vertical drops with arrows */}
+          {/* 🔥 IMPROVED CONNECTING LINES */}
           {moduleConfig.map((m, i) => (
             <g key={m.x}>
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
-                strokeWidth="2"
-                strokeDasharray="2 10"
+                strokeWidth="3"
+                strokeDasharray="6 6"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.8, delay: 2.0 + i * 0.1 }}
+                transition={{ duration: 0.8, delay: 1.2 + i * 0.1 }}
                 markerEnd={`url(#${m.arrowId})`}
                 style={{
-                  filter: `drop-shadow(0 0 6px ${m.color}66)`
+                  filter: `drop-shadow(0 0 8px ${m.color})`
                 }}
               />
+
+              {/* 🔥 FLOWING DOT */}
               <motion.circle
-                r="3"
+                r="4"
                 fill={m.color}
                 initial={{ cy: 60 }}
                 animate={{ cy: 170 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 1.2,
                   repeat: Infinity,
-                  delay: 2.2 + i * 0.3
+                  ease: "linear",
+                  delay: i * 0.2
                 }}
               />
             </g>
