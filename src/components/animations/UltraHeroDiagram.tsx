@@ -88,52 +88,99 @@ export default function UltraHeroDiagram() {
           <path
             d="M 100 60 H 900"
             stroke="#1e293b"
-            strokeWidth="5"
+            strokeWidth="6"
             strokeLinecap="round"
             opacity="0.25"
           />
 
-          {/* ANIMATED FLOW LINE (REAL WORKING ANIMATION) */}
+          {/* MAIN ACTIVE LINE */}
           <motion.path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
-            strokeWidth="5"
+            strokeWidth="6"
             strokeLinecap="round"
-            strokeDasharray="20 10"
-            initial={{ strokeDashoffset: 0 }}
-            animate={{ strokeDashoffset: -200 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              filter: "drop-shadow(0 0 12px rgba(99,102,241,0.9))"
+            }}
+          />
+
+          {/* MOVING PULSE */}
+          <motion.circle
+            r="5"
+            fill="#ffffff"
+            initial={{ cx: 100 }}
+            animate={{ cx: 900 }}
+            cy="60"
             transition={{
               duration: 2,
               repeat: Infinity,
               ease: "linear"
             }}
             style={{
-              filter: "drop-shadow(0 0 10px rgba(99,102,241,0.8))"
+              filter: "drop-shadow(0 0 8px #fff)"
+            }}
+          />
+          
+          {/* CENTER HUB */}
+          <motion.circle
+            cx="500"
+            cy="60"
+            r="8"
+            fill="#6366f1"
+            initial={{ scale: 0 }}
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity
+            }}
+            style={{
+              filter: "drop-shadow(0 0 15px #6366f1)"
             }}
           />
 
-          {/* NODES */}
+          {/* NODES on horizontal line (placeholders, can be styled) */}
           {moduleConfig.map((m, i) => (
             <motion.circle
               key={i}
               cx={m.x}
               cy="60"
               r="6"
-              fill="white"
+              fill={m.color}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.8 + i * 0.1 }}
             />
           ))}
 
-          {/* IMPROVED CONNECTING LINES */}
+          {/* VERTICAL CONNECTING LINES */}
           {moduleConfig.map((m, i) => (
             <g key={m.x}>
+              {/* Pulsing circle at top of vertical line */}
+              <motion.circle
+                cx={m.x}
+                cy="60"
+                r="5"
+                fill={m.color}
+                initial={{ scale: 0 }}
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.2
+                }}
+                style={{
+                  filter: `drop-shadow(0 0 10px ${m.color})`
+                }}
+              />
+              {/* Updated vertical line */}
               <motion.path
                 d={`M ${m.x} 60 V 170`}
                 stroke={m.color}
                 strokeWidth="3"
-                strokeDasharray="10 6"
+                strokeDasharray="4 4"
                 strokeDashoffset={0}
                 animate={{ strokeDashoffset: -40 }}
                 transition={{
@@ -144,6 +191,19 @@ export default function UltraHeroDiagram() {
                 markerEnd={`url(#${m.arrowId})`}
                 style={{
                   filter: `drop-shadow(0 0 8px ${m.color})`
+                }}
+              />
+              {/* FLOWING DOT on vertical line */}
+              <motion.circle
+                r="4"
+                fill={m.color}
+                initial={{ cy: 60 }}
+                animate={{ cy: 170 }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: i * 0.2
                 }}
               />
             </g>
