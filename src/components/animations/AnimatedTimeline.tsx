@@ -121,9 +121,9 @@ export function AnimatedTimeline() {
       >
         {timelineItems.map((item, index) => (
           <React.Fragment key={item.title}>
-            <motion.div className="flex items-center gap-6" variants={itemVariants}>
+            <motion.div className="flex items-start sm:items-center gap-4 sm:gap-6" variants={itemVariants}>
               <div className="relative flex-shrink-0">
-                <svg width="80" height="80" viewBox="0 0 80 80" className="-rotate-90">
+                <svg viewBox="0 0 80 80" className="w-16 h-16 sm:w-20 sm:h-20 -rotate-90">
                     <defs>
                         <linearGradient id={`grad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" style={{stopColor: item.colors.gradientStart, stopOpacity:1}} />
@@ -145,8 +145,8 @@ export function AnimatedTimeline() {
                     />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
-                        <item.icon className={cn("w-6 h-6", item.colors.text)} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background flex items-center justify-center">
+                        <item.icon className={cn("w-5 h-5 sm:w-6 sm:h-6", item.colors.text)} />
                     </div>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export function AnimatedTimeline() {
                   <h3 className="font-bold text-foreground">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
-                <div className={cn("absolute -right-2 top-1/2 -translate-y-1/2 text-6xl font-bold opacity-10 select-none", item.colors.text)}>
+                <div className={cn("absolute -right-2 top-1/2 -translate-y-1/2 text-5xl sm:text-6xl font-bold opacity-10 select-none", item.colors.text)}>
                   {item.number}
                 </div>
               </div>
@@ -164,7 +164,7 @@ export function AnimatedTimeline() {
 
             {index < timelineItems.length - 1 && (
               <motion.div
-                  className="flex justify-start items-center h-16 ml-8"
+                  className="flex justify-start items-center h-16 ml-8 sm:ml-10"
                   variants={itemVariants}
               >
                   <AnimatedArrow index={index} inView={inView} />
