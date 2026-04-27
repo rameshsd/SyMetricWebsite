@@ -1,3 +1,4 @@
+
 'use client';
 
 import { motion } from 'framer-motion';
@@ -46,7 +47,7 @@ export default function UltraHeroDiagram() {
 
       {/* SVG CONNECTIONS */}
       <div className="relative w-full max-w-5xl h-48 mt-[-1rem]">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 200">
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#2563eb" />
@@ -84,43 +85,17 @@ export default function UltraHeroDiagram() {
             transition={{ duration: 0.6 }}
           />
 
-          {/* BASE LINE (VISIBLE ALWAYS) */}
-          <path
-            d="M 100 60 H 900"
-            stroke="#1e293b"
-            strokeWidth="6"
-            strokeLinecap="round"
-            opacity="0.25"
-          />
-
           {/* MAIN ACTIVE LINE */}
           <motion.path
             d="M 100 60 H 900"
             stroke="url(#line-gradient)"
             strokeWidth="6"
             strokeLinecap="round"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1 }}
             style={{
-              filter: "drop-shadow(0 0 12px rgba(99,102,241,0.9))"
-            }}
-          />
-
-          {/* MOVING PULSE */}
-          <motion.circle
-            r="5"
-            fill="#ffffff"
-            initial={{ cx: 100 }}
-            animate={{ cx: 900 }}
-            cy="60"
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            style={{
-              filter: "drop-shadow(0 0 8px #fff)"
+              filter: "drop-shadow(0 0 14px rgba(99,102,241,0.8))"
             }}
           />
           
@@ -128,7 +103,7 @@ export default function UltraHeroDiagram() {
           <motion.circle
             cx="500"
             cy="60"
-            r="8"
+            r="5"
             fill="#6366f1"
             initial={{ scale: 0 }}
             animate={{ scale: [1, 1.3, 1] }}
@@ -137,11 +112,11 @@ export default function UltraHeroDiagram() {
               repeat: Infinity
             }}
             style={{
-              filter: "drop-shadow(0 0 15px #6366f1)"
+              filter: "drop-shadow(0 0 8px #6366f1)"
             }}
           />
 
-          {/* NODES on horizontal line (placeholders, can be styled) */}
+          {/* NODES on horizontal line */}
           {moduleConfig.map((m, i) => (
             <motion.circle
               key={i}
@@ -152,6 +127,9 @@ export default function UltraHeroDiagram() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.8 + i * 0.1 }}
+               style={{
+                filter: `drop-shadow(0 0 12px ${m.color})`
+              }}
             />
           ))}
 
@@ -239,3 +217,4 @@ export default function UltraHeroDiagram() {
     </div>
   );
 }
+
