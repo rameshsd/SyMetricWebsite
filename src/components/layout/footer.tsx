@@ -67,8 +67,7 @@ export function Footer() {
   return (
     <>
     <footer className="bg-black text-gray-400 border-t border-gray-800">
-      <div className="h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"></div>
-      <div className="container pt-16 pb-12">
+      <div className="container pt-16 pb-0 md:pb-12">
         {/* Desktop Footer */}
         <div className="hidden md:grid grid-cols-1 gap-y-12 md:grid-cols-5 md:gap-x-8">
             <div className="md:col-span-2">
@@ -149,7 +148,7 @@ export function Footer() {
                         </ul>
                     </AccordionContent>
                 </AccordionItem>
-                 <AccordionItem value="site-info" className="border-b border-gray-800">
+                 <AccordionItem value="site-info" className="border-b-0">
                     <AccordionTrigger className="py-4 text-base font-semibold text-gray-300 hover:text-white hover:no-underline [&>svg]:text-white">
                         Site information
                     </AccordionTrigger>
@@ -167,7 +166,7 @@ export function Footer() {
       
       {/* Bottom Bar */}
       <div className="container">
-        <div className="border-t border-gray-800 py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 pb-6 md:py-6 md:border-t border-gray-800 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
             <div className="text-xs text-gray-500">
                 {isClient ? `Copyright © ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
             </div>
