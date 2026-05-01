@@ -210,7 +210,7 @@ export default function SampleManagementPage() {
                     <div className="container">
                         <SectionTitle
                             title="Key Capabilities"
-                            className="mb-16 text-center"
+                            className="mb-16"
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
@@ -235,3 +235,4 @@ export default function SampleManagementPage() {
         </>
     );
 }
+

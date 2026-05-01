@@ -89,7 +89,7 @@ const capabilities = [
     },
     {
         icon: Users,
-        title: "Subject-Specific Controls",
+        title: "Subject Specific Controls",
         description: "Manage dose titration, run-in medication, and subject-specific kit reservations."
     },
     {
@@ -158,7 +158,7 @@ export default function ClinicalSuppliesManagementPage() {
                     <div className="container">
                          <SectionTitle
                             title="Key Capabilities"
-                            className="mb-16 text-center"
+                            className="mb-16"
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
@@ -232,3 +232,4 @@ export default function ClinicalSuppliesManagementPage() {
         </>
     );
 }
+

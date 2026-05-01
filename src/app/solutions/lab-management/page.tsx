@@ -87,7 +87,7 @@ export default function LabDataManagementPage() {
                         <SectionTitle
                             title="Key Capabilities"
                             description="The module ensures all lab results are standardized, validated, and fully traceable."
-                            className="mb-16 text-center"
+                            className="mb-16"
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
@@ -112,3 +112,4 @@ export default function LabDataManagementPage() {
         </>
     );
 }
+

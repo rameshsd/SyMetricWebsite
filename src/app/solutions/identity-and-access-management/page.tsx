@@ -112,7 +112,7 @@ export default function IamPage() {
                     <div className="container">
                         <SectionTitle
                             title="Core Capabilities"
-                            className="mb-16 text-center"
+                            className="mb-16"
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
@@ -190,3 +190,4 @@ export default function IamPage() {
         </>
     );
 }
+

@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -189,7 +190,7 @@ export default function SiteManagementPage() {
 
                 <section id="capabilities">
                     <div className="container">
-                        <SectionTitle title="Key Capabilities" className="mb-12 text-center" />
+                        <SectionTitle title="Key Capabilities" className="mb-12" />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
                                 <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -233,3 +234,4 @@ export default function SiteManagementPage() {
         </>
     );
 }
+
