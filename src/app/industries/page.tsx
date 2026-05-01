@@ -58,7 +58,7 @@ export default function IndustriesPage() {
                     <SectionTitle
                         title="Industries We Serve"
                         description="We empower life sciences and healthcare organizations with technology-driven solutions that enhance efficiency, compliance, and innovation."
-                        className="max-w-4xl mx-auto text-center mb-16"
+                        className="max-w-4xl mb-16"
                     />
                     <div className="space-y-16">
                         {industries.map((industry, index) => {
