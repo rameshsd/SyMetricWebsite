@@ -1,5 +1,4 @@
 
-
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { solutions } from '@/lib/data';
@@ -12,7 +11,6 @@ import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
-import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 
@@ -28,9 +26,10 @@ export default function ClinicalTrialPlatformPage() {
     
     const secondaryNav = [
         { label: 'Overview', href: '#overview' },
-        { label: 'How it works', href: '#how-it-works' },
-        { label: 'Tools', href: '#tools' },
-        { label: 'Related Products', href: '#related-products' },
+        { label: 'Purpose', href: '#purpose' },
+        { label: 'Platform Tools', href: '#tools' },
+        { label: 'Related Solutions', href: '#related' },
+        { label: 'Collaboration', href: '#collaboration' },
         { label: 'Hosting', href: '#hosting' },
     ];
 
@@ -42,7 +41,7 @@ export default function ClinicalTrialPlatformPage() {
             secondaryNav={secondaryNav}
         />
         
-        <div>
+        <div className="flex flex-col">
             {solution && (
                 <section id="overview" className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card py-20">
                     <div className="container">
@@ -68,7 +67,7 @@ export default function ClinicalTrialPlatformPage() {
                 </section>
             )}
 
-            <div id="how-it-works">
+            <div id="purpose">
                 <BuiltWithPurpose />
             </div>
             
@@ -76,14 +75,20 @@ export default function ClinicalTrialPlatformPage() {
               <PlatformToolsGrid />
             </div>
 
-            <div id="related-products">
-                <RelatedProductsSection />
+            <div id="related">
+                <RelatedProductsSection relatedContent={solution?.relatedContent} />
             </div>
-            <CollaborationVision />
+
+            <div id="collaboration">
+              <CollaborationVision />
+            </div>
+
             <GlobalPresence />
+
             <div id="hosting">
                 <HostingOptions />
             </div>
+
             <SyMetricAdvantage />
             <SecurityCompliance />
             
