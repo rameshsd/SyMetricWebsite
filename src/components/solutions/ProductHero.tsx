@@ -19,11 +19,29 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
   const sectionStyle = backgroundColor ? { backgroundColor } : {};
   const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
   const isIrtIwrs = slug === 'irt-iwrs';
-  const hasDarkBg = !!backgroundColor;
+  
+  // List of known light backgrounds where we should use dark text
+  const lightBackgrounds = [
+    '#f5f3ff', 
+    '#fdf4ff', 
+    '#ebf8ff', 
+    '#f0f9ff', 
+    '#f0fdf4', 
+    '#fef2f2', 
+    '#f4f7fb',
+    'transparent'
+  ];
+  
+  const isLightBg = !backgroundColor || lightBackgrounds.includes(backgroundColor.toLowerCase());
+  const hasDarkBg = backgroundColor && !isLightBg;
 
   return (
     <section 
-        className={cn("w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", defaultBgClass, isIrtIwrs && 'bg-[#ebf8ff]')}
+        className={cn(
+          "w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", 
+          defaultBgClass, 
+          isIrtIwrs && 'bg-[#ebf8ff]'
+        )}
         style={sectionStyle}
     >
       <div className="container">
@@ -31,18 +49,25 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
           <div className="space-y-6">
             <h1 className={cn(
               "text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl",
-              hasDarkBg && "text-white"
+              hasDarkBg ? "text-white" : "text-foreground"
             )}>
               {title}
             </h1>
             <p className={cn(
-              "max-w-[600px] text-lg text-muted-foreground md:text-xl/relaxed",
-              hasDarkBg && "text-white/80"
+              "max-w-[600px] text-lg md:text-xl/relaxed",
+              hasDarkBg ? "text-white/80" : "text-muted-foreground"
             )}>
               {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-               <Button size="lg" variant="outline" className={cn(hasDarkBg && !isIrtIwrs && "bg-transparent border-white text-white hover:bg-white hover:text-primary")} asChild>
+               <Button 
+                size="lg" 
+                variant={hasDarkBg ? "secondary" : "default"} 
+                className={cn(
+                  hasDarkBg && "bg-white text-black hover:bg-gray-200"
+                )}
+                asChild
+               >
                 <Link href="/request-demo">Request a demo</Link>
               </Button>
             </div>
@@ -57,7 +82,7 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
                         alt={title}
                         data-ai-hint={imageHint}
                         fill
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover shadow-2xl"
                     />
                 </div>
             )}
