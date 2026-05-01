@@ -8,6 +8,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Link from 'next/link';
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 export const metadata: Metadata = {
   title: 'Trial Analytics - SyMetric',
@@ -19,6 +20,7 @@ export default function TrialAnalyticsPage() {
         { label: 'Overview', href: '#overview' },
         { label: 'Benefits', href: '#benefits' },
         { label: 'Features', href: '#features' },
+        { label: 'Get Started', href: '#get-started' },
     ];
     
     const heroImage = PlaceHolderImages.find(p => p.id === 'trial-analytics-hero');
@@ -92,15 +94,8 @@ export default function TrialAnalyticsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="bg-secondary/50">
-                    <div className="container">
-                        <div className="text-center">
-                            <div className="flex gap-4 justify-center mt-8">
-                                <Button size="lg" asChild><Link href="/contact">Get a demo</Link></Button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
+                <ReadyToGetStarted />
             </div>
         </>
     );

@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import Image from 'next/image';
@@ -10,7 +9,12 @@ import { PlayCircle, ArrowRight } from 'lucide-react';
 import { SectionTitle } from '../shared/section-title';
 import type { RelatedContent } from '@/lib/types';
 
-export function RelatedProductsSection({ relatedContent }: { relatedContent?: RelatedContent }) {
+interface RelatedProductsSectionProps {
+  relatedContent?: RelatedContent;
+  customImage?: string;
+}
+
+export function RelatedProductsSection({ relatedContent, customImage }: RelatedProductsSectionProps) {
     const videoThumbnail = PlaceHolderImages.find(p => p.id === 'finance-driver-video');
 
     if (!relatedContent) {
@@ -29,18 +33,29 @@ export function RelatedProductsSection({ relatedContent }: { relatedContent?: Re
 
                 <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="relative aspect-video rounded-2xl overflow-hidden group">
-                        {videoThumbnail && (
+                        {customImage ? (
                             <Image 
-                                src={videoThumbnail.imageUrl}
-                                alt={videoThumbnail.description}
-                                data-ai-hint={videoThumbnail.imageHint}
+                                src={customImage}
+                                alt="Related information visual"
                                 fill
                                 className="object-cover"
                             />
+                        ) : (
+                            <>
+                                {videoThumbnail && (
+                                    <Image 
+                                        src={videoThumbnail.imageUrl}
+                                        alt={videoThumbnail.description}
+                                        data-ai-hint={videoThumbnail.imageHint}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
+                                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                    <PlayCircle className="h-20 w-20 text-white/80 transform transition-transform group-hover:scale-110" />
+                                </div>
+                            </>
                         )}
-                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                            <PlayCircle className="h-20 w-20 text-white/80 transform transition-transform group-hover:scale-110" />
-                        </div>
                     </div>
                     <div className="space-y-8">
                         {featurePoints.map(point => (

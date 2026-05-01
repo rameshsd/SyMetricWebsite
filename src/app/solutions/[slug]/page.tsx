@@ -1,5 +1,4 @@
 
-
 import { solutions } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -13,6 +12,7 @@ import { PageHeader } from '@/components/layout/PageHeader';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
 import { ProductHero } from '@/components/solutions/ProductHero';
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 type Props = {
   params: { slug: string };
@@ -39,6 +39,11 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
     { label: 'Related Products', href: '#related-products' },
   ];
 
+  // Specific image for IRT/IWRS related products section
+  const customRelatedImage = params.slug === 'irt-iwrs' 
+    ? 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR' 
+    : undefined;
+
   return (
     <>
       <PageHeader
@@ -61,8 +66,12 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
           <CapabilitiesSection capabilities={solution.capabilities} />
         </div>
         <div id="related-products">
-          <RelatedProductsSection relatedContent={solution.relatedContent} />
+          <RelatedProductsSection 
+            relatedContent={solution.relatedContent} 
+            customImage={customRelatedImage}
+          />
         </div>
+        <ReadyToGetStarted />
       </div>
     </>
   );
