@@ -91,7 +91,7 @@ export default function HelpSupportPage() {
                 </section>
 
                  <section id="conclusion" className="bg-secondary/50">
-                    <div className="container max-w-3xl mx-auto text-center">
+                    <div className="container">
                          <SectionTitle
                             title="Conclusion"
                             description="The Help & Support module ensures that users never feel stuck. With automated help content, structured support workflows, data correction tools, and digital learning resources, teams can operate confidently and efficiently."

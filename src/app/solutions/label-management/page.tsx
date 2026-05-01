@@ -101,7 +101,7 @@ export default function LabelManagementPage() {
                 </section>
 
                  <section id="conclusion" className="bg-secondary/50">
-                    <div className="container max-w-3xl mx-auto text-center">
+                    <div className="container">
                          <SectionTitle
                             title="Conclusion"
                             description="The Label Management module ensures complete accuracy and traceability across label creation, configuration, approval, and verification. With customizable templates, workflow-based label requests, barcode verification, and detailed configuration controls, the system supports high-compliance clinical trial operations with precision and flexibility."

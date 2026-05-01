@@ -208,7 +208,7 @@ export default function DataServicesPage() {
                 </section>
 
                  <section className="bg-secondary/50">
-                    <div className="container max-w-3xl mx-auto text-center">
+                    <div className="container">
                          <SectionTitle
                             title="Conclusion"
                             description="The Data Services module provides a comprehensive, enterprise-ready integration framework designed specifically for clinical trials. It eliminates manual data transfers, streamlines multi-system collaboration, reduces operational errors, and ensures regulatory compliance across all transactional workflows."

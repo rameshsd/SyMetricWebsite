@@ -142,7 +142,7 @@ export default function ReportsModulePage() {
                 </section>
 
                  <section>
-                    <div className="container max-w-3xl mx-auto text-center">
+                    <div className="container">
                          <SectionTitle
                             title="Conclusion"
                             description="The Reports Module is one of the most comprehensive reporting ecosystems in the clinical trial technology landscape. It provides full transparency, multi-level auditability, real-time insights, and regulatory-grade reporting for every stakeholder."

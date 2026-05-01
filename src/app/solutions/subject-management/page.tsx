@@ -130,8 +130,11 @@ export default function SubjectManagementPage() {
                 </section>
 
                  <section id="summary" className="bg-secondary/50">
-                    <div className="container max-w-3xl mx-auto text-center">
-                         <h2 className="text-3xl font-bold mb-4">Summary</h2>
+                    <div className="container text-left">
+                         <h2 className="text-3xl font-bold mb-4 relative pl-4">
+                            <span className="absolute left-0 top-0 bottom-0 w-1 bg-primary"></span>
+                            Summary
+                         </h2>
                          <p className="text-lg text-muted-foreground">The Subject Management module delivers a complete, compliant, and highly configurable ecosystem for managing subjects across the entire study lifecycle. It ensures accuracy, protocol adherence, regulatory completeness, and operational efficiency—whether your study has 20 subjects or 20,000 across multiple regions.</p>
                     </div>
                 </section>
@@ -140,4 +143,3 @@ export default function SubjectManagementPage() {
         </>
     );
 }
-
