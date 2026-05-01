@@ -149,7 +149,7 @@ export default function DataServicesPage() {
                             </div>
                         </div>
                     </div>
-                </section>
+                 </section>
 
                 <section id="capabilities">
                     <div className="container">
@@ -181,7 +181,7 @@ export default function DataServicesPage() {
                             description="Ready-to-use integration templates for industry-leading clinical platforms."
                             className="mb-12"
                         />
-                         <div className="flex flex-wrap justify-center gap-4">
+                         <div className="flex flex-wrap justify-start gap-4">
                             {['Veeva CDMS', 'Veeva CTMS', 'Medrio EDC', 'SAP ICSM'].map(system => (
                                 <div key={system} className="flex items-center gap-2 bg-background border rounded-lg px-4 py-2">
                                     <CheckCircle className="w-5 h-5 text-green-500" />
@@ -207,7 +207,7 @@ export default function DataServicesPage() {
                     </div>
                 </section>
 
-                 <section className="bg-secondary/50">
+                 <section id="conclusion" className="bg-secondary/50">
                     <div className="container">
                          <SectionTitle
                             title="Conclusion"
