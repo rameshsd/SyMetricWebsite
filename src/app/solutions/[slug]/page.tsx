@@ -39,10 +39,13 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
     { label: 'Related Products', href: '#related-products' },
   ];
 
-  // Specific image for IRT/IWRS related products section
-  const customRelatedImage = params.slug === 'irt-iwrs' 
-    ? 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR' 
-    : undefined;
+  // Mapping of slug to custom related images from GDrive
+  const customImages: Record<string, string> = {
+    'irt-iwrs': 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR',
+    'edc': 'https://drive.google.com/uc?export=view&id=1uQmaadhtEWhZtYwO4Fs_wIRhOocWRAL7'
+  };
+
+  const customRelatedImage = customImages[params.slug];
 
   return (
     <>
