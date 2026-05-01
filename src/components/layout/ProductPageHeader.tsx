@@ -95,24 +95,24 @@ export function ProductPageHeader({ productName, solutions }: ProductPageHeaderP
                     </button>
                   </DropdownMenuTrigger>
 
-                  <DropdownMenuContent className="z-[9999]">
+                  <DropdownMenuContent className="z-[9999] w-[calc(100vw-2rem)] md:w-[600px] p-2 grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1">
                     {tab.items && tab.items.length > 0 ? (
                       tab.items.map((item) => (
-                        <DropdownMenuItem key={item.id}>
+                        <DropdownMenuItem key={item.id} asChild>
                           <Link
                             href={
                               item.slug === "clinical-trial-platform"
                                 ? "/solutions/clinical-trial-platform"
                                 : `/solutions/${item.slug}`
                             }
-                            className="w-full block"
+                            className="w-full block cursor-pointer"
                           >
                             {item.name}
                           </Link>
                         </DropdownMenuItem>
                       ))
                     ) : (
-                      <DropdownMenuItem>No modules found</DropdownMenuItem>
+                      <DropdownMenuItem className="col-span-full text-center">No modules found</DropdownMenuItem>
                     )}
                   </DropdownMenuContent>
                 </DropdownMenu>
