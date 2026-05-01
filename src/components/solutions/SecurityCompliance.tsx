@@ -14,11 +14,11 @@ export function SecurityCompliance() {
   return (
     <section ref={ref} className="bg-secondary/50">
       <div className="container">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl">
             <SectionTitle
                 title="Compliance & Regulatory Standards"
                 description="We adhere to globally recognized regulatory frameworks and quality standards to ensure security, compliance, and operational excellence across all our solutions."
-                className="text-center mx-auto !max-w-4xl"
+                className="!max-w-4xl mb-16"
             />
         </div>
         
