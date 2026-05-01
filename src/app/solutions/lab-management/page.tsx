@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { SyMetricBusinessAI } from '@/components/layout/SyMetricBusinessAI';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +10,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ConclusionSection } from '@/components/solutions/lab-management/ConclusionSection';
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 
 export const metadata: Metadata = {
@@ -107,9 +107,10 @@ export default function LabDataManagementPage() {
                 
                 <ConclusionSection />
 
+                <ReadyToGetStarted />
+
                 <FaqAccordion faqs={labManagementFaq} />
             </div>
         </>
     );
 }
-
