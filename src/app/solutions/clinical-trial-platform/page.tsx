@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { solutions } from '@/lib/data';
@@ -13,13 +12,12 @@ import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 import { CollaborationVision } from '@/components/solutions/CollaborationVision';
-
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
   description: 'An end-to-end, cloud-based platform for Clinical Trials with fully modular tools that allow you to pick and configure them according to your needs.',
 };
-
 
 export default function ClinicalTrialPlatformPage() {
     const solution = solutions.find((s) => s.slug === 'clinical-trial-platform');
@@ -32,6 +30,8 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Collaboration', href: '#collaboration' },
         { label: 'Hosting', href: '#hosting' },
     ];
+
+    const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1pFYpQ2M-L7hAywVhkECJYxUKLkPMezAy';
 
   return (
     <>
@@ -76,7 +76,10 @@ export default function ClinicalTrialPlatformPage() {
             </div>
 
             <div id="related">
-                <RelatedProductsSection relatedContent={solution?.relatedContent} />
+                <RelatedProductsSection 
+                    relatedContent={solution?.relatedContent} 
+                    customImage={customRelatedImage}
+                />
             </div>
 
             <div id="collaboration">
@@ -92,6 +95,7 @@ export default function ClinicalTrialPlatformPage() {
             <SyMetricAdvantage />
             <SecurityCompliance />
             
+            <ReadyToGetStarted />
         </div>
     </>
   );

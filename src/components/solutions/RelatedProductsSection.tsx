@@ -1,11 +1,10 @@
-
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
-import { PlayCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SectionTitle } from '../shared/section-title';
 import type { RelatedContent } from '@/lib/types';
 
@@ -51,9 +50,6 @@ export function RelatedProductsSection({ relatedContent, customImage }: RelatedP
                                         className="object-cover"
                                     />
                                 )}
-                                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                                    <PlayCircle className="h-20 w-20 text-white/80 transform transition-transform group-hover:scale-110" />
-                                </div>
                             </>
                         )}
                     </div>

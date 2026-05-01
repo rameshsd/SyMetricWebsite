@@ -1,13 +1,7 @@
-
 import { solutions } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { CapabilitiesSection } from '@/components/solutions/CapabilitiesSection';
@@ -39,14 +33,8 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
     { label: 'Related Products', href: '#related-products' },
   ];
 
-  // Mapping of slug to custom related images from GDrive
-  const customImages: Record<string, string> = {
-    'irt-iwrs': 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR',
-    'edc': 'https://drive.google.com/uc?export=view&id=1uQmaadhtEWhZtYwO4Fs_wIRhOocWRAL7',
-    'ctm': 'https://drive.google.com/uc?export=view&id=1fFpdfORGPiL8uvri2sgHXu-oPMb-WbIS'
-  };
-
-  const customRelatedImage = customImages[params.slug];
+  // Global image for clinical solutions as requested
+  const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1pFYpQ2M-L7hAywVhkECJYxUKLkPMezAy';
 
   return (
     <>
