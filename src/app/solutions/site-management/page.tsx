@@ -12,6 +12,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { siteManagementFaq } from '@/lib/data';
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 
 export const metadata: Metadata = {
@@ -211,8 +212,8 @@ export default function SiteManagementPage() {
 
                 <section id="benefits" className="bg-secondary/50">
                     <div className="container">
-                        <SectionTitle title="Benefits of the Site Management Module" className="mb-12 text-center" />
-                         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <SectionTitle title="Benefits of the Site Management Module" className="mb-12" />
+                         <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
                             {benefits.map(benefit => (
                                 <div key={benefit.title} className="flex items-start gap-4 group">
                                     <div className="flex-shrink-0 p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20">
@@ -229,9 +230,9 @@ export default function SiteManagementPage() {
                 </section>
 
                  <PurposeSection />
+                 <ReadyToGetStarted />
                  <FaqAccordion faqs={siteManagementFaq} />
             </div>
         </>
     );
 }
-

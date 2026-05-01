@@ -31,6 +31,7 @@ import {
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { reportsFaq } from '@/lib/data';
+import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 export const metadata: Metadata = {
   title: 'Reports Module - SyMetric',
@@ -113,31 +114,33 @@ export default function ReportsModulePage() {
                 </section>
 
                  <section id="report-categories" className="bg-secondary/50">
-                    <div className="container max-w-4xl mx-auto">
+                    <div className="container">
                         <SectionTitle
                             title="Categories of Reports"
                             description="An extensive suite of reports grouped across operational, clinical, supply, compliance, and subject-level activities."
                             className="mb-16"
                         />
-                        <Accordion type="single" collapsible className="w-full">
-                            {reportCategories.map((category, index) => (
-                                <AccordionItem value={`item-${index}`} key={category.title}>
-                                    <AccordionTrigger>
-                                        <div className="flex items-center gap-3">
-                                            <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/20">
-                                                <category.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" strokeWidth={2.5}/>
+                        <div className="max-w-4xl">
+                            <Accordion type="single" collapsible className="w-full">
+                                {reportCategories.map((category, index) => (
+                                    <AccordionItem value={`item-${index}`} key={category.title}>
+                                        <AccordionTrigger>
+                                            <div className="flex items-center gap-3">
+                                                <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/20">
+                                                    <category.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" strokeWidth={2.5}/>
+                                                </div>
+                                                <span className="font-semibold text-lg">{category.title}</span>
                                             </div>
-                                            <span className="font-semibold text-lg">{category.title}</span>
-                                        </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent>
-                                        <ul className="list-disc pl-10 space-y-2 text-muted-foreground">
-                                            {category.reports.map(report => <li key={report}>{report}</li>)}
-                                        </ul>
-                                    </AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+                                        </AccordionTrigger>
+                                        <AccordionContent>
+                                            <ul className="list-disc pl-10 space-y-2 text-muted-foreground">
+                                                {category.reports.map(report => <li key={report}>{report}</li>)}
+                                            </ul>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
                     </div>
                 </section>
 
@@ -149,6 +152,7 @@ export default function ReportsModulePage() {
                         />
                     </div>
                 </section>
+                <ReadyToGetStarted />
                 <FaqAccordion faqs={reportsFaq} />
             </div>
         </>
