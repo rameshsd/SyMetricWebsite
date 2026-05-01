@@ -31,7 +31,8 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Hosting', href: '#hosting' },
     ];
 
-    const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1pFYpQ2M-L7hAywVhkECJYxUKLkPMezAy';
+    // Use the specific clinical research image requested by the user
+    const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR';
 
   return (
     <>

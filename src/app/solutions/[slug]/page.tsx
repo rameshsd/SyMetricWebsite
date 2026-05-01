@@ -33,8 +33,14 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
     { label: 'Related Products', href: '#related-products' },
   ];
 
-  // Global image for clinical solutions as requested
-  const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1pFYpQ2M-L7hAywVhkECJYxUKLkPMezAy';
+  // Map specific images to solution slugs to provide a unique, non-video experience for each
+  const imageMap: Record<string, string> = {
+    'irt-iwrs': 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR',
+    'edc': 'https://drive.google.com/uc?export=view&id=1uQmaadhtEWhZtYwO4Fs_wIRhOocWRAL7',
+    'ctm': 'https://drive.google.com/uc?export=view&id=1fFpdfORGPiL8uvri2sgHXu-oPMb-WbIS',
+  };
+
+  const customRelatedImage = imageMap[params.slug] || 'https://drive.google.com/uc?export=view&id=1pFYpQ2M-L7hAywVhkECJYxUKLkPMezAy';
 
   return (
     <>
