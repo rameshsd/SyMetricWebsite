@@ -9,7 +9,6 @@ import { HostingOptions } from '@/components/solutions/HostingOptions';
 import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
-import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
@@ -26,13 +25,9 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Overview', href: '#overview' },
         { label: 'Purpose', href: '#purpose' },
         { label: 'Platform Tools', href: '#tools' },
-        { label: 'Related Solutions', href: '#related' },
         { label: 'Collaboration', href: '#collaboration' },
         { label: 'Hosting', href: '#hosting' },
     ];
-
-    // Use the specific clinical research image requested by the user
-    const customRelatedImage = 'https://drive.google.com/uc?export=view&id=1mDqWv0XM5f8uyxz6o59RCh-Sbip8zRvR';
 
   return (
     <>
@@ -74,13 +69,6 @@ export default function ClinicalTrialPlatformPage() {
             
             <div id="tools">
               <PlatformToolsGrid />
-            </div>
-
-            <div id="related">
-                <RelatedProductsSection 
-                    relatedContent={solution?.relatedContent} 
-                    customImage={customRelatedImage}
-                />
             </div>
 
             <div id="collaboration">
