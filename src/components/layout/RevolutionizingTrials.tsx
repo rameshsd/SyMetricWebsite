@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { AnimatedTimeline } from '@/components/animations/AnimatedTimeline';
+import { SectionTitle } from '@/components/shared/section-title';
 
 const features = [
     {
@@ -37,15 +38,19 @@ export function RevolutionizingTrials() {
     return (
         <section className="w-full bg-secondary/30 py-16">
             <div className="container">
+                {/* Heading and Description above content */}
+                <SectionTitle 
+                    title="Efficiency In the clinical trials"
+                    description="Bring data and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation."
+                    className="mb-12"
+                />
+
                 <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
                     <div className="flex flex-col items-center md:items-start">
                         <AnimatedTimeline />
                     </div>
                     <div className="text-left">
-                        <h3 className="text-2xl font-bold tracking-tight">Efficiency In the clinical trails</h3>
-                        <p className="mt-2 text-muted-foreground">Bring data and apps together with SyMetric to create a system where every decision informs the next—turning insight into action and action into continuous innovation.</p>
-
-                        <div className="mt-8 space-y-6">
+                        <div className="space-y-6">
                             {features.map((feature) => (
                                 <div key={feature.title}>
                                     <Link href={feature.link} className="font-semibold text-primary inline-flex items-center group text-lg">
@@ -56,6 +61,15 @@ export function RevolutionizingTrials() {
                             ))}
                         </div>
                     </div>
+                </div>
+
+                {/* Explore More Button at the bottom of the section */}
+                <div className="mt-12 flex justify-start">
+                    <Button asChild size="lg" className="rounded-xl">
+                        <Link href="/solutions">
+                            Explore More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                    </Button>
                 </div>
             </div>
         </section>
