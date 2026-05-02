@@ -60,16 +60,15 @@ export function RevolutionizingTrials() {
                                 </div>
                             ))}
                         </div>
+                        
+                        <div className="mt-10">
+                            <Button asChild size="lg" className="rounded-xl">
+                                <Link href="/solutions">
+                                    Explore More <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
-                </div>
-
-                {/* Explore More Button at the bottom of the section */}
-                <div className="mt-12 flex justify-start">
-                    <Button asChild size="lg" className="rounded-xl">
-                        <Link href="/solutions">
-                            Explore More <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
                 </div>
             </div>
         </section>
