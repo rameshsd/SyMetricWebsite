@@ -54,19 +54,9 @@ const pmServices: {
     description: 'Our elaborate Training Modules include interactive instructor-led training, self-learning videos, and on-premise training to help your workforce use our solutions efficiently.',
   },
   {
-    icon: LifeBuoy,
-    title: 'Project Support',
-    description: 'Consistent reviews and our advanced discrepancy manager help you identify data issues and ensure a clean database for final analysis, with data exports in multiple formats.',
-  },
-  {
     icon: HelpCircle,
     title: 'Support Center',
     description: 'We deploy a dedicated and highly accessible Support Team to each project for guiding, supporting, and empowering our customers to deliver strong Study outcomes on time.',
-  },
-  {
-    icon: Archive,
-    title: 'Project Closure',
-    description: 'We follow well-defined procedures for maintaining and archiving Study documentation, verifying process completion, and generating insightful Study Reports.',
   },
 ];
 

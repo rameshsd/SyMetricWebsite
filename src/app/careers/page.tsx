@@ -246,25 +246,7 @@ export default function CareersPage() {
                 </div>
             </section>
             
-            <section className="bg-secondary/50">
-                <div className="container">
-                    <SectionTitle
-                        title="Perks & Benefits"
-                        description="We invest in our team's well-being and professional growth."
-                    />
-                    <div className="mt-16 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {employeeBenefit.map((benefit, index) => (
-                            <div key={index} className="flex items-start gap-4">
-                                <CheckCircle className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                                <div>
-                                    <h3 className="font-semibold">{benefit.title}</h3>
-                                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+
         </div>
     );
 }

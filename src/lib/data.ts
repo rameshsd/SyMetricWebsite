@@ -262,7 +262,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: Database,
     image: 'edc-image',
-    backgroundColor: '#2463eb',
+    backgroundColor: 'linear-gradient(to bottom, #2463eb, #00073D)',
     capabilities: [
       {
         id: 'ecrf-management',
@@ -331,7 +331,7 @@ export const solutions: Solution[] = [
           linkText: "Explore IRT/IWRS"
         },
         {
-          title: "eTMF",
+          title: "eTMF (In Progress)",
           description: "Automatically push signed-off forms, query resolutions, and audit trails from EDC to your electronic Trial Master File.",
           link: "/solutions/etmf",
           linkText: "Explore eTMF"
@@ -351,7 +351,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
     image: 'ctm-image',
-    backgroundColor: '#2463eb',
+    backgroundColor: 'linear-gradient(to bottom, #2463eb, #00073D)',
     capabilities: [
       {
         id: 'user-access-management',
@@ -415,7 +415,7 @@ export const solutions: Solution[] = [
   },
   {
     id: 'etmf',
-    name: 'eTMF (Electronic Trial Master File)',
+    name: 'eTMF (Electronic Trial Master File) - In Progress',
     slug: 'electronic-trial-master-file',
     hero: {
       title: 'Electronic Trial Master File (eTMF)',

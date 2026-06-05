@@ -147,13 +147,7 @@ const ConclusionSection = () => {
                                  </AccordionItem>
                             ))}
                         </Accordion>
-                        <div className="mt-8">
-                            <Button asChild>
-                                <Link href="/contact">
-                                    Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                        </div>
+
                     </div>
                     <div className="relative flex items-center justify-center">
                         <div className="relative w-full aspect-video">
@@ -192,19 +186,6 @@ export default function SampleManagementPage() {
             />
             <PageHeader title="Sample Management" secondaryNav={secondaryNav} />
             <div id="overview">
-                 <section className="bg-primary text-primary-foreground">
-                    <div className="container">
-                        <div className="flex items-start gap-6">
-                            <div className="p-3 bg-white/20 rounded-lg">
-                                <MessageSquare className="h-8 w-8 text-primary-foreground" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
-                                <p className="text-primary-foreground/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <section id="capabilities">
                     <div className="container">

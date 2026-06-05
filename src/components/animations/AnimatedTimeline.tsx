@@ -2,16 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/use-in-view';
-import { Rocket, Users, ShieldCheck, TrendingUp } from 'lucide-react';
+import { Rocket, Users, ShieldCheck, TrendingUp, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import React from 'react';
+import Link from 'next/link';
 
 const timelineItems = [
   {
     icon: Rocket,
     title: 'Accelerate Timelines',
     description: 'From study setup to submission.',
-    number: '01',
     colors: {
       gradientStart: '#3b82f6', // blue-500
       gradientEnd: '#60a5fa',   // blue-400
@@ -23,7 +23,6 @@ const timelineItems = [
     icon: Users,
     title: 'Unify Data & Teams',
     description: 'Connect sponsors, CROs, and sites.',
-    number: '02',
     colors: {
       gradientStart: '#14b8a6', // teal-500
       gradientEnd: '#5eead4',   // teal-300
@@ -35,7 +34,6 @@ const timelineItems = [
     icon: ShieldCheck,
     title: 'Ensure Compliance',
     description: 'Built-in 21 CFR Part 11 & ICH-GCP.',
-    number: '03',
     colors: {
       gradientStart: '#8b5cf6', // violet-500
       gradientEnd: '#a78bfa',   // violet-400
@@ -47,7 +45,6 @@ const timelineItems = [
     icon: TrendingUp,
     title: 'Scale with Confidence',
     description: 'From single-site to global trials.',
-    number: '04',
     colors: {
       gradientStart: '#f97316', // orange-500
       gradientEnd: '#fb923c',   // orange-400
@@ -55,6 +52,29 @@ const timelineItems = [
       text: 'text-orange-500'
     },
   },
+];
+
+const features = [
+  {
+    title: "Accelerate Trial Timelines",
+    description: "Go from study setup to submission faster than ever. Our unified platform automates manual tasks and streamlines workflows to eliminate bottlenecks.",
+    link: '/solutions/clinical-trial-platform'
+  },
+  {
+    title: "Unify Data and Teams",
+    description: "Break down data silos and connect sponsors, CROs, sites, and patients on a single platform for a unified source of truth.",
+    link: '/solutions/clinical-trial-platform'
+  },
+  {
+    title: "Ensure Compliance and Security",
+    description: "Navigate complex regulations with confidence. Our platform is built with 21 CFR Part 11 and ICH-GCP guidelines at its core.",
+    link: '/solutions/clinical-trial-platform'
+  },
+  {
+    title: "Scale With Confidence",
+    description: "Whether running a single-site study or a complex global trial, our modular platform adapts to your needs without constraints.",
+    link: '/solutions/clinical-trial-platform'
+  }
 ];
 
 const containerVariants = {
@@ -78,7 +98,6 @@ const itemVariants = {
     },
   },
 };
-
 
 const AnimatedArrow = ({ index, inView }: { index: number; inView: boolean }) => {
   const arrowVariants = {
@@ -107,71 +126,89 @@ const AnimatedArrow = ({ index, inView }: { index: number; inView: boolean }) =>
   );
 };
 
-
 export function AnimatedTimeline() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <div ref={ref} className="w-full max-w-lg mx-auto py-8">
+    <div ref={ref} className="w-full py-4">
       <motion.div
-        className="space-y-0"
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 items-center"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
       >
-        {timelineItems.map((item, index) => (
-          <React.Fragment key={item.title}>
-            <motion.div className="flex items-start sm:items-center gap-4 sm:gap-6" variants={itemVariants}>
-              <div className="relative flex-shrink-0">
-                <svg viewBox="0 0 80 80" className="w-16 h-16 sm:w-20 sm:h-20 -rotate-90">
-                    <defs>
-                        <linearGradient id={`grad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style={{stopColor: item.colors.gradientStart, stopOpacity:1}} />
-                            <stop offset="100%" style={{stopColor: item.colors.gradientEnd, stopOpacity:1}} />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="40" cy="40" r="38" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" />
-                    <motion.circle
-                        cx="40"
-                        cy="40"
-                        r="32"
-                        fill="none"
-                        stroke={`url(#grad${index})`}
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0 }}
-                        animate={inView ? { pathLength: 1 } : {}}
-                        transition={{ duration: 1, delay: index * 0.6 }}
-                    />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background flex items-center justify-center">
-                        <item.icon className={cn("w-5 h-5 sm:w-6 sm:h-6", item.colors.text)} />
+        {timelineItems.map((item, index) => {
+          const feature = features[index];
+          return (
+            <React.Fragment key={item.title}>
+              {/* Left Column (Timeline Item) */}
+              <div className="col-start-1">
+                <motion.div className="flex items-start sm:items-center gap-4 sm:gap-6" variants={itemVariants}>
+                  <div className="relative flex-shrink-0">
+                    <svg viewBox="0 0 80 80" className="w-16 h-16 sm:w-20 sm:h-20 -rotate-90">
+                        <defs>
+                            <linearGradient id={`grad${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style={{stopColor: item.colors.gradientStart, stopOpacity:1}} />
+                                <stop offset="100%" style={{stopColor: item.colors.gradientEnd, stopOpacity:1}} />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="38" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" />
+                        <motion.circle
+                            cx="40"
+                            cy="40"
+                            r="32"
+                            fill="none"
+                            stroke={`url(#grad${index})`}
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                            initial={{ pathLength: 0 }}
+                            animate={inView ? { pathLength: 1 } : {}}
+                            transition={{ duration: 1, delay: index * 0.6 }}
+                        />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background flex items-center justify-center">
+                            <item.icon className={cn("w-5 h-5 sm:w-6 sm:h-6", item.colors.text)} />
+                        </div>
                     </div>
-                </div>
+                  </div>
+
+                  <div className={cn("relative flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between overflow-hidden", item.colors.border)}>
+                    <div>
+                      <h3 className="font-bold text-foreground">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
 
-              <div className={cn("relative flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between overflow-hidden", item.colors.border)}>
-                <div>
-                  <h3 className="font-bold text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
-                <div className={cn("absolute -right-2 top-1/2 -translate-y-1/2 text-5xl sm:text-6xl font-bold opacity-10 select-none", item.colors.text)}>
-                  {item.number}
-                </div>
+              {/* Right Column (Detailed Description) */}
+              <div className="col-start-1 md:col-start-2 flex flex-col justify-center py-0">
+                <motion.div className="text-left" variants={itemVariants}>
+                  <Link href={feature.link} className="font-semibold text-primary inline-flex items-center group text-lg">
+                    {feature.title} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{feature.description}</p>
+                </motion.div>
               </div>
-            </motion.div>
 
-            {index < timelineItems.length - 1 && (
-              <motion.div
-                  className="flex justify-center items-center h-16 w-16 sm:w-20"
-                  variants={itemVariants}
-              >
-                  <AnimatedArrow index={index} inView={inView} />
-              </motion.div>
-            )}
-          </React.Fragment>
-        ))}
+              {/* Arrow Row */}
+              {index < timelineItems.length - 1 && (
+                <>
+                  <div className="col-start-1 flex justify-start items-center">
+                    <motion.div
+                        className="flex justify-center items-center h-8 w-16 sm:w-20"
+                        variants={itemVariants}
+                    >
+                        <AnimatedArrow index={index} inView={inView} />
+                    </motion.div>
+                  </div>
+                  <div className="col-start-1 md:col-start-2 hidden md:block" />
+                </>
+              )}
+            </React.Fragment>
+          );
+        })}
       </motion.div>
     </div>
   );

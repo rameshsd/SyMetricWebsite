@@ -43,11 +43,6 @@ export function UnlockPotential() {
                             <div className="absolute bottom-0 left-0 p-8 text-white w-full">
                                 <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: mainCard.title }}></h3>
                                 <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: mainCard.description }}></p>
-                                <Button asChild variant="secondary" className="mt-6">
-                                    <Link href={mainCard.linkUrl}>
-                                        {mainCard.linkText} <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Link>
-                                </Button>
                             </div>
                         </div>
                     )}

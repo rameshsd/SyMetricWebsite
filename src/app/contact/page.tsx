@@ -135,64 +135,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </section>
-            
-            {/* Section 3: Contact Info Cards */}
-            <section className="py-20 md:py-24 bg-secondary/50 dark:bg-card">
-                 <div className="container">
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <motion.div
-                             initial={{ opacity: 0, y: 20 }}
-                             whileInView={{ opacity: 1, y: 0 }}
-                             viewport={{ once: true }}
-                             transition={{ duration: 0.5, delay: 0.1 }}
-                        >
-                            <Card className="bg-background rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 text-center">
-                                <div className="inline-block p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                                    <Phone className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                                </div>
-                                <h3 className="text-xl font-bold">Dial</h3>
-                                <div className="mt-2 text-muted-foreground">
-                                    <a href="tel:+918041135402" className="hover:text-primary block">+91 (80) 41135402</a>
-                                    <a href="tel:+919740272700" className="hover:text-primary block">+91 97402 72700</a>
-                                </div>
-                            </Card>
-                        </motion.div>
-                        <motion.div
-                             initial={{ opacity: 0, y: 20 }}
-                             whileInView={{ opacity: 1, y: 0 }}
-                             viewport={{ once: true }}
-                             transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <Card className="bg-background rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 text-center">
-                                 <div className="inline-block p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                                    <Mail className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                                </div>
-                                <h3 className="text-xl font-bold">Email us</h3>
-                                <div className="mt-2 text-muted-foreground">
-                                    <a href="mailto:info@symetricsystems.com" className="text-primary hover:underline">info@symetricsystems.com</a>
-                                </div>
-                            </Card>
-                        </motion.div>
-                        <motion.div
-                             initial={{ opacity: 0, y: 20 }}
-                             whileInView={{ opacity: 1, y: 0 }}
-                             viewport={{ once: true }}
-                             transition={{ duration: 0.5, delay: 0.3 }}
-                        >
-                            <Card className="bg-background rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 text-center">
-                                 <div className="inline-block p-4 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-                                    <MapPin className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                                </div>
-                                <h3 className="text-xl font-bold">Visit us</h3>
-                                <div className="mt-2 text-muted-foreground text-sm">
-                                    <p>No. 51, 1st Floor, Kodihalli Main Road, HAL 2nd Stage, Opp. Udupi Park Hotel, Bengaluru - 560 008, India</p>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    </div>
-                 </div>
-            </section>
-            
+
             {/* Section 4: Map */}
             <section className="py-20 md:py-24">
                 <div className="container">

@@ -32,8 +32,10 @@ export default function SolutionsPage() {
   return (
     <div>
         <ProductPageHeader productName="Solutions" solutions={solutions} />
-        <section className="bg-primary text-white py-20">
-          <div className="container">
+        <section className="bg-sap-gradient text-white py-20 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 blur-[80px] rounded-full pointer-events-none" />
+          <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="">
                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">

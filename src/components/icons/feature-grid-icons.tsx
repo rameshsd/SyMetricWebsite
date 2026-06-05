@@ -7,8 +7,8 @@ export type IconProps = { className?: string };
 // ----------------------------------------------------
 // GLOBAL COLOR
 // ----------------------------------------------------
-const PRIMARY_COLOR = "hsl(var(--primary))";
-const FILL_COLOR = "hsl(var(--primary) / 0.2)"; // A light tint of the primary color
+const PRIMARY_COLOR = "#c084fc"; // purple-400
+const FILL_COLOR = "rgba(192, 132, 252, 0.2)"; // A light tint of purple-400
 
 
 // SVG wrapper

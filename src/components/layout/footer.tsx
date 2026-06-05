@@ -2,190 +2,302 @@
 
 import Link from 'next/link';
 import { Logo } from '@/components/shared/logo';
-import { Facebook, Youtube, Mail, MessageSquare, Globe, ChevronRight, Phone } from 'lucide-react';
+import { Facebook, Youtube, MessageSquare, Linkedin, Twitter, ChevronUp } from 'lucide-react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useState, useEffect } from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { cn } from '@/lib/utils';
+} from "@/components/ui/accordion";
 import { Button } from '../ui/button';
 
-const quickLinks = [
-  { name: 'Solutions', href: '/solutions' },
-  { name: 'Industries', href: '/industries' },
-  { name: 'Services', href: '/services' },
-  { name: 'About', href: '/about' },
-  { name: 'Careers', href: '/careers'},
-];
-
-const aboutSyMetricLinks = [
-  { name: 'Company information', href: '/about' },
+const aboutLinks = [
+  { name: 'Our Vision', href: '/about' },
+  { name: 'News', href: '/news' },
   { name: 'Careers', href: '/careers' },
-  { name: 'News and press', href: '/news' },
-  { name: 'Events', href: '/news' },
-  { name: 'Customer stories', href: '/' },
-  { name: 'Newsletter', href: '/contact' },
+  { name: 'Privacy Policy', href: '/privacy-policy' },
+  { name: 'Terms of Use', href: '/terms-of-use' },
 ];
 
-const siteInfoLinks = [
-  { name: 'Privacy', href: '/privacy-policy' },
-  { name: 'Terms of use', href: '/terms-of-use' },
+const solutionsLinks = [
+  { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
+  { name: 'EDC', href: '/solutions/edc' },
+  { name: 'CTM', href: '/solutions/ctm' },
+];
+
+const servicesLinks = [
+  { name: 'Data Management', href: '/services/clinical-data-management' },
+  { name: 'Project Management', href: '/services/project-management' },
+  { name: 'Data Migration', href: '/services/data-migration' },
+  { name: 'Training', href: '/services/training' },
+  { name: 'Support', href: '/services/support' },
+];
+
+const contactAddress = [
+  'Achiral Systems Pvt. Ltd.',
+  'No. 51, Kodihalli Main Road',
+  'HAL 2nd Stage',
+  'Bengaluru – 560008, India',
 ];
 
 const socialLinks = [
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/symetric-systems-private-limited' },
   { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com' },
+  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com' },
   { name: 'Youtube', icon: Youtube, href: 'https://www.youtube.com' },
-  { name: 'Mail', icon: Mail, href: 'mailto:info@symetricsystems.com' },
 ];
-
-const FooterLinkColumn = ({ title, links }: { title: string; links: { name: string; href: string }[] }) => (
-    <div>
-        <h3 className="text-sm font-bold text-white tracking-wider uppercase">{title}</h3>
-        <ul className="mt-4 space-y-3">
-            {links.map((link) => (
-            <li key={link.name}>
-                <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
-                {link.name}
-                </Link>
-            </li>
-            ))}
-        </ul>
-    </div>
-);
-
 
 export function Footer() {
   const [isClient, setIsClient] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const logoImage = PlaceHolderImages.find(p => p.id === 'symetric-logo');
 
   useEffect(() => {
     setIsClient(true);
+
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
-    <footer className="bg-black text-gray-400 border-t border-gray-800">
-      <div className="container pt-16 pb-0 md:pb-12">
-        {/* Desktop Footer */}
-        <div className="hidden md:grid grid-cols-1 gap-y-12 md:grid-cols-5 md:gap-x-8">
-            <div className="md:col-span-2">
-                <div className="w-fit">
-                    <Logo />
-                </div>
-                 <div className="mt-8 space-y-4 text-sm">
-                    <div className="flex items-start gap-3">
-                        <Phone className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0"/>
-                        <div>
-                            <p className="text-gray-500">India</p>
-                            <p className="font-semibold text-gray-300">+91-80-41135402</p>
-                            <Link href="#" className="text-sm text-primary underline hover:text-primary/80">Or see our complete list of local country numbers</Link>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <Mail className="h-5 w-5 text-gray-500"/>
-                        <Link href="/contact" className="text-gray-300 hover:text-white">Contact us</Link>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <MessageSquare className="h-5 w-5 text-gray-500"/>
-                         <span className="text-gray-500">Chat Unavailable</span>
-                    </div>
-                </div>
+      <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden py-16">
+        {/* Large Faded Logo Watermark */}
+        <div 
+          className="absolute right-0 bottom-0 h-[280px] w-[280px] md:h-[450px] md:w-[450px] opacity-[0.05] pointer-events-none select-none bg-contain bg-no-repeat bg-right-bottom translate-x-8 translate-y-8"
+          style={{ 
+            backgroundImage: `url(${logoImage?.imageUrl || 'https://symetricsystems.com/wp-content/uploads/2021/05/symetric.png'})`,
+            filter: 'brightness(0) invert(1)' 
+          }}
+        />
+
+        <div className="container relative z-10">
+          {/* Desktop Footer Grid */}
+          <div className="hidden md:grid grid-cols-12 gap-8 items-start">
+            {/* Logo and Contact column */}
+            <div className="col-span-3 flex flex-col items-start space-y-6">
+              <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300" />
+              
+              {/* Social icons row */}
+              <div className="flex items-center space-x-4">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-600 hover:text-white transition-colors duration-300"
+                    >
+                      <Icon className="h-5 w-5" />
+                      <span className="sr-only">{link.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
+
+              {/* Email and Phone */}
+              <div className="text-sm text-zinc-400 space-y-1 font-medium">
+                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">info@symetricsystems.com</a></p>
+                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">+91 (80) 41135402</a></p>
+              </div>
             </div>
 
-            <FooterLinkColumn title="Quick links" links={quickLinks} />
-            <FooterLinkColumn title="About SyMetric" links={aboutSyMetricLinks} />
-            <FooterLinkColumn title="Site information" links={siteInfoLinks} />
-        </div>
-
-        {/* Mobile Footer */}
-        <div className="md:hidden">
-            <div className="w-fit mb-8">
-              <Logo />
+            {/* About Us column */}
+            <div className="col-span-2 flex flex-col items-start">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                About Us
+              </h3>
+              <ul className="space-y-3 text-sm">
+                {aboutLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="space-y-4 mb-8">
-                 <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0"/>
-                    <div>
-                        <p className="text-gray-500">India</p>
-                        <p className="font-semibold text-gray-300">+91-80-41135402</p>
-                        <Link href="#" className="text-sm text-primary underline hover:text-primary/80">Or see our complete list of local country numbers</Link>
-                    </div>
-                </div>
-                <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-gray-500"/>
-                    <Link href="/contact" className="text-gray-300 hover:text-white">Contact us</Link>
-                </div>
-                <div className="flex items-center gap-3">
-                    <MessageSquare className="h-5 w-5 text-gray-500"/>
-                    <span className="text-gray-500">Chat Unavailable</span>
-                </div>
+
+            {/* Our Solutions column */}
+            <div className="col-span-2 flex flex-col items-start">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Our Solutions
+              </h3>
+              <ul className="space-y-3 text-sm">
+                {solutionsLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Our Services column */}
+            <div className="col-span-2 flex flex-col items-start">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Our Services
+              </h3>
+              <ul className="space-y-3 text-sm">
+                {servicesLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Us column */}
+            <div className="col-span-3 flex flex-col items-start">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Contact Us
+              </h3>
+              <ul className="space-y-2 text-sm text-zinc-300 font-medium">
+                {contactAddress.map((line, idx) => (
+                  <li key={idx}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Mobile Footer Stack */}
+          <div className="md:hidden flex flex-col space-y-8">
+            <div className="flex flex-col items-start space-y-6">
+              <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300" />
+              
+              <div className="flex items-center space-x-4">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-600 hover:text-white transition-colors duration-300"
+                    >
+                      <Icon className="h-5 w-5" />
+                      <span className="sr-only">{link.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
+
+              <div className="text-sm text-zinc-400 space-y-1 font-medium">
+                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">info@symetricsystems.com</a></p>
+                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">+91 (80) 41135402</a></p>
+              </div>
             </div>
 
             <Accordion type="multiple" className="w-full">
-                <AccordionItem value="quick-links" className="border-b border-gray-800">
-                    <AccordionTrigger className="py-4 text-base font-semibold text-gray-300 hover:text-white hover:no-underline [&>svg]:text-white">
-                        Quick links
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="pt-2 pl-4 space-y-3">
-                           {quickLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-sm text-gray-400 hover:text-white">{link.name}</Link></li>
-                           ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="about" className="border-b border-gray-800">
-                    <AccordionTrigger className="py-4 text-base font-semibold text-gray-300 hover:text-white hover:no-underline [&>svg]:text-white">
-                        About SyMetric
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="pt-2 pl-4 space-y-3">
-                           {aboutSyMetricLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-sm text-gray-400 hover:text-white">{link.name}</Link></li>
-                           ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
-                 <AccordionItem value="site-info" className="border-b-0">
-                    <AccordionTrigger className="py-4 text-base font-semibold text-gray-300 hover:text-white hover:no-underline [&>svg]:text-white">
-                        Site information
-                    </AccordionTrigger>
-                    <AccordionContent>
-                        <ul className="pt-2 pl-4 space-y-3">
-                           {siteInfoLinks.map((link) => (
-                            <li key={link.name}><Link href={link.href} className="text-sm text-gray-400 hover:text-white">{link.name}</Link></li>
-                           ))}
-                        </ul>
-                    </AccordionContent>
-                </AccordionItem>
+              <AccordionItem value="about" className="border-b border-zinc-800">
+                <AccordionTrigger className="py-4 text-base font-semibold text-zinc-300 hover:text-white hover:no-underline [&>svg]:text-white">
+                  About Us
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="pt-2 pl-4 space-y-3">
+                    {aboutLinks.map((link) => (
+                      <li key={link.name}>
+                        <Link href={link.href} className="text-sm text-zinc-400 hover:text-white">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="solutions" className="border-b border-zinc-800">
+                <AccordionTrigger className="py-4 text-base font-semibold text-zinc-300 hover:text-white hover:no-underline [&>svg]:text-white">
+                  Our Solutions
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="pt-2 pl-4 space-y-3">
+                    {solutionsLinks.map((link) => (
+                      <li key={link.name}>
+                        <Link href={link.href} className="text-sm text-zinc-400 hover:text-white">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="services" className="border-b border-zinc-800">
+                <AccordionTrigger className="py-4 text-base font-semibold text-zinc-300 hover:text-white hover:no-underline [&>svg]:text-white">
+                  Our Services
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="pt-2 pl-4 space-y-3">
+                    {servicesLinks.map((link) => (
+                      <li key={link.name}>
+                        <Link href={link.href} className="text-sm text-zinc-400 hover:text-white">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
-        </div>
-      </div>
-      
-      {/* Bottom Bar */}
-      <div className="container">
-        <div className="pt-8 pb-6 md:py-6 md:border-t border-gray-800 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs text-gray-500">
-                {isClient ? `Copyright © ${new Date().getFullYear()} SyMetric. All rights reserved.` : <span>&nbsp;</span>}
-            </div>
-            <div className="flex space-x-2">
-                {socialLinks.map((link) => (
-                  <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white bg-gray-800 hover:bg-gray-700 p-2 rounded-md">
-                    <link.icon className="h-5 w-5" />
-                    <span className="sr-only">{link.name}</span>
-                  </a>
+
+            <div className="flex flex-col items-start pt-4">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Contact Us
+              </h3>
+              <ul className="space-y-2 text-sm text-zinc-300 font-medium">
+                {contactAddress.map((line, idx) => (
+                  <li key={idx}>{line}</li>
                 ))}
+              </ul>
             </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-16 pt-8 border-t border-zinc-900 flex justify-center">
+            <div className="text-xs text-zinc-500">
+              {isClient ? `Copyright ©2024 SyMetric. All rights reserved` : <span>&nbsp;</span>}
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
-    <div className="fixed bottom-4 right-4 z-50 md:hidden">
+      </footer>
+
+      {/* Back to top green scroll button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-[#8bc34a] hover:bg-[#7cb342] text-white shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          aria-label="Back to Top"
+        >
+          <ChevronUp className="h-6 w-6" strokeWidth={2.5} />
+        </button>
+      )}
+
+      {/* Floating Chat Button for Mobile */}
+      <div className="fixed bottom-4 left-4 z-50 md:hidden">
         <Button size="icon" className="h-14 w-14 rounded-full shadow-lg">
-            <MessageSquare className="h-7 w-7"/>
+          <MessageSquare className="h-7 w-7"/>
         </Button>
-    </div>
+      </div>
     </>
   );
 }

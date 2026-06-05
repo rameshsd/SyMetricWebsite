@@ -16,7 +16,7 @@ type ProductHeroProps = {
 };
 
 export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor, slug }: ProductHeroProps) {
-  const sectionStyle = backgroundColor ? { backgroundColor } : {};
+  const sectionStyle = backgroundColor ? { background: backgroundColor } : {};
   const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
   const isIrtIwrs = slug === 'irt-iwrs';
   

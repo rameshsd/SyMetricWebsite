@@ -68,19 +68,7 @@ export default function LabDataManagementPage() {
             />
             <PageHeader title="Lab Management" secondaryNav={secondaryNav} />
             <div id="overview">
-                 <section className="bg-diagram-violet text-white">
-                    <div className="container">
-                        <div className="flex items-start gap-6">
-                            <div className="p-3 bg-white/20 rounded-lg">
-                                <MessageSquare className="h-8 w-8 text-white" />
-                            </div>
-                            <div>
-                                <h2 className="text-3xl font-bold">SyMetric Solutions</h2>
-                                <p className="text-white/80 mt-1">Explore our documentation or contact our support team for questions about our solutions.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
 
                 <section id="capabilities">
                     <div className="container">

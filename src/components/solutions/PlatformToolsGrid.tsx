@@ -70,8 +70,8 @@ const toolsData = [
     {
       id: 'subject-management',
       icon: SubjectIcon,
-      label: 'Subject Management',
-      description: 'A comprehensive framework to manage every stage of a subject’s journey, from screening and randomization to study completion, ensuring protocol adherence and data accuracy.',
+      label: 'Participant Management',
+      description: 'A comprehensive framework to manage every stage of a participant’s journey, from screening and randomization to study completion, ensuring protocol adherence and data accuracy.',
       imageId: 'tool-subject-1'
     },
     {

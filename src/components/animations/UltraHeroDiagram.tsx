@@ -60,7 +60,7 @@ export default function UltraHeroDiagram() {
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#2563eb" />
               <stop offset="25%" stopColor="#14b8a6" />
               <stop offset="50%" stopColor="#8b5cf6" />
@@ -189,7 +189,7 @@ export default function UltraHeroDiagram() {
             preserveAspectRatio="xMidYMid meet"
         >
             <defs>
-                <linearGradient id="mobile-line-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <linearGradient id="mobile-line-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stopColor="#2563eb" />
                     <stop offset="25%" stopColor="#14b8a6" />
                     <stop offset="50%" stopColor="#8b5cf6" />
