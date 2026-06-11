@@ -62,17 +62,17 @@ const features = [
   },
   {
     title: "Unify Data and Teams",
-    description: "Break down data silos and connect sponsors, CROs, sites, and patients on a single platform for a unified source of truth.",
+    description: "Break down data silos and connect sponsors, CROs, sites, and patients on a single platform for a unified source of truth and real-time collaboration.",
     link: '/solutions/clinical-trial-platform'
   },
   {
     title: "Ensure Compliance and Security",
-    description: "Navigate complex regulations with confidence. Our platform is built with 21 CFR Part 11 and ICH-GCP guidelines at its core.",
+    description: "Navigate complex regulations with confidence. Our unified platform is built with 21 CFR Part 11 and ICH-GCP guidelines at its core to ensure compliance.",
     link: '/solutions/clinical-trial-platform'
   },
   {
     title: "Scale With Confidence",
-    description: "Whether running a single-site study or a complex global trial, our modular platform adapts to your needs without constraints.",
+    description: "Whether running a single-site study or a highly complex global trial, our modular platform adapts to your specific clinical needs without constraints.",
     link: '/solutions/clinical-trial-platform'
   }
 ];
@@ -132,7 +132,7 @@ export function AnimatedTimeline() {
   return (
     <div ref={ref} className="w-full py-4">
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 items-center"
+        className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-x-12 gap-y-2 items-center"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
@@ -173,10 +173,10 @@ export function AnimatedTimeline() {
                     </div>
                   </div>
 
-                  <div className={cn("relative flex-1 p-4 border rounded-lg shadow-sm bg-background flex items-center justify-between overflow-hidden", item.colors.border)}>
+                  <div className={cn("relative w-full sm:w-[300px] py-2.5 px-4 border rounded-lg shadow-sm bg-background flex items-center justify-between overflow-hidden", item.colors.border)}>
                     <div>
-                      <h3 className="font-bold text-foreground">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                      <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                      <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
                     </div>
                   </div>
                 </motion.div>

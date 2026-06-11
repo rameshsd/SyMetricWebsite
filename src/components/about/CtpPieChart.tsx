@@ -23,6 +23,22 @@ export default function CtpPieChart(): JSX.Element {
     return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
   };
 
+  const ccwArcPath = (
+    cx: number,
+    cy: number,
+    r: number,
+    startAngle: number,
+    endAngle: number
+  ) => {
+    const toRad = (a: number) => (a - 90) * (Math.PI / 180);
+    const x1 = cx + r * Math.cos(toRad(startAngle));
+    const y1 = cy + r * Math.sin(toRad(startAngle));
+    const x2 = cx + r * Math.cos(toRad(endAngle));
+    const y2 = cy + r * Math.sin(toRad(endAngle));
+    const largeArc = Math.abs(endAngle - startAngle) <= 180 ? 0 : 1;
+    return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 0 ${x2} ${y2}`;
+  };
+
   const sectorPath = (
     cx: number,
     cy: number,
@@ -43,17 +59,17 @@ export default function CtpPieChart(): JSX.Element {
     {
       title: 'Compliance',
       points: ['Wide range of certifications (21 CFR Part 11, GxP)', 'Product localizations for global trials'],
-      position: 'md:absolute top-0 left-0 md:-translate-x-1/4'
+      position: 'md:absolute top-0 left-0 md:-translate-x-[35%] lg:-translate-x-[45%]'
     },
     {
       title: 'Data protection and privacy',
       points: ['Strong company measures (GDPR, HIPAA)', 'Global data center locations'],
-      position: 'md:absolute bottom-0 left-0 md:-translate-x-1/2'
+      position: 'md:absolute bottom-0 left-0 md:-translate-x-[55%] lg:-translate-x-[65%]'
     },
     {
       title: 'Security',
       points: ['Highest product and operations security', 'Resilience and business continuity', 'Cyber-defense measures'],
-      position: 'md:absolute top-1/2 right-0 md:translate-x-1/4 md:-translate-y-1/2'
+      position: 'md:absolute top-1/2 right-0 md:translate-x-[35%] lg:translate-x-[45%] md:-translate-y-1/2'
     }
   ];
 
@@ -77,7 +93,7 @@ export default function CtpPieChart(): JSX.Element {
                                 <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000" floodOpacity="0.08" />
                                 </filter>
                                 <path id="arc-security" d={arcPath(300, 300, 160, 0, 120)} fill="none" />
-                                <path id="arc-compliance" d={arcPath(300, 300, 160, 120, 240)} fill="none" />
+                                <path id="arc-compliance" d={ccwArcPath(300, 300, 175, 240, 120)} fill="none" />
                                 <path id="arc-privacy" d={arcPath(300, 300, 160, 240, 360)} fill="none" />
                             </defs>
                             <circle cx="300" cy="300" r="260" fill="none" stroke="#2b6fd6" strokeWidth="6" strokeDasharray="1 12" opacity="0.85" />
@@ -94,9 +110,9 @@ export default function CtpPieChart(): JSX.Element {
                                 <textPath href="#arc-privacy" startOffset="50%" textAnchor="middle">Data protection</textPath>
                             </text>
                             <circle cx="300" cy="300" r="95" fill="hsl(var(--card))" stroke="#cfe6ff" strokeWidth="8" filter="url(#shadow)" />
-                            <circle cx="300" cy="300" r="65" fill="#0b63d9" />
-                            <text x="300" y="275" textAnchor="middle" fontSize={24} fontWeight={700} fill="#fff">SyMetric CTP</text>
-                            <text x="300" y="305" textAnchor="middle" fontSize={12} fontWeight={600} fill="#cfe6ff">Secure foundation</text>
+                            <circle cx="300" cy="300" r="82" fill="#0b63d9" />
+                            <text x="300" y="290" textAnchor="middle" fontSize={22} fontWeight={700} fill="#fff">SyMetric CTP</text>
+                            <text x="300" y="316" textAnchor="middle" fontSize={12} fontWeight={600} fill="#cfe6ff">Secure foundation</text>
                         </svg>
                     </div>
 

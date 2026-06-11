@@ -153,7 +153,7 @@
     {
       "id": "resources-hero",
       "description": "Insights and Resources hero image",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1JjuDBOo6bnXB-QXIae-2GIp558vbq2V-",
+      "imageUrl": "/resources-hero.jpg",
       "imageHint": "research data"
     },
     {
@@ -261,7 +261,7 @@
     {
       "id": "ctm-image",
       "description": "Global network connections",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1bjCXht1-ZEC2zmE8ymCHZ9i27JJ_AoCC",
+      "imageUrl": "/ctm-operations.jpg",
       "imageHint": "global network"
     },
     {
@@ -387,7 +387,7 @@
     {
       "id": "tool-supplies-1",
       "description": "Screenshot of clinical supplies inventory.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1EIcD2liPimxcuqijrNw_WCrVrpWg3QFU",
+      "imageUrl": "/clinical-supplies.jpg",
       "imageHint": "inventory management"
     },
     {
@@ -435,7 +435,7 @@
     {
       "id": "tool-coding-1",
       "description": "Screenshot of medical coding interface.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1bIXCYqU0NSyud2qFfGZqSmmzrzZkoheq",
+      "imageUrl": "/medical-coding.jpg",
       "imageHint": "medical coding"
     },
     {
@@ -609,25 +609,25 @@
     {
       "id": "why-us-reusable",
       "description": "A library of reusable digital forms and templates.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Reusable-Forms.jpg",
+      "imageUrl": "/reusable-forms.jpg",
       "imageHint": "reusable forms"
     },
     {
       "id": "why-us-compliant",
       "description": "A graphic showing multiple compliance badges like GDPR, HIPAA, and 21 CFR Part 11.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Security-Compliant.jpg",
+      "imageUrl": "/security-compliance-holo.jpg",
       "imageHint": "security compliance"
     },
     {
       "id": "why-us-tracking",
       "description": "A business intelligence dashboard with real-time charts and analytics.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/Real-Time-Tracking-and-Business-Intelligence.jpg",
+      "imageUrl": "/real-time-tracking.jpg",
       "imageHint": "real-time analytics"
     },
     {
       "id": "why-us-support",
       "description": "A friendly customer support agent with a headset, available 24/7.",
-      "imageUrl": "http://cgv.c32.myftpupload.com/wp-content/uploads/2021/07/24x7-Dedicated-Technical-Support.jpg",
+      "imageUrl": "/technical-support.jpg",
       "imageHint": "customer support"
     },
     {
@@ -801,7 +801,7 @@
     {
       "id": "dm-hero",
       "description": "Data Migration hero image",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1l2azYADGBoUj7HX_oIp-nPE95eaHpJH_",
+      "imageUrl": "/data-migration.jpg",
       "imageHint": "data migration abstract"
     },
     {
@@ -999,7 +999,7 @@
     {
       "id": "reports-hero",
       "description": "A unified reporting hub that delivers real-time, study-wide insights.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=152oY1kqz7Jc2Su_SXFkYYdtyEVYGVMDm",
+      "imageUrl": "/reports.png",
       "imageHint": "reporting hub"
     },
     {

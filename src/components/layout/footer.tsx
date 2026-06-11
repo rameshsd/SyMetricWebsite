@@ -76,11 +76,11 @@ export function Footer() {
     <>
       <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden py-16">
         {/* Large Faded Logo Watermark */}
-        <div 
+        <div
           className="absolute right-0 bottom-0 h-[280px] w-[280px] md:h-[450px] md:w-[450px] opacity-[0.05] pointer-events-none select-none bg-contain bg-no-repeat bg-right-bottom translate-x-8 translate-y-8"
-          style={{ 
+          style={{
             backgroundImage: `url(${logoImage?.imageUrl || 'https://symetricsystems.com/wp-content/uploads/2021/05/symetric.png'})`,
-            filter: 'brightness(0) invert(1)' 
+            filter: 'brightness(0) invert(1)'
           }}
         />
 
@@ -90,7 +90,7 @@ export function Footer() {
             {/* Logo and Contact column */}
             <div className="col-span-3 flex flex-col items-start space-y-6">
               <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300" />
-              
+
               {/* Social icons row */}
               <div className="flex items-center space-x-4">
                 {socialLinks.map((link) => {
@@ -118,63 +118,71 @@ export function Footer() {
             </div>
 
             {/* About Us column */}
-            <div className="col-span-2 flex flex-col items-start">
-              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                About Us
-              </h3>
-              <ul className="space-y-3 text-sm">
-                {aboutLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="col-span-2 flex flex-col md:items-center">
+              <div className="flex flex-col items-start">
+                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                  About Us
+                </h3>
+                <ul className="space-y-3 text-sm">
+                  {aboutLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Our Solutions column */}
-            <div className="col-span-2 flex flex-col items-start">
-              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                Our Solutions
-              </h3>
-              <ul className="space-y-3 text-sm">
-                {solutionsLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="col-span-2 flex flex-col md:items-center">
+              <div className="flex flex-col items-start">
+                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                  Our Solutions
+                </h3>
+                <ul className="space-y-3 text-sm">
+                  {solutionsLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Our Services column */}
-            <div className="col-span-2 flex flex-col items-start">
-              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                Our Services
-              </h3>
-              <ul className="space-y-3 text-sm">
-                {servicesLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="col-span-2 flex flex-col md:items-center">
+              <div className="flex flex-col items-start">
+                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                  Our Services
+                </h3>
+                <ul className="space-y-3 text-sm">
+                  {servicesLinks.map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Contact Us column */}
-            <div className="col-span-3 flex flex-col items-start">
-              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                Contact Us
-              </h3>
-              <ul className="space-y-2 text-sm text-zinc-300 font-medium">
-                {contactAddress.map((line, idx) => (
-                  <li key={idx}>{line}</li>
-                ))}
-              </ul>
+            <div className="col-span-3 flex flex-col md:items-center">
+              <div className="flex flex-col items-start">
+                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                  Contact Us
+                </h3>
+                <ul className="space-y-2 text-sm text-zinc-300 font-medium">
+                  {contactAddress.map((line, idx) => (
+                    <li key={idx}>{line}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -182,7 +190,7 @@ export function Footer() {
           <div className="md:hidden flex flex-col space-y-8">
             <div className="flex flex-col items-start space-y-6">
               <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300" />
-              
+
               <div className="flex items-center space-x-4">
                 {socialLinks.map((link) => {
                   const Icon = link.icon;
@@ -295,7 +303,7 @@ export function Footer() {
       {/* Floating Chat Button for Mobile */}
       <div className="fixed bottom-4 left-4 z-50 md:hidden">
         <Button size="icon" className="h-14 w-14 rounded-full shadow-lg">
-          <MessageSquare className="h-7 w-7"/>
+          <MessageSquare className="h-7 w-7" />
         </Button>
       </div>
     </>

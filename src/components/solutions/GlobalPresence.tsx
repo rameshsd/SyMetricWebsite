@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 const locations = [
   { name: 'United States', top: '38%', left: '21%', value: '232', color: 'bg-teal-500' },
+  { name: 'Canada', top: '25%', left: '20%', value: '03', color: 'bg-sky-500' },
   { name: 'Belize', top: '55%', left: '26%', value: '01', color: 'bg-pink-500' },
   { name: 'El Salvador', top: '58%', left: '25%', value: '02', color: 'bg-fuchsia-500' },
   { name: 'Puerto Rico', top: '52%', left: '30%', value: '01', color: 'bg-green-500' },
@@ -16,6 +17,8 @@ const locations = [
   { name: 'Hungary', top: '35%', left: '56%', value: '09', color: 'bg-purple-500' },
   { name: 'Poland', top: '31%', left: '56%', value: '01', color: 'bg-rose-500' },
   { name: 'India', top: '50%', left: '70%', value: '19', color: 'bg-violet-500', isHQ: true },
+  { name: 'Japan', top: '37%', left: '83%', value: '01', color: 'bg-red-500' },
+  { name: 'South Korea', top: '38%', left: '80%', value: '01', color: 'bg-yellow-500' },
 ];
 
 export function GlobalPresence() {
