@@ -283,7 +283,7 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="mt-16 pt-8 border-t border-zinc-900 flex justify-center">
             <div className="text-xs text-zinc-500">
-              {isClient ? `Copyright ©2024 SyMetric. All rights reserved` : <span>&nbsp;</span>}
+              {isClient ? `Copyright ©${new Date().getFullYear()} SyMetric. All rights reserved` : <span>&nbsp;</span>}
             </div>
           </div>
         </div>
