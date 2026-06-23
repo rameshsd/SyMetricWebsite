@@ -339,7 +339,7 @@
     {
       "id": "tool-iam-1",
       "description": "Screenshot of user management in SyMetric platform.",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/06/Identity-and-Access-Management1.jpg",
+      "imageUrl": "/iam-overview.png",
       "imageHint": "user management interface"
     },
     {
@@ -351,7 +351,7 @@
     {
       "id": "tool-org-1",
       "description": "Screenshot of organization management.",
-      "imageUrl": "https://cgv.c32.myftpupload.com/wp-content/uploads/2021/06/Organization-Management1.jpg",
+      "imageUrl": "/org-overview.png",
       "imageHint": "organization settings"
     },
     {
@@ -363,7 +363,7 @@
     {
       "id": "tool-study-1",
       "description": "Screenshot of study management dashboard.",
-      "imageUrl": "https://images.unsplash.com/photo-1759984782024-ff13fd2b97b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNnx8c3R1ZHklMjBtYW5hZ2VtZW50fGVufDB8fHx8MTc3MjA5NjExNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/study-overview.png",
       "imageHint": "study dashboard"
     },
     {
@@ -375,7 +375,7 @@
     {
       "id": "tool-site-1",
       "description": "Screenshot of clinical site management.",
-      "imageUrl": "https://images.unsplash.com/photo-1733503711060-1df31554390f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3ZWJzaXRlJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NzIwOTYwMjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/site-overview.png",
       "imageHint": "site management"
     },
     {
@@ -387,7 +387,7 @@
     {
       "id": "tool-supplies-1",
       "description": "Screenshot of clinical supplies inventory.",
-      "imageUrl": "/clinical-supplies.jpg",
+      "imageUrl": "/supplies-overview.png",
       "imageHint": "inventory management"
     },
     {
@@ -399,7 +399,7 @@
     {
       "id": "tool-subject-1",
       "description": "Screenshot of subject management list.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1sHXDOz1I3okW_ajkfvmX-LTskQTaCtIt",
+      "imageUrl": "/participant-overview.png",
       "imageHint": "patient list"
     },
     {
@@ -411,7 +411,7 @@
     {
       "id": "tool-data-1",
       "description": "Screenshot of data validation rules.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1D4sATiQOADd855tPht81226JDaSUDoph",
+      "imageUrl": "/data-overview.png",
       "imageHint": "data validation"
     },
     {
@@ -423,7 +423,7 @@
     {
       "id": "tool-lab-1",
       "description": "Screenshot of lab data import.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1uaweXQjt4fLAhFA2TcDvQbkWqZlYAFqY",
+      "imageUrl": "/lab-overview.png",
       "imageHint": "lab data"
     },
     {
@@ -435,7 +435,7 @@
     {
       "id": "tool-coding-1",
       "description": "Screenshot of medical coding interface.",
-      "imageUrl": "/medical-coding.jpg",
+      "imageUrl": "/coding-overview.png",
       "imageHint": "medical coding"
     },
     {
@@ -447,7 +447,7 @@
     {
       "id": "tool-data-svc-1",
       "description": "Screenshot of data services reporting.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=152oY1kqz7Jc2Su_SXFkYYdtyEVYGVMDm",
+      "imageUrl": "/data-services-overview.png",
       "imageHint": "reporting dashboard"
     },
     {
@@ -459,7 +459,7 @@
     {
       "id": "tool-learning-1",
       "description": "Screenshot of digital learning module.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=15VHed3BvLw58CLHB9luaj2K__d-ViJU7",
+      "imageUrl": "/learning-overview.png",
       "imageHint": "e-learning course"
     },
     {
@@ -471,7 +471,7 @@
     {
       "id": "tool-support-1",
       "description": "Screenshot of help and support center.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1I-C8D4iQxOGs38mtsfQoDiVaShYyFHML",
+      "imageUrl": "/support-overview.png",
       "imageHint": "support center"
     },
     {
@@ -855,7 +855,7 @@
     {
       "id": "label-management-hero",
       "description": "A hand holding a label with a barcode.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1A3KjB1kQRbiGT2KD8DPDZTXfM1zGg1Uy",
+      "imageUrl": "/label-overview.png",
       "imageHint": "barcode label"
     },
     {
@@ -945,7 +945,7 @@
     {
       "id": "customer-management-hero",
       "description": "A centralized module to manage all sponsor and CRO customers.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1v0DOVU9aqgTCklvI6SYRg8hc77w9wdnu",
+      "imageUrl": "/customer-overview.png",
       "imageHint": "customer management"
     },
     {
@@ -999,7 +999,7 @@
     {
       "id": "reports-hero",
       "description": "A unified reporting hub that delivers real-time, study-wide insights.",
-      "imageUrl": "/reports.png",
+      "imageUrl": "/reports-overview.png",
       "imageHint": "reporting hub"
     },
     {
@@ -1011,7 +1011,7 @@
     {
       "id": "sample-management-hero-2",
       "description": "A powerful, end-to-end module designed to manage the lifecycle of clinical samples.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1EIcD2liPimxcuqijrNw_WCrVrpWg3QFU",
+      "imageUrl": "/sample-overview.png",
       "imageHint": "sample management"
     }
   ]

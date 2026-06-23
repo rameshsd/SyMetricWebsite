@@ -195,7 +195,7 @@ export function PlatformToolsGrid() {
                                 alt={activeTool.label}
                                 data-ai-hint={activeImage.imageHint}
                                 fill
-                                className="rounded-md object-cover"
+                                className="rounded-md object-contain"
                             />
                         )}
                     </div>
