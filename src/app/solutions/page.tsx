@@ -8,7 +8,7 @@ import { SectionTitle } from '@/components/shared/section-title';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, ChevronLeft, ChevronRight, Repeat, Database, ClipboardList } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Shuffle, FormInput, ClipboardList } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import {
@@ -89,8 +89,8 @@ export default function SolutionsPage() {
                     {featuredSolutions.map(solution => {
                         let Icon;
                         switch (solution.slug) {
-                            case 'irt-iwrs': Icon = Repeat; break;
-                            case 'edc': Icon = Database; break;
+                            case 'irt-iwrs': Icon = Shuffle; break;
+                            case 'edc': Icon = FormInput; break;
                             case 'ctm': Icon = ClipboardList; break;
                             default: Icon = solution.icon;
                         }

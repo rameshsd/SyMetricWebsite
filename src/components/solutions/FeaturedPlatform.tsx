@@ -32,14 +32,14 @@ export function FeaturedPlatform() {
                             </Button>
                         </div>
                     </div>
-                    <div className="relative h-64 md:h-full min-h-[400px]">
+                    <div className="relative w-full aspect-[16/10] md:aspect-auto md:h-full md:min-h-[400px]">
                         {ctpImage && (
                             <Image
                                 src={ctpImage.imageUrl}
                                 alt="SyMetric Clinical Trial Platform"
                                 width={600}
                                 height={400}
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-contain p-4 bg-secondary/20 md:p-0 md:bg-transparent md:object-cover"
                                 data-ai-hint={ctpImage.imageHint}
                             />
                         )}

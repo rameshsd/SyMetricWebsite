@@ -67,8 +67,7 @@ export function PillarsSection() {
                                     </div>
                                 )}
                                 <div className="p-6 flex flex-col flex-grow">
-                                    <p className="text-sm font-semibold text-primary">{pillar.subtitle}</p>
-                                    <h3 className="text-lg font-bold mt-1">{pillar.title}</h3>
+                                    <h3 className="text-lg font-bold">{pillar.title}</h3>
                                     <p className="text-muted-foreground mt-2 text-sm flex-grow">{pillar.description}</p>
                                 </div>
                             </Card>
