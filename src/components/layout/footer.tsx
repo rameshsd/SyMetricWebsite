@@ -300,12 +300,6 @@ export function Footer() {
         </button>
       )}
 
-      {/* Floating Chat Button for Mobile */}
-      <div className="fixed bottom-4 left-4 z-50 md:hidden">
-        <Button size="icon" className="h-14 w-14 rounded-full shadow-lg">
-          <MessageSquare className="h-7 w-7" />
-        </Button>
-      </div>
     </>
   );
 }

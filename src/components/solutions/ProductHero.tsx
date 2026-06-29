@@ -7,42 +7,42 @@ import { cn } from '@/lib/utils';
 import { IrtDiagram } from '../animations/IrtDiagram';
 
 type ProductHeroProps = {
-    title: string;
-    subtitle: string;
-    imageSrc: string;
-    imageHint: string;
-    backgroundColor?: string;
-    slug?: string;
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+  imageHint: string;
+  backgroundColor?: string;
+  slug?: string;
 };
 
 export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundColor, slug }: ProductHeroProps) {
   const sectionStyle = backgroundColor ? { background: backgroundColor } : {};
   const defaultBgClass = backgroundColor ? '' : 'bg-[#f5f3ff]';
   const isIrtIwrs = slug === 'irt-iwrs';
-  
+
   // List of known light backgrounds where we should use dark text
   const lightBackgrounds = [
-    '#f5f3ff', 
-    '#fdf4ff', 
-    '#ebf8ff', 
-    '#f0f9ff', 
-    '#f0fdf4', 
-    '#fef2f2', 
+    '#f5f3ff',
+    '#fdf4ff',
+    '#ebf8ff',
+    '#f0f9ff',
+    '#f0fdf4',
+    '#fef2f2',
     '#f4f7fb',
     'transparent'
   ];
-  
+
   const isLightBg = !backgroundColor || lightBackgrounds.includes(backgroundColor.toLowerCase());
   const hasDarkBg = backgroundColor && !isLightBg;
 
   return (
-    <section 
-        className={cn(
-          "w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0", 
-          defaultBgClass, 
-          isIrtIwrs && 'bg-[#ebf8ff]'
-        )}
-        style={sectionStyle}
+    <section
+      className={cn(
+        "w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0",
+        defaultBgClass,
+        isIrtIwrs && 'bg-[#ebf8ff]'
+      )}
+      style={sectionStyle}
     >
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -60,31 +60,31 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
               {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-               <Button 
-                size="lg" 
-                variant={hasDarkBg ? "secondary" : "default"} 
+              <Button
+                size="lg"
+                variant={hasDarkBg ? "secondary" : "default"}
                 className={cn(
                   hasDarkBg && "bg-white text-black hover:bg-gray-200"
                 )}
                 asChild
-               >
+              >
                 <Link href="/request-demo">Request a demo</Link>
               </Button>
             </div>
           </div>
           <div className="relative flex justify-center items-center h-auto md:h-[500px]">
             {isIrtIwrs ? (
-                <IrtDiagram />
+              <IrtDiagram />
             ) : (
-                <div className="relative w-full max-w-[500px] h-[350px]">
-                    <Image
-                        src={imageSrc}
-                        alt={title}
-                        data-ai-hint={imageHint}
-                        fill
-                        className="rounded-2xl object-cover shadow-2xl"
-                    />
-                </div>
+              <div className="relative w-full max-w-[500px] h-[350px]">
+                <Image
+                  src={imageSrc}
+                  alt={title}
+                  data-ai-hint={imageHint}
+                  fill
+                  className="rounded-2xl object-cover shadow-2xl"
+                />
+              </div>
             )}
           </div>
         </div>
