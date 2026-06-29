@@ -859,6 +859,12 @@
       "imageHint": "barcode label"
     },
     {
+      "id": "label-management-page-hero",
+      "description": "Barcode rolls and blood tube samples illustration.",
+      "imageUrl": "/label-management-hero.png",
+      "imageHint": "barcode label tubes"
+    },
+    {
       "id": "subject-management-hero",
       "description": "An abstract illustration of a person's profile with data points.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1Htv3okqHA8Yx6Bjm3nOM1AsNOQUqul2H",
@@ -949,6 +955,12 @@
       "imageHint": "customer management"
     },
     {
+      "id": "customer-management-page-hero",
+      "description": "Customer Management dashboard infographic showing Sponsors, CROs, and Customers.",
+      "imageUrl": "/customer-management-hero.jpg",
+      "imageHint": "customer management details infographic"
+    },
+    {
       "id": "request-demo-hero",
       "description": "Woman on a call requesting a demo",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1GDW36X5Xt5MB27dxBpXhrvQBTnAZzcmW",
@@ -1003,6 +1015,12 @@
       "imageHint": "reporting hub"
     },
     {
+      "id": "reports-page-hero",
+      "description": "Microscope research representation for Reports Module.",
+      "imageUrl": "/reports-module-hero.png",
+      "imageHint": "clinical research microscope"
+    },
+    {
       "id": "digital-learning-hero",
       "description": "Empowering users with role-based training modules, interactive content, and automated certification.",
       "imageUrl": "https://drive.google.com/uc?export=view&id=1sHXDOz1I3okW_ajkfvmX-LTskQTaCtIt",
@@ -1013,6 +1031,12 @@
       "description": "A powerful, end-to-end module designed to manage the lifecycle of clinical samples.",
       "imageUrl": "/sample-overview.png",
       "imageHint": "sample management"
+    },
+    {
+      "id": "sample-management-page-hero",
+      "description": "Clinical sample tracking and sorting workflow representation.",
+      "imageUrl": "/sample-management-hero.png",
+      "imageHint": "clinical sample tracking clipboard"
     }
   ]
 }

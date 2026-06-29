@@ -16,8 +16,8 @@ import { customerManagementFaq } from '@/lib/data';
 
 
 export const metadata: Metadata = {
-  title: 'Customer Management - SyMetric',
-  description: 'A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations.',
+    title: 'Customer Management - SyMetric',
+    description: 'A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations.',
 };
 
 const features: { icon: LucideIcon; title: string; description: string; details: string[] }[] = [
@@ -74,7 +74,7 @@ const summaryPoints = [
         title: "Restricted visibility for SyMetric internal teams",
         description: "Ensure customer data confidentiality with strict, role-based access controls for your internal administrative teams."
     },
-     {
+    {
         id: "item-5",
         title: "Controlled scalability and governance",
         description: "Govern the growth and scalability of customer operations on the platform by setting clear boundaries for resource utilization."
@@ -84,7 +84,7 @@ const summaryPoints = [
 
 export default function CustomerManagementPage() {
     const summaryImage = PlaceHolderImages.find(p => p.id === 'customer-management-summary-image');
-    
+
     const secondaryNav = [
         { label: 'Features', href: '#features' },
         { label: 'Summary', href: '#summary' },
@@ -93,10 +93,10 @@ export default function CustomerManagementPage() {
 
     return (
         <>
-            <SyMetricBusinessAI 
-              title="Customer Management"
-              subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
-              heroImageId="customer-management-hero"
+            <SyMetricBusinessAI
+                title="Customer Management"
+                subtitle="A centralized module to manage all sponsor and CRO customers, ensuring controlled access, contract-based configurations, and seamless multi-study operations."
+                heroImageId="customer-management-page-hero"
             />
             <PageHeader title="Customer Management" secondaryNav={secondaryNav} />
             <div id="overview">
@@ -110,16 +110,16 @@ export default function CustomerManagementPage() {
                         />
                         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                             {features.map(feature => (
-                               <Card key={feature.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                   <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                <Card key={feature.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                    <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
                                         <feature.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
-                                   </div>
-                                   <CardHeader className="p-0">
-                                       <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
-                                   </CardHeader>
-                                   <CardContent className="p-0 mt-2 flex-grow">
-                                      <p className="text-muted-foreground text-sm">{feature.description}</p>
-                                       <ul className="mt-4 space-y-2 text-sm">
+                                    </div>
+                                    <CardHeader className="p-0">
+                                        <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="p-0 mt-2 flex-grow">
+                                        <p className="text-muted-foreground text-sm">{feature.description}</p>
+                                        <ul className="mt-4 space-y-2 text-sm">
                                             {feature.details.map((detail, index) => (
                                                 <li key={index} className="flex items-start gap-2">
                                                     <CheckCircle className="h-4 w-4 mt-0.5 text-green-500 shrink-0" />
@@ -127,14 +127,14 @@ export default function CustomerManagementPage() {
                                                 </li>
                                             ))}
                                         </ul>
-                                   </CardContent>
-                               </Card>
+                                    </CardContent>
+                                </Card>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                 <section id="summary" className="bg-secondary/50">
+                <section id="summary" className="bg-secondary/50">
                     <div className="container">
                         <div className="text-left mb-12">
                             <p className="text-sm font-semibold text-primary uppercase tracking-wider">Summary</p>
@@ -145,7 +145,7 @@ export default function CustomerManagementPage() {
                             <div className="relative">
                                 <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
                                     {summaryPoints.map((point) => (
-                                         <AccordionItem value={point.id} key={point.id} className="border-b-0">
+                                        <AccordionItem value={point.id} key={point.id} className="border-b-0">
                                             <div className="flex gap-4">
                                                 <div className="pt-4">
                                                     <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
@@ -159,7 +159,7 @@ export default function CustomerManagementPage() {
                                                     </AccordionContent>
                                                 </div>
                                             </div>
-                                         </AccordionItem>
+                                        </AccordionItem>
                                     ))}
                                 </Accordion>
                                 <div className="mt-8">
@@ -173,13 +173,13 @@ export default function CustomerManagementPage() {
                             <div className="relative flex items-center justify-center">
                                 <div className="relative w-full aspect-video">
                                     {summaryImage && (
-                                    <Image
-                                        src={summaryImage.imageUrl}
-                                        alt={summaryImage.description}
-                                        data-ai-hint={summaryImage.imageHint}
-                                        fill
-                                        className="rounded-2xl object-cover shadow-lg"
-                                    />
+                                        <Image
+                                            src={summaryImage.imageUrl}
+                                            alt={summaryImage.description}
+                                            data-ai-hint={summaryImage.imageHint}
+                                            fill
+                                            className="rounded-2xl object-cover shadow-lg"
+                                        />
                                     )}
                                 </div>
                             </div>

@@ -75,7 +75,7 @@ export default function ReportsModulePage() {
             <SyMetricBusinessAI 
               title="Reports Module"
               subtitle="A unified reporting hub that delivers real-time, study-wide insights across sites, subjects, inventory, shipments, data management, medical coding, CRFs, and more."
-              heroImageId="reports-hero"
+              heroImageId="reports-page-hero"
             />
             <PageHeader title="Reports" secondaryNav={secondaryNav} />
             <div id="overview">

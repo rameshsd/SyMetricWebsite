@@ -182,7 +182,7 @@ export default function SampleManagementPage() {
             <SyMetricBusinessAI 
               title="Sample Management System"
               subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
-              heroImageId="sample-management-hero-2"
+              heroImageId="sample-management-page-hero"
             />
             <PageHeader title="Sample Management" secondaryNav={secondaryNav} />
             <div id="overview">
