@@ -180,7 +180,7 @@ export const solutions: Solution[] = [
     name: 'IRT/IWRS',
     slug: 'irt-iwrs',
     hero: {
-      title: 'Interactive Web Response System (IRT/IWRS)',
+      title: 'Interactive Web Response Technology (IRT/IWRS)',
       subtitle: 'IRT/IWRS enables well-organized, systematized drug supply between different investigation sites, reducing drug wastage to a bare minimum and proactively handling complex randomization procedures for single-arm, large multi-arm, and multi-centred studies.'
     },
     description: 'Comprehensive solution for randomization and trial supply management.',
