@@ -281,7 +281,13 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-zinc-900 flex justify-center">
+          <div className="mt-16 pt-8 border-t border-zinc-900 flex flex-col items-center space-y-2 text-center">
+            <p className="text-xs text-zinc-500">
+              For any DPDP related queries contact SyMetric&apos;s team through Official mail i&apos;d:{' '}
+              <a href="mailto:info@symetricsystems.com" className="text-zinc-400 hover:text-white transition-colors">
+                info@symetricsystems.com
+              </a>
+            </p>
             <div className="text-xs text-zinc-500">
               {isClient ? `Copyright ©${new Date().getFullYear()} SyMetric. All rights reserved` : <span>&nbsp;</span>}
             </div>
