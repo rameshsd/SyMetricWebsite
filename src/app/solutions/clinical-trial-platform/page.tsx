@@ -39,7 +39,7 @@ export default function ClinicalTrialPlatformPage() {
         
         <div className="flex flex-col">
             {solution && (
-                <section id="overview" className="w-full min-h-[450px] flex items-center bg-[#f5f3ff] dark:bg-card py-20">
+                <section id="overview" className="w-full flex items-center bg-[#f5f3ff] dark:bg-card pt-8 pb-12">
                     <div className="container">
                         <div className="grid lg:grid-cols-2 gap-10 items-center">
                         <div className="space-y-6">
@@ -55,7 +55,7 @@ export default function ClinicalTrialPlatformPage() {
                             </Button>
                             </div>
                         </div>
-                        <div className="relative w-full min-h-[520px] flex items-center justify-center">
+                        <div className="relative w-full flex items-center justify-center">
                             <UltraHeroDiagram />
                         </div>
                         </div>

@@ -104,17 +104,17 @@ const ConclusionSection = () => {
         {
             id: 'item-1',
             title: 'Accuracy and Compliance',
-            description: 'Ensure accuracy, compliance, and traceability across all study sites for every step of the sample lifecycle.'
+            description: 'Ensure absolute accuracy, regulatory compliance, and GxP traceability across all study sites for every step of the sample lifecycle. Includes comprehensive audit logging, chain-of-custody tracking, and conditional access to guarantee data integrity.'
         },
         {
             id: 'item-2',
             title: 'End-to-End Control',
-            description: 'From defining sample types to generating labels, managing shipments, and tracking status transitions.'
+            description: 'Gain total control over the entire sample pipeline, from defining custom sample types and generating high-resolution barcode/QR labels to orchestrating secure shipments and tracking status transitions in real time.'
         },
         {
             id: 'item-3',
             title: 'Complex Workflow Support',
-            description: 'The module is built to support complex clinical workflows with precision and automation.'
+            description: 'The module is built to natively support complex clinical trial designs and workflows with advanced automation. Easily coordinate site schedules, monitor processing rules, and receive instant alerts for shipping anomalies.'
         }
     ];
 
@@ -174,7 +174,7 @@ export default function SampleManagementPage() {
         { label: 'Capabilities', href: '#capabilities' },
         { label: 'Conclusion', href: '#conclusion' },
         { label: 'Get Started', href: '#get-started' },
-        { label: 'FAQ', href: '#faq' },
+        // { label: 'FAQ', href: '#faq' },
     ];
 
     return (
@@ -195,14 +195,14 @@ export default function SampleManagementPage() {
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
-                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border-2 border-blue-200 hover:border-blue-500 bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                    <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
                                         <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
                                    </div>
                                    <div className="flex-grow">
                                       <h3 className="font-semibold text-lg">{cap.title}</h3>
                                       <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
-                                   </div>
+                                    </div>
                                </Card>
                             ))}
                         </div>
@@ -211,7 +211,7 @@ export default function SampleManagementPage() {
 
                  <ConclusionSection />
                  <ReadyToGetStarted />
-                 <FaqAccordion faqs={sampleManagementFaq} />
+                 {/* <FaqAccordion faqs={sampleManagementFaq} /> */}
             </div>
         </>
     );

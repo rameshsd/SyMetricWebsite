@@ -30,20 +30,19 @@ export function GrowthStoryTimeline() {
     return (
         <section id="growth-story" className="py-20">
             <div className="container">
-                <SectionTitle 
-                    title="Our Growth Story"
-                    description="Key milestones in our mission to transform clinical research."
-                    className="text-white"
-                />
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">Key Milestones</h2>
+                    <p className="mt-4 text-lg text-blue-100/90">Key milestones in our mission to transform clinical research.</p>
+                </div>
                 <div ref={ref} className="mt-16 relative max-w-4xl mx-auto">
                     <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-primary/30" aria-hidden="true" />
                     {visibleItems.map((item, index) => (
-                        <motion.div 
-                          key={item.year} 
-                          className="relative pl-12 mb-12"
-                          initial={{ opacity: 0, y: 50 }}
-                          animate={isInView ? { opacity: 1, y: 0 } : {}}
-                          transition={{ duration: 0.5, delay: index * 0.2 }}
+                        <motion.div
+                            key={item.year}
+                            className="relative pl-12 mb-12"
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
                             <div className="absolute left-0 top-1.5 transform -translate-x-1/2">
                                 <div className="w-5 h-5 bg-background rounded-full border-4 border-primary"></div>
@@ -62,7 +61,7 @@ export function GrowthStoryTimeline() {
                     ))}
                 </div>
                 {visibleCount < sortedTimeline.length && (
-                     <div className="text-center mt-8">
+                    <div className="text-center mt-8">
                         <Button variant="outline" onClick={handleViewMore} className="bg-transparent border-white text-white hover:bg-white hover:text-primary">View More</Button>
                     </div>
                 )}

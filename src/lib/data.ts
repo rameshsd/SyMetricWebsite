@@ -303,7 +303,7 @@ export const solutions: Solution[] = [
       }
     ],
     relatedContent: {
-      title: "Explore Related EDC Solutions",
+      title: "Explore Related EDC Functionality",
       description: "Enhance your data capture capabilities by integrating with other powerful SyMetric modules.",
       featurePoints: [
         {
@@ -398,7 +398,10 @@ export const solutions: Solution[] = [
         iconName: 'ShieldCheck'
       }
     ],
-    relatedContent: defaultRelatedContent
+    relatedContent: {
+      ...defaultRelatedContent,
+      title: "Explore Related CTM Functionality"
+    }
   },
   {
     id: 'trial-analytics',
@@ -657,6 +660,19 @@ export const industries: Industry[] = [
     imageId: 'platform-pharma'
   },
   {
+    name: 'CROs',
+    description: 'Enhancing efficiency and collaboration for Contract Research Organizations.',
+    longDescription: 'We provide CROs with tools to manage multiple studies, streamline operations, and improve collaboration between sponsors, sites, and stakeholders.',
+    capabilities: [
+      'Multi-study management systems',
+      'Real-time collaboration tools',
+      'Data tracking and reporting',
+      'Operational efficiency optimization'
+    ],
+    icon: Building,
+    imageId: 'platform-cro'
+  },
+  {
     name: 'Biotech',
     description: 'Innovative solutions for agile and fast-growing biotech firms.',
     longDescription: 'We help biotech companies move quickly from discovery to commercialization with flexible, scalable, and innovation-focused digital solutions.',
@@ -681,19 +697,6 @@ export const industries: Industry[] = [
     ],
     icon: Hospital,
     imageId: 'about-hero'
-  },
-  {
-    name: 'CROs',
-    description: 'Enhancing efficiency and collaboration for Contract Research Organizations.',
-    longDescription: 'We provide CROs with tools to manage multiple studies, streamline operations, and improve collaboration between sponsors, sites, and stakeholders.',
-    capabilities: [
-      'Multi-study management systems',
-      'Real-time collaboration tools',
-      'Data tracking and reporting',
-      'Operational efficiency optimization'
-    ],
-    icon: Building,
-    imageId: 'platform-cro'
   },
   {
     name: 'Research Institutes',
@@ -1046,6 +1049,7 @@ export const latestNews: LatestNewsItem[] = [
     imageId: 'news-summit',
     main: true,
   },
+  /*
   {
     id: 2,
     title: 'Navaratri Celebrations at office',
@@ -1060,6 +1064,7 @@ export const latestNews: LatestNewsItem[] = [
     link: '/news/independence-day',
     imageId: 'news-independence'
   },
+  */
   {
     id: 4,
     title: 'Batch Release Hub Announcement',
@@ -1081,6 +1086,7 @@ export const latestNews: LatestNewsItem[] = [
     link: '/news/icsm',
     imageId: 'news-icsm-partner'
   },
+  /*
   {
     id: 9,
     title: 'Christmas Celebrations',
@@ -1088,6 +1094,7 @@ export const latestNews: LatestNewsItem[] = [
     link: '/news/christmas',
     imageId: 'news-christmas-2021'
   },
+  */
   {
     id: 10,
     title: 'SyMetric at GINSEP Demo Day',
@@ -1318,7 +1325,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
     description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
     linkText: "Learn More",
     linkUrl: "/contact",
-    imageId: "hero-carousel-1"
+    imageId: "unlock-potential-1"
   },
   {
     id: 2,
@@ -1326,7 +1333,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
     description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
     linkText: "Learn More",
     linkUrl: "/contact",
-    imageId: "hero-carousel-2"
+    imageId: "unlock-potential-2"
   },
   {
     id: 3,
@@ -1334,7 +1341,7 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
     description: "For a bird’s-eye view of Clinical Trials",
     linkText: "Learn More",
     linkUrl: "/solutions/clinical-trial-platform",
-    imageId: "hero-carousel-3"
+    imageId: "unlock-potential-3"
   }
 ];
 

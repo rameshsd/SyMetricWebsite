@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth overflow-x-hidden scroll-mt-32" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider
             attribute="class"
             defaultTheme="light"

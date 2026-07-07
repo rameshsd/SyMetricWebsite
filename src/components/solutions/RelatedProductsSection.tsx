@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { SectionTitle } from '../shared/section-title';
 import type { RelatedContent } from '@/lib/types';
+import { cn } from '@/lib/utils';
 
 interface RelatedProductsSectionProps {
   relatedContent?: RelatedContent;
@@ -64,17 +65,22 @@ export function RelatedProductsSection({ relatedContent, customImage }: RelatedP
                 </div>
 
                 <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {relatedProducts.map(product => (
-                        <Card key={product.title} className="bg-background border transition-shadow hover:shadow-lg rounded-2xl">
-                            <CardContent className="p-8">
-                                <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
-                                <p className="text-muted-foreground mt-2 min-h-[100px]">{product.description}</p>
-                                <Link href={product.link} className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">
-                                    {product.linkText} <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </CardContent>
-                        </Card>
-                    ))}
+                    {relatedProducts.map(product => {
+                        return (
+                            <Card 
+                                key={product.title} 
+                                className="bg-background border-2 border-primary shadow-lg md:scale-[1.02] bg-primary/[0.01] transition-all duration-300 rounded-2xl"
+                            >
+                                <CardContent className="p-8">
+                                    <h3 className="font-bold text-lg text-foreground">{product.title}</h3>
+                                    <p className="text-muted-foreground mt-2 min-h-[100px]">{product.description}</p>
+                                    <Link href={product.link} className="text-primary font-semibold text-sm flex items-center gap-1 mt-4">
+                                        {product.linkText} <ArrowRight className="h-4 w-4" />
+                                    </Link>
+                                </CardContent>
+                            </Card>
+                        );
+                    })}
                 </div>
             </div>
         </section>

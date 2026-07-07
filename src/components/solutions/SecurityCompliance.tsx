@@ -43,7 +43,6 @@ export function SecurityCompliance() {
                         <div className="w-24 h-12 flex-shrink-0">
                             <standard.Icon className="w-full h-full" />
                         </div>
-                        <CardTitle className="text-lg leading-tight">{standard.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col flex-grow p-6 pt-0">
                         <p className="text-sm text-muted-foreground">{standard.description}</p>

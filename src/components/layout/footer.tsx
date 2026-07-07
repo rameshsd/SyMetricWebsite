@@ -25,6 +25,8 @@ const solutionsLinks = [
   { name: 'IRT/IWRS', href: '/solutions/irt-iwrs' },
   { name: 'EDC', href: '/solutions/edc' },
   { name: 'CTM', href: '/solutions/ctm' },
+  { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
+  { name: 'Sample Management', href: '/solutions/sample-management' },
 ];
 
 const servicesLinks = [
@@ -74,7 +76,7 @@ export function Footer() {
 
   return (
     <>
-      <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden py-16">
+      <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden pt-16 pb-10">
         {/* Large Faded Logo Watermark */}
         <div
           className="absolute right-0 bottom-0 h-[280px] w-[280px] md:h-[450px] md:w-[450px] opacity-[0.05] pointer-events-none select-none bg-contain bg-no-repeat bg-right-bottom translate-x-8 translate-y-8"
@@ -86,13 +88,13 @@ export function Footer() {
 
         <div className="container relative z-10">
           {/* Desktop Footer Grid */}
-          <div className="hidden md:grid grid-cols-12 gap-8 items-start">
+          <div className="hidden md:flex justify-between gap-12 items-start">
             {/* Logo and Contact column */}
-            <div className="col-span-3 flex flex-col items-start space-y-6">
-              <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300" />
+            <div className="flex flex-col items-start space-y-6 max-w-[280px]">
+              <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300 scale-105 origin-left" />
 
               {/* Social icons row */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-5">
                 {socialLinks.map((link) => {
                   const Icon = link.icon;
                   return (
@@ -101,9 +103,9 @@ export function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-600 hover:text-white transition-colors duration-300"
+                      className="text-zinc-650 hover:text-white transition-colors duration-300"
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-6 w-6" />
                       <span className="sr-only">{link.name}</span>
                     </a>
                   );
@@ -111,78 +113,70 @@ export function Footer() {
               </div>
 
               {/* Email and Phone */}
-              <div className="text-sm text-zinc-400 space-y-1 font-medium">
+              <div className="text-base text-zinc-400 space-y-1.5 font-medium">
                 <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">info@symetricsystems.com</a></p>
                 <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">+91 (80) 41135402</a></p>
               </div>
             </div>
 
             {/* About Us column */}
-            <div className="col-span-2 flex flex-col md:items-center">
-              <div className="flex flex-col items-start">
-                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                  About Us
-                </h3>
-                <ul className="space-y-3 text-sm">
-                  {aboutLinks.map((link) => (
-                    <li key={link.name}>
-                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="flex flex-col items-start">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                About Us
+              </h3>
+              <ul className="space-y-3.5 text-base">
+                {aboutLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Our Solutions column */}
-            <div className="col-span-2 flex flex-col md:items-center">
-              <div className="flex flex-col items-start">
-                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                  Our Solutions
-                </h3>
-                <ul className="space-y-3 text-sm">
-                  {solutionsLinks.map((link) => (
-                    <li key={link.name}>
-                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="flex flex-col items-start">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Our Solutions
+              </h3>
+              <ul className="space-y-3.5 text-base">
+                {solutionsLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Our Services column */}
-            <div className="col-span-2 flex flex-col md:items-center">
-              <div className="flex flex-col items-start">
-                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                  Our Services
-                </h3>
-                <ul className="space-y-3 text-sm">
-                  {servicesLinks.map((link) => (
-                    <li key={link.name}>
-                      <Link href={link.href} className="hover:text-white transition-colors duration-300">
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="flex flex-col items-start">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Our Services
+              </h3>
+              <ul className="space-y-3.5 text-base">
+                {servicesLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="hover:text-white transition-colors duration-300">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Contact Us column */}
-            <div className="col-span-3 flex flex-col md:items-center">
-              <div className="flex flex-col items-start">
-                <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
-                  Contact Us
-                </h3>
-                <ul className="space-y-2 text-sm text-zinc-300 font-medium">
-                  {contactAddress.map((line, idx) => (
-                    <li key={idx}>{line}</li>
-                  ))}
-                </ul>
-              </div>
+            <div className="flex flex-col items-start max-w-[280px]">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+                Contact Us
+              </h3>
+              <ul className="space-y-2.5 text-base text-zinc-300 font-medium">
+                {contactAddress.map((line, idx) => (
+                  <li key={idx}>{line}</li>
+                ))}
+              </ul>
             </div>
           </div>
 
@@ -281,7 +275,7 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-zinc-900 flex flex-col items-center space-y-2 text-center">
+          <div className="mt-10 pt-6 border-t border-zinc-900 flex flex-col items-center space-y-2 text-center">
             <p className="text-xs text-zinc-500">
               For any DPDP related queries contact SyMetric&apos;s team through Official mail i&apos;d:{' '}
               <a href="mailto:info@symetricsystems.com" className="text-zinc-400 hover:text-white transition-colors">

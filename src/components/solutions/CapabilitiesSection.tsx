@@ -68,12 +68,16 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
             {capabilities.map((capability) => {
               const Icon = iconMap[capability.id] || capability.icon;
               return (
-                <div key={capability.id} className="bg-blue-900/50 p-6 rounded-2xl h-full flex flex-col hover:shadow-xl transition-shadow duration-300">
+                <div 
+                  key={capability.id} 
+                  className="p-6 rounded-2xl h-full flex flex-col shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border border-blue-400/30 hover:border-blue-300/50"
+                  style={{ backgroundColor: '#1E40AF' }}
+                >
                     <div className="flex items-start gap-4 mb-4">
-                        {Icon && <Icon className="h-10 w-10 text-pink-400 flex-shrink-0" strokeWidth={2} />}
+                        {Icon && <Icon className="h-10 w-10 text-pink-300 flex-shrink-0" strokeWidth={2} />}
                         <h3 className="text-lg font-bold text-white mt-1">{capability.title}</h3>
                     </div>
-                    <p className="text-blue-200 flex-grow">{capability.description}</p>
+                    <p className="text-blue-100 flex-grow leading-relaxed text-sm">{capability.description}</p>
                 </div>
               )
             })}

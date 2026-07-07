@@ -33,7 +33,7 @@ export function ResearchIntegrateAnalyze() {
                         <div
                             key={item.title}
                             className={cn(
-                                "flex flex-col text-left gap-4 opacity-0",
+                                "flex flex-col text-left gap-4 opacity-0 border border-slate-300/80 rounded-2xl p-6 bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300",
                                 isInView && "animate-fade-in-up"
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}
@@ -42,7 +42,6 @@ export function ResearchIntegrateAnalyze() {
                                 <item.icon className="h-10 w-10 text-primary" strokeWidth={2.5}/>
                             </div>
                             <div>
-                                <p className="text-sm uppercase text-muted-foreground tracking-wider">SyMetric Clinical Trial Platform</p>
                                 <h3 className="font-bold text-xl mt-1">{item.title}</h3>
                                 <p className="text-muted-foreground mt-2">{item.description}</p>
                             </div>

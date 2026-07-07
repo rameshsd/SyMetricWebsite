@@ -61,13 +61,11 @@ export function GlobalPresence() {
                 >
                   <div className="relative flex items-center justify-center" aria-hidden>
                     <div
-                      className={`w-8 h-8 ${loc.color} text-white text-[11px] font-bold rounded-full flex items-center justify-center shadow-md relative z-10`}
-                    >
-                      {loc.value}
-                    </div>
+                      className={`w-4 h-4 ${loc.color} rounded-full shadow-md relative z-10`}
+                    />
 
                     <div
-                      className={`absolute -top-1 -left-1 w-10 h-10 ${loc.color} rounded-full opacity-25 animate-pulse-slow`}
+                      className={`absolute -top-1 -left-1 w-6 h-6 ${loc.color} rounded-full opacity-25 animate-pulse-slow`}
                       aria-hidden
                     />
 
@@ -76,10 +74,10 @@ export function GlobalPresence() {
                       <span
                         className="absolute rounded-full"
                         style={{
-                          width: '56px',
-                          height: '56px',
-                          left: '-22px',
-                          top: '-22px',
+                          width: '32px',
+                          height: '32px',
+                          left: '-8px',
+                          top: '-8px',
                           background: 'radial-gradient(circle, rgba(14,165,233,0.12) 0%, rgba(14,165,233,0) 60%)',
                           zIndex: 0,
                           pointerEvents: 'none',

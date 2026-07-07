@@ -33,7 +33,7 @@ const mobileModuleConfig = [
 
 export default function UltraHeroDiagram() {
   return (
-    <div className="relative py-8 md:py-24 flex flex-col items-center overflow-hidden w-full min-h-[550px] md:min-h-0">
+    <div className="relative py-4 md:py-6 flex flex-col items-center overflow-hidden w-full">
 
       {/* GLOW BACKGROUND */}
       <div className="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-500/10 blur-[80px] md:blur-[120px] rounded-full top-0"></div>
@@ -46,7 +46,7 @@ export default function UltraHeroDiagram() {
         className="relative z-10 bg-white rounded-2xl px-6 py-6 md:px-10 md:py-8 shadow-xl md:shadow-2xl text-center mx-4"
       >
         <Gem className="mx-auto mb-2 md:mb-3 text-blue-600 animate-pulse" size={32} />
-        <h2 className="text-lg md:text-2xl font-bold">SyMetric Clinical Platform</h2>
+        <h2 className="text-lg md:text-2xl font-bold">SyMetric Clinical Trial Platform</h2>
         <p className="text-[10px] md:text-sm text-gray-500 mt-1">
           Unified. Intelligent. Compliant.
         </p>

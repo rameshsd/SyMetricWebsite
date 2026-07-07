@@ -20,12 +20,15 @@ export function PlatformToolsSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {toolsData.map(tool => (
-            <div key={tool.id} className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl flex flex-col text-left h-full">
-              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-white/10 mb-6">
+            <div 
+              key={tool.id} 
+              className="bg-sky-200/15 backdrop-blur-lg border-2 border-sky-300/30 p-8 rounded-2xl flex flex-col text-left h-full shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] hover:bg-sky-200/25 hover:border-sky-300/70 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300"
+            >
+              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-sky-300/20 border border-sky-300/10 mb-6">
                 <tool.icon className="h-10 w-10 text-pink-400" />
               </div>
               <h3 className="text-xl font-bold text-white">{tool.label}</h3>
-              <p className="text-white/70 mt-4 text-base flex-grow">{tool.description}</p>
+              <p className="text-white/80 mt-4 text-base flex-grow leading-relaxed">{tool.description}</p>
               <Button variant="outline" asChild className="mt-6 self-start bg-transparent text-white border-white/50 hover:bg-white/10">
                 <Link href={tool.link}>
                   Explore more

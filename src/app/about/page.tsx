@@ -33,8 +33,8 @@ export default function AboutPage() {
   const secondaryNav = [
     { label: 'Company Information', href: '#company-info' },
     { label: 'Overview', href: '#overview' },
-    { label: 'Our story', href: '#our-story' },
-    { label: 'Our Growth Story', href: '#growth-story' },
+    { label: 'Our Growth Story', href: '#our-story' },
+    { label: 'Key Milestone', href: '#growth-story' },
     { label: 'Our strategy', href: '#our-strategy' },
     { label: 'Innovation', href: '#innovation' },
   ];
@@ -58,35 +58,37 @@ export default function AboutPage() {
         showTitle={false}
       />
       <div>
-        <section id="company-info" className="bg-primary text-primary-foreground py-20 px-0">
-          <div className="container">
+        <section id="company-info" className="bg-sap-gradient text-white py-20 px-0 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 blur-[80px] rounded-full pointer-events-none" />
+          <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
-                {isLoading ? <Skeleton className="h-12 w-3/4" /> : <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">{content.heroTitle}</h1>}
+                {isLoading ? <Skeleton className="h-12 w-3/4" /> : <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">{content.heroTitle}</h1>}
                 {isLoading ? (
                   <div className="space-y-2">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-5/6" />
                   </div>
                 ) : (
-                  <p className="max-w-lg text-lg text-primary-foreground/80">{content.heroSubtitle}</p>
+                  <p className="max-w-lg text-lg text-blue-100/90">{content.heroSubtitle}</p>
                 )}
                 <Button variant="secondary" size="lg" className="bg-white text-black hover:bg-gray-200" asChild>
                   <Link href="#our-story">Learn More</Link>
                 </Button>
               </div>
               <div className="relative h-64 md:h-full min-h-[400px]">
-                  {heroImage && (
-                      <div className="absolute inset-0 clip-path-polygon-about-hero">
-                          <Image 
-                              src={heroImage.imageUrl}
-                              alt={heroImage.description}
-                              data-ai-hint={heroImage.imageHint}
-                              fill
-                              className="object-cover"
-                          />
-                      </div>
-                  )}
+                {heroImage && (
+                  <div className="absolute inset-0 clip-path-polygon-about-hero">
+                    <Image
+                      src={heroImage.imageUrl}
+                      alt={heroImage.description}
+                      data-ai-hint={heroImage.imageHint}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -97,7 +99,7 @@ export default function AboutPage() {
             <CompanyOverview />
           </div>
         </section>
-        
+
         <div id="innovation">
           <RevolutionizingTrialsSection />
         </div>
@@ -105,73 +107,73 @@ export default function AboutPage() {
         <section id="our-strategy" className="bg-subtle-blue py-16">
           <div className="container">
             <SectionTitle
-                eyebrow="Our Approach"
-                title="Our Strategy"
-                description="Our vision and mission drive everything we do."
-                className="mb-12"
-             />
+              eyebrow="Our Approach"
+              title="Our Strategy"
+              description="Our vision and mission drive everything we do."
+              className="mb-12"
+            />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="relative">
-                    <Accordion type="multiple" defaultValue={["item-1", "item-2"]} className="w-full">
-                        <AccordionItem value="item-1" className="border-b-0">
-                            <div className="flex gap-4">
-                                <div className="pt-4">
-                                    <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
-                                </div>
-                                <div className="flex-1">
-                                    <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
-                                        Vision
-                                    </AccordionTrigger>
-                                    <AccordionContent className="pb-6 pr-4">
-                                        {isLoading ? <Skeleton className="h-6 w-3/4 mb-2"/> : <p className="text-lg font-semibold text-foreground">{content.visionSemiboldText}</p>}
-                                        {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full"/><Skeleton className="h-4 w-5/6"/></div> : <p className="text-muted-foreground mt-2">{content.visionDescription}</p>}
-                                    </AccordionContent>
-                                </div>
-                            </div>
-                        </AccordionItem>
-                         <AccordionItem value="item-2" className="border-b-0">
-                            <div className="flex gap-4">
-                                <div className="pt-4">
-                                    <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
-                                </div>
-                                <div className="flex-1">
-                                    <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
-                                        Mission
-                                    </AccordionTrigger>
-                                    <AccordionContent className="pb-6 pr-4">
-                                       {isLoading ? <Skeleton className="h-6 w-3/4 mb-2"/> : <p className="text-lg font-semibold text-foreground">{content.missionSemiboldText}</p>}
-                                       {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full"/><Skeleton className="h-4 w-5/6"/></div> : <p className="text-muted-foreground mt-2">{content.missionDescription}</p>}
-                                    </AccordionContent>
-                                </div>
-                            </div>
-                        </AccordionItem>
-                    </Accordion>
-                </div>
-                <div className="relative flex items-center justify-center">
-                    <div className="relative w-full aspect-video">
-                        {strategyImage && (
-                        <Image
-                            src={strategyImage.imageUrl}
-                            alt={strategyImage.description}
-                            data-ai-hint={strategyImage.imageHint}
-                            fill
-                            className="rounded-2xl object-cover shadow-lg"
-                        />
-                        )}
+              <div className="relative">
+                <Accordion type="multiple" defaultValue={["item-1", "item-2"]} className="w-full">
+                  <AccordionItem value="item-1" className="border-b-0">
+                    <div className="flex gap-4">
+                      <div className="pt-4">
+                        <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                      </div>
+                      <div className="flex-1">
+                        <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                          Vision
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-6 pr-4">
+                          {isLoading ? <Skeleton className="h-6 w-3/4 mb-2" /> : <p className="text-lg font-semibold text-foreground">{content.visionSemiboldText}</p>}
+                          {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full" /><Skeleton className="h-4 w-5/6" /></div> : <p className="text-muted-foreground mt-2">{content.visionDescription}</p>}
+                        </AccordionContent>
+                      </div>
                     </div>
+                  </AccordionItem>
+                  <AccordionItem value="item-2" className="border-b-0">
+                    <div className="flex gap-4">
+                      <div className="pt-4">
+                        <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
+                      </div>
+                      <div className="flex-1">
+                        <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-4">
+                          Mission
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-6 pr-4">
+                          {isLoading ? <Skeleton className="h-6 w-3/4 mb-2" /> : <p className="text-lg font-semibold text-foreground">{content.missionSemiboldText}</p>}
+                          {isLoading ? <div className="space-y-2 mt-2"><Skeleton className="h-4 w-full" /><Skeleton className="h-4 w-5/6" /></div> : <p className="text-muted-foreground mt-2">{content.missionDescription}</p>}
+                        </AccordionContent>
+                      </div>
+                    </div>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+              <div className="relative flex items-center justify-center">
+                <div className="relative w-full aspect-video">
+                  {strategyImage && (
+                    <Image
+                      src={strategyImage.imageUrl}
+                      alt={strategyImage.description}
+                      data-ai-hint={strategyImage.imageHint}
+                      fill
+                      className="rounded-2xl object-cover shadow-lg"
+                    />
+                  )}
                 </div>
+              </div>
             </div>
           </div>
         </section>
-        
+
         <CtpPieChart />
-        
+
         <div id="our-story" className="bg-background pt-20">
           <div className="container">
-             <SectionTitle 
-                title="Our Story"
-                description="A Stellar Journey Led by…"
-             />
+            <SectionTitle
+              title="Our Growth Story"
+              description="A Stellar Journey Led by…"
+            />
           </div>
           <LeadershipSection />
         </div>
