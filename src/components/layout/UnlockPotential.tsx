@@ -47,7 +47,6 @@ export function UnlockPotential() {
                         </div>
                     )}
                     
-                    {/* Side Cards Container */}
                     <div className="flex flex-col gap-6">
                         {card2 && card2.image && (
                              <div className="relative aspect-video rounded-2xl overflow-hidden group">
@@ -58,10 +57,10 @@ export function UnlockPotential() {
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
-                                <div className="absolute top-1/2 left-8 -translate-y-1/2 text-white">
-                                    <h3 className="text-2xl font-bold" dangerouslySetInnerHTML={{ __html: card2.title }}></h3>
-                                    <p className="mt-2 text-white/90 max-w-sm text-sm" dangerouslySetInnerHTML={{ __html: card2.description }}></p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                                    <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: card2.title }}></h3>
+                                    <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: card2.description }}></p>
                                 </div>
                             </div>
                         )}
@@ -75,10 +74,10 @@ export function UnlockPotential() {
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
-                                <div className="absolute top-1/2 left-8 -translate-y-1/2 text-white">
-                                    <h3 className="text-2xl font-bold" dangerouslySetInnerHTML={{ __html: card3.title }}></h3>
-                                    <p className="mt-2 text-white/90 max-w-sm text-sm" dangerouslySetInnerHTML={{ __html: card3.description }}></p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                                    <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: card3.title }}></h3>
+                                    <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: card3.description }}></p>
                                 </div>
                             </div>
                         )}

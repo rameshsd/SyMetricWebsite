@@ -7,13 +7,18 @@ import { Button } from "@/components/ui/button";
 
 export function PlatformToolsSection() {
   return (
-    <section className="py-16" style={{ backgroundColor: 'rgb(2,3,129)' }}>
+    <section 
+      className="py-16" 
+      style={{ 
+        background: 'linear-gradient(135deg, #16002D 0%, #2A0B5A 35%, #4C1D95 70%, #6D28D9 100%)' 
+      }}
+    >
       <div className="container">
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
             Support Every Stake Holder and Strengthen The Process
           </h2>
-          <p className="mt-4 text-lg text-white/80">
+          <p className="mt-4 text-lg text-purple-200/90">
             A comprehensive, modular suite to power every aspect of your clinical trial.
           </p>
         </div>
@@ -22,14 +27,22 @@ export function PlatformToolsSection() {
           {toolsData.map(tool => (
             <div 
               key={tool.id} 
-              className="bg-sky-200/15 backdrop-blur-lg border-2 border-sky-300/30 p-8 rounded-2xl flex flex-col text-left h-full shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] hover:bg-sky-200/25 hover:border-sky-300/70 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300"
+              className="p-8 rounded-2xl flex flex-col text-left h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+              style={{ 
+                backgroundColor: '#FCFAFF',
+                border: '1px solid rgba(255,255,255,0.18)',
+                boxShadow: '0 12px 30px rgba(0,0,0,0.15)'
+              }}
             >
-              <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-sky-300/20 border border-sky-300/10 mb-6">
-                <tool.icon className="h-10 w-10 text-pink-400" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-[#7C3AED]/10 border border-[#7C3AED]/20 mb-6">
+                <tool.icon className="h-8 w-8 text-[#7C3AED]" />
               </div>
-              <h3 className="text-xl font-bold text-white">{tool.label}</h3>
-              <p className="text-white/80 mt-4 text-base flex-grow leading-relaxed">{tool.description}</p>
-              <Button variant="outline" asChild className="mt-6 self-start bg-transparent text-white border-white/50 hover:bg-white/10">
+              <h3 className="text-xl font-bold text-[#16002D]">{tool.label}</h3>
+              <p className="text-slate-600 mt-3 text-sm flex-grow leading-relaxed">{tool.description}</p>
+              <Button 
+                asChild 
+                className="mt-6 self-start bg-[#7C3AED] text-white hover:bg-[#6D28D9] border-none shadow-sm transition-all"
+              >
                 <Link href={tool.link}>
                   Explore more
                 </Link>

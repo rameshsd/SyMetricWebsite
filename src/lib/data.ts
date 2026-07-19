@@ -1322,23 +1322,23 @@ export const unlockPotentialItems: UnlockPotentialItem[] = [
   {
     id: 1,
     title: "Better Data. Better Clinical Trials.",
-    description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease",
+    description: "Rely on our technology platform to manage your Clinical Trials with accuracy and ease.",
     linkText: "Learn More",
     linkUrl: "/contact",
     imageId: "unlock-potential-1"
   },
   {
     id: 2,
-    title: "Keep Close Tabs on Your Clinical Supplies",
-    description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring",
+    title: "Keep Close Tabs on Your Clinical Supplies.",
+    description: "Experience seamless management of Clinical Supplies with real-time data and active monitoring.",
     linkText: "Learn More",
     linkUrl: "/contact",
     imageId: "unlock-potential-2"
   },
   {
     id: 3,
-    title: "A Well-Integrated CTP",
-    description: "For a bird’s-eye view of Clinical Trials",
+    title: "A Well-Integrated CTP.",
+    description: "For a bird’s-eye view of Clinical Trials.",
     linkText: "Learn More",
     linkUrl: "/solutions/clinical-trial-platform",
     imageId: "unlock-potential-3"
