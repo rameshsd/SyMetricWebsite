@@ -159,7 +159,7 @@
     {
       "id": "contact-hero",
       "description": "Communication bubbles illustration",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1QYi3GNZX8tJFVVJLb9vYY_6Vw_YFT8Kw",
+      "imageUrl": "/contact-hero.jpg",
       "imageHint": "communication bubbles"
     },
     {
@@ -759,7 +759,7 @@
     {
       "id": "careers-hero",
       "description": "An image of SyMetric's diverse and talented team, showcasing a collaborative and innovative work environment.",
-      "imageUrl": "https://drive.google.com/uc?export=view&id=1E9a_zVb1UeeFogljiTxjt-m8QXt-G3LX",
+      "imageUrl": "/careers-hero.png",
       "imageHint": "diverse team"
     },
     {

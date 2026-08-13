@@ -177,6 +177,10 @@ export function Footer() {
                   <li key={idx}>{line}</li>
                 ))}
               </ul>
+              <div className="mt-4 pt-4 border-t border-zinc-800/50 w-full">
+                <p className="text-zinc-400 font-semibold text-sm mb-1">USA Address</p>
+                <p className="text-zinc-300 font-medium text-base">DOVER, DELAWARE, USA</p>
+              </div>
             </div>
           </div>
 
@@ -271,6 +275,10 @@ export function Footer() {
                   <li key={idx}>{line}</li>
                 ))}
               </ul>
+              <div className="mt-4 pt-4 border-t border-zinc-800/50 w-full">
+                <p className="text-zinc-400 font-semibold text-xs mb-1">USA Address</p>
+                <p className="text-zinc-300 font-medium text-sm">DOVER, DELAWARE, USA</p>
+              </div>
             </div>
           </div>
 
