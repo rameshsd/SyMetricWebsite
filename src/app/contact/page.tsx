@@ -176,7 +176,7 @@ export default function ContactPage() {
                         className="rounded-2xl overflow-hidden shadow-lg aspect-video"
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.026922998394!2d77.65089421482208!3d12.970119990856987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae115b02677239%3A0x2649a37542d1b54c!2sSyMetric%20Systems%20Private%20Limited!5e0!3m2!1sen!2sin!4v1628581898555!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.026922998394!2d77.65089421482208!3d12.970119990856987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae140696abcf89%3A0x9ab27f331297cfae!2s1st+Floor%2C+SyMetric+(A+brand+owned+by+Achiral+Systems+Pvt.+Ltd.)!5e0!3m2!1sen!2sin!4v1628581898555!5m2!1sen!2sin"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
