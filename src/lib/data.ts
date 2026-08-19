@@ -214,7 +214,7 @@ export const solutions: Solution[] = [
       }
     ],
     relatedContent: {
-      title: "Explore Related IRT/IWRS Solutions",
+      title: "Explore More Products",
       description: "Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.",
       featurePoints: [
         {
@@ -264,7 +264,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Electronic Data Capture solution includes well-designed tools that transform the Data Management processes and simplify and automate the Data flow and validation of Data in Clinical Trials.',
     icon: FormInput,
     image: 'edc-image',
-    backgroundColor: 'linear-gradient(to bottom, #2463eb, #00073D)',
+    backgroundColor: '#EBF8FF',
     capabilities: [
       {
         id: 'ecrf-management',
@@ -303,7 +303,7 @@ export const solutions: Solution[] = [
       }
     ],
     relatedContent: {
-      title: "Explore Related EDC Functionality",
+      title: "Explore More Products",
       description: "Enhance your data capture capabilities by integrating with other powerful SyMetric modules.",
       featurePoints: [
         {
@@ -353,7 +353,7 @@ export const solutions: Solution[] = [
     longDescription: 'The Clinical Trial Master provides various repositories to maintain Global objects, including a repository of Trial Sites, Labs, Organizations, Global Data Libraries, and more.',
     icon: ClipboardList,
     image: 'ctm-image',
-    backgroundColor: 'linear-gradient(to bottom, #2463eb, #00073D)',
+    backgroundColor: '#EBF8FF',
     capabilities: [
       {
         id: 'user-access-management',
@@ -400,7 +400,7 @@ export const solutions: Solution[] = [
     ],
     relatedContent: {
       ...defaultRelatedContent,
-      title: "Explore Related CTM Functionality"
+      title: "Explore More Products"
     }
   },
   {
@@ -588,7 +588,7 @@ export const solutions: Solution[] = [
     name: 'Sample Management',
     slug: 'sample-management',
     hero: {
-      title: 'Sample Management System',
+      title: 'Bio-Sample Management System',
       subtitle: 'A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis.'
     },
     description: 'Manage the lifecycle of clinical samples with full traceability and compliance.',

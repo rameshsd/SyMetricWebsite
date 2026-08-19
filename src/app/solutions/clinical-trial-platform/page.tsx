@@ -10,7 +10,6 @@ import { SyMetricAdvantage } from '@/components/solutions/SyMetricAdvantage';
 import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
-import { CollaborationVision } from '@/components/solutions/CollaborationVision';
 import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default function ClinicalTrialPlatformPage() {
         { label: 'Overview', href: '#overview' },
         { label: 'Purpose', href: '#purpose' },
         { label: 'Platform Tools', href: '#tools' },
-        { label: 'Collaboration', href: '#collaboration' },
         { label: 'Hosting', href: '#hosting' },
     ];
 
@@ -41,8 +39,8 @@ export default function ClinicalTrialPlatformPage() {
             {solution && (
                 <section id="overview" className="w-full flex items-center bg-[#f5f3ff] dark:bg-card pt-8 pb-12">
                     <div className="container">
-                        <div className="grid lg:grid-cols-2 gap-10 items-center">
-                        <div className="space-y-6">
+                        <div className="grid lg:grid-cols-12 gap-10 items-center">
+                        <div className="space-y-6 lg:col-span-5">
                             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                                 {solution.hero.title}
                             </h1>
@@ -55,7 +53,7 @@ export default function ClinicalTrialPlatformPage() {
                             </Button>
                             </div>
                         </div>
-                        <div className="relative w-full flex items-center justify-center">
+                        <div className="relative w-full flex items-center justify-center lg:col-span-7">
                             <UltraHeroDiagram />
                         </div>
                         </div>
@@ -71,9 +69,7 @@ export default function ClinicalTrialPlatformPage() {
               <PlatformToolsGrid />
             </div>
 
-            <div id="collaboration">
-              <CollaborationVision />
-            </div>
+
 
             <GlobalPresence />
 

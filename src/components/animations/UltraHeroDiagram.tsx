@@ -3,7 +3,7 @@
 
 import { motion } from 'framer-motion';
 import {
-  Gem, Repeat, ClipboardList, Database, TrendingUp, TestTube
+  Gem, Repeat, ClipboardList, Database, TrendingUp, TestTube, Smartphone
 } from 'lucide-react';
 import React from 'react';
 
@@ -13,22 +13,25 @@ const moduleData = [
   { icon: Database, title: 'EDC', color: "#8b5cf6" },
   { icon: TrendingUp, title: 'Trial Analytics', color: "#ec4899" },
   { icon: TestTube, title: 'Sample Management', color: "#f97316" },
+  { icon: Smartphone, title: 'ePRO', color: "#10b981" },
 ];
 
 const moduleConfig = [
   { x: 100, color: "#2563eb", arrowId: "arrow-blue" },
-  { x: 300, color: "#14b8a6", arrowId: "arrow-teal" },
-  { x: 500, color: "#8b5cf6", arrowId: "arrow-purple" },
-  { x: 700, color: "#ec4899", arrowId: "arrow-pink" },
-  { x: 900, color: "#f97316", arrowId: "arrow-orange" },
+  { x: 260, color: "#14b8a6", arrowId: "arrow-teal" },
+  { x: 420, color: "#8b5cf6", arrowId: "arrow-purple" },
+  { x: 580, color: "#ec4899", arrowId: "arrow-pink" },
+  { x: 740, color: "#f97316", arrowId: "arrow-orange" },
+  { x: 900, color: "#10b981", arrowId: "arrow-green" },
 ];
 
 const mobileModuleConfig = [
   { y: 60, color: "#2563eb", arrowId: "m-arrow-blue" },
-  { y: 150, color: "#14b8a6", arrowId: "m-arrow-teal" },
-  { y: 240, color: "#8b5cf6", arrowId: "m-arrow-purple" },
-  { y: 330, color: "#ec4899", arrowId: "m-arrow-pink" },
-  { y: 420, color: "#f97316", arrowId: "m-arrow-orange" },
+  { y: 140, color: "#14b8a6", arrowId: "m-arrow-teal" },
+  { y: 220, color: "#8b5cf6", arrowId: "m-arrow-purple" },
+  { y: 300, color: "#ec4899", arrowId: "m-arrow-pink" },
+  { y: 380, color: "#f97316", arrowId: "m-arrow-orange" },
+  { y: 460, color: "#10b981", arrowId: "m-arrow-green" },
 ];
 
 export default function UltraHeroDiagram() {
@@ -53,7 +56,7 @@ export default function UltraHeroDiagram() {
       </motion.div>
 
       {/* DESKTOP SVG CONNECTIONS */}
-      <div className="relative w-full max-w-5xl h-48 mt-[-1rem] hidden md:block">
+      <div className="relative w-full max-w-6xl h-48 mt-[-1rem] hidden md:block">
         <svg 
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 1000 200"
@@ -62,10 +65,11 @@ export default function UltraHeroDiagram() {
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#2563eb" />
-              <stop offset="25%" stopColor="#14b8a6" />
-              <stop offset="50%" stopColor="#8b5cf6" />
-              <stop offset="75%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#f97316" />
+              <stop offset="20%" stopColor="#14b8a6" />
+              <stop offset="40%" stopColor="#8b5cf6" />
+              <stop offset="60%" stopColor="#ec4899" />
+              <stop offset="80%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#10b981" />
             </linearGradient>
 
             {moduleConfig.map(m => (
@@ -191,10 +195,11 @@ export default function UltraHeroDiagram() {
             <defs>
                 <linearGradient id="mobile-line-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stopColor="#2563eb" />
-                    <stop offset="25%" stopColor="#14b8a6" />
-                    <stop offset="50%" stopColor="#8b5cf6" />
-                    <stop offset="75%" stopColor="#ec4899" />
-                    <stop offset="100%" stopColor="#f97316" />
+                    <stop offset="20%" stopColor="#14b8a6" />
+                    <stop offset="40%" stopColor="#8b5cf6" />
+                    <stop offset="60%" stopColor="#ec4899" />
+                    <stop offset="80%" stopColor="#f97316" />
+                    <stop offset="100%" stopColor="#10b981" />
                 </linearGradient>
 
                 {mobileModuleConfig.map(m => (
@@ -287,9 +292,8 @@ export default function UltraHeroDiagram() {
             );
         })}
       </div>
-      
       {/* DESKTOP MODULES */}
-      <div className="mt-4 hidden md:grid grid-cols-5 gap-x-4 md:gap-x-8 w-full max-w-5xl px-4">
+      <div className="mt-4 hidden md:grid grid-cols-6 gap-x-1.5 md:gap-x-2 lg:gap-x-3 xl:gap-x-4 w-full max-w-6xl px-1 sm:px-4">
         {moduleData.map((m, i) => {
           const Icon = m.icon;
           return (
@@ -300,13 +304,15 @@ export default function UltraHeroDiagram() {
               transition={{ delay: 2.8 + i * 0.1 }}
               className="relative group"
             >
-              <div className="bg-white/80 backdrop-blur-md border border-white/30 p-4 rounded-xl shadow-lg text-center hover:scale-105 transition flex flex-col items-center justify-start min-h-[120px]">
-                <div className="mb-2 flex justify-center">
-                  <div className="p-2 rounded-full" style={{ backgroundColor: m.color }}>
-                    <Icon className="text-white" size={18} />
+              <div className="bg-white/80 backdrop-blur-md border border-white/30 px-0.5 py-3 lg:px-2 xl:px-4 xl:py-4 rounded-xl shadow-lg text-center hover:scale-105 transition flex flex-col items-center justify-between min-h-[135px]">
+                <div className="flex flex-col items-center w-full">
+                  <div className="mb-2 flex justify-center">
+                    <div className="p-2 rounded-full" style={{ backgroundColor: m.color }}>
+                      <Icon className="text-white" size={18} />
+                    </div>
                   </div>
+                  <h3 className="text-[9px] sm:text-[10px] md:text-xs xl:text-sm font-semibold leading-tight min-h-[32px] flex items-center justify-center px-0.5 break-words w-full">{m.title}</h3>
                 </div>
-                <h3 className="text-xs md:text-sm font-semibold leading-tight">{m.title}</h3>
                 <div className="w-4/5 h-1 rounded-full mt-2" style={{ background: m.color }} />
               </div>
             </motion.div>

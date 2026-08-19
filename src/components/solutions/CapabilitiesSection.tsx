@@ -57,7 +57,7 @@ export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) 
   const mainTitle = "Solution Offerings";
   
   return (
-    <section className="bg-sap-gradient text-primary-foreground">
+    <section className="bg-[#00116F] text-primary-foreground">
       <div className="container">
         <SectionTitle
             title={mainTitle}

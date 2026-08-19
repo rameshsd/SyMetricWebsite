@@ -95,13 +95,12 @@ export function GlobalPresence() {
           </TooltipProvider>
         </div>
 
-        <div className="mt-12 max-w-5xl mx-auto">
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-2">
+        <div className="mt-12 max-w-5xl mx-auto px-4">
+          <ul className="flex flex-wrap justify-center gap-x-10 gap-y-3.5">
             {locations.map((loc) => (
-              <li key={loc.name} className="flex items-center gap-3 text-sm">
-                <span className={`w-2 h-2 ${loc.color} rounded-full`} />
-                <span className="font-semibold text-foreground w-8">{loc.value}</span>
-                <span className="text-muted-foreground">{loc.name}</span>
+              <li key={loc.name} className="flex items-center gap-3 text-base w-[180px] justify-start">
+                <span className={`w-2.5 h-2.5 ${loc.color} rounded-full flex-shrink-0`} />
+                <span className="text-zinc-750 font-medium whitespace-nowrap">{loc.name}</span>
               </li>
             ))}
           </ul>

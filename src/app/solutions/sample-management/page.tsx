@@ -31,7 +31,7 @@ import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
 
 
 export const metadata: Metadata = {
-  title: 'Sample Management System - SyMetric',
+  title: 'Bio-Sample Management System - SyMetric',
   description: 'A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis.',
 };
 
@@ -124,7 +124,7 @@ const ConclusionSection = () => {
                 <div className="text-left mb-12">
                     <p className="text-sm font-semibold text-primary uppercase tracking-wider">Conclusion</p>
                     <h2 className="text-4xl font-bold tracking-tight mt-2">Complete Control Over Your Sample Lifecycle</h2>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
+                    <p className="mt-4 text-lg text-muted-foreground max-w-3xl">The Bio-Sample Management System delivers complete control over every step in the sample lifecycle—ensuring accuracy, compliance, and traceability across all study sites. From defining sample types to generating labels, managing shipments, and tracking status transitions, the module is built to support complex clinical workflows with precision and automation.</p>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     <div className="relative">
@@ -180,7 +180,7 @@ export default function SampleManagementPage() {
     return (
         <>
             <SyMetricBusinessAI 
-              title="Sample Management System"
+              title="Bio-Sample Management System"
               subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
               heroImageId="sample-management-page-hero"
             />

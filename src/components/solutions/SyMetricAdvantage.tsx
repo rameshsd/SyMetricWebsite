@@ -66,7 +66,7 @@ export function SyMetricAdvantage() {
         <section>
             <div className="container">
                 <SectionTitle title="The SyMetric Advantage" className="mb-16" />
-                
+
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {advantages.map((advantage, index) => (
                         <Card key={index} className="flex flex-col border border-slate-300/80 rounded-2xl bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
@@ -88,4 +88,3 @@ export function SyMetricAdvantage() {
 }
 
 
-    
