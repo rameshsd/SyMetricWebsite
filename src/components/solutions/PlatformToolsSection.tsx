@@ -10,7 +10,7 @@ export function PlatformToolsSection() {
     <section 
       className="py-16" 
       style={{ 
-        background: 'linear-gradient(135deg, #16002D 0%, #2A0B5A 35%, #4C1D95 70%, #6D28D9 100%)' 
+        backgroundColor: '#24084E' 
       }}
     >
       <div className="container">

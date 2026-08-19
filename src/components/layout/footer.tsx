@@ -76,7 +76,7 @@ export function Footer() {
 
   return (
     <>
-      <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden pt-16 pb-10">
+      <footer className="relative bg-[#070b13] text-zinc-400 border-t border-zinc-900 overflow-hidden pt-10 pb-6">
         {/* Large Faded Logo Watermark */}
         <div
           className="absolute right-0 bottom-0 h-[280px] w-[280px] md:h-[450px] md:w-[450px] opacity-[0.05] pointer-events-none select-none bg-contain bg-no-repeat bg-right-bottom translate-x-8 translate-y-8"
@@ -90,7 +90,7 @@ export function Footer() {
           {/* Desktop Footer Grid */}
           <div className="hidden md:flex justify-between gap-12 items-start">
             {/* Logo and Contact column */}
-            <div className="flex flex-col items-start space-y-6 max-w-[280px]">
+            <div className="flex flex-col items-start space-y-4 max-w-[280px]">
               <Logo className="brightness-0 invert opacity-90 hover:opacity-100 transition-all duration-300 scale-105 origin-left" />
 
               {/* Social icons row */}
@@ -113,18 +113,18 @@ export function Footer() {
               </div>
 
               {/* Email and Phone */}
-              <div className="text-base text-zinc-400 space-y-1.5 font-medium">
-                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">info@symetricsystems.com</a></p>
-                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">+91 (80) 41135402</a></p>
+              <div className="text-base text-zinc-400 space-y-1 font-medium">
+                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#7A38EB] transition-colors">info@symetricsystems.com</a></p>
+                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#7A38EB] transition-colors">+91 (80) 41135402</a></p>
               </div>
             </div>
 
             {/* About Us column */}
             <div className="flex flex-col items-start">
-              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#7A38EB] pb-1 mb-2 inline-block w-fit">
                 About Us
               </h3>
-              <ul className="space-y-3.5 text-base">
+              <ul className="space-y-2 text-base">
                 {aboutLinks.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="hover:text-white transition-colors duration-300">
@@ -137,10 +137,10 @@ export function Footer() {
 
             {/* Our Solutions column */}
             <div className="flex flex-col items-start">
-              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#7A38EB] pb-1 mb-2 inline-block w-fit">
                 Our Solutions
               </h3>
-              <ul className="space-y-3.5 text-base">
+              <ul className="space-y-2 text-base">
                 {solutionsLinks.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="hover:text-white transition-colors duration-300">
@@ -153,10 +153,10 @@ export function Footer() {
 
             {/* Our Services column */}
             <div className="flex flex-col items-start">
-              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#7A38EB] pb-1 mb-2 inline-block w-fit">
                 Our Services
               </h3>
-              <ul className="space-y-3.5 text-base">
+              <ul className="space-y-2 text-base">
                 {servicesLinks.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="hover:text-white transition-colors duration-300">
@@ -169,16 +169,16 @@ export function Footer() {
 
             {/* Contact Us column */}
             <div className="flex flex-col items-start max-w-[280px]">
-              <h3 className="font-bold text-lg text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+              <h3 className="font-bold text-lg text-white border-b-2 border-[#7A38EB] pb-1 mb-2 inline-block w-fit">
                 Contact Us
               </h3>
-              <ul className="space-y-2.5 text-base text-zinc-300 font-medium">
+              <ul className="space-y-1.5 text-base text-zinc-300 font-medium">
                 {contactAddress.map((line, idx) => (
                   <li key={idx}>{line}</li>
                 ))}
               </ul>
-              <div className="mt-4 pt-4 border-t border-zinc-800/50 w-full">
-                <p className="text-zinc-400 font-semibold text-sm mb-1">USA Address</p>
+              <div className="mt-3 pt-3 border-t border-zinc-800/50 w-full">
+                <p className="text-zinc-400 font-semibold text-sm mb-0.5">USA Address</p>
                 <p className="text-zinc-300 font-medium text-base">DOVER, DELAWARE, USA</p>
               </div>
             </div>
@@ -208,8 +208,8 @@ export function Footer() {
               </div>
 
               <div className="text-sm text-zinc-400 space-y-1 font-medium">
-                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">info@symetricsystems.com</a></p>
-                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#bc10b6] transition-colors">+91 (80) 41135402</a></p>
+                <p>Email: <a href="mailto:info@symetricsystems.com" className="text-zinc-300 hover:text-[#7A38EB] transition-colors">info@symetricsystems.com</a></p>
+                <p>Phone: <a href="tel:+918041135402" className="text-zinc-300 hover:text-[#7A38EB] transition-colors">+91 (80) 41135402</a></p>
               </div>
             </div>
 
@@ -267,7 +267,7 @@ export function Footer() {
             </Accordion>
 
             <div className="flex flex-col items-start pt-4">
-              <h3 className="font-semibold text-base text-white border-b-2 border-[#bc10b6] pb-1 mb-4 inline-block w-fit">
+              <h3 className="font-semibold text-base text-white border-b-2 border-[#7A38EB] pb-1 mb-4 inline-block w-fit">
                 Contact Us
               </h3>
               <ul className="space-y-2 text-sm text-zinc-300 font-medium">
@@ -283,7 +283,7 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-10 pt-6 border-t border-zinc-900 flex flex-col items-center space-y-2 text-center">
+          <div className="mt-6 pt-4 border-t border-zinc-900 flex flex-col items-center space-y-2 text-center">
             <p className="text-xs text-zinc-500">
               For any DPDP related queries contact SyMetric&apos;s team through Official mail i&apos;d:{' '}
               <a href="mailto:info@symetricsystems.com" className="text-zinc-400 hover:text-white transition-colors">

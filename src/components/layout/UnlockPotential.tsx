@@ -1,87 +1,48 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { unlockPotentialItems } from '@/lib/data';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { researchIntegrateAnalyzeContent } from '@/lib/data';
 import { SectionTitle } from '@/components/shared/section-title';
-import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useInView } from '@/hooks/use-in-view';
+import { cn } from '@/lib/utils';
 
 export function UnlockPotential() {
-    const cardData = unlockPotentialItems.slice(0, 3).map(item => {
-        const image = PlaceHolderImages.find(p => p.id === item.imageId);
-        return {
-            ...item,
-            image: image,
-        };
-    });
-
-    const [mainCard, card2, card3] = cardData;
+    const [ref, isInView] = useInView({ triggerOnce: true });
 
     return (
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section ref={ref} className="py-16 md:py-24 bg-secondary/30">
             <div className="container">
                 <SectionTitle
                     title="Unlock the Potential of your clinical Study Data"
                     description="Our Clinical Trial platform provides the foundation for innovation and agility."
                     className="mb-12"
                 />
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Main Card */}
-                    {mainCard && mainCard.image && (
-                        <div className="relative aspect-video lg:aspect-auto lg:min-h-[620px] rounded-2xl overflow-hidden group">
-                            <Image 
-                                src={mainCard.image.imageUrl}
-                                alt={mainCard.title.replace(/<[^>]+>/g, '')}
-                                data-ai-hint={mainCard.image.imageHint}
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                                <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: mainCard.title }}></h3>
-                                <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: mainCard.description }}></p>
-                            </div>
-                        </div>
-                    )}
-                    
-                    <div className="flex flex-col gap-6">
-                        {card2 && card2.image && (
-                             <div className="relative aspect-video rounded-2xl overflow-hidden group">
-                                <Image 
-                                    src={card2.image.imageUrl}
-                                    alt={card2.title.replace(/<[^>]+>/g, '')}
-                                    data-ai-hint={card2.image.imageHint}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                                <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                                    <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: card2.title }}></h3>
-                                    <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: card2.description }}></p>
-                                </div>
-                            </div>
-                        )}
 
-                        {card3 && card3.image && (
-                             <div className="relative aspect-video rounded-2xl overflow-hidden group">
-                                <Image 
-                                    src={card3.image.imageUrl}
-                                    alt={card3.title.replace(/<[^>]+>/g, '')}
-                                    data-ai-hint={card3.image.imageHint}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                                <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                                    <h3 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: card3.title }}></h3>
-                                    <p className="mt-2 text-white/90 max-w-md" dangerouslySetInnerHTML={{ __html: card3.description }}></p>
-                                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {researchIntegrateAnalyzeContent.platformFeatures.map((item, index) => (
+                        <div
+                            key={item.title}
+                            className={cn(
+                                "flex flex-col text-left gap-4 opacity-0 border border-slate-300/80 rounded-2xl p-6 bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300",
+                                isInView && "animate-fade-in-up"
+                            )}
+                            style={{ animationDelay: `${500 + index * 150}ms` }}
+                        >
+                            <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-primary/10">
+                                <item.icon className="h-10 w-10 text-primary" strokeWidth={2.5} />
                             </div>
-                        )}
-                    </div>
+                            <div>
+                                <h3 className="font-bold text-xl mt-1">{item.title}</h3>
+                                <p className="text-muted-foreground mt-2">{item.description}</p>
+                            </div>
+                            {item.link && (
+                                <Link href={item.link} className="flex items-center text-sm text-primary font-semibold mt-auto">
+                                    {item.linkText} <ArrowRight className="ml-1 h-4 w-4" />
+                                </Link>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

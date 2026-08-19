@@ -1066,11 +1066,11 @@ export const latestNews: LatestNewsItem[] = [
   },
   */
   {
-    id: 4,
-    title: 'Batch Release Hub Announcement',
-    description: 'Our partner SAP has launched Batch Release Hub for Life Sciences, an innovation for the industry.',
-    link: '/news/batch-release',
-    imageId: 'news-batch-release'
+    id: 5,
+    title: 'Watch Andrea Kaufmann -Senior Director Marketing, Lifesciences and Healthcare, SAP, interview with Uma Janapareddy -Founder and Managing Director, SyMetric, on reducing the number of clinical trial failures to improve patient outcomes.',
+    description: 'SAP Industries Live interview featuring SyMetric.',
+    link: '/news/sap-industries-live',
+    imageId: 'news-industries-live'
   },
   {
     id: 7,

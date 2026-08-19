@@ -9,7 +9,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { homepageContent, latestNews } from '@/lib/data';
 import { CustomerStories } from '@/components/layout/CustomerStories';
 import { HeroCarousel } from '@/components/layout/HeroCarousel';
-import { ResearchIntegrateAnalyze } from '@/components/layout/ResearchIntegrateAnalyze';
 import { WhyChooseUs } from '@/components/layout/WhyChooseUs';
 import { RevolutionizingTrials } from '@/components/layout/RevolutionizingTrials';
 import { UnlockPotential } from '@/components/layout/UnlockPotential';
@@ -41,8 +40,6 @@ export default function Home() {
         <PlatformToolsSection />
 
         <WhyChooseUs />
-        
-        <ResearchIntegrateAnalyze />
         
         <CustomerSuccess />
 
