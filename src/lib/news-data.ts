@@ -1,6 +1,18 @@
 
 export const newsData = {
+"everest-peak-matrix-2025": {
+title: "SyMetric Recognized by Everest Group as Major Contender in Global RTSM PEAK Matrix® 2025",
+category: "Industry Recognition",
+image: "/everest-peak-matrix-dark.jpg",
+content: `We are thrilled to announce that SyMetric has been recognized by Everest Group as a Major Contender in the Life Sciences Randomization and Trial Supply Management (RTSM) Products PEAK Matrix® Assessment 2025.
 
+What This Recognition Reflects:
+• Strong Market Impact: Shows SyMetric's rapid global adoption and strong value delivered across diverse clinical trials.
+• Proven Capability Excellence: Reflects our advanced technology, flexible deployment, and ability to support complex studies.
+• Customer-Centric Strength: Highlights our responsive engagement and reliable support that ensures smooth study execution.
+
+We extend our sincere gratitude to our clients, partners, and team whose trust and dedication make milestones like this possible.`
+},
 "ikes-summit": {
 
 title:
@@ -86,7 +98,7 @@ title:"Strategic Partner for ICSM",
 category:"Partnership",
 
 image:
-"https://symetricsystems.com/wp-content/uploads/2022/02/ICSM-3.jpg",
+"/icsm-partner.jpg",
 
 content:`
 SyMetric becomes strategic partner for SAP ICSM platform.

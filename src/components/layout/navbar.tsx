@@ -43,7 +43,7 @@ import { searchableData } from '@/lib/search-data';
 
 
 const ListItem = React.forwardRef<
-  HTMLDivElement,
+  HTMLLIElement,
   { title: string; href: string; children: React.ReactNode; className?: string }
 >(({ className, title, children, href, ...props }, ref) => {
   return (
@@ -348,13 +348,13 @@ export function Navbar() {
                             </div>
                         </NavigationMenuContent>
                         </>
-                    ) : item.name === 'Services' && item.subItems ? (
+                    ) : item.subItems ? (
                         <>
-                            <NavigationMenuTrigger className={cn(pathname.startsWith('/services') && 'data-[state=closed]:text-primary')}>
-                                Services
+                            <NavigationMenuTrigger className={cn(item.href && pathname.startsWith(item.href) && 'data-[state=closed]:text-primary')}>
+                                {item.name}
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                <ul className="grid w-[380px] gap-3 p-4 md:w-[420px]">
                                     {(item.subItems || []).map((component) => (
                                         <ListItem
                                             key={component.name}

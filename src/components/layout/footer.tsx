@@ -27,6 +27,7 @@ const solutionsLinks = [
   { name: 'CTM', href: '/solutions/ctm' },
   { name: 'Trial Analytics', href: '/solutions/trial-analytics' },
   { name: 'Sample Management', href: '/solutions/sample-management' },
+  { name: 'ePro', href: '/solutions/epro' },
 ];
 
 const servicesLinks = [

@@ -11,6 +11,7 @@ import { SecurityCompliance } from '@/components/solutions/SecurityCompliance';
 import { BuiltWithPurpose } from '@/components/solutions/BuiltWithPurpose';
 import { GlobalPresence } from '@/components/solutions/GlobalPresence';
 import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
+import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 
 export const metadata: Metadata = {
   title: 'Clinical Trial Platform - SyMetric',
@@ -79,6 +80,10 @@ export default function ClinicalTrialPlatformPage() {
 
             <SyMetricAdvantage />
             <SecurityCompliance />
+            
+            <div id="related-products">
+                <RelatedProductsSection currentSlug="clinical-trial-platform" />
+            </div>
             
             <ReadyToGetStarted />
         </div>

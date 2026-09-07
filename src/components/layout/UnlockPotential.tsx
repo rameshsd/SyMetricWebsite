@@ -24,7 +24,7 @@ export function UnlockPotential() {
                         <div
                             key={item.title}
                             className={cn(
-                                "flex flex-col text-left gap-4 opacity-0 border border-slate-300/80 rounded-2xl p-6 bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300",
+                                "flex flex-col text-left gap-4 opacity-0 border border-[#2463EB] rounded-2xl p-6 bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300",
                                 isInView && "animate-fade-in-up"
                             )}
                             style={{ animationDelay: `${500 + index * 150}ms` }}

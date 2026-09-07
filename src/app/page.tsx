@@ -52,20 +52,20 @@ export default function Home() {
                 return (
                   <Card className="md:col-span-2 overflow-hidden group flex flex-col md:flex-row rounded-2xl">
                     {image && (
-                      <div className="relative w-full md:w-1/2 h-64 md:h-auto">
-                        <Link href={featuredNews.link}>
+                      <div className="relative w-full md:w-[45%] lg:w-[40%] min-h-[340px] md:min-h-[420px] bg-slate-950 flex items-center justify-center p-3 sm:p-4">
+                        <Link href={featuredNews.link} className="relative w-full h-full block min-h-[320px] md:min-h-[390px]">
                           <Image
                             src={image.imageUrl}
                             alt={featuredNews.title}
                             data-ai-hint={image.imageHint}
                             fill
-                            className="object-cover"
+                            className={featuredNews.imageId === 'news-everest-peak-matrix' ? "object-contain scale-[1.04] transition-transform duration-300 group-hover:scale-105" : "object-cover"}
                           />
                         </Link>
                       </div>
                     )}
-                    <div className="flex flex-col justify-center p-8 md:p-12 md:w-1/2">
-                      <p className="text-sm text-primary font-semibold mb-2">SyMetric events</p>
+                    <div className="flex flex-col justify-center p-8 md:p-12 md:w-[55%] lg:w-[60%]">
+                      <p className="text-sm text-primary font-semibold mb-2">{featuredNews.category || 'SyMetric News'}</p>
                       <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
                         <Link href={featuredNews.link}>{featuredNews.title}</Link>
                       </h3>

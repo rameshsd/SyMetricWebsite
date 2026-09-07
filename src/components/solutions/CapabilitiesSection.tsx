@@ -21,6 +21,11 @@ import {
   Activity,
   Lock,
   Database,
+  Bell,
+  BookOpen,
+  HeartPulse,
+  Globe,
+  ClipboardCheck,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -40,6 +45,7 @@ const iconMap: { [key: string]: React.FC<any> } = {
   'query-management': SearchCheck,
   'ae-sae-reporting': AlertTriangle,
   'medical-coding': FileCode,
+  'automated-dm-review': ClipboardCheck,
   // CTM
   'user-access-management': Shield,
   'organization-sites-master': Building,
@@ -47,6 +53,13 @@ const iconMap: { [key: string]: React.FC<any> } = {
   'global-data-libraries': Database,
   'real-time-reporting': Activity,
   'security-compliance-manager': Lock,
+  // ePro
+  'epro-pro-management': HeartPulse,
+  'epro-diary-management': BookOpen,
+  'epro-engagement-reminders': Bell,
+  'epro-compliance-monitoring': Activity,
+  'epro-secure-audit-trails': ShieldCheck,
+  'epro-multilingual-byod': Globe,
 };
 
 export function CapabilitiesSection({ capabilities }: CapabilitiesSectionProps) {

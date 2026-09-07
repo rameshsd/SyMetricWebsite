@@ -49,10 +49,17 @@ export function GrowthStoryTimeline() {
                             </div>
                             <Card className="bg-primary/10 border-primary/20">
                                 <CardContent className="p-6">
-                                    <p className="text-2xl font-bold text-primary mb-3">{item.year}</p>
-                                    <ul className="space-y-2">
+                                    <p className="text-2xl font-bold text-primary mb-2">{item.year}</p>
+                                    {item.title && (
+                                        <h3 className="text-lg font-semibold text-white mb-3">
+                                            {item.title}
+                                        </h3>
+                                    )}
+                                    <ul className="space-y-2 list-disc list-inside">
                                         {item.events.map((event, eventIndex) => (
-                                            <li key={eventIndex} className="text-primary-foreground/80">{event}</li>
+                                            <li key={eventIndex} className="text-blue-100/90 text-base leading-relaxed pl-1">
+                                                <span>{event}</span>
+                                            </li>
                                         ))}
                                     </ul>
                                 </CardContent>

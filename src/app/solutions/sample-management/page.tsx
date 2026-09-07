@@ -28,6 +28,7 @@ import { PageHeader } from '@/components/layout/PageHeader';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { sampleManagementFaq } from '@/lib/data';
 import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
+import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 
 
 export const metadata: Metadata = {
@@ -210,6 +211,11 @@ export default function SampleManagementPage() {
                 </section>
 
                  <ConclusionSection />
+                 
+                 <div id="related-products">
+                     <RelatedProductsSection currentSlug="sample-management" />
+                 </div>
+                 
                  <ReadyToGetStarted />
                  {/* <FaqAccordion faqs={sampleManagementFaq} /> */}
             </div>

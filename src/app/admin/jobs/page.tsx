@@ -65,7 +65,7 @@ function CreateJobForm() {
     } catch (error) {
         toast({
             variant: 'destructive',
-            title: 'AI Rephrasing Failed',
+            title: 'Rephrasing Failed',
             description: (error as Error).message || 'Could not rephrase the text.',
         });
     } finally {
@@ -121,7 +121,7 @@ function CreateJobForm() {
                         <FormLabel>Full Description</FormLabel>
                         <Button type="button" variant="ghost" size="sm" onClick={handleRephrase} disabled={isRephrasing}>
                             {isRephrasing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />}
-                            {isRephrasing ? 'Rephrasing...' : 'Rephrase with AI'}
+                            {isRephrasing ? 'Rephrasing...' : 'Rephrase Description'}
                         </Button>
                     </div>
                     <FormControl>

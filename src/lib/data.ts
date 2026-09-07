@@ -85,7 +85,7 @@ import {
   SampleManagementIcon,
   LabelManagementIcon,
 } from '@/components/icons/feature-grid-icons';
-import { Fda21Cfr, GmpIcon, GdprIcon, Gs1Icon, HipaaIcon, IchGcp, Iso27001, Iso9001 } from '@/components/icons/compliance-icons';
+import { Fda21Cfr, GmpIcon, GdprIcon, Gs1Icon, HipaaIcon, IchGcp, Iso27001, Iso9001, DpdpIcon } from '@/components/icons/compliance-icons';
 
 export const navItems: NavItem[] = [
   {
@@ -96,8 +96,9 @@ export const navItems: NavItem[] = [
       { name: 'IRT/IWRS', href: '/solutions/irt-iwrs', description: 'Comprehensive solution for randomization and trial supply management.' },
       { name: 'EDC', href: '/solutions/edc', description: 'Tools to simplify and automate data flow and validation in clinical trials.' },
       { name: 'CTM', href: '/solutions/ctm', description: 'Repositories to maintain global objects like trial sites, labs, and data libraries.' },
-      { name: 'Trial Analytics', href: '/solutions/trial-analytics', description: 'Leverage real-time data and AI to derive actionable insights.' },
-      { name: 'Sample Management', href: '/solutions/sample-management', description: 'Manage the lifecycle of clinical samples with full traceability and compliance.' }
+      { name: 'Trial Analytics', href: '/solutions/trial-analytics', description: 'Leverage real-time data and analytics to derive actionable insights.' },
+      { name: 'Sample Management', href: '/solutions/sample-management', description: 'Manage the lifecycle of clinical samples with full traceability and compliance.' },
+      { name: 'ePro', href: '/solutions/epro', description: 'Capture patient-reported outcomes directly and securely throughout the clinical trial.' }
     ]
   },
   {
@@ -113,7 +114,22 @@ export const navItems: NavItem[] = [
   },
   { name: 'Industries', href: '/industries' },
   { name: 'Community', href: '/community' },
-  { name: 'Resources', href: '/resources' },
+  {
+    name: 'Resources',
+    href: '/resources',
+    subItems: [
+      {
+        name: 'Insights & Resources',
+        href: '/resources',
+        description: 'Explore our articles, whitepapers, case studies, and industry publications.',
+      },
+      {
+        name: 'Gallery',
+        href: '/gallery',
+        description: 'Explore photo highlights, event moments, and multimedia showcases.',
+      },
+    ],
+  },
   { name: 'News', href: '/news' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -122,15 +138,15 @@ export const navItems: NavItem[] = [
 
 const defaultRelatedContent: RelatedContent = {
   title: "Explore Related SyMetric Solutions",
-  description: "Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.",
+  description: "Our comprehensive technology platform brings together data and applications to transform your clinical operations.",
   featurePoints: [
     {
-      title: "Optimised trial operations",
+      title: "Optimized trial operations",
       description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
     },
     {
       title: "Action-ready insights",
-      description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
+      description: "Make better decisions faster with ready-to-use KPIs and smart analytics on shared, governed data."
     },
     {
       title: "Transformative, scalable impact",
@@ -215,15 +231,15 @@ export const solutions: Solution[] = [
     ],
     relatedContent: {
       title: "Explore More Products",
-      description: "Our comprehensive technology platform brings together AI, data, and applications to transform your clinical operations.",
+      description: "Our comprehensive technology platform brings together data and applications to transform your clinical operations.",
       featurePoints: [
         {
-          title: "Optimised trial operations",
+          title: "Optimized trial operations",
           description: "Go live faster with preconfigured processes and guided onboarding—cutting manual work and accelerating time to value."
         },
         {
           title: "Action-ready insights",
-          description: "Make better decisions faster with ready-to-use KPIs and embedded AI on shared, governed data."
+          description: "Make better decisions faster with ready-to-use KPIs and smart analytics on shared, governed data."
         },
         {
           title: "Transformative, scalable impact",
@@ -300,6 +316,13 @@ export const solutions: Solution[] = [
         description: 'Our built-in coding interface along with real-time data available from our EDC system will help you streamline your coding process. Also, our integrated coding mechanism uses standard medical dictionaries like MedDRA and WHO-Drug Global and can guarantee precise and consistent coding of verbatim terms to harmonized and standard codes.',
         imageId: 'edc-coding',
         iconName: 'Code2'
+      },
+      {
+        id: 'automated-dm-review',
+        title: 'Automated DM Review',
+        description: 'Accelerate data cleaning and validation with automated data management review workflows. Configure pre-programmed logic checks, cross-form consistency rules, and discrepancy alerts to identify and resolve data issues swiftly.',
+        imageId: 'edc-review',
+        iconName: 'ClipboardCheck'
       }
     ],
     relatedContent: {
@@ -411,7 +434,7 @@ export const solutions: Solution[] = [
       title: 'Advanced Trial Analytics',
       subtitle: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.'
     },
-    description: 'Leverage real-time data and AI to derive actionable insights and make informed decisions.',
+    description: 'Leverage real-time data and advanced analytics to derive actionable insights and make informed decisions.',
     longDescription: 'Unlock powerful insights from your trial data with advanced analytics, visualizations, and predictive modeling to make informed decisions faster.',
     icon: PieChart,
     image: 'trial-analytics-image',
@@ -435,18 +458,78 @@ export const solutions: Solution[] = [
   },
   {
     id: 'epro',
-    name: 'SMS Solution ePRO – In Progress',
-    slug: 'sms-solution-epro',
+    name: 'ePro',
+    slug: 'epro',
     hero: {
-      title: 'SMS Solution ePRO',
-      subtitle: 'Electronic Patient-Reported Outcomes (ePRO) - In Progress'
+      title: 'Electronic Patient-Reported Outcomes (ePro)',
+      subtitle: 'Capture patient-reported outcomes directly and securely throughout the clinical trial. Our ePro solution enables patients to complete questionnaires, symptom assessments, and electronic diaries through an intuitive digital interface, while study teams gain timely access to reliable, traceable patient data.'
     },
-    description: 'Electronic Patient-Reported Outcomes (ePRO) - In Progress',
-    longDescription: 'Electronic Patient-Reported Outcomes (ePRO) - In Progress',
-    icon: MessageCircle,
-    image: 'solution-epro',
-    backgroundColor: '#f0fdf4',
-    relatedContent: defaultRelatedContent
+    description: 'Capture patient-reported outcomes directly and securely throughout the clinical trial.',
+    longDescription: 'Capture patient-reported outcomes directly and securely throughout the clinical trial. Our ePro solution enables patients to complete questionnaires, symptom assessments, and electronic diaries through an intuitive digital interface, while study teams gain timely access to reliable, traceable patient data.',
+    icon: HeartPulse,
+    image: 'epro-image',
+    backgroundColor: '#D7E3FA',
+    capabilities: [
+      {
+        id: 'epro-pro-management',
+        title: 'Patient-Reported Outcome Management',
+        description: 'Capture symptoms, treatment experiences, quality of life, and other patient-reported outcomes directly from participants. Flexible electronic questionnaires and assessments help ensure consistent, structured data collection throughout the study.',
+        iconName: 'HeartPulse'
+      },
+      {
+        id: 'epro-diary-management',
+        title: 'Electronic Diary Management',
+        description: 'Enable participants to record symptoms, events, medication experiences, and other study-related information at scheduled intervals. Configurable diaries help maintain protocol-defined assessment schedules and reduce reliance on retrospective reporting.',
+        iconName: 'BookOpen'
+      },
+      {
+        id: 'epro-engagement-reminders',
+        title: 'Participant Engagement & Reminders',
+        description: 'Keep participants engaged with scheduled notifications and reminders for upcoming assessments. Clear workflows and timely prompts help improve questionnaire completion and support stronger adherence throughout the trial.',
+        iconName: 'Bell'
+      },
+      {
+        id: 'epro-compliance-monitoring',
+        title: 'Real-Time Compliance Monitoring',
+        description: 'Give study teams visibility into participant assessment status, missed questionnaires, and completion trends. Real-time monitoring helps sites identify follow-up requirements early and maintain consistent data collection across the study.',
+        iconName: 'Activity'
+      },
+      {
+        id: 'epro-secure-audit-trails',
+        title: 'Secure Data & Audit Trails',
+        description: 'Maintain attributable and traceable patient-reported data with secure access controls, timestamps, and audit trails. ePro records can support data integrity and provide a reliable electronic source for clinical research workflows.',
+        iconName: 'ShieldCheck'
+      },
+      {
+        id: 'epro-multilingual-byod',
+        title: 'Multilingual & BYOD Flexibility',
+        description: 'Support global patient cohorts with multi-language questionnaires, culturally adapted scales, and flexible access on provisioned site devices or participants’ personal smartphones and tablets (BYOD).',
+        iconName: 'Globe'
+      }
+    ],
+    relatedContent: {
+      title: "Explore More Products",
+      relatedProducts: [
+        {
+          title: "EDC (Electronic Data Capture)",
+          description: "Simplify clinical data management and integrate directly with ePro data streams for end-to-end trial efficiency.",
+          link: "/solutions/edc",
+          linkText: "Explore EDC"
+        },
+        {
+          title: "IRT/IWRS",
+          description: "Link patient eligibility, visit schedules, and dispensing events seamlessly between ePro diaries and supply allocation.",
+          link: "/solutions/irt-iwrs",
+          linkText: "Explore IRT/IWRS"
+        },
+        {
+          title: "Trial Analytics",
+          description: "Monitor patient adherence, questionnaire completion rates, and real-time trial compliance trends across all sites.",
+          link: "/solutions/trial-analytics",
+          linkText: "Explore Trial Analytics"
+        }
+      ]
+    }
   },
   {
     id: 'rc',
@@ -780,7 +863,7 @@ export const customers: Customer[] = [
     role: 'Senior Manager, Clinical Data Management',
     company: 'Sun Pharma Advanced Research Company',
     avatarId: 'avatar-1',
-    story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
+    story: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adaptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.'
   },
   {
     name: 'Director, Research and Development',
@@ -796,32 +879,40 @@ export const timeline = [
   { year: '2017', event: 'Launch of our flagship Clinical Trial Platform (CTP).' },
   { year: '2019', event: 'Introduction of the compliant eTMF solution.' },
   { year: '2021', event: 'Expanded into international markets, serving clients in Europe and Asia.' },
-  { year: '2023', event: 'Reached 100+ enterprise customers and launched AI-powered analytics.' },
+  { year: '2023', event: 'Reached 100+ enterprise customers and launched advanced real-time analytics.' },
 ];
 
 export const growthTimeline = [
   {
-    year: '2025',
+    year: '2026',
+    title: 'Launch of ePro/eDiary Platform',
     events: [
-      'Launch of SyMetric AI Copilot for autonomous trial monitoring',
-      'Introduction of blockchain for enhanced data integrity and security',
-      'Expansion into the APAC region with new data centers',
+      'Launched the ePro/eDiary solution to support direct patient data capture and remote patient engagement.',
+      'Expanded the digital clinical trial ecosystem with improved patient-centric data collection capabilities.',
+    ],
+  },
+  {
+    year: '2025',
+    title: 'Launch of Bio Sample Monitoring Solution',
+    events: [
+      'Introduced the Bio Sample Monitoring Solution, enabling real-time visibility and tracking of biological sample movement across the supply chain.',
+      'Enhanced chain-of-custody management, operational transparency, and sample traceability.',
     ],
   },
   {
     year: '2024',
+    title: 'Integration with SAP Cell and Gene Therapy Orchestration (CGTO)',
     events: [
-      'Release of predictive analytics module for patient recruitment',
-      'Achieved full integration with wearable and IoT devices',
-      'Hosted first annual SyMetric Innovate conference',
+      'Achieved integration with SAP Cell and Gene Therapy Orchestration (CGTO).',
+      'Implemented the Therapy Connectivity Platform (TCP) to seamlessly connect clinical trial data with Cell & Gene Therapy operational workflows.',
     ],
   },
   {
     year: '2023',
+    title: 'Strategic Partnership with IQVIA ILS and Expansion into Full-Service Clinical Data Management',
     events: [
-      'Launched generative AI features for protocol authoring',
-      'Formed strategic partnership with leading AI research institute',
-      'Recognized as "Innovator of the Year" by Life Science Weekly',
+      'Established a partnership with IQVIA ILS to deliver comprehensive Clinical Data Management (CDM) services.',
+      'Successfully implemented the first Cell and Gene Therapy clinical study (CAR-T), demonstrating expertise in advanced therapeutic areas.',
     ],
   },
   {
@@ -891,13 +982,13 @@ export const growthTimeline = [
 
 export const homepageContent = {
   revolutionTitle: 'Leading the Revolution in Clinical Trial Technology',
-  revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end, AI-enabled platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',
+  revolutionContent: 'SyMetric is at the forefront of digital transformation in life sciences. We provide an end-to-end unified platform that connects sponsors, CROs, sites, and patients, ensuring seamless data flow and empowering research teams to deliver therapies faster.',
   futureOfTrials: {
     title: 'Building the Future of Clinical Trials, Together',
     subtitle: 'SyMetric is committed to pioneering the next generation of clinical research technology. Our roadmap is focused on three key areas:',
     imageId: 'future-of-trials',
     points: [
-      'Deepening AI integration for autonomous trial management.',
+      'Deepening automation and integration for autonomous trial management.',
       'Expanding our decentralized trial capabilities to make research more accessible to diverse patient populations.',
       'Enhancing real-world data connectivity to bridge the gap between clinical research and clinical practice.'
     ],
@@ -908,7 +999,7 @@ export const homepageContent = {
 export const customerSuccessStories: CustomerSuccessStory[] = [
   {
     id: 1,
-    quote: "SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.",
+    quote: "SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adaptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.",
     author: "Dr Madhavi Prabhvalkar",
     handle: "@sunpharma",
     avatarId: "avatar-1",
@@ -1042,12 +1133,21 @@ export const featureGridItems: FeatureGridItem[] = [
 
 export const latestNews: LatestNewsItem[] = [
   {
+    id: 11,
+    title: 'SyMetric Recognized by Everest Group as Major Contender in Global RTSM PEAK Matrix® 2025',
+    description: 'Everest Group has recognized SyMetric as a Major Contender in the Life Sciences Randomization and Trial Supply Management (RTSM) Products PEAK Matrix® Assessment 2025.',
+    link: '/news/everest-peak-matrix-2025',
+    imageId: 'news-everest-peak-matrix',
+    category: 'Industry Recognition',
+    main: true,
+  },
+  {
     id: 1,
     title: 'SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit',
     description: 'SyMetric was an exhibitor at the Industry Knowledge Exchange Summit in Mumbai, presented by Mint and SAP.',
     link: '/news/ikes-summit',
     imageId: 'news-summit',
-    main: true,
+    main: false,
   },
   /*
   {
@@ -1082,7 +1182,7 @@ export const latestNews: LatestNewsItem[] = [
   {
     id: 8,
     title: 'Strategic Partner for ICSM',
-    description: 'SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.',
+    description: 'SyMetric is excited to be a strategic partner for ICSM with SAP.',
     link: '/news/icsm',
     imageId: 'news-icsm-partner'
   },
@@ -1151,7 +1251,7 @@ export const researchIntegrateAnalyzeContent: {
     },
     {
       title: 'Analyze',
-      description: 'Leverage real-time data and powerful AI to derive actionable insights, monitor progress, and make informed decisions faster.',
+      description: 'Leverage real-time data and powerful analytics to derive actionable insights, monitor progress, and make informed decisions faster.',
       icon: BarChart,
       link: '/solutions/trial-analytics',
       linkText: 'Explore Analytics'
@@ -1198,7 +1298,7 @@ export const whyChooseUsFeatures: WhyChooseUsFeature[] = [
   {
     id: 'compliant',
     title: 'Security & Compliance',
-    description: 'Our platform ensures full compliance with global regulatory standards including 21 CFR Part 11, ICH-GCP, GDPR, HIPAA, GMP, GS1, ISO 27001, and ISO 9001, ensuring data integrity, patient safety, and audit readiness across all clinical trial processes.',
+    description: 'Our platform ensures full compliance with global regulatory standards including 21 CFR Part 11, ICH-GCP, GDPR, HIPAA, GMP, GS1, ISO 27001, ISO 9001, and DPDP Act, ensuring data integrity, patient safety, and audit readiness across all clinical trial processes.',
     imageId: 'why-us-compliant',
     learnMoreLink: '#'
   },
@@ -1228,7 +1328,7 @@ export const platformFeatures: PlatformFeature[] = [
   },
   {
     title: "Trial Analytics",
-    description: "Leverage real-time data and AI to derive actionable insights and make informed decisions.",
+    description: "Leverage real-time data and advanced analytics to derive actionable insights and make informed decisions.",
     icon: TrendingUp,
     link: "/solutions/trial-analytics",
     linkText: "Learn More"
@@ -1284,7 +1384,7 @@ export const successStories: SuccessStory[] = [
     id: 'sun-pharma',
     logoId: 'logo-innovate-pharma',
     title: 'Sun Pharma Advanced Research Company',
-    description: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adoptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.',
+    description: 'SyMetric Integrated Clinical Trial platform of IWRS/EDC/Medical coding was able to deliver complex adaptive Study protocols. The IWRS system maintains adequate Clinical Supplies of multiple formulations, all in Real Time. It also offered insights of Subject recruitment across global sites that supported monitoring Study Progress and aided in informed decision-making. The platform helped with efficient resource management and reduction in overall cost.',
     linkText: 'Dr Madhavi Prabhvalkar, Senior Manager, Clinical Data Management',
     linkUrl: '#',
   },
@@ -1315,6 +1415,14 @@ export const heroCarouselItems: HeroCarouselItem[] = [
     imageId: 'hero-carousel-3',
     cta1: { text: "Schedule a demo", link: "/request-demo" },
     cta2: { text: "Explore More", link: "/solutions" }
+  },
+  {
+    id: "hero-carousel-4",
+    title: "Recognized as Major Contender by Everest Group",
+    subtitle: "SyMetric recognized in the Global RTSM PEAK Matrix 2025 for strong market impact, proven capability excellence, and customer-centric delivery.",
+    imageId: 'hero-carousel-4',
+    cta1: { text: "Schedule a demo", link: "/request-demo" },
+    cta2: { text: "Explore Solutions", link: "/solutions" }
   }
 ];
 
@@ -1984,14 +2092,14 @@ export const topAuthors: TopAuthor[] = [
 
 export const aiFaqItems: FAQItem[] = [
   {
-    question: 'What is SyMetric Business AI?',
+    question: 'What is SyMetric Business Intelligence?',
     answer:
-      'SyMetric Business AI is a suite of solutions that embeds AI into your core business processes, connecting finance, supply chain, procurement, sales, marketing, and human resources.'
+      'SyMetric Business solutions embed smart automation into your core business processes, connecting finance, supply chain, procurement, sales, marketing, and human resources.'
   },
   {
-    question: 'How is SyMetric Business AI relevant, reliable, and responsible?',
+    question: 'How is SyMetric relevant, reliable, and responsible?',
     answer:
-      'SyMetric AI is relevant because it is built into the SyMetric applications that power your most mission-critical processes. It is reliable because it is built on decades of industry expertise and deep process knowledge. It is responsible because it is delivered with the highest levels of concern for security, privacy, compliance, and ethics.'
+      'SyMetric is relevant because it is built into the SyMetric applications that power your most mission-critical processes. It is reliable because it is built on decades of industry expertise and deep process knowledge. It is responsible because it is delivered with the highest levels of concern for security, privacy, compliance, and ethics.'
   },
   {
     question: 'Is Joule available today?',
@@ -2001,7 +2109,7 @@ export const aiFaqItems: FAQItem[] = [
   {
     question: 'How does Joule work?',
     answer:
-      'Joule is a natural language, generative AI copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
+      'Joule is a natural language copilot that is deeply integrated into SyMetric’s portfolio of cloud solutions. It quickly sorts through and contextualizes data from multiple systems to surface smarter insights.'
   },
 ];
 
@@ -2165,5 +2273,18 @@ export const complianceStandards: ComplianceStandard[] = [
       'Encourages continuous improvement',
     ],
     whyItMatters: 'Ensures consistent service and product quality.',
+  },
+  {
+    id: 'dpdp-act',
+    title: 'DPDP Act',
+    Icon: DpdpIcon,
+    description: 'The DPDP Act establishes India’s regulatory framework for digital personal data protection.',
+    highlights: [
+      'Consent and notice governance',
+      'Purpose-bound data processing',
+      'Data Principal privacy rights',
+      'Breach notification safeguards',
+    ],
+    whyItMatters: 'Essential for platforms handling personal data in India.',
   },
 ];

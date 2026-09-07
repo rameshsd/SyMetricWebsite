@@ -18,6 +18,8 @@ export type HeroCarouselItem = {
   imageId: string;
   cta1: { text: string; link: string; };
   cta2: { text: string; link: string; };
+  badge?: string;
+  layout?: 'standard' | 'split-graphic';
 };
 
 export type SolutionCapability = {
@@ -127,6 +129,7 @@ export type LatestNewsItem = {
   description: string;
   link: string;
   imageId: string;
+  category?: string;
   main?: boolean;
 };
 
@@ -380,5 +383,9 @@ export type ComplianceStandard = {
   highlights: string[];
   whyItMatters: string;
 };
-    
 
+export type GrowthMilestone = {
+  year: string;
+  title?: string;
+  events: string[];
+};

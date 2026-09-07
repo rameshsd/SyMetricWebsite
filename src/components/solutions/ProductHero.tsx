@@ -29,6 +29,7 @@ export function ProductHero({ title, subtitle, imageSrc, imageHint, backgroundCo
     '#f0fdf4',
     '#fef2f2',
     '#f4f7fb',
+    '#d7e3fa',
     'transparent'
   ];
 

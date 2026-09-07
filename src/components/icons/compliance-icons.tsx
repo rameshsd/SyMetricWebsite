@@ -54,3 +54,10 @@ export const Gs1Icon = ({ className }: { className?: string }) => (
         <text x="60" y="35" fontFamily="sans-serif" fontSize="18" fill="white" textAnchor="middle" fontWeight="bold">GS1</text>
     </svg>
 );
+
+export const DpdpIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 120 60" fill="none">
+        <rect width="120" height="60" rx="6" fill="#1D4ED8" />
+        <text x="60" y="35" fontFamily="sans-serif" fontSize="14" fill="white" textAnchor="middle" fontWeight="bold">DPDP Act</text>
+    </svg>
+);

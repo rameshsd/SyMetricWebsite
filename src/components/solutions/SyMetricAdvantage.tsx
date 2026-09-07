@@ -50,7 +50,7 @@ const advantages = [
     {
         icon: Zap,
         title: "Advanced Integrations",
-        description: "Integrate with wearables, medical devices, and external AI systems for image analysis using modern standards like DICOM.",
+        description: "Integrate with wearables, medical devices, and external systems for image analysis using modern standards like DICOM.",
         link: "#"
     },
     {
@@ -69,7 +69,7 @@ export function SyMetricAdvantage() {
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {advantages.map((advantage, index) => (
-                        <Card key={index} className="flex flex-col border border-slate-300/80 rounded-2xl bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                        <Card key={index} className="flex flex-col border border-[#2463EB] rounded-2xl bg-card shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                             <CardHeader>
                                 <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
                                     <advantage.icon className="h-12 w-12 text-primary" strokeWidth={2.5} />

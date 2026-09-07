@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Link from 'next/link';
 import { ReadyToGetStarted } from '@/components/shared/ReadyToGetStarted';
+import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSection';
 
 export const metadata: Metadata = {
   title: 'Trial Analytics - SyMetric',
@@ -19,6 +20,7 @@ export default function TrialAnalyticsPage() {
         { label: 'Overview', href: '#overview' },
         { label: 'Benefits', href: '#benefits' },
         { label: 'Features', href: '#features' },
+        { label: 'Related Products', href: '#related-products' },
         { label: 'Get Started', href: '#get-started' },
     ];
     
@@ -94,7 +96,13 @@ export default function TrialAnalyticsPage() {
                     </div>
                 </section>
                 
-                <ReadyToGetStarted />
+                <div id="related-products">
+                    <RelatedProductsSection currentSlug="trial-analytics" />
+                </div>
+                
+                <div id="get-started">
+                    <ReadyToGetStarted />
+                </div>
             </div>
         </>
     );

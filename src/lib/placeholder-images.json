@@ -19,6 +19,12 @@
       "imageHint": "company logo"
     },
     {
+      "id": "epro-image",
+      "description": "Patient completing digital electronic patient-reported outcomes questionnaire on a tablet",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwYXRpZW50JTIwdGFibGV0JTIwaGVhbHRoY2FyZXxlbnwwfHx8fDE3NjA4Njg1MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "patient tablet questionnaire"
+    },
+    {
       "id": "solution-ctp",
       "description": "Clinical trial platform dashboard",
       "imageUrl": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXNoYm9hcmQlMjBkYXRhfGVufDB8fHx8MTc2MDg2ODI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -116,9 +122,9 @@
     },
     {
       "id": "resource-2",
-      "description": "AI in drug discovery",
+      "description": "Innovation in drug discovery",
       "imageUrl": "https://images.unsplash.com/photo-1549925245-f20a1bac6454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxBSSUyMGJyYWlufGVufDB8fHx8fDE3NjA4NDk4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "AI brain"
+      "imageHint": "digital innovation"
     },
     {
       "id": "resource-3",
@@ -187,6 +193,12 @@
       "imageHint": "data dashboard"
     },
     {
+      "id": "hero-carousel-4",
+      "description": "Clinical research team with digital global network interface",
+      "imageUrl": "/hero-medical-team-globe.png",
+      "imageHint": "medical research team globe"
+    },
+    {
       "id": "unlock-potential-1",
       "description": "Hands interacting with a futuristic medical data interface.",
       "imageUrl": "/unlock-potential-new-microscope-final.png",
@@ -242,7 +254,7 @@
     },
     {
       "id": "ai-infographic",
-      "description": "Infographic about AI in business",
+      "description": "Infographic about business analytics",
       "imageUrl": "https://images.unsplash.com/photo-1707004453835-3e7f4c5220c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHhmaW5hbnNpYWwlMjBkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8fDE3NjA4NDk4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "financial data"
     },
@@ -350,9 +362,9 @@
     },
     {
       "id": "business-ai-hero",
-      "description": "SyMetric Business AI hero image",
+      "description": "SyMetric Business hero image",
       "imageUrl": "https://storage.googleapis.com/aai-web-samples/product-screenshots/business-ai-hero-2.png",
-      "imageHint": "business woman AI"
+      "imageHint": "business woman"
     },
     {
       "id": "tool-iam-1",
@@ -529,6 +541,12 @@
       "imageHint": "alert notification"
     },
     {
+      "id": "news-everest-peak-matrix",
+      "description": "SyMetric recognized by Everest Group as Major Contender in Global RTSM PEAK Matrix 2025",
+      "imageUrl": "/everest-peak-matrix-dark.jpg",
+      "imageHint": "industry recognition"
+    },
+    {
       "id": "news-summit",
       "description": "SyMetric at Mint and SAP presents Industry Knowledge Exchange Summit",
       "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/12/new-sap-summit.jpg",
@@ -572,8 +590,8 @@
     },
     {
       "id": "news-icsm-partner",
-      "description": "SyMetric is excited to be a strategic partner for ICSM with SAP and TENTHPIN.",
-      "imageUrl": "https://symetricsystems.com/wp-content/uploads/2022/02/ICSM-3.jpg",
+      "description": "SyMetric is excited to be a strategic partner for ICSM with SAP.",
+      "imageUrl": "/icsm-partner.jpg",
       "imageHint": "partnership announcement"
     },
     {

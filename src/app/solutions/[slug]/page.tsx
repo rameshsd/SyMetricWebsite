@@ -65,8 +65,8 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
         </div>
         <div id="related-products">
           <RelatedProductsSection 
+            currentSlug={solution.slug}
             relatedContent={solution.relatedContent} 
-            customImage={customRelatedImage}
           />
         </div>
         <ReadyToGetStarted />

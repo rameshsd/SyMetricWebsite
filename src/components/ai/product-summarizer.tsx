@@ -51,7 +51,7 @@ export function ProductSummarizer() {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardHeader>
             <CardTitle>Generate Summary</CardTitle>
-            <CardDescription>Enter the URL of a product page to get an AI-generated summary.</CardDescription>
+            <CardDescription>Enter the URL of a product page to get an automated summary.</CardDescription>
           </CardHeader>
           <CardContent>
             <FormField

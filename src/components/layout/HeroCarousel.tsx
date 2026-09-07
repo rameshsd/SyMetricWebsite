@@ -72,7 +72,7 @@ export function HeroCarousel() {
   };
 
   return (
-    <section 
+    <section
       className="relative w-full h-[85vh] -mt-16 overflow-hidden bg-black"
     >
       {/* Background Slides */}
@@ -85,7 +85,7 @@ export function HeroCarousel() {
           )}
         >
           <div className="relative w-full h-full overflow-hidden">
-             <Image
+            <Image
               src={slide.image}
               alt={slide.heading}
               fill
@@ -97,40 +97,76 @@ export function HeroCarousel() {
               data-ai-hint={slide.imageHint}
             />
           </div>
-          <div className="absolute inset-0 bg-black/50 z-20" />
+          <div className={cn(
+            "absolute inset-0 z-20",
+            slide.id === 'hero-carousel-4'
+              ? "bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-900/50"
+              : "bg-black/50"
+          )} />
         </div>
       ))}
 
-      <div className="relative z-30 container h-full flex flex-col justify-start items-center px-4 pt-24 text-center">
-        <div className="w-full max-w-4xl space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg md:whitespace-nowrap">
-            {slides[currentSlide].heading}
-          </h1>
-          
-          <p className="text-base text-white/80 font-medium drop-shadow-md max-w-3xl mx-auto">
-            {slides[currentSlide].subheading}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <Button 
-              size="default" 
-              className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xl transition-all"
-              asChild
-            >
-              <Link href={slides[currentSlide].cta1.link}>{slides[currentSlide].cta1.text}</Link>
-            </Button>
-            <Button 
-              size="default" 
-              variant="secondary"
-              className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-gray-100 text-gray-900 hover:bg-gray-200 shadow-xl transition-all"
-              asChild
-            >
-              <Link href={slides[currentSlide].cta2.link}>{slides[currentSlide].cta2.text}</Link>
-            </Button>
+      {/* Main Slide Content */}
+      <div className="relative z-30 container h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+        {slides[currentSlide].id === 'hero-carousel-4' ? (
+          <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider shadow-sm">
+                Industry Recognition • Everest Group PEAK Matrix® 2025
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight">
+                Recognized as <span className="text-emerald-400">Major Contender</span> in Global RTSM
+              </h1>
+
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl">
+                Everest Group has recognized SyMetric in the <strong className="text-white font-semibold">Life Sciences RTSM Products PEAK Matrix® Assessment 2025</strong> for our strong market impact, proven capability excellence, and customer-centric clinical trial solutions.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 flex justify-center items-center">
+              <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[3/4] max-h-[50vh] rounded-xl overflow-hidden shadow-2xl border border-white/15 bg-slate-900/80 backdrop-blur-md group hover:border-blue-400/40 transition-all duration-300">
+                <Image
+                  src="/everest-peak-matrix-dark.jpg"
+                  alt="SyMetric Everest Group Recognition Poster"
+                  fill
+                  className="object-contain p-2 rounded-xl group-hover:scale-102 transition-transform duration-500"
+                  priority
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="w-full max-w-4xl space-y-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg md:whitespace-nowrap">
+              {slides[currentSlide].heading}
+            </h1>
+
+            <p className="text-base text-white/80 font-medium drop-shadow-md max-w-3xl mx-auto">
+              {slides[currentSlide].subheading}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+              <Button
+                size="default"
+                className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xl transition-all"
+                asChild
+              >
+                <Link href={slides[currentSlide].cta1.link}>{slides[currentSlide].cta1.text}</Link>
+              </Button>
+              <Button
+                size="default"
+                variant="secondary"
+                className="min-w-[200px] h-10 rounded-md text-sm font-semibold bg-gray-100 text-gray-900 hover:bg-gray-200 shadow-xl transition-all"
+                asChild
+              >
+                <Link href={slides[currentSlide].cta2.link}>{slides[currentSlide].cta2.text}</Link>
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
-      
+
       {slides.length > 1 && (
         <>
           <button

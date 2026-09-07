@@ -14,7 +14,7 @@ export function TechEdBanner() {
               <div className="flex items-center gap-4 text-center md:text-left">
                 <h2 className="text-lg font-bold flex-shrink-0">SyMetric TechEd</h2>
                 <p className="text-sm text-white/80">
-                  Transform your business with Joule, agents, and SyMetric's AI
+                  Transform your business with Joule, agents, and SyMetric's
                   operating system, November 4-6, 2025.
                 </p>
               </div>
