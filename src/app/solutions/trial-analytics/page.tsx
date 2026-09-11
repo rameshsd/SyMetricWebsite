@@ -34,25 +34,43 @@ export default function TrialAnalyticsPage() {
                 secondaryNav={secondaryNav}
             />
             <div id="overview">
-                <section className="py-14 dark:bg-card" style={{ backgroundColor: '#D7E3FA' }}>
+                <section
+                    className="w-full min-h-[450px] flex items-center py-20 dark:bg-card px-0"
+                    style={{ backgroundColor: '#D7E3FA' }}
+                >
                     <div className="container">
-                        <div className="grid md:grid-cols-2 gap-10 items-center">
+                        <div className="grid lg:grid-cols-2 gap-10 items-center">
                             <div className="space-y-6">
-                                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
+                                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
                                     SyMetric Trial Analytics
                                 </h1>
-                                <p className="text-xl font-medium text-primary">Analytics-Driven Clinical Trial Planning System</p>
-                                <p className="text-muted-foreground">
+                                <p className="text-xl font-medium text-primary">
+                                    Analytics-Driven Clinical Trial Planning System
+                                </p>
+                                <p className="text-base md:text-lg text-slate-700 leading-relaxed">
                                     The SyMetric Trial Analytics solution helps you make informed decisions while planning a new Clinical Trial using insights from study data and performance analytics of stakeholders such as CROs, Investigation Sites, and Investigators. With our Analytics Tool, you can cut Trial Planning time significantly and enhance efficiency.
                                 </p>
-                                <p className="text-muted-foreground">
-                                    Also, the system is built on SAP Business Technology Platform, enabling you to explore various services that SAP has to offer on the Cloud. Our solution can be integrated with your system to deliver insightful analysis while leveraging cloud initiatives from SAP in Life Sciences. Here are the various sources of data that we analyze to help you plan effectively.
+                                <p className="text-base md:text-lg text-slate-700 leading-relaxed">
+                                    Also, the system is built on SAP Business Technology Platform, enabling you to explore various services that SAP has to offer on the Cloud. Our solution can be integrated with your system to deliver insightful analysis while leveraging cloud initiatives from SAP in Life Sciences.
                                 </p>
+                                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                                    <Button size="lg" asChild>
+                                        <Link href="/request-demo">Request a demo</Link>
+                                    </Button>
+                                </div>
                             </div>
-                            <div className="relative h-[400px] w-full">
-                                {heroImage && (
-                                    <Image src={heroImage.imageUrl} alt={heroImage.description} data-ai-hint={heroImage.imageHint} fill className="object-contain" />
-                                )}
+                            <div className="relative flex justify-center items-center h-auto md:h-[500px]">
+                                <div className="relative w-full max-w-[550px] h-[360px] md:h-[400px]">
+                                    {heroImage && (
+                                        <Image
+                                            src={heroImage.imageUrl}
+                                            alt={heroImage.description}
+                                            data-ai-hint={heroImage.imageHint}
+                                            fill
+                                            className="rounded-2xl object-contain md:object-cover shadow-2xl"
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +81,7 @@ export default function TrialAnalyticsPage() {
                         <SectionTitle title="Benefits" className="mb-12"/>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {trialAnalyticsBenefits.map(benefit => (
-                                <Card key={benefit.title} className="bg-secondary/50 border-none">
+                                <Card key={benefit.title} className="bg-secondary/50 border border-[#2463EB] shadow-sm hover:shadow-md transition-all rounded-2xl">
                                     <CardHeader>
                                         <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
                                             <benefit.icon className="h-16 w-16 text-primary" strokeWidth={2.5}/>
@@ -84,7 +102,7 @@ export default function TrialAnalyticsPage() {
                         <SectionTitle title="Features" className="mb-12"/>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {trialAnalyticsFeatures.map(feature => (
-                                <Card key={feature.title} className="bg-background">
+                                <Card key={feature.title} className="bg-background border border-[#2463EB] shadow-sm hover:shadow-md transition-all rounded-2xl">
                                     <CardHeader>
                                         <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-primary/10 mb-4">
                                             <feature.icon className="h-16 w-16 text-primary" strokeWidth={2.5}/>

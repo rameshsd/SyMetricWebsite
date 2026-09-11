@@ -10,13 +10,18 @@ interface SyMetricBusinessAIProps {
   title: string;
   subtitle: string;
   heroImageId?: string;
+  backgroundColor?: string;
 }
 
-export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai-hero' }: SyMetricBusinessAIProps) {
+export function SyMetricBusinessAI({ title, subtitle, heroImageId = 'business-ai-hero', backgroundColor }: SyMetricBusinessAIProps) {
   const heroImage = PlaceHolderImages.find(p => p.id === heroImageId);
+  const bgStyle = backgroundColor ? { backgroundColor } : {};
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff] dark:bg-card">
+    <section
+      className="w-full py-12 md:py-16 lg:py-20 bg-[#f5f3ff] dark:bg-card"
+      style={bgStyle}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-10 items-center min-h-[400px]">
           <div className="space-y-6">
