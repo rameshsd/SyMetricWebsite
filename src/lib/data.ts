@@ -119,14 +119,14 @@ export const navItems: NavItem[] = [
     href: '/resources',
     subItems: [
       {
-        name: 'Insights & Resources',
-        href: '/resources',
-        description: 'Explore our articles, whitepapers, case studies, and industry publications.',
-      },
-      {
         name: 'Gallery',
         href: '/gallery',
         description: 'Explore photo highlights, event moments, and multimedia showcases.',
+      },
+      {
+        name: 'Insights & Resources',
+        href: '/resources',
+        description: 'Explore our articles, whitepapers, case studies, and industry publications.',
       },
     ],
   },

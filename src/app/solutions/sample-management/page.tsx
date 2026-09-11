@@ -32,8 +32,8 @@ import { RelatedProductsSection } from '@/components/solutions/RelatedProductsSe
 
 
 export const metadata: Metadata = {
-  title: 'Bio-Sample Management System - SyMetric',
-  description: 'A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis.',
+    title: 'Bio-Sample Management System - SyMetric',
+    description: 'A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis.',
 };
 
 const capabilities: { icon: LucideIcon; title: string; description: string, link: string }[] = [
@@ -131,7 +131,7 @@ const ConclusionSection = () => {
                     <div className="relative">
                         <Accordion type="single" defaultValue="item-1" collapsible className="w-full">
                             {summaryPoints.map((point) => (
-                                 <AccordionItem value={point.id} key={point.id} className="border-b-0">
+                                <AccordionItem value={point.id} key={point.id} className="border-b-0">
                                     <div className="flex gap-4">
                                         <div className="pt-4">
                                             <div className="w-1 h-full bg-border transition-colors data-[state=open]:bg-primary"></div>
@@ -145,7 +145,7 @@ const ConclusionSection = () => {
                                             </AccordionContent>
                                         </div>
                                     </div>
-                                 </AccordionItem>
+                                </AccordionItem>
                             ))}
                         </Accordion>
 
@@ -153,13 +153,13 @@ const ConclusionSection = () => {
                     <div className="relative flex items-center justify-center">
                         <div className="relative w-full aspect-video">
                             {conclusionImage && (
-                            <Image
-                                src={conclusionImage.imageUrl}
-                                alt="Professional working on a tablet"
-                                fill
-                                className="rounded-2xl object-cover shadow-lg"
-                                data-ai-hint={conclusionImage.imageHint}
-                            />
+                                <Image
+                                    src={conclusionImage.imageUrl}
+                                    alt="Professional working on a tablet"
+                                    fill
+                                    className="rounded-2xl object-cover shadow-lg"
+                                    data-ai-hint={conclusionImage.imageHint}
+                                />
                             )}
                         </div>
                     </div>
@@ -180,10 +180,10 @@ export default function SampleManagementPage() {
 
     return (
         <>
-            <SyMetricBusinessAI 
-              title="Bio-Sample Management System"
-              subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
-              heroImageId="sample-management-page-hero"
+            <SyMetricBusinessAI
+                title="Bio-Sample Management System"
+                subtitle="A powerful, end-to-end module designed to manage the lifecycle of clinical samples—from definition to collection, labeling, shipment, storage, and final analysis."
+                heroImageId="sample-management-page-hero"
             />
             <PageHeader title="Sample Management" secondaryNav={secondaryNav} />
             <div id="overview">
@@ -196,28 +196,28 @@ export default function SampleManagementPage() {
                         />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {capabilities.map(cap => (
-                               <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border-2 border-blue-200 hover:border-blue-500 bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                   <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
+                                <Card key={cap.title} className="group flex flex-col items-start text-left p-6 rounded-2xl border-2 border-blue-200 hover:border-blue-500 bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                    <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-4">
                                         <cap.icon className="h-16 w-16 text-blue-600 dark:text-blue-400" strokeWidth={2.5} />
-                                   </div>
-                                   <div className="flex-grow">
-                                      <h3 className="font-semibold text-lg">{cap.title}</h3>
-                                      <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
                                     </div>
-                               </Card>
+                                    <div className="flex-grow">
+                                        <h3 className="font-semibold text-lg">{cap.title}</h3>
+                                        <p className="text-muted-foreground text-sm mt-1">{cap.description}</p>
+                                    </div>
+                                </Card>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                 <ConclusionSection />
-                 
-                 <div id="related-products">
-                     <RelatedProductsSection currentSlug="sample-management" />
-                 </div>
-                 
-                 <ReadyToGetStarted />
-                 {/* <FaqAccordion faqs={sampleManagementFaq} /> */}
+                <ConclusionSection />
+
+                <div id="related-products">
+                    <RelatedProductsSection currentSlug="sample-management" />
+                </div>
+
+                <ReadyToGetStarted />
+                {/* <FaqAccordion faqs={sampleManagementFaq} /> */}
             </div>
         </>
     );
