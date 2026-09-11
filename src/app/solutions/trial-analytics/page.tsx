@@ -28,7 +28,11 @@ export default function TrialAnalyticsPage() {
 
     return (
         <>
-            <PageHeader title="Trial Analytics" secondaryNav={secondaryNav} showTitle={false} />
+            <PageHeader
+                title="Trial Analytics"
+                breadcrumb={{ href: '/solutions', label: 'Solutions' }}
+                secondaryNav={secondaryNav}
+            />
             <div id="overview">
                 <section className="bg-[#f5f3ff] dark:bg-card pt-12">
                     <div className="container">
