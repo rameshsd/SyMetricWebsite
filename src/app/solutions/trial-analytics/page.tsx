@@ -34,7 +34,7 @@ export default function TrialAnalyticsPage() {
                 secondaryNav={secondaryNav}
             />
             <div id="overview">
-                <section className="bg-[#f5f3ff] dark:bg-card pt-12">
+                <section className="py-14 dark:bg-card" style={{ backgroundColor: '#D7E3FA' }}>
                     <div className="container">
                         <div className="grid md:grid-cols-2 gap-10 items-center">
                             <div className="space-y-6">
